@@ -61,6 +61,6 @@
 | reuse | повторное использование, переиспользование |
 | React | React |
 | React element | React-элемент, элемент React |
-| render | отрисовать (глагол), отрисовка (существительное) |
+| render | **TODO: [обсуждаем](https://github.com/reactjs/ru.reactjs.org/issues/4#issuecomment-461977978)** |
 | state | состояние |
 | template literals | шаблонные строки |
