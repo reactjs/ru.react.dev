@@ -57,10 +57,12 @@
 | library | библиотека |
 | lowercase | нижний регистр |
 | mock | фиктивный |
+| paint | перерисовка |
 | props | пропсы |
 | reuse | повторное использование, переиспользование |
 | React | React |
 | React element | React-элемент, элемент React |
-| render | **TODO: [обсуждаем](https://github.com/reactjs/ru.reactjs.org/issues/4#issuecomment-461977978)** |
+| render(ing) **in component sense** | рендер, рендерить, отрендерить, рендеринг |
+| render(ing) **in visual sense** | отрисовать, вывести на экран |
 | state | состояние |
 | template literals | шаблонные строки |
