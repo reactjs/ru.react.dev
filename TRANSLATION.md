@@ -24,7 +24,7 @@
 | (un)controlled component | (не)контролируемый компонент |
 | functional component | функциональный компонент |
 | hook | хук |
-| props | *props* |
+| props | пропсы |
 | reuse | повторное использование, переиспользование |
 | mock | фиктивный |
 | React element | React-элемент, элемент React |
