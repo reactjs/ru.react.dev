@@ -37,17 +37,27 @@
 
 | Оригинальный термин | Перевод |
 | ------------------ | ---------- |
+| array | массив |
 | arrow function | стрелочная функция |
 | bug | баг, дефект |
-| error | ошибка |
+| bundler | **TODO: создайте issue для обсуждения** |
+| camelCase | *camelCase* |
 | (un)controlled component | (не)контролируемый компонент |
+| debugging | отладка |
+| error | ошибка |
+| debugging | отладка |
+| framework | фреймворк |
 | functional component | функциональный компонент |
 | hook | хук |
+| key | **TODO: создайте issue для обсуждения** |
+| lazy initialization | ленивая инициализация |
+| library | библиотека |
+| lowercase | нижний регистр |
 | mock | фиктивный |
 | props | пропсы |
 | reuse | повторное использование, переиспользование |
 | React | React |
 | React element | React-элемент, элемент React |
-| render | отрисовать (глагол), отрисовка (существительное)
+| render | отрисовать (глагол), отрисовка (существительное) |
 | state | состояние |
 | template literals | шаблонные строки |
