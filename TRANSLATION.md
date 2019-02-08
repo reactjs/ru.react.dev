@@ -43,7 +43,7 @@
 | array | массив |
 | arrow function | стрелочная функция |
 | bug | баг, дефект |
-| bundler | **TODO: создайте issue для обсуждения** |
+| bundler | бандлер |
 | camelCase | *camelCase* |
 | (un)controlled component | (не)контролируемый компонент |
 | debugging | отладка |
@@ -52,7 +52,7 @@
 | framework | фреймворк |
 | functional component | функциональный компонент |
 | hook | хук |
-| key | **TODO: создайте issue для обсуждения** |
+| key | ключ |
 | lazy initialization | ленивая инициализация |
 | library | библиотека |
 | lowercase | нижний регистр |
@@ -61,6 +61,8 @@
 | reuse | повторное использование, переиспользование |
 | React | React |
 | React element | React-элемент, элемент React |
+| reconciliation | согласование |
+| ref | реф |
 | render | **TODO: [обсуждаем](https://github.com/reactjs/ru.reactjs.org/issues/4#issuecomment-461977978)** |
 | state | состояние |
 | template literals | шаблонные строки |
