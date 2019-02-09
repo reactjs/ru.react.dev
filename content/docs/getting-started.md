@@ -1,6 +1,6 @@
 ---
 id: getting-started
-title: Getting Started
+title: С чего начать?
 permalink: docs/getting-started.html
 next: add-react-to-a-website.html
 redirect_from:
@@ -18,109 +18,109 @@ redirect_from:
   - "docs/environments.html"
 ---
 
-This page is an overview of the React documentation and related resources.
+На этой странице мы сделаем небольшой обзор документации и других ресурсов, которые могут быть полезны при первом использовании React.
 
-**React** is a JavaScript library for building user interfaces. Learn what React is all about on [our homepage](/) or [in the tutorial](/tutorial/tutorial.html).
+**React** это библиотека на языке JavaScript, предназначенная для разработки пользовательского интерфейса. Узнать все подробности о React вы можете на нашей [домашней странице](/) или в [практическом руководстве](/tutorial/tutorial.html).
 
 ---
 
-- [Try React](#try-react)
-- [Learn React](#learn-react)
-- [Staying Informed](#staying-informed)
-- [Versioned Documentation](#versioned-documentation)
-- [Something Missing?](#something-missing)
+- [Пробуйте React](#try-react)
+- [Изучайте React](#learn-react)
+- [Будьте в курсе](#staying-informed)
+- [Документация на прошлые версии React](#versioned-documentation)
+- [Обратная связь](#something-missing)
 
-## Try React {#try-react}
+## Пробуйте React {#try-react}
 
-React has been designed from the start for gradual adoption, and **you can use as little or as much React as you need.** Whether you want to get a taste of React, add some interactivity to a simple HTML page, or start a complex React-powered app, the links in this section will help you get started.
+React изначально был спроектирован так, чтобы его можно было внедрять постепенно. Другими словами, **вы можете начать с малого и использовать только тот функционал React, который необходим вам в данный момент.** Возможно, в скором времени вам захочется получше распробовать React, оживить свои простенькие HTML странички или даже приступить к разработке сложного web—приложения. Ссылки в данном разделе помогут вам начать первое знакомство с React.
 
-### Online Playgrounds {#online-playgrounds}
+### Тестирование React в online песочницах {#online-playgrounds}
 
-If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world) or [CodeSandbox](https://codesandbox.io/s/new).
+Если вам захочется немного поиграть с React, то вы можете использовать online песочницы для тестирования его возможностей. Например, можно попробовать шаблон Hello World в [CodePen](codepen://hello-world) или [CodeSandbox](https://codesandbox.io/s/new).
 
-If you prefer to use your own text editor, you can also [download this HTML file](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), edit it, and open it from the local filesystem in your browser. It does a slow runtime code transformation, so we'd only recommend using this for simple demos.
+В том случае, если вы предпочитаете использовать свой собственный редактор или IDE, то можно [скачать тестовый HTML файл](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), добавить в него пробный код и запустить на своем компьютере. В тестовом файле используется библиотека babel для преобразования кода React в обычный код на JavaScript. Это происходит налету непосредственно в вашем браузере. Такое преобразование достаточно медленно, поэтому мы рекомендуем использовать данный файл только для простых демонстрационных примеров. 
 
-### Add React to a Website {#add-react-to-a-website}
+### Добавление React на сайт {#add-react-to-a-website}
 
-You can [add React to an HTML page in one minute](/docs/add-react-to-a-website.html). You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
+Вы можете [добавить React на свой сайт буквально за одну минуту](/docs/add-react-to-a-website.html). После этого можно постепенно расширять использование React в своём проекте или ограничиться добавлением на страницу нескольких динамических элементов.
 
-### Create a New React App {#create-a-new-react-app}
+### Создание нового web—приложения {#create-a-new-react-app}
 
-When starting a React project, [a simple HTML page with script tags](/docs/add-react-to-a-website.html) might still be the best option. It only takes a minute to set up!
+Когда вы начинаете проект на React, [то простая HTML страница с тегами script](/docs/add-react-to-a-website.html) может быть лучшим вариантом. Ведь для её создания вам потребуется меньше минуты.
 
-As your application grows, you might want to consider a more integrated setup. There are [several JavaScript toolchains](/docs/create-a-new-react-app.html) we recommend for larger applications. Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem.
+Однако для разработки более развесистого приложения вам, скорее всего, придётся рассмотреть другие варианты настройки рабочего окружения, объединяющие в себе различные технологии. Вот [несколько наборов JavaScript инструментов](/docs/create-a-new-react-app.html), которые мы рекомендуем для создания больших приложений. Каждый из этих инструментов может работать практически без настройки и позволит вам насладиться всеми плюшками экосистемы React. 
 
-## Learn React {#learn-react}
+## Изучайте React {#learn-react}
 
-People come to React from different backgrounds and with different learning styles. Whether you prefer a more theoretical or a practical approach, we hope you'll find this section helpful.
+Люди начинают работать с React, имея за спиной свой собственный опыт и определенный уровень мастерства. При этом у каждого есть предпочтения при изучении новых технологий: кто—то погружается в теорию, а кто—то сразу переходит к решению практических задач. В любом случае мы надеемся, что этот раздел будет для вас полезен.
 
-* If you prefer to **learn by doing**, start with our [practical tutorial](/tutorial/tutorial.html).
-* If you prefer to **learn concepts step by step**, start with our [guide to main concepts](/docs/hello-world.html).
+* Если вы предпочитаете **изучать технологии на практике**, начните с [практического руководства](/tutorial/tutorial.html).
+* Если вам больше нравится **познавать предмет шаг за шагом**, то начните с [подробного описания основных принципов React](/docs/hello-world.html).
 
-Like any unfamiliar technology, React does have a learning curve. With practice and some patience, you *will* get the hang of it.
+Также как любые другие новые технологии React не имеет строго определенного направления изучения или последовательного учебного курса, однако, набравшись терпения и приложив достаточное усердие, вы *обязательно* освоите React. Терпение и труд все перетрут!
 
-### First Examples {#first-examples}
+### Простые примеры {#first-examples}
 
-The [React homepage](/) contains a few small React examples with a live editor. Even if you don't know anything about React yet, try changing their code and see how it affects the result.
+На [домашней странице React](/) есть несколько маленьких примеров использования React. Их можно  отредактировать и запустить прямо на нашем сайте. Даже если вы пока абсолютно ничего не знаете о React, попробуйте что—нибудь поменять в коде этих примеров и посмотрите на результат.
 
-### React for Beginners {#react-for-beginners}
+### React для новичков {#react-for-beginners}
 
-If you feel that the React documentation goes at a faster pace than you're comfortable with, check out [this overview of React by Tania Rascia](https://www.taniarascia.com/getting-started-with-react/). It introduces the most important React concepts in a detailed, beginner-friendly way. Once you're done, give the documentation another try!
+Если документация кажется вам сложной и усваивается не так быстро, как хотелось, взгляните на [обзор React, который сделала Таня Раша (Tania Rascia)](https://www.taniarascia.com/getting-started-with-react/). В нем Таня на простом языке подробно рассказала о наиболее важных концепциях React. Всё, что вам теперь нужно, это дать документации еще один шанс!
 
-### React for Designers {#react-for-designers}
+### React для дизайнеров {#react-for-designers}
 
-If you're coming from a design background, [these resources](http://reactfordesigners.com/) are a great place to get started.
+Если у вас есть дизайнерский опыт, то [этот сайт](http://reactfordesigners.com/) будет отличным местом, с которого вы сможете начать изучение React.
 
-### JavaScript Resources {#javascript-resources}
+### Ресурсы по JavaScript {#javascript-resources}
 
-The React documentation assumes some familiarity with programming in the JavaScript language. You don't have to be an expert, but it's harder to learn both React and JavaScript at the same time.
+Изучение React предполагает наличие некоторых знаний о программировании на языке JavaScript. Вы не обязаны быть экспертом, но учтите, что для одновременного изучения и React, и JavaScript потребуется значительно больше времени. 
 
-We recommend going through [this JavaScript overview](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) to check your knowledge level. It will take you between 30 minutes and an hour but you will feel more confident learning React.
+Чтобы освежить ваши знания, мы рекомендуем просмотреть [обзор языка JavaScript на сайте mozilla.org](https://developer.mozilla.org/ru/docs/Web/JavaScript/A_re-introduction_to_JavaScript). Для этого потребуется от 30 минут до часа. Надеемся, что теперь вы будете чувствовать себя более комфортно при изучении React.
 
->Tip
+>Совет
 >
->Whenever you get confused by something in JavaScript, [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [javascript.info](http://javascript.info/) are great websites to check. There are also [community support forums](/community/support.html) where you can ask for help.
+>Если всё—таки у вас остались пробелы в знаниях о JavaScript, то сайты [MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript) и [javascript.info](http://javascript.info/) будут отличными источниками информации чтобы пификсить их. Также всегда можно задать вопрос или попросить помощи на [форуме нашего сообщества](/community/support.html).
 
-### Practical Tutorial {#practical-tutorial}
+### Практическое руководство {#practical-tutorial}
 
-If you prefer to **learn by doing,** check out our [practical tutorial](/tutorial/tutorial.html). In this tutorial, we build a tic-tac-toe game in React. You might be tempted to skip it because you're not building games -- but give it a chance. The techniques you'll learn in the tutorial are fundamental to building *any* React apps, and mastering it will give you a much deeper understanding.
+Если вы предпочитаете **изучать технологии на практике**, воспользуйтесь нашим [практическим руководством](/tutorial/tutorial.html). В нём описан процесс разработки игры в крестики—нолики. Даже если вы не планируете программировать игры, всё равно пройдите это руководство. Технология, которую вы освоите, является фундаментом для разработки *любых* приложений на React. Она даст вам более глубокое понимание этой библиотеки. 
 
-### Step-by-Step Guide {#step-by-step-guide}
+### Подробное описание React {#step-by-step-guide}
 
-If you prefer to **learn concepts step by step,** our [guide to main concepts](/docs/hello-world.html) is the best place to start. Every next chapter in it builds on the knowledge introduced in the previous chapters so you won't miss anything as you go along.
+Если вам больше нравится **познавать предмет шаг за шагом**, то лучше начать с [подробного описания основных принципов React](/docs/hello-world.html). Каждая последующая глава описания базируется на знаниях предыдущей, поэтому вы ничего не упстите в процессе изучения материала.
 
-### Thinking in React {#thinking-in-react}
+### Мыслить в стиле React {#thinking-in-react}
 
-Many React users credit reading [Thinking in React](/docs/thinking-in-react.html) as the moment React finally "clicked" for them. It's probably the oldest React walkthrough but it's still just as relevant.
+Многие пользователи React отмечают, что прочтение статьи [Мыслить в стиле React](/docs/thinking-in-react.html) стало именно тем моментом, когда React "торкнул" их по—настоящему. Возможно это самое древнее руководство по React, но оно всё ещё в силе.
 
-### Recommended Courses {#recommended-courses}
+### Рекомендуемые курсы {#recommended-courses}
 
-Sometimes people find third-party books and video courses more helpful than the official documentation. We maintain [a list of commonly recommended resources](/community/courses.html), some of which are free.
+Иногда бывает так, что люди считаю книги или видеокурсы от сторонних авторов более полезными, нежели официальная документация. Для таких пользователей мы размещаем [список рекомендуемых ресурсов](/community/courses.html). Некоторые из них даже бесплатные.
 
-### Advanced Concepts {#advanced-concepts}
+### Углублённое изучение React {#advanced-concepts}
 
-Once you're comfortable with the [main concepts](#main-concepts) and played with React a little bit, you might be interested in more advanced topics. This section will introduce you to the powerful, but less commonly used React features like [context](/docs/context.html) and [refs](/docs/refs-and-the-dom.html).
+После того, как вы досконально изучите [основные принципы React](#main-concepts) и немного поиграетесь с ним, вам захочется углубиться в более продвинутые разделы документации. В этих главах описан очень мощный, но не так часто используемый функционал React. Например, [context](/docs/context.html) и [refs](/docs/refs-and-the-dom.html).
 
-### API Reference {#api-reference}
+### API {#api-reference}
 
-This documentation section is useful when you want to learn more details about a particular React API. For example, [`React.Component` API reference](/docs/react-component.html) can provide you with details on how `setState()` works, and what different lifecycle methods are useful for.
+Этот раздел документации пригодится, когда вы будете изучать конкретные подробности об использовании React API. В частности, в главе [`React.Component` API](/docs/react-component.html) повествуется о работе функции `setState()` и о различных методах управления жизненным циклом компонентов.  
 
-### Glossary and FAQ {#glossary-and-faq}
+### Глоссарий и ЧаВо {#glossary-and-faq}
 
-The [glossary](/docs/glossary.html) contains an overview of the most common terms you'll see in the React documentation. There is also a FAQ section dedicated to short questions and answers about common topics, including [making AJAX requests](/docs/faq-ajax.html), [component state](/docs/faq-state.html), and [file structure](/docs/faq-structure.html).
+[Глоссарий](/docs/glossary.html) содержит перечень наиболее употребляемых терминов, которые встречаются в документации. Также есть раздел ЧаВо, в котором есть короткие вопросы и ответы на самые животрепещущие темы, такие как  [использование AJAX](/docs/faq-ajax.html), [состояние компонентов](/docs/faq-state.html) или [структура проекта](/docs/faq-structure.html).
 
-## Staying Informed {#staying-informed}
+## Будьте в курсе {#staying-informed}
 
-The [React blog](/blog/) is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted there first.
+[Блог о React](/blog/) это источник официальной информации от нашей команды об обновлениях. Все самые важные новости, включая описание изменений в релизах или списки нерекомендуемых к использованию функций, будут публиковаться здесь в первую очередь.
 
-You can also follow the [@reactjs account](https://twitter.com/reactjs) on Twitter, but you won't miss anything essential if you only read the blog.
+Также вы можете подписаться на наш аккаунт [@reactjs](https://twitter.com/reactjs) в Twitter, но всё—таки, если вы не хотите пропустить что—нибудь по—настоящему важное, читайте блог.
 
-Not every React release deserves its own blog post, but you can find a detailed changelog for every release [in the `CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/master/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react) page.
+В блоге мы пишем не о всех релизах React, но всегда есть возможность посмотреть список изменений для всех релизов [в файле `CHANGELOG.md` в репоизтории React](https://github.com/facebook/react/blob/master/CHANGELOG.md), а также на странице [Релизы](https://github.com/facebook/react).
 
-## Versioned Documentation {#versioned-documentation}
+## Документация на прошлые версии React {#versioned-documentation}
 
-This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation [on a separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
+Документация на сайте всегда соответствует последнему стабильному релизу. Начиная с 16 версии React, мы публикуем старые версии документации [на отдельной странице](/versions). Учтите, что копии документации на прошлые версии создаются в момент выхода релиза и более не обновляются.
 
-## Something Missing? {#something-missing}
+## Обратная связь {#something-missing}
 
-If something is missing in the documentation or if you found some part confusing, please [file an issue for the documentation repository](https://github.com/reactjs/reactjs.org/issues/new) with your suggestions for improvement, or tweet at the [@reactjs account](https://twitter.com/reactjs). We love hearing from you!
+Если вы обнаружите в документации какие—нибудь неточности, ошибки или любые другие непонятки, пожаулйста, [создайте сообщение об ошибке в репозитории документации](https://github.com/reactjs/reactjs.org/issues/new) с указанием способа решения проблемы или просто [чирикните нам в Twitter @reactjs](https://twitter.com/reactjs). Мы всегда рады слышать вас!
