@@ -17,7 +17,7 @@ class MarkdownEditor extends React.Component {
   render() {
     return (
       <div className="MarkdownEditor">
-        <h3>Входные данные</h3>
+        <h3>Редактор</h3>
         <label htmlFor="markdown-content">
           Введите что-нибудь в формате Markdown
         </label>
