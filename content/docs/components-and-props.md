@@ -1,6 +1,6 @@
 ---
 id: components-and-props
-title: Components and Props
+title: Компоненты и пропсы
 permalink: docs/components-and-props.html
 redirect_from:
   - "docs/reusable-components.html"
@@ -16,13 +16,13 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components. You can find a [detailed component API reference here](/docs/react-component.html).
+Компоненты позволяют разбить интерфейс на независимые части, про которые легко думать в отдельности. Их можно складывать вместе и использовать несколько раз. На этой странице мы ознакомимся с самой идеей компонентов — [детальное описание API находится здесь](/docs/react-component.html).
 
-Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
+Во многом, компоненты ведут себя как обычные функции JavaScript. Они принимают произвольные входные данные («пропсы») и возвращают React-элементы, описывающие, что мы хотим увидеть на экране.
 
-## Function and Class Components {#function-and-class-components}
+## Функциональные и классовые компоненты {#function-and-class-components}
 
-The simplest way to define a component is to write a JavaScript function:
+Проще всего объявить React-компонент как функцию:
 
 ```js
 function Welcome(props) {
@@ -30,9 +30,9 @@ function Welcome(props) {
 }
 ```
 
-This function is a valid React component because it accepts a single "props" (which stands for properties) object argument with data and returns a React element. We call such components "function components" because they are literally JavaScript functions.
+Эта функция — компонент, потому что она получает данные в одном объекте («пропсы») в качестве параметра и возвращает React-элемент. Мы будем называть такие компоненты «функциональными», так как они буквально являются функциями.
 
-You can also use an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a component:
+Ещё компоненты можно определять как [классы ES6](https://developer.mozilla.org/ru-RU/docs/Web/JavaScript/Reference/Classes):
 
 ```js
 class Welcome extends React.Component {
@@ -42,34 +42,34 @@ class Welcome extends React.Component {
 }
 ```
 
-The above two components are equivalent from React's point of view.
+С точки зрения React, эти два компонента эквивалентны.
 
-Classes have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html). Until then, we will use function components for their conciseness.
+Классам доступны дополнительные возможности, о которых мы поговорим в [следующих главах](/docs/state-and-lifecycle.html). Но пока что мы предпочтём функции за их краткость.
 
-## Rendering a Component {#rendering-a-component}
+## Как отрендерить компонент {#rendering-a-component}
 
-Previously, we only encountered React elements that represent DOM tags:
+Пока что мы только встречали React-элементы, представляющие собой DOM-тэги:
 
 ```js
 const element = <div />;
 ```
 
-However, elements can also represent user-defined components:
+Но элементы могут описывать и наши собственные компоненты:
 
 ```js
-const element = <Welcome name="Sara" />;
+const element = <Welcome name="Алиса" />;
 ```
 
-When React sees an element representing a user-defined component, it passes JSX attributes to this component as a single object. We call this object "props".
+Когда React встречает подобный элемент, он собирает все JSX-атрибуты в один объект и передаёт их нашему компоненту. Такой объект называется «пропсы».
 
-For example, this code renders "Hello, Sara" on the page:
+Например, этот компонент выведет «Привет, Алиса» на страницу:
 
 ```js{1,5}
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Привет, {props.name}</h1>;
 }
 
-const element = <Welcome name="Sara" />;
+const element = <Welcome name="Алиса" />;
 ReactDOM.render(
   element,
   document.getElementById('root')
@@ -78,24 +78,24 @@ ReactDOM.render(
 
 [](codepen://components-and-props/rendering-a-component)
 
-Let's recap what happens in this example:
+Давайте разберём, что именно здесь происходит:
 
-1. We call `ReactDOM.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
-3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+1. Мы передаём `<Welcome name="Алиса" />` React-элемент в `ReactDOM.render()`.
+2. React вызывает наш компонент `Welcome` с пропсами `{name: 'Алиса'}`.
+3. Наш компонент `Welcome` возвращает `<h1>Привет, Алиса</h1>` элемент в качестве результата.
+4. React DOM эффективно обновляет DOM, чтобы получилось `<h1>Привет, Алиса</h1>`.
 
->**Note:** Always start component names with a capital letter.
+>**Примечание:** Компоненты всегда должны называться с заглавной буквы.
 >
->React treats components starting with lowercase letters as DOM tags. For example, `<div />` represents an HTML div tag, but `<Welcome />` represents a component and requires `Welcome` to be in scope.
+>React принимает компоненты, начинающиеся с маленькой буквы, за DOM-тэги. Например, `<div />` представляет собой div-тэг из HTML, а `<Welcome />` это уже наш компонент `Welcome`, который должен быть доступен в области видимости.
 >
->You can read more about the reasoning behind this convention [here.](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)
+>Вы можете почитать, почему это так работает [здесь.](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized)
 
-## Composing Components {#composing-components}
+## Композиция компонентов {#composing-components}
 
-Components can refer to other components in their output. This lets us use the same component abstraction for any level of detail. A button, a form, a dialog, a screen: in React apps, all those are commonly expressed as components.
+Компоненты могут ссылаться на другие компоненты в возвращённом ими дереве. Это позволяет нам использовать одну и ту же абстракцию — компоненты — на любом уровне нашего приложения. Не важно, пишем ли мы кнопку, форму, диалог или целый экран: все они, как правило, представляют собой компоненты в React-приложениях.
 
-For example, we can create an `App` component that renders `Welcome` many times:
+Например, компонент `App` может отрендерить компонент `Welcome` несколько раз:
 
 ```js{8-10}
 function Welcome(props) {
@@ -105,9 +105,9 @@ function Welcome(props) {
 function App() {
   return (
     <div>
-      <Welcome name="Sara" />
-      <Welcome name="Cahal" />
-      <Welcome name="Edite" />
+      <Welcome name="Алиса" />
+      <Welcome name="Базилио" />
+      <Welcome name="Буратино" />
     </div>
   );
 }
@@ -120,13 +120,13 @@ ReactDOM.render(
 
 [](codepen://components-and-props/composing-components)
 
-Typically, new React apps have a single `App` component at the very top. However, if you integrate React into an existing app, you might start bottom-up with a small component like `Button` and gradually work your way to the top of the view hierarchy.
+В приложениях, написанных на React с нуля, как правило, есть один компонент `App`, который находится на самом верху. Тем не менее, если вы переписываете существующее приложение на React, имеет смысл начать работу с маленького компонента типа `Button` и постепенно двигаться «вверх» по иерархии.
 
-## Extracting Components {#extracting-components}
+## Извлечение компонентов {#extracting-components}
 
-Don't be afraid to split components into smaller components.
+Не бойтесь разбивать компоненты на части.
 
-For example, consider this `Comment` component:
+К примеру, допустим у нас есть компонент `Comment`:
 
 ```js
 function Comment(props) {
@@ -154,11 +154,11 @@ function Comment(props) {
 
 [](codepen://components-and-props/extracting-components)
 
-It accepts `author` (an object), `text` (a string), and `date` (a date) as props, and describes a comment on a social media website.
+Этот компонент представляет собой комментарий в социальной сети. Его пропсы включают в себя `author` (объект), `text` (строка), и `date` (дата).
 
-This component can be tricky to change because of all the nesting, and it is also hard to reuse individual parts of it. Let's extract a few components from it.
+С этим компонентом может быть не очень удобно работать из-за излишней вложенности. Мы также не можем повторно использовать его составные части. Давайте извлечём из него пару компонентов.
 
-First, we will extract `Avatar`:
+Для начала, мы извлечём `Avatar`:
 
 ```js{3-6}
 function Avatar(props) {
@@ -171,11 +171,11 @@ function Avatar(props) {
 }
 ```
 
-The `Avatar` doesn't need to know that it is being rendered inside a `Comment`. This is why we have given its prop a more generic name: `user` rather than `author`.
+Компоненту `Avatar` незачем знать, что он рендерится внутри `Comment`. Поэтому мы дали его пропу чуть менее конкретное имя — `user`, а не `author`.
 
-We recommend naming props from the component's own point of view rather than the context in which it is being used.
+Пропсы следует называть так, чтобы они имели смысл в первую очередь с точки зрения самого компонента, а уже во вторую тех компонентов, которые его рендерят.
 
-We can now simplify `Comment` a tiny bit:
+Теперь мы можем немножко упростить наш `Comment`:
 
 ```js{5}
 function Comment(props) {
@@ -198,7 +198,7 @@ function Comment(props) {
 }
 ```
 
-Next, we will extract a `UserInfo` component that renders an `Avatar` next to the user's name:
+Следующим шагом мы извлечём компонент `UserInfo`, который рендерит `Avatar` рядом с именем пользователя:
 
 ```js{3-8}
 function UserInfo(props) {
@@ -213,7 +213,7 @@ function UserInfo(props) {
 }
 ```
 
-This lets us simplify `Comment` even further:
+Это позволит нам ещё сильнее упростить `Comment`:
 
 ```js{4}
 function Comment(props) {
@@ -233,11 +233,13 @@ function Comment(props) {
 
 [](codepen://components-and-props/extracting-components-continued)
 
-Extracting components might seem like grunt work at first, but having a palette of reusable components pays off in larger apps. A good rule of thumb is that if a part of your UI is used several times (`Button`, `Panel`, `Avatar`), or is complex enough on its own (`App`, `FeedStory`, `Comment`), it is a good candidate to be a reusable component.
+Извлечение компонентов может сначала показаться неблагодарной работой. Тем не менее, в больших приложениях очень полезно иметь палитру компонентов, которые можно многократно использовать. Если вы не уверены, извлекать компонент или нет, вот простое правило. Если какая-то часть интерфейса многократно в нём повторяется (`Button`, `Panel`, `Avatar`) или сама по себе достаточно сложная (`App`, `FeedStory`, `Comment`), её имеет смысл вынести в независимый компонент.
 
-## Props are Read-Only {#props-are-read-only}
+## Пропсы можно только читать {#props-are-read-only}
 
-Whether you declare a component [as a function or a class](#function-and-class-components), it must never modify its own props. Consider this `sum` function:
+Компонент никогда не должен что-то записывать в свои пропсы — вне зависимости от того, [функциональный он или классовый](#function-and-class-components).
+
+Возьмём для примера функцию `sum`:
 
 ```js
 function sum(a, b) {
@@ -245,9 +247,9 @@ function sum(a, b) {
 }
 ```
 
-Such functions are called ["pure"](https://en.wikipedia.org/wiki/Pure_function) because they do not attempt to change their inputs, and always return the same result for the same inputs.
+Такие функции называют [«чистыми»](https://ru.wikipedia.org/wiki/%D0%A7%D0%B8%D1%81%D1%82%D0%BE%D1%82%D0%B0_%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8) потому, что они не меняют свои входные данные и предсказуемо возвращают один и тот результат для одних и тех же аргументов.
 
-In contrast, this function is impure because it changes its own input:
+А вот пример нечистой функции — она записывает данные в свои же аргументы:
 
 ```js
 function withdraw(account, amount) {
@@ -255,8 +257,8 @@ function withdraw(account, amount) {
 }
 ```
 
-React is pretty flexible but it has a single strict rule:
+React достаточно гибкий, но есть одно правило, которое нельзя нарушать:
 
-**All React components must act like pure functions with respect to their props.**
+**React-компоненты обязаны вести себя как чистые функции по отношению к своим пропсам.**
 
-Of course, application UIs are dynamic and change over time. In the [next section](/docs/state-and-lifecycle.html), we will introduce a new concept of "state". State allows React components to change their output over time in response to user actions, network responses, and anything else, without violating this rule.
+Конечно, интерфейсы приложений обычно изменяются с течением времени. В [следующей главе](/docs/state-and-lifecycle.html) мы узнаем о том, что такое «состояние» компонента. Состояние даёт компонентам возможность реагировать на действия пользователя, ответы сервера и другие события, не нарушая чистоту компонента. 

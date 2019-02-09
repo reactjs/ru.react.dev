@@ -18,7 +18,7 @@
     - id: rendering-elements
       title: Rendering Elements
     - id: components-and-props
-      title: Components and Props
+      title: Компоненты и пропсы
     - id: state-and-lifecycle
       title: State and Lifecycle
     - id: handling-events
