@@ -64,6 +64,8 @@
 | key | ключ |
 | lazy initialization | ленивая инициализация |
 | library | библиотека |
+| lifecycle | жизненный цикл |
+| lifecycle method | метод жизненного цикла |
 | lifting state up | подъём состояния, поднимать состояние |
 | lowercase | нижний регистр |
 | mock | фиктивный |
