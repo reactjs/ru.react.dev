@@ -82,3 +82,5 @@
 | ref | реф |
 | state | состояние |
 | template literals | шаблонные строки |
+| Tip | Совет |
+| Warning | Осторожно |
