@@ -56,7 +56,7 @@ class CodeEditor extends Component {
     if (showBabelErrorMessage) {
       errorMessage = (
         <span>
-          Babel не может быть загружен.
+          Не получилось загрузить Babel.
           <br />
           <br />
           Это может быть связано с блокировщиком рекламы. Если вы используете один из них,
@@ -98,7 +98,7 @@ class CodeEditor extends Component {
                 color: colors.white,
               }}>
               <MetaTitle onDark={true}>
-                JSX-редактор в интерактивном режиме
+                Интерактивный JSX-редактор
                 <label
                   css={{
                     fontSize: 14,
