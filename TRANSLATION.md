@@ -46,6 +46,7 @@
 | arrow function | стрелочная функция |
 | bug | баг, дефект |
 | bundler | бандлер |
+| callback | колбэк |
 | camelCase | *camelCase* |
 | (un)controlled component | (не)контролируемый компонент |
 | debugging | отладка |
