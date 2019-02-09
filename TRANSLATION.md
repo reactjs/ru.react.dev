@@ -53,13 +53,14 @@
 | bundler | бандлер |
 | callback | колбэк |
 | camelCase | *camelCase* |
+| class component | классовый компонент |
 | (un)controlled component | (не)контролируемый компонент |
 | debugging | отладка |
 | DOM container | DOM-контейнер |
 | error | ошибка |
 | debugging | отладка |
 | framework | фреймворк |
-| functional component | функциональный компонент |
+| function component | функциональный компонент |
 | hook | хук |
 | key | ключ |
 | lazy initialization | ленивая инициализация |
