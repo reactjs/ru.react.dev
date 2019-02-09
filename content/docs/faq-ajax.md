@@ -1,22 +1,22 @@
 ---
 id: faq-ajax
-title: Запрос к серверу, AJAX и APIs
+title: AJAX и API, обращение к серверу
 permalink: docs/faq-ajax.html
 layout: docs
 category: FAQ
 ---
 
-### Как выполнить AJAX запрос к серверу? {#how-can-i-make-an-ajax-call}
+### Как выполнить AJAX-запрос к серверу? {#how-can-i-make-an-ajax-call}
 
-Используйте любую AJAX библиотеку, например [Axios](https://github.com/axios/axios) или [jQuery AJAX](https://api.jquery.com/jQuery.ajax/). А еще присмотритесь к встроенному в браузер методу [window.fetch](https://learn.javascript.ru/fetch).
+Вы можете использовать встроенный в браузер метод [window.fetch](https://learn.javascript.ru/fetch) или любую AJAX-библиотеку, например [Axios](https://github.com/axios/axios) или [jQuery AJAX](https://api.jquery.com/jQuery.ajax/).
 
-### Где в жизненном цикле компонента я могу сделать AJAX запрос? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
+### Где в жизненном цикле компонента я могу сделать AJAX-запрос? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
-В методе [`componentDidMount`](/docs/react-component.html#mounting). Сделайте AJAX запрос и используйте `setState` для обновления компонента когда данные будут получены.
+Вы можете сделать AJAX-запрос в [`componentDidMount`](/docs/react-component.html#mounting). Когда вы получите данные, вызовите `setState`, чтобы передать их компоненту.
 
-### Пример: Результат AJAX запроса и установка внутреннего состояния {#example-using-ajax-results-to-set-local-state}
+### Пример: Установка внутреннего состояния из результатов AJAX-запроса {#example-using-ajax-results-to-set-local-state}
 
-Компонент ниже демонстрирует как сделать AJAX запрос в `componentDidMount` для дальнейшего обновления внутреннего состояния.
+Компонент ниже показывает, как в `componentDidMount` задать внутреннее состояние из результата AJAX-запроса.
 
 Допустим, наш API возвращает следующий JSON-объект:
 
@@ -51,7 +51,7 @@ class MyComponent extends React.Component {
           });
         },
         // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
-        // чтобы не проглотить исключения из-за настоящих багов в компонентах.
+        // чтобы не перехватывать исключения из ошибок в самих компонентах.
         (error) => {
           this.setState({
             isLoaded: true,
