@@ -49,6 +49,7 @@
 | camelCase | *camelCase* |
 | (un)controlled component | (не)контролируемый компонент |
 | debugging | отладка |
+| DOM container | DOM-контейнер |
 | error | ошибка |
 | debugging | отладка |
 | framework | фреймворк |
