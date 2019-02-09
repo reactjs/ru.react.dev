@@ -65,6 +65,7 @@
 | lazy initialization | ленивая инициализация |
 | library | библиотека |
 | lifting state up | подъём состояния, поднимать состояние |
+| local state | внутреннее состояние |
 | lowercase | нижний регистр |
 | mock | фиктивный |
 | (im)mutable | (им)мутабельный |
