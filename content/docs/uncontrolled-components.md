@@ -1,14 +1,16 @@
 ---
 id: uncontrolled-components
-title: Uncontrolled Components
+title: Неконтролируемые компоненты
 permalink: docs/uncontrolled-components.html
 ---
 
-In most cases, we recommend using [controlled components](/docs/forms.html) to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
+В большинстве случаев мы рекомендуем использовать [контролируемые компоненты]((/docs/forms.html)) для работы с формами.
+В контролируемом компоненте, данные формы обрабатываются React-компонентом.
+Альтернативой являются неконтролируемые компоненты, где данные форм обрабатываются через DOM.
 
-To write an uncontrolled component, instead of writing an event handler for every state update, you can [use a ref](/docs/refs-and-the-dom.html) to get form values from the DOM.
+Вместо того, чтобы писать обработчик события для каждого обновления состояния, вы можете использовать неконтролируемый компонент и [ref](/docs/refs-and-the-dom.html) для получения значений из DOM.
 
-For example, this code accepts a single name in an uncontrolled component:
+Вот так, к примеру, можно получить имя в обработчике неконтролируемого компонента:
 
 ```javascript{5,9,18}
 class NameForm extends React.Component {
@@ -37,15 +39,15 @@ class NameForm extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)
 
-Since an uncontrolled component keeps the source of truth in the DOM, it is sometimes easier to integrate React and non-React code when using uncontrolled components. It can also be slightly less code if you want to be quick and dirty. Otherwise, you should usually use controlled components.
+Такие компоненты хранят данные в DOM и их проще интегрировать в не-React приложение. Этот код можно сократить если пожертвовать стилистикой. В противном случае лучше использовать контролируемые компоненты.
 
-If it's still not clear which type of component you should use for a particular situation, you might find [this article on controlled versus uncontrolled inputs](http://goshakkk.name/controlled-vs-uncontrolled-inputs-react/) to be helpful.
+Если всё ещё остаётся непонятным какой тип компонента Вам необходимо использовать в конкретной ситуации, то, возможно, [статья о контролируемых против некотролируемых input'ах](http://goshakkk.name/controlled-vs-uncontrolled-inputs-react/) может показаться Вам полезной.
 
-### Default Values {#default-values}
+### Значения по умолчанию {#default-values}
 
-In the React rendering lifecycle, the `value` attribute on form elements will override the value in the DOM. With an uncontrolled component, you often want React to specify the initial value, but leave subsequent updates uncontrolled. To handle this case, you can specify a `defaultValue` attribute instead of `value`.
+На этапе прорисовки жизненного цикла в React, атрибут `value` на элементах формы будет переопределять значение в DOM. С неконтролируемым компонентом Вам часто необходимо, чтобы React определял первоначальное значение, но оставлял неконтролируемыми последующие обновления. В этом случае, Вам необходимо определить атрибут `defaultValue` вместо `value`.
 
 ```javascript{7}
 render() {
@@ -64,7 +66,7 @@ render() {
 }
 ```
 
-Likewise, `<input type="checkbox">` and `<input type="radio">` support `defaultChecked`, and `<select>` and `<textarea>` supports `defaultValue`.
+Аналогично, `<input type="checkbox">` и `<input type="radio">` используют `defaultChecked`, а `<select>` и `<textarea>` - `defaultValue`.
 
 ## The file input Tag {#the-file-input-tag}
 
@@ -74,9 +76,9 @@ In HTML, an `<input type="file">` lets the user choose one or more files from th
 <input type="file" />
 ```
 
-In React, an `<input type="file" />` is always an uncontrolled component because its value can only be set by a user, and not programmatically.
+В React `<input type="file">` всегда является неконтролируемым компонентом, потому что его значение может быть установлено только пользователем, а не программно.
 
-You should use the File API to interact with the files. The following example shows how to create a [ref to the DOM node](/docs/refs-and-the-dom.html) to access file(s) in a submit handler:
+Вы должны использовать File API для взаимодействия с файлами. В следующем примере показано, как создать [ссылку на узел DOM](/docs/refs-and-the-dom.html) для доступа к файлам в обработчике отправки:
 
 `embed:uncontrolled-components/input-type-file.js`
 
