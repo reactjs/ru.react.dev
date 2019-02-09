@@ -136,7 +136,7 @@
 - title: FAQ
   items:
     - id: faq-ajax
-      title: AJAX and APIs
+      title: Запрос к серверу, AJAX и APIs
     - id: faq-build
       title: Babel, JSX, and Build Steps
     - id: faq-functions
