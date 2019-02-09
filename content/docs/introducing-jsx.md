@@ -105,7 +105,7 @@ const element = <img src={user.avatarUrl}></img>;
 
 >**Осторожно:**
 >
->Поскольку JSX ближе к JavaScript чем к HTML, React DOM использует `camelCase` для именование свойств вместо обычных имён HTML атрибутов.
+>Поскольку JSX ближе к JavaScript чем к HTML, React DOM использует `camelCase` стиль именования свойств вместо обычных имён HTML атрибутов.
 >
 >Например, `class` становится [`className`](https://developer.mozilla.org/ru/docs/Web/API/Element/className) в JSX, а `tabindex` становится [`tabIndex`](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/tabIndex).
 
