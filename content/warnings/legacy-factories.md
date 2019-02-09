@@ -4,7 +4,7 @@ layout: single
 permalink: warnings/legacy-factories.html
 ---
 
-You probably came here because your code is calling your component as a plain function call. This is now deprecated:
+Вы, вероятно, пришли сюда, потому что ваш код вызывает свой компонент в качестве обычного вызова функции. Теперь это устарело:
 
 ```javascript
 var MyComponent = require('MyComponent');
@@ -16,7 +16,7 @@ function render() {
 
 ## JSX {#jsx}
 
-React components can no longer be called directly like this. Instead [you can use JSX](/docs/jsx-in-depth.html).
+Компоненты React больше не могут вызываться таким образом. Вместо этого [вы можете использовать JSX](/docs/jsx-in-depth.html).
 
 ```javascript
 var React = require('react');
@@ -27,9 +27,9 @@ function render() {
 }
 ```
 
-## Without JSX {#without-jsx}
+## Без JSX {#without-jsx}
 
-If you don't want to, or can't use JSX, then you'll need to wrap your component in a factory before calling it:
+Если вы не хотите или не можете использовать JSX, тогда перед вызовом компонента вам необходимо перевести его в фабрику:
 
 ```javascript
 var React = require('react');
@@ -40,11 +40,11 @@ function render() {
 }
 ```
 
-This is an easy upgrade path if you have a lot of existing function calls.
+Это простой путь обновления, если у вас много вызовов функций.
 
-## Dynamic components without JSX {#dynamic-components-without-jsx}
+## Динамические компоненты без JSX {#dynamic-components-without-jsx}
 
-If you get a component class from a dynamic source, then it might be unnecessary to create a factory that you immediately invoke. Instead you can just create your element inline:
+Если вы получаете класс компонента из динамического источника, то необязательно создавать фабрику, на которую вы немедленно ссылаетесь. Вместо этого вы можете просто создать свой inline-элемент:
 
 ```javascript
 var React = require('react');
@@ -54,6 +54,6 @@ function render(MyComponent) {
 }
 ```
 
-## In Depth {#in-depth}
+## Подробнее {#in-depth}
 
-[Read more about WHY we're making this change.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
+[Узнайте больше о том, ПОЧЕМУ мы делаем это изменение.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
