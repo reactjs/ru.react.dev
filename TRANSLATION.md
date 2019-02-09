@@ -83,4 +83,4 @@
 | state | состояние |
 | template literals | шаблонные строки |
 | Tip | Совет |
-| Warning | Осторожно |
+| Warning | Предупреждение |
