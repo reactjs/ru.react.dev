@@ -1,8 +1,8 @@
 ---
-title: Component-Based
+title: Основан на компонентах
 order: 1
 ---
 
-Build encapsulated components that manage their own state, then compose them to make complex UIs.
+Создавайте инкапсулированные компоненты с собственным состоянием, а затем объединяйте их, чтобы создать сложные пользовательские интерфейсы.
 
-Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.
+Поскольку логика компонента написана на JavaScript, а не содержится в шаблонах, можно с лёгкостью передавать самые разные данные по всему приложению и держать состояние вне DOM.
