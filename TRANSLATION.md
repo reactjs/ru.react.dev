@@ -59,6 +59,8 @@
 | DOM container | DOM-контейнер |
 | error | ошибка |
 | debugging | отладка |
+| development | девелопмент |
+| development mode | девелопмент-режим |
 | framework | фреймворк |
 | function component | функциональный компонент |
 | hook | хук |
@@ -78,6 +80,8 @@
 | paint | отрисовка, перерисовка |
 | prop | проп *(ед. ч.)* |
 | props | пропсы *(мн. ч.)* |
+| production | продакшен |
+| production mode | продакшен-режим |
 | reuse | повторное использование, переиспользование |
 | React | React |
 | React element | React-элемент, элемент React |
