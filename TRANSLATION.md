@@ -54,6 +54,7 @@
 | ------------------ | ---------- |
 | array | массив |
 | arrow function | стрелочная функция |
+| attribute | атрибут |
 | bug | баг, дефект |
 | bundler | бандлер |
 | callback | колбэк |
@@ -98,6 +99,7 @@
 | ref | реф *(ед. ч.)* |
 | refs | рефы *(мн. ч.)* |
 | state | состояние |
+| tag | тег |
 | template literals | шаблонные строки |
 | Try it on CodePen | Посмотреть на CodePen |
 | UI | UI |
