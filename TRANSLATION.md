@@ -59,8 +59,8 @@
 | DOM container | DOM-контейнер |
 | error | ошибка |
 | debugging | отладка |
-| development | девелопмент |
-| development mode | девелопмент-режим |
+| development | разработка |
+| development mode | режим разработки |
 | framework | фреймворк |
 | function component | функциональный компонент |
 | hook | хук |
