@@ -68,6 +68,7 @@
 | lifecycle | жизненный цикл |
 | lifecycle method | метод жизненного цикла |
 | lifting state up | подъём состояния, поднимать состояние |
+| local state | внутреннее состояние |
 | lowercase | нижний регистр |
 | mock | фиктивный |
 | (im)mutable | (им)мутабельный |
