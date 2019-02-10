@@ -3,5 +3,7 @@
 
 https://github.com/reactjs/ru.reactjs.org/blob/master/TRANSLATION.md
 
+Пишите простым языком. Глаголы не должны превращаться в громоздкие существительные.
+
 Спасибо!
 -->
