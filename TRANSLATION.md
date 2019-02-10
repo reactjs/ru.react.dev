@@ -63,17 +63,21 @@
 | callback | колбэк |
 | camelCase | *camelCase* |
 | class component | классовый компонент |
+| context | контекст |
 | (un)controlled component | (не)контролируемый компонент |
+| custom hooks | пользовательские хуки |
 | debugging | отладка |
 | DOM container | DOM-контейнер |
 | error | ошибка |
+| effect | эффект |
 | feature | возможность |
 | debugging | отладка |
 | development | разработка |
 | development mode | режим разработки |
+| error boundary | предохранитель |
 | framework | фреймворк |
 | function component | функциональный компонент |
-| hook | хук |
+| hook | хук *(с маленькой буквы)* |
 | incapsulation | инкапсуляция |
 | incapsulated | инкапсулированный |
 | key | ключ |
@@ -97,6 +101,7 @@
 | props | пропсы *(мн. ч.)* |
 | production | продакшен |
 | production mode | продакшен-режим |
+| reducer | редюсер |
 | reuse | повторное использование, переиспользование |
 | React | React |
 | React element | React-элемент, элемент React |
@@ -109,9 +114,11 @@
 | refs | рефы *(мн. ч.)* |
 | (previous/next) section | (предыдущая/следующая) глава *(только в разделе Основные понятия)* |
 | shallow | поверхностное (сравнение, равенство), поверхностный (рендеринг) |
+| side effect | побочный эффект |
 | state | состояние |
 | stateful component | компонент с состоянием |
 | stateless component | компонент без состояния |
+| suspense | задержка |
 | tag | тег |
 | template literals | шаблонные строки |
 | tutorial | введение |
