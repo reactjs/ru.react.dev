@@ -73,6 +73,8 @@
 | framework | фреймворк |
 | function component | функциональный компонент |
 | hook | хук |
+| incapsulation | инкапсуляция |
+| incapsulated | инкапсулированный |
 | key | ключ |
 | lazy initialization | ленивая инициализация |
 | library | библиотека |
