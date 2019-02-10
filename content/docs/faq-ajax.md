@@ -1,24 +1,24 @@
 ---
 id: faq-ajax
-title: AJAX and APIs
+title: AJAX и обращение к API
 permalink: docs/faq-ajax.html
 layout: docs
 category: FAQ
 ---
 
-### How can I make an AJAX call? {#how-can-i-make-an-ajax-call}
+### Как выполнить AJAX-запрос к серверу? {#how-can-i-make-an-ajax-call}
 
-You can use any AJAX library you like with React. Some popular ones are [Axios](https://github.com/axios/axios), [jQuery AJAX](https://api.jquery.com/jQuery.ajax/), and the browser built-in [window.fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API).
+Вы можете использовать встроенный в браузер метод [window.fetch](https://learn.javascript.ru/fetch) или любую AJAX-библиотеку, например [Axios](https://github.com/axios/axios) или [jQuery AJAX](https://api.jquery.com/jQuery.ajax/).
 
-### Where in the component lifecycle should I make an AJAX call? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
+### Где в жизненном цикле компонента лучше делать запрос? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
-You should populate data with AJAX calls in the [`componentDidMount`](/docs/react-component.html#mounting) lifecycle method. This is so you can use `setState` to update your component when the data is retrieved.
+Вы можете сделать AJAX-запрос в [`componentDidMount`](/docs/react-component.html#mounting). Когда вы получите данные, вызовите `setState`, чтобы передать их компоненту.
 
-### Example: Using AJAX results to set local state {#example-using-ajax-results-to-set-local-state}
+### Пример: Устанавливаем состояние из AJAX-запроса {#example-using-ajax-results-to-set-local-state}
 
-The component below demonstrates how to make an AJAX call in `componentDidMount` to populate local component state. 
+Компонент ниже показывает, как в `componentDidMount` задать внутреннее состояние из результата AJAX-запроса.
 
-The example API returns a JSON object like this:
+Допустим, наш API возвращает следующий JSON-объект:
 
 ```
 {
@@ -50,9 +50,8 @@ class MyComponent extends React.Component {
             items: result.items
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
+        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
+        // чтобы не перехватывать исключения из ошибок в самих компонентах.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -65,9 +64,9 @@ class MyComponent extends React.Component {
   render() {
     const { error, isLoaded, items } = this.state;
     if (error) {
-      return <div>Error: {error.message}</div>;
+      return <div>Ошибка: {error.message}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div>Загрузка...</div>;
     } else {
       return (
         <ul>
