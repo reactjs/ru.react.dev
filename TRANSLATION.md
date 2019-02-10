@@ -101,6 +101,7 @@
 | state | состояние |
 | tag | тег |
 | template literals | шаблонные строки |
+| tutorial | введение |
 | Try it on CodePen | Посмотреть на CodePen |
 | UI | UI |
 | user interface | интерфейс (добавляйте «пользовательский» только если по контексту непонятно) |
