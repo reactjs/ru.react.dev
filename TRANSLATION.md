@@ -115,6 +115,7 @@
 | template literals | шаблонные строки |
 | tutorial | введение |
 | Try it on CodePen | Посмотреть на CodePen |
+| unidirectional data flow | однонаправленный поток данных |
 | UI | UI |
 | update | обновление |
 | user interface | интерфейс (добавляйте «пользовательский» только если по контексту непонятно) |
