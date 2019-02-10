@@ -1,6 +1,6 @@
 ---
 id: error-boundaries
-title: Error Boundaries
+title: Компоненты Error Boundary
 permalink: docs/error-boundaries.html
 ---
 
