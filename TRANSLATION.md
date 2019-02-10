@@ -55,6 +55,8 @@
 | array | массив |
 | arrow function | стрелочная функция |
 | attribute | атрибут |
+| batch | группа обновлений |
+| batching | группировка |
 | bug | баг, дефект |
 | bundler | бандлер |
 | callback | колбэк |
@@ -104,6 +106,7 @@
 | tutorial | введение |
 | Try it on CodePen | Посмотреть на CodePen |
 | UI | UI |
+| update | обновление |
 | user interface | интерфейс (добавляйте «пользовательский» только если по контексту непонятно) |
 | Tip | Совет |
 | Warning | Предупреждение |
