@@ -108,6 +108,9 @@
 | ref | реф *(ед. ч.)* |
 | refs | рефы *(мн. ч.)* |
 | (previous/next) section | (предыдущая/следующая) глава *(только в разделе Основные понятия)* |
+| shallow comparison | поверхностное сравнение |
+| shallow equality | поверхностное равенство |
+| shallow rendering | поверхностный рендеринг |
 | state | состояние |
 | stateful component | компонент с состоянием |
 | stateless component | компонент без состояния |
