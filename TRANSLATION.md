@@ -71,6 +71,7 @@
 | debugging | отладка |
 | development | разработка |
 | development mode | режим разработки |
+| error boundary | предохранитель |
 | framework | фреймворк |
 | function component | функциональный компонент |
 | hook | хук |
@@ -111,6 +112,7 @@
 | state | состояние |
 | stateful component | компонент с состоянием |
 | stateless component | компонент без состояния |
+| suspense | задержка |
 | tag | тег |
 | template literals | шаблонные строки |
 | tutorial | введение |
