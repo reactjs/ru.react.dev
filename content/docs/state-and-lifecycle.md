@@ -10,7 +10,7 @@ next: handling-events.html
 
 На этой странице представлены понятия «состояния» (state) и «жизненного цикла» (lifecycle) React-компонентов. Подробный [справочник API компонентов доступен по ссылке](/docs/react-component.html) .
 
-В качестве примера рассмотрим бегущие часы из [предыдущего раздела](/docs/rendering-elements.html#updating-the-rendered-element). В главе [Рендeринг элементов](/docs/rendering-elements.html#rendering-an-element-into-the-dom) мы изучили лишь один способ обновления UI — вызвать `ReactDOM.render()` для изменения результата рендера:
+В качестве примера рассмотрим идущие часы из [предыдущего раздела](/docs/rendering-elements.html#updating-the-rendered-element). В главе [Рендeринг элементов](/docs/rendering-elements.html#rendering-an-element-into-the-dom) мы изучили лишь один способ обновления UI — вызвать `ReactDOM.render()` для изменения результата рендера:
 
 ```js{8-11}
 function tick() {
