@@ -63,6 +63,7 @@
 | callback | колбэк |
 | camelCase | *camelCase* |
 | class component | классовый компонент |
+| context | контекст |
 | (un)controlled component | (не)контролируемый компонент |
 | debugging | отладка |
 | DOM container | DOM-контейнер |
@@ -97,6 +98,7 @@
 | props | пропсы *(мн. ч.)* |
 | production | продакшен |
 | production mode | продакшен-режим |
+| reducer | редюсер |
 | reuse | повторное использование, переиспользование |
 | React | React |
 | React element | React-элемент, элемент React |
