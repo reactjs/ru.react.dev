@@ -109,6 +109,8 @@
 | refs | рефы *(мн. ч.)* |
 | (previous/next) section | (предыдущая/следующая) глава *(только в разделе Основные понятия)* |
 | state | состояние |
+| stateful component | компонент с состоянием |
+| stateless component | компонент без состояния |
 | tag | тег |
 | template literals | шаблонные строки |
 | tutorial | введение |
