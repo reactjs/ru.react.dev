@@ -4,25 +4,25 @@ title: Error Boundaries
 permalink: docs/error-boundaries.html
 ---
 
-In the past, JavaScript errors inside components used to corrupt React’s internal state and cause it to [emit](https://github.com/facebook/react/issues/4026) [cryptic](https://github.com/facebook/react/issues/6895) [errors](https://github.com/facebook/react/issues/8579) on next renders. These errors were always caused by an earlier error in the application code, but React did not provide a way to handle them gracefully in components, and could not recover from them.
+В прошлом, ошибки JavaScript внутри компонентов портили внутреннуу состояние React и заставляли его [выдавать](https://github.com/facebook/react/issues/4026) [таинственные](https://github.com/facebook/react/issues/6895) [сообщения об ошибках](https://github.com/facebook/react/issues/8579) во время следующего рендера. Эти сообщения всегда вызывались ошибками, расположенными где-то выше в коде приложения, но React не предоставлял способа адекватно обрабатывать их в компонентах и не мог обработать их самостоятельно.
 
 
-## Introducing Error Boundaries {#introducing-error-boundaries}
+## Представляем Error Boundaries {#introducing-error-boundaries}
 
-A JavaScript error in a part of the UI shouldn’t break the whole app. To solve this problem for React users, React 16 introduces a new concept of an “error boundary”.
+Ошибка JavaScript где-то в коде UI не должна рушить всё приложение. Чтобы реализовать это утверждение для пользователей React, React 16 водит концепцию "рубеж ошибок"("error boundary").
 
-Error boundaries are React components that **catch JavaScript errors anywhere in their child component tree, log those errors, and display a fallback UI** instead of the component tree that crashed. Error boundaries catch errors during rendering, in lifecycle methods, and in constructors of the whole tree below them.
+Error boundaries это компоненты React, которые **отлавливают ошибки JavaScript в любом месте дерева их дочерних компонентов, сохраняют их в журнал и выводят запасной UI** вместо рухнувшего дерева компонентов. Error boundaries ловят ошибки при рендеринге, в методах жизненного цикла и в конструкторах дерева компонентов, расположенного под ними.
 
-> Note
+> Замечание
 >
-> Error boundaries do **not** catch errors for:
+> Error boundaries **не** поймают ошибки в:
 >
-> * Event handlers ([learn more](#how-about-event-handlers))
-> * Asynchronous code (e.g. `setTimeout` or `requestAnimationFrame` callbacks)
-> * Server side rendering
-> * Errors thrown in the error boundary itself (rather than its children)
+> * Обработчиках событий ([подробнее](#how-about-event-handlers))
+> * Асинхронном коде (напр. колбэки из `setTimeout` или `requestAnimationFrame`)
+> * Серверсайд рендеринге
+> * Самом компоненте error boundary (а не в его дочерних компонентах)
 
-A class component becomes an error boundary if it defines either (or both) of the lifecycle methods [`static getDerivedStateFromError()`](/docs/react-component.html#static-getderivedstatefromerror) or [`componentDidCatch()`](/docs/react-component.html#componentdidcatch). Use `static getDerivedStateFromError()` to render a fallback UI after an error has been thrown. Use `componentDidCatch()` to log error information.
+Классовый компонент является error boundary если он включает любой из двух (или оба) методов жизненного цикла [`static getDerivedStateFromError()`](/docs/react-component.html#static-getderivedstatefromerror) или [`componentDidCatch()`](/docs/react-component.html#componentdidcatch). Пользуйтесь `static getDerivedStateFromError()` при рендеринге запасного UI в случае отлова ошибки. Используйте `componentDidCatch()` при написании кода для журналирования информации об отловленной ощибке.
 
 ```js{7-10,12-15,18-21}
 class ErrorBoundary extends React.Component {
@@ -32,18 +32,18 @@ class ErrorBoundary extends React.Component {
   }
 
   static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
+    // Обновить состояние с тем, чтобы следующий рендер показал запасной UI.
     return { hasError: true };
   }
 
   componentDidCatch(error, info) {
-    // You can also log the error to an error reporting service
+    // Можно так же сохранить информацию об ошибке в соответствующую службу журнала ошибок
     logErrorToMyService(error, info);
   }
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
+      // В качестве запасного можно отрендерить UI произвольного вида
       return <h1>Something went wrong.</h1>;
     }
 
@@ -52,7 +52,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-Then you can use it as a regular component:
+И можно дальше им пользоваться, как обыконовенным компонентом:
 
 ```js
 <ErrorBoundary>
@@ -60,23 +60,23 @@ Then you can use it as a regular component:
 </ErrorBoundary>
 ```
 
-Error boundaries work like a JavaScript `catch {}` block, but for components. Only class components can be error boundaries. In practice, most of the time you’ll want to declare an error boundary component once and use it throughout your application.
+Error boundaries работают как `catch {}` блоки JavaScript, только для компонентов. Только классовые компоненты могут выступать в роли error boundaries. На практике, чаще всего целесообразным будет один раз описать компонент error boundary и использовать его по всему приложению.
 
-Note that **error boundaries only catch errors in the components below them in the tree**. An error boundary can’t catch an error within itself. If an error boundary fails trying to render the error message, the error will propagate to the closest error boundary above it. This, too, is similar to how catch {} block works in JavaScript.
+Стоит обратить внимание, что **error boundaries отлавливают ошибки исключительно в своих дочерних компонентах**. Error boundary не сможет отловить ошибку внутри самого себя. Если error boundary не удается отрендерить сообщение об ощибке, то ошибка всплывает до ближайшего error boundary, расположенного над ним в дереве компонентов. В этом тоже ситуация напоминает то, как работают блоки `catch {}` в JavaScript.
 
-## Live Demo {#live-demo}
+## Работающая демонстрация {#live-demo}
 
-Check out [this example of declaring and using an error boundary](https://codepen.io/gaearon/pen/wqvxGa?editors=0010) with [React 16](/blog/2017/09/26/react-v16.0.html).
-
-
-## Where to Place Error Boundaries {#where-to-place-error-boundaries}
-
-The granularity of error boundaries is up to you. You may wrap top-level route components to display a “Something went wrong” message to the user, just like server-side frameworks often handle crashes. You may also wrap individual widgets in an error boundary to protect them from crashing the rest of the application.
+См. [пример объявления и использования error boundary](https://codepen.io/gaearon/pen/wqvxGa?editors=0010) в [React 16](/blog/2017/09/26/react-v16.0.html).
 
 
-## New Behavior for Uncaught Errors {#new-behavior-for-uncaught-errors}
+## Где располагать Error Boundaries {#where-to-place-error-boundaries}
 
-This change has an important implication. **As of React 16, errors that were not caught by any error boundary will result in unmounting of the whole React component tree.**
+Гранулярность error boundaries оставляется на ваше усмотрение. Например вы можете охватить им навигационные (route) компоненты верхнего уровня, чтобы выводить пользователю сообщение "Что-то пошло не так", как часто делают при обработке ошибок серверные фреймворки. Также вы можете охватить error boundary отдельные виджеты, чтобы помешать им обрушить всё приложение.
+
+
+## Новое поведение при обработке неотловленных ошибок {#new-behavior-for-uncaught-errors}
+
+Это изменение влечёт за собой существенное последствие. **Начиная с React 16, ошибки, не отловленные ни одним из error boundary будут приводить к размонтированию всего дерева компонентов React.**
 
 We debated this decision, but in our experience it is worse to leave corrupted UI in place than to completely remove it. For example, in a product like Messenger leaving the broken UI visible could lead to somebody sending a message to the wrong person. Similarly, it is worse for a payments app to display a wrong amount than to render nothing.
 
