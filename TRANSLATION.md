@@ -68,6 +68,7 @@
 | debugging | отладка |
 | DOM container | DOM-контейнер |
 | error | ошибка |
+| effect | эффект |
 | feature | возможность |
 | debugging | отладка |
 | development | разработка |
@@ -111,6 +112,7 @@
 | ref | реф *(ед. ч.)* |
 | refs | рефы *(мн. ч.)* |
 | (previous/next) section | (предыдущая/следующая) глава *(только в разделе Основные понятия)* |
+| side effect | побочный эффект |
 | state | состояние |
 | stateful component | компонент с состоянием |
 | stateless component | компонент без состояния |
