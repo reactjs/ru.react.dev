@@ -1,6 +1,6 @@
 ---
 id: introducing-jsx
-title: Введение в JSX
+title: Знакомство с JSX
 permalink: docs/introducing-jsx.html
 prev: hello-world.html
 next: rendering-elements.html
