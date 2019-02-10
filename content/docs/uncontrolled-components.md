@@ -4,11 +4,9 @@ title: Неконтролируемые компоненты
 permalink: docs/uncontrolled-components.html
 ---
 
-В большинстве случаев мы рекомендуем использовать [контролируемые компоненты]((/docs/forms.html)) для работы с формами.
-В контролируемом компоненте, данные формы обрабатываются React-компонентом.
-Альтернативой являются неконтролируемые компоненты, где данные форм обрабатываются через DOM.
+В большинстве случаев мы рекомендуем использовать [контролируемые компоненты](/docs/forms.html) для работы с формами. В контролируемом компоненте, данные формы обрабатываются React-компонентом. Альтернативой являются неконтролируемые компоненты, где данные форм обрабатываются через DOM.
 
-Вместо того, чтобы писать обработчик события для каждого обновления состояния, вы можете использовать неконтролируемый компонент и [ref](/docs/refs-and-the-dom.html) для получения значений из DOM.
+Вместо того, чтобы писать обработчик события для каждого обновления состояния, вы можете использовать неконтролируемый компонент и [реф](/docs/refs-and-the-dom.html) для получения значений из DOM.
 
 Вот так, к примеру, можно получить имя в обработчике неконтролируемого компонента:
 
@@ -21,7 +19,7 @@ class NameForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.input.current.value);
+    alert('Отправленное имя: ' + this.input.current.value);
     event.preventDefault();
   }
 
@@ -29,10 +27,10 @@ class NameForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
+          Имя:
           <input type="text" ref={this.input} />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Отправить" />
       </form>
     );
   }
@@ -41,44 +39,44 @@ class NameForm extends React.Component {
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/WooRWa?editors=0010)
 
-Такие компоненты хранят данные в DOM и их проще интегрировать в не-React приложение. Этот код можно сократить если пожертвовать стилистикой. В противном случае лучше использовать контролируемые компоненты.
+Такие компоненты хранят данные в DOM и их проще интегрировать в не React-приложении. Этот код можно сократить, если пожертвовать стилистикой. В противном случае лучше использовать контролируемые компоненты.
 
-Если всё ещё остаётся непонятным какой тип компонента Вам необходимо использовать в конкретной ситуации, то, возможно, [статья о контролируемых против некотролируемых input'ах](http://goshakkk.name/controlled-vs-uncontrolled-inputs-react/) может показаться Вам полезной.
+Если всё ещё остаётся непонятным какой тип компонента вам необходимо использовать в конкретной ситуации, то, возможно, [статья о контролируемых против некотролируемых input'ах](http://goshakkk.name/controlled-vs-uncontrolled-inputs-react/) может показаться полезной.
 
 ### Значения по умолчанию {#default-values}
 
-На этапе прорисовки жизненного цикла в React, атрибут `value` на элементах формы будет переопределять значение в DOM. С неконтролируемым компонентом Вам часто необходимо, чтобы React определял первоначальное значение, но оставлял неконтролируемыми последующие обновления. В этом случае, Вам необходимо определить атрибут `defaultValue` вместо `value`.
+На этапе рендеринга жизненного цикла в React, атрибут `value` на элементах формы будет переопределять значение в DOM. С неконтролируемым компонентом вам часто необходимо, чтобы React определял первоначальное значение, но оставлял неконтролируемыми последующие обновления. В этом случае, необходимо определить атрибут `defaultValue` вместо `value`.
 
 ```javascript{7}
 render() {
   return (
     <form onSubmit={this.handleSubmit}>
       <label>
-        Name:
+        Имя:
         <input
           defaultValue="Bob"
           type="text"
           ref={this.input} />
       </label>
-      <input type="submit" value="Submit" />
+      <input type="submit" value="Отправить" />
     </form>
   );
 }
 ```
 
-Аналогично, `<input type="checkbox">` и `<input type="radio">` используют `defaultChecked`, а `<select>` и `<textarea>` - `defaultValue`.
+Аналогично, `<input type="checkbox">` и `<input type="radio">` используют `defaultChecked`, а `<select>` и `<textarea>` — `defaultValue`.
 
-## The file input Tag {#the-file-input-tag}
+## Тег поля загрузки файла {#the-file-input-tag}
 
-In HTML, an `<input type="file">` lets the user choose one or more files from their device storage to be uploaded to a server or manipulated by JavaScript via the [File API](https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications).
+HTML-тег `<input type="file">` позволяет пользователю выбрать один или несколько файлов из хранилища, чтобы загрузить их на сервер, либо управлять ими с помощью JavaScript, воспользовавшись [File API](https://developer.mozilla.org/ru/docs/Web/API/File/Using_files_from_web_applications).
 
 ```html
 <input type="file" />
 ```
 
-В React `<input type="file">` всегда является неконтролируемым компонентом, потому что его значение может быть установлено только пользователем, а не программно.
+В React `<input type="file">` всегда является неконтролируемым компонентом, потому что его значение может быть установлено только пользователем, а не программным путём.
 
-Вы должны использовать File API для взаимодействия с файлами. В следующем примере показано, как создать [ссылку на узел DOM](/docs/refs-and-the-dom.html) для доступа к файлам в обработчике отправки:
+Вам следует использовать File API для взаимодействия с файлами. В следующем примере показано, как создать [реф на DOM-узел](/docs/refs-and-the-dom.html) для получения доступа к файлам в обработчике отправки:
 
 `embed:uncontrolled-components/input-type-file.js`
 
