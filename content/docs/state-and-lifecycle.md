@@ -16,8 +16,8 @@ next: handling-events.html
 function tick() {
   const element = (
     <div>
-      <h1>Hello, world!</h1>
-      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+      <h1>Привет, мир!</h1>
+      <h2>Сейчас {new Date().toLocaleTimeString()}.</h2>
     </div>
   );
   ReactDOM.render(
@@ -31,7 +31,7 @@ setInterval(tick, 1000);
 
 [**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
-В этой главе мы узнаем, как инкаспулировать и обеспечить многократное использование компонента `Clock`. Компонент самостоятельно создаст свой собственный таймер и будет самообновляться раз в секунду.
+В этой главе мы узнаем, как инкапсулировать и обеспечить многократное использование компонента `Clock`. Компонент самостоятельно создаст свой собственный таймер и будет самообновляться раз в секунду.
 
 Для начала, извлечём компонент, показывающий время:
 
@@ -39,8 +39,8 @@ setInterval(tick, 1000);
 function Clock(props) {
   return (
     <div>
-      <h1>Hello, world!</h1>
-      <h2>It is {props.date.toLocaleTimeString()}.</h2>
+      <h1>Привет, мир!</h1>
+      <h2>Сейчас {props.date.toLocaleTimeString()}.</h2>
     </div>
   );
 }
@@ -94,8 +94,8 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+        <h1>Привет, мир!</h1>
+        <h2>Сейчас {this.props.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
@@ -119,8 +119,8 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h1>Привет, мир!</h1>
+        <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
@@ -139,8 +139,8 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h1>Привет, мир!</h1>
+        <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
@@ -182,8 +182,8 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h1>Привет, мир!</h1>
+        <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
@@ -227,8 +227,8 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h1>Привет, мир!</h1>
+        <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
@@ -237,7 +237,7 @@ class Clock extends React.Component {
 
 Эти методы называются «методами жизненного цикла» (lifecycle methods).
 
-Метод `componentDidMount()` запускается после того, как компонент отрендерился в DOM — здесь мы и созданим таймер:
+Метод `componentDidMount()` запускается после того, как компонент отрендерился в DOM — здесь мы и создадим таймер:
 
 ```js{2-5}
   componentDidMount() {
@@ -250,7 +250,7 @@ class Clock extends React.Component {
 
 Обратите внимание, что мы сохраняем ID таймера в `this`.
 
-В классовых компонентах React сам создает`this.props`, у этого поля так же как и у `this.state` особое назначение. Однако, если вам нужно сохранить информацию, которая не является частью процесса обработки данных React, можете вручную добавить дополнительные поля в класс (например, ID таймера).
+В классовых компонентах React сам создает `this.props`, у этого поля так же как и у `this.state` особое назначение. Однако, если вам нужно сохранить информацию, которая не является частью процесса обработки данных React, можете вручную добавить дополнительные поля в класс (например, ID таймера).
 
 Удалим таймер в методе жизненного цикла `componentWillUnmount()`:
 
@@ -289,8 +289,8 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+        <h1>Привет, мир!</h1>
+        <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
   }
@@ -314,11 +314,11 @@ ReactDOM.render(
 
 3) Как только вывод рендера `Clock` вставлен в DOM, React вызывает метод жизненного цикла `componentDidMount()`. Внутри него компонент `Clock` указывает браузеру создать таймер, который будет вызывать `tick()` раз в секунду.
 
-4) Таймер вызывает метод `tick()` ежесекундно. Часть метода — вызов `setState()` с объектом текущего времени — таким образом компонент `Clock` планирует обновление UI. Благодаря вызову `setState()` React знает, что состояние изменилось, и снова вызывает метод `render()`, чтобы узнать, что должно отображаться на экране. На этот раз `this.state.date` в методе `render()` будет другим, ренедер компонента будет включать обновлённое время и React обновит DOM соответственно.
+4) Таймер вызывает метод `tick()` ежесекундно. Часть метода — вызов `setState()` с объектом текущего времени — таким образом компонент `Clock` планирует обновление UI. Благодаря вызову `setState()` React знает, что состояние изменилось, и снова вызывает метод `render()`, чтобы узнать, что должно отображаться на экране. На этот раз `this.state.date` в методе `render()` будет другим, рендер компонента будет включать обновлённое время и React обновит DOM соответственно.
 
 5) Если компонент `Clock` когда-либо удаляется из DOM, React вызывает метод жизненного цикла `componentWillUnmount()`, таким образом таймер будет остановлен и удален.
 
-## Правильное использование состояния {#using-state-correctly}
+## Как правильно использовать состояние {#using-state-correctly}
 
 Важно знать три детали о правильно применении `setState()`.
 
@@ -377,7 +377,7 @@ this.setState(function(state, props) {
 
 ### Обновления состояния объединяются {#state-updates-are-merged}
 
-Когда мы вызываем `setState()`, React объеденит аргумент (новое состояние) c текущим состоянием.
+Когда мы вызываем `setState()`, React объединит аргумент (новое состояние) c текущим состоянием.
 
 Например, состояние может состоять из нескольких независимых полей:
 
@@ -413,12 +413,12 @@ this.setState(function(state, props) {
 
 ## Однонаправленный поток данных {#the-data-flows-down}
 
-В иерархии компонентов, ни родительский, ни дочерние компоненты не знают с состоянием (stateful) другие компоненты или без состояния (stateless). Так же не важно, как был создан определенный компонент — с помощью функции или класса. Поэтому, состояние часто называют «локальным», «внутренним» или инкапсулированным. Оно доступно только для самого компонента и скрыто от других.
+В иерархии компонентов, ни родительский, ни дочерние компоненты не знают с состоянием (stateful) другие компоненты или без состояния (stateless). Также не важно, как был создан определенный компонент — с помощью функции или класса. Поэтому, состояние часто называют «локальным», «внутренним» или инкапсулированным. Оно доступно только для самого компонента и скрыто от других.
 
 Компонент может передать своё состояние вниз по дереву в виде пропсов дочерних компонентов:
 
 ```js
-<h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+<h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
 ```
 
 Это также верно для пользовательских компонентов:
@@ -431,7 +431,7 @@ this.setState(function(state, props) {
 
 ```js
 function FormattedDate(props) {
-  return <h2>It is {props.date.toLocaleTimeString()}.</h2>;
+  return <h2>Сейчас {props.date.toLocaleTimeString()}.</h2>;
 }
 ```
 
