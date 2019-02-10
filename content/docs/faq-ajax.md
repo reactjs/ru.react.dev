@@ -1,6 +1,6 @@
 ---
 id: faq-ajax
-title: AJAX и API, обращение к серверу
+title: AJAX и обращение к API
 permalink: docs/faq-ajax.html
 layout: docs
 category: FAQ
@@ -10,11 +10,11 @@ category: FAQ
 
 Вы можете использовать встроенный в браузер метод [window.fetch](https://learn.javascript.ru/fetch) или любую AJAX-библиотеку, например [Axios](https://github.com/axios/axios) или [jQuery AJAX](https://api.jquery.com/jQuery.ajax/).
 
-### Где в жизненном цикле компонента я могу сделать AJAX-запрос? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
+### Где в жизненном цикле компонента лучше делать запрос? {#where-in-the-component-lifecycle-should-i-make-an-ajax-call}
 
 Вы можете сделать AJAX-запрос в [`componentDidMount`](/docs/react-component.html#mounting). Когда вы получите данные, вызовите `setState`, чтобы передать их компоненту.
 
-### Пример: Установка внутреннего состояния из результатов AJAX-запроса {#example-using-ajax-results-to-set-local-state}
+### Пример: Устанавливаем состояние из AJAX-запроса {#example-using-ajax-results-to-set-local-state}
 
 Компонент ниже показывает, как в `componentDidMount` задать внутреннее состояние из результата AJAX-запроса.
 
