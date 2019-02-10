@@ -64,6 +64,7 @@
 | camelCase | *camelCase* |
 | class component | классовый компонент |
 | (un)controlled component | (не)контролируемый компонент |
+| custom hooks | пользовательские хуки |
 | debugging | отладка |
 | DOM container | DOM-контейнер |
 | error | ошибка |
@@ -73,7 +74,7 @@
 | development mode | режим разработки |
 | framework | фреймворк |
 | function component | функциональный компонент |
-| hook | хук |
+| hook | хук *(с маленькой буквы)* |
 | incapsulation | инкапсуляция |
 | incapsulated | инкапсулированный |
 | key | ключ |
