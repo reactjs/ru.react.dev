@@ -1,27 +1,27 @@
 ---
 id: test-utils
-title: Test Utilities
+title: Утилиты для тестирования
 permalink: docs/test-utils.html
 layout: docs
 category: Reference
 ---
 
-**Importing**
+**Импортирование**
 
 ```javascript
 import ReactTestUtils from 'react-dom/test-utils'; // ES6
-var ReactTestUtils = require('react-dom/test-utils'); // ES5 with npm
+var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 ```
 
-## Overview {#overview}
+## Беглый обзор {#overview}
 
-`ReactTestUtils` makes it easy to test React components in the testing framework of your choice. At Facebook we use [Jest](https://facebook.github.io/jest/) for painless JavaScript testing. Learn how to get started with Jest through the Jest website's [React Tutorial](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
+`ReactTestUtils` позволяет легко тестировать Реакт компоненты в любом тестовом фреймворке на ваш выбор. В Фейсбуке мы используем [Джест](https://facebook.github.io/jest/) для безболезненного тестирования Джаваскрипта. Если хотите обучится Джесту это можно сделать на сайте Джеста на странице [Руководство по Реакту](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
 
-> Note:
+> На заметку:
 >
-> We recommend using [`react-testing-library`](https://git.io/react-testing-library) which is designed to enable and encourage writing tests that use your components as the end users do.
+> Мы рекомендуем использовать [`react-testing-library`](https://git.io/react-testing-library) которая разработана для того чтобы включать и поощерять написание тестов которые использует ваши компоненты так же как будут делать конечные пользователи.
 >
-> Alternatively, Airbnb has released a testing utility called [Enzyme](http://airbnb.io/enzyme/), which makes it easy to assert, manipulate, and traverse your React Components' output.
+> В качестве альтернативы, Эйр-би-энд-би выпустили утилиту для тестирования называющейся [Энзайм](http://airbnb.io/enzyme/), которая легко позволяет утверждать, манипулировать, и просматривать выходные данные Реакт компонентов.
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
