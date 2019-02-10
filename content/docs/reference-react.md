@@ -1,6 +1,6 @@
 ---
 id: react-api
-title: React Top-Level API
+title: React API верхнего уровня
 layout: docs
 category: Reference
 permalink: docs/react-api.html
@@ -13,67 +13,67 @@ redirect_from:
   - "docs/top-level-api-zh-CN.html"
 ---
 
-`React` is the entry point to the React library. If you load React from a `<script>` tag, these top-level APIs are available on the `React` global. If you use ES6 with npm, you can write `import React from 'react'`. If you use ES5 with npm, you can write `var React = require('react')`.
+`React` — это точка входа в библиотеку React. Если вы подключаете React при помощи тега `<script>`, API верхнего уровня доступны в глобальном объекте `React`. Если вы используете ES6 и npm, вы можете написать `import React from 'react'`. Если вы используете ES5 и npm, вы можете написать `var React = require('react')`.
 
-## Overview {#overview}
+## Обзор {#overview}
 
-### Components {#components}
+### Компоненты {#components}
 
-React components let you split the UI into independent, reusable pieces, and think about each piece in isolation. React components can be defined by subclassing `React.Component` or `React.PureComponent`.
+React-компоненты позволяют разделить пользовательский интерфейс на независимые, повторно используемые элементы и думать о них по отдельности. React-компоненты могут быть обявлены путем создания подклассов `React.Component` или `React.PureComponent`.
 
  - [`React.Component`](#reactcomponent)
  - [`React.PureComponent`](#reactpurecomponent)
 
-If you don't use ES6 classes, you may use the `create-react-class` module instead. See [Using React without ES6](/docs/react-without-es6.html) for more information.
+Если вы не используете классы ES6, вместо них вы можете использовать модуль `create-react-class`. Для получения дополнительной информации см. [Использование React без ES6](/docs/react-without-es6.html).
 
-React components can also be defined as functions which can be wrapped:
+React-компоненты также могут быть обявлены как функции, которые могут быть обернуты:
 
 - [`React.memo`](#reactmemo)
 
-### Creating React Elements {#creating-react-elements}
+### Создание элементов React {#creating-react-elements}
 
-We recommend [using JSX](/docs/introducing-jsx.html) to describe what your UI should look like. Each JSX element is just syntactic sugar for calling [`React.createElement()`](#createelement). You will not typically invoke the following methods directly if you are using JSX.
+Мы рекомендуем [использовать JSX](/docs/introducing-jsx.html), чтобы описать то как должен выглядеть ваш UI. Каждый элемент JSX это просто синтаксический сахар для вызова [`React.createElement()`](#createelement). Обычно вам не нужно вызывать следующие методы напрямую, если вы используете JSX.
 
 - [`createElement()`](#createelement)
 - [`createFactory()`](#createfactory)
 
-See [Using React without JSX](/docs/react-without-jsx.html) for more information.
+См. [Использование React без JSX](/docs/react-without-jsx.html) для получения дополнительной информации.
 
-### Transforming Elements {#transforming-elements}
+### Трансформация компонентов {#transforming-elements}
 
-`React` provides several APIs for manipulating elements:
+`React` предоставляет несколько API для управления элементами:
 
 - [`cloneElement()`](#cloneelement)
 - [`isValidElement()`](#isvalidelement)
 - [`React.Children`](#reactchildren)
 
-### Fragments {#fragments}
+### Фрагменты {#fragments}
 
-`React` also provides a component for rendering multiple elements without a wrapper.
+`React` также предоставляет компонент для рендера нескольких элементов без обертки.
 
 - [`React.Fragment`](#reactfragment)
 
-### Refs {#refs}
+### Рефы {#refs}
 
 - [`React.createRef`](#reactcreateref)
 - [`React.forwardRef`](#reactforwardref)
 
-### Suspense {#suspense}
+### Неизвестность (Suspense) {#suspense}
 
-Suspense lets components "wait" for something before rendering. Today, Suspense only supports one use case: [loading components dynamically with `React.lazy`](/docs/code-splitting.html#reactlazy). In the future, it will support other use cases like data fetching.
+Suspense дает возможность компонентам «подождать» что-то перед рендером. Сегодня Suspense поддерживает только один вариант использования: [динамическая загрузка компонентов с помощью `React.lazy`](/docs/code-splitting.html#reactlazy). В будущем будут поддерживаться и другие варианты использования, такие как получение данных с API.
 
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
-### Hooks {#hooks}
+### Хуки {#hooks}
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class. Hooks have a [dedicated docs section](/docs/hooks-intro.html) and a separate API reference:
+*Хуки* — это новое дополнение в React 16.8. Они позволяют вам использовать состояние и другие функции React без написания класса. У хуков есть [свой раздел документации](/docs/hooks-intro.html) и отдельная ссылка на API:
 
-- [Basic Hooks](/docs/hooks-reference.html#basic-hooks)
+- [Основные Хуки](/docs/hooks-reference.html#basic-hooks)
   - [`useState`](/docs/hooks-reference.html#usestate)
   - [`useEffect`](/docs/hooks-reference.html#useeffect)
   - [`useContext`](/docs/hooks-reference.html#usecontext)
-- [Additional Hooks](/docs/hooks-reference.html#additional-hooks)
+- [Дополнительные Хуки](/docs/hooks-reference.html#additional-hooks)
   - [`useReducer`](/docs/hooks-reference.html#usereducer)
   - [`useCallback`](/docs/hooks-reference.html#usecallback)
   - [`useMemo`](/docs/hooks-reference.html#usememo)
@@ -84,35 +84,35 @@ Suspense lets components "wait" for something before rendering. Today, Suspense 
 
 * * *
 
-## Reference {#reference}
+## Cправка {#reference}
 
 ### `React.Component` {#reactcomponent}
 
-`React.Component` is the base class for React components when they are defined using [ES6 classes](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes):
+`React.Component` — это базовый класс для компонентов React, когда они объявлены при помощи [классов ES6](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes):
 
 ```javascript
 class Greeting extends React.Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1>Привет, {this.props.name}</h1>;
   }
 }
 ```
 
-See the [React.Component API Reference](/docs/react-component.html) for a list of methods and properties related to the base `React.Component` class.
+См. [Справочник по API React.Component](/docs/react-component.html) для получения списка методов и свойств, связанных с базовым классом `React.Component`.
 
 * * *
 
 ### `React.PureComponent` {#reactpurecomponent}
 
-`React.PureComponent` is similar to [`React.Component`](#reactcomponent). The difference between them is that [`React.Component`](#reactcomponent) doesn't implement [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), but `React.PureComponent` implements it with a shallow prop and state comparison. 
+`React.PureComponent` похож на [`React.Component`](#reactcomponent). Отличие заключается в том, что [`React.Component`](#reactcomponent) не реализует [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), а `React.PureComponent` реализует его с неглубоким сравнением пропсов и состояния.
 
-If your React component's `render()` function renders the same result given the same props and state, you can use `React.PureComponent` for a performance boost in some cases.
+Если метод `render()` вашего React компонента рендерит один и тот же результат с одинаковыми пропсами и состоянием, для повышения производительности в некоторых случаях вы можете использовать `React.PureComponent`.
 
-> Note
+> Примечание
 >
-> `React.PureComponent`'s `shouldComponentUpdate()` only shallowly compares the objects. If these contain complex data structures, it may produce false-negatives for deeper differences. Only extend `PureComponent` when you expect to have simple props and state, or use [`forceUpdate()`](/docs/react-component.html#forceupdate) when you know deep data structures have changed. Or, consider using [immutable objects](https://facebook.github.io/immutable-js/) to facilitate fast comparisons of nested data.
+> Метод `shouldComponentUpdate()` базового класа `React.PureComponent` делает только неглубокое сравнение объектов. Если они содержат сложные структуры данных, это может привести к некоректной работе для более глубоких различий. Наследуйтесь от `PureComponent` только тогда, когда вы ожидаете использовать простые пропсы и состояние, или используйте [`forceUpdate()`](/docs/react-component.html#forceupdate), когда вы знаете, что вложенные структуры данных изменились. Также рассмотрите возможность использования [неизменяемых объектов](https://facebook.github.io/immutable-js/) для облегчения быстрого сравнения вложенных данных.
 >
-> Furthermore, `React.PureComponent`'s `shouldComponentUpdate()` skips prop updates for the whole component subtree. Make sure all the children components are also "pure".
+> Кроме того, метод `shouldComponentUpdate()` базового класа `React.PureComponent` пропускает обновление пропсов для всего поддерева компонентов. Убедитесь, что все дочерние компоненты также являются «чистыми».
 
 * * *
 
@@ -120,35 +120,35 @@ If your React component's `render()` function renders the same result given the 
 
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
-  /* render using props */
+  /* рендер с использованием пропсов */
 });
 ```
 
-`React.memo` is a [higher order component](/docs/higher-order-components.html). It's similar to [`React.PureComponent`](#reactpurecomponent) but for function components instead of classes.
+`React.memo` — это [компонент высшего порядка](/docs/higher-order-components.html). Он похож на [`React.PureComponent`](#reactpurecomponent), но предназначен для функциональных компонентов.
 
-If your function component renders the same result given the same props, you can wrap it in a call to `React.memo` for a performance boost in some cases by memoizing the result. This means that React will skip rendering the component, and reuse the last rendered result.
+Если ваш функциональный компонент рендерит один и тот же результат с теми же пропсами, вы можете обернуть его в вызов `React.memo` для повышения производительности в некоторых случаях, мемоизируя результат. Это значит что React будет использовать последний результат рендера, избегая повторной отрисовки.
 
-By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, you can also provide a custom comparison function as the second argument.
+По умолчанию он не глубоко сравнивает вложенные объекты в объекте `props`. Если вы хотите контролировать сравнение, вы можете предать свою функцию сравнения в качестве второго аргумента.
 
 ```javascript
 function MyComponent(props) {
-  /* render using props */
+  /* рендер с использованием пропсов */
 }
 function areEqual(prevProps, nextProps) {
   /*
-  return true if passing nextProps to render would return
-  the same result as passing prevProps to render,
-  otherwise return false
+  верните true если nextProps рендерит
+  тот же результат что и prevProps,
+  иначе верните false
   */
 }
 export default React.memo(MyComponent, areEqual);
 ```
 
-This method only exists as a **[performance optimization](/docs/optimizing-performance.html).** Do not rely on it to "prevent" a render, as this can lead to bugs.
+Этот метод предназначен только для **[оптимизации производительности](/docs/optimizing-performance.html).** Не полагайтесь на него, чтобы «предотвратить» рендер, так как это может привести к ошибкам.
 
-> Note
+> Примечание
 >
-> Unlike the [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate) method on class components, the `areEqual` function returns `true` if the props are equal and `false` if the props are not equal. This is the inverse from `shouldComponentUpdate`.
+> В отличие от метода [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate) для классовых компонентов, функция `areEqual` возвращает `true`, если пропсы равны, и значение `false`, если пропсы не равны. Это обратные значения для `shouldComponentUpdate`.
 
 * * *
 
@@ -162,9 +162,9 @@ React.createElement(
 )
 ```
 
-Create and return a new [React element](/docs/rendering-elements.html) of the given type. The type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
+Создаёт и возвращает новый [React элемент](/docs/rendering-elements.html) определенного типа. Аргументом `type` может быть строка содержащая имя тега (например, `'div'` или `'span'`), React-компонент (класс или функция), или [React-фрагмент](#reactfragment).
 
-Code written with [JSX](/docs/introducing-jsx.html) will be converted to use `React.createElement()`. You will not typically invoke `React.createElement()` directly if you are using JSX. See [React Without JSX](/docs/react-without-jsx.html) to learn more.
+Код написанный с использованием JSX, будет преобразован в `React.createElement()`. Обычно вы не будете вызывать `React.createElement()` напрямую, если вы используете JSX. Смотрите [React без JSX](/docs/react-without-jsx.html), чтобы узнать больше.
 
 * * *
 
@@ -178,17 +178,17 @@ React.cloneElement(
 )
 ```
 
-Clone and return a new React element using `element` as the starting point. The resulting element will have the original element's props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original element will be preserved.
+Клонирует и возвращает новый элемент React, используя элемент в качестве отправной точки. Полученный элемент будет иметь пропсы исходного элемента, а новые пропсы будут не глубоко объединены. Новые дочерние элементы заменят существующие. `ключ` и `реф` из исходного элемента будут сохранены.
 
-`React.cloneElement()` is almost equivalent to:
+`React.cloneElement()` почти эквивалентен:
 
 ```js
 <element.type {...element.props} {...props}>{children}</element.type>
 ```
 
-However, it also preserves `ref`s. This means that if you get a child with a `ref` on it, you won't accidentally steal it from your ancestor. You will get the same `ref` attached to your new element.
+Однако, в этом случае, сохранятся `рефы`. Это означает если вы получите ребенка с рефом на нем, вы случайно не украдете его у родителя. Вы получите тот же `реф`, прикрепленный к вашему новому элементу.
 
-This API was introduced as a replacement of the deprecated `React.addons.cloneWithProps()`.
+Этот API был представлен как замена устаревшего `React.addons.cloneWithProps()`.
 
 * * *
 
@@ -198,11 +198,11 @@ This API was introduced as a replacement of the deprecated `React.addons.cloneWi
 React.createFactory(type)
 ```
 
-Return a function that produces React elements of a given type. Like [`React.createElement()`](#createElement), the type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
+Возвращает функцию, которая создавёт элементы React заданного типа. Как и [`React.createElement()`](#createElement), аргументом `type` может быть строка содержащая имя тега (например, `'div'` или `'span'`), React-компонент (класс или функция), или [React-фрагмент](#reactfragment).
 
-This helper is considered legacy, and we encourage you to either use JSX or use `React.createElement()` directly instead.
+Этот помощник считается устаревшим, и мы рекомендуем вам либо использовать JSX, либо напрямую использовать `React.createElement()`.
 
-You will not typically invoke `React.createFactory()` directly if you are using JSX. See [React Without JSX](/docs/react-without-jsx.html) to learn more.
+Обычно вы не будете вызывать `React.createFactory()` напрямую, если вы используете JSX. Смотрите [React без JSX](/docs/react-without-jsx.html), чтобы узнать больше.
 
 * * *
 
@@ -212,13 +212,13 @@ You will not typically invoke `React.createFactory()` directly if you are using 
 React.isValidElement(object)
 ```
 
-Verifies the object is a React element. Returns `true` or `false`.
+Проверяет, что объект является элементом React. Возвращает `true` или `false`.
 
 * * *
 
 ### `React.Children` {#reactchildren}
 
-`React.Children` provides utilities for dealing with the `this.props.children` opaque data structure.
+`React.Children` предоставляет утилиты для работы с непрозрачной структурой данных `this.props.children`.
 
 #### `React.Children.map` {#reactchildrenmap}
 
@@ -226,11 +226,11 @@ Verifies the object is a React element. Returns `true` or `false`.
 React.Children.map(children, function[(thisArg)])
 ```
 
-Invokes a function on every immediate child contained within `children` with `this` set to `thisArg`. If `children` is an array it will be traversed and the function will be called for each child in the array. If children is `null` or `undefined`, this method will return `null` or `undefined` rather than an array.
+Вызывает функцию для каждого непосредственного потомка, содержащегося в `children` передавая их по очереде в `thisArg`. Если `children` — это массив, он будет пройден, и функция будет вызвана для каждого потомка в массиве. Если `children` равен `null` или `undefined`, этот метод вернет `null` или `undefined`, а не массив.
 
-> Note
+> Примечание
 >
-> If `children` is a `Fragment` it will be treated as a single child and not traversed.
+> Если `children` — это `Fragment`, он будет рассматриваться как целый потомок, а элементы внутри не будут пройдены.
 
 #### `React.Children.forEach` {#reactchildrenforeach}
 
@@ -238,7 +238,7 @@ Invokes a function on every immediate child contained within `children` with `th
 React.Children.forEach(children, function[(thisArg)])
 ```
 
-Like [`React.Children.map()`](#reactchildrenmap) but does not return an array.
+Похож на [`React.Children.map()`](#reactchildrenmap), но не возвращает массив.
 
 #### `React.Children.count` {#reactchildrencount}
 
@@ -246,7 +246,7 @@ Like [`React.Children.map()`](#reactchildrenmap) but does not return an array.
 React.Children.count(children)
 ```
 
-Returns the total number of components in `children`, equal to the number of times that a callback passed to `map` or `forEach` would be invoked.
+Возвращает общее количество компонентов в `children`, равное числу раз которое будет вызван обратный вызов, переданный в `map` или `forEach`.
 
 #### `React.Children.only` {#reactchildrenonly}
 
@@ -254,11 +254,11 @@ Returns the total number of components in `children`, equal to the number of tim
 React.Children.only(children)
 ```
 
-Verifies that `children` has only one child (a React element) and returns it. Otherwise this method throws an error.
+Проверяет, что у `children` есть только один потомок (React элемент), и возвращает его. Иначе этот метод выдает ошибку.
 
-> Note:
+> Примечание:
 >
->`React.Children.only()` does not accept the return value of [`React.Children.map()`](#reactchildrenmap) because it is an array rather than a React element.
+> `React.Children.only()` не принимает возвращаемое значение [`React.Children.map()`](#reactchildrenmap), потому что это массив, а не элемент React.
 
 #### `React.Children.toArray` {#reactchildrentoarray}
 
@@ -266,82 +266,82 @@ Verifies that `children` has only one child (a React element) and returns it. Ot
 React.Children.toArray(children)
 ```
 
-Returns the `children` opaque data structure as a flat array with keys assigned to each child. Useful if you want to manipulate collections of children in your render methods, especially if you want to reorder or slice `this.props.children` before passing it down.
+Возвращает непрозрачную структуру данных `children` в виде плоского массива с ключами, заданые каждому дочернему элементу. Полезно, если вы хотите манипулировать коллекциями потомков в ваших методах рендера, особенно если вы хотите отсортировать или срезать `this.props.children` перед передачей вниз.
 
-> Note:
+> Примечание:
 >
-> `React.Children.toArray()` changes keys to preserve the semantics of nested arrays when flattening lists of children. That is, `toArray` prefixes each key in the returned array so that each element's key is scoped to the input array containing it.
+> `React.Children.toArray()` изменяет ключи, чтобы сохранить семантику вложенных массивов, когда делает плоским списков дочерних элементов. То есть `toArray` ставит префикс перед каждым ключом в возвращаемом массиве, так что ключ каждого элемента находится в области входного массива, содержащего его.
 
 * * *
 
 ### `React.Fragment` {#reactfragment}
 
-The `React.Fragment` component lets you return multiple elements in a `render()` method without creating an additional DOM element:
+Компонент `React.Fragment` позволяет возвращать несколько элементов в методе `render()` без создания дополнительного элемента DOM:
 
 ```javascript
 render() {
   return (
     <React.Fragment>
-      Some text.
-      <h2>A heading</h2>
+      Какой-то текст.
+      <h2>Заголовок</h2>
     </React.Fragment>
   );
 }
 ```
 
-You can also use it with the shorthand `<></>` syntax. For more information, see [React v16.2.0: Improved Support for Fragments](/blog/2017/11/28/react-v16.2.0-fragment-support.html).
-
+Вы также можете использовать его сокращенный синтаксис `<></>`. Для получения дополнительной информации см. [React v16.2.0: Улучшенная поддержка фрагментов](/blog/2017/11/28/react-v16.2.0-fragment-support.html).
 
 ### `React.createRef` {#reactcreateref}
 
-`React.createRef` creates a [ref](/docs/refs-and-the-dom.html) that can be attached to React elements via the ref attribute.
+`React.createRef` создаёт [реф](/docs/refs-and-the-dom.html), который можно прикрепить к React элементам через атрибут ref.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
 
-`React.forwardRef` creates a React component that forwards the [ref](/docs/refs-and-the-dom.html) attribute it receives to another component below in the tree. This technique is not very common but is particularly useful in two scenarios:
+`React.forwardRef` создаёт React компонент, который перенаправляет атрибут [ref](/docs/refs-and-the-dom.html), что он получает, другому компоненту ниже в дереве.
+Этот метод не очень распространен, но особенно полезен в двух сценариях:
 
-* [Forwarding refs to DOM components](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
-* [Forwarding refs in higher-order-components](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
+* [Пересылка рефов на компоненты DOM](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
+* [Пересылка рефов на компоненты высшего порядка](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
 
-`React.forwardRef` accepts a rendering function as an argument. React will call this function with `props` and `ref` as two arguments. This function should return a React node.
+`React.forwardRef` принимает функцию рендера в качестве аргумента. React будет вызывать эту функцию с пропсами и рефом в качестве двух аргументов. Эта функция должна возвращать узел React.
 
 `embed:reference-react-forward-ref.js`
 
-In the above example, React passes a `ref` given to `<FancyButton ref={ref}>` element as a second argument to the rendering function inside the `React.forwardRef` call. This rendering function passes the `ref` to the `<button ref={ref}>` element.
+В приведенном выше примере React передает `реф`, переданный элементу `<FancyButton ref={ref}>` в качестве второго аргумента функции рендера внутри вызова `React.forwardRef`. Функция рендера передает `реф` в элемент `<button ref={ref}>`.
 
-As a result, after React attaches the ref, `ref.current` will point directly to the `<button>` DOM element instance.
+В результате после того как React добавит реф, `ref.current` будет указывать непосредственно на экземпляр `<button>` элемента DOM.
 
-For more information, see [forwarding refs](/docs/forwarding-refs.html).
+Для получения дополнительной информации см. [Переадресация рефов](/docs/forwarding-refs.html).
 
 ### `React.lazy` {#reactlazy}
 
-`React.lazy()` lets you define a component that is loaded dynamically. This helps reduce the bundle size to delay loading components that aren't used during the initial render.
+`React.lazy()` позволяет вам определять компонент, который загружается динамически. Это помогает уменьшить размер сборки, откладывая загрузку компонентов, которые не используются во время первоначального рендера.
 
-You can learn how to use it from our [code splitting documentation](/docs/code-splitting.html#reactlazy). You might also want to check out [this article](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) explaining how to use it in more detail.
+Вы можете узнать, как пользоватся этим из нашей [документации по разделению кода](/docs/code-splitting.html#reactlazy). Вы также можете посмотреть [эту статью](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) с объяснением, как использовать этот метод более подробно.
 
 ```js
-// This component is loaded dynamically
+// Этот компонент загружается динамически
 const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ```
 
-Note that rendering `lazy` components requires that there's a `<React.Suspense>` component higher in the rendering tree. This is how you specify a loading indicator.
+Обратите внимание, для рендера `ленивых` компонентов требуется чтобы выше в дереве находился компонент `<React.Suspense>`. Таким образом вы показываете индикатор загрузки.
 
-> **Note**
+> **Примечание**
 >
-> Using `React.lazy`with dynamic import requires Promises to be available in the JS environment. This requires a polyfill on IE11 and below.
+> Использование `React.lazy` с динамическим импортом требует доступности Promises в среде JS. Для IE11 и ниже необходим полифил.
 
 ### `React.Suspense` {#reactsuspense}
 
-`React.Suspense` let you specify the loading indicator in case some components in the tree below it are not yet ready to render. Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
+`React.Suspense` позволяет показать индикатор загрузки в случае если некоторые компоненты в дереве под ним еще не готовы к рендеру. Сегодня ленивая загрузка компонентов — это **единственный** вариант использования поддерживаемый `<React.Suspense>`:
 
 ```js
-// This component is loaded dynamically
+// Этот компонент загружается динамически
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 
 function MyComponent() {
   return (
-    // Displays <Spinner> until OtherComponent loads
+    // Отобразится <Spinner> до тех пор, пока не загрузится <OtherComponent />
     <React.Suspense fallback={<Spinner />}>
       <div>
         <OtherComponent />
@@ -351,10 +351,10 @@ function MyComponent() {
 }
 ```
 
-It is documented in our [code splitting guide](/docs/code-splitting.html#reactlazy). Note that `lazy` components can be deep inside the `Suspense` tree -- it doesn't have to wrap every one of them. The best practice is to place `<Suspense>` where you want to see a loading indicator, but to use `lazy()` wherever you want to do code splitting.
+Это задокументировано в нашем руководстве по [разделению кода](/docs/code-splitting.html#reactlazy). Обратите внимание, что `ленивые` компоненты могут быть глубоко внутри дерева `Suspense` -- не нужно оборачивать каждый из них. Лучшая практика, размещать `<Suspense>` там где вы хотите видеть индикатор загрузки, но использовать `lazy()` везде, где вы хотите разделить код. 
 
-While this is not supported today, in the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
+Хотя это не поддерживается сегодня, в будущем мы планируем позволить `Suspense` обрабатывать больше сценариев, таких как получение данных с API. Вы можете прочитать об этом в [нашей дорожной карте](/blog/2018/11/27/react-16-roadmap.html).
 
->Note:
+>Примечание:
 >
->`React.lazy()` and `<React.Suspense>` are not yet supported by `ReactDOMServer`. This is a known limitation that will be resolved in the future.
+> `React.lazy()` и `<React.Suspense>` еще не поддерживаются `ReactDOMServer`. Это известное ограничение, которое будет устранено в будущем.
