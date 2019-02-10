@@ -1,16 +1,16 @@
 ---
-title: React Element Factories and JSX Warning
+title: Фабрики React-элементов и JSX-предупреждение
 layout: single
 permalink: warnings/legacy-factories.html
 ---
 
-Вы, вероятно, пришли сюда, потому что ваш код вызывает свой компонент в качестве обычного вызова функции. Теперь это устарело:
+Вы, вероятно, пришли сюда, потому что ваш код вызывает компонент как функцию. Теперь это устарело:
 
 ```javascript
 var MyComponent = require('MyComponent');
 
 function render() {
-  return MyComponent({ foo: 'bar' });  // WARNING
+  return MyComponent({ foo: 'bar' });  // ПРЕДУПРЕЖДЕНИЕ
 }
 ```
 
@@ -44,7 +44,7 @@ function render() {
 
 ## Динамические компоненты без JSX {#dynamic-components-without-jsx}
 
-Если вы получаете класс компонента из динамического источника, то необязательно создавать фабрику, на которую вы немедленно ссылаетесь. Вместо этого вы можете просто создать свой inline-элемент:
+Если вы получаете класс компонента из динамического источника, то необязательно создавать фабрику, на которую вы немедленно ссылаетесь. Вместо этого вы можете напрямую создать элемент:
 
 ```javascript
 var React = require('react');
@@ -56,4 +56,4 @@ function render(MyComponent) {
 
 ## Подробнее {#in-depth}
 
-[Узнайте больше о том, ПОЧЕМУ мы делаем это изменение.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
+[Узнайте подробнее, ПОЧЕМУ мы делаем это изменение.](https://gist.github.com/sebmarkbage/d7bce729f38730399d28)
