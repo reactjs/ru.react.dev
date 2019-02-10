@@ -70,6 +70,7 @@
 | framework | фреймворк |
 | function component | функциональный компонент |
 | hook | хук |
+| introducing | знакомство |
 | key | ключ |
 | lazy initialization | ленивая инициализация |
 | library | библиотека |
