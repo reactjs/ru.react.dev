@@ -1,13 +1,7 @@
-
-
 <!--
+Прежде чем создавать пулреквест, пожалуйста прочтите полностью правила перевода:
 
-Thank you for the PR! Contributors like you keep React awesome!
+https://github.com/reactjs/ru.reactjs.org/blob/master/TRANSLATION.md
 
-Please see the Contribution Guide for guidelines:
-
-https://github.com/reactjs/reactjs.org/blob/master/CONTRIBUTING.md
-
-If your PR references an existing issue, please add the issue number below
-
+Спасибо!
 -->
