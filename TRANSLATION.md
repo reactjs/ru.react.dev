@@ -67,6 +67,7 @@
 | (un)controlled component | (не)контролируемый компонент |
 | custom hooks | пользовательские хуки |
 | debugging | отладка |
+| developer tools | инструменты разработки |
 | DOM container | DOM-контейнер |
 | error | ошибка |
 | effect | эффект |
