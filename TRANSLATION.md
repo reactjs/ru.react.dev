@@ -64,6 +64,7 @@
 | debugging | отладка |
 | DOM container | DOM-контейнер |
 | error | ошибка |
+| feature | возможность |
 | debugging | отладка |
 | development | разработка |
 | development mode | режим разработки |
