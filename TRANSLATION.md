@@ -62,6 +62,8 @@
 | bundler | бандлер |
 | callback | колбэк |
 | camelCase | *camelCase* |
+| child | дочерний |
+| child component | дочерний компонент |
 | class component | классовый компонент |
 | context | контекст |
 | (un)controlled component | (не)контролируемый компонент |
