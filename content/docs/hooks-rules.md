@@ -7,12 +7,17 @@ prev: hooks-effect.html
 ---
 
 *Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Хуки* появились в React 16.8. Они позволяют использовать состояние и другие возможности React без необходимости создавать класс.
 
 Hooks are JavaScript functions, but you need to follow two rules when using them. We provide a [linter plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to enforce these rules automatically:
 
+Хуки - обычные функции JavaScript, но существует два правила, которым нужно следовать. Чтобы автоматически их применять мы создали linter плагин.
+
 ### Only Call Hooks at the Top Level {#only-call-hooks-at-the-top-level}
+### Используйте хуки только на верхнем уровне
 
 **Don't call Hooks inside loops, conditions, or nested functions.** Instead, always use Hooks at the top level of your React function. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That's what allows React to correctly preserve the state of Hooks between multiple `useState` and `useEffect` calls. (If you're curious, we'll explain this in depth [below](#explanation).)
+**Не используйте хуки внутри циклов, условных операторов или вложенных функций** Вместо этого всегда используйте Хуки на верхнем уровне React-функций. При следовании этому правилу вы можете быть уверены, что Хуки вызываются в том же порядке каждый раз когда производится рендергинг компонента. И это то, что позволяет React правильно созранять состояние Хуков между множественными вызовами `useState` и `useEffect`. (Если вам интересно, мы объясним это детально ниже)
 
 ### Only Call Hooks from React Functions {#only-call-hooks-from-react-functions}
 
