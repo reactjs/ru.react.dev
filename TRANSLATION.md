@@ -78,6 +78,7 @@
 | effect | эффект |
 | error | ошибка |
 | error boundary | предохранитель |
+| fallback | запасной |
 | feature | возможность |
 | framework | фреймворк |
 | function component | функциональный компонент |
