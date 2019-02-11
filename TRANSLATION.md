@@ -67,15 +67,14 @@
 | (un)controlled component | (не)контролируемый компонент |
 | custom hooks | пользовательские хуки |
 | debugging | отладка |
-| developer tools | инструменты разработки |
-| DOM container | DOM-контейнер |
-| error | ошибка |
-| effect | эффект |
-| feature | возможность |
-| debugging | отладка |
 | development | разработка |
 | development mode | режим разработки |
+| developer tools | инструменты разработки |
+| DOM container | DOM-контейнер |
+| effect | эффект |
+| error | ошибка |
 | error boundary | предохранитель |
+| feature | возможность |
 | framework | фреймворк |
 | function component | функциональный компонент |
 | hook | хук *(с маленькой буквы)* |
@@ -122,11 +121,11 @@
 | suspense | задержка |
 | tag | тег |
 | template literals | шаблонные строки |
-| tutorial | введение |
+| Tip | Совет |
 | Try it on CodePen | Посмотреть на CodePen |
+| tutorial | введение |
 | unidirectional data flow | однонаправленный поток данных |
 | UI | UI |
 | update | обновление |
 | user interface | интерфейс (добавляйте «пользовательский» только если по контексту непонятно) |
-| Tip | Совет |
 | Warning | Предупреждение |
