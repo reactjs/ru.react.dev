@@ -65,6 +65,7 @@
 | child | дочерний |
 | child component | дочерний компонент |
 | class component | классовый компонент |
+| cleanup | уборка (*напр., эффект с уборкой, произвести уборку*) |
 | code splitting | разделение кода |
 | context | контекст |
 | (un)controlled component | (не)контролируемый компонент |
