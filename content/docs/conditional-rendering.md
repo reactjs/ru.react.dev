@@ -10,7 +10,7 @@ redirect_from:
 
 React позволяет разделить логику на независимые компоненты. Эти компоненты можно показывать или прятать в зависимости от текущего состояния.
 
-Условный рендеринг в React работает так же, как условные выражения работают в JavaScript. Бывает нужно объяснить React, как состояние влияет на то, какие компоненты требуется скрыть, а какие — отрендерить, и как именно. В таких ситуациях используйте [условный оператор](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/%D0%A3%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B9_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80) JavaScript или выражения подобные [`if`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/if...else), .
+Условный рендеринг в React работает так же, как условные выражения работают в JavaScript. Бывает нужно объяснить React, как состояние влияет на то, какие компоненты требуется скрыть, а какие — отрендерить, и как именно. В таких ситуациях используйте [условный оператор](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/%D0%A3%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B9_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80) JavaScript или выражения подобные [`if`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/if...else).
 
 Рассмотрим два компонента:
 
@@ -72,7 +72,7 @@ function LogoutButton(props) {
 
 В следующем примере мы создадим [компонент с состоянием](/docs/state-and-lifecycle.html#adding-local-state-to-a-class) и назовём его `LoginControl`.
 
-Он будет рендерить либо `<LoginButton />`, либо `<LogoutButton />`, в зависимости от текущего состояния. А ещё он будет всегда рендерить `<Greeting />` из предыдущего примера.
+Он будет рендерить либо `<LoginButton />`, либо `<LogoutButton />` в зависимости от текущего состояния. А ещё он будет всегда рендерить `<Greeting />` из предыдущего примера.
 
 ```javascript{20-25,29,30}
 class LoginControl extends React.Component {
@@ -120,9 +120,9 @@ ReactDOM.render(
 
 Нет ничего плохого в том, чтобы объявить переменную и условно рендерить компонент `if`-выражением. Но иногда хочется синтаксис покороче. Давайте посмотрим на несколько других способов писать условия прямо в JSX.
 
-### Условное (if) встраивание с помощью логического оператора && {#inline-if-with-logical--operator}
+### Встроенные условия if с логическим оператором && {#inline-if-with-logical--operator}
 
-Вы можете [внедрить любое выражение в JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx), просто заключив его в фигурные скобки. Это правило распространяется и на логический оператор `&&` языка JavaScript, которым можно удобно вставить элемент в зависимости от условния:
+Вы можете [внедрить любое выражение в JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx), заключив его в фигурные скобки. Это правило распространяется и на логический оператор `&&` языка JavaScript, которым можно удобно вставить элемент в зависимости от условия:
 
 ```js{6-10}
 function Mailbox(props) {
@@ -148,11 +148,11 @@ ReactDOM.render(
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
-Приведённый выше вариант работает корректно, потому что в JavaScript, выражение `true && expression` всегда вычисляется как `expression`, а выражение `false && expression` — как `false`.
+Приведённый выше вариант работает корректно, потому что в JavaScript выражение `true && expression` всегда вычисляется как `expression`, а выражение `false && expression` — как `false`.
 
-То есть, если условие истинно (`true`), то элемент, идущий непосредственно за `&&` будет передан на вывод. Если же оно ложно (`false`), то React проигнорирует и пропустит его.
+То есть, если условие истинно (`true`), то элемент, идущий непосредственно за `&&`, будет передан на вывод. Если же оно ложно (`false`), то React проигнорирует и пропустит его.
 
-### Условное (if-else) встраивание с помощью тернарного оператора {#inline-if-else-with-conditional-operator}
+### Встроенные условия if-else с тернарным оператором {#inline-if-else-with-conditional-operator}
 
 Есть ещё один метод встраивания условного рендеринга элементов. В нём используется тернарный условный оператор JavaScript [`condition ? true : false`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/%D0%A3%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B9_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80).
 
