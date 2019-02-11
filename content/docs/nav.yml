@@ -48,7 +48,7 @@
     - id: forwarding-refs
       title: Forwarding Refs
     - id: fragments
-      title: Fragments
+      title: Фрагменты
     - id: higher-order-components
       title: Higher-Order Components
     - id: integrating-with-other-libraries
