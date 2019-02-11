@@ -24,7 +24,7 @@ console.log(doubled);
 
 Вы можете создавать коллекции элементов и добавлять их в JSX [include them in JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) с помощью фигурных скобок `{}`.
 
-Ниже, мы итерируемся по массиву `numbers`, используя функцию JavaScript [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), и возвращаем элемент `<li>` в каждой итерации. В итоге мы присваиваем получившийся массив элементов в `listItems`:
+Ниже, мы проходим по массиву `numbers`, используя функцию JavaScript [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), и возвращаем элемент `<li>` в каждой итерации. В итоге мы присваиваем получившийся массив элементов в `listItems`:
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -46,7 +46,7 @@ ReactDOM.render(
 
 Данный код выведет ненумерованный список с числами от 1 до 5.
 
-### Базовый компонент списка {#basic-list-component}
+### Простой компонент-список {#basic-list-component}
 
 Обычно вы будете рендерить списки внутри [компонента](/docs/components-and-props.html).
 
@@ -136,7 +136,7 @@ const todoItems = todos.map((todo, index) =>
 
 ### Извлечение компонентов с ключами {#extracting-components-with-keys}
 
-Ключи имеют смысл только в контексте массива.
+Ключи имеют значение только в пределах окружающего массива.
 
 Например если вы [извлекаете](/docs/components-and-props.html#extracting-components) компонент `ListItem`, то нужно указывать ключ для `<ListItem />` в массиве, вместо элементов `<li>` внутри самого `ListItem`.
 
@@ -204,7 +204,7 @@ ReactDOM.render(
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
-Наличие ключей у элементов внутри `map()` является хорошим тоном.
+Как правило, элементам внутри `map()` нужны ключи.
 
 ### Ключи должны быть уникальными среди соседей {#keys-must-only-be-unique-among-siblings}
 
