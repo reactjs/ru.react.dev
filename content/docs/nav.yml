@@ -24,7 +24,7 @@
     - id: handling-events
       title: Handling Events
     - id: conditional-rendering
-      title: Conditional Rendering
+      title: Условный рендеринг
     - id: lists-and-keys
       title: Lists and Keys
     - id: forms
