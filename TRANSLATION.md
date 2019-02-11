@@ -63,6 +63,7 @@
 | callback | колбэк |
 | camelCase | *camelCase* |
 | class component | классовый компонент |
+| code splitting | разделение кода |
 | context | контекст |
 | (un)controlled component | (не)контролируемый компонент |
 | custom hooks | пользовательские хуки |
