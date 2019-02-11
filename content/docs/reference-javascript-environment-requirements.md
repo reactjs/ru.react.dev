@@ -1,14 +1,14 @@
 ---
 id: javascript-environment-requirements
-title: Требования к окружающей среде JavaScript
+title: Требования к среде JavaScript
 layout: docs
 category: Reference
 permalink: docs/javascript-environment-requirements.html
 ---
 
-React 16 полагается на типы коллекций [Map](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Map) и [Set](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Set). Если вы поддерживаете старые браузеры и устройства, которые могут не обеспечивать непосредственную поддержку этих типов коллекций (например, IE < 11) или которые имеют несоответствующую реализацию (например, IE 11), вы можете включить глобальный полифилл в ваше приложение, например [core-js](https://github.com/zloirock/core-js) или [babel-polyfill](https://babeljs.io/docs/usage/polyfill/).
+React 16 полагается на типы коллекций [Map](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Map) и [Set](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Set). Если вы поддерживаете старые браузеры и устройства, которые могут не поддерживать эти типы коллекций (например, IE < 11) или которые имеют несоответствующую реализацию (например, IE 11), вы можете включить глобальный полифил в ваше приложение, например [core-js](https://github.com/zloirock/core-js) или [babel-polyfill](https://babeljs.io/docs/usage/polyfill/).
 
-Окружающая среда с полифиллом для React 16 использующая core-js для поддержки старых браузеров может выглядеть следующим образом:
+Окружающая среда с полифилом для React 16 использующая core-js для поддержки старых браузеров может выглядеть следующим образом:
 
 ```js
 import 'core-js/es6/map';
@@ -24,7 +24,7 @@ ReactDOM.render(
 ```
 
 React также полагается на `requestAnimationFrame` (даже в тестовом окружении).
-Вы можете использовать пакет [raf](https://www.npmjs.com/package/raf) для создания прослойки `requestAnimationFrame`:
+Вы можете использовать пакет [raf](https://www.npmjs.com/package/raf) для создания шима `requestAnimationFrame`:
 
 ```js
 import 'raf/polyfill';
