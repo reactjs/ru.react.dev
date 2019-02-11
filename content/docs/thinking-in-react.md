@@ -1,6 +1,6 @@
 ---
 id: thinking-in-react
-title: Мыслить в React
+title: Философия React
 permalink: docs/thinking-in-react.html
 redirect_from:
   - 'blog/2013/11/05/thinking-in-react.html'
