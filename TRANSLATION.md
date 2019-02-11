@@ -78,6 +78,7 @@
 | error boundary | предохранитель |
 | framework | фреймворк |
 | function component | функциональный компонент |
+| helper | вспомогательный(ая); *напр. helper function — вспомогательная функция* |
 | hook | хук *(с маленькой буквы)* |
 | incapsulation | инкапсуляция |
 | incapsulated | инкапсулированный |
