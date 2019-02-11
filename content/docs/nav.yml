@@ -22,7 +22,7 @@
     - id: state-and-lifecycle
       title: Состояние и жизненный цикл
     - id: handling-events
-      title: Handling Events
+      title: Обработка событий
     - id: conditional-rendering
       title: Условный рендеринг
     - id: lists-and-keys
