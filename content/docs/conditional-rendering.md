@@ -154,7 +154,7 @@ ReactDOM.render(
 
 ### Встроенные условия if-else с тернарным оператором {#inline-if-else-with-conditional-operator}
 
-Есть ещё один метод встраивания условного рендеринга элементов. В нём используется тернарный условный оператор JavaScript [`condition ? true : false`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/%D0%A3%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B9_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80).
+Есть ещё один способ писать условия прямо в JSX. Вы можете воспользоваться тернарным оператором [`condition ? true : false`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/%D0%A3%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B9_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80).
 
 Вот как этот метод можно использовать, чтобы отрендерить кусочек текста.
 
@@ -186,7 +186,7 @@ render() {
 }
 ```
 
-Как в JavaScript, так и в React выбор уместного стиля — личное дело вас или вашей команды, в котором важны взгляды на то, какой стиль читается лучше. Не забывайте, что если какое-то условие выглядят очень сложным, возможно пришло время [извлечь часть кода в отдельный компонент](/docs/components-and-props.html#extracting-components).
+Как в JavaScript, так и в React выбор синтаксиса зависит от ваших предпочтений и принятого в команде стиля. Не забывайте, что если какое-то условие выглядят очень сложным, возможно пришло время [извлечь часть кода в отдельный компонент](/docs/components-and-props.html#extracting-components).
 
 ### Предотвращение рендеринга компонента {#preventing-component-from-rendering}
 
