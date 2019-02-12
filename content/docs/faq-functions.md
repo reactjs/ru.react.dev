@@ -68,7 +68,7 @@ class Foo extends Component {
 >
 >Использование `Function.prototype.bind` в render() создает новую функцию при каждой отрисовке компонента, что может повлиять на производительность (см. ниже).
 
-#### Стрелочная функция в render(){#arrow-function-in-render}
+#### Стрелочная функция в render() {#arrow-function-in-render}
 
 ```jsx
 class Foo extends Component {
@@ -93,7 +93,7 @@ class Foo extends Component {
 
 ### Зачем вообще нужна привязка? {#why-is-binding-necessary-at-all}
 
-В JavaScript эти два фрагмента кода **не** равноценны:
+В JavaScript эти два фрагмента кода **не** равнозначны:
 
 ```js
 obj.method();
@@ -180,7 +180,7 @@ class Alphabet extends React.Component {
 
 #### Пример: Передача параметров с использованием атрибутов данных {#example-passing-params-using-data-attributes}
 
-В качестве альтернативного подхода вы можете использовать DOM API, чтобы хранить необходимые для обработчиков событий данные. Имейте этот подход ввиду, если вам нужно оптимизировать большое количество элементов или использовать дерево визуализации, полагающееся на компонент React.PureComponent для проверки на равенство.
+В качестве альтернативного подхода вы можете использовать DOM API, чтобы хранить необходимые для обработчиков событий данные. Рассмотрите этот подход, если вам нужно оптимизировать большое количество элементов или использовать дерево визуализации, полагающееся на компонент React.PureComponent для проверки на равенство.
 
 ```jsx
 const A = 65 // ASCII код символа
@@ -222,9 +222,9 @@ class Alphabet extends React.Component {
 
 Если вы используете обработчики событий, такие как `onClick`  или `onScroll`, и хотите предотвратить быстрое срабатывание колбэков, вы можете ограничить скорость выполнения колбэка. Для этого вы можете использовать: 
 
-- **throttling**: выборочные изменения, зависимые от частоты, основанной на времени (eg [`_.throttle`](https://lodash.com/docs#throttle))
-- **debouncing**: изменения, задействованные после некого периода бездействия (eg [`_.debounce`](https://lodash.com/docs#debounce))
-- **`requestAnimationFrame` throttling**: выборочные изменения, основанные на [`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) (eg [`raf-schd`](https://github.com/alexreardon/raf-schd))
+- **throttling**: выборочные изменения, зависимые от частоты, основанной на времени (напр. [`_.throttle`](https://lodash.com/docs#throttle))
+- **debouncing**: изменения, задействованные после некого периода бездействия (напр. [`_.debounce`](https://lodash.com/docs#debounce))
+- **`requestAnimationFrame` throttling**: выборочные изменения, основанные на [`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) (напр. [`raf-schd`](https://github.com/alexreardon/raf-schd))
 
 Взгляните на [данную визуализацию](http://demo.nimius.net/debounce_throttle/), где сравниваются функции `throttle` и `debounce`.
 
@@ -262,7 +262,7 @@ class LoadMoreButton extends React.Component {
 
 #### Debounce {#debounce}
 
-Дебаунсинг гарантирует, что функция не будет выполняться до тех пор, пока не пройдет определенное количество времени с момента ее последнего вызова. Этот метод пригодится, если вам нужно провести затратный расчет в ответ на событие, которое может быстро повториться (например, прокрутка страницы или нажатие клавиш). В примере ниже для ввода текста используется задержка в 250 мс.
+Дебаунсинг гарантирует, что функция не будет выполняться до тех пор, пока не пройдет определенное количество времени с момента ее последнего вызова. Этот метод пригодится, если вам нужно провести ресурсоёмкий расчет в ответ на событие, которое может быстро повториться (например, прокрутка страницы или нажатие клавиш). В примере ниже для ввода текста используется задержка в 250 мс.
 
 ```jsx
 import debounce from 'lodash.debounce';
@@ -292,7 +292,7 @@ class Searchbox extends React.Component {
   handleChange(e) {
     // React помещает события в пул, поэтому значение считывается перед debounce.
     // Как альтернативу, мы могли бы вызвать `event.persist()` и передать событие целиком.
-    // Для более подробной информации посетите reactjs.org/docs/events.html#event-pooling
+    // Более подробно тема рассматривается здесь: reactjs.org/docs/events.html#event-pooling
     this.emitChangeDebounced(e.target.value);
   }
 
