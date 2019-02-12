@@ -1,12 +1,12 @@
 ---
 id: web-components
-title: Веб компоненты
+title: Web Components
 permalink: docs/web-components.html
 redirect_from:
   - "docs/webcomponents.html"
 ---
 
-React и [Веб компоненты](https://developer.mozilla.org/en-US/docs/Web/Web_Components) созданы для решения разных задач.  Web Components provide strong encapsulation for reusable components, while React provides a declarative library that keeps the DOM in sync with your data. The two goals are complementary. As a developer, you are free to use React in your Web Components, or to use Web Components in React, or both.
+React and [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) are built to solve different problems.  Web Components provide strong encapsulation for reusable components, while React provides a declarative library that keeps the DOM in sync with your data. The two goals are complementary. As a developer, you are free to use React in your Web Components, or to use Web Components in React, or both.
 
 Most people who use React don't use Web Components, but you may want to, especially if you are using third-party UI components that are written using Web Components.
 
