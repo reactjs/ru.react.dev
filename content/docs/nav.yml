@@ -26,7 +26,7 @@
     - id: conditional-rendering
       title: Условный рендеринг
     - id: lists-and-keys
-      title: Lists and Keys
+      title: Списки и ключи
     - id: forms
       title: Forms
     - id: lifting-state-up
