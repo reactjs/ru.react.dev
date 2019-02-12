@@ -1,6 +1,6 @@
 ---
 id: error-boundaries
-title: Предохранители (компоненты Error Boundary)
+title: Предохранители
 permalink: docs/error-boundaries.html
 ---
 
