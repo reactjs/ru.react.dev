@@ -121,7 +121,7 @@ render() {
 }
 ```
 
-Вместо этого *просто передайте функцию* (без скобок):
+Вместо этого *передайте саму функцию* (без скобок):
 
 ```jsx
 render() {
@@ -222,11 +222,11 @@ class Alphabet extends React.Component {
 
 Если вы используете обработчики событий, такие как `onClick`  или `onScroll`, и хотите предотвратить быстрое срабатывание колбэков, вы можете ограничить скорость выполнения колбэка. Для этого вы можете использовать: 
 
-- **throttling**: выборочные изменения, зависимые от частоты, основанной на времени (напр. [`_.throttle`](https://lodash.com/docs#throttle))
-- **debouncing**: изменения, задействованные после некого периода бездействия (напр. [`_.debounce`](https://lodash.com/docs#debounce))
+- **тротлинг**: выборочные изменения, зависимые от частоты, основанной на времени (напр. [`_.throttle`](https://lodash.com/docs#throttle))
+- **дебаунсинг**: изменения, задействованные после некого периода бездействия (напр. [`_.debounce`](https://lodash.com/docs#debounce))
 - **`requestAnimationFrame` throttling**: выборочные изменения, основанные на [`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) (напр. [`raf-schd`](https://github.com/alexreardon/raf-schd))
 
-Взгляните на [данную визуализацию](http://demo.nimius.net/debounce_throttle/), где сравниваются функции `throttle` и `debounce`.
+Взгляните на [визуализацию](http://demo.nimius.net/debounce_throttle/), которая сравнивает функции `throttle` и `debounce`.
 
 > Примечание:
 >
