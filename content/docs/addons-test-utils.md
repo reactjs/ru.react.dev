@@ -296,16 +296,16 @@ Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) bu
 renderIntoDocument(element)
 ```
 
-Render a React element into a detached DOM node in the document. **This function requires a DOM.** It is effectively equivalent to:
+Рендер Реакт элемента в отдельно взятом DOM-ноде в документе. **Этой функции нужен DOM.** Это фактически эквивалентно:
 
 ```js
 const domContainer = document.createElement('div');
 ReactDOM.render(element, domContainer);
 ```
 
-> Note:
+> На заметку:
 >
-> You will need to have `window`, `window.document` and `window.document.createElement` globally available **before** you import `React`. Otherwise React will think it can't access the DOM and methods like `setState` won't work.
+> Вам нужно будет иметь глобально доступные переменные `window`, `window.document` и `window.document.createElement` **перед** тем как вы импортируете `React`. В противном случае React будет думать что не может иметь доступ DOM и такие методы как `setState` не будут работать.
 
 * * *
 
