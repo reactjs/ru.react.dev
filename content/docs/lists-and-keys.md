@@ -8,7 +8,7 @@ next: forms.html
 
 Сначала давайте вспомним, как работать со списками в JavaScript.
 
-В коде ниже мы используем функцию [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), чтобы удвоить значения в массиве `numbers`. Мы присваиваем массив, возвращаемый из `map()`, переменной `doubled` и выводим её в консоль:
+В коде ниже мы используем функцию [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), чтобы удвоить значения в массиве `numbers`. Мы присваиваем массив, возвращаемый из `map()`, переменной `doubled`, и выводим её в консоль:
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
@@ -22,9 +22,9 @@ console.log(doubled);
 
 ### Рендер нескольких компонентов {#rendering-multiple-components}
 
-Вы можете создавать коллекции элементов и [встраивать их в JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) с помощью фигурных скобок `{}`.
+Вы можете создать коллекцию элементов и [встроить её в JSX](/docs/introducing-jsx.html#embedding-expressions-in-jsx) с помощью фигурных скобок `{}`.
 
-Ниже, мы проходим по массиву `numbers`, используя функцию JavaScript [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), и возвращаем элемент `<li>` в каждой итерации. Получившийся массив элементов мы сохраним в `listItems`:
+К примеру, пройдём по массиву `numbers`, используя функцию JavaScript [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), и вернём элемент `<li>` в каждой итерации. Получившийся массив элементов сохраним в `listItems`:
 
 ```javascript{2-4}
 const numbers = [1, 2, 3, 4, 5];
@@ -33,7 +33,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-Затем включаем массив `listItems` внутрь элемента `<ul>` и [рендерим его в DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+Теперь мы включим массив `listItems` внутрь элемента `<ul>` и [отрендерить его в DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
 
 ```javascript{2}
 ReactDOM.render(
@@ -70,7 +70,7 @@ ReactDOM.render(
 );
 ```
 
-Когда вы запустите данный код, то увидите предупреждение о том, что у каждого элемента массива должен быть ключ (key). «Ключ» – это специальный строковый атрибут, который вам необходимо добавлять при создании списка элементов. Мы обсудим, почему это важно, ниже на странице.
+Когда вы запустите данный код, то увидите предупреждение о том, что у каждого элемента массива должен быть ключ (key). «Ключ» – это специальный строковый атрибут, который нужно указывать при создании списка элементов. Мы обсудим, почему это важно, ниже на странице.
 
 Чтобы исправить проблему с неуказанными ключами, добавим каждому элементу в списке атрибут `key`.
 
@@ -136,7 +136,7 @@ const todoItems = todos.map((todo, index) =>
 
 ### Извлечение компонентов с ключами {#extracting-components-with-keys}
 
-Имеет смысл использовать ключи только в пределах окружающего массива.
+Ключи нужно определять непосредственно внутри массивов.
 
 Например, если вы [извлекаете](/docs/components-and-props.html#extracting-components) компонент `ListItem`, то нужно указывать ключ для `<ListItem />` в массиве, а не в элементе `<li>` внутри самого `ListItem`.
 
@@ -206,9 +206,9 @@ ReactDOM.render(
 
 Как правило, элементам внутри `map()` нужны ключи.
 
-### Ключи должны быть уникальными среди одноуровневых элементов {#keys-must-only-be-unique-among-siblings}
+### Ключи должны быть уникальными среди соседних элементов {#keys-must-only-be-unique-among-siblings}
 
-Ключи внутри массива должны быть уникальными только среди своих одноуровневых элементов. Им не нужно быть уникальными глобально. Можно использовать один и тот же ключ в двух разных массивах.
+Ключи внутри массива должны быть уникальными только среди своих соседних элементов. Им не нужно быть уникальными глобально. Можно использовать один и тот же ключ в двух разных массивах.
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
@@ -237,8 +237,8 @@ function Blog(props) {
 }
 
 const posts = [
-  {id: 1, title: 'Hello World', content: 'Welcome to learning React!'},
-  {id: 2, title: 'Installation', content: 'You can install React from npm.'}
+  {id: 1, title: 'Привет, мир', content: 'Добро пожаловать в документацию React!'},
+  {id: 2, title: 'Установка', content: 'React можно установить из npm.'}
 ];
 ReactDOM.render(
   <Blog posts={posts} />,
@@ -298,4 +298,4 @@ function NumberList(props) {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-Иногда это приводит к более чистому коду, но бывает и наоборот. Как и в любом JavaScript-коде, вам придется самостоятельно решать стоит ли извлекать код в переменную для читабельности. Не забывайте, что если код внутри `map()` слишком громоздкий, имеет смысл [извлечь его в отдельный компонент](/docs/components-and-props.html#extracting-components).
+Иногда это приводит к более чистому коду, но бывает и наоборот. Как и в любом JavaScript-коде, вам придется самостоятельно решать, стоит ли извлекать код в переменную ради читабельности. Не забывайте, что если код внутри `map()` слишком громоздкий, имеет смысл [извлечь его в отдельный компонент](/docs/components-and-props.html#extracting-components).
