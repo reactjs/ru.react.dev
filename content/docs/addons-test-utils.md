@@ -195,7 +195,7 @@ isCompositeComponentWithType(
 )
 ```
 
-Returns `true` if `instance` is a component whose type is of a React `componentClass`.
+Возвращает `true` если `instance` является компонентом, тип которого React `componentClass`.
 
 * * *
 
