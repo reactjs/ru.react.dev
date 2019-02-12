@@ -1,13 +1,13 @@
 - title: Установка
   items:
     - id: getting-started
-      title: Getting Started
+      title: Начало работы
     - id: add-react-to-a-website
       title: Add React to a Website
     - id: create-a-new-react-app
       title: Create a New React App
     - id: cdn-links
-      title: CDN Links
+      title: Ссылки на CDN
 - title: Основные понятия
   isOrdered: true
   items:
@@ -16,7 +16,7 @@
     - id: introducing-jsx
       title: Знакомство с JSX
     - id: rendering-elements
-      title: Rendering Elements
+      title: Рендеринг элементов
     - id: components-and-props
       title: Компоненты и пропсы
     - id: state-and-lifecycle
