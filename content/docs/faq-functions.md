@@ -87,7 +87,7 @@ class Foo extends Component {
 
 ### Можно ли использовать стрелочные функции в методе render()? {#is-it-ok-to-use-arrow-functions-in-render-methods}
 
-В целом, да. Зачастую это самый простой способ передать параметры через функции-колбэки.
+В целом, да. Зачастую это самый простой способ передать параметры через колбэки.
 
 Если же у вас возникли проблемы с производительностью — оптимизируйте! 
 
@@ -144,7 +144,7 @@ render() {
 <button onClick={this.handleClick.bind(this, id)} />
 ```
 
-#### Пример: Передача параметров с использованием стрелочных функций{#example-passing-params-using-arrow-functions}
+#### Пример: Передача параметров с использованием стрелочных функций {#example-passing-params-using-arrow-functions}
 
 ```jsx
 const A = 65 // ASCII код символа
@@ -183,7 +183,7 @@ class Alphabet extends React.Component {
 В качестве альтернативного подхода вы можете использовать DOM API, чтобы хранить необходимые для обработчиков событий данные. Рассмотрите этот подход, если вам нужно оптимизировать большое количество элементов или использовать дерево визуализации, полагающееся на компонент React.PureComponent для проверки на равенство.
 
 ```jsx
-const A = 65 // ASCII код символа
+const A = 65 // ASCII-код символа
 
 class Alphabet extends React.Component {
   constructor(props) {
@@ -291,7 +291,7 @@ class Searchbox extends React.Component {
 
   handleChange(e) {
     // React помещает события в пул, поэтому значение считывается перед debounce.
-    // Как альтернативу, мы могли бы вызвать `event.persist()` и передать событие целиком.
+    // В качестве альтернативы мы могли бы вызвать `event.persist()` и передать событие целиком.
     // Более подробно тема рассматривается здесь: reactjs.org/docs/events.html#event-pooling
     this.emitChangeDebounced(e.target.value);
   }
