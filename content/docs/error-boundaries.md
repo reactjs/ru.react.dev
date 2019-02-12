@@ -18,7 +18,7 @@ permalink: docs/error-boundaries.html
 > Предохранители **не** поймают ошибки в:
 >
 > * Обработчиках событий ([подробнее](#how-about-event-handlers))
-> * Асинхронном коде (например колбэки из `setTimeout` или `requestAnimationFrame`)
+> * Асинхронном коде (например колбэках из `setTimeout` или `requestAnimationFrame`)
 > * Серверном рендеринге (Server-side rendering)
 > * Самом предохранителе (а не в его дочерних компонентах)
 
