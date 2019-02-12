@@ -78,6 +78,7 @@
 | effect | эффект |
 | error | ошибка |
 | error boundary | предохранитель |
+| escape hatch | лазейка (*напр. императивные лазейки*)
 | fallback | запасной |
 | feature | возможность |
 | framework | фреймворк |
