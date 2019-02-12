@@ -273,7 +273,7 @@ scryRenderedComponentsWithType(
 )
 ```
 
-Finds all instances of components with type equal to `componentClass`.
+Находит все объекты компонента с указаным типа класса  `componentClass`.
 
 * * *
 
