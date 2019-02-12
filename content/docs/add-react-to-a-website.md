@@ -1,6 +1,6 @@
 ---
 id: add-react-to-a-website
-title: Add React to a Website
+title: Добавляем React на сайт
 permalink: docs/add-react-to-a-website.html
 redirect_from:
   - "docs/add-react-to-an-existing-app.html"
@@ -8,127 +8,127 @@ prev: getting-started.html
 next: create-a-new-react-app.html
 ---
 
-Use as little or as much React as you need.
+Вы можете взять от React столько, сколько вам хочется.
 
-React has been designed from the start for gradual adoption, and **you can use as little or as much React as you need**. Perhaps you only want to add some "sprinkles of interactivity" to an existing page. React components are a great way to do that.
+Чтобы внедрить React, не надо ничего переписывать. **Его можно использовать как для маленькой кнопки, так и для целого приложения.** Возможно, вы захотите лишь чуть «оживить» некоторые элементы на вашей странице. React-компоненты являются прекрасным способом сделать это.
 
-The majority of websites aren't, and don't need to be, single-page apps. With **a few lines of code and no build tooling**, try React in a small part of your website. You can then either gradually expand its presence, or keep it contained to a few dynamic widgets.
+Большинство сайтов не являются (и не должны являться) одностраничными приложениями. Для того, чтобы добавить React на свой сайт, вам достаточно написать **всего несколько строк кода без каких-либо инструментов сборки**. В дальнейшем, вы можете поэтапно трансформировать другие части сайта, либо ограничиться несколькими виджетами.
 
 ---
 
-- [Add React in One Minute](#add-react-in-one-minute)
-- [Optional: Try React with JSX](#optional-try-react-with-jsx) (no bundler necessary!)
+- [Добавляем React за 1 минуту](#add-react-in-one-minute)
+- [Необязательно: Используем React с JSX](#optional-try-react-with-jsx) (без каких-либо сборщиков!)
 
-## Add React in One Minute {#add-react-in-one-minute}
+## Добавляем React за 1 минуту {#add-react-in-one-minute}
 
-In this section, we will show how to add a React component to an existing HTML page. You can follow along with your own website, or create an empty HTML file to practice.
+В этом разделе вы узнаете, как добавить React на существующую HTML-страницу. Вы можете практиковаться на коде своего собственного сайта или создать для этого пустой HTML файл.
 
-There will be no complicated tools or install requirements -- **to complete this section, you only need an internet connection, and a minute of your time.**
+Мы не будем пользоваться сложными инструментами сборки или устанавливать что-либо. **Всё, что вам нужно -- это доступ к Интернету и минута свободного времени**.
 
-Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
+Необязательно: [скачать готовый пример (архив 2 Кбайт)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
 
-### Step 1: Add a DOM Container to the HTML {#step-1-add-a-dom-container-to-the-html}
+### Шаг 1: Добавляем DOM-контейнер в HTML {#step-1-add-a-dom-container-to-the-html}
 
-First, open the HTML page you want to edit. Add an empty `<div>` tag to mark the spot where you want to display something with React. For example:
+Для начала, откройте HTML файл страницы, которую хотите отредактировать. Добавьте пустой тег `<div>` в месте, где вы хотите отобразить что-нибудь с помощью React. Например:
 
 ```html{3}
-<!-- ... existing HTML ... -->
+<!-- ... остальной HTML ... -->
 
 <div id="like_button_container"></div>
 
-<!-- ... existing HTML ... -->
+<!-- ... остальной HTML ... -->
 ```
 
-We gave this `<div>` a unique `id` HTML attribute. This will allow us to find it from the JavaScript code later and display a React component inside of it.
+Затем назначьте созданному `<div>` уникальный атрибут `id`. Это позволит впоследствии найти тег из JavaScript кода и отобразить React-компоненты внутри него.
 
->Tip
+>Совет
 >
->You can place a "container" `<div>` like this **anywhere** inside the `<body>` tag. You may have as many independent DOM containers on one page as you need. They are usually empty -- React will replace any existing content inside DOM containers.
+>Располагать «контейнер» `<div>` допускается **где угодно** внутри тега `<body>`. Вы можете создать любое количество независимых DOM-контейнеров на одной странице. Эти контейнеры принято оставлять пустыми, так как React в любом случае заменяет всё их содержимое.
 
-### Step 2: Add the Script Tags {#step-2-add-the-script-tags}
+### Шаг 2: Добавляем теги Script {#step-2-add-the-script-tags}
 
-Next, add three `<script>` tags to the HTML page right before the closing `</body>` tag:
+Теперь дополните ваш HTML тремя тегами `<script>`, расположив их перед закрывающим тегом `</body>`:
 
 ```html{5,6,9}
-  <!-- ... other HTML ... -->
+  <!-- ... остальной HTML ... -->
 
-  <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <!-- Загрузка React. -->
+  <!-- Примечание: для деплоя на продакшен замените окончание «development.js» на «production.min.js». -->
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 
-  <!-- Load our React component. -->
+  <!-- Загрузка вашего React-компонента. -->
   <script src="like_button.js"></script>
 
 </body>
 ```
 
-The first two tags load React. The third one will load your component code.
+Первые два тега загружают React. Третий тег загружает код вашего собственного компонента.
 
-### Step 3: Create a React Component {#step-3-create-a-react-component}
+### Шаг 3: Создаём React-компонент {#step-3-create-a-react-component}
 
-Create a file called `like_button.js` next to your HTML page.
+Создайте файл с именем `like_button.js` рядом с вашим HTML файлом.
 
-Open **[this starter code](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** and paste it into the file you created.
+Возьмите **[этот стартовый код](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** и вставьте его в созданный ранее файл.
 
->Tip
+>Совет
 >
->This code defines a React component called `LikeButton`. Don't worry if you don't understand it yet -- we'll cover the building blocks of React later in our [hands-on tutorial](/tutorial/tutorial.html) and [main concepts guide](/docs/hello-world.html). For now, let's just get it showing on the screen!
+>В данном коде создаётся React-компонент с именем `LikeButton`. Не беспокойтесь, если что-то кажется вам непонятным -- мы подробно разберём принципы разработки на React позже, в нашем [практическом руководстве](/tutorial/tutorial.html) и во [введении в основные понятия](/docs/hello-world.html). Пока же мы просто посмотрим, как это выглядит на экране.
 
-After **[the starter code](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, add two lines to the bottom of `like_button.js`:
+Добавьте ещё 2 строки в конец файла `like_button.js`, после **[стартового кода](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**:
 
 ```js{3,4}
-// ... the starter code you pasted ...
+// ... стартовый код ...
 
 const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
 ```
 
-These two lines of code find the `<div>` we added to our HTML in the first step, and then display our "Like" button React component inside of it. 
+Этот код ищет контейнер `<div>`, созданный нами на первом шаге, а затем отображает наш React-компонент с кнопкой «Like» внутри него.
 
-### That's It! {#thats-it}
+### Готово! {#thats-it}
 
-There is no step four. **You have just added the first React component to your website.**
+Вот и всё! **Вы только что добавили свой первый React-компонент на страницу.**
 
-Check out the next sections for more tips on integrating React.
+Перейдите к следующим разделам, если хотите узнать о других способах интеграции React.
 
-**[View the full example source code](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
+**[Посмотреть финальный код примера](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
 
-**[Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
+**[Скачать код примера (архив 2 Кбайт)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
 
-### Tip: Reuse a Component {#tip-reuse-a-component}
+### Совет: Повторное использование компонентов {#tip-reuse-a-component}
 
-Commonly, you might want to display React components in multiple places on the HTML page. Here is an example that displays the "Like" button three times and passes some data to it:
+Зачастую, вам может понадобиться отобразить React-компонент в нескольких местах одной и той же HTML-страницы. Вот пример отображения сразу трёх кнопок «Like», в которые передаются разные данные:
 
-[View the full example source code](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
+[Посмотреть исходный код примера](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
-[Download the full example (2KB zipped)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
+[Скачать код примера (архив 2 Кбайт)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
 
->Note
+>Примечание
 >
->This strategy is mostly useful while React-powered parts of the page are isolated from each other. Inside React code, it's easier to use [component composition](/docs/components-and-props.html#composing-components) instead.
+>Этот способ лучше всего подходит для страниц, содержащих несколько изолированных участков кода, написанных на React. Внутри единого React-кода предпочтительнее использовать [композицию компонентов](/docs/components-and-props.html#composing-components).
 
-### Tip: Minify JavaScript for Production {#tip-minify-javascript-for-production}
+### Совет: Минификация JavaScript для продакшена {#tip-minify-javascript-for-production}
 
-Before deploying your website to production, be mindful that unminifed JavaScript can significantly slow down the page for your users.
+Публикуя ваш сайт на продакшен, имейте в виду, что несжатый JavaScript значительно замедляет страницу для ваших пользователей.
 
-If you already minify the application scripts, **your site will be production-ready** if you ensure that the deployed HTML loads the versions of React ending in `production.min.js`:
+Если вы минифицируете скрипты вашего приложения, то всё, что вам нужно сделать для адаптации React к продакшену -- это поменять в вашем HTML окончания ссылок на React на `production.min.js`:
 
 ```js
 <script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
 <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
-If you don't have a minification step for your scripts, [here's one way to set it up](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
+Если же вы не настроили минификацию для ваших скриптов, то [вот один из вариантов, как это сделать](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
 
-## Optional: Try React with JSX {#optional-try-react-with-jsx}
+## Необязательно: Используем React с JSX {#optional-try-react-with-jsx}
 
-In the examples above, we only relied on features that are natively supported by the browsers. This is why we used a JavaScript function call to tell React what to display:
+В предыдущих примерах мы не выходили за рамки обычных браузерных возможностей. В частности, мы указываем, что React должен выводить на экран, просто вызывая JavaScript-функцию:
 
 ```js
 const e = React.createElement;
 
-// Display a "Like" <button>
+// Отобразить <button> с текстом «Like» 
 return e(
   'button',
   { onClick: () => this.setState({ liked: true }) },
@@ -136,10 +136,10 @@ return e(
 );
 ```
 
-However, React also offers an option to use [JSX](/docs/introducing-jsx.html) instead:
+Однако, React позволяет использовать специальный синтаксис, называющийся [JSX](/docs/introducing-jsx.html):
 
 ```js
-// Display a "Like" <button>
+// Отобразить <button> с текстом «Like» 
 return (
   <button onClick={() => this.setState({ liked: true })}>
     Like
@@ -147,56 +147,56 @@ return (
 );
 ```
 
-These two code snippets are equivalent. While **JSX is [completely optional](/docs/react-without-jsx.html)**, many people find it helpful for writing UI code -- both with React and with other libraries.
+Эти два примера делают одно и то же. Несмотря на то, что **JSX является [совершенно необязательным](/docs/react-without-jsx.html)**, многие разработчики считают его удобным для разработки UI -- как с React, так и с другими библиотеками.
 
-You can play with JSX using [this online converter](http://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=).
+Вы можете попробовать JSX в [этом онлайн-конвертере](http://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=).
 
-### Quickly Try JSX {#quickly-try-jsx}
+### Быстрый старт с JSX {#quickly-try-jsx}
 
-The quickest way to try JSX in your project is to add this `<script>` tag to your page:
+Вставьте следующий тег `<script>` в ваш HTML, если вы хотите начать пользоваться JSX как можно скорее:
 
 ```html
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
-Now you can use JSX in any `<script>` tag by adding `type="text/babel"` attribute to it. Here is [an example HTML file with JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html) that you can download and play with.
+Теперь синтаксис JSX доступен внутри каждого тега `<script>`, у которого есть атрибут `type="text/babel"`. Скачайте [пример HTML-кода с JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), чтобы поэкспериментировать.
 
-This approach is fine for learning and creating simple demos. However, it makes your website slow and **isn't suitable for production**. When you're ready to move forward, remove this new `<script>` tag and the `type="text/babel"` attributes you've added. Instead, in the next section you will set up a JSX preprocessor to convert all your `<script>` tags automatically.
+Такой подход удобен для обучения или создания быстрых демо, но следует помнить, что работа сайта при этом сильно замедляется. По этой причине, **JSX на продакшене требует иного подхода**. Если вам интересно узнать, как подготовить JSX к продакшену, удалите добавленный ранее тег `<script>` и все атрибуты `type="text/babel"`. Вместо них мы будем пользоваться препроцессором JSX, который автоматически трансформирует весь код внутри тегов `<script>`.
 
-### Add JSX to a Project {#add-jsx-to-a-project}
+### Добавляем JSX в проект {#add-jsx-to-a-project}
 
-Adding JSX to a project doesn't require complicated tools like a bundler or a development server. Essentially, adding JSX **is a lot like adding a CSS preprocessor.** The only requirement is to have [Node.js](https://nodejs.org/) installed on your computer.
+JSX можно добавить в существующий проект и без всяких сложных инструментов вроде сборщика или сервера для разработки. По сути, **добавление JSX напоминает добавление препроцессора CSS**. Необходимо лишь убедиться, что на вашем компьютере установлен [Node.js](https://nodejs.org/).
 
-Go to your project folder in the terminal, and paste these two commands:
+С помощью терминала перейдите в директорию вашего проекта и запустите следующие команды:
 
-1. **Step 1:** Run `npm init -y` (if it fails, [here's a fix](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
-2. **Step 2:** Run `npm install babel-cli@6 babel-preset-react-app@3`
+1. **Шаг 1:** Запустите команду `npm init -y` (если появляются ошибки, попробуйте [этот способ](https://gist.github.com/gaearon/246f6380610e262f8a648e3e51cad40d))
+2. **Шаг 2:** Запустите команду `npm install babel-cli@6 babel-preset-react-app@3`
 
->Tip
+>Совет
 >
->We're **using npm here only to install the JSX preprocessor;** you won't need it for anything else. Both React and the application code can stay as `<script>` tags with no changes.
+>**Мы используем npm только для установки препроцессора JSX.** React и код приложения всё ещё остаются в тегах `<script>`.
 
-Congratulations! You just added a **production-ready JSX setup** to your project.
+Поздравляем! Вы только что добавили в ваш проект **поддержку JSX, готовую к продакшену**.
 
 
-### Run JSX Preprocessor {#run-jsx-preprocessor}
+### Запускаем препроцессор JSX {#run-jsx-preprocessor}
 
-Create a folder called `src` and run this terminal command:
+Создайте директорию с названием `src` и наберите в терминале следующую команду:
 
 ```
 npx babel --watch src --out-dir . --presets react-app/prod 
 ```
 
->Note
+>Примечание
 >
->`npx` is not a typo -- it's a [package runner tool that comes with npm 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+>`npx` не является опечаткой. Это [инструмент запуска пакетов, появившийся в npm версии 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 >
->If you see an error message saying "You have mistakenly installed the `babel` package", you might have missed [the previous step](#add-jsx-to-a-project). Perform it in the same folder, and then try again.
+>Если у вас появляется сообщение об ошибке, похожее на «You have mistakenly installed the `babel` package», то это означает, что вам нужно пройти [предыдущий шаг](#add-jsx-to-a-project), а затем повторить запуск команды.
 
-Don't wait for it to finish -- this command starts an automated watcher for JSX.
+Дожидаться завершения работы команды не нужно -- она работает в режиме наблюдения за изменениями в JSX-коде.
 
-If you now create a file called `src/like_button.js` with this **[JSX starter code](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**, the watcher will create a preprocessed `like_button.js` with the plain JavaScript code suitable for the browser. When you edit the source file with JSX, the transform will re-run automatically.
+Попробуйте создать файл с названием `src/like_button.js` и вставить в него **[этот стартовый JSX-код](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**. Препроцессор автоматически трансформирует новый код в чистый JavaScript, пригодный для выполнения в браузере, и сохранит его в новый файл `like_button.js`. При редактировании JSX-кода в существующих файлах трансформация также происходит автоматически.
 
-As a bonus, this also lets you use modern JavaScript syntax features like classes without worrying about breaking older browsers. The tool we just used is called Babel, and you can learn more about it from [its documentation](http://babeljs.io/docs/en/babel-cli/).
+Кроме препроцессинга JSX, вы в качестве получаете синтаксические новинки JavaScript, такие как классы, без головной боли с их браузерной поддержкой. Всё это доступно благодаря использованию инструмента под названием Babel, информацию о котором вы можете узнать из [его документации](http://babeljs.io/docs/en/babel-cli/).
 
-If you notice that you're getting comfortable with build tools and want them to do more for you, [the next section](/docs/create-a-new-react-app.html) describes some of the most popular and approachable toolchains. If not -- those script tags will do just fine!
+Если вы неплохо разбираетесь в инструментах сборки и хотите создавать приложения на React с их помощью, обратитесь к [следующему разделу](/docs/create-a-new-react-app.html), где описаны некоторые из наиболее популярных способов. Если нет -- не беспокойтесь, уже знакомые нам теги script ничуть не хуже!
