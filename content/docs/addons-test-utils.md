@@ -40,7 +40,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
  - [`renderIntoDocument()`](#renderintodocument)
  - [`Simulate`](#simulate)
 
-## Reference {#reference}
+## Справка {#reference}
 
 ### `act()` {#act}
 
@@ -122,7 +122,7 @@ it('рендер и обновление счетчика', () => {
 });
 ```
 
-Не забываейте что отправка DOM-событий работает только когда DOM-контейнер добавлен в `document`. Можно использовать хелпер [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) чтобы разбавить шаблонный код.
+Не забывайте что отправка DOM-событий работает только когда DOM-контейнер добавлен в `document`. Можно использовать хелпер [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) чтобы разбавить шаблонный код.
 
 * * *
 
@@ -309,7 +309,7 @@ ReactDOM.render(element, domContainer);
 
 * * *
 
-## Other Utilities {#other-utilities}
+## Другие утилиты {#other-utilities}
 
 ### `Simulate` {#simulate}
 
@@ -320,11 +320,11 @@ Simulate.{eventName}(
 )
 ```
 
-Simulate an event dispatch on a DOM node with optional `eventData` event data.
+Симулировать отправку события на DOM-ноде с допольнительным объектом `eventData`.
 
-`Simulate` has a method for [every event that React understands](/docs/events.html#supported-events).
+`Simulate` имеет методы для [каждого события который Реакт может понимать](/docs/events.html#supported-events).
 
-**Clicking an element**
+**Кликать на элемент**
 
 ```javascript
 // <button ref={(node) => this.button = node}>...</button>
@@ -332,18 +332,18 @@ const node = this.button;
 ReactTestUtils.Simulate.click(node);
 ```
 
-**Changing the value of an input field and then pressing ENTER.**
+**Меняет значение в поле ввода и затем симулирует нажатие кнопки ENTER.**
 
 ```javascript
 // <input ref={(node) => this.textInput = node} />
 const node = this.textInput;
-node.value = 'giraffe';
+node.value = 'жираф';
 ReactTestUtils.Simulate.change(node);
 ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 ```
 
-> Note
+> На заметку
 >
-> You will have to provide any event property that you're using in your component (e.g. keyCode, which, etc...) as React is not creating any of these for you.
+> Вам нужно будет предоставить соответсвующие свойства события, которое вы используете в своем компоненте (например, keyCode, which и так далее), поскольку React не создает ничего из этого.
 
 * * *
