@@ -44,13 +44,13 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 
 ### `act()` {#act}
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `act()` call. This makes your test run closer to how React works in the browser.
+Готовя компонент для тестирования, оберните код для рендера и выполняйте обновления внутри функции `act()`. Это сделает ваш код Реакта наиболее достоверным к тому как он работает в браузере.
 
->Note
+>На заметку
 >
->If you use `react-test-renderer`, it also provides an `act` export that behaves the same way.
+>Если вы используете `react-test-renderer`, этот модуль предоставляет экспортировать `act` функцию который будет вести также.
 
-For example, let's say we have this `Counter` component:
+Допустим у нас есть `Counter` компонент:
 
 ```js
 class App extends React.Component {
@@ -60,10 +60,10 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    document.title = `You clicked ${this.state.count} times`;
+    document.title = `Ты нажал на кнопку ${this.state.count} раз`;
   }
   componentDidUpdate() {
-    document.title = `You clicked ${this.state.count} times`;
+    document.title = `Ты нажал на кнопку ${this.state.count} раз`;
   }
   handleClick() {
     this.setState(state => ({
@@ -73,9 +73,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p>You clicked {this.state.count} times</p>
+        <p>Ты нажал на кнопку {this.state.count} раз</p>
         <button onClick={this.handleClick}>
-          Click me
+          Нажми на меня
         </button>
       </div>
     );
@@ -83,7 +83,7 @@ class App extends React.Component {
 }
 ```
 
-Here is how we can test it:
+Теперь посмотрим как мы напишем тест для этого примера:
 
 ```js{3,20-22,29-31}
 import React from 'react';
@@ -103,26 +103,26 @@ afterEach(() => {
   container = null;
 });
 
-it('can render and update a counter', () => {
-  // Test first render and componentDidMount
+it('рендер и обновление счетчика', () => {
+  // Тестируем первый рендер и метод componentDidMount
   act(() => {
     ReactDOM.render(<Counter />, container);
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');
-  expect(label.textContent).toBe('You clicked 0 times');
-  expect(document.title).toBe('You clicked 0 times');
+  expect(label.textContent).toBe('Ты нажал на кнопку 0 раз');
+  expect(document.title).toBe('Ты нажал на кнопку 0 раз');
 
-  // Test second render and componentDidUpdate
+  // Тестируем второй рендер и метод componentDidUpdate
   act(() => {
     button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
   });
-  expect(label.textContent).toBe('You clicked 1 times');
-  expect(document.title).toBe('You clicked 1 times');
+  expect(label.textContent).toBe('Ты нажал на кнопку 1 раз');
+  expect(document.title).toBe('Ты нажал на кнопку 1 раз');
 });
 ```
 
-Don't forget that dispatching DOM events only works when the DOM container is added to the `document`. You can use a helper like [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) to reduce the boilerplate code.
+Не забываейте что отправка DOM-событий работает только когда DOM-контейнер добавлен в `document`. Можно использовать хелпер [`react-testing-library`](https://github.com/kentcdodds/react-testing-library) чтобы разбавить шаблонный код.
 
 * * *
 
