@@ -59,7 +59,7 @@ prev: composition-vs-inheritance.html
       * `ProductCategoryRow`
       * `ProductRow`
 
-## Шаг 2: Создаем статическую версию в React {#step-2-build-a-static-version-in-react}
+## Шаг 2: Создать статическую версию в React {#step-2-build-a-static-version-in-react}
 
 <p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">Пример кода <a href="https://codepen.io/gaearon/pen/BwWzwm">Философия React: Шаг 2</a> на <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
@@ -78,7 +78,7 @@ prev: composition-vs-inheritance.html
 
 Существует два типа "модельных" данных в React: пропсы и состояние. Важно, чтобы вы понимали разницу между ними, в противном случае обратитесь к [официальной React документации](/docs/interactivity-and-dynamic-uis.html).
 
-## Шаг 3: Определяем минимальное (но полноценное) отображение состояния интерфейса {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
+## Шаг 3: Определить минимальное (но полноценное) отображение состояния интерфейса {#step-3-identify-the-minimal-but-complete-representation-of-ui-state}
 
 Чтобы сделать ваш UI интерактивным, вы должны внести изменения в базовую модель данных. В React это возможно с помощью **состояния**.
 
@@ -104,7 +104,7 @@ prev: composition-vs-inheritance.html
   * Поисковый запрос, введенный пользователем
   * Значение чекбокса
 
-## Шаг 4: Определяем, где должно находиться наше состояние{#step-4-identify-where-your-state-should-live}
+## Шаг 4: Определить, где должно находиться наше состояние{#step-4-identify-where-your-state-should-live}
 
 <p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">Пример кода <a href="https://codepen.io/gaearon/pen/qPrNQZ">Философия React: Шаг 4</a> на <a href="http://codepen.io">CodePen</a>.</p>
 
@@ -129,7 +129,7 @@ prev: composition-vs-inheritance.html
 
 Вы заметите изменения в поведении вашего приложения: задайте значение `"ball"` для `filterText` и обновите страницу. Вы увидите соответствующие изменения в таблице данных.
 
-## Шаг 5: Добавляем обратный поток данных {#step-5-add-inverse-data-flow}
+## Шаг 5: Добавить обратный поток данных {#step-5-add-inverse-data-flow}
 
 <p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">Пример кода <a href="https://codepen.io/gaearon/pen/LzWZvb">Философия React: Шаг 5</a> на <a href="http://codepen.io">CodePen</a>.</p>
 
