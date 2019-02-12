@@ -146,7 +146,7 @@
     - id: faq-styling
       title: Styling and CSS
     - id: faq-structure
-      title: File Structure
+      title: Структура файлов
     - id: faq-versioning
       title: Versioning Policy
     - id: faq-internals
