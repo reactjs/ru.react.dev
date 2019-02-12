@@ -135,11 +135,11 @@ mockComponent(
 )
 ```
 
-Pass a mocked component module to this method to augment it with useful methods that allow it to be used as a dummy React component. Instead of rendering as usual, the component will become a simple `<div>` (or other tag if `mockTagName` is provided) containing any provided children.
+Передаёт фиктивный модуль компонента этому методу, чтобы дополнить его полезными методами, которые позволяют использовать его в качестве фиктивного компонента React. Вместо того чтобы рендерить как обычно, компонент становится простым `<div>` (или другим тегом `mockTagName` если указан) содержащий любые предоставленные дочерние элементы.
 
-> Note:
+> На заметку:
 >
-> `mockComponent()` is a legacy API. We recommend using [shallow rendering](/docs/test-utils.html#shallow-rendering) or [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) instead.
+> `mockComponent()` уже устаревший API. Мы рекомендуем использовать [поверхностный рендеринг](/docs/test-utils.html#shallow-rendering) или [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) взамен.
 
 * * *
 
