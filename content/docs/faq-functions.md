@@ -37,7 +37,7 @@ class Foo extends Component {
 }
 ```
 
-#### Привязка в свойствах класса (Этап 3: кандидаты) {#class-properties-stage-3-proposal}
+#### Привязка в свойствах класса (предложение-кандидат) {#class-properties-stage-3-proposal}
 
 ```jsx
 class Foo extends Component {
@@ -66,7 +66,7 @@ class Foo extends Component {
 
 >**Примечание:**
 >
->Использование `Function.prototype.bind` в render() создаёт новую функцию при каждой отрисовке компонента, что может повлиять на производительность (см. ниже).
+>Использование `Function.prototype.bind` в render() создаёт новую функцию при каждом рендере компонента, что может повлиять на производительность (см. ниже).
 
 #### Стрелочная функция в render() {#arrow-function-in-render}
 
@@ -116,12 +116,12 @@ method();
 
 ```jsx
 render() {
-  // Неправильно: вместо ссылки, функция handleClick была вызвана!
+  // Неправильно: вместо ссылки была вызвана функция handleClick!
   return <button onClick={this.handleClick()}>Click Me</button>
 }
 ```
 
-Вместо этого, *просто передайте функцию* (без скобок):
+Вместо этого *просто передайте функцию* (без скобок):
 
 ```jsx
 render() {
