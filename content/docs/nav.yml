@@ -112,7 +112,7 @@
       - id: hooks-overview
         title: Hooks at a Glance
       - id: hooks-state
-        title: Using the State Hook
+        title: Использование хука Состояние
       - id: hooks-effect
         title: Using the Effect Hook
       - id: hooks-rules
