@@ -85,6 +85,7 @@
 | framework | фреймворк |
 | function component | функциональный компонент |
 | helper | вспомогательный(ая); *напр., helper function — вспомогательная функция* |
+| Higher-Order Component(s) | Компонент(ы) высшего порядка |
 | hook | хук *(с маленькой буквы)* |
 | incapsulation | инкапсуляция |
 | incapsulated | инкапсулированный |
