@@ -50,7 +50,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 >
 >Если вы используете `react-test-renderer`, этот модуль предоставляет экспортировать `act` функцию который будет вести также.
 
-Допустим, у нас есть `Counter` компонент:
+Допустим, у нас есть компонент `Counter`:
 
 ```js
 class App extends React.Component {
