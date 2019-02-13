@@ -1,4 +1,4 @@
-# Перевод на русский язык сайта reactjs.org ## Оглавление <!-- omit in toc -->
+# Перевод на русский язык сайта reactjs.org <!-- omit in toc -->
 
 Текущий прогресс: https://github.com/reactjs/ru.reactjs.org/issues/1
 
