@@ -84,6 +84,7 @@
 | escape hatch | лазейка (*напр., императивные лазейки*)
 | fallback | запасной |
 | feature | возможность |
+| folder | папка |
 | framework | фреймворк |
 | function component | функциональный компонент |
 | helper | вспомогательный(ая); *напр., helper function — вспомогательная функция* |
