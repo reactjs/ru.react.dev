@@ -41,7 +41,7 @@ class Foo extends Component {
 
 ```jsx
 class Foo extends Component {
-  // Примечание: данный синтаксис находится на стадии разработки и еще не стандартизирован.
+  // Примечание: данный синтаксис находится на стадии разработки и ещё не стандартизирован.
   handleClick = () => {
     console.log('Click happened');
   }
@@ -108,11 +108,11 @@ method();
 
 В React, как правило, привязывать нужно только те методы, которые вы *хотите передать* другим компонентам. Например, `<button onClick={this.handleClick}>` передаёт `this.handleClick`, поэтому его нужно привязать. Впрочем, метод `render` и методы жизненного цикла привязывать не обязательно, так как мы не передаём их в другие компоненты.
 
-[Ознакомьтесь со статьей Йехуды Катц](http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), которая более подробно объясняет, что такое привязка, и как работают функции в JavaScript.
+[Ознакомьтесь со статьёй Йехуды Катц](http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), которая более подробно объясняет, что такое привязка, и как работают функции в JavaScript.
 
 ### Почему моя функция вызывается каждый раз при отрисовке компонента? {#why-is-my-function-being-called-every-time-the-component-renders}
 
-Убедитесь, что вы не _вызываете функцию_, когда передаёте ее компоненту:
+Убедитесь, что вы не _вызываете функцию_, когда передаёте её компоненту:
 
 ```jsx
 render() {
@@ -147,7 +147,7 @@ render() {
 #### Пример: Передача параметров с использованием стрелочных функций {#example-passing-params-using-arrow-functions}
 
 ```jsx
-const A = 65 // ASCII код символа
+const A = 65 // ASCII-код символа
 
 class Alphabet extends React.Component {
   constructor(props) {
@@ -224,13 +224,13 @@ class Alphabet extends React.Component {
 
 - **тротлинг**: выборочные изменения, зависимые от частоты, основанной на времени (напр. [`_.throttle`](https://lodash.com/docs#throttle))
 - **дебаунсинг**: изменения, задействованные после некого периода бездействия (напр. [`_.debounce`](https://lodash.com/docs#debounce))
-- **`requestAnimationFrame` throttling**: выборочные изменения, основанные на [`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) (напр. [`raf-schd`](https://github.com/alexreardon/raf-schd))
+- **Тротлинг с помощью `requestAnimationFrame`**: выборочные изменения, основанные на [`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) (напр. [`raf-schd`](https://github.com/alexreardon/raf-schd))
 
 Взгляните на [визуализацию](http://demo.nimius.net/debounce_throttle/), которая сравнивает функции `throttle` и `debounce`.
 
 > Примечание:
 >
-> `_.debounce`, `_.throttle` и `raf-schd` предусматривают метод `cancel` для отмены отложенных колбэков. Вы должны либо вызвать этот метод из componentWillUnmount, _либо_ удостоверится, что компонент все еще встроен в пределах отложенной функции.
+> `_.debounce`, `_.throttle` и `raf-schd` предусматривают метод `cancel` для отмены отложенных колбэков. Вы должны либо вызвать этот метод из componentWillUnmount, _либо_ удостоверится, что компонент все ещё встроен в пределах отложенной функции.
 
 #### Throttle {#throttle}
 
@@ -304,7 +304,7 @@ class Searchbox extends React.Component {
 
 #### `requestAnimationFrame` throttling {#requestanimationframe-throttling}
 
-[`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) — это способ организации очереди функции, которая будет выполнена в браузере за оптимальное время для производительности отрисовки. Функция, поставленная в очередь с помощью `requestAnimationFrame`, запустится в следующем кадре. Браузер приложит все усилия, чтобы обеспечить 60 кадров в секунду (60 fps — frames per second). Однако, если браузер не в состоянии справиться с этой задачей, он естественным образом *ограничит* количество кадров в секунду. Например, если ваше устройство поддерживает только 30 fps, то и получите вы только 30 кадров. Использование `requestAnimationFrame` для тротлинга является очень полезным методом, так как помогает предотвратить выполнение более 60 обновлений в секунду. Если вы выполняете 100 обновлений в секунду, это создает лишнюю работу для браузера, которую пользователь все равно не заметит. 
+[`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) — это способ организации очереди функции, которая будет выполнена в браузере за оптимальное время для производительности отрисовки. Функция, поставленная в очередь с помощью `requestAnimationFrame`, запустится в следующем кадре. Браузер приложит все усилия, чтобы обеспечить 60 кадров в секунду (60 fps — frames per second). Однако, если браузер не в состоянии справиться с этой задачей, он естественным образом *ограничит* количество кадров в секунду. Например, если ваше устройство поддерживает только 30 fps, то и получите вы только 30 кадров. Использование `requestAnimationFrame` для тротлинга является очень полезным методом, так как помогает предотвратить выполнение более 60 обновлений в секунду. Если вы выполняете 100 обновлений в секунду, это создаёт лишнюю работу для браузера, которую пользователь все равно не заметит. 
 
 >**Примечание:**
 >
@@ -319,7 +319,7 @@ class ScrollListener extends React.Component {
 
     this.handleScroll = this.handleScroll.bind(this);
 
-    // Создаем новую функцию для планирования обновлений.
+    // Создаём новую функцию для планирования обновлений.
     this.scheduleUpdate = rafSchedule(
       point => this.props.onScroll(point)
     );
