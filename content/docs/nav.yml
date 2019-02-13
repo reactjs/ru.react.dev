@@ -1,13 +1,13 @@
 - title: Установка
   items:
     - id: getting-started
-      title: Getting Started
+      title: Начало работы
     - id: add-react-to-a-website
       title: Add React to a Website
     - id: create-a-new-react-app
       title: Create a New React App
     - id: cdn-links
-      title: CDN Links
+      title: Ссылки на CDN
 - title: Основные понятия
   isOrdered: true
   items:
@@ -16,17 +16,17 @@
     - id: introducing-jsx
       title: Знакомство с JSX
     - id: rendering-elements
-      title: Rendering Elements
+      title: Рендеринг элементов
     - id: components-and-props
       title: Компоненты и пропсы
     - id: state-and-lifecycle
-      title: State and Lifecycle
+      title: Состояние и жизненный цикл
     - id: handling-events
       title: Handling Events
     - id: conditional-rendering
       title: Условный рендеринг
     - id: lists-and-keys
-      title: Lists and Keys
+      title: Списки и ключи
     - id: forms
       title: Forms
     - id: lifting-state-up
@@ -97,7 +97,7 @@
     - id: test-utils
       title: Test Utilities
     - id: shallow-renderer
-      title: Shallow Renderer
+      title: Поверхностный рендерер
     - id: test-renderer
       title: Test Renderer
     - id: javascript-environment-requirements
