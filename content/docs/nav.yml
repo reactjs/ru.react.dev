@@ -62,7 +62,7 @@
     - id: react-without-es6
       title: React Without ES6
     - id: react-without-jsx
-      title: React Without JSX
+      title: React без JSX
     - id: reconciliation
       title: Reconciliation
     - id: refs-and-the-dom
