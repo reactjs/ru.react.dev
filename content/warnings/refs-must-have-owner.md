@@ -56,7 +56,7 @@ ReactDOM.render(
 );
 ```
 
-Хорошо подумайте -- [правда ли вам нужен реф](/docs/refs-and-the-dom.html#when-to-use-refs) перед использованием этого подхода.
+Хорошо подумайте, [действительно ли вам нужен реф](/docs/refs-and-the-dom.html#when-to-use-refs) перед использованием этого подхода.
 
 ## Несколько копий React {#multiple-copies-of-react}
 
