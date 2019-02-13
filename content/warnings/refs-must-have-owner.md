@@ -16,7 +16,7 @@ permalink: warnings/refs-must-have-owner.html
 >
 > addComponentAsRefTo(...): Only a ReactOwner can have refs. You might be adding a ref to a component that was not created inside a component's `render` method, or you have multiple copies of React loaded.
 
-Обычно это означает одну из трёх вещей:
+Обычно это означает одно из трёх:
 
 - Вы пытаетесь добавить `ref` в функциональный компонент.
 - Вы пытаетесь добавить `ref` к элементу, который был создан вне метода `render()` текущего компонента.
