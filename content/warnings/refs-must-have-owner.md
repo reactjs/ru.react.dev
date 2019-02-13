@@ -1,5 +1,5 @@
 ---
-title: Предупреждение: У рефа должен быть хозяин
+title: Предупреждение: У рефа должен быть владелец
 layout: single
 permalink: warnings/refs-must-have-owner.html
 ---
