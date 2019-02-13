@@ -59,6 +59,7 @@
 | attribute | атрибут |
 | batch | группа обновлений |
 | batching | группировка |
+| bind | привязка |
 | bug | баг, дефект |
 | bundler | бандлер |
 | callback | колбэк |
