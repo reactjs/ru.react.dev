@@ -9,15 +9,15 @@ function logProps(Component) {
       // highlight-next-line
       const {forwardedRef, ...rest} = this.props;
 
-      // Assign the custom prop "forwardedRef" as a ref
+      // Передаём в качестве рефа проп "forwardedRef"
       // highlight-next-line
       return <Component ref={forwardedRef} {...rest} />;
     }
   }
 
-  // Note the second param "ref" provided by React.forwardRef.
-  // We can pass it along to LogProps as a regular prop, e.g. "forwardedRef"
-  // And it can then be attached to the Component.
+  // Обратите внимание, что React.forwardRef передает "ref" вторым аргументом.
+  // Мы можем передать его дальше как проп, например, "forwardedRef",
+  // а потом привязать его к компоненту.
   // highlight-range{1-3}
   return React.forwardRef((props, ref) => {
     return <LogProps {...props} forwardedRef={ref} />;
