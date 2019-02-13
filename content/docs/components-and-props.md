@@ -89,11 +89,7 @@ ReactDOM.render(
 >
 >Если компонент начинается с маленькой буквы, React принимает его за DOM-тег. Например, `<div />` это div-тег из HTML, а `<Welcome />` это уже наш компонент `Welcome`, который должен быть в области видимости.
 >
-<<<<<<< HEAD
 >Чтобы узнать больше про это соглашение, прочитайте [Углублённое изучение JSX](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
-=======
->To learn more about the reasoning behind this convention, please read [JSX In Depth](/docs/jsx-in-depth.html#user-defined-components-must-be-capitalized).
->>>>>>> 6dea652a709af39e90a88be45f0f45849ab29d17
 
 ## Композиция компонентов {#composing-components}
 
