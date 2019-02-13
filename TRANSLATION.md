@@ -70,6 +70,7 @@
 | commit | фиксация |
 | context | контекст |
 | (un)controlled component | (не)контролируемый компонент |
+| cross-cutting concerns | cквозная функциональность |
 | custom hooks | пользовательские хуки |
 | debugging | отладка |
 | development | разработка |
