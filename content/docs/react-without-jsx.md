@@ -56,4 +56,4 @@ ReactDOM.render(
 
 Если вы примените эту сокращенную форму для `React.createElement`, то использование React без JSX станет почти таким же удобным, как вы привыкли.
 
-Кроме того, вы можете посмотреть на такие открытые проекты как [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript) и [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers), которые предлагают более краткий синтаксис.
+Кроме того, вы можете посмотреть на такие проекты как [`react-hyperscript`](https://github.com/mlmorg/react-hyperscript) и [`hyperscript-helpers`](https://github.com/ohanhi/hyperscript-helpers), которые предлагают короткий синтаксис.
