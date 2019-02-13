@@ -57,12 +57,7 @@ The documentation is divided into several sections with a different tone and pur
 
 ## Translation
 
-<<<<<<< HEAD
-If you are interesting in translating `ru.reactjs.org`, please see the current translation efforts at [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/).
-=======
-If you are interested in translating `reactjs.org`, please see the current translation efforts at [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/).
-
->>>>>>> f767be60c2efd49115b24c4dc6a17d666e4bc263
+If you are interested in translating `ru.reactjs.org`, please see the current translation efforts at [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/).
 
 If your language does not have a translation and you would like to create one, please follow the instructions at [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg).
 
