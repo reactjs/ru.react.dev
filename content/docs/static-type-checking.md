@@ -1,44 +1,46 @@
 ---
 id: static-type-checking
-title: Static Type Checking
+title: Статическая типизация
 permalink: docs/static-type-checking.html
 prev: typechecking-with-prototypes.html
 next: refs-and-the-dom.html
 ---
 
-Static type checkers like [Flow](https://flow.org/) and [TypeScript](https://www.typescriptlang.org/) identify certain types of problems before you even run your code. They can also improve developer workflow by adding features like auto-completion. For this reason, we recommend using Flow or TypeScript instead of `PropTypes` for larger code bases.
+Инструменты для статической типизации, такие как [Flow](https://flow.org/) или [TypeScript](https://www.typescriptlang.org/), позволяют отлавливать некоторые потенциальные ошибки еще до исполнения кода. Кроме того, они делают процесс разработки более удобным, добавляя такие возможности, как авдодополнение. Для приложений с большой кодовой базой мы рекомендуем использовать Flow или TypeScript вместо `PropTypes`.
 
 ## Flow {#flow}
 
-[Flow](https://flow.org/) is a static type checker for your JavaScript code. It is developed at Facebook and is often used with React. It lets you annotate the variables, functions, and React components with a special type syntax, and catch mistakes early. You can read an [introduction to Flow](https://flow.org/en/docs/getting-started/) to learn its basics.
+[Flow](https://flow.org/) — это библиотека для статической типизации JavaScript, разработанная в Facebook и часто применяемая в связке с React. Flow расширяет возможности JavaScript, добавляя аннотации типов для переменных, функций и React компонентов. Ознакомиться с основами Flow можно на сайте [официальной документации](https://flow.org/en/docs/getting-started/).
 
-To use Flow, you need to:
+Чтобы начать пользоваться возможностями Флоу, необходимо:
 
-* Add Flow to your project as a dependency.
-* Ensure that Flow syntax is stripped from the compiled code.
-* Add type annotations and run Flow to check them.
+* Установить Flow как локальную зависимость в ваш проект.
+* Убедиться, что аннотации Flow удаляются из кода при его компиляции.
+* Добавить несколько аннотаций типов и запустить Flow для их проверки.
 
-We will explain these steps below in detail.
+Рассмотрим подробнее каждый из этих шагов.
 
-### Adding Flow to a Project {#adding-flow-to-a-project}
+### Добавление Flow в проект {#adding-flow-to-a-project}
 
-First, navigate to your project directory in the terminal. You will need to run the following command:
+Убедитесь, что вы находитесь в директории вашего проекта, после чего запустите одну из следующих команд:
 
-If you use [Yarn](https://yarnpkg.com/), run:
+Если вы используете [Yarn](https://yarnpkg.com/):
 
 ```bash
 yarn add --dev flow-bin
 ```
 
-If you use [npm](https://www.npmjs.com/), run:
+Если вы используете [npm](https://www.npmjs.com/):
 
 ```bash
 npm install --save-dev flow-bin
 ```
 
+Последняя версия Flow должна 
+
 This command installs the latest version of Flow into your project.
 
-Now, add `flow` to the `"scripts"` section of your `package.json` to be able to use this from the terminal:
+Далее нужно добавить `flow` в раздел `"scripts"` файла `package.json`:
 
 ```js{4}
 {
@@ -51,23 +53,23 @@ Now, add `flow` to the `"scripts"` section of your `package.json` to be able to 
 }
 ```
 
-Finally, run one of the following commands:
+Теперь мы можем запустить скрипт, прописав в терминале:
 
-If you use [Yarn](https://yarnpkg.com/), run:
+Если вы используете [Yarn](https://yarnpkg.com/):
 
 ```bash
 yarn run flow init
 ```
 
-If you use [npm](https://www.npmjs.com/), run:
+Если вы используете [npm](https://www.npmjs.com/):
 
 ```bash
 npm run flow init
 ```
 
-This command will create a Flow configuration file that you will need to commit.
+Эта команда создаст файл с конфигурацией Flow, который обязательно нужно закоммитить. 
 
-### Stripping Flow Syntax from the Compiled Code {#stripping-flow-syntax-from-the-compiled-code}
+### Удаление аннотаций Flow из скомпилированного кода {#stripping-flow-syntax-from-the-compiled-code}
 
 Flow extends the JavaScript language with a special syntax for type annotations. However, browsers aren't aware of this syntax, so we need to make sure it doesn't end up in the compiled JavaScript bundle that is sent to the browser.
 
