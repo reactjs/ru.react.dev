@@ -14,7 +14,7 @@ prev: hooks-overview.html
 import React, { useState } from 'react';
 
 function Example() {
-  // Обявление новой переменной состояния «count»
+  // Объявление новой переменной состояния «count»
   const [count, setCount] = useState(0);
 
   return (
