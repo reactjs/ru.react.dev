@@ -75,6 +75,7 @@
 | development | разработка |
 | development mode | режим разработки |
 | developer tools | инструменты разработки |
+| display name | имя отображения |
 | DOM container | DOM-контейнер |
 | effect | эффект |
 | error | ошибка |
