@@ -233,7 +233,7 @@ function Example() {
 ```
 
 Такой синтаксис в JavaScript называется
-This JavaScript syntax is called [«разбором массивов (array destructuring)»](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#%D0%A0%D0%B0%D0%B7%D0%B1%D0%BE%D1%80_%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%BE%D0%B2). Он означает, что мы создаём две новые переменные, `fruit` и `setFruit`. Во `fruit` будет записано первое значение, вернувшееся из `useState`, а в `setFruit` — второе, что равносильно такому коду:
+[«деструктуризацией массивов (array destructuring)»](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#%D0%A0%D0%B0%D0%B7%D0%B1%D0%BE%D1%80_%D0%BC%D0%B0%D1%81%D1%81%D0%B8%D0%B2%D0%BE%D0%B2). Он означает, что мы создаём две новые переменные, `fruit` и `setFruit`. Во `fruit` будет записано первое значение, вернувшееся из `useState`, а в `setFruit` — второе, что равносильно такому коду:
 
 ```js
   var fruitStateVariable = useState('банан'); // Возвращает пару значений
