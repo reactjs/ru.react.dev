@@ -264,7 +264,7 @@ onSelect
 
 ### Touch Events {#touch-events}
 
-Название собыий:
+Название событий:
 
 ```
 onTouchCancel onTouchEnd onTouchMove onTouchStart
