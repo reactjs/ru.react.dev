@@ -100,7 +100,7 @@ MyComponent.propTypes = {
   customProp: function(props, propName, componentName) {
     if (!/matchme/.test(props[propName])) {
       return new Error(
-        'Свойство `' + propName + '` компонента' +
+        'Проп `' + propName + '` компонента' +
         ' `' + componentName + '` имеет неправильное значение'
       );
     }
