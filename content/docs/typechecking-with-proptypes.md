@@ -150,7 +150,7 @@ MyComponent.propTypes = {
 
 ### Значения свойств по-умолчанию {#default-prop-values}
 
-Вы можете задать значения по-умолчанию для ваших `props` с помощью специального свойства `defaultProps`:
+Вы можете задать значения по умолчанию для ваших `props` с помощью специального свойства `defaultProps`:
 
 ```javascript
 class Greeting extends React.Component {
