@@ -287,7 +287,7 @@ DOMTouchList touches
 
 ### UI Events {#ui-events}
 
-Название собыий:
+Название событий:
 
 ```
 onScroll
