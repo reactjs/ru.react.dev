@@ -40,7 +40,7 @@ Greeting.propTypes = {
 import PropTypes from 'prop-types';
 
 MyComponent.propTypes = {
-  // Вы можете объявлять свойства конкретного JS типа.
+  // Можно объявить проп на соответствиее определённому JS-типу.
   // По умолчанию это не обязательно.
   optionalArray: PropTypes.array,
   optionalBool: PropTypes.bool,
