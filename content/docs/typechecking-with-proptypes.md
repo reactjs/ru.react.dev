@@ -8,7 +8,7 @@ redirect_from:
 
 > Примечание:
 >
-> С версии React v15.5 `React.PropTypes` были вынесены в отдельный пакет. Так что используйте [библиотеку `prop-types`](https://www.npmjs.com/package/prop-types).
+> С версии React 15.5 `React.PropTypes` были вынесены в отдельный пакет. Так что используйте [библиотеку `prop-types`](https://www.npmjs.com/package/prop-types).
 >
 > Вы можете использовать [codemod скрипт](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes) для обновления вашего кода.
 
