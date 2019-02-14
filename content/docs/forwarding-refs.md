@@ -70,6 +70,6 @@ React-компоненты скрывают свои детали реализа
 
 `embed:forwarding-refs/wrapped-component-with-function-name.js`
 
-Можно даже назначить функции свойство `displayName` и указать в нём какой именно компонент обёрнут в HOC:
+Можно даже назначить функции свойство `displayName` и указать в нём, какой именно компонент обёрнут в HOC:
 
 `embed:forwarding-refs/customized-display-name.js`
