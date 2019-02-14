@@ -161,7 +161,7 @@ class Greeting extends React.Component {
   }
 }
 
-// Задание значений по-умолчанию для пропсов:
+// Задание значений по умолчанию для пропсов:
 Greeting.defaultProps = {
   name: 'Незнакомец'
 };
