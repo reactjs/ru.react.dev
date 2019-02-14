@@ -253,7 +253,7 @@ function Example() {
 
 ```js
 function ExampleWithManyStates() {
-  // Объявим нескользо переменных состояния!
+  // Объявим несколько переменных состояния!
   const [age, setAge] = useState(42);
   const [fruit, setFruit] = useState('банан');
   const [todos, setTodos] = useState([{ text: 'Изучить хуки' }]);
