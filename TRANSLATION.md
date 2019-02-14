@@ -188,6 +188,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | cross-cutting concerns | cквозная функциональность |
 | custom hooks | пользовательские хуки |
 | debugging | отладка |
+| destructuring | деструктуризация |
 | development | разработка |
 | development mode | режим разработки |
 | developer tools | инструменты разработки |
