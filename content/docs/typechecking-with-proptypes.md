@@ -12,7 +12,7 @@ redirect_from:
 >
 > Вы можете использовать [codemod скрипт](/blog/2017/04/07/react-v15.5.0.html#migrating-from-reactproptypes) для обновления вашего кода.
 
-По мере роста вашего приложения вы можете выловить много ошибок с помощью проверки типов. Для некоторых приложений вы можете использовать такие расширения JavaScript как [Flow](https://flow.org/) и [TypeScript](https://www.typescriptlang.org/) для проверки типов во всем коде. Но, даже если вы ими не пользуетесь, React предоставляет встроенные возможности для проверки типов. Для запуска этой проверка на пропсах компонента вам нужно использовать специальное свойство `propTypes`:
+По мере роста вашего приложения вы можете выловить много ошибок с помощью проверки типов. Для этого можно использовать расширения JavaScript вроде [Flow](https://flow.org/) и [TypeScript](https://www.typescriptlang.org/). Но, даже если вы ими не пользуетесь, React предоставляет встроенные возможности для проверки типов. Для запуска этой проверки на пропсах компонента вам нужно использовать специальное свойство `propTypes`:
 
 ```javascript
 import PropTypes from 'prop-types';
@@ -30,7 +30,7 @@ Greeting.propTypes = {
 };
 ```
 
-`PropTypes` предоставляет ряд валидаторов, которые могут могут использоваться для проверки, что получаемые данные валидны. В этом примере мы используем `PropTypes.string`. Когда какое-то свойство имееет невалидное значение, в консоли будет выведено предупреждение. По соображениям производительности `propTypes` проверяются только в режиме разработки.
+`PropTypes` предоставляет ряд валидаторов, которые могут могут использоваться для проверки, что получаемые данные валидны. В примере мы использовали `PropTypes.string`. Когда какое-то свойство имееет невалидное значение, в консоли будет выведено предупреждение. По соображениям производительности `propTypes` проверяются только в режиме разработки.
 
 ### PropTypes {#proptypes}
 
@@ -101,7 +101,7 @@ MyComponent.propTypes = {
     if (!/matchme/.test(props[propName])) {
       return new Error(
         'Свойство `' + propName + '` компонента' +
-        ' `' + componentName + '` Имеем неправильное значение'
+        ' `' + componentName + '` имеет неправильное значение'
       );
     }
   },
@@ -115,8 +115,8 @@ MyComponent.propTypes = {
   customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {
     if (!/matchme/.test(propValue[key])) {
       return new Error(
-        'Invalid prop `' + propFullName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed.'
+        'Свойство `' + propFullName + '` компонента' +
+        ' `' + componentName + '` имеет неправильное значение'
       );
     }
   })
@@ -161,12 +161,12 @@ class Greeting extends React.Component {
   }
 }
 
-// Specifies the default values for props:
+// Задание значений по-умолчанию для пропсов:
 Greeting.defaultProps = {
   name: 'Незнакомец'
 };
 
-// Renders "Hello, Stranger":
+// Отрисует "Привет, Незнакомец":
 ReactDOM.render(
   <Greeting />,
   document.getElementById('example')
