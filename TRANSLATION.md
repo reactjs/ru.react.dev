@@ -235,6 +235,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | reducer | редюсер |
 | ref | реф *(ед. ч.)* |
 | refs | рефы *(мн. ч.)* |
+| ref forwarding | перенаправление рефа |
 | render(ing) | рендер, рендерить, отрендерить |
 | renderer | рендерер (*напр., поверхностный рендерер*) |
 | re-render(ing) | (по контексту) рендер, повторный рендер, последующий рендер, отрендерить снова |
