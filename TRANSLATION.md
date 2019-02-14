@@ -219,6 +219,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | (im)mutability | (им)мутабельность |
 | (un)mount | (раз)монтирование |
 | mutate | мутировать |
+| native | нативный |
 | Note | Примечание |
 | online | онлайн |
 | online playground | онлайн-песочница |
