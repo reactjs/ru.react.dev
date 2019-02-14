@@ -7,7 +7,7 @@ function logProps(Component) {
     return <LogProps {...props} forwardedRef={ref} />;
   }
 
-  // Назначим этому компоненту более понятное имя в инструментах разработки.
+  // Дадим компоненту более понятное имя в инструментах разработки.
   // Например, "ForwardRef(logProps(MyComponent))"
   // highlight-range{1-2}
   const name = Component.displayName || Component.name;
