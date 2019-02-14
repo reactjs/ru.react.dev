@@ -85,7 +85,7 @@ MyComponent.propTypes = {
     fontSize: PropTypes.number
   }),
 
-  // Вы можете добавить к указанию типа флаг `isRequired`,
+  // Можно добавить`isRequired` к любому из приведённому выше типу,
   // чтобы показывать предупреждение,
   // если свойство не передано
   requiredFunc: PropTypes.func.isRequired,
