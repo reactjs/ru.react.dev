@@ -58,7 +58,7 @@ MyComponent.propTypes = {
   // React-элемент
   optionalElement: PropTypes.element,
 
-  // Можно указать, что пропс должен быть экземпляром класса
+  // Можно указать, что проп должен быть экземпляром класса
   // Это будет использовать проверку с `instanceof`
   optionalMessage: PropTypes.instanceOf(Message),
 
