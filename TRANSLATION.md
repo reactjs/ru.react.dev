@@ -243,6 +243,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | (previous/next) section | (предыдущая/следующая) глава *(только в разделе Основные понятия)* |
 | shallow | поверхностное (сравнение, равенство), поверхностный (рендеринг) |
 | side effect | побочный эффект |
+| snapshot | снимок |
 | state | состояние |
 | stateful component | компонент с состоянием |
 | stateless component | компонент без состояния |
