@@ -185,7 +185,7 @@ onChange onInput onInvalid onSubmit
 
 ### Mouse Events {#mouse-events}
 
-Название собыий:
+Название событий:
 
 ```
 onClick onContextMenu onDoubleClick onDrag onDragEnd onDragEnter onDragExit
