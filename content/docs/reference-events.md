@@ -254,7 +254,7 @@ boolean isPrimary
 
 ### Selection Events {#selection-events}
 
-Название собыий:
+Название событий:
 
 ```
 onSelect
