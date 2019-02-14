@@ -41,7 +41,7 @@ import PropTypes from 'prop-types';
 
 MyComponent.propTypes = {
   // Вы можете объявлять свойства конкретного JS типа.
-  // По-умолчанию это не обязательно.
+  // По умолчанию это не обязательно.
   optionalArray: PropTypes.array,
   optionalBool: PropTypes.bool,
   optionalFunc: PropTypes.func,
