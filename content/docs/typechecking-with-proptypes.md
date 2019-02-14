@@ -76,7 +76,7 @@ MyComponent.propTypes = {
   // Массив объектов конкретного типа
   optionalArrayOf: PropTypes.arrayOf(PropTypes.number),
 
-  // Объект, со свойствами конкретного типа
+  // Объект со свойствами конкретного типа
   optionalObjectOf: PropTypes.objectOf(PropTypes.number),
 
   // Объект, подходящий под маску
