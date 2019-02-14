@@ -115,7 +115,7 @@ MyComponent.propTypes = {
   customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {
     if (!/matchme/.test(propValue[key])) {
       return new Error(
-        'Свойство `' + propFullName + '` компонента' +
+        'Проп `' + propFullName + '` компонента' +
         ' `' + componentName + '` имеет неправильное значение'
       );
     }
