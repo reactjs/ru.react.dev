@@ -169,7 +169,7 @@ function Example() {
   <p>Вы кликнули {count} раз(а)</p>
 ```
 
-## Обновление состояние {#updating-state}
+## Обновление состояния {#updating-state}
 
 В классе мы вызываем `this.setState()` когда надо обновить состояние `count`:
 
