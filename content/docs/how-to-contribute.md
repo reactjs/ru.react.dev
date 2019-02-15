@@ -1,6 +1,6 @@
 ---
 id: how-to-contribute
-title: Участие в разработке
+title: Как внести свой вклад?
 layout: contributing
 permalink: docs/how-to-contribute.html
 next: codebase-overview.html
