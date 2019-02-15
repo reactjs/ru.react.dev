@@ -186,7 +186,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | context | контекст |
 | (un)controlled component | (не)контролируемый компонент |
 | cross-cutting concerns | cквозная функциональность |
-| custom hooks | пользовательские хуки |
+| custom | пользовательский (*напр., пользовательские хуки*) |
 | debugging | отладка |
 | destructuring | деструктуризация |
 | development | разработка |
@@ -196,7 +196,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | effect | эффект |
 | error | ошибка |
 | error boundary | предохранитель |
-| escape hatch | лазейка (*напр., императивные лазейки*)
+| escape hatch | лазейка (*напр., императивные лазейки*) |
 | fallback | запасной |
 | feature | возможность |
 | folder | папка |
@@ -204,7 +204,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | function component | функциональный компонент |
 | helper | вспомогательный(ая); *напр., helper function — вспомогательная функция* |
 | Higher-Order Component(s) | Компонент(ы) высшего порядка |
-| hook | хук *(с маленькой буквы)* |
+| hook | хук *(с маленькой буквы)* *(напр., хук эффекта, хук контекста)* |
 | incapsulation | инкапсуляция |
 | incapsulated | инкапсулированный |
 | key | ключ |
