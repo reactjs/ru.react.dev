@@ -6,9 +6,9 @@ category: Reference
 permalink: docs/javascript-environment-requirements.html
 ---
 
-React 16 полагается на типы коллекций [Map](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Map) и [Set](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Set). Если вы поддерживаете старые браузеры и устройства, в которых нет этих типов коллекций (например, IE < 11) или которые имеют несоответствующую реализацию (например, IE 11), вы можете включить глобальный полифил в ваше приложение, например [core-js](https://github.com/zloirock/core-js) или [babel-polyfill](https://babeljs.io/docs/usage/polyfill/).
+React 16 полагается на типы коллекций [Map](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Map) и [Set](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Set). Во многих старых устройствах и браузерах (например, IE < 11) эти типы коллекций отсутствуют. В других же они имеют несоответствующую реализацию (скажем, IE 11). Если вы поддерживаете эти браузеры, то можете включить глобальный полифил в ваше приложение, такой как [core-js](https://github.com/zloirock/core-js) или [babel-polyfill](https://babeljs.io/docs/usage/polyfill/).
 
-Окружение для React 16, использующее core-js для поддержки старых браузеров может выглядеть следующим образом:
+Окружение для React 16, использующее core-js для поддержки старых браузеров, может выглядеть следующим образом:
 
 ```js
 import 'core-js/es6/map';
