@@ -166,7 +166,7 @@ Greeting.defaultProps = {
   name: 'Незнакомец'
 };
 
-// Отрисует "Привет, Незнакомец":
+// Отрендерит "Привет, Незнакомец":
 ReactDOM.render(
   <Greeting />,
   document.getElementById('example')
