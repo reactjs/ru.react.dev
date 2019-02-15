@@ -26,7 +26,7 @@ Button.propTypes = {
 
 ### Не вызвайте PropTypes напрямую {#dont-call-proptypes-directly}
 
-Использование PropTypes любым другим путём, кроме как на React-компонентах, больше не поддерживается:
+Использование PropTypes вне React-компонентов больше не поддерживается:
 
 ```javascript
 var apiShape = PropTypes.shape({
