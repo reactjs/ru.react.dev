@@ -1,11 +1,11 @@
 ---
-title: Invalid ARIA Prop Warning
+title: Предупреждение: некорректный проп ARIA
 layout: single
 permalink: warnings/invalid-aria-prop.html
 ---
 
-The invalid-aria-prop warning will fire if you attempt to render a DOM element with an aria-* prop that does not exist in the Web Accessibility Initiative (WAI) Accessible Rich Internet Application (ARIA) [specification](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties).
+Предупреждение invalid-aria-prop сгенерируется, если вы пытаетесь отрендерить DOM-элемент с пропом aria-*, которого нет в [спецификации](https://www.w3.org/TR/wai-aria-1.1/#states_and_properties) WAI-ARIA (Web Accessibility Initiative — Accessible Rich Internet Applications).
 
-1. If you feel that you are using a valid prop, check the spelling carefully. `aria-labelledby` and `aria-activedescendant` are often misspelled.
+1. Если вам кажется, что используется корректный проп, внимательно проверьте правильность его написания. Часто бывают написаны с ошибками `aria-labelledby` и `aria-activedescendant`.
 
-2. React does not yet recognize the attribute you specified. This will likely be fixed in a future version of React. However, React currently strips all unknown attributes, so specifying them in your React app will not cause them to be rendered
+2. React пока что не распознает указанный вами атрибут. Скорее всего эта проблема будет исправлена в будущей версии React. А на данный момент React удаляет все неизвестные атрибуты, поэтому их присутствие в приложении не приведёт к рендеру.
