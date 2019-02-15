@@ -1,60 +1,60 @@
 ---
-title: Invalid Hook Call Warning
+title: Предупреждение: некорректный вызов хука
 layout: single
 permalink: warnings/invalid-hook-call-warning.html
 ---
 
- You are probably here because you got the following error message:
+Скорее всего, вы перешли на эту страницу, потому что получили следующее сообщение об ошибке:
 
  > Hooks can only be called inside the body of a function component.
 
-There are three common reasons you might be seeing it:
+Есть три распространённые причины, которые могут создать это предупреждение:
 
-1. You might have **mismatching versions** of React and React DOM.
-2. You might be **breaking the [Rules of Hooks](/docs/hooks-rules.html)**.
-3. You might have **more than one copy of React** in the same app.
+1. У вас могут быть **несовпадающие версии** React и React DOM.
+2. Возможно вы **нарушили [правила хуков](/docs/hooks-rules.html)**.
+3. А может быть, у вас есть **более одной копии React** в одном и том же приложении.
 
-Let's look at each of these cases.
+Давайте подробно разберём каждый из этих случаев.
 
-## Mismatching Versions of React and React DOM {#mismatching-versions-of-react-and-react-dom}
+## Несоответствие версий React и React DOM {#mismatching-versions-of-react-and-react-dom}
 
-You might be using a version of `react-dom` (< 16.8.0) or `react-native` (< 0.59) that doesn't yet support Hooks. You can run `npm ls react-dom` or `npm ls react-native` in your application folder to check which version you're using. If you find more than one of them, this might also create problems (more on that below).
+Может быть у вас установлена версия `react-dom` (< 16.8.0) или `react-native` (< 0.59), которая пока не поддерживает хуки. Вы можете выполнить `npm ls react-dom` или `npm ls react-native` в папке приложения, чтобы посмотреть используемую версию. Если окажется, что используется больше одной из них, это также может привести к проблемам (подробнее об этом ниже).
 
-## Breaking the Rules of Hooks {#breaking-the-rules-of-hooks}
+## Нарушение правил хук {#breaking-the-rules-of-hooks}
 
-You can only call Hooks **while React is rendering a function component**:
+Вы можете вызывать хуки **только в случае, когда React рендерит функциональный компонент**:
 
-* ✅ Call them at the top level in the body of a function component.
-* ✅ Call them at the top level in the body of a [custom Hook](/docs/hooks-custom.html).
+* ✅ Вызывайте их на верхнем уровне в теле функционального компонента.
+* ✅ Вызывайте их на верхнем уровне в теле [пользовательского хука](/docs/hooks-custom.html).
 
-**Learn more about this in the [Rules of Hooks](/docs/hooks-rules.html).**
+**Более подробно про это читайте на странице [Правила хуков](/docs/hooks-rules.html).**
 
 ```js{2-3,8-9}
 function Counter() {
-  // ✅ Good: top-level in a function component
+  // ✅ Хорошо: хук на вернем уровне функционального компонента
   const [count, setCount] = useState(0);
   // ...
 }
 
 function useWindowWidth() {
-  // ✅ Good: top-level in a custom Hook
+  // ✅ Хорошо: хук на вернем уровне пользовательского хука
   const [width, setWidth] = useState(window.innerWidth);
   // ...
 }
 ```
 
-To avoid confusion, it’s **not** supported to call Hooks in other cases:
+Во избежании путаницы вызов хуков **не** поддерживается в остальных случаях:
 
-* 🔴 Do not call Hooks in class components.
-* 🔴 Do not call in event handlers.
-* 🔴 Do not call Hooks inside functions passed to `useMemo`, `useReducer`, or `useEffect`.
+* 🔴 Не вызывайте хуки в классовых компонентах.
+* 🔴 Не вызывайте их в обработчиках событий.
+* 🔴 Не вызывайте хуки внутри функций, переданных в `useMemo`, `useReducer` или `useEffect`.
 
-If you break these rules, you might see this error.
+При нарушении перечисленных правил, можно столкнуться с этой ошибкой.
 
 ```js{3-4,11-12,20-21}
 function Bad1() {
   function handleClick() {
-    // 🔴 Bad: inside an event handler (to fix, move it outside!)
+    // 🔴 Плохо: внутри обработчика событий (для исправления переместите его на уровень выше!)
     const theme = useContext(ThemeContext);
   }
   // ...
@@ -62,7 +62,7 @@ function Bad1() {
 
 function Bad2() {
   const style = useMemo(() => {
-    // 🔴 Bad: inside useMemo (to fix, move it outside!)
+    // 🔴 Плохо: использование внутри useMemo (для исправления переместите его на уровень выше!)
     const theme = useContext(ThemeContext);
     return createStyle(theme);
   });
@@ -71,52 +71,51 @@ function Bad2() {
 
 class Bad3 extends React.Component {
   render() {
-    // 🔴 Bad: inside a class component
+    // 🔴 Плохо: использование внутри классового компонента
     useEffect(() => {})
     // ...
   }
 }
 ```
 
-You can use the [`eslint-plugin-react-hooks` plugin](https://www.npmjs.com/package/eslint-plugin-react-hooks) to catch some of these mistakes.
+Можно использовать [плагин `eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks), чтобы перехватить некоторые из указанных выше ошибок.
 
->Note
+>Примечание
 >
->[Custom Hooks](/docs/hooks-custom.html) *may* call other Hooks (that's their whole purpose). This works because custom Hooks are also supposed to only be called while a function component is rendering.
+>[Пользовательские хуки](/docs/hooks-custom.html) *могут* вызывать другие хуки (для этого собственно они и предназначены). Это работает, потому что пользовательские хуки также должны вызываться только во время рендеринга функционального компонента.
 
+## Дублирование React {#duplicate-react}
 
-## Duplicate React {#duplicate-react}
+Для работы хуков импорт `react` должен быть разрешен в том же самом модуле, как и импорт `react` внутри пакета `react-dom`.
 
-In order for Hooks to work, the `react` import from your application code needs to resolve to the same module as the `react` import from inside the `react-dom` package.
+Если эти выражения импорта `react` разрешаются в двух разных объекта экспорта, вы увидите это предупреждение. Так происходит в том случае, если у вас **случайно окажутся две копии** пакета `react`.
 
-If these `react` imports resolve to two different exports objects, you will see this warning. This may happen if you **accidentally end up with two copies** of the `react` package.
-
-If you use Node for package management, you can run this check in your project folder:
+Если вы используете Node для управления пакетами, можете проверить копии пакета, находясь в папке проекта:
 
     npm ls react
 
-If you see more than one React, you'll need to figure out why this happens and fix your dependency tree. For example, maybe a library you're using incorrectly specifies `react` as a dependency (rather than a peer dependency). Until that library is fixed, [Yarn resolutions](https://yarnpkg.com/lang/en/docs/selective-version-resolutions/) is one possible workaround.
+Если при выполнении этой команды выводится более одной версии React, нужно выяснить, почему подобное происходит, а потом исправить дерево зависимостей. Например, возможно, библиотека, которую вы используете неправильно, указывает `react` в качестве зависимости (а не как независимой (peer) зависимости). А пока эта библиотека не будет исправлена, [разрешения Yarn](https://yarnpkg.com/lang/en/docs/selective-version-resolutions/) -- одно из возможных временных решений.
 
-You can also try to debug this problem by adding some logs and restarting your development server:
+Вы также можете попробовать отладить эту проблему, добавив логирование и перезапустив сервер разработки:
 
 ```js
-// Add this in node_modules/react-dom/index.js
+// Добавьте это в файл node_modules/react-dom/index.js
 window.React1 = require('react');
 
-// Add this in your component file
+// Добавьте это в ваш файл с компонентом
 require('react-dom');
 window.React2 = require('react');
 console.log(window.React1 === window.React2);
 ```
 
-If it prints `false` then you might have two Reacts and need to figure out why that happened. [This issue](https://github.com/facebook/react/issues/13991) includes some common reasons encountered by the community.
+Если код выше выводит `false`, то у вас может быть две версии React, а значит требуется выяснить, как это произошло. [Данное ишью](https://github.com/facebook/react/issues/13991) содержит некоторые распространённые причины, которые возникли у сообщества.
 
-This problem can also come up when you use `npm link` or an equivalent. In that case, your bundler might "see" two Reacts — one in application folder and one in your library folder. Assuming `myapp` and `mylib` are sibling folders, one possible fix is to run `npm link ../myapp/node_modules/react` from `mylib`. This should make the library use the application's React copy.
+Эта проблема также может возникнуть при использовании команды `npm link` или ей подобной. В таком случае ваш бандлер может «увидеть» два пакета React -- один в папке приложения, а другой в папке вашей библиотеки. При условии, что `myapp` и `mylib` -- папки, находящиеся на одном уровне, выполнение `npm link ../myapp/node_modules/react` из-под папки `mylib` может помочь вам. Это должно заставить библиотеку использовать React-копию приложения.
 
->Note
+>Примечание
 >
->In general, React supports using multiple independent copies on one page (for example, if an app and a third-party widget both use it). It only breaks if `require('react')` resolves differently between the component and the `react-dom` copy it was rendered with.
+>В целом, React поддерживает использование нескольких независимых копий на одной странице (например, при одновременном использовании приложения и стороннего виджета). Корректная работа нарушается, если выражение `require('react')` разрешается  по-разному между компонентом и копией `react-dom`, при которой он был отрендерен.
 
-## Other Causes {#other-causes}
+## Другие случаи {#other-causes}
 
-If none of this worked, please comment in [this issue](https://github.com/facebook/react/issues/13991) and we'll try to help. Try to create a small reproducing example — you might discover the problem as you're doing it.
+Если ни одно из решений не помогло, пожалуйста, оставьте комментарий в [этом ишью](https://github.com/facebook/react/issues/13991), после чего мы постараемся вам помочь. Попробуйте также создать небольшой пример, который воспроизводит вашу проблему.
