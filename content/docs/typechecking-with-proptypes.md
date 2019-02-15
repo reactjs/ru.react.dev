@@ -59,7 +59,7 @@ MyComponent.propTypes = {
   optionalElement: PropTypes.element,
 
   // Можно указать, что проп должен быть экземпляром класса
-  // Это будет использовать проверку с `instanceof`
+  // Для этого используется оператор `instanceof`.
   optionalMessage: PropTypes.instanceOf(Message),
 
   // Вы можете задать ограничение конкретными значениями
