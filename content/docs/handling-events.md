@@ -17,7 +17,7 @@ redirect_from:
 
 ```html
 <button onclick="activateLasers()">
-  Activate Lasers
+  Активировать лазеры
 </button>
 ```
 
@@ -25,15 +25,15 @@ redirect_from:
 
 ```js{1}
 <button onClick={activateLasers}>
-  Activate Lasers
+  Активировать лазеры
 </button>
 ```
 
 Еще одно отличие — в React нельзя отменить событие, вернув `false`. Нужно явно вызвать `preventDefault`. Например, в обычном HTML, чтобы отменить событие у ссылки, которое открывает новую страницу, можно написать:
 
 ```html
-<a href="#" onclick="console.log('The link was clicked.'); return false">
-  Click me
+<a href="#" onclick="console.log('По ссылке кликнули.'); return false">
+  Кликни меня
 </a>
 ```
 
@@ -43,12 +43,12 @@ redirect_from:
 function ActionLink() {
   function handleClick(e) {
     e.preventDefault();
-    console.log('The link was clicked.');
+    console.log('По ссылке кликнули.');
   }
 
   return (
     <a href="#" onClick={handleClick}>
-      Click me
+      Кликни меня
     </a>
   );
 }
@@ -79,7 +79,7 @@ class Toggle extends React.Component {
   render() {
     return (
       <button onClick={this.handleClick}>
-        {this.state.isToggleOn ? 'ON' : 'OFF'}
+        {this.state.isToggleOn ? 'Включено' : 'Выключено'}
       </button>
     );
   }
@@ -104,13 +104,13 @@ class LoggingButton extends React.Component {
   // Такой синтаксис гарантирует, что `this` привязан к handleClick.
   // Предупреждение: это экспериментальный синтаксис
   handleClick = () => {
-    console.log('this is:', this);
+    console.log('значение this:', this);
   }
 
   render() {
     return (
       <button onClick={this.handleClick}>
-        Click me
+        Кликни по мне
       </button>
     );
   }
@@ -124,14 +124,14 @@ class LoggingButton extends React.Component {
 ```js{7-9}
 class LoggingButton extends React.Component {
   handleClick() {
-    console.log('this is:', this);
+    console.log('значение this:', this);
   }
 
   render() {
     // Такой синтаксис гарантирует, что `this` привязан к handleClick.
     return (
       <button onClick={(e) => this.handleClick(e)}>
-        Click me
+        Кликни по мне
       </button>
     );
   }
@@ -145,8 +145,8 @@ class LoggingButton extends React.Component {
 Внутри цикла часто нужно передать дополнительный аргумент в обработчик события. Например, если `id` — это идентификатор строки, можно использовать следующие варианты:
 
 ```js
-<button onClick={(e) => this.deleteRow(id, e)}>Delete Row</button>
-<button onClick={this.deleteRow.bind(this, id)}>Delete Row</button>
+<button onClick={(e) => this.deleteRow(id, e)}>Удалить строку</button>
+<button onClick={this.deleteRow.bind(this, id)}>Удалить строку</button>
 ```
 
 Две строки выше — эквивалентны, и используют [стрелочные функции](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions) и [`Function.prototype.bind`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) соответственно.
