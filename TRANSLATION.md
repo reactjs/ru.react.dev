@@ -256,6 +256,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | tag | тег |
 | template literals | шаблонные строки |
 | Tip | Совет |
+| TLDR | Вкратце |
 | Try it on CodePen | Посмотреть на CodePen |
 | tutorial | введение |
 | unidirectional data flow | однонаправленный поток данных |
