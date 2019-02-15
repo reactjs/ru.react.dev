@@ -226,6 +226,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | online | онлайн |
 | online playground | онлайн-песочница |
 | paint | отрисовка, перерисовка |
+| persistent | персистентность, персистентный |
 | phase | этап (*напр., этап рендеринга, этап фиксации*) |
 | prop | проп *(ед. ч.)* |
 | props | пропсы *(мн. ч.)* |
