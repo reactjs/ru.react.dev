@@ -37,7 +37,7 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    // Можно так же сохранить информацию об ошибке в соответствующую службу журнала ошибок
+    // Можно также сохранить информацию об ошибке в соответствующую службу журнала ошибок
     logErrorToMyService(error, info);
   }
 
