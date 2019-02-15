@@ -101,7 +101,7 @@ class ErrorBoundary extends React.Component {
 
 > Примечание
 >
-> Имена компонентов, выводимые в их стеке вызовов, определяются свойством [`Function.name`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/name). Если ваше приложение поддерживает более старые браузеры и устройства, которые могут ещё не предоставлять его нативно (напр. IE 11), рассмотрите возможность включения полифилла `Function.name` в бандл вашего приложения, например [`function.name-polyfill`](https://github.com/JamesMGreene/Function.name). Альтернативно, вы можете явным образом задать проп [`displayName`](/docs/react-component.html#displayname) в каждом из ваших компонентов.
+> Имена компонентов, выводимые в их стеке вызовов, определяются свойством [`Function.name`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/name). Если ваше приложение поддерживает более старые браузеры и устройства, которые могут ещё не предоставлять его нативно (например, IE 11), рассмотрите возможность включения полифилла `Function.name` в бандл вашего приложения, например [`function.name-polyfill`](https://github.com/JamesMGreene/Function.name). В качстве альтернативы, вы можете явным образом задать проп [`displayName`](/docs/react-component.html#displayname) в каждом из ваших компонентов.
 
 
 ## А как насчёт try/catch? {#how-about-trycatch}
