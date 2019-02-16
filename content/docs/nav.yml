@@ -1,32 +1,32 @@
-- title: Installation
+- title: Установка
   items:
     - id: getting-started
-      title: Getting Started
+      title: Начало работы
     - id: add-react-to-a-website
       title: Add React to a Website
     - id: create-a-new-react-app
       title: Create a New React App
     - id: cdn-links
-      title: CDN Links
-- title: Main Concepts
+      title: Ссылки на CDN
+- title: Основные понятия
   isOrdered: true
   items:
     - id: hello-world
       title: Hello World
     - id: introducing-jsx
-      title: Introducing JSX
+      title: Знакомство с JSX
     - id: rendering-elements
-      title: Rendering Elements
+      title: Рендеринг элементов
     - id: components-and-props
-      title: Components and Props
+      title: Компоненты и пропсы
     - id: state-and-lifecycle
-      title: State and Lifecycle
+      title: Состояние и жизненный цикл
     - id: handling-events
       title: Handling Events
     - id: conditional-rendering
-      title: Conditional Rendering
+      title: Условный рендеринг
     - id: lists-and-keys
-      title: Lists and Keys
+      title: Списки и ключи
     - id: forms
       title: Forms
     - id: lifting-state-up
@@ -34,8 +34,8 @@
     - id: composition-vs-inheritance
       title: Composition vs Inheritance
     - id: thinking-in-react
-      title: Thinking In React
-- title: Advanced Guides
+      title: Философия React
+- title: Продвинутые темы
   items:
     - id: accessibility
       title: Accessibility
@@ -62,7 +62,7 @@
     - id: react-without-es6
       title: React Without ES6
     - id: react-without-jsx
-      title: React Without JSX
+      title: React без JSX
     - id: reconciliation
       title: Reconciliation
     - id: refs-and-the-dom
@@ -79,7 +79,7 @@
       title: Uncontrolled Components
     - id: web-components
       title: Web Components
-- title: API Reference
+- title: Справочник API
   items:
     - id: react-api
       title: React
@@ -97,14 +97,14 @@
     - id: test-utils
       title: Test Utilities
     - id: shallow-renderer
-      title: Shallow Renderer
+      title: Поверхностный рендерер
     - id: test-renderer
       title: Test Renderer
     - id: javascript-environment-requirements
-      title: JS Environment Requirements
+      title: Требования к среде JS
     - id: glossary
       title: Glossary
-- title: Hooks (New)
+- title: Хуки (Новое)
   isOrdered: true
   items:
       - id: hooks-intro
@@ -123,7 +123,7 @@
         title: Hooks API Reference
       - id: hooks-faq
         title: Hooks FAQ
-- title: Contributing
+- title: Участие в проекте
   items:
   - id: how-to-contribute
     title: How to Contribute
@@ -136,9 +136,9 @@
 - title: FAQ
   items:
     - id: faq-ajax
-      title: AJAX and APIs
+      title: AJAX и обращение к API
     - id: faq-build
-      title: Babel, JSX, and Build Steps
+      title: Babel, JSX и этапы сборки
     - id: faq-functions
       title: Passing Functions to Components
     - id: faq-state

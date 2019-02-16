@@ -1,13 +1,13 @@
-
-
 <!--
+Прежде чем создавать пулреквест, пожалуйста, прочтите полностью правила перевода по ссылке ниже и поправьте свой перевод:
 
-Thank you for the PR! Contributors like you keep React awesome!
+https://github.com/reactjs/ru.reactjs.org/blob/master/TRANSLATION.md
 
-Please see the Contribution Guide for guidelines:
+ВНИМАНИЕ: 90% переводов страдают от одной и той же проблемы: нагромождения существительных.
+Пройдитесь по переводу и поправьте его *сейчас*, чтобы не тратить время на ревью.
 
-https://github.com/reactjs/reactjs.org/blob/master/CONTRIBUTING.md
+Пример «до»: «Объявление переменной и использование её в `if`-выражении это вполне рабочий вариант условного рендеринга.»
+Пример «после»: «Нет ничего плохого в том, чтобы объявить переменную и условно рендерить компонент `if`-выражением.»
 
-If your PR references an existing issue, please add the issue number below
-
+Берегите глаголы!
 -->
