@@ -59,7 +59,7 @@ The documentation is divided into several sections with a different tone and pur
 
 If you are interested in translating `ru.reactjs.org`, please see the current translation efforts at [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/).
 
-If your language does not have a translation and you would like to create one, please follow the instructions at [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#translating-reactjsorg).
+If your language does not have a translation and you would like to create one, please follow the instructions at [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#reactjsorg-translation).
 
 ## Troubleshooting
 
