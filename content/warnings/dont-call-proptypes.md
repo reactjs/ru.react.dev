@@ -59,7 +59,7 @@ Button.propTypes = {
 
 ### Исправление ошибочного срабатывания в сторонних PropTypes {#fixing-the-false-positive-in-third-party-proptypes}
 
-Если вы автор сторонней библиотеки PropTypes и предоставляете пользователям обёртку над встроенными в React PropTypes, они могут увидеть это предупреждение. Это происходит потому, что React не видит последний «секретный» аргумент, который [передаётся](https://github.com/facebook/react/pull/7132), чтобы определять вызовы PropTypes вручную.
+Если вы автор сторонней библиотеки PropTypes и предоставляете пользователям обёртку над встроенными в React PropTypes, они могут увидеть это предупреждение. Это происходит из-за того, что React не видит последний «секретный» аргумент, который [передаётся](https://github.com/facebook/react/pull/7132), чтобы определять вызовы PropTypes вручную.
 
 А теперь перейдём к тому, как исправить предупреждение. В качестве примера будем использовать `deprecated` из библиотеки [react-bootstrap/react-prop-types](https://github.com/react-bootstrap/react-prop-types/blob/0d1cd3a49a93e513325e3258b28a82ce7d38e690/src/deprecated.js). Текущая реализация передаёт только аргументы `props`, `propName` и `componentName`:
 
