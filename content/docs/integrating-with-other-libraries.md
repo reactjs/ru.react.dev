@@ -1,26 +1,26 @@
 ---
-id: integrating-with-other-libraries
+id: Взаимодествие со сторонними библиотеками
 title: Integrating with Other Libraries
 permalink: docs/integrating-with-other-libraries.html
 ---
 
-React can be used in any web application. It can be embedded in other applications and, with a little care, other applications can be embedded in React. This guide will examine some of the more common use cases, focusing on integration with [jQuery](https://jquery.com/) and [Backbone](http://backbonejs.org/), but the same ideas can be applied to integrating components with any existing code.
+React может использоваться в любом веб-приложении. Он может быть встроен в другие приложения, и с некоторыми оговорками другие приложения могут встраиваться в React. Это руководство рассматривает некоторые общие случаи, с упором на интеграцию с [jQuery](https://jquery.com/) и [Backbone](http://backbonejs.org). Те же подходы могут использоваться для интеграции компонентов с любым существующим кодом.
 
-## Integrating with DOM Manipulation Plugins {#integrating-with-dom-manipulation-plugins}
+## Интеграция с плагинами, изменяющими DOM {#integrating-with-dom-manipulation-plugins}
 
-React is unaware of changes made to the DOM outside of React. It determines updates based on its own internal representation, and if the same DOM nodes are manipulated by another library, React gets confused and has no way to recover.
+React не значет об изменениях DOM, которые сделаны вне React. Он определяет обновления на основе своего внутреннего представления, и изменение тех же DOM узлов другими библиотеками сбивает React c толку.
 
-This does not mean it is impossible or even necessarily difficult to combine React with other ways of affecting the DOM, you just have to be mindful of what each is doing.
+Это не означает, что соединить React с другими инструментами работы с DOM сложно или невозможно. Просто нужно помнить, за что отвечает каждый инструмент.
 
-The easiest way to avoid conflicts is to prevent the React component from updating. You can do this by rendering elements that React has no reason to update, like an empty `<div />`.
+Самый простой способ избежать конфликтов -- предотвратить обновление React компонента. Это можно сделать отрендерив элемент, который не должен обновляться React, например пустой `<div />`.
 
-### How to Approach the Problem {#how-to-approach-the-problem}
+### Как подступиться к проблеме {#how-to-approach-the-problem}
 
-To demonstrate this, let's sketch out a wrapper for a generic jQuery plugin.
+Для демонстрации давайте набросаем обертку вокруг обобщенного jQuery плагина.
 
-We will attach a [ref](/docs/refs-and-the-dom.html) to the root DOM element. Inside `componentDidMount`, we will get a reference to it so we can pass it to the jQuery plugin.
+Мы установим [реф](/docs/refs-and-the-dom.html) на корневой DOM-элемент. Внутри `componentDidMount` мы получим ссылку и передадим ее в jQuery плагин.
 
-To prevent React from touching the DOM after mounting, we will return an empty `<div />` from the `render()` method. The `<div />` element has no properties or children, so React has no reason to update it, leaving the jQuery plugin free to manage that part of the DOM:
+Чтобы React не трогал DOM после монтирования, мы вернем пустой `<div />` из метода `render()`. Элемент `<div />` не имеет ни свойств, ни дочерних компонентов, так что для React нет никаких причин его обновлять. Это дает jQuery полную свободу управления этой частью DOM: 
 
 ```js{3,4,8,12}
 class SomePlugin extends React.Component {
@@ -39,7 +39,7 @@ class SomePlugin extends React.Component {
 }
 ```
 
-Note that we defined both `componentDidMount` and `componentWillUnmount` [lifecycle methods](/docs/react-component.html#the-component-lifecycle). Many jQuery plugins attach event listeners to the DOM so it's important to detach them in `componentWillUnmount`. If the plugin does not provide a method for cleanup, you will probably have to provide your own, remembering to remove any event listeners the plugin registered to prevent memory leaks.
+Заметьте, что мы объявили два [метода жизненного цикла](/docs/react-component.html#the-component-lifecycle) - и `componentDidMount` и `componentWillUnmount`. Многие jQuery плагина добавляют обработчики событий для DOM, поэтмоу важно отключать их внутри `componentWillUnmount`. Если плагин не предоставляет метод для очистки, то, возможно, вам придется написать свой. Помните об удалении обработчиков события, добавленных плагином, чтобы избежать утечек памяти.
 
 ### Integrating with jQuery Chosen Plugin {#integrating-with-jquery-chosen-plugin}
 
