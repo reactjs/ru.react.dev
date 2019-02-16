@@ -31,7 +31,7 @@ render() {
 
 ```js{6}
 render() {
-  // React *не* создает новый div. Он рендерит дочерние элементы в `domNode`.
+  // React *не* создаёт новый div. Он рендерит дочерние элементы в `domNode`.
   // `domNode` — это любой валидный DOM узел, находящийся в любом месте в DOM.
   return ReactDOM.createPortal(
     this.props.children,
