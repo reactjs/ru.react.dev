@@ -6,15 +6,15 @@ prev: typechecking-with-prototypes.html
 next: refs-and-the-dom.html
 ---
 
-Инструменты для статической типизации, такие как [Flow](https://flow.org/) или [TypeScript](https://www.typescriptlang.org/), позволяют отлавливать некоторые потенциальные ошибки еще до исполнения кода. Кроме того, они делают процесс разработки более удобным, добавляя такие возможности, как авдодополнение. Для приложений с большой кодовой базой мы рекомендуем использовать Flow или TypeScript вместо `PropTypes`.
+Инструменты для статической типизации, такие как [Flow](https://flow.org/) или [TypeScript](https://www.typescriptlang.org/), позволяют отлавливать большую часть ошибок еще до исполнения кода. Кроме того, они существенно улучшают процессы разработки, добавляя такие возможности, как авдодополнение. Для приложений с большой кодовой базой мы рекомендуем использовать Flow или TypeScript вместо `PropTypes`.
 
 ## Flow {#flow}
 
-[Flow](https://flow.org/) — это библиотека для статической типизации JavaScript, разработанная в Facebook и часто применяемая в связке с React. Flow расширяет возможности JavaScript, добавляя аннотации типов для переменных, функций и React компонентов. Ознакомиться с основами Flow можно на сайте [официальной документации](https://flow.org/en/docs/getting-started/).
+[Flow](https://flow.org/) — это библиотека для статической типизации JavaScript, разработанная в Facebook и часто применяемая в связке с React. Flow расширяет возможности JavaScript, добавляя аннотации типов для переменных, функций и React компонентов. Ознакомиться с основами Flow можно на странице [официальной документации](https://flow.org/en/docs/getting-started/).
 
-Чтобы начать пользоваться возможностями Флоу, необходимо:
+Чтобы начать пользоваться возможностями Флоу необходимо:
 
-* Установить Flow как локальную зависимость в ваш проект.
+* Установить Flow как локальную зависимость проекта.
 * Убедиться, что аннотации Flow удаляются из кода при его компиляции.
 * Добавить несколько аннотаций типов и запустить Flow для их проверки.
 
@@ -36,9 +36,7 @@ yarn add --dev flow-bin
 npm install --save-dev flow-bin
 ```
 
-Последняя версия Flow должна 
-
-This command installs the latest version of Flow into your project.
+Эти команды установят последнюю версию Flow в качестве локальной зависимости вашего проекта.
 
 Далее нужно добавить `flow` в раздел `"scripts"` файла `package.json`:
 
@@ -53,7 +51,7 @@ This command installs the latest version of Flow into your project.
 }
 ```
 
-Теперь мы можем запустить скрипт, прописав в терминале:
+Теперь можно запустить скрипт, прописав в терминале:
 
 Если вы используете [Yarn](https://yarnpkg.com/):
 
@@ -67,39 +65,37 @@ yarn run flow init
 npm run flow init
 ```
 
-Эта команда создаст файл с конфигурацией Flow, который обязательно нужно закоммитить. 
+Эти команды создадут файл с исходной конфигурацией Flow, который обязательно нужно закоммитить. 
 
 ### Удаление аннотаций Flow из скомпилированного кода {#stripping-flow-syntax-from-the-compiled-code}
 
-Flow extends the JavaScript language with a special syntax for type annotations. However, browsers aren't aware of this syntax, so we need to make sure it doesn't end up in the compiled JavaScript bundle that is sent to the browser.
+Flow дополняет JavaScript собственным синтаксисом для указания типов, который не поддерживается браузерами. Для того, чтобы код работал, нужно убедиться в том, что аннотации Flow корректно удаляются из скомипилированного JavaScript бандла.
 
-The exact way to do this depends on the tools you use to compile JavaScript.
+В зависимости от того, какими инструментами для сборки JavaScript вы пользуетесь, для этого есть несколько способов.
 
 #### Create React App {#create-react-app}
 
-If your project was set up using [Create React App](https://github.com/facebookincubator/create-react-app), congratulations! The Flow annotations are already being stripped by default so you don't need to do anything else in this step.
+Если для изначальной конфигурации проекта вы выбрали [Create React App](https://github.com/facebookincubator/create-react-app), вам ничего не нужно делать! Проект уже настроен должным образом и аннотации Flow должны удаляться при сборке проекта.
 
 #### Babel {#babel}
 
->Note:
+>Примечание:
 >
->These instructions are *not* for Create React App users. Even though Create React App uses Babel under the hood, it is already configured to understand Flow. Only follow this step if you *don't* use Create React App.
+>Дальнейшие инструкции рассчитаны на тех, кто *не использует* Create React App, т.к. в нем уже есть все необходимые настройки для работы с Flow.
 
-If you manually configured Babel for your project, you will need to install a special preset for Flow.
-
-If you use Yarn, run:
+Если для своего проекте вы самостоятельно настраивали Babel, нужно установить специальный пресет для работы с Flow:
 
 ```bash
 yarn add --dev babel-preset-flow
 ```
 
-If you use npm, run:
+Или через `npm`:
 
 ```bash
 npm install --save-dev babel-preset-flow
 ```
 
-Then add the `flow` preset to your [Babel configuration](https://babeljs.io/docs/usage/babelrc/). For example, if you configure Babel through `.babelrc` file, it could look like this:
+Затем добавьте установленный пресет `flow` в свою [конфигурацю Babel](https://babeljs.io/docs/usage/babelrc/). Например так, если вы используете конфигурационный файл `.babelrc`:
 
 ```js{3}
 {
@@ -112,48 +108,48 @@ Then add the `flow` preset to your [Babel configuration](https://babeljs.io/docs
 
 This will let you use the Flow syntax in your code.
 
->Note:
+>Примечание:
 >
->Flow does not require the `react` preset, but they are often used together. Flow itself understands JSX syntax out of the box.
+>Для работы с Flow не нужно отдельно устанавливать пресет `react` — Flow уже понимает JSX синтаксис. Тем не менее, часто используют оба пресета одновременно.
 
-#### Other Build Setups {#other-build-setups}
+#### Другие инструменты сборки {#other-build-setups}
 
-If you don't use either Create React App or Babel, you can use [flow-remove-types](https://github.com/flowtype/flow-remove-types) to strip the type annotations.
+Для удаления аннотаций Flow существует отдельная библиотека: [flow-remove-types](https://github.com/flowtype/flow-remove-types). Она может пригодиться, если вы пользуетесь другими инструментами для сборки проекта.
 
-### Running Flow {#running-flow}
+### Запуск Flow {#running-flow}
 
-If you followed the instructions above, you should be able to run Flow for the first time.
+Если все было сделано правильно, можно попробовать запустить процесс Flow. 
 
 ```bash
 yarn flow
 ```
 
-If you use npm, run:
+Или при помощи npm:
 
 ```bash
 npm run flow
 ```
 
-You should see a message like:
+Вы должны увидеть примерно такое сообщение в терминале:
 
 ```
 No errors!
 ✨  Done in 0.17s.
 ```
 
-### Adding Flow Type Annotations {#adding-flow-type-annotations}
+### Добавление аннотаций типов {#adding-flow-type-annotations}
 
-By default, Flow only checks the files that include this annotation:
+По умолчанию, Flow проверяет только файлы, содержащие специальную аннотацию (обычно ее указывают в самом начале файла):
 
 ```js
 // @flow
 ```
 
-Typically it is placed at the top of a file. Try adding it to some files in your project and run `yarn flow` or `npm run flow` to see if Flow already found any issues.
+Попробуйте добавить эту аннотацию в некоторые файлы вашего проекта, а затем запустить скрипт `yarn flow` или `npm run flow` и посмотреть, найдет ли Flow какие-нибудь ошибки.
 
-There is also [an option](https://flow.org/en/docs/config/options/#toc-all-boolean) to force Flow to check *all* files regardless of the annotation. This can be too noisy for existing projects, but is reasonable for a new project if you want to fully type it with Flow.
+Кроме того, есть [возможность](https://flow.org/en/docs/config/options/#toc-all-boolean) заставить Flow проверять вообще *все* файлы. Если вы переводите на Flow проект, в котором уже есть наработки кода — может возникнуть множество конфликтов, а вот для старта с нуля такая опция может стать неплохим выбором.
 
-Now you're all set! We recommend to check out the following resources to learn more about Flow:
+Все должно работать! Советуем ознакомиться с этими ресурсами и познакомиться с Flow подробнее:
 
 * [Flow Documentation: Type Annotations](https://flow.org/en/docs/types/)
 * [Flow Documentation: Editors](https://flow.org/en/docs/editors/)
