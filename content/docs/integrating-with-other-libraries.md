@@ -196,24 +196,24 @@ class Chosen extends React.Component {
 
 На самом деле, именно так React используется в Facebook. Это позволяет писать приложения на React по-частям и объединять их с существующими генерируемыми сервером шаблонами и другим клиентским кодом.
 
-### Replacing String-Based Rendering with React {#replacing-string-based-rendering-with-react}
+### Замена строковых шаблонов с помощью React {#replacing-string-based-rendering-with-react}
 
-A common pattern in older web applications is to describe chunks of the DOM as a string and insert it into the DOM like so: `$el.html(htmlString)`. These points in a codebase are perfect for introducing React. Just rewrite the string based rendering as a React component.
+В старых веб-приложениях описание частей DOM c помощью строк (вроде `${el.html(htmlString)`}) является распространенным подоходом. Такие моменты прекрасно подходят, для внедрения React. Просто переписываем рендеринг на основе строк в React-компонент.
 
-So the following jQuery implementation...
+Вот такая реализация на jQuery ...
 
 ```js
-$('#container').html('<button id="btn">Say Hello</button>');
+$('#container').html('<button id="btn">Сказать Привет</button>');
 $('#btn').click(function() {
-  alert('Hello!');
+  alert('Привет!');
 });
 ```
 
-...could be rewritten using a React component:
+... может быть переписан на React компонентах:
 
 ```js
 function Button() {
-  return <button id="btn">Say Hello</button>;
+  return <button id="btn">Сказать Привет</button>;
 }
 
 ReactDOM.render(
@@ -221,22 +221,22 @@ ReactDOM.render(
   document.getElementById('container'),
   function() {
     $('#btn').click(function() {
-      alert('Hello!');
+      alert('Привет!');
     });
   }
 );
 ```
 
-From here you could start moving more logic into the component and begin adopting more common React practices. For example, in components it is best not to rely on IDs because the same component can be rendered multiple times. Instead, we will use the [React event system](/docs/handling-events.html) and register the click handler directly on the React `<button>` element:
+А дальше вы можете начать переносить логику внутрь компонента и использовать остальные React-подходы. Например, в компонентах лучше не полагаться на ID, потому что один и тот же компонент может быть отрендерен несколько раз. Вместо этого мы используем [событийную систему React](/docs/handling-events.html) и зарегестрируем обработчик непосредственно на React-элементе `<button>`:
 
 ```js{2,6,9}
 function Button(props) {
-  return <button onClick={props.onClick}>Say Hello</button>;
+  return <button onClick={props.onClick}>Сказать Привет</button>;
 }
 
 function HelloButton() {
   function handleClick() {
-    alert('Hello!');
+    alert('Привет!');
   }
   return <Button onClick={handleClick} />;
 }
@@ -249,7 +249,7 @@ ReactDOM.render(
 
 [**Открыть на CodePen**](http://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
-You can have as many such isolated components as you like, and use `ReactDOM.render()` to render them to different DOM containers. Gradually, as you convert more of your app to React, you will be able to combine them into larger components, and move some of the `ReactDOM.render()` calls up the hierarchy.
+Вы можете завести столько изолированных компонентов, сколько вам захочется. И использовать `ReactDOM.render()` для рендеринга в разные DOM-контейнеры. Постепенно, по мере перевода вашего приложения на React, вы сможете комбинировать их в большие компоненты и переносить вызов `ReactDOM.render()` вверх по структуре.
 
 ### Embedding React in a Backbone View {#embedding-react-in-a-backbone-view}
 
