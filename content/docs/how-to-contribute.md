@@ -161,7 +161,7 @@ yarn link react react-dom
 - [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) - работа с npm-зависимостями React
 - [19:15](https://youtu.be/wUpPsEcGsg8?t=19m15s) - добавление нового функционала
 
-Вот еще одно видео с [выступлением на ReactNYC митапе](https://www.youtube.com/watch?v=GWCcZ6fnpn4). В нём Шон Вонг рассказывает о своём опыте работы над React.
+Вот ещё одно видео с [выступлением на ReactNYC митапе](https://www.youtube.com/watch?v=GWCcZ6fnpn4). В нём Шон Вонг рассказывает о своём опыте работы над React.
 
 ### Рабочее предложение (Request for Comments, RFC) {#request-for-comments-rfc}
 
