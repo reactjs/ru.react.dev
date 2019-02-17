@@ -126,7 +126,7 @@ class Parent extends React.Component {
           Откройте DevTools браузера,
           чтобы убедиться, что кнопка
           не является потомком блока div
-          c onClick обработчиком.
+          c обработчиком onClick.
         </p>
         <Modal>
           <Child />
