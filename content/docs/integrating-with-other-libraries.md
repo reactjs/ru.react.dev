@@ -281,17 +281,17 @@ const ParagraphView = Backbone.View.extend({
 
 Когда компонент удаляется из дерева React, очистка производится автоматически, но т.к. мы удаляем сущность из дерева вручную, мы обязаны вызвать этот метод.
 
-## Integrating with Model Layers {#integrating-with-model-layers}
+## Интеграция со слоем моделей {#integrating-with-model-layers}
 
-While it is generally recommended to use unidirectional data flow such as [React state](/docs/lifting-state-up.html), [Flux](http://facebook.github.io/flux/), or [Redux](http://redux.js.org/), React components can use a model layer from other frameworks and libraries.
+Обычно рекомендуется использовать однонаправленный поток данных, вроде  [React state](/docs/lifting-state-up.html), [Flux](http://facebook.github.io/flux/), или [Redux](http://redux.js.org/). Но React-компоненты могут так же использовать слой данных от других библиотек и фреймворков.
 
-### Using Backbone Models in React Components {#using-backbone-models-in-react-components}
+### Использование моделейg Backbone в React-компонентах  {#using-backbone-models-in-react-components}
 
-The simplest way to consume [Backbone](http://backbonejs.org/) models and collections from a React component is to listen to the various change events and manually force an update.
+Самый простой способ использовать модели и коллекции [Backbone](http://backbonejs.org) из React-компонентов - это прослушивание различных событий и ручное обновленине компонентов.
 
-Components responsible for rendering models would listen to `'change'` events, while components responsible for rendering collections would listen for `'add'` and `'remove'` events. In both cases, call [`this.forceUpdate()`](/docs/react-component.html#forceupdate) to rerender the component with the new data.
+Компоненты, отвечающие за рендеринг моделей, будут прослушивать событие `'change'`, а компоненты, отвечающие за рендеринг коллекций, будут прослушивать события `'add'` и `'remove'`. В обоих случаях отображения новых данных нужно вызвать [`this.forceUpdate()`]](/docs/react-component.html#forceupdate).
 
-In the example below, the `List` component renders a Backbone collection, using the `Item` component to render individual items.
+В следующем примере, компонент `list` ренедрит Backbone коллекция, используя компонент `Item` для рендеринга отдельных элементов.
 
 ```js{1,7-9,12,16,24,30-32,35,39,46}
 class Item extends React.Component {
