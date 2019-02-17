@@ -106,7 +106,7 @@ npm install --save-dev babel-preset-flow
 }
 ```
 
-This will let you use the Flow syntax in your code.
+Этот пресет позволит использовать Flow в вашем коде.
 
 >Примечание:
 >
@@ -139,7 +139,7 @@ No errors!
 
 ### Добавление аннотаций типов {#adding-flow-type-annotations}
 
-По умолчанию, Flow проверяет только файлы, содержащие специальную аннотацию (обычно ее указывают в самом начале файла):
+По умолчанию Flow проверяет только файлы, содержащие специальную аннотацию (обычно ее указывают в самом начале файла):
 
 ```js
 // @flow
@@ -320,6 +320,6 @@ Reason is developed at Facebook, and is used in some of its products like Messen
 
 JetBrains develops and maintains several tools specifically for the React community: [React bindings](https://github.com/JetBrains/kotlin-wrappers) as well as [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app). The latter helps you start building React apps with Kotlin with no build configuration.
 
-## Other Languages {#other-languages}
+## Другие языки {#other-languages}
 
-Note there are other statically typed languages that compile to JavaScript and are thus React compatible. For example, [F#/Fable](http://fable.io) with [elmish-react](https://elmish.github.io/react). Check out their respective sites for more information, and feel free to add more statically typed languages that work with React to this page!
+Помните: есть и другие языки со статической типизацией, которые могут компилироваться в JavaScript, а значит — совместимы с React. Например, [F#/Fable](http://fable.io) вместе с [elmish-react](https://elmish.github.io/react). Для подробной информации - переходите на соответствующие сайты и не стесняйтесь предлагать больше React-совместимых статически типизированных языков в этот раздел!
