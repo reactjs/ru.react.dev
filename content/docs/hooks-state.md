@@ -259,7 +259,7 @@ function ExampleWithManyStates() {
   const [todos, setTodos] = useState([{ text: 'Изучить хуки' }]);
 ```
 
-В примере выше мы видим локальные переменные `age`, `fruit`, and `todos`, которые можем обновлять независимо друг от друга:
+В примере выше мы видим локальные переменные `age`, `fruit` и `todos`, которые можем обновлять независимо друг от друга:
 
 ```js
   function handleOrangeClick() {
