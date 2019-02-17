@@ -41,35 +41,35 @@ class SomePlugin extends React.Component {
 
 Заметьте, что мы объявили два [метода жизненного цикла](/docs/react-component.html#the-component-lifecycle) - и `componentDidMount` и `componentWillUnmount`. Многие jQuery плагина добавляют обработчики событий для DOM, поэтмоу важно отключать их внутри `componentWillUnmount`. Если плагин не предоставляет метод для очистки, то, возможно, вам придется написать свой. Помните об удалении обработчиков события, добавленных плагином, чтобы избежать утечек памяти.
 
-### Integrating with jQuery Chosen Plugin {#integrating-with-jquery-chosen-plugin}
+### Интеграция с jQuery плагином Chosen {#integrating-with-jquery-chosen-plugin}
 
-For a more concrete example of these concepts, let's write a minimal wrapper for the plugin [Chosen](https://harvesthq.github.io/chosen/), which augments `<select>` inputs.
+Теперь рассмотрим конкретный пример. Давайте напишем минимальную обертку для плагина [Chosen](https://harvesthq.github.io/chosen/), который работает с `<select>` элементами.
 
->**Note:**
+>**Примечание:**
 >
->Just because it's possible, doesn't mean that it's the best approach for React apps. We encourage you to use React components when you can. React components are easier to reuse in React applications, and often provide more control over their behavior and appearance.
+>Да, это можно делать, но это не всегда лучший подход для React приложений. Мы советуем пользоваться React-компонентами, когда это возможно. Они являются самым простым способом переиспользовать код в React-приложения, и часто дают больший контроль над поведением и внешним видом.
 
-First, let's look at what Chosen does to the DOM.
+Для начала, давайте посмотрим, что Chosen делает с DOM.
 
-If you call it on a `<select>` DOM node, it reads the attributes off of the original DOM node, hides it with an inline style, and then appends a separate DOM node with its own visual representation right after the `<select>`. Then it fires jQuery events to notify us about the changes.
+Когда вы вызоваете его на узле `<select>`, он читает атрибуты этого узла, скрывает его с помощью инлайновых стилей и прямо за ним добавляет отдельный DOM-узел с собственным визуальным представлением.
 
-Let's say that this is the API we're striving for with our `<Chosen>` wrapper React component:
+Допустим, мы хотим предоставить следующий API для нашего компонента-обертки над `<Chosen>`:
 
 ```js
 function Example() {
   return (
     <Chosen onChange={value => console.log(value)}>
-      <option>vanilla</option>
-      <option>chocolate</option>
-      <option>strawberry</option>
+      <option>ваниль</option>
+      <option>шоколад</option>
+      <option>клубника</option>
     </Chosen>
   );
 }
 ```
 
-We will implement it as an [uncontrolled component](/docs/uncontrolled-components.html) for simplicity.
+Для простоты мы будем реальзовывать [неконтролируемый компонент](/docs/uncontrolled-components.html).
 
-First, we will create an empty component with a `render()` method where we return `<select>` wrapped in a `<div>`:
+Для начала создадим пустой компонент, с методом `render()`, который возвращает `<select>`, обернутрый в `<div>`:
 
 ```js{4,5}
 class Chosen extends React.Component {
@@ -85,9 +85,9 @@ class Chosen extends React.Component {
 }
 ```
 
-Notice how we wrapped `<select>` in an extra `<div>`. This is necessary because Chosen will append another DOM element right after the `<select>` node we passed to it. However, as far as React is concerned, `<div>` always only has a single child. This is how we ensure that React updates won't conflict with the extra DOM node appended by Chosen. It is important that if you modify the DOM outside of React flow, you must ensure React doesn't have a reason to touch those DOM nodes.
+Обратите внимание, что мы обернули `<select>` в дополнительный `<div>`. Это нужно потому, что Chosen добавляет новый элемент сразу за `<select>`-узлом, на котором он вызывается. Но React всегда ожидает только один дочерний элемент для `<div>`. Так мы гарантируем, что обновления React не будут конфликтовать с дополнительным узлом, добавляемым Chosen. Если вы собираетесь изменять DOM вне React, важно убедиться, что у React нет причин трогать эти узлы.
 
-Next, we will implement the lifecycle methods. We need to initialize Chosen with the ref to the `<select>` node in `componentDidMount`, and tear it down in `componentWillUnmount`:
+Следующим шагом мы реализуем методы жизненного цикла. Нам нужно инициализировать Chosen с рефом на `<select>`-узле в `componentDidMount`, и убрать его в `componentWillUnmount`:
 
 ```js{2,3,7}
 componentDidMount() {
@@ -100,17 +100,17 @@ componentWillUnmount() {
 }
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/qmqeQx?editors=0010)
+[**Открыть на CodePen**](http://codepen.io/gaearon/pen/qmqeQx?editors=0010)
 
-Note that React assigns no special meaning to the `this.el` field. It only works because we have previously assigned this field from a `ref` in the `render()` method:
+Обратите внимание, что React не придает никакого особого значения полю `this.el`. Код работает потому, что ранее мы присвоили этому полю `ref` в методе `render()`:
 
 ```js
 <select className="Chosen-select" ref={el => this.el = el}>
 ```
 
-This is enough to get our component to render, but we also want to be notified about the value changes. To do this, we will subscribe to the jQuery `change` event on the `<select>` managed by Chosen.
+Этого достаточно, чтобы наш компонент отрендерился, но мы бы хотели получать уведомления об изменении значений. Для этого мы подпишемся на jQuery событие `change` на `<select>`, контролируемом Chosen.
 
-We won't pass `this.props.onChange` directly to Chosen because component's props might change over time, and that includes event handlers. Instead, we will declare a `handleChange()` method that calls `this.props.onChange`, and subscribe it to the jQuery `change` event:
+Мы не станем передавать в Chosen `this.props.onChange` непосредственно, потому что пропсы компонента могут со временем изменениться (в том числе и обработчики событий). Вместо этого мы объявим метод `handleChange()`, который будет вызывать `this.props.onChange`, и подпишем его на jQuery событие `change`:
 
 ```js{5,6,10,14-16}
 componentDidMount() {
@@ -131,11 +131,11 @@ handleChange(e) {
 }
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/bWgbeE?editors=0010)
+[**Открыть на CodePen**](http://codepen.io/gaearon/pen/bWgbeE?editors=0010)
 
-Finally, there is one more thing left to do. In React, props can change over time. For example, the `<Chosen>` component can get different children if parent component's state changes. This means that at integration points it is important that we manually update the DOM in response to prop updates, since we no longer let React manage the DOM for us.
+Осталась еще одна вещь, которую нужно сделать под конец. В React пропсы могут изменяться со временем. Например, `<Chosen>` компонент может получать разные дочерние элементы, если состояние родительского компонента изменяется. Это означает, что в точке интеграции нам нужно вручную обновлять DOM, в соответствии с обновлениями проп, так как React больше не управляет DOM для нас.
 
-Chosen's documentation suggests that we can use jQuery `trigger()` API to notify it about changes to the original DOM element. We will let React take care of updating `this.props.children` inside `<select>`, but we will also add a `componentDidUpdate()` lifecycle method that notifies Chosen about changes in the children list:
+Документация к Chosen предлагает использовать jQuery метод `trigger()`, чтобы сообщить об изменения в оригинальном DOM-элементе. Мы позволим React позаботиться об обновлении `this.props.children` внутри `<select>`, но нам нужно добавить метод жизненного цикла `componentDidUpdate()`, чтобы уведомлять Chosen об обновлении списка дочерних элементом:
 
 ```js{2,3}
 componentDidUpdate(prevProps) {
@@ -145,9 +145,9 @@ componentDidUpdate(prevProps) {
 }
 ```
 
-This way, Chosen will know to update its DOM element when the `<select>` children managed by React change.
+Так Chosen будет узнавать, что нужно обновить его DOM-элемент, когда дочерние элементы `<select>` были обновлены React'ом.
 
-The complete implementation of the `Chosen` component looks like this:
+Полная реализация `Chosen` компоненты выглядит так:
 
 ```js
 class Chosen extends React.Component {
@@ -186,7 +186,7 @@ class Chosen extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/xdgKOz?editors=0010)
+[**Открыть на CodePen**](http://codepen.io/gaearon/pen/xdgKOz?editors=0010)
 
 ## Integrating with Other View Libraries {#integrating-with-other-view-libraries}
 
@@ -247,7 +247,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/RVKbvW?editors=1010)
+[**Открыть на CodePen**](http://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
 You can have as many such isolated components as you like, and use `ReactDOM.render()` to render them to different DOM containers. Gradually, as you convert more of your app to React, you will be able to combine them into larger components, and move some of the `ReactDOM.render()` calls up the hierarchy.
 
@@ -275,7 +275,7 @@ const ParagraphView = Backbone.View.extend({
 });
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/gWgOYL?editors=0010)
+[**Открыть на CodePen**](http://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
 It is important that we also call `ReactDOM.unmountComponentAtNode()` in the `remove` method so that React unregisters event handlers and other resources associated with the component tree when it is detached.
 
@@ -347,7 +347,7 @@ class List extends React.Component {
 }
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/GmrREm?editors=0010)
+[**Открыть на CodePen**](http://codepen.io/gaearon/pen/GmrREm?editors=0010)
 
 ### Extracting Data from Backbone Models {#extracting-data-from-backbone-models}
 
@@ -434,6 +434,6 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](http://codepen.io/gaearon/pen/PmWwwa?editors=0010)
+[**Открыть на CodePen**](http://codepen.io/gaearon/pen/PmWwwa?editors=0010)
 
 This technique is not limited to Backbone. You can use React with any model library by subscribing to its changes in the lifecycle methods and, optionally, copying the data into the local React state.
