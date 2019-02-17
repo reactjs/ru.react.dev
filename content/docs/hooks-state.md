@@ -171,7 +171,7 @@ function Example() {
 
 ## Обновление состояния {#updating-state}
 
-В классе мы вызываем `this.setState()` когда надо обновить состояние `count`:
+В классе мы вызываем `this.setState()`, когда надо обновить состояние `count`:
 
 ```js{1}
   <button onClick={() => this.setState({ count: this.state.count + 1 })}>
