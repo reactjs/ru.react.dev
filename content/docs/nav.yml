@@ -148,6 +148,6 @@
     - id: faq-structure
       title: File Structure
     - id: faq-versioning
-      title: Versioning Policy
+      title: Политика версионирования
     - id: faq-internals
       title: Virtual DOM and Internals
