@@ -135,8 +135,8 @@ ReactDOM.render(element, document.getElementById('корень'));
 
 ```js
 // Пример
-const elemento = <h1>Здравствуй, мир!</h1>;
-ReactDOM.отрендери(elemento, documento.obtenerElementoPorId('корень'));
+пост элемент = <з1>Здравствуй, мир!</з1>;
+РеактДОМ.отрендери(элемент, документ.получиЭлементПоАйди('корень'));
 ```
 
 ### Внешние ссылки
