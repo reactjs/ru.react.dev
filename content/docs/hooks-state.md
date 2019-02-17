@@ -1,6 +1,6 @@
 ---
 id: hooks-state
-title: Использование хука Состояние
+title: Использование хука состояния
 permalink: docs/hooks-state.html
 next: hooks-effect.html
 prev: hooks-overview.html
