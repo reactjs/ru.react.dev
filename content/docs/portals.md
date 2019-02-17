@@ -10,7 +10,7 @@ permalink: docs/portals.html
 ReactDOM.createPortal(child, container)
 ```
 
-Первый аргумент (`child`) — это [любой React компонент, который может быть отрендерен](/docs/react-component.html#render), такой как элемент, строка или фрагмент. Следующий аргумент (`container`) — это DOM-элемент.
+Первый аргумент (`child`) — это [любой React-компонент, который может быть отрендерен](/docs/react-component.html#render), такой как элемент, строка или фрагмент. Следующий аргумент (`container`) — это DOM-элемент.
 
 ## Применение {#usage}
 
