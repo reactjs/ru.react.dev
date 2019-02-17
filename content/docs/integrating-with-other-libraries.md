@@ -251,11 +251,11 @@ ReactDOM.render(
 
 Вы можете завести столько изолированных компонентов, сколько вам захочется. И использовать `ReactDOM.render()` для рендеринга в разные DOM-контейнеры. Постепенно, по мере перевода вашего приложения на React, вы сможете комбинировать их в большие компоненты и переносить вызов `ReactDOM.render()` вверх по структуре.
 
-### Embedding React in a Backbone View {#embedding-react-in-a-backbone-view}
+### Встраиваем React в представления  Backbone {#embedding-react-in-a-backbone-view}
 
-[Backbone](http://backbonejs.org/) views typically use HTML strings, or string-producing template functions, to create the content for their DOM elements. This process, too, can be replaced with rendering a React component.
+Представления в [Backbone](http://backbonejs.org/) обычно используют HTML-строки или функции создающие строковые шаблоны для создания DOM элементов. Этот менханизм так же может быть заменен рендерингом React-компонентов.
 
-Below, we will create a Backbone view called `ParagraphView`. It will override Backbone's `render()` function to render a React `<Paragraph>` component into the DOM element provided by Backbone (`this.el`). Here, too, we are using [`ReactDOM.render()`](/docs/react-dom.html#render):
+Ниже мы создадим Backbone-представление c названием `ParagraphView`. Оно переопределит метод `render()` из `Backbone.View` для рендеринга React-компонента `<Paragraph>` в DOM-элемент предосталяемый Backbone (`this.el`). Здесь мы также используем [`ReactDOM.render()`](/docs/react-dom.html#render):
 
 ```js{1,5,8,12}
 function Paragraph(props) {
@@ -277,9 +277,9 @@ const ParagraphView = Backbone.View.extend({
 
 [**Открыть на CodePen**](http://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
-It is important that we also call `ReactDOM.unmountComponentAtNode()` in the `remove` method so that React unregisters event handlers and other resources associated with the component tree when it is detached.
+Важным моментом является вызов `ReactDOM.unmountComponentAtNode()` в методе `remove`, чтобы React отключил обработчики событий и другие ресурсы, связанный с деревом компонентов, при удалении.
 
-When a component is removed *from within* a React tree, the cleanup is performed automatically, but because we are removing the entire tree by hand, we must call this method.
+Когда компонент удаляется из дерева React, очистка производится автоматически, но т.к. мы удаляем сущность из дерева вручную, мы обязаны вызвать этот метод.
 
 ## Integrating with Model Layers {#integrating-with-model-layers}
 
