@@ -349,17 +349,18 @@ class List extends React.Component {
 
 [**Открыть на CodePen**](http://codepen.io/gaearon/pen/GmrREm?editors=0010)
 
-### Extracting Data from Backbone Models {#extracting-data-from-backbone-models}
+### Вынос данных из моделей  Backbone {#extracting-data-from-backbone-models}
 
-The approach above requires your React components to be aware of the Backbone models and collections. If you later plan to migrate to another data management solution, you might want to concentrate the knowledge about Backbone in as few parts of the code as possible.
+Подход, показанный выше, требует, чтобы ваши React-компоненты знали о наличии Backbone моделей и коллекций. Если у вас в планах есть переход на другое решение для управления данными, вы, возможно, захотите максимально уменьшить использование Backbone.
 
-One solution to this is to extract the model's attributes as plain data whenever it changes, and keep this logic in a single place. The following is [a higher-order component](/docs/higher-order-components.html) that extracts all attributes of a Backbone model into state, passing the data to the wrapped component.
+Один из подходов - вынос атрибутов моделей в простые данные, когда вы изменяете этот код, и хранить логику в одном месте. Следующий [компонент высшего порядка](/docs/higher-order-components.html) извлекат все атрибуты Backbone-модели в `state`, передавая данные в оборачиваемый компонент.
 
-This way, only the higher-order component needs to know about Backbone model internals, and most components in the app can stay agnostic of Backbone.
+При этом подходе, только компоненты высшего порядка будут знать о Backbone-моделях, а большая часть компонентов в приложении не будет завязана на Backbone.
 
-In the example below, we will make a copy of the model's attributes to form the initial state. We subscribe to the `change` event (and unsubscribe on unmounting), and when it happens, we update the state with the model's current attributes. Finally, we make sure that if the `model` prop itself changes, we don't forget to unsubscribe from the old model, and subscribe to the new one.
+В примере ниже, мы сделаем копию атрибутов модели для формирования начального состояния. Мы подпишемся на событие `change` (и отпишется от него при удалении), и когда оно будет возникать мы обновим состояние текущими атрибутами. И наконец
+In the example below, we will make a copy of the model's attributes to form the initial state. We subscribe to the `change` event (and unsubscribe on unmounting), and when it happens, we update the state with the model's current attributes. Наконец, мы убедимся, что если пропадает сама `module`, мы не забываем отписаться от старой модели и подписаться на новую.
 
-Note that this example is not meant to be exhaustive with regards to working with Backbone, but it should give you an idea for how to approach this in a generic way:
+Обратите внимание, пример ниже не является полным в отношении работы с Backbone. Но он должен дать вам понимание общего подхода:
 
 ```js{1,5,10,14,16,17,22,26,32}
 function connectToBackboneModel(WrappedComponent) {
@@ -399,7 +400,7 @@ function connectToBackboneModel(WrappedComponent) {
 }
 ```
 
-To demonstrate how to use it, we will connect a `NameInput` React component to a Backbone model, and update its `firstName` attribute every time the input changes:
+Для демонстрации использования мы соеденим React-компонент `NameInput` и Backbone-модель и будем обновлять ее атрибут `firstName` при каждом изменении поля ввода:
 
 ```js{4,6,11,15,19-21}
 function NameInput(props) {
@@ -407,7 +408,7 @@ function NameInput(props) {
     <p>
       <input value={props.firstName} onChange={props.handleChange} />
       <br />
-      My name is {props.firstName}.
+      Мое имя - {props.firstName}.
     </p>
   );
 }
@@ -436,4 +437,4 @@ ReactDOM.render(
 
 [**Открыть на CodePen**](http://codepen.io/gaearon/pen/PmWwwa?editors=0010)
 
-This technique is not limited to Backbone. You can use React with any model library by subscribing to its changes in the lifecycle methods and, optionally, copying the data into the local React state.
+Этот подход не ограничивается Backbone. Вы можете использовать React с любой библиотекой для работы с данными, просто подписываясь на методы жизненно цикла и, по-необходимости, комируя данные в локальное состояние React.
