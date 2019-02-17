@@ -188,13 +188,13 @@ class Chosen extends React.Component {
 
 [**Открыть на CodePen**](http://codepen.io/gaearon/pen/xdgKOz?editors=0010)
 
-## Integrating with Other View Libraries {#integrating-with-other-view-libraries}
+## Интеграция с другими визульными библиотеками {#integrating-with-other-view-libraries}
 
-React can be embedded into other applications thanks to the flexibility of [`ReactDOM.render()`](/docs/react-dom.html#render).
+Благодаря гибкости [`ReactDOM.render()`](/docs/react-dom.html#render) React может встраиваться с другие приложения.
 
-Although React is commonly used at startup to load a single root React component into the DOM, `ReactDOM.render()` can also be called multiple times for independent parts of the UI which can be as small as a button, or as large as an app.
+Хотя обычно React используют для загрузки в DOM одного корневого компонента, `ReactDOM.render()` может быть вызван несколько раз, для независимых частей UI. Это могут быть как отельные кнопки, так и большие приложения.
 
-In fact, this is exactly how React is used at Facebook. This lets us write applications in React piece by piece, and combine them with our existing server-generated templates and other client-side code.
+На самом деле, именно так React используется в Facebook. Это позволяет писать приложения на React по-частям и объединять их с существующими генерируемыми сервером шаблонами и другим клиентским кодом.
 
 ### Replacing String-Based Rendering with React {#replacing-string-based-rendering-with-react}
 
