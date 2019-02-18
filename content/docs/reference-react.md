@@ -98,7 +98,7 @@ class Greeting extends React.Component {
 }
 ```
 
-Со списком методов и свойств базового класса `React.Component` можно ознакомиться на [справочной странице для `React.Component`](/docs/react-component.html).
+Со списком методов и свойств базового класса `React.Component` можно ознакомиться в [API-справочнике по `React.Component`](/docs/react-component.html).
 
 * * *
 
