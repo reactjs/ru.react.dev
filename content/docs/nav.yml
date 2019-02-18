@@ -72,7 +72,7 @@
     - id: static-type-checking
       title: Static Type Checking
     - id: strict-mode
-      title: Strict Mode
+      title: Строгий режим
     - id: typechecking-with-proptypes
       title: Проверка типов с помощью PropTypes
     - id: uncontrolled-components
