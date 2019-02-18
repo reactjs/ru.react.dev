@@ -1,5 +1,5 @@
 ---
-title: Предупреждение: некорректный вызов хука
+title: "Предупреждение: некорректный вызов хука"
 layout: single
 permalink: warnings/invalid-hook-call-warning.html
 ---
