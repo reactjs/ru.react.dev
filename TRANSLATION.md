@@ -135,8 +135,8 @@ ReactDOM.render(element, document.getElementById('корень'));
 
 ```js
 // Пример
-const elemento = <h1>Здравствуй, мир!</h1>;
-ReactDOM.отрендери(elemento, documento.obtenerElementoPorId('корень'));
+пост элемент = <з1>Здравствуй, мир!</з1>;
+РеактДОМ.отрендери(элемент, документ.получиЭлементПоАйди('корень'));
 ```
 
 ### Внешние ссылки
@@ -182,11 +182,12 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | class component | классовый компонент |
 | cleanup | сброс (*напр., сбрасываемый эффект, сбросить эффект, сбрасывающая функция*) |
 | code splitting | разделение кода |
+| codemod | codemod-скрипт |
 | commit | фиксация |
 | context | контекст |
 | (un)controlled component | (не)контролируемый компонент |
 | cross-cutting concerns | cквозная функциональность |
-| custom hooks | пользовательские хуки |
+| custom | пользовательский (*напр., пользовательские хуки*) |
 | debugging | отладка |
 | destructuring | деструктуризация |
 | development | разработка |
@@ -196,7 +197,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | effect | эффект |
 | error | ошибка |
 | error boundary | предохранитель |
-| escape hatch | лазейка (*напр., императивные лазейки*)
+| escape hatch | лазейка (*напр., императивные лазейки*) |
 | fallback | запасной |
 | feature | возможность |
 | folder | папка |
@@ -204,7 +205,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | function component | функциональный компонент |
 | helper | вспомогательный(ая); *напр., helper function — вспомогательная функция* |
 | Higher-Order Component(s) | Компонент(ы) высшего порядка |
-| hook | хук *(с маленькой буквы)* |
+| hook | хук *(с маленькой буквы)* *(напр., хук эффекта, хук контекста)* |
 | incapsulation | инкапсуляция |
 | incapsulated | инкапсулированный |
 | key | ключ |
@@ -226,6 +227,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | online | онлайн |
 | online playground | онлайн-песочница |
 | paint | отрисовка, перерисовка |
+| persistent | персистентность, персистентный |
 | phase | этап (*напр., этап рендеринга, этап фиксации*) |
 | prop | проп *(ед. ч.)* |
 | props | пропсы *(мн. ч.)* |
@@ -255,6 +257,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | tag | тег |
 | template literals | шаблонные строки |
 | Tip | Совет |
+| TLDR | Вкратце |
 | Try it on CodePen | Посмотреть на CodePen |
 | tutorial | введение |
 | unidirectional data flow | однонаправленный поток данных |

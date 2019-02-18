@@ -1,17 +1,17 @@
 ---
 id: hooks-intro
-title: Introducing Hooks
+title: Введение в хуки
 permalink: docs/hooks-intro.html
 next: hooks-overview.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Хуки* — новая возможность в React 16.8, которая позволяет использовать состояние и другие возможности React без написания классов.
 
 ```js{4,5}
 import React, { useState } from 'react';
 
 function Example() {
-  // Declare a new state variable, which we'll call "count"
+  // Объявление переменной состояния, которую мы назовём "count"
   const [count, setCount] = useState(0);
 
   return (
@@ -25,88 +25,88 @@ function Example() {
 }
 ```
 
-This new function `useState` is the first "Hook" we'll learn about, but this example is just a teaser. Don't worry if it doesn't make sense yet!
+Первый хук, который мы изучим, это функция `useState`. Не беспокойтесь, если этот пример будет поначалу неясен. Скоро мы разберёмся, как он работает.
 
-**You can start learning Hooks [on the next page](/docs/hooks-overview.html).** On this page, we'll continue by explaining why we're adding Hooks to React and how they can help you write great applications.
+**Вы можете начать изучать хуки [на следующей странице](/docs/hooks-overview.html).** Здесь же мы расскажем, зачем мы добавили хуки в React, и как они помогут вам писать приложения.
 
->Note
+>Примечание
 >
->React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM. React Native will support Hooks in the next stable release.
+>React 16.8.0 это первый релиз, поддерживающий хуки. При обновлении версии, не забудьте обновить и все зависимости, включая React DOM. React Native будет поддерживать хуки в следующем стабильном релизе.
 
-## Video Introduction {#video-introduction}
+## Видео-представление {#video-introduction}
 
-At React Conf 2018, Sophie Alpert and Dan Abramov introduced Hooks, followed by Ryan Florence demonstrating how to refactor an application to use them. Watch the video here:
+На конференции React Conf 2018, Софи Алперт (Sophie Alpert) и Дэн Абрамов (Dan Abramov) представили хуки, а Райн Флоренс (Ryan Florence) показал, как их использовать в приложении. Видео конференции можно посмотреть здесь:
 
 <br>
 
 <iframe width="650" height="366" src="//www.youtube.com/embed/dpw9EHDh2bM" frameborder="0" allowfullscreen></iframe>
 
-## No Breaking Changes {#no-breaking-changes}
+## Полная обратная совместимость {#no-breaking-changes}
 
-Before we continue, note that Hooks are:
+Перед тем, как мы продолжим, обратите внимание, что хуки:
 
-* **Completely opt-in.** You can try Hooks in a few components without rewriting any existing code. But you don't have to learn or use Hooks right now if you don't want to.
-* **100% backwards-compatible.** Hooks don't contain any breaking changes.
-* **Available now.** Hooks are now available with the release of v16.8.0.
+* **Полностью на ваше усмотрение.** Вы можете попробовать хуки в одних компонентах, не изменяя код в других. Хуки не обязательно использовать или изучать прямо сейчас.
+* **100% обратно совместимы.** Хуки не содержат изменений, которые могут поломать ваш существующий код.
+* **Доступны прямо сейчас.** Хуки доступны с выходом версии 16.8.0.
 
-**There are no plans to remove classes from React.** You can read more about the gradual adoption strategy for Hooks in the [bottom section](#gradual-adoption-strategy) of this page.
+**Мы не планируем удалять классы из React.** Вы можете прочитать больше о стратегии постепенного внедрения хуков в [разделе ниже](#gradual-adoption-strategy).
 
-**Hooks don't replace your knowledge of React concepts.** Instead, Hooks provide a more direct API to the React concepts you already know: props, state, context, refs, and lifecycle. As we will show later, Hooks also offer a new powerful way to combine them.
+**Хуки не меняют ваши знания о концепциях в React.** Вместо этого, хуки предоставляют более прямой доступ к API уже знакомых вам понятий: пропсов, состояния, контекста, рефов, и жизненного цикла. Мы также рассмотрим мощный способ компоновать эти понятия с помощью хуков.
 
-**If you just want to start learning Hooks, feel free to [jump directly to the next page!](/docs/hooks-overview.html)** You can also keep reading this page to learn more about why we're adding Hooks, and how we're going to start using them without rewriting our applications.
+**Чтобы начать изучать хуки, [перейдите на следующую страницу!](/docs/hooks-overview.html)** На этой странице мы расскажем о том, зачем нужны хуки, и как их использовать, не переписывая наши приложения.
 
-## Motivation {#motivation}
+## Мотивация {#motivation}
 
-Hooks solve a wide variety of seemingly unconnected problems in React that we've encountered over five years of writing and maintaining tens of thousands of components. Whether you're learning React, use it daily, or even prefer a different library with a similar component model, you might recognize some of these problems.
+Хуки решают множество, казалось бы, несвязанных между собой, проблем в React, с которыми мы сталкивались в течение пяти лет написания и поддержки десятков тысяч компонентов. Если вы изучаете React, используете его ежедневно или используете другую библиотеку с похожим компонентным подходом, эти проблемы наверняка покажутся вам знакомыми.
 
-### It's hard to reuse stateful logic between components {#its-hard-to-reuse-stateful-logic-between-components}
+### Трудно переиспользовать логику состояний между компонентами {#its-hard-to-reuse-stateful-logic-between-components}
 
-React doesn't offer a way to "attach" reusable behavior to a component (for example, connecting it to a store). If you've worked with React for a while, you may be familiar with patterns like [render props](/docs/render-props.html) and [higher-order components](/docs/higher-order-components.html) that try to solve this. But these patterns require you to restructure your components when you use them, which can be cumbersome and make code harder to follow. If you look at a typical React application in React DevTools, you will likely find a "wrapper hell" of components surrounded by layers of providers, consumers, higher-order components, render props, and other abstractions. While we could [filter them out in DevTools](https://github.com/facebook/react-devtools/pull/503), this points to a deeper underlying problem: React needs a better primitive for sharing stateful logic.
+В React нет способа «присоединить» повторно используемое поведение к компоненту (например, подключение к хранилищу). Если вы работали с React какое-то время, то вам могут быть знакомы такие паттерны, как [рендер-пропсы](/docs/render-props.html) и [компоненты высшего порядка](/docs/higher-order-components.html), которые пытаются решить эту проблему. Но эти паттерны заставляют вас изменять структуру компонентов, что делает код громоздким и трудным в поддержке. Если вы посмотрите на типичное React-приложение в React DevTools, то увидите «ад обёрток» из компонентов, окружённых провайдерами, консьюмерами, компонентами высшего порядка, рендер-пропсами и другими абстракциями. Хоть мы и можем [отфильтровать их в DevTools](https://github.com/facebook/react-devtools/pull/503), всё это указывает на более глубокую проблему в React. Нужен более удобный способ повторно использовать логику вокруг состояния.
 
-With Hooks, you can extract stateful logic from a component so it can be tested independently and reused. **Hooks allow you to reuse stateful logic without changing your component hierarchy.** This makes it easy to share Hooks among many components or with the community.
+С помощью хуков вы можете извлечь логику состояния из компонента, чтобы её протестировать или повторно использовать. **Хуки позволяют вам переиспользовать логику состояния, не затрагивая дерево компонентов.** Благодаря этому, хуки легко использовать в разных компонентах и делиться ими с сообществом.
 
-We'll discuss this more in [Building Your Own Hooks](/docs/hooks-custom.html).
+Мы обсудим это подробнее в разделе [Создание собственных хуков](/docs/hooks-custom.html).
 
-### Complex components become hard to understand {#complex-components-become-hard-to-understand}
+### Сложные компоненты становятся трудными для понимания {#complex-components-become-hard-to-understand}
 
-We've often had to maintain components that started out simple but grew into an unmanageable mess of stateful logic and side effects. Each lifecycle method often contains a mix of unrelated logic. For example, components might perform some data fetching in `componentDidMount` and `componentDidUpdate`. However, the same `componentDidMount` method might also contain some unrelated logic that sets up event listeners, with cleanup performed in `componentWillUnmount`. Mutually related code that changes together gets split apart, but completely unrelated code ends up combined in a single method. This makes it too easy to introduce bugs and inconsistencies.
+Нам часто приходилось поддерживать компоненты, которые изначально были простыми, но превратились в неуправляемый беспорядок, состоящий из логики состояния и побочных эффектов. Каждый метод жизненного цикла часто содержит смесь несвязанной логики. Например, компоненты могут загружать данные в `componentDidMount` и `componentDidUpdate`. Однако тот же метод `componentDidMount` может содержать несвязанную логику, которая добавляет обработчики события с отменой подписки в `componentWillUnmount`. Взаимосвязанный код, который изменяется вместе, разделяется, но совершенно несвязанный код в конечном итоге объединяется в один метод. Это легко приводит к багам и несоответствиям в приложении.
 
-In many cases it's not possible to break these components into smaller ones because the stateful logic is all over the place. It's also difficult to test them. This is one of the reasons many people prefer to combine React with a separate state management library. However, that often introduces too much abstraction, requires you to jump between different files, and makes reusing components more difficult.
+В некоторых случаях невозможно разбить компоненты на более мелкие, потому что логика состояния раскидана повсюду. Такие компоненты сложно тестировать. Это одна из причин, по которой люди предпочитают использовать в React отдельную библиотеку для управления состоянием. Однако, это добавляет множество абстракций, заставляет прыгать между разными файлами и усложняет повторное использование компонентов.
 
-To solve this, **Hooks let you split one component into smaller functions based on what pieces are related (such as setting up a subscription or fetching data)**, rather than forcing a split based on lifecycle methods. You may also opt into managing the component's local state with a reducer to make it more predictable.
+Чтобы решить эту проблему, **хуки позволяют разбить один компонент на маленькие функции по их назначению (например, подписке или загрузке данных)**, а не на основе методов жизненного цикла. Вы также можете контролировать локальное состояние с помощью редюсера, чтобы поведение было более предсказуемым.
 
-We'll discuss this more in [Using the Effect Hook](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns).
+Мы обсудим это в разделе [использование эффект-хуков](/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns).
 
-### Classes confuse both people and machines {#classes-confuse-both-people-and-machines}
+### Классы путают как людей, так и машины {#classes-confuse-both-people-and-machines}
 
-In addition to making code reuse and code organization more difficult, we've found that classes can be a large barrier to learning React. You have to understand how `this` works in JavaScript, which is very different from how it works in most languages. You have to remember to bind the event handlers. Without unstable [syntax proposals](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/), the code is very verbose. People can understand props, state, and top-down data flow perfectly well but still struggle with classes. The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers.
+Вдобавок к усложнению организации кода и его переиспользования, классы создают существенный барьер в изучении React. Нужно понимать, как работает `this` в JavaScript, поведение которого отличается от большинства языков. Приходится помнить про привязку контекста для обработчиков событий. Без использования нестабильных [синтаксических предложений](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/), код становится многословным. Люди могут прекрасно понимать пропсы, состояние и однонаправленный поток данных, но всё равно путаться с классами. Различия между функциональными и классовыми компонентами в React и тем, когда их использовать, приводят к разногласиям даже между опытными React-разработчиками.
 
-Additionally, React has been out for about five years, and we want to make sure it stays relevant in the next five years. As [Svelte](https://svelte.technology/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/), and others show, [ahead-of-time compilation](https://en.wikipedia.org/wiki/Ahead-of-time_compilation) of components has a lot of future potential. Especially if it's not limited to templates. Recently, we've been experimenting with [component folding](https://github.com/facebook/react/issues/7323) using [Prepack](https://prepack.io/), and we've seen promising early results. However, we found that class components can encourage unintentional patterns that make these optimizations fall back to a slower path. Classes present issues for today's tools, too. For example, classes don't minify very well, and they make hot reloading flaky and unreliable. We want to present an API that makes it more likely for code to stay on the optimizable path.
+Вдобавок, React существует уже около пяти лет и мы хотим убедиться, что он останется актуальным в течение следующих пяти лет. Как показывают [Svelte](https://svelte.technology/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/) и другие технологии, [компиляция компонентов перед их исполнением](https://ru.wikipedia.org/wiki/AOT-%D0%BA%D0%BE%D0%BC%D0%BF%D0%B8%D0%BB%D1%8F%D1%86%D0%B8%D1%8F) имеет огромный потенциал в будущем. Особенно, если шаблоны не накладывают ограничений. Недавно мы экспериментировали со [свёртыванием компонентов](https://github.com/facebook/react/issues/7323) с использованием [Prepack](https://prepack.io/) и увидели первые многообещающие результаты. Однако мы заметили, что классовые компоненты могут приводить к ненамеренным паттернам, сводящим оптимизации на нет. Классы создают сложности для инструментов и сегодня. Например, классы плохо минифицируются, а горячая перезагрузка (hot reloading) ненадёжна и часто ломает их. Наша цель — предоставить API, который повысит вероятность того, что код можно будет оптимизировать.
 
-To solve these problems, **Hooks let you use more of React's features without classes.** Conceptually, React components have always been closer to functions. Hooks embrace functions, but without sacrificing the practical spirit of React. Hooks provide access to imperative escape hatches and don't require you to learn complex functional or reactive programming techniques.
+Чтобы решить эти проблемы, **хуки позволяют использовать больше возможностей React без написания классов.** Концептуально, React-компоненты всегда были ближе к функциям. Хуки обеспечивают доступ к функционалу, но не обесценивают опыт использования React. Хуки предоставляют императивные лазейки и не требуют от вас изучения сложных функциональных или реактивных подходов.
 
->Examples
+>Примеры
 >
->[Hooks at a Glance](/docs/hooks-overview.html) is a good place to start learning Hooks.
+>[Обзор хуков](/docs/hooks-overview.html) — хорошее начало для изучения хуков.
 
-## Gradual Adoption Strategy {#gradual-adoption-strategy}
+## Стратегия постепенного внедрения {#gradual-adoption-strategy}
 
->**TLDR: There are no plans to remove classes from React.**
+>**TLDR: Мы не планируем удалять классы из React.**
 
-We know that React developers are focused on shipping products and don't have time to look into every new API that's being released. Hooks are very new, and it might be better to wait for more examples and tutorials before considering learning or adopting them.
+Мы знаем, что React-разработчики сфокусированы на поставке продукта и у них нет времени изучать новый API каждого релиза. Хуки это что-то новое, и возможно, лучше подождать больше примеров и уроков, прежде чем начинать их изучение.
 
-We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
+Мы также понимаем, что планка для добавления новых примитивов в React очень высока. Поэтому для любопытных читателей мы подготовили [подробный RFC](https://github.com/reactjs/rfcs/pull/68), в котором можно найти больше информации о технических аспектах выбранного дизайна.
 
-**Crucially, Hooks work side-by-side with existing code so you can adopt them gradually.** We are sharing this experimental API to get early feedback from those in the community who are interested in shaping the future of React — and we will iterate on Hooks in the open.
+**Важно понимать, что хуки работают рядом с существущим кодом, поэтому вы можете внедрять их постепенно.** Мы делимся этим API, чтобы получить раннюю обратную связь от тех, кто заинтересован в формировании будущего React. Вся разработка происходит в открытую.
 
-Finally, there is no rush to migrate to Hooks. We recommend avoiding any "big rewrites", especially for existing, complex class components. It takes a bit of a mindshift to start "thinking in Hooks". In our experience, it's best to practice using Hooks in new and non-critical components first, and ensure that everybody on your team feels comfortable with them. After you give Hooks a try, please feel free to [send us feedback](https://github.com/facebook/react/issues/new), positive or negative.
+Наконец, нет спешки переходить на хуки. Мы рекомендуем избегать любых «больших переписываний», особенно для существующих, сложных классовых компонентов. Вам потребуется немного изменить мировоззрение, чтобы начать «мыслить хуками». По нашему опыту, лучше всего сначала попрактиковаться использовать хуки в новых и некритичных компонентах и убедиться, что все в вашей команде чувствуют себя комфортно с ними. После того, как вы попробуете, не стесняйтесь [отправить нам свой отзыв](https://github.com/facebook/react/issues/new), позитивный или негативный.
 
-We intend for Hooks to cover all existing use cases for classes, but **we will keep supporting class components for the foreseeable future.** At Facebook, we have tens of thousands of components written as classes, and we have absolutely no plans to rewrite them. Instead, we are starting to use Hooks in the new code side by side with classes.
+Мы намерены охватить все возможные варианты использования классов в хуках, но **мы всё ещё будем поддерживать классовые компоненты в обозримом будущем.** В Facebook десятки тысяч компонентов, написанных в виде классов, и у нас нет абсолютно никаких планов их переписывать. Вместо этого мы начинаем использовать хуки в новом коде параллельно с классами.
 
-## Frequently Asked Questions {#frequently-asked-questions}
+## Часто задаваемые вопросы {#frequently-asked-questions}
 
-We've prepared a [Hooks FAQ page](/docs/hooks-faq.html) that answers the most common questions about Hooks.
+Мы подготовили для вас [страницу FAQ](/docs/hooks-faq.html) с ответами на самые частые вопросы о хуках.
 
-## Next Steps {#next-steps}
+## Следующие шаги {#next-steps}
 
-By the end of this page, you should have a rough idea of what problems Hooks are solving, but many details are probably unclear. Don't worry! **Let's now go to [the next page](/docs/hooks-overview.html) where we start learning about Hooks by example.**
+К концу этой страницы вы должны иметь общее представление о том, какие проблемы решают хуки, но многие детали, возможно, остались непонятны. Не беспокойтесь! **Давайте перейдём на [следующую страницу](/docs/hooks-overview.html), где мы изучим хуки на примерах.**

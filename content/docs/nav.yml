@@ -101,7 +101,7 @@
     - id: test-renderer
       title: Test Renderer
     - id: javascript-environment-requirements
-      title: JS Environment Requirements
+      title: Требования к среде JS
     - id: glossary
       title: Glossary
 - title: Хуки (Новое)
