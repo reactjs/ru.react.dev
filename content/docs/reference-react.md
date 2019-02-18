@@ -138,7 +138,7 @@ function MyComponent(props) {
 }
 function areEqual(prevProps, nextProps) {
   /*
-  верните true если nextProps рендерит
+  возвращает true, если nextProps рендерит
   тот же результат что и prevProps,
   иначе верните false
   */
