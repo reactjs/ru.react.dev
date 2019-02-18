@@ -43,7 +43,7 @@ class SomePlugin extends React.Component {
 
 ### Интеграция с jQuery-плагином Chosen {#integrating-with-jquery-chosen-plugin}
 
-Теперь рассмотрим конкретный пример. Давайте напишем минимальную обертку для плагина [Chosen](https://harvesthq.github.io/chosen/), который работает с `<select>` элементами.
+Теперь рассмотрим конкретный пример. Давайте напишем минимальную обертку для плагина [Chosen](https://harvesthq.github.io/chosen/), который работает с элементами `<select>`.
 
 >**Примечание:**
 >
