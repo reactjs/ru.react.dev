@@ -310,15 +310,15 @@ You are now ready to code! We recommend to check out the following resources to 
 
 ## Reason {#reason}
 
-[Reason](https://reasonml.github.io/) is not a new language; it's a new syntax and toolchain powered by the battle-tested language, [OCaml](https://ocaml.org/). Reason gives OCaml a familiar syntax geared toward JavaScript programmers, and caters to the existing NPM/Yarn workflow folks already know.
+[Reason](https://reasonml.github.io/) — это не новый язык, а новый синтаксис и набор инструментов для проверенного временем языка [OCaml](https://ocaml.org/). Reason предоставляет синтаксис, ориентированный на JavaScript программистов, и использует уже известный всем способ распространения через NPM/Yarn.
 
-Reason is developed at Facebook, and is used in some of its products like Messenger. It is still somewhat experimental but it has [dedicated React bindings](https://reasonml.github.io/reason-react/) maintained by Facebook and a [vibrant community](https://reasonml.github.io/docs/en/community.html).
+Reason был разработан в Facebook и используется в некоторых продуктах этой компании — например, в Messenger. Reason все еще считается довольно экспериментальным инструментом, но уже имеет [библиотеку привязок для React](https://reasonml.github.io/reason-react/), поддерживаемую Facebook, а также [отзывчивое коммьюнити](https://reasonml.github.io/docs/en/community.html)
 
 ## Kotlin {#kotlin}
 
-[Kotlin](https://kotlinlang.org/) is a statically typed language developed by JetBrains. Its target platforms include the JVM, Android, LLVM, and [JavaScript](https://kotlinlang.org/docs/reference/js-overview.html). 
+[Kotlin](https://kotlinlang.org/) это язык со статической типизацией, разработанный в JetBrains. Он нацелен на платформы работающие на основе JVM, Android, LLVM, и [JavaScript](https://kotlinlang.org/docs/reference/js-overview.html). 
 
-JetBrains develops and maintains several tools specifically for the React community: [React bindings](https://github.com/JetBrains/kotlin-wrappers) as well as [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app). The latter helps you start building React apps with Kotlin with no build configuration.
+JetBrains разрабатывает и поддерживает несколько библиотек специально для React community: [React bindings](https://github.com/JetBrains/kotlin-wrappers) совместно с [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app). Последняя позволит вам начать использовать Kotlin вместе с React в одном проекте без необходимости ручной конфигурации.
 
 ## Другие языки {#other-languages}
 
