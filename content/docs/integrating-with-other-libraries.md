@@ -407,7 +407,7 @@ function NameInput(props) {
     <p>
       <input value={props.firstName} onChange={props.handleChange} />
       <br />
-      Мое имя - {props.firstName}.
+      Моё имя - {props.firstName}.
     </p>
   );
 }
