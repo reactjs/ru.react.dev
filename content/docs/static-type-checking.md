@@ -53,13 +53,11 @@ npm install --save-dev flow-bin
 
 Теперь можно запустить скрипт, прописав в терминале:
 
-Если вы используете [Yarn](https://yarnpkg.com/):
-
 ```bash
 yarn run flow init
 ```
 
-Если вы используете [npm](https://www.npmjs.com/):
+Или `npm`:
 
 ```bash
 npm run flow init
@@ -89,7 +87,7 @@ Flow дополняет JavaScript собственным синтаксисом
 yarn add --dev babel-preset-flow
 ```
 
-Или через `npm`:
+Или `npm`:
 
 ```bash
 npm install --save-dev babel-preset-flow
@@ -118,13 +116,13 @@ npm install --save-dev babel-preset-flow
 
 ### Запуск Flow {#running-flow}
 
-Если все было сделано правильно, можно попробовать запустить процесс Flow. 
+Если все было сделано правильно, можно попробовать запустить процесс Flow:
 
 ```bash
 yarn flow
 ```
 
-Или при помощи npm:
+Или `npm`:
 
 ```bash
 npm run flow
@@ -158,49 +156,47 @@ No errors!
 
 ## TypeScript {#typescript}
 
-[TypeScript](https://www.typescriptlang.org/) is a programming language developed by Microsoft. It is a typed superset of JavaScript, and includes its own compiler. Being a typed language, TypeScript can catch errors and bugs at build time, long before your app goes live. You can learn more about using TypeScript with React [here](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter).
+[TypeScript](https://www.typescriptlang.org/) — это язык программирования, разработанный в Microsoft. TypeScript является надмножеством JavaScript, имеет статическую систему типов и собственный компилятор. Статическая типизация позволяет отлавливать ошибки и баги во время компиляции, еще до запуска приложения. Подробнее узнать о совместном использовании TypeScript и React можно [здесь](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter).
 
-To use TypeScript, you need to:
-* Add TypeScript as a dependency to your project
-* Configure the TypeScript compiler options
-* Use the right file extensions
-* Add definitions for libraries you use
+Чтобы использовать TypeScript, нужно:
+* Установить TypeScript как локальную зависимость проекта.
+* Настроить компилятор.
+* Использовать правильные расширения файлов.
+* Установить файлы определений для используемых библиотек.
 
-Let's go over these in detail.
+Остановимся подробнее на каждом из этих моментов.
 
-### Using TypeScript with Create React App {#using-typescript-with-create-react-app}
+### Использование TypeScript вместе с Create React App {#using-typescript-with-create-react-app}
 
-Create React App supports TypeScript out of the box.
+Create React App поддерживает TypeScript по умолчанию.
 
-To create a **new project** with TypeScript support, run:
+Чтобы создать **новый проект** с поддержкой TypeScript, используйте следующую команду:
 
 ```bash
 npx create-react-app my-app --typescript
 ```
 
-You can also add it to an **existing Create React App project**, [as documented here](https://facebook.github.io/create-react-app/docs/adding-typescript).
+Можно добавить поддержку TypeScript в **уже существующий проект**, [как показано здесь](https://facebook.github.io/create-react-app/docs/adding-typescript).
 
->Note:
+>Примечание:
 >
->If you use Create React App, you can **skip the rest of this page**. It describes the manual setup which doesn't apply to Create React App users.
+>Дальше описывается ручная настройка TypeScript. Если вы используете Create React App — можете **пропустить этот раздел**. 
 
+### Добавление TypeScript в проект {#adding-typescript-to-a-project}
 
-### Adding TypeScript to a Project {#adding-typescript-to-a-project}
-It all begins with running one command in your terminal.
-
-If you use [Yarn](https://yarnpkg.com/), run:
+Все начинается с одной единственной команды в терминале:
 
 ```bash
 yarn add --dev typescript
 ```
 
-If you use [npm](https://www.npmjs.com/), run:
+Или `npm`:
 
 ```bash
 npm install --save-dev typescript
 ```
 
-Congrats! You've installed the latest version of TypeScript into your project. Installing TypeScript gives us access to the `tsc` command. Before configuration, let's add `tsc` to the "scripts" section in our `package.json`:
+Ура! Вы установили последнюю версию TypeScript. Теперь в вашем распоряжении новая команда — `tsc`. Но прежде, чем праздновать, давайте добавим соответствующий скрипт в наш `package.json`:
 
 ```js{4}
 {
@@ -213,14 +209,17 @@ Congrats! You've installed the latest version of TypeScript into your project. I
 }
 ```
 
-### Configuring the TypeScript Compiler {#configuring-the-typescript-compiler}
-The compiler is of no help to us until we tell it what to do. In TypeScript, these rules are defined in a special file called `tsconfig.json`. To generate this file run:
+### Настройка компилятора TypeScript {#configuring-the-typescript-compiler}
+
+Сам по себе компилятор бесполезен, пока мы не скажем, что именно ему нужно делать. Для этого есть специальный файл `tsconfig.json`, в котором нужно указать необходимые опции. Создадим этот файл:
 
 ```bash
 tsc --init
 ```
 
-Looking at the now generated `tsconfig.json`, you can see that there are many options you can use to configure the compiler. For a detailed description of all the options, check [here](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html).
+[здесь](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
+
+Looking at the now generated `tsconfig.json`, you can see that there are many options you can use to configure the compiler. For a detailed description of all the options, check .
 
 Of the many options, we'll look at `rootDir` and `outDir`. In its true fashion, the compiler will take in typescript files and generate javascript files. However we don't want to get confused with our source files and the generated output.
 
@@ -282,7 +281,7 @@ There are two main ways to get declarations for a library:
 
 __Bundled__ - The library bundles its own declaration file. This is great for us, since all we need to do is install the library, and we can use it right away. To check if a library has bundled types, look for an `index.d.ts` file in the project. Some libraries will have it specified in their `package.json` under the `typings` or `types` field.
 
-__[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ - DefinitelyTyped is a huge repository of declarations for libraries that don't bundle a declaration file. The declarations are crowd-sourced and managed by Microsoft and open source contributors. React for example doesn't bundle its own declaration file. Instead we can get it from DefinitelyTyped. To do so enter this command in your terminal.
+__[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ — это внушительный репозиторий файлов объявлений для библиотек без собственного файла объявлений. Например, React устанавливается без собственного файла объявления — вместо этого мы устанавливаем его отдельно: 
 
 ```bash
 # yarn
@@ -292,8 +291,8 @@ yarn add --dev @types/react
 npm i --save-dev @types/react
 ```
 
-__Local Declarations__
-Sometimes the package that you want to use doesn't bundle declarations nor is it available on DefinitelyTyped. In that case, we can have a local declaration file. To do this, create a `declarations.d.ts` file in the root of your source directory. A simple declaration could look like this:
+__Локальные объявления__
+Иногда пакет, который вы хотите использовать, не имеет ни собственного файла объявлений, ни соответствующего файла в репозитории DefinitelyTyped. В этом случае, мы можем объявить собственный локальный файл объявлений. Для этого создайте файл `declarations.d.ts` в корне директории, где лежат исходники вашего проекта. Файл деклараций может выглядеть примерно вот так: 
 
 ```typescript
 declare module 'querystring' {
@@ -302,7 +301,7 @@ declare module 'querystring' {
 }
 ```
 
-You are now ready to code! We recommend to check out the following resources to learn more about TypeScript:
+Вот и все, вы готовы писать код на TypeScript! Чтобы познакомиться с ним поближе, рекомендуем посетить эти ресурсы: 
 
 * [TypeScript Documentation: Basic Types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 * [TypeScript Documentation: Migrating from Javascript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
