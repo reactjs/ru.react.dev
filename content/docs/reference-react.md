@@ -304,7 +304,7 @@ render() {
 Этот метод не очень распространен, но особенно полезен в двух сценариях:
 
 * [Перенаправление рефов в DOM-компоненты](/docs/forwarding-refs.html#forwarding-refs-to-dom-components)
-* [Пересылка рефов на компоненты высшего порядка](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
+* [Перенаправление рефов в компонентах высшего порядка](/docs/forwarding-refs.html#forwarding-refs-in-higher-order-components)
 
 `React.forwardRef` принимает функцию рендера в качестве аргумента. React будет вызывать эту функцию с пропсами и рефом в качестве двух аргументов. Эта функция должна возвращать узел React.
 
