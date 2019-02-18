@@ -399,7 +399,7 @@ function connectToBackboneModel(WrappedComponent) {
 }
 ```
 
-Для демонстрации использования мы соеденим React-компонент `NameInput` и Backbone-модель и будем обновлять ее атрибут `firstName` при каждом изменении поля ввода:
+Для демонстрации использования мы соединим React-компонент `NameInput` и Backbone-модель и будем обновлять её атрибут `firstName` при каждом изменении поля ввода:
 
 ```js{4,6,11,15,19-21}
 function NameInput(props) {
