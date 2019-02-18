@@ -41,7 +41,7 @@ class SomePlugin extends React.Component {
 
 Заметьте, что мы объявили два [метода жизненного цикла](/docs/react-component.html#the-component-lifecycle) — как `componentDidMount`, так и `componentWillUnmount`. Многие jQuery-плагины добавляют обработчики событий DOM, поэтому важно отключать их внутри `componentWillUnmount`. Если плагин не предоставляет метод для очистки, то, возможно, вам придется написать свой. Помните об удалении обработчиков событий, добавленных плагином, чтобы избежать утечек памяти.
 
-### Интеграция с jQuery плагином Chosen {#integrating-with-jquery-chosen-plugin}
+### Интеграция с jQuery-плагином Chosen {#integrating-with-jquery-chosen-plugin}
 
 Теперь рассмотрим конкретный пример. Давайте напишем минимальную обертку для плагина [Chosen](https://harvesthq.github.io/chosen/), который работает с `<select>` элементами.
 
