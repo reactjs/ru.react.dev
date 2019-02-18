@@ -100,7 +100,7 @@ componentWillUnmount() {
 }
 ```
 
-[**Открыть на CodePen**](http://codepen.io/gaearon/pen/qmqeQx?editors=0010)
+[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/qmqeQx?editors=0010)
 
 Обратите внимание, что React не придаёт никакого особого значения полю `this.el`. Код работает потому, что ранее мы присвоили этому полю `ref` в методе `render()`:
 
@@ -131,7 +131,7 @@ handleChange(e) {
 }
 ```
 
-[**Открыть на CodePen**](http://codepen.io/gaearon/pen/bWgbeE?editors=0010)
+[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/bWgbeE?editors=0010)
 
 Осталась ещё одна вещь, которую нужно сделать под конец. В React пропсы могут изменяться со временем. Например, `<Chosen>` компонент может получать разные дочерние элементы, если состояние родительского компонента изменяется. Это означает, что в точке интеграции нам нужно вручную обновлять DOM, в соответствии с обновлениями проп, так как React больше не управляет DOM для нас.
 
@@ -186,7 +186,7 @@ class Chosen extends React.Component {
 }
 ```
 
-[**Открыть на CodePen**](http://codepen.io/gaearon/pen/xdgKOz?editors=0010)
+[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/xdgKOz?editors=0010)
 
 ## Интеграция с другими визульными библиотеками {#integrating-with-other-view-libraries}
 
@@ -247,7 +247,7 @@ ReactDOM.render(
 );
 ```
 
-[**Открыть на CodePen**](http://codepen.io/gaearon/pen/RVKbvW?editors=1010)
+[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
 Вы можете завести столько изолированных компонентов, сколько вам захочется. И использовать `ReactDOM.render()` для рендеринга в разные DOM-контейнеры. Постепенно, по мере перевода вашего приложения на React, вы сможете комбинировать их в большие компоненты и переносить вызов `ReactDOM.render()` вверх по структуре.
 
@@ -275,7 +275,7 @@ const ParagraphView = Backbone.View.extend({
 });
 ```
 
-[**Открыть на CodePen**](http://codepen.io/gaearon/pen/gWgOYL?editors=0010)
+[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
 Важным моментом является вызов `ReactDOM.unmountComponentAtNode()` в методе `remove`, чтобы React отключил обработчики событий и другие ресурсы, связанный с деревом компонентов, при удалении.
 
@@ -347,7 +347,7 @@ class List extends React.Component {
 }
 ```
 
-[**Открыть на CodePen**](http://codepen.io/gaearon/pen/GmrREm?editors=0010)
+[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/GmrREm?editors=0010)
 
 ### Вынос данных из моделей  Backbone {#extracting-data-from-backbone-models}
 
@@ -434,6 +434,6 @@ ReactDOM.render(
 );
 ```
 
-[**Открыть на CodePen**](http://codepen.io/gaearon/pen/PmWwwa?editors=0010)
+[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/PmWwwa?editors=0010)
 
 Этот подход не ограничивается Backbone. Вы можете использовать React с любой библиотекой для работы с данными, просто подписываясь на методы жизненно цикла и, при необходимости, копируя данные во внутреннее состояние React.
