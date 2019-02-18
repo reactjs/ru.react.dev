@@ -26,40 +26,39 @@ permalink: docs/strict-mode.html
 
 ### Обнаружение компонентов с небезопасными методами жизненного цикла {#identifying-unsafe-lifecycles}
 
-As explained [in this blog post](/blog/2018/03/27/update-on-async-rendering.html), certain legacy lifecycle methods are unsafe for use in async React applications. However, if your application uses third party libraries, it can be difficult to ensure that these lifecycles aren't being used. Fortunately, strict mode can help with this!
+Как объясняется [в этой статье блога](/blog/2018/03/27/update-on-async-rendering.html), некоторые методы жизненного цикла не безопасны для использования в асинхронных React приложениях. Однако, если ваше приложение использует сторонние библиотеки, может оказаться тяжело обепечить, чтобы эти методы не использовались. К счастью, строкий режим может помочь разобраться с этим!
 
-When strict mode is enabled, React compiles a list of all class components using the unsafe lifecycles, and logs a warning message with information about these components, like so:
+Когда строгий режим включен, React компилирует список всех классовых компонентов, которые используют небезопасные методы жизненного цикла и отображает предупрежедние с информацией об этих компонентах, например так:
 
 ![](../images/blog/strict-mode-unsafe-lifecycles-warning.png)
 
-Addressing the issues identified by strict mode _now_ will make it easier for you to take advantage of async rendering in future releases of React.
+Проблемы, найденные строгим режимом сейчас, облегчат использование преимуществ  асинхронного рендеринга в будущих релизах React.
 
 ### Предепреждение об использовании устаревшего строкового API для реф {#warning-about-legacy-string-ref-api-usage}
 
-Previously, React provided two ways for managing refs: the legacy string ref API and the callback API. Although the string ref API was the more convenient of the two, it had [several downsides](https://github.com/facebook/react/issues/1373) and so our official recommendation was to [use the callback form instead](/docs/refs-and-the-dom.html#legacy-api-string-refs).
+Ранее, React предоставлял два способа управления рефами: устаревший строковый API и колбэк API. Хотя строковый API реф был более удобным, он имел [несколько недостатков](https://github.com/facebook/react/issues/1373) и наша рекомендация заключалась в том, чтобы [использовать колбэк](/docs/refs-and-the-dom.html#legacy-api-string-refs).
 
-React 16.3 added a third option that offers the convenience of a string ref without any of the downsides:
+React 16.3 добавил третий вариант, удобный как строковый реф без каких-либо недостатков:
 `embed:16-3-release-blog-post/create-ref-example.js`
 
-Since object refs were largely added as a replacement for string refs, strict mode now warns about usage of string refs.
+С тех пор как объекты рефы были по большей части добавлены как заменя строковых реф, строгий режим теперь предупреждает об использовании стоковых реф.
 
 > **Примечание:**
 >
-> Callback refs will continue to be supported in addition to the new `createRef` API.
+> Колбэк рефы также поддерживаются в дополнеии к новому `createRef` API.
 >
-> You don't need to replace callback refs in your components. They are slightly more flexible, so they will remain as an advanced feature.
-
-[Ознакомьтесь с новым API `createRef` здесь.](/docs/refs-and-the-dom.html)
+> Вам не нужно заменять обратные вызовы в ваших компонентах. Они немного более гибкие, поэтому останутся как продвинутая фича.
+[Ознакомьтесь с новым `createRef` API здесь.](/docs/refs-and-the-dom.html)
 
 ### Предупреждение об использовании устаревшего метода findDOMNode {#warning-about-deprecated-finddomnode-usage}
 
-React used to support `findDOMNode` to search the tree for a DOM node given a class instance. Normally you don't need this because you can [attach a ref directly to a DOM node](/docs/refs-and-the-dom.html#creating-refs).
+Ранее React использовал `findDOMNode` для поиска в дереве DOM-узла по переданному экземпляру класса. Зачастую вам это не нужно, так как вы можете [привязать рефу непосредственно к DOM-узлу](/docs/refs-and-the-dom.html#creating-refs).
 
-`findDOMNode` can also be used on class components but this was breaking abstraction levels by allowing a parent to demand that certain children was rendered. It creates a refactoring hazard where you can't change the implementation details of a component because a parent might be reaching into its DOM node. `findDOMNode` only returns the first child, but with the use of Fragments, it is possible for a component to render multiple DOM nodes. `findDOMNode` is a one time read API. It only gave you an answer when you asked for it. If a child component renders a different node, there is no way to handle this change. Therefore `findDOMNode` only worked if components always return a single DOM node that never changes.
+`findDOMNode` также может использоваться на классовых компонентах, однако это нарушает абстракцию, позволяя родительскому компоненту требовать рендера определенных дочерних элементов. Это создает опасность при рефакторинге, когда вы не можете изменить реализацию компонента, потому что родитель может попать в его DOM-узел. `findDOMNode` только возвращает первый дочерний элемент, но с использованием фрагментов, компонент может рендерить несколько DOM-узлов. `findDOMNode` предназначен для чтения (is a one time read API). Он возвращает результат,когда вы вызваете метод. Если дочерний компонент рендерит другой узел, способа отследить эти изменения нет. Поэтому `findDOMNode` работает только, если компоненты всегда возвращают один DOM-узел, который никогда не изменяется.
 
-You can instead make this explicit by passing a ref to your custom component and pass that along to the DOM using [ref forwarding](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
+Вместо использования этого метода, можно явно передать реф в ваш компонент и передавать по DOM используя [передачу реф](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
 
-You can also add a wrapper DOM node in your component and attach a ref directly to it.
+Вы можете добавить обёртку для DOM-узла в свой компонент и прикрепить ссылку непосредственно к обёртке.
 
 ```javascript{4,7}
 class MyComponent extends React.Component {
@@ -75,11 +74,11 @@ class MyComponent extends React.Component {
 
 > Примечание:
 >
-> В CSS атрибту [`display: contents`](https://developer.mozilla.org/en-US/docs/Web/CSS/display#display_contents) может использоваться, чтобы узел не был частью раскладки.
+> В CSS атрибут [`display: contents`](https://developer.mozilla.org/ru/docs/Web/CSS/display#display_contents) может использоваться, чтобы узел не был частью раскладки.
 
 ### Обраружение неожиданных побочных эффектов {#detecting-unexpected-side-effects}
 
-Концептуально, React работает в две фазы:
+React работает в две фазы:
 * **Фаза рендера (render phase)** определяет какие изменения необходимо произвести в, например, DOM. В течении данной фазы, React вызывает `render`, затем сравнивает полученный результат с результатом предыдущего рендера.
 * **Фаза фиксации (commit phase)** – в ней React применяет любые изменения. (В случае React DOM – это фаза, когда React вставляет, обновляет и удаляет DOM-узлы.) В течении этой фазы React вызывает методы жизненного цикла `componentDidMount` и `componentDidUpdate`.
 
@@ -111,7 +110,7 @@ class MyComponent extends React.Component {
 К примеру, рассмотрим следующий код:
 `embed:strict-mode/side-effects-in-constructor.js`
 
-На первый взгляд данный пример может не показаться проблемным. Но если метод `SharedApplicationState.recordEvent` не является [идемпотентным](https://en.wikipedia.org/wiki/Idempotence#Computer_science_meaning), тогда при создании этого компонента несколько раз может привести к недопустимому состоянию приложения. Такой вид ошибок может не проявляться во время разработки, или она может быть непоследовательное и поэтому может быть проигнорирована.
+На первый взгляд данный пример может не показаться проблемным. Но если метод `SharedApplicationState.recordEvent` не является [идемпотентным](https://ru.wikipedia.org/wiki/%D0%98%D0%B4%D0%B5%D0%BC%D0%BF%D0%BE%D1%82%D0%B5%D0%BD%D1%82%D0%BD%D0%BE%D1%81%D1%82%D1%8C#%D0%92_%D0%B8%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B5), тогда при создании этого компонента несколько раз может привести к недопустимому состоянию приложения. Такой вид ошибок может не проявляться во время разработки, или она может быть непоследовательное и поэтому может быть проигнорирована.
 
 Решение преднамеренно производить двойной вызов таких методов, как конструктор компонента, строгий режим облегчает поиск такого вида ошибок.
 
