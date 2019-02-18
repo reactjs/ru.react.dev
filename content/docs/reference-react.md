@@ -295,7 +295,7 @@ render() {
 
 ### `React.createRef` {#reactcreateref}
 
-`React.createRef` создаёт [реф](/docs/refs-and-the-dom.html), который можно прикрепить к React элементам через атрибут ref.
+`React.createRef` создаёт [реф](/docs/refs-and-the-dom.html), который можно прикрепить к React-элементам через атрибут ref.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
