@@ -79,7 +79,7 @@ MyComponent.propTypes = {
   // Объект со свойствами конкретного типа
   optionalObjectOf: PropTypes.objectOf(PropTypes.number),
 
-  // Объект, подходящий под маску
+  // Объект с определенной структурой
   optionalObjectWithShape: PropTypes.shape({
     color: PropTypes.string,
     fontSize: PropTypes.number
