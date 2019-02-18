@@ -67,9 +67,9 @@ npm run flow init
 
 ### Удаление аннотаций Flow из скомпилированного кода {#stripping-flow-syntax-from-the-compiled-code}
 
-Flow дополняет JavaScript собственным синтаксисом для указания типов, который не поддерживается браузерами. Для того, чтобы код работал, нужно убедиться в том, что аннотации Flow корректно удаляются из скомипилированного JavaScript бандла.
+Flow дополняет JavaScript собственным синтаксисом для указания типов, который не поддерживается браузерами. Для того, чтобы код работал, нужно убедиться в том, что аннотации Flow корректно удаляются из скомипилированного JavaScript.
 
-В зависимости от того, какими инструментами для сборки JavaScript вы пользуетесь, для этого есть несколько способов.
+Для этого есть несколько способов — выбирайте в зависимости от того, какими инструментами для сборки проекта вы пользуетесь.
 
 #### Create React App {#create-react-app}
 
@@ -79,9 +79,9 @@ Flow дополняет JavaScript собственным синтаксисом
 
 >Примечание:
 >
->Дальнейшие инструкции рассчитаны на тех, кто *не использует* Create React App, т.к. в нем уже есть все необходимые настройки для работы с Flow.
+>Дальнейшие инструкции рассчитаны на тех, кто *не использует* Create React App, т.к. там уже есть все необходимые настройки для работы с Flow.
 
-Если для своего проекте вы самостоятельно настраивали Babel, нужно установить специальный пресет для работы с Flow:
+Если для своего проекта вы самостоятельно настраивали Babel, нужно установить специальный пресет для работы с Flow:
 
 ```bash
 yarn add --dev babel-preset-flow
@@ -196,7 +196,7 @@ yarn add --dev typescript
 npm install --save-dev typescript
 ```
 
-Ура! Вы установили последнюю версию TypeScript. Теперь в вашем распоряжении новая команда — `tsc`. Но прежде, чем праздновать, давайте добавим соответствующий скрипт в наш `package.json`:
+Ура! Вы установили последнюю версию TypeScript. Теперь в вашем распоряжении новая команда — `tsc`. Но прежде, чем праздновать, давайте добавим соответствующий скрипт в файл `package.json`:
 
 ```js{4}
 {
@@ -211,20 +211,18 @@ npm install --save-dev typescript
 
 ### Настройка компилятора TypeScript {#configuring-the-typescript-compiler}
 
-Сам по себе компилятор бесполезен, пока мы не скажем, что именно ему нужно делать. Для этого есть специальный файл `tsconfig.json`, в котором нужно указать необходимые опции. Создадим этот файл:
+Сам по себе компилятор бесполезен, пока мы не скажем, что именно ему нужно делать. Для этого есть специальный конфигурационный файл `tsconfig.json`. Создадим этот файл:
 
 ```bash
 tsc --init
 ```
 
-[здесь](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
+Сгенерированный файл `tsconfig.json` уже содержит несколько параметров, которые используются компилятором по умолчанию. Кроме того, можно указать множество опциональных параметров. Более детальная информация по каждому параметру находится [здесь](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 
-Looking at the now generated `tsconfig.json`, you can see that there are many options you can use to configure the compiler. For a detailed description of all the options, check .
+Из всех параметров больше всего сейчас нас интересуют `rootDir` и `outDir`. Очевидно, что компилятор берет исходный TypeScript код, и компилирует его в JavaScript. И нам не нужно, чтобы возникла путаница между исходными файлами и сгенерированным кодом.
 
-Of the many options, we'll look at `rootDir` and `outDir`. In its true fashion, the compiler will take in typescript files and generate javascript files. However we don't want to get confused with our source files and the generated output.
-
-We'll address this in two steps:
-* Firstly, let's arrange our project structure like this. We'll place all our source code in the `src` directory.
+Эту проблему можно решить в два шага:
+* Во-первых, изменим структуру проекта. Все файлы с исходниками переместим в директорию `src`.
 
 ```
 ├── package.json
@@ -233,7 +231,7 @@ We'll address this in two steps:
 └── tsconfig.json
 ```
 
-* Next, we'll tell the compiler where our source code is and where the output should go.
+* Затем, укажем компилятору откуда ему брать исходные файлы и куда сохранять скомпилированный код.
 
 ```js{6,7}
 // tsconfig.json
@@ -248,38 +246,39 @@ We'll address this in two steps:
 }
 ```
 
-Great! Now when we run our build script the compiler will output the generated javascript to the `build` folder. The [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) provides a `tsconfig.json` with a good set of rules to get you started.
+Отлично! Теперь, если мы запустим скрипт сборки проекта, компилятор сохранит готовый JavaScript в директорию `build`. В [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) уже есть готовый `tsconfig.json` с неплохим набором параметров для дальнейшей тонкой настройки под себя.
 
-Generally, you don't want to keep the generated javascript in your source control, so be sure to add the build folder to your `.gitignore`.
+Как правило, скомпилированный JavaScript бандл не следует хранить в системе контроля версий, так что не забудьте добавить папку `build` в файл `.gitignore`.
 
-### File extensions {#file-extensions}
-In React, you most likely write your components in a `.js` file. In TypeScript we have 2 file extensions:
+### Расширения файлов {#file-extensions}
 
-`.ts` is the default file extension while `.tsx` is a special extension used for files which contain `JSX`.
+В React мы почти всегда используем `.js` в качестве расширений файлов компонентов. В TypeScript лучше разделать файлы на два типа: 
 
-### Running TypeScript {#running-typescript}
+`.tsx` для файлов, содержащих `JSX` разметку, и `.ts` для всего остального.  
 
-If you followed the instructions above, you should be able to run TypeScript for the first time.
+### Запуск TypeScript {#running-typescript}
+
+Если все было сделано правильно, можно попробовать скомпилировать TypeScript:
 
 ```bash
 yarn build
 ```
 
-If you use npm, run:
+Или `npm`:
 
 ```bash
 npm run build
 ```
 
-If you see no output, it means that it completed successfully.
+Если после этой команды в терминале ничего нет — процесс компиляции прошел успешно.
 
+### Определения типов {#type-definitions}
 
-### Type Definitions {#type-definitions}
-To be able to show errors and hints from other packages, the compiler relies on declaration files. A declaration file provides all the type information about a library. This enables us to use javascript libraries like those on npm in our project. 
+Для анализа ошибок и выдачи всплывающих подсказок компилятор TypeScript использует файлы определений. Они содержат в себе всю информацию о типах, которые используются в конкретной библиотеке. Это, в свою очередь, позволяет нам использовать JavaScript библиотеки в проекте совместно с TypeScript. 
 
-There are two main ways to get declarations for a library:
+Существует два основных способа получения файлов определений:
 
-__Bundled__ - The library bundles its own declaration file. This is great for us, since all we need to do is install the library, and we can use it right away. To check if a library has bundled types, look for an `index.d.ts` file in the project. Some libraries will have it specified in their `package.json` under the `typings` or `types` field.
+__Bundled__ — Библиотека устанавливается вместе с собственным файлом определений. Это прекрасный вариант для нас, так как все, что нам нужно — установить нужный пакет. Чтобы проверить, есть ли у библиотеки файл определений, поищите `index.d.ts` в ее исходных файлах. В некоторых библиотеках этот файл указывается в `package.json` в секциях `typings` или `types`. 
 
 __[DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)__ — это внушительный репозиторий файлов объявлений для библиотек без собственного файла объявлений. Например, React устанавливается без собственного файла объявления — вместо этого мы устанавливаем его отдельно: 
 
@@ -292,7 +291,7 @@ npm i --save-dev @types/react
 ```
 
 __Локальные объявления__
-Иногда пакет, который вы хотите использовать, не имеет ни собственного файла объявлений, ни соответствующего файла в репозитории DefinitelyTyped. В этом случае, мы можем объявить собственный локальный файл объявлений. Для этого создайте файл `declarations.d.ts` в корне директории, где лежат исходники вашего проекта. Файл деклараций может выглядеть примерно вот так: 
+Иногда пакет, который вы хотите использовать, не имеет ни собственного файла объявлений, ни соответствующего файла в репозитории DefinitelyTyped. В этом случае, мы можем объявить собственный локальный файл объявлений. Для этого надо создать файл `declarations.d.ts` в корне директории, где лежат исходники вашего проекта. Файл деклараций может выглядеть примерно так: 
 
 ```typescript
 declare module 'querystring' {
