@@ -140,7 +140,7 @@ function areEqual(prevProps, nextProps) {
   /*
   возвращает true, если nextProps рендерит
   тот же результат что и prevProps,
-  иначе верните false
+  иначе возвращает false
   */
 }
 export default React.memo(MyComponent, areEqual);
