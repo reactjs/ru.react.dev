@@ -88,7 +88,7 @@ React-компоненты также могут быть обявлены ка�
 
 ### `React.Component` {#reactcomponent}
 
-`React.Component` — это базовый класс для компонентов React, объявленных как [ES6-классы](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes):
+`React.Component` — это базовый класс для компонентов React, объявленных как [ES6-классы](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes):
 
 ```javascript
 class Greeting extends React.Component {
