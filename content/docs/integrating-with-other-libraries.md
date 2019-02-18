@@ -39,7 +39,7 @@ class SomePlugin extends React.Component {
 }
 ```
 
-Заметьте, что мы объявили два [метода жизненного цикла](/docs/react-component.html#the-component-lifecycle) — как `componentDidMount`, так и `componentWillUnmount`. Многие jQuery-плагины добавляют обработчики событий DOM, поэтому важно отключать их внутри `componentWillUnmount`. Если плагин не предоставляет метод для очистки, то, возможно, вам придется написать свой. Помните об удалении обработчиков событий, добавленных плагином, чтобы избежать утечек памяти.
+Заметьте, что мы объявили два [метода жизненного цикла](/docs/react-component.html#the-component-lifecycle) — как `componentDidMount`, так и `componentWillUnmount`. Многие jQuery-плагины добавляют обработчики событий DOM, поэтому важно отключать их внутри `componentWillUnmount`. Если плагин не предоставляет метод для очистки, то, возможно, вам придётся написать свой. Помните об удалении обработчиков событий, добавленных плагином, чтобы избежать утечек памяти.
 
 ### Интеграция с jQuery-плагином Chosen {#integrating-with-jquery-chosen-plugin}
 
