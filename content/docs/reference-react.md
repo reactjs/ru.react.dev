@@ -260,7 +260,7 @@ React.Children.only(children)
 
 > Примечание:
 >
-> `React.Children.only()` не принимает возвращаемое значение [`React.Children.map()`](#reactchildrenmap), потому что это массив, а не React элемент.
+> `React.Children.only()` не принимает возвращаемое значение [`React.Children.map()`](#reactchildrenmap), потому что это массив, а не React-элемент.
 
 #### `React.Children.toArray` {#reactchildrentoarray}
 
