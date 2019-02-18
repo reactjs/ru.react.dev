@@ -213,7 +213,7 @@ $('#btn').click(function() {
 
 ```js
 function Button() {
-  return <button id="btn">Сказать Привет</button>;
+  return <button id="btn">Сказать «Привет»</button>;
 }
 
 ReactDOM.render(
@@ -231,7 +231,7 @@ ReactDOM.render(
 
 ```js{2,6,9}
 function Button(props) {
-  return <button onClick={props.onClick}>Сказать Привет</button>;
+  return <button onClick={props.onClick}>Сказать «Привет»</button>;
 }
 
 function HelloButton() {
