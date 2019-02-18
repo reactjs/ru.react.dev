@@ -1,6 +1,6 @@
 ---
-id: Взаимодествие со сторонними библиотеками
-title: Integrating with Other Libraries
+id: integrating-with-other-libraries
+title: Взаимодествие со сторонними библиотеками
 permalink: docs/integrating-with-other-libraries.html
 ---
 
