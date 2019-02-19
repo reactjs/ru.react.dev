@@ -258,7 +258,7 @@ tsc --init
 
 ### Запуск TypeScript {#running-typescript}
 
-Если все было сделано правильно, можно попробовать скомпилировать TypeScript:
+Если всё было сделано правильно, можно попробовать скомпилировать TypeScript:
 
 ```bash
 yarn build
