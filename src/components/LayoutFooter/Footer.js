@@ -131,9 +131,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
             <MetaTitle onDark={true}>Дополнительно</MetaTitle>
             <FooterLink to="/tutorial/tutorial.html">Введение</FooterLink>
             <FooterLink to="/blog/">Блог</FooterLink>
-            <FooterLink to="/acknowledgements.html">
-              Благодарности
-            </FooterLink>
+            <FooterLink to="/acknowledgements.html">Благодарности</FooterLink>
             <ExternalFooterLink
               href="https://facebook.github.io/react-native/"
               target="_blank"
@@ -179,7 +177,7 @@ const Footer = ({layoutHasSidebar = false}: {layoutHasSidebar: boolean}) => (
               color: colors.subtleOnDark,
               paddingTop: 15,
             }}>
-            Copyright © 2018 Facebook Inc.
+            {`Copyright © ${new Date().getFullYear()} Facebook Inc.`}
           </p>
         </section>
       </div>

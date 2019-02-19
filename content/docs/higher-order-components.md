@@ -15,7 +15,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 Если обычный компонент преобразует пропсы в UI, то компонент высшего порядка преобразует компонент в другой компонент.
 
-HOC часто встречаются в сторонних библиотеках, например [`connect`](https://github.com/reactjs/react-redux/blob/master/docs/api.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) в Redux и [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) в Relay.
+HOC часто встречаются в сторонних библиотеках, например [`connect`](https://github.com/reactjs/react-redux/blob/master/docs/api/connect.md#connectmapstatetoprops-mapdispatchtoprops-mergeprops-options) в Redux и [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) в Relay.
 
 В этой главе мы обсудим чем полезны компоненты высшего порядка и как их создавать.
 
@@ -394,4 +394,8 @@ import MyComponent, { someFunction } from './MyComponent.js';
 
 По конвенции, компоненты высшего порядка и передают все пропсы оборачеваемому компоненту, кроме рефов. `ref` на самом деле не проп, как, например, `key`, и по-другому обрабатывается React. Реф элемента, созданного компонентом из HOC, будет указывать на экземпляр ближайшего в иерахрии контейнера, а не на оборачиваемый копмонент.
 
+<<<<<<< HEAD
 Вы можете решить эту проблему с помощью `React.forwardRef` API (представлен в React 16.3). [Узнать больше в главе Пересылка рефов](/docs/forwarding-refs.html).
+=======
+The solution for this problem is to use the `React.forwardRef` API (introduced with React 16.3). [Learn more about it in the forwarding refs section](/docs/forwarding-refs.html).
+>>>>>>> upstream/master
