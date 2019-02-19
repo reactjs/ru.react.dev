@@ -310,7 +310,7 @@ declare module 'querystring' {
 
 [Reason](https://reasonml.github.io/) — это не новый язык, а новый синтаксис и набор инструментов для проверенного временем языка [OCaml](https://ocaml.org/). Reason предоставляет синтаксис, ориентированный на JavaScript программистов, и использует уже известный всем способ распространения через NPM/Yarn.
 
-Reason был разработан в Facebook и используется в некоторых продуктах этой компании — например, в Messenger. Reason все еще считается довольно экспериментальным инструментом, но уже имеет [библиотеку привязок для React](https://reasonml.github.io/reason-react/), поддерживаемую Facebook, а также [отзывчивое коммьюнити](https://reasonml.github.io/docs/en/community.html)
+Reason был разработан в Facebook и используется в некоторых продуктах этой компании — например, в Messenger. Reason всё ещё считается довольно экспериментальным инструментом, но уже имеет [библиотеку привязок для React](https://reasonml.github.io/reason-react/), поддерживаемую Facebook, а также [отзывчивое сообщество](https://reasonml.github.io/docs/en/community.html)
 
 ## Kotlin {#kotlin}
 
