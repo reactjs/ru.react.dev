@@ -3,7 +3,7 @@ import {ThemeContext} from './theme-context';
 function ThemeTogglerButton() {
   // highlight-range{1-2,5}
   // ThemeTogglerButton получает из контекста
-  // не только значение UI-темы, но и toggleTheme функцию.
+  // не только значение UI-темы, но и функцию toggleTheme.
   return (
     <ThemeContext.Consumer>
       {({theme, toggleTheme}) => (
