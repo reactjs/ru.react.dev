@@ -156,7 +156,7 @@ No errors!
 
 ## TypeScript {#typescript}
 
-[TypeScript](https://www.typescriptlang.org/) — это язык программирования, разработанный в Microsoft. TypeScript является надмножеством JavaScript, имеет статическую систему типов и собственный компилятор. Статическая типизация позволяет отлавливать ошибки и баги во время компиляции, еще до запуска приложения. Подробнее узнать о совместном использовании TypeScript и React можно [здесь](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter).
+[TypeScript](https://www.typescriptlang.org/) — это язык программирования, разработанный в Microsoft. TypeScript является надмножеством JavaScript, имеет статическую систему типов и собственный компилятор. Статическая типизация позволяет отлавливать ошибки и баги во время компиляции, ещё до запуска приложения. Подробнее узнать о совместном использовании TypeScript и React можно [здесь](https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter).
 
 Чтобы использовать TypeScript, нужно:
 * Установить TypeScript как локальную зависимость проекта.
