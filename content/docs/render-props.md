@@ -10,7 +10,7 @@ permalink: docs/render-props.html
 
 ```jsx
 <DataProvider render={data => (
-  <h1>Hello {data.target}</h1>
+  <h1>Привет, {data.target}</h1>
 )}/>
 ```
 
