@@ -267,7 +267,7 @@ Mouse.propTypes = {
 };
 ```
 
-## Caveats {#caveats}
+## Предостережения {#caveats}
 
 ### Будьте осторожны при использовании рендер-пропс вместе с React.PureComponent {#be-careful-when-using-render-props-with-reactpurecomponent}
 
