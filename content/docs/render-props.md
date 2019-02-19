@@ -257,7 +257,8 @@ function withMouse(Component) {
 </Mouse>
 ```
 
-Вы увидите, что эта техника используется в [react-motion](https://github.com/chenglou/react-motion) API.
+Вы увидите, что эта техника используется в API библиотеки [react-motion](https://github.com/chenglou/react-motion).
+
 
 Поскольку этот метод не совсем обычен, вы, вероятно, захотите явно указать, что `чилдрен` должен быть функцией в вашем `проптайпс` при разработке такого API.
 
