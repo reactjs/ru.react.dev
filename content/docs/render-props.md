@@ -289,7 +289,7 @@ class MouseTracker extends React.Component {
 
         {/*
           Это плохо! Значение `render` пропа будет
-          разной на каждом рендере.
+          разным при каждом рендере.
         */}
         <Mouse render={mouse => (
           <Cat mouse={mouse} />
