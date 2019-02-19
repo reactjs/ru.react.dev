@@ -307,7 +307,7 @@ class MouseTracker extends React.Component {
 ```js
 class MouseTracker extends React.Component {
   // Определяем как метод экземпляра, `this.renderTheCat` всегда
-  // ссылается на *такую* же функцию когда мы используем её в рендере
+  // ссылается на *ту же самую* функцию, когда мы используем её в рендере
   renderTheCat(mouse) {
     return <Cat mouse={mouse} />;
   }
