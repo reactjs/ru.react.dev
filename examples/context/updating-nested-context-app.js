@@ -16,7 +16,7 @@ class App extends React.Component {
 
     // highlight-range{1-2,5}
     // Состояние хранит функцию для обновления контекста,
-    // которая будет также передана в Provider компонент.
+    // которая будет также передана в Provider-компонент.
     this.state = {
       theme: themes.light,
       toggleTheme: this.toggleTheme,
