@@ -28,7 +28,7 @@ permalink: docs/context.html
 
 `embed:context/motivation-problem.js`
 
-Используя контекст, мы можем избежать передачи пропсов в промежуточные компоненты:
+Контекст позволяет избежать передачи пропсов в промежуточные компоненты:
 
 `embed:context/motivation-solution.js`
 
