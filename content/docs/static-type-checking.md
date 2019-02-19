@@ -316,7 +316,7 @@ Reason был разработан в Facebook и используется в н
 
 [Kotlin](https://kotlinlang.org/) – это язык со статической типизацией, разработанный в JetBrains. Он нацелен на платформы работающие на основе JVM, Android, LLVM и [JavaScript](https://kotlinlang.org/docs/reference/js-overview.html). 
 
-JetBrains разрабатывает и поддерживает несколько библиотек специально для React community: [React bindings](https://github.com/JetBrains/kotlin-wrappers) совместно с [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app). Последняя позволит вам начать использовать Kotlin вместе с React в одном проекте без необходимости ручной конфигурации.
+JetBrains разрабатывает и поддерживает несколько библиотек специально для сообщества React: [React bindings](https://github.com/JetBrains/kotlin-wrappers) совместно с [Create React Kotlin App](https://github.com/JetBrains/create-react-kotlin-app). Последняя позволит вам начать использовать Kotlin вместе с React в одном проекте без необходимости ручной конфигурации.
 
 ## Другие языки {#other-languages}
 
