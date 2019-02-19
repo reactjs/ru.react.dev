@@ -34,7 +34,7 @@ function Toolbar(props) {
 class ThemedButton extends React.Component {
   // highlight-range{1-4,7}
   // Определяем contextType, чтобы получить значение контекста.
-  // React найдёт (выше по дереву) ближайший Provider компонент,
+  // React найдёт (выше по дереву) ближайший Provider-компонент,
   // предоставляющий этот контекст, и использует его значение.
   // В этом примере значение UI-темы будет "dark".
   static contextType = ThemeContext;
