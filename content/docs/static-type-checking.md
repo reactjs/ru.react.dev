@@ -300,7 +300,7 @@ declare module 'querystring' {
 }
 ```
 
-Вот и все, вы готовы писать код на TypeScript! Чтобы познакомиться с ним поближе, рекомендуем посетить эти ресурсы: 
+Вот и всё, вы готовы писать код на TypeScript! Чтобы познакомиться с ним поближе, рекомендуем посетить эти ресурсы: 
 
 * [TypeScript Documentation: Basic Types](https://www.typescriptlang.org/docs/handbook/basic-types.html)
 * [TypeScript Documentation: Migrating from Javascript](https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html)
