@@ -184,7 +184,7 @@ npx create-react-app my-app --typescript
 
 ### Добавление TypeScript в проект {#adding-typescript-to-a-project}
 
-Все начинается с одной единственной команды в терминале:
+Всё начинается с одной единственной команды в терминале:
 
 ```bash
 yarn add --dev typescript
