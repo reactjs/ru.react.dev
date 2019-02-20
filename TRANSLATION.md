@@ -199,7 +199,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | error boundary | предохранитель |
 | escape hatch | лазейка (*напр., императивные лазейки*) |
 | fallback | запасной |
-| feature | возможность |
+| feature | возможность (*менее предпочтительный синоним: функциональность*) |
 | folder | папка |
 | framework | фреймворк |
 | function component | функциональный компонент |
