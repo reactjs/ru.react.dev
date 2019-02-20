@@ -130,7 +130,7 @@ class MouseWithCat extends React.Component {
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
 
         {/*
-          Мы могли бы просто поменять <p> на <Cat> здесь ... но тогда
+          Мы могли бы просто поменять <p> на <Cat>... но тогда
           нам нужно создать отдельный компонент <MouseWithSomethingElse>
           каждый раз когда он нужен нам, поэтому <MouseWithCat>
           пока что нельзя переиспользовать.
