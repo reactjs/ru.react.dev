@@ -76,7 +76,7 @@ class Mouse extends React.Component {
     return (
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
 
-        {/* ...но как мы можем отрендерить нечто большее чем <p>? */}
+        {/* ...но как можно отрендерить что-то, кроме <p>? */}
         <p>The current mouse position is ({this.state.x}, {this.state.y})</p>
       </div>
     );
