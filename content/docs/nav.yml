@@ -74,7 +74,7 @@
     - id: strict-mode
       title: Strict Mode
     - id: typechecking-with-proptypes
-      title: Typechecking With PropTypes
+      title: Проверка типов с помощью PropTypes
     - id: uncontrolled-components
       title: Uncontrolled Components
     - id: web-components
