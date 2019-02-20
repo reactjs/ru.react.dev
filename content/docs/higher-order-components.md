@@ -16,7 +16,6 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 HOC часто встречаются в сторонних библиотеках, например [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) в Redux и [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) в Relay.
 
-
 В этой главе мы обсудим чем полезны компоненты высшего порядка и как их создавать.
 
 ## HOC для сквозной функциональности {#use-hocs-for-cross-cutting-concerns}
