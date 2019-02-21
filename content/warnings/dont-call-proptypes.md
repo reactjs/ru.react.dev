@@ -1,5 +1,5 @@
 ---
-title: Предупреждение: не вызывайте PropTypes
+title: "Предупреждение: не вызывайте PropTypes"
 layout: single
 permalink: warnings/dont-call-proptypes.html
 ---
