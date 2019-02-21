@@ -1,5 +1,5 @@
 ---
-title: Предупреждение: некорректный проп ARIA
+title: "Предупреждение: некорректный проп ARIA"
 layout: single
 permalink: warnings/invalid-aria-prop.html
 ---
