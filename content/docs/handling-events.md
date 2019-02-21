@@ -54,7 +54,7 @@ function ActionLink() {
 }
 ```
 
-Здесь `e` — это синтетическое событие. React определяет синтетические события в соответствии со [спецификацией W3C](https://www.w3.org/TR/DOM-Level-3-Events/), поэтому не волнуйтесь о кроссбраузерности. Посмотрите [руководство о `SyntheticEvent`](/docs/events.html), чтобы узнать о них больше.
+В приведённом выше коде `e` — это синтетическое событие. React определяет синтетические события в соответствии со [спецификацией W3C](https://www.w3.org/TR/DOM-Level-3-Events/), поэтому не волнуйтесь о кроссбраузерности. Посмотрите [руководство о `SyntheticEvent`](/docs/events.html), чтобы узнать о них больше.
 
 При использовании React обычно не нужно вызывать `addEventListener`, чтобы добавить обработчики в DOM-элемент после его создания. Вместо этого добавьте обработчик сразу после того, как элемент отрендерился.
 
@@ -93,7 +93,7 @@ ReactDOM.render(
 
 [**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/xEmzGg?editors=0010)
 
-Будьте внимательны со значением `this` в JSX-колбэках. В JavaScript методы класса не [привязаны](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) по умолчанию. Если вы забудете привязать метод `this.handleClick` и передать его в `onClick`,  `this` будет `undefined` в момент вызова функции.
+При обращении к `this` в JSX-колбэках необходимо учитывать, что методы класса в JavaScript по умолчанию не [привязаны](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) к контексту. Если вы забудете привязать метод `this.handleClick` и передать его в `onClick`, значение `this` будет `undefined` в момент вызова функции.
 
 Дело не в работе React, это часть того, [как работают функции в JavaScript](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/). Обычно, если ссылаться на метод без `()` после него, например, `onClick={this.handleClick}`, этот метод нужно привязать.
 
