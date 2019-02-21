@@ -70,28 +70,28 @@ React нормализует события так, чтобы они содер
 
 Обработчики ниже вызываются на фазе всплытия (bubbling). А чтобы зарегистрировать событие на фазе перехвата (capture), просто добавьте `Capture` к имени события; например, вместо использования `onClick` используйте `onClickCapture`, чтобы обработать событие на фазе перехвата.
 
-- [Clipboard Events](#clipboard-events)
-- [Composition Events](#composition-events)
-- [Keyboard Events](#keyboard-events)
-- [Focus Events](#focus-events)
-- [Form Events](#form-events)
-- [Mouse Events](#mouse-events)
-- [Pointer Events](#pointer-events)
-- [Selection Events](#selection-events)
-- [Touch Events](#touch-events)
-- [UI Events](#ui-events)
-- [Wheel Events](#wheel-events)
-- [Media Events](#media-events)
-- [Image Events](#image-events)
-- [Animation Events](#animation-events)
-- [Transition Events](#transition-events)
-- [Other Events](#other-events)
+- [События буфера обмена](#clipboard-events)
+- [Композиционные события](#composition-events)
+- [События клавиатуры](#keyboard-events)
+- [События фокуса](#focus-events)
+- [События формы](#form-events)
+- [События мыши](#mouse-events)
+- [События курсора](#pointer-events)
+- [События выбора](#selection-events)
+- [Сенсорные события](#touch-events)
+- [События UI](#ui-events)
+- [Событий колеса мыши](#wheel-events)
+- [События медиа-элементов](#media-events)
+- [События изображений](#image-events)
+- [События анимаций](#animation-events)
+- [События переходов](#transition-events)
+- [Другие события](#other-events)
 
 * * *
 
 ## Reference {#reference}
 
-### Clipboard Events {#clipboard-events}
+### События буфера обмена {#clipboard-events}
 
 Название событий:
 
@@ -107,7 +107,7 @@ DOMDataTransfer clipboardData
 
 * * *
 
-### Composition Events {#composition-events}
+### Композиционные события {#composition-events}
 
 Название событий:
 
@@ -124,7 +124,7 @@ string data
 
 * * *
 
-### Keyboard Events {#keyboard-events}
+### События клавиатуры {#keyboard-events}
 
 Название событий:
 
@@ -153,7 +153,7 @@ number which
 
 * * *
 
-### Focus Events {#focus-events}
+### События фокуса {#focus-events}
 
 Название событий:
 
@@ -171,7 +171,7 @@ DOMEventTarget relatedTarget
 
 * * *
 
-### Form Events {#form-events}
+### События формы {#form-events}
 
 Название событий:
 
@@ -183,7 +183,7 @@ onChange onInput onInvalid onSubmit
 
 * * *
 
-### Mouse Events {#mouse-events}
+### События мыши {#mouse-events}
 
 Название событий:
 
@@ -193,7 +193,7 @@ onDragLeave onDragOver onDragStart onDrop onMouseDown onMouseEnter onMouseLeave
 onMouseMove onMouseOut onMouseOver onMouseUp
 ```
 
-События `onMouseEnter` и `onMouseLeave` всплывают с покинутого элемента к наведенному, вместо обычного процесса всплытия и не имеют фазы перехвата.
+События `onMouseEnter` и `onMouseLeave` всплывают с покинутого элемента к наведённому, вместо обычного процесса всплытия и не имеют фазы перехвата.
 
 Свойства:
 
@@ -216,7 +216,7 @@ boolean shiftKey
 
 * * *
 
-### Pointer Events {#pointer-events}
+### События курсора {#pointer-events}
 
 Название собыий:
 
@@ -225,11 +225,11 @@ onPointerDown onPointerMove onPointerUp onPointerCancel onGotPointerCapture
 onLostPointerCapture onPointerEnter onPointerLeave onPointerOver onPointerOut
 ```
 
-События `onPointerEnter` и `onPointerLeave` всплывают с покинутого элемента к наведенному, вместо обычного процесса всплытия и не имеют фазы перехвата.
+События `onPointerEnter` и `onPointerLeave` всплывают с покинутого элемента к наведённому, вместо обычного процесса всплытия и не имеют фазы перехвата.
 
 Свойства:
 
-По определению из [W3 spec](https://www.w3.org/TR/pointerevents/), события курсора наследуют [Mouse Events](#mouse-events) со следующими свойствами:
+По определению из [W3 spec](https://www.w3.org/TR/pointerevents/), события курсора наследуют [События мыши](#mouse-events) со следующими свойствами:
 
 ```javascript
 number pointerId
@@ -252,7 +252,7 @@ boolean isPrimary
 
 * * *
 
-### Selection Events {#selection-events}
+### События выбора {#selection-events}
 
 Название событий:
 
@@ -262,7 +262,7 @@ onSelect
 
 * * *
 
-### Touch Events {#touch-events}
+### Сенсорные события {#touch-events}
 
 Название событий:
 
@@ -285,7 +285,7 @@ DOMTouchList touches
 
 * * *
 
-### UI Events {#ui-events}
+### События UI {#ui-events}
 
 Название событий:
 
@@ -302,7 +302,7 @@ DOMAbstractView view
 
 * * *
 
-### Wheel Events {#wheel-events}
+### Событий колеса мыши {#wheel-events}
 
 Event names:
 
@@ -334,7 +334,7 @@ onTimeUpdate onVolumeChange onWaiting
 
 * * *
 
-### Image Events {#image-events}
+### События изображений {#image-events}
 
 Название событий:
 
@@ -344,7 +344,7 @@ onLoad onError
 
 * * *
 
-### Animation Events {#animation-events}
+### События анимацй {#animation-events}
 
 Название событий:
 
@@ -362,7 +362,7 @@ float elapsedTime
 
 * * *
 
-### Transition Events {#transition-events}
+### События переходов {#transition-events}
 
 Название событий:
 
@@ -380,7 +380,7 @@ float elapsedTime
 
 * * *
 
-### Other Events {#other-events}
+### Другие события {#other-events}
 
 Название событий:
 
