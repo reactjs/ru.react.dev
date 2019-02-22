@@ -108,7 +108,11 @@ method();
 
 В React, как правило, привязывать нужно только те методы, которые вы *хотите передать* другим компонентам. Например, `<button onClick={this.handleClick}>` передаёт `this.handleClick`, поэтому его нужно привязать. Впрочем, метод `render` и методы жизненного цикла привязывать не обязательно, так как мы не передаём их в другие компоненты.
 
+<<<<<<< HEAD
 [Ознакомьтесь со статьёй Йехуды Катц](http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), в которой более подробно объяснено, что такое привязка, и как работают функции в JavaScript.
+=======
+[This post by Yehuda Katz](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/) explains what binding is, and how functions work in JavaScript, in detail.
+>>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
 
 ### Почему моя функция вызывается каждый раз при отрисовке компонента? {#why-is-my-function-being-called-every-time-the-component-renders}
 
