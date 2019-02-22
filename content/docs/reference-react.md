@@ -106,7 +106,7 @@ class Greeting extends React.Component {
 
 `React.PureComponent` похож на [`React.Component`](#reactcomponent). Отличие заключается в том, что [`React.Component`](#reactcomponent) не реализует [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), а `React.PureComponent` реализует его с поверхностным сравнением пропсов и состояния.
 
-Если метод `render()` вашего React-компонента рендерит один и тот же результат с одинаковыми пропсами и состоянием, для повышения производительности в некоторых случаях вы можете использовать `React.PureComponent`.
+Если метод `render()` вашего React-компонента всегда рендерит одинаковый результат при одних и тех же пропсах и состояниях, для повышения производительности в некоторых случаях вы можете использовать `React.PureComponent`.
 
 > Примечание
 >
