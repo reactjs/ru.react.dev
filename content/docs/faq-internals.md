@@ -1,6 +1,6 @@
 ---
 id: faq-internals
-title: Виртуальный DOM
+title: Виртуальный DOM и детали его реализации в React
 permalink: docs/faq-internals.html
 layout: docs
 category: FAQ
