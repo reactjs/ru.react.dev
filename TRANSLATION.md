@@ -193,6 +193,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | development | разработка |
 | development mode | режим разработки |
 | developer tools | инструменты разработки |
+| display name | отображаемое имя |
 | DOM container | DOM-контейнер |
 | effect | эффект |
 | error | ошибка |
