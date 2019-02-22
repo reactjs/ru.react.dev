@@ -108,7 +108,7 @@ method();
 
 В React, как правило, привязывать нужно только те методы, которые вы *хотите передать* другим компонентам. Например, `<button onClick={this.handleClick}>` передаёт `this.handleClick`, поэтому его нужно привязать. Впрочем, метод `render` и методы жизненного цикла привязывать не обязательно, так как мы не передаём их в другие компоненты.
 
-[Ознакомьтесь со статьёй Йехуды Катц](http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), которая более подробно объясняет, что такое привязка, и как работают функции в JavaScript.
+[Ознакомьтесь со статьёй Йехуды Катц](http://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), в которой более подробно объяснено, что такое привязка, и как работают функции в JavaScript.
 
 ### Почему моя функция вызывается каждый раз при отрисовке компонента? {#why-is-my-function-being-called-every-time-the-component-renders}
 
@@ -138,7 +138,7 @@ render() {
 <button onClick={() => this.handleClick(id)} />
 ```
 
-Это действие равно использованию `.bind`:
+Это действие равносильно использованию `.bind`:
 
 ```jsx
 <button onClick={this.handleClick.bind(this, id)} />
@@ -224,7 +224,7 @@ class Alphabet extends React.Component {
 
 - **тротлинг**: выборочные изменения, зависимые от частоты, основанной на времени (напр. [`_.throttle`](https://lodash.com/docs#throttle))
 - **дебаунсинг**: изменения, задействованные после некого периода бездействия (напр. [`_.debounce`](https://lodash.com/docs#debounce))
-- **Тротлинг с помощью `requestAnimationFrame`**: выборочные изменения, основанные на [`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) (напр. [`raf-schd`](https://github.com/alexreardon/raf-schd))
+- **тротлинг с помощью `requestAnimationFrame`**: выборочные изменения, основанные на [`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) (напр. [`raf-schd`](https://github.com/alexreardon/raf-schd))
 
 Взгляните на [визуализацию](http://demo.nimius.net/debounce_throttle/), которая сравнивает функции `throttle` и `debounce`.
 
@@ -351,4 +351,4 @@ class ScrollListener extends React.Component {
 
 #### Тестирование ограничения скорости {#testing-your-rate-limiting}
 
-Когда тестирование вашего кода ограничения скорости работает правильно, было бы полезно иметь возможность прокрутить время. Если вы используете [`jest`](https://facebook.github.io/jest/), то для этого вам может пригодиться [`mock timers`](https://facebook.github.io/jest/docs/en/timer-mocks.html). Если вы используете `requestAnimationFrame`, то [`raf-stub`](https://github.com/alexreardon/raf-stub) может оказаться полезным инструментом для управления смены кадров анимации.
+Когда вы тестируете, что ваш код ограничения скорости работает правильно, полезно иметь возможность прокрутить время. Если вы используете [`jest`](https://facebook.github.io/jest/), вам может пригодиться [`mock timers`](https://facebook.github.io/jest/docs/en/timer-mocks.html). Если вы используете `requestAnimationFrame`, то [`raf-stub`](https://github.com/alexreardon/raf-stub) может оказаться полезным инструментом для управления смены кадров анимации.
