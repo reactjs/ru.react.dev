@@ -292,11 +292,11 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 Вы можете найти вспомогательную функцию `compose` во многих сторонних библиотеках, включая lodash (под названием [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](http://redux.js.org/docs/api/compose.html), и [Ramda](http://ramdajs.com/docs/#compose).
 
-## Соглашение: добавьте имя отображения для легкой отладки {#convention-wrap-the-display-name-for-easy-debugging}
+## Соглашение: добавьте отображаемое имя для легкой отладки {#convention-wrap-the-display-name-for-easy-debugging}
 
 Созданные HOC компоненты-контейнеры отображаются в консоли [инструментов разработки React](https://github.com/facebook/react-devtools) наряду с другими компонентами. Для более лёгкой отладки вы можете задать имя, которое подскажет, что определенный компонент был создан с помощью HOC.
 
-Самый распространённый способ -- это обернуть имя оборачиваемого компонента. Например, если вы назвали компонент высшего порядка `withSubscription`, а имя оборачиваемого компонента было `CommentList`, укажите имя отображения как `WithSubscription(CommentList)`:
+Самый распространённый способ -- это обернуть имя оборачиваемого компонента. Например, если вы назвали компонент высшего порядка `withSubscription`, а имя оборачиваемого компонента было `CommentList`, то отображаемое имя будет `WithSubscription(CommentList)`:
 
 ```js
 function withSubscription(WrappedComponent) {
