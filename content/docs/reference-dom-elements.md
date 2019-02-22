@@ -91,11 +91,7 @@ function ComponentWithTransition() {
 }
 ```
 
-<<<<<<< HEAD
-Ключи стилей записываются в camelCase для обеспечения доступа к аналогичным свойствам DOM из JS (например, `node.style.backgroundImage`). Префиксы браузера [кроме `ms`](http://www.andismith.com/blog/2012/02/modernizr-prefixed/) должны начинаться с заглавной буквы. Вот почему `WebkitTransition` начинается с заглавной "W".
-=======
-Style keys are camelCased in order to be consistent with accessing the properties on DOM nodes from JS (e.g. `node.style.backgroundImage`). Vendor prefixes [other than `ms`](https://www.andismith.com/blogs/2012/02/modernizr-prefixed/) should begin with a capital letter. This is why `WebkitTransition` has an uppercase "W".
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+Ключи стилей записываются в camelCase для обеспечения доступа к аналогичным свойствам DOM из JS (например, `node.style.backgroundImage`). Префиксы браузера [кроме `ms`](https://www.andismith.com/blog/2012/02/modernizr-prefixed/) должны начинаться с заглавной буквы. Вот почему `WebkitTransition` начинается с заглавной "W".
 
 React автоматически добавит суффикс «px» к свойствам стилей с числовым значением. Если вы хотите использовать единицы измерения, отличные от «px», укажите значение в виде строки с желаемой единицей измерения. Например:
 

@@ -61,11 +61,8 @@ prev: composition-vs-inheritance.html
 
 ## Шаг 2: Создадим статическую версию в React {#step-2-build-a-static-version-in-react}
 
-<<<<<<< HEAD
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">Пример кода <a href="https://codepen.io/gaearon/pen/BwWzwm">Философия React: Шаг 2</a> на <a href="http://codepen.io">CodePen</a>.</p>
-=======
-<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/BwWzwm">Thinking In React: Step 2</a> on <a href="https://codepen.io">CodePen</a>.</p>
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+<p data-height="600" data-theme-id="0" data-slug-hash="BwWzwm" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">Пример кода <a href="https://codepen.io/gaearon/pen/BwWzwm">Философия React: Шаг 2</a> на <a href="https://codepen.io">CodePen</a>.</p>
+
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 Теперь, когда все компоненты расположены в иерархическом порядке, пришло время реализовать наше приложение. Самый легкий способ — создать версию, которая использует модель данных и рендерит интерфейс, но не предполагает никакой интерактивности. Разделять эти процессы полезно. Написание статической версии требует много печатания и совсем немного мышления. С другой стороны, создание интерактивности приложения подразумевает более глубокий мыслительный процесс и лишь долю рутинной печати. Мы разберёмся, почему так выходит, позже.
@@ -110,11 +107,7 @@ prev: composition-vs-inheritance.html
 
 ## Шаг 4: Определим, где должно находиться наше состояние{#step-4-identify-where-your-state-should-live}
 
-<<<<<<< HEAD
-<p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">Пример кода <a href="https://codepen.io/gaearon/pen/qPrNQZ">Философия React: Шаг 4</a> на <a href="http://codepen.io">CodePen</a>.</p>
-=======
-<p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/qPrNQZ">Thinking In React: Step 4</a> on <a href="https://codepen.io">CodePen</a>.</p>
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+<p data-height="600" data-theme-id="0" data-slug-hash="qPrNQZ" data-default-tab="js" data-user="lacker" data-embed-version="2" class="codepen">Пример кода <a href="https://codepen.io/gaearon/pen/qPrNQZ">Философия React: Шаг 4</a> на <a href="https://codepen.io">CodePen</a>.</p>
 
 Итак, мы определили минимальный набор состояний приложения. Далее нам нужно выяснить, какой из компонентов *владеет* состоянием или изменяет его.
 
@@ -139,11 +132,7 @@ prev: composition-vs-inheritance.html
 
 ## Шаг 5: Добавим обратный поток данных {#step-5-add-inverse-data-flow}
 
-<<<<<<< HEAD
-<p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">Пример кода <a href="https://codepen.io/gaearon/pen/LzWZvb">Философия React: Шаг 5</a> на <a href="http://codepen.io">CodePen</a>.</p>
-=======
-<p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">See the Pen <a href="https://codepen.io/gaearon/pen/LzWZvb">Thinking In React: Step 5</a> on <a href="https://codepen.io">CodePen</a>.</p>
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+<p data-height="600" data-theme-id="0" data-slug-hash="LzWZvb" data-default-tab="js,result" data-user="rohan10" data-embed-version="2" data-pen-title="Thinking In React: Step 5" class="codepen">Пример кода <a href="https://codepen.io/gaearon/pen/LzWZvb">Философия React: Шаг 5</a> на <a href="https://codepen.io">CodePen</a>.</p>
 
 Пока что наше приложение рендерится в зависимости от пропсов и состояния, передающихся вниз по иерархии. Теперь мы обеспечим поток данных в обратную сторону: наша задача сделать так, чтобы компоненты формы в самом низу иерархии обновляли состояние в `FilterableProductTable`.
 

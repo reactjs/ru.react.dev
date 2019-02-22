@@ -70,11 +70,7 @@ ReactDOM.render(
 
 [](codepen://introducing-jsx)
 
-<<<<<<< HEAD
-Чтобы улучшить читаемость, мы разбили JSX на несколько строк. В таких случаях, хотя это и не обязательно, мы советуем заключать всё выражение целиком в круглые скобки, чтобы избежать проблем, связанных с [автоматической вставкой точек с запятой](http://stackoverflow.com/q/2846283).
-=======
-We split JSX over multiple lines for readability. While it isn't required, when doing this, we also recommend wrapping it in parentheses to avoid the pitfalls of [automatic semicolon insertion](https://stackoverflow.com/q/2846283).
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+Чтобы улучшить читаемость, мы разбили JSX на несколько строк. В таких случаях, хотя это и не обязательно, мы советуем заключать всё выражение целиком в круглые скобки, чтобы избежать проблем, связанных с [автоматической вставкой точек с запятой](https://stackoverflow.com/q/2846283).
 
 ### JSX это тоже выражение {#jsx-is-an-expression-too}
 
@@ -141,12 +137,7 @@ const title = response.potentiallyMaliciousInput;
 // Этот код безопасен:
 const element = <h1>{title}</h1>;
 ```
-
-<<<<<<< HEAD
-По умолчанию React DOM [экранирует](http://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) все значения, включённые в JSX перед тем как отрендерить их. Это гарантирует, что вы никогда не внедрите чего-либо, что не было явно написано в вашем приложении. Всё преобразуется в строчки, перед тем как быть отрендеренным. Это помогает предотвращать атаки [межсайтовым скриптингом (XSS)](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D1%81%D0%B0%D0%B9%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%B8%D0%BD%D0%B3).
-=======
-By default, React DOM [escapes](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that's not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent [XSS (cross-site-scripting)](https://en.wikipedia.org/wiki/Cross-site_scripting) attacks.
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+По умолчанию React DOM [экранирует](https://stackoverflow.com/questions/7381974/which-characters-need-to-be-escaped-on-html) все значения, включённые в JSX перед тем как отрендерить их. Это гарантирует, что вы никогда не внедрите чего-либо, что не было явно написано в вашем приложении. Всё преобразуется в строчки, перед тем как быть отрендеренным. Это помогает предотвращать атаки [межсайтовым скриптингом (XSS)](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%B6%D1%81%D0%B0%D0%B9%D1%82%D0%BE%D0%B2%D1%8B%D0%B9_%D1%81%D0%BA%D1%80%D0%B8%D0%BF%D1%82%D0%B8%D0%BD%D0%B3).
 
 ### JSX представляет собой объекты {#jsx-represents-objects}
 
@@ -189,8 +180,4 @@ const element = {
 
 >**Совет:**
 >
-<<<<<<< HEAD
->Мы рекомендуем настроить ваш любимый редактор кода использовать [Babel](http://babeljs.io/docs/editors) чтобы и ES6, и JSX код были подсвечены должным образом. Настоящий сайт использует совместимую цветовую схему [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/).
-=======
->We recommend using the ["Babel" language definition](https://babeljs.io/docs/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted. This website uses the [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/) color scheme which is compatible with it.
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+>Мы рекомендуем настроить ваш любимый редактор кода использовать [Babel](https://babeljs.io/docs/editors) чтобы и ES6, и JSX код были подсвечены должным образом. Настоящий сайт использует совместимую цветовую схему [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/).

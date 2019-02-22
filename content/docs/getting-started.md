@@ -69,11 +69,7 @@ React сначала может показаться сложным, но при
 
 ### React для дизайнеров {#react-for-designers}
 
-<<<<<<< HEAD
-Если вы в первую очередь занимаетесь дизайном, вам могут пригодиться ресурсы, собранные [на этом сайте](http://reactfordesigners.com/).
-=======
-If you're coming from a design background, [these resources](https://reactfordesigners.com/) are a great place to get started.
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+Если вы в первую очередь занимаетесь дизайном, вам могут пригодиться ресурсы, собранные [на этом сайте](https://reactfordesigners.com/).
 
 ### Ресурсы по JavaScript {#javascript-resources}
 
@@ -83,11 +79,7 @@ If you're coming from a design background, [these resources](https://reactfordes
 
 >Совет
 >
-<<<<<<< HEAD
->Если всё-таки у вас есть пробелы в знаниях, то сайты [MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript) и [javascript.info](http://javascript.info/) будут отличными источниками информации о JavaScript. Также всегда можно задать вопрос или попросить помощи на [форумах нашего сообщества](/community/support.html).
-=======
->Whenever you get confused by something in JavaScript, [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript) and [javascript.info](https://javascript.info/) are great websites to check. There are also [community support forums](/community/support.html) where you can ask for help.
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+>Если всё-таки у вас есть пробелы в знаниях, то сайты [MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript) и [javascript.info](https://javascript.info/) будут отличными источниками информации о JavaScript. Также всегда можно задать вопрос или попросить помощи на [форумах нашего сообщества](/community/support.html).
 
 ### Введение {#practical-tutorial}
 

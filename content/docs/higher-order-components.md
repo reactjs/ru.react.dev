@@ -14,7 +14,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 Если обычный компонент преобразует пропсы в UI, то компонент высшего порядка преобразует компонент в другой компонент.
 
-HOC часто встречаются в сторонних библиотеках, например [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) в Redux и [`createFragmentContainer`](http://facebook.github.io/relay/docs/en/fragment-container.html) в Relay.
+HOC часто встречаются в сторонних библиотеках, например [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) в Redux и [`createFragmentContainer`](https://facebook.github.io/relay/docs/en/fragment-container.html) в Relay.
 
 В этой главе мы обсудим чем полезны компоненты высшего порядка и как их создавать.
 
@@ -290,11 +290,7 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 (Поэтому мы можем использовать `connect` и другие расширяющие функциональность HOC в качестве экспериментальных JavaScript декораторов.)
 
-<<<<<<< HEAD
-Вы можете найти вспомогательную функцию `compose` во многих сторонних библиотеках, включая lodash (под названием [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](http://redux.js.org/docs/api/compose.html), и [Ramda](http://ramdajs.com/docs/#compose).
-=======
-The `compose` utility function is provided by many third-party libraries including lodash (as [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](https://redux.js.org/api/compose), and [Ramda](https://ramdajs.com/docs/#compose).
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+Вы можете найти вспомогательную функцию `compose` во многих сторонних библиотеках, включая lodash (под названием [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](https://redux.js.org/docs/api/compose.html), и [Ramda](https://ramdajs.com/docs/#compose).
 
 ## Соглашение: добавьте отображаемое имя для легкой отладки {#convention-wrap-the-display-name-for-easy-debugging}
 

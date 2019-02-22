@@ -29,11 +29,7 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-<<<<<<< HEAD
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/gwoJZk?editors=0010)
-=======
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/gwoJZk?editors=0010)
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/gwoJZk?editors=0010)
 
 В этой главе мы узнаем, как инкапсулировать и обеспечить многократное использование компонента `Clock`. Компонент самостоятельно установит свой собственный таймер и будет обновляться раз в секунду.
 
@@ -59,11 +55,7 @@ function tick() {
 setInterval(tick, 1000);
 ```
 
-<<<<<<< HEAD
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/dpdoYR?editors=0010)
-=======
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/dpdoYR?editors=0010)
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/dpdoYR?editors=0010)
 
 Проблема в том, что компонент `Clock` не обновляет себя каждую секунду автоматически. Хотелось бы спрятать логику, управляющую таймером, внутри самого компонента `Clock`.
 
@@ -110,11 +102,7 @@ class Clock extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/zKRGpo?editors=0010)
-=======
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/zKRGpo?editors=0010)
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/zKRGpo?editors=0010)
 
 Теперь `Clock` определён как класс, а не функция.
 
@@ -207,11 +195,7 @@ ReactDOM.render(
 );
 ```
 
-<<<<<<< HEAD
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/KgQpJd?editors=0010)
-=======
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/KgQpJd?editors=0010)
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/KgQpJd?editors=0010)
 
 Теперь осталось только установить собственный таймер внутри `Clock` и обновлять компонент каждую секунду.
 
@@ -320,11 +304,7 @@ ReactDOM.render(
 );
 ```
 
-<<<<<<< HEAD
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/amqdNA?editors=0010)
-=======
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/amqdNA?editors=0010)
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/amqdNA?editors=0010)
 
 Теперь часы обновляются каждую секунду.
 
@@ -459,11 +439,7 @@ function FormattedDate(props) {
 }
 ```
 
-<<<<<<< HEAD
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/zKRqNB?editors=0010)
-=======
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/zKRqNB?editors=0010)
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/zKRqNB?editors=0010)
 
 Этот процесс называется «нисходящим» ("top-down") или «однонаправленным» ("unidirectional") потоком данных. Состояние всегда принадлежит определённому компоненту, а любые производные этого состояния могут влиять только на компоненты, находящиеся «ниже» в дереве компонентов.
 
@@ -488,11 +464,7 @@ ReactDOM.render(
 );
 ```
 
-<<<<<<< HEAD
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/vXdGmd?editors=0010)
-=======
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/vXdGmd?editors=0010)
->>>>>>> d615c5b7bcceef420c7f9246035f8ae3ba8ae11a
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/vXdGmd?editors=0010)
 
 У каждого компонента `Clock` есть собственное состояние таймера, которое обновляется независимо от других компонентов.
 
