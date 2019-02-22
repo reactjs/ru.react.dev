@@ -69,7 +69,7 @@ React сначала может показаться сложным, но при
 
 ### React для дизайнеров {#react-for-designers}
 
-Если вы в первую очередь занимаетесь дизайном, вам могут пригодиться ресурсы, собранные [на этом сайте](http://reactfordesigners.com/).
+Если вы в первую очередь занимаетесь дизайном, вам могут пригодиться ресурсы, собранные [на этом сайте](https://reactfordesigners.com/).
 
 ### Ресурсы по JavaScript {#javascript-resources}
 
@@ -79,7 +79,7 @@ React сначала может показаться сложным, но при
 
 >Совет
 >
->Если всё-таки у вас есть пробелы в знаниях, то сайты [MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript) и [javascript.info](http://javascript.info/) будут отличными источниками информации о JavaScript. Также всегда можно задать вопрос или попросить помощи на [форумах нашего сообщества](/community/support.html).
+>Если всё-таки у вас есть пробелы в знаниях, то сайты [MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript) и [javascript.info](https://javascript.info/) будут отличными источниками информации о JavaScript. Также всегда можно задать вопрос или попросить помощи на [форумах нашего сообщества](/community/support.html).
 
 ### Введение {#practical-tutorial}
 

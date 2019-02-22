@@ -149,7 +149,7 @@ return (
 
 Эти два примера делают одно и то же. Несмотря на то, что **JSX является [совершенно необязательным](/docs/react-without-jsx.html)**, многие разработчики считают его удобным для разработки UI -- как с React, так и с другими библиотеками.
 
-Вы можете попробовать JSX в [этом онлайн-конвертере](http://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=).
+Вы можете попробовать JSX в [этом онлайн-конвертере](https://babeljs.io/repl#?babili=false&browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2%2Cstage-3&prettier=true&targets=Node-6.12&version=6.26.0&envVersion=).
 
 ### Быстрый старт с JSX {#quickly-try-jsx}
 
@@ -197,6 +197,6 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 Попробуйте создать файл с названием `src/like_button.js` и вставить в него **[этот стартовый JSX-код](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**. Препроцессор автоматически трансформирует новый код в чистый JavaScript, пригодный для выполнения в браузере, и сохранит его в новый файл `like_button.js`. При редактировании JSX-кода в существующих файлах трансформация также происходит автоматически.
 
-Кроме препроцессинга JSX, вы в качестве бонуса получаете синтаксические новинки JavaScript, такие как классы, без головной боли с их браузерной поддержкой. Всё это доступно благодаря использованию инструмента под названием Babel, информацию о котором вы можете узнать из [его документации](http://babeljs.io/docs/en/babel-cli/).
+Кроме препроцессинга JSX, вы в качестве бонуса получаете синтаксические новинки JavaScript, такие как классы, без головной боли с их браузерной поддержкой. Всё это доступно благодаря использованию инструмента под названием Babel, информацию о котором вы можете узнать из [его документации](https://babeljs.io/docs/en/babel-cli/).
 
 Если вы неплохо разбираетесь в инструментах сборки и хотите создавать приложения на React с их помощью, обратитесь к [следующему разделу](/docs/create-a-new-react-app.html), где описаны некоторые из наиболее популярных способов. Если нет -- не беспокойтесь, уже знакомые нам script-теги ничуть не хуже!

@@ -91,7 +91,7 @@ ReactDOM.render(
 );
 ```
 
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/xEmzGg?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
 
 При обращении к `this` в JSX-колбэках необходимо учитывать, что методы класса в JavaScript по умолчанию не [привязаны](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) к контексту. Если вы забудете привязать метод `this.handleClick` и передать его в `onClick`, значение `this` будет `undefined` в момент вызова функции.
 
