@@ -256,7 +256,7 @@ class Reservation extends React.Component {
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/wgedvV?editors=0010)
 
-Обратите внимание, мы используем синтаксиса ES6 [вычисляемые имена](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#Computed_property_names), чтобы обновить значение в `state` через ключ, который соответствует атрибуту name элемента input:
+Обратите внимание, мы используем ES6-возможность [вычисляемые имена свойств](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Object_initializer#%D0%92%D1%8B%D1%87%D0%B8%D1%81%D0%BB%D1%8F%D0%B5%D0%BC%D1%8B%D0%B5_%D0%B8%D0%BC%D0%B5%D0%BD%D0%B0_%D1%81%D0%B2%D0%BE%D0%B9%D1%81%D1%82%D0%B2), чтобы обновить значение в `state` через ключ, который соответствует атрибуту name элемента input:
 
 ```js{2}
 this.setState({
