@@ -1,6 +1,6 @@
 ---
 id: tutorial
-title: "Tutorial: Intro to React"
+title: "Руководство: Введение в React"
 layout: tutorial
 sectionid: tutorial
 permalink: tutorial/tutorial.html
@@ -12,26 +12,27 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-This tutorial doesn't assume any existing React knowledge.
+Это руководство не предполагает наличие знаний React.
 
-## Before We Start the Tutorial {#before-we-start-the-tutorial}
+## Прежде чем начать {#before-we-start-the-tutorial}
 
-We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React apps, and mastering it will give you a deep understanding of React.
+По ходу этого руководства мы создадим небольшую игру. **Возможно, вы захотите пропустить это, потому что вы не создаете игру, но вам стоит попробовать.** Походы, которые мы изучим в этом руководстве являются базовыми при создании любого React-приложения. Их освоение даст вам глубокое понимание React.
 
->Tip
+>Совет
 >
->This tutorial is designed for people who prefer to **learn by doing**. If you prefer learning concepts from the ground up, check out our [step-by-step guide](/docs/hello-world.html). You might find this tutorial and the guide complementary to each other.
+>Это руководство создано для людей, которые предпочитают подход **учимся на практике**. Если вы предпочитаете разбираться с предметом с азов, то вам стоит заглянуть в наш [пошаговый учебник](/docs/hello-world.html). Вы можете рассматривать руководство и учебник, как дополняющие друг друга.
 
-The tutorial is divided into several sections:
+Руководство разделено на насколько секций:
 
-* [Setup for the Tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-* [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-* [Completing the Game](#completing-the-game) will teach you **the most common techniques** in React development.
-* [Adding Time Travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+* [Настройка оружения](#setup-for-the-tutorial) даст вам **отправную точку** для изучения руководства.
+* [Обзор](#overview) научит вас **основам** React: компоненты, пропсы и состояние.
+* [Создание игры](#completing-the-game) научит вас **наиболее распространенным подходам** в React-разработке.
+* [Добавив Путешествие Во Времени](#adding-time-travel) вы получите  **более глубокое понимание** особенностей и сильных сторон React.
 
-You don't have to complete all of the sections at once to get the value out of this tutorial. Try to get as far as you can -- even if it's one or two sections.
+Вам не обязательно проходить все части за раз, чтобы получить пользу от этого руководства. Изучите столько, сколько можете - даже если это будет одна или две секции.
 
-It's fine to copy and paste code as you're following along the tutorial, but we recommend to type it by hand. This will help you develop a muscle memory and a stronger understanding.
+Вполне нормально копировать код по мере прохождения руководства. Но мы советуем набирать его самим. Это позволит вам подключить мышечную память и улучшит понимание.
+
 
 ### What Are We Building? {#what-are-we-building}
 
