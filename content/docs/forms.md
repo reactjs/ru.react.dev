@@ -76,7 +76,7 @@ handleChange(event) {
 }
 ```
 
-## Тэг textarea {#the-textarea-tag}
+## Тег textarea {#the-textarea-tag}
 
 HTML-элемент `<textarea>` в качестве текста отображает дочерний элемент:
 
