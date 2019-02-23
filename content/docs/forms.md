@@ -86,7 +86,7 @@ HTML-элемент `<textarea>` в качестве текста отображ
 </textarea>
 ```
 
-В React `<textarea>` использует атрибут `value`. Таким образом, форму с `<textarea>` можно написать почти тем же способом что и форму с однострочным `<input>`: 
+В React `<textarea>` использует атрибут `value`. Таким образом, форму с `<textarea>` можно написать почти тем же способом, что и форму с однострочным `<input>`: 
 
 ```javascript{4-6,12-14,26}
 class EssayForm extends React.Component {
