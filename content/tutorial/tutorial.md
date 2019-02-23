@@ -34,15 +34,16 @@ redirect_from:
 Вполне нормально копировать код по мере прохождения руководства. Но мы советуем набирать его самим. Это позволит вам подключить мышечную память и улучшит понимание.
 
 
-### What Are We Building? {#what-are-we-building}
+### Что мы собираемся писать? {#what-are-we-building}
 
-In this tutorial, we'll show how to build an interactive tic-tac-toe game with React.
+В этом руководстве мы покажем как создать интерактивную игру крестики-нолики на React.
 
-You can see what we'll be building here: **[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**. If the code doesn't make sense to you, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+Результат вы можете посмотреть здесь **[Готовая Игра](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**. Если ее код вам ни о чем не говорит, или вы не знакомы с синтаксисом - не беспокойтесь. Цель этого руководства - помочь вам разобраться с React и его синтаксисом.
 
-We recommend that you check out the tic-tac-toe game before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and is updated as the game progresses.
+Мы советуем вам поиграть в готовые крестики-нолики, прежде чем приниматься за руководство. Одна из особенностей, которую вы можете заметить - это нумерованный список справа от игрового поля. Этот список отображает историю всех игровых ходов, и обновляется по мере игры.
 
-You can close the tic-tac-toe game once you're familiar with it. We'll be starting from a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
+Как только вы познакомитесь с игрой - можете закрывать ее. Мы начнем с самого простого шаблона. Следующим шагом мы настроим окружение, чтобы вы могли начать создание игры.
+
 
 ### Prerequisites {#prerequisites}
 
