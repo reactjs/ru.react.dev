@@ -4,7 +4,7 @@ title: Взаимодействие со сторонними библиотек
 permalink: docs/integrating-with-other-libraries.html
 ---
 
-React может использоваться в любом веб-приложении. Он может быть встроен в другие приложения, и, с некоторыми оговорками, другие приложения могут встраиваться в React. Это руководство рассматривает некоторые общие случаи, с упором на интеграцию с [jQuery](https://jquery.com/) и [Backbone](http://backbonejs.org). Те же подходы могут использоваться для интеграции компонентов с любым существующим кодом.
+React может использоваться в любом веб-приложении. Он может быть встроен в другие приложения, и, с некоторыми оговорками, другие приложения могут встраиваться в React. Это руководство рассматривает некоторые общие случаи, с упором на интеграцию с [jQuery](https://jquery.com/) и [Backbone](https://backbonejs.org). Те же подходы могут использоваться для интеграции компонентов с любым существующим кодом.
 
 ## Интеграция с плагинами, изменяющими DOM {#integrating-with-dom-manipulation-plugins}
 
@@ -100,7 +100,7 @@ componentWillUnmount() {
 }
 ```
 
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/qmqeQx?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/qmqeQx?editors=0010)
 
 Обратите внимание, что React не придаёт никакого особого значения полю `this.el`. Код работает потому, что ранее мы присвоили этому полю `ref` в методе `render()`:
 
@@ -131,7 +131,7 @@ handleChange(e) {
 }
 ```
 
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/bWgbeE?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/bWgbeE?editors=0010)
 
 В завершение осталось сделать ещё кое-что. В React пропсы могут изменяться со временем. Например, компонент `<Chosen>` может получать разные дочерние элементы, если состояние родительского компонента изменяется. Это означает, что в точке интеграции нам нужно вручную обновлять DOM, в соответствии с обновлениями проп, так как React больше не управляет DOM для нас.
 
@@ -186,7 +186,7 @@ class Chosen extends React.Component {
 }
 ```
 
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/xdgKOz?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/xdgKOz?editors=0010)
 
 ## Интеграция с другими визульными библиотеками {#integrating-with-other-view-libraries}
 
@@ -247,13 +247,13 @@ ReactDOM.render(
 );
 ```
 
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/RVKbvW?editors=1010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
 Вы можете завести столько изолированных компонентов, сколько вам захочется. И использовать `ReactDOM.render()` для рендеринга в разные DOM-контейнеры. Постепенно, по мере перевода вашего приложения на React, вы сможете комбинировать их в большие компоненты и переносить вызов `ReactDOM.render()` вверх по структуре.
 
 ### Встраиваем React в представления Backbone {#embedding-react-in-a-backbone-view}
 
-Представления в [Backbone](http://backbonejs.org/) обычно используют HTML-строки или функции, создающие строковые шаблоны для создания DOM элементов. Этот механизм также может быть заменен рендерингом React-компонентов.
+Представления в [Backbone](https://backbonejs.org/) обычно используют HTML-строки или функции, создающие строковые шаблоны для создания DOM элементов. Этот механизм также может быть заменен рендерингом React-компонентов.
 
 Ниже мы создадим Backbone-представление `ParagraphView`. Оно переопределит метод `render()` (из `Backbone.View`) для рендеринга React-компонента `<Paragraph>` в DOM-элемент, предоставляемый Backbone (`this.el`). Также мы воспользуемся [`ReactDOM.render()`](/docs/react-dom.html#render):
 
@@ -275,7 +275,7 @@ const ParagraphView = Backbone.View.extend({
 });
 ```
 
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/gWgOYL?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
 Стоит отметить вызов `ReactDOM.unmountComponentAtNode()` в методе `remove`. Он нужен для того, чтобы React отключил обработчики событий и другие ресурсы, связанные с деревом компонентов при удалении.
 
@@ -283,11 +283,11 @@ const ParagraphView = Backbone.View.extend({
 
 ## Интеграция со слоем моделей {#integrating-with-model-layers}
 
-Обычно рекомендуется использовать однонаправленный поток данных, вроде [состояния React](/docs/lifting-state-up.html), [Flux](http://facebook.github.io/flux/) или [Redux](http://redux.js.org/). Но React-компоненты могут также использовать слой данных из других библиотек и фреймворков.
+Обычно рекомендуется использовать однонаправленный поток данных, вроде [состояния React](/docs/lifting-state-up.html), [Flux](https://facebook.github.io/flux/) или [Redux](https://redux.js.org/). Но React-компоненты могут также использовать слой данных из других библиотек и фреймворков.
 
 ### Использование моделей Backbone в React-компонентах {#using-backbone-models-in-react-components}
 
-Самый простой способ использовать модели и коллекции [Backbone](http://backbonejs.org) из React-компонентов — это обработка различных событий и ручное обновление компонентов.
+Самый простой способ использовать модели и коллекции [Backbone](https://backbonejs.org) из React-компонентов — это обработка различных событий и ручное обновление компонентов.
 
 Компоненты, отвечающие за рендеринг моделей, будут обрабатывать событие `'change'`, а компоненты, отвечающие за рендеринг коллекций, будут обрабатывать события `'add'` и `'remove'`. В обоих случаях для отображения новых данных нужно вызвать [`this.forceUpdate()`]](/docs/react-component.html#forceupdate).
 
@@ -347,7 +347,7 @@ class List extends React.Component {
 }
 ```
 
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/GmrREm?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/GmrREm?editors=0010)
 
 ### Вынос данных из моделей  Backbone {#extracting-data-from-backbone-models}
 
@@ -434,6 +434,6 @@ ReactDOM.render(
 );
 ```
 
-[**Посмотреть на CodePen**](http://codepen.io/gaearon/pen/PmWwwa?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/PmWwwa?editors=0010)
 
 Этот подход не ограничивается Backbone. Вы можете использовать React с любой библиотекой для работы с данными, просто подписываясь на методы жизненного цикла и, при необходимости, копируя данные во внутреннее состояние React.

@@ -51,7 +51,7 @@ expect(result.props.children).toEqual([
 
 > Замечание:
 >
-> Мы также советуем посмотреть API поверхностного рендеринга Enzyme [Shallow Rendering API](http://airbnb.io/enzyme/docs/api/shallow.html). Он предоставляет более удобный API высокого уровня для достижения той же функциональности.
+> Мы также советуем посмотреть API поверхностного рендеринга Enzyme [Shallow Rendering API](https://airbnb.io/enzyme/docs/api/shallow.html). Он предоставляет более удобный API высокого уровня для достижения той же функциональности.
 
 ## Справка {#reference}
 
