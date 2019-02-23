@@ -125,7 +125,7 @@ class EssayForm extends React.Component {
 
 Обратите внимание, что `this.state.value` инициализировано в конструкторе, так что в текстовой области изначально есть текст.
 
-## Тэг select {#the-select-tag}
+## Тег select {#the-select-tag}
 
 В HTML `<select>` создаёт выпадающий список. HTML-код в этом примере создаёт выпадающий список вкусов:
 
