@@ -1,6 +1,6 @@
 ---
 id: test-utils
-title: Утилиты для тестирования
+title: ReactTestUtils
 permalink: docs/test-utils.html
 layout: docs
 category: Reference
@@ -13,15 +13,15 @@ import ReactTestUtils from 'react-dom/test-utils'; // ES6
 var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 ```
 
-## Беглый обзор {#overview}
+## Обзор {#overview}
 
-`ReactTestUtils` позволяет легко тестировать React компоненты в любом тестовом фреймворке на ваш выбор. В Facebook мы используем [Jest](https://facebook.github.io/jest/) для безболезненного тестирования JavaScript. Если хотите обучится Jest это можно сделать на его сайте на странице [Руководство по React](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
+`ReactTestUtils` позволяет легко тестировать React-компоненты в любом тестовом фреймворке на ваш выбор. В Facebook мы используем [Jest](https://facebook.github.io/jest/) для безболезненного тестирования JavaScript. Если хотите обучится Jest, это можно сделать на соответствующей странице [Руководство по React](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
 
-> На заметку:
+> Примечание:
 >
 > Мы рекомендуем использовать [`react-testing-library`](https://git.io/react-testing-library) которая разработана для того чтобы включать и поощерять написание тестов которые использует ваши компоненты так же как будут делать конечные пользователи.
 >
-> В качестве альтернативы, Airbnb выпустили утилиту для тестирования называющейся [Enzyme](http://airbnb.io/enzyme/), которая легко позволяет утверждать, манипулировать, и просматривать выходные данные React компонентов.
+> В качестве альтернативы, Airbnb выпустил утилиту тестирования [Enzyme](http://airbnb.io/enzyme/), которая легко позволяет утверждать, манипулировать, и просматривать выходные данные React компонентов.
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -40,15 +40,15 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
  - [`renderIntoDocument()`](#renderintodocument)
  - [`Simulate`](#simulate)
 
-## Справка {#reference}
+## Справочник {#reference}
 
 ### `act()` {#act}
 
-Чтобы подготовить компонент для тестирования, оберните код с рендерингом и выполнением обновлений внутри функции `act()`. Это сделает код теста для компонентов React более близким к тому как он рендерится в браузере.
+Чтобы подготовить компонент для тестирования, оберните код с рендерингом и выполнением обновлений внутри функции `act()`. Это сделает код теста для компонентов React более близким к тому, как он рендерится в браузере.
 
->На заметку
+>Примечание:
 >
->Если вы используете `react-test-renderer`, этот модуль предоставляет экспортировать `act` функцию который будет вести также.
+>Если вы используете пакет `react-test-renderer`, то он также предоставляет функцию `act`, которая ведет себя также.
 
 Допустим, у нас есть компонент `Counter`:
 
@@ -122,7 +122,7 @@ it('рендер и обновление счетчика', () => {
 });
 ```
 
-Не забывайте что отправка DOM-событий работает только когда DOM-контейнер добавлен в `document`. Можно использовать вспомогательную библиотеку [`react-testing-library`](https://github.com/kentcdodds/react-testing-library), чтобы уменьшить количество шаблонного кода.
+Не забывайте что отправка DOM-событий работает только, когда DOM-контейнер добавлен в `document`. Можно использовать вспомогательную библиотеку [`react-testing-library`](https://github.com/kentcdodds/react-testing-library), чтобы уменьшить количество шаблонного кода.
 
 * * *
 
@@ -137,9 +137,9 @@ mockComponent(
 
 Передаёт фиктивный модуль компонента этому методу, чтобы дополнить его полезными методами, которые позволяют использовать его в качестве фиктивного компонента React. Вместо того чтобы рендерить как обычно, компонент становится простым `<div>` (или другим тегом `mockTagName` если указан) содержащий любые предоставленные дочерние элементы.
 
-> На заметку:
+> Примечание:
 >
-> `mockComponent()` уже устаревший API. Мы рекомендуем использовать [поверхностный рендеринг](/docs/test-utils.html#shallow-rendering) или [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock) взамен.
+> API-метод `mockComponent()` объявлен устаревшим. Поэтому вместо него рекомендуется использоваться [поверхностный рендеринг](/docs/shallow-renderer.html) или [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock).
 
 * * *
 
@@ -149,7 +149,7 @@ mockComponent(
 isElement(element)
 ```
 
-Возвращает `true` если `element` любой React-элемент.
+Возвращает `true`, если `element` любой React-элемент.
 
 * * *
 
@@ -162,7 +162,7 @@ isElementOfType(
 )
 ```
 
-Возвращает `true` если `element` является элементом React, тип которого имеет тип React `componentClass`.
+Возвращает `true`, если `element` является элементом React, тип которого имеет тип React `componentClass`.
 
 * * *
 
@@ -172,7 +172,7 @@ isElementOfType(
 isDOMComponent(instance)
 ```
 
-Возвращает `true` если `instance` является DOM-компонентом (например как `<div>` или `<span>`).
+Возвращает `true`, если `instance` является DOM-компонентом (таким как `<div>` или `<span>`).
 
 * * *
 
@@ -303,9 +303,9 @@ const domContainer = document.createElement('div');
 ReactDOM.render(element, domContainer);
 ```
 
-> На заметку:
+> Примечание:
 >
-> Вам нужно будет иметь глобально доступные переменные `window`, `window.document` и `window.document.createElement` **перед** тем как вы импортируете `React`. В противном случае React будет думать что не может иметь доступ DOM и такие методы как `setState` не будут работать.
+> `window`, `window.document` и `window.document.createElement` должны быть доступными **перед** тем как вы импортируете `React`. В противном случае React будет думать что не может получить доступ к DOM, и такие методы как `setState` не будут работать.
 
 * * *
 
@@ -320,9 +320,9 @@ Simulate.{eventName}(
 )
 ```
 
-Симулировать отправку события на DOM-ноде с допольнительным объектом `eventData`.
+Симулировать отправку события сработавшего на DOM-узле с дополнительным объектом `eventData`.
 
-`Simulate` имеет методы для [каждого события который React может понимать](/docs/events.html#supported-events).
+`Simulate` имеет метод для [каждого события, которое React может понимать](/docs/events.html#supported-events).
 
 **Кликать на элемент**
 
@@ -342,7 +342,7 @@ ReactTestUtils.Simulate.change(node);
 ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 ```
 
-> На заметку
+> Примечание:
 >
 > Вам нужно будет предоставить все свойства события, которое вы используете в своем компоненте (например, keyCode, which и так далее), поскольку React не создаёт ничего из этого.
 
