@@ -331,22 +331,24 @@ class Square extends React.Component {
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
 
-### Developer Tools {#developer-tools}
+### Инструменты разработчика {#developer-tools}
 
-The React Devtools extension for [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) and [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) lets you inspect a React component tree with your browser's developer tools.
+Расширения React Devtools для браузеров [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) и [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) позволяют вам изучать дерево React-компонентов внутри панели инструментов разработчика вашего браузера.
 
 <img src="../images/tutorial/devtools.png" alt="React Devtools" style="max-width: 100%">
 
-The React DevTools let you check the props and the state of your React components.
 
-After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tab will appear as the last tab to the right.
+React DevTools позволяют просматривать пропсы и состояние ваших React-компонентов.
 
-**However, note there are a few extra steps to get it working with CodePen:**
+После установки React DevTools, вы можете кликнуть правой кнопкой мыши на любом элемента страницы и нажать `Inspect` (`Просмотреть код`) для открытия инструментов разработчика. Вкладка React будет крайней справа.
 
-1. Log in or register and confirm your email (required to prevent spam).
-2. Click the "Fork" button.
-3. Click "Change View" and then choose "Debug mode".
-4. In the new tab that opens, the devtools should now have a React tab.
+
+**Внимание, чтобы это работало на CodePen нужно сделать еще несколько действий:**
+
+1. Залогиниться или зарегестрироваться и подтвердить вашу электронную почту (требуется для защиты от спама).
+2. Нажать кнопку "Fork".
+3. Нажать "Change View" и выбрать "Debug mode".
+4. В открывшейся новой вкладке у вас должны появиться инструменты разработчика.
 
 ## Completing the Game {#completing-the-game}
 
