@@ -45,11 +45,11 @@ redirect_from:
 Как только вы познакомитесь с игрой - можете закрывать ее. Мы начнем с самого простого шаблона. Следующим шагом мы настроим окружение, чтобы вы могли начать создание игры.
 
 
-### Prerequisites {#prerequisites}
+### Предварительные требования {#prerequisites}
 
-We'll assume that you have some familiarity with HTML and JavaScript, but you should be able to follow along even if you're coming from a different programming language. We'll also assume that you're familiar with programming concepts like functions, objects, arrays, and to a lesser extent, classes.
+Мы будем полагать, что вы немного знакомы с HTML и JavaScript. Однако вы сможете изучать руководство, даже если вы пришли с других языков программирования. Мы также полагаем, что вы знакомы с такими понятиями программирования как функции, объекты, массивы и , в меньшей степени, классы.
 
-If you need to review JavaScript, we recommend reading [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript). Note that we're also using some features from ES6 -- a recent version of JavaScript. In this tutorial, we're using [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), and [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) statements. You can use the [Babel REPL](babel://es5-syntax-example) to check what ES6 code compiles to.
+Если вам нужен обзор по JavaScript, мы рекомендуем прочитать [вот этот учебник](https://developer.mozilla.org/ru/docs/Web/JavaScript/A_re-introduction_to_JavaScript). Отметим, что мы используем некоторые особенности из ES6 - последней версии JavaScript. Такие как  [стрелочные функции](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [классы](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes), объявления [`let`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/let), и [`const`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/const). Вы можете воспользоваться [Babel REPL](babel://es5-syntax-example), чтобы узнать во что компилируется код на ES6.
 
 ## Setup for the Tutorial {#setup-for-the-tutorial}
 
