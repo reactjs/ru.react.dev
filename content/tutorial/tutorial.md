@@ -123,22 +123,22 @@ import './index.css';
 
 Если вы застряли - обратитесь к [поддержке сообщества](/community/support.html). В частности [Чат Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n) - это прекрасное место, где вам помогут. Если вы не дождались ответа или все еще не решили вопрос, пожалуйста, [задайте вопрос](https://github.com/reactjs/ru.reactjs.org/issues/new) и мы вам поможем.
 
-## Overview {#overview}
+## Обзор {#overview}
 
-Now that you're set up, let's get an overview of React!
+Теперь, после всех настроек, давайте сделаем обзор React!
 
-### What Is React? {#what-is-react}
+### Что такое React? {#what-is-react}
 
-React is a declarative, efficient, and flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called "components".
+React - это декларативная, эффективная и гибкая JavaScript библиотека для создания пользовательских интерфейсов. Она позволяет вам составлять сложный UI из маленьких изолированных кусочков кода, называемых "компоненты".
 
-React has a few different kinds of components, but we'll start with `React.Component` subclasses:
+React имеет несколько разных видов компонент, но мы начнем с подклассов `React.Component`:
 
 ```javascript
 class ShoppingList extends React.Component {
   render() {
     return (
       <div className="shopping-list">
-        <h1>Shopping List for {this.props.name}</h1>
+        <h1>Список покупок для {this.props.name}</h1>
         <ul>
           <li>Instagram</li>
           <li>WhatsApp</li>
@@ -149,14 +149,14 @@ class ShoppingList extends React.Component {
   }
 }
 
-// Example usage: <ShoppingList name="Mark" />
+// Пример использования: <ShoppingList name="Марк" />
 ```
 
-We'll get to the funny XML-like tags soon. We use components to tell React what we want to see on the screen. When our data changes, React will efficiently update and re-render our components.
+Скоро мы перейдем к этим забавным, похожим на XML, тегам. Мы используем компоненты, чтобы объяснить React, что мы хотим увидеть на экране. Когда наш данные изменятся, React эффективно обновит и перерисует наши компоненты.
 
-Here, ShoppingList is a **React component class**, or **React component type**. A component takes in parameters, called `props` (short for "properties"), and returns a hierarchy of views to display via the `render` method.
+Здесь, `ShoppingList` - это пример **классового компонента React**, или **тип React-компонента**. Компонент принимает параметры, которые называются пропсы (`props`, сокращение от `properties` - свойства), и возвращает из метода `render()` иерархию представлений для отображения.
 
-The `render` method returns a *description* of what you want to see on the screen. React takes the description and displays the result. In particular, `render` returns a **React element**, which is a lightweight description of what to render. Most React developers use a special syntax called "JSX" which makes these structures easier to write. The `<div />` syntax is transformed at build time to `React.createElement('div')`. The example above is equivalent to:
+Метод `render` возвращает *описание* того, что вы ходите увидеть на экране. React берет это описание и отображает результат. Точнее, `render` возвращает **React-элемент**, который является легковесным описанием того, что нужно отрендерить. Большинство React-разработчиков используют специальный синтаксис под названием "JSX" для упрощения описания структуры. Синтаксис `<div />` преобразовывается в `React.createElement('div')`. Пример выше равнозначен вот этому:
 
 ```javascript
 return React.createElement('div', {className: 'shopping-list'},
@@ -165,13 +165,13 @@ return React.createElement('div', {className: 'shopping-list'},
 );
 ```
 
-[See full expanded version.](babel://tutorial-expanded-version)
+[Смотрите полную версию.](babel://tutorial-expanded-version)
 
-If you're curious, `createElement()` is described in more detail in the [API reference](/docs/react-api.html#createelement), but we won't be using it in this tutorial. Instead, we will keep using JSX.
+Если вам интересно, то `createElement()` более подробно описан в [Документации](/docs/react-api.html#createelement), но мы не будем им пользоваться в этом руководства. Вместо этого мы продолжим пользоваться JSX.
 
-JSX comes with the full power of JavaScript. You can put *any* JavaScript expressions within braces inside JSX. Each React element is a JavaScript object that you can store in a variable or pass around in your program.
+JSX обладает всей мощью JavaScript. В JSX вы  можете использовать *любые* JavaScript выражения внутри фигурных скобок. Каждый React-элемент является JavaScript объектов, в котором вы можете хранить переменные или которым вы можете оперировать внутри программы.
 
-The `ShoppingList` component above only renders built-in DOM components like `<div />` and `<li />`. But you can compose and render custom React components too. For example, we can now refer to the whole shopping list by writing `<ShoppingList />`. Each React component is encapsulated and can operate independently; this allows you to build complex UIs from simple components.
+Приведенный выше компонент `ShoppingList` только рендерит встроенные DOM-компоненты вроде `<div />` или `<li />`. Но вы также можете составлять и рендерить собственные компоненты. Например, теперь вы можете ссылаться на весь компонент со списком покупок написав `<ShoppingList />`. Каждый React-компонент инкапсулирован и может использоваться независимо, это позволяет создавать сложный UI из простых компонентов.
 
 ## Inspecting the Starter Code {#inspecting-the-starter-code}
 
