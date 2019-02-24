@@ -227,16 +227,16 @@ class Square extends React.Component {
 Поздравляем! Вы только что "пробросили проп" из родительского Board-компонта в дочерний Square-компонент.
 Передача пропсов это то, как передаются даннные в React-приложениях - от родительских к дочерним компонентам.
 
-### Making an Interactive Component {#making-an-interactive-component}
+### Делаем компонент интерактивным {#making-an-interactive-component}
 
-Let's fill the Square component with an "X" when we click it. 
-First, change the button tag that is returned from the Square component's `render()` function to this:
+Давайте при клике на Square-компонент будем заполнять его "X".
+Сперва, изменим тег кнопки, который возвращается из `render()` метода Square-компонента, вот так:
 
 ```javascript{4}
 class Square extends React.Component {
   render() {
     return (
-      <button className="square" onClick={function() { alert('click'); }}>
+      <button className="square" onClick={function() { alert('клик'); }}>
         {this.props.value}
       </button>
     );
@@ -244,17 +244,17 @@ class Square extends React.Component {
 }
 ```
 
-If we click on a Square now, we should get an alert in our browser.
+Теперь, если мы кликнем по `Square`, мы увидим в браузере сообщение.
 
->Note
+>Примечание
 >
->To save typing and avoid the [confusing behavior of `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), we will use the [arrow function syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) for event handlers here and further below:
+>Чтобы меньше печатать и избегать [странного поведения `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), мы будем использовать [синтаксис стрелочных фукнций](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions) для обработчиков событий (здесь и ниже):
 >
 >```javascript{4}
 >class Square extends React.Component {
 >  render() {
 >    return (
->      <button className="square" onClick={() => alert('click')}>
+>      <button className="square" onClick={() => alert('клик')}>
 >        {this.props.value}
 >      </button>
 >    );
@@ -262,13 +262,14 @@ If we click on a Square now, we should get an alert in our browser.
 >}
 >```
 >
->Notice how with `onClick={() => alert('click')}`, we're passing *a function* as the `onClick` prop. It only fires after a click. Forgetting `() =>` and writing `onClick={alert('click')}` is a common mistake, and would fire the alert every time the component re-renders.
+>Обратите внимание что в `onClick={() => alert('click')}`, мы передаем *функцию* в качестве значения проп `onClick`. Она отработает только при клике. Опускать `() =>` и присать сразу `onClick={alert('click')}` - это распространенная ошибка. Такой код будет выдавать сообщение каждый раз, когда компонент перерендеривается..
 
-As a next step, we want the Square component to "remember" that it got clicked, and fill it with an "X" mark. To "remember" things, components use **state**.
+Дальше мы хотим, чтобы Square-компонент "запоминал", что по ниму кликнули и отрисовывал "X".
+Для "запоминания" компоненты используют **состояние**.
 
-React components can have state by setting `this.state` in their constructors. `this.state` should be considered as private to a React component that it's defined in. Let's store the current value of the Square in `this.state`, and change it when the Square is clicked.
+Компоненты React могут получить состояние устанавливая `this.state` в конструкторе. `this.state` должно рассматриваться как приватное свойство React-компонента, определяемое им самим. Давайте сохраним текущее значение Square в `this.state` и изменим его при клике.
 
-First, we'll add a constructor to the class to initialize the state:
+Сперва добавим конструктор к классу, чтобы проинициализировать состояние:
 
 ```javascript{2-7}
 class Square extends React.Component {
@@ -281,7 +282,7 @@ class Square extends React.Component {
 
   render() {
     return (
-      <button className="square" onClick={() => alert('click')}>
+      <button className="square" onClick={() => alert('клик')}>
         {this.props.value}
       </button>
     );
@@ -289,17 +290,17 @@ class Square extends React.Component {
 }
 ```
 
->Note
+>Примечание
 >
->In [JavaScript classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), you need to always call `super` when defining the constructor of a subclass. All React component classes that have a `constructor` should start it with a `super(props)` call.
+>В [JavaScript классах](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes), вы всегда должны вызывать `super`, при объявлении конструктора в классе-наследнике. Все классовые React-компоненты у которых есть `constructor` должны начинаться с вызова `super(props)`.
 
-Now we'll change the Square's `render` method to display the current state's value when clicked:
+Теперь изменим метод `render` компонента Square, для отображения текущего значения из стостояния при клике:
 
-* Replace `this.props.value` with `this.state.value` inside the `<button>` tag.
-* Replace the `() => alert()` event handler with `() => this.setState({value: 'X'})`.
-* Put the `className` and `onClick` props on separate lines for better readability.
+* Заменим `this.props.value` на `this.state.value` внутри тега `<button>`.
+* Заменим обработчик `() => alert()` на `() => this.setState({value: 'X'})`.
+* Поместим свойства `className` и `onClick` на разных строчках, для лучшей читабельности.
 
-After these changes, the `<button>` tag that is returned by the Square's `render` method looks like this:
+После этих изменений тег `<button>`, возвращаемый из метода `render` Square-компонента будет выглядеть так:
 
 ```javascript{12-13,15}
 class Square extends React.Component {
@@ -323,11 +324,12 @@ class Square extends React.Component {
 }
 ```
 
-By calling `this.setState` from an `onClick` handler in the Square's `render` method, we tell React to re-render that Square whenever its `<button>` is clicked. After the update, the Square's `this.state.value` will be `'X'`, so we'll see the `X` on the game board. If you click on any Square, an `X` should show up.
+Вызывая `this.setState` из обработчика `onClick` (как это описано в методе `render`), мы говорим React, что нужно перерендерить Square каждый раз, когда по его `<button>` кликнули. После обновления, `this.state.value` внутри Square станет `X`, так что мы увидим `X` на игровом поле. Если вы кликните по любому Square, должен появиться `X`.
 
-When you call `setState` in a component, React automatically updates the child components inside of it too.
+Когда вы вызваете `setState` внутри компонента, React так же автоматически обновляет дочерние компоненты.
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
+
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
 
 ### Developer Tools {#developer-tools}
 
@@ -428,7 +430,7 @@ We will now use the prop passing mechanism again. We will modify the Board to in
   }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/gWWQPY?editors=0010)**
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/gWWQPY?editors=0010)**
 
 Each Square will now receive a `value` prop that will either be `'X'`, `'O'`, or `null` for empty squares.
 
@@ -539,7 +541,7 @@ class Board extends React.Component {
 }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/ybbQJX?editors=0010)**
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/ybbQJX?editors=0010)**
 
 After these changes, we're again able to click on the Squares to fill them. However, now the state is stored in the Board component instead of the individual Square components. When the Board's state changes, the Square components re-render automatically. Keeping the state of all squares in the Board component will allow it to determine the winner in the future.
 
@@ -609,7 +611,7 @@ function Square(props) {
 
 We have changed `this.props` to `props` both times it appears.
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/QvvJOv?editors=0010)**
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/QvvJOv?editors=0010)**
 
 >Note
 >
@@ -712,7 +714,7 @@ class Board extends React.Component {
 }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/KmmrBy?editors=0010)**
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/KmmrBy?editors=0010)**
 
 ### Declaring a Winner {#declaring-a-winner}
 
@@ -772,7 +774,7 @@ We can now change the Board's `handleClick` function to return early by ignoring
   }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/LyyXgK?editors=0010)**
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/LyyXgK?editors=0010)**
 
 Congratulations! You now have a working tic-tac-toe game. And you've just learned the basics of React too. So *you're* probably the real winner here.
 
@@ -1004,7 +1006,7 @@ Finally, we need to move the `handleClick` method from the Board component to th
 
 At this point, the Board component only needs the `renderSquare` and `render` methods. The game's state and the `handleClick` method should be in the Game component.
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/EmmOqJ?editors=0010)**
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/EmmOqJ?editors=0010)**
 
 ### Showing the Past Moves {#showing-the-past-moves}
 
@@ -1064,7 +1066,7 @@ Let's `map` over the `history` in the Game's `render` method:
   }
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
 For each move in the tic-tac-toes's game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
 
@@ -1128,7 +1130,7 @@ In the Game component's `render` method, we can add the key as `<li key={move}>`
     });
 ```
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
 
 Clicking any of the list item's buttons throws an error because the `jumpTo` method is undefined. Before we implement `jumpTo`, we'll add `stepNumber` to the Game component's state to indicate which step we're currently viewing.
 
@@ -1205,7 +1207,7 @@ Finally, we will modify the Game component's `render` method from always renderi
 
 If we click on any step in the game's history, the tic-tac-toe board should immediately update to show what the board looked like after that step occurred.
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**
 
 ### Wrapping Up {#wrapping-up}
 
