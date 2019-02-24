@@ -187,11 +187,11 @@ JSX обладает всей мощью JavaScript. В JSX вы  можете �
 
 Компонент `Square` отрисовывает просто `<button>`, а `Board` отрисовывает 9 таких элементов. Компонент `Game` рендерит поле c заглушками, которые мы изменим позже. Сейчас у нас нет ни одного интерактивного компонента.
 
-### Passing Data Through Props {#passing-data-through-props}
+### Передача данных через пропсы {#passing-data-through-props}
 
-Just to get our feet wet, let's try passing some data from our Board component to our Square component.
+Для начала, давайте попробуем передать некоторые данные из нашего `Board`-компонента в компонент `Square`.
+Изменим метод `renderSquare` внутри `Board`, чтобы он передавал в `Square` проп с назнанием `value`:
 
-In Board's `renderSquare` method, change the code to pass a prop called `value` to the Square:
 
 ```js{3}
 class Board extends React.Component {
@@ -200,7 +200,7 @@ class Board extends React.Component {
   }
 ```
 
-Change Square's `render` method to show that value by replacing `{/* TODO */}` with `{this.props.value}`:
+Изменим метод `render` внутри Square, заменив `{/* TODO */}` на `{this.props.value}`:
 
 ```js{5}
 class Square extends React.Component {
@@ -214,17 +214,18 @@ class Square extends React.Component {
 }
 ```
 
-Before:
+До:
 
 ![React Devtools](../images/tutorial/tictac-empty.png)
 
-After: You should see a number in each square in the rendered output.
+После: Вы должны увидеть число, внутри каждого отрисованного квадрата.
 
 ![React Devtools](../images/tutorial/tictac-numbers.png)
 
-**[View the full code at this point](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
+**[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/aWWQOG?editors=0010)**
 
-Congratulations! You've just "passed a prop" from a parent Board component to a child Square component. Passing props is how information flows in React apps, from parents to children.
+Поздравляем! Вы только что "пробросили проп" из родительского Board-компонта в дочерний Square-компонент.
+Передача пропсов это то, как передаются даннные в React-приложениях - от родительских к дочерним компонентам.
 
 ### Making an Interactive Component {#making-an-interactive-component}
 
