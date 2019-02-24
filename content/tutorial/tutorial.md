@@ -119,9 +119,9 @@ import './index.css';
 Мы рекомендуем выполнить [эти инструкции](https://babeljs.io/docs/editors/) для настройки подсветки синтаксиса в вашем редакторе.
 </details>
 
-### Help, I'm Stuck! {#help-im-stuck}
+### Помогите, я застрял! {#help-im-stuck}
 
-If you get stuck, check out the [community support resources](/community/support.html). In particular, [Reactiflux Chat](https://discord.gg/0ZcbPKXt5bZjGY5n) is a great way to get help quickly. If you don't receive an answer, or if you remain stuck, please file an issue, and we'll help you out.
+Если вы застряли - обратитесь к [поддержке сообщества](/community/support.html). В частности [Чат Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n) - это прекрасное место, где вам помогут. Если вы не дождались ответа или все еще не решили вопрос, пожалуйста, [задайте вопрос](https://github.com/reactjs/ru.reactjs.org/issues/new) и мы вам поможем.
 
 ## Overview {#overview}
 
