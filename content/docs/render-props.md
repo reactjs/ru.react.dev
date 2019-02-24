@@ -16,7 +16,7 @@ permalink: docs/render-props.html
 
 Библиотеками, использующий такой подход, являются [React Router](https://reacttraining.com/react-router/web/api/Route/Route-render-methods) и [Downshift](https://github.com/paypal/downshift).
 
-В этой статье мы покажем почему рендер-пропс полезен и как написать свой.
+В этой статье мы покажем почему рендер-проп полезен и как писать свои.
 
 ## Использование рендер-пропса для сквозных задач {#use-render-props-for-cross-cutting-concerns}
 
