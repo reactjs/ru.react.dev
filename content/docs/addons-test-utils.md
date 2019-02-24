@@ -195,7 +195,7 @@ isCompositeComponentWithType(
 )
 ```
 
-Возвращает `true` если `instance` является компонентом, тип которого React `componentClass`.
+Возвращает, `true` если `instance` является компонентом, который имеет тип React `componentClass`.
 
 * * *
 
@@ -208,7 +208,7 @@ findAllInRenderedTree(
 )
 ```
 
-Проходит по всем компонентам в `tree` и собирает все компоненты где условие `test(component)` является `true`. Сам по себе он не так полезен, но используется как примитив для других тестовых утилит.
+Проходит по всем компонентам в `tree` и собирает все компоненты, для которых `test(component)` возвращает `true`. Сам по себе он не так полезен, но используется как примитив для других тестовых утилит.
 
 * * *
 
@@ -234,7 +234,7 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-Подобно [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) но ожидает, что будет один результат, и возвращает этот один результат, или выдает исключение, если есть любое другое число совпадений, кроме одного.
+Работает как [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass), но ожидает, что будет один результат, и возвращает этот один результат, или выдает исключение, если есть любое другое число совпадений, кроме одного.
 
 * * *
 
@@ -247,7 +247,7 @@ scryRenderedDOMComponentsWithTag(
 )
 ```
 
-Находит все DOM-элементы компонентов в дереве рендера, которые являются DOM-компонентами с соответствием имени тега `tagName`.
+Ищет все DOM-элементы компонентов в отображенном дереве, которые являются DOM-компонентами, и имя которых соответствует `tagName`.
 
 * * *
 
@@ -260,7 +260,7 @@ findRenderedDOMComponentWithTag(
 )
 ```
 
-Также как [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) но ожидает, что будет один результат, и возвращает этот один результат, или выдает исключение, если есть любое другое число совпадений, кроме одного.
+Также как [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) но ожидает, что будет один результат, и возвращает этот один результат, или выдаёт исключение, если есть любое другое число совпадений, кроме одного.
 
 * * *
 
@@ -273,7 +273,7 @@ scryRenderedComponentsWithType(
 )
 ```
 
-Находит все объекты компонента с указаным типа класса  `componentClass`.
+Находит все экземпляры компонента, тип которых равен `componentClass`.
 
 * * *
 
@@ -286,7 +286,7 @@ findRenderedComponentWithType(
 )
 ```
 
-Работает так же как [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) но ожидает, что будет один результат, и возвращает этот один результат, или выдает исключение, если есть любое другое число совпадений, кроме одного..
+Работает так же как [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) но ожидает, что будет один результат, и возвращает этот один результат, или выдаёт исключение, если есть любое другое число совпадений, кроме одного.
 
 ***
 
@@ -296,7 +296,7 @@ findRenderedComponentWithType(
 renderIntoDocument(element)
 ```
 
-Рендер React элемента в отдельно взятом DOM-ноде в документе. **Этой функции нужен DOM.** Это фактически эквивалентно:
+Отображает React элемент в отдельно взятом DOM-узле документа. **Этой функции нужен DOM.** Это фактически эквивалентно:
 
 ```js
 const domContainer = document.createElement('div');
