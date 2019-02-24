@@ -93,7 +93,7 @@ React нормализует события так, чтобы они содер
 
 ### События буфера обмена {#clipboard-events}
 
-Название событий:
+Названия событий:
 
 ```
 onCopy onCut onPaste
@@ -109,7 +109,7 @@ DOMDataTransfer clipboardData
 
 ### Композиционные события {#composition-events}
 
-Название событий:
+Названия событий:
 
 ```
 onCompositionEnd onCompositionStart onCompositionUpdate
@@ -126,7 +126,7 @@ string data
 
 ### События клавиатуры {#keyboard-events}
 
-Название событий:
+Названия событий:
 
 ```
 onKeyDown onKeyPress onKeyUp
@@ -155,7 +155,7 @@ number which
 
 ### События фокуса {#focus-events}
 
-Название событий:
+Названия событий:
 
 ```
 onFocus onBlur
@@ -173,7 +173,7 @@ DOMEventTarget relatedTarget
 
 ### События формы {#form-events}
 
-Название событий:
+Названия событий:
 
 ```
 onChange onInput onInvalid onSubmit
@@ -185,7 +185,7 @@ onChange onInput onInvalid onSubmit
 
 ### События мыши {#mouse-events}
 
-Название событий:
+Названия событий:
 
 ```
 onClick onContextMenu onDoubleClick onDrag onDragEnd onDragEnter onDragExit
@@ -254,7 +254,7 @@ boolean isPrimary
 
 ### События выбора {#selection-events}
 
-Название событий:
+Названия событий:
 
 ```
 onSelect
@@ -264,7 +264,7 @@ onSelect
 
 ### Сенсорные события {#touch-events}
 
-Название событий:
+Названия событий:
 
 ```
 onTouchCancel onTouchEnd onTouchMove onTouchStart
@@ -287,7 +287,7 @@ DOMTouchList touches
 
 ### События UI {#ui-events}
 
-Название событий:
+Названия событий:
 
 ```
 onScroll
@@ -323,7 +323,7 @@ number deltaZ
 
 ### Media Events {#media-events}
 
-Название событий:
+Названия событий:
 
 ```
 onAbort onCanPlay onCanPlayThrough onDurationChange onEmptied onEncrypted
@@ -336,7 +336,7 @@ onTimeUpdate onVolumeChange onWaiting
 
 ### События изображений {#image-events}
 
-Название событий:
+Названия событий:
 
 ```
 onLoad onError
@@ -346,7 +346,7 @@ onLoad onError
 
 ### События анимацй {#animation-events}
 
-Название событий:
+Названия событий:
 
 ```
 onAnimationStart onAnimationEnd onAnimationIteration
@@ -364,7 +364,7 @@ float elapsedTime
 
 ### События переходов {#transition-events}
 
-Название событий:
+Названия событий:
 
 ```
 onTransitionEnd
@@ -382,7 +382,7 @@ float elapsedTime
 
 ### Другие события {#other-events}
 
-Название событий:
+Названия событий:
 
 ```
 onToggle
