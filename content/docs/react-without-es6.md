@@ -142,7 +142,7 @@ class SayHello extends React.Component {
     this.state = {message: 'Hello!'};
   }
   // ВНИМАНИЕ! Этот синтаксис экспериментальный!
-  // Использование стрелки здесь связывает метод:
+  // Здесь стрелочная функция выполняет привязку:
   handleClick = () => {
     alert(this.state.message);
   }
