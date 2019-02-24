@@ -51,17 +51,17 @@ redirect_from:
 
 Если вам нужен обзор по JavaScript, мы рекомендуем прочитать [вот этот учебник](https://developer.mozilla.org/ru/docs/Web/JavaScript/A_re-introduction_to_JavaScript). Отметим, что мы используем некоторые особенности из ES6 - последней версии JavaScript. Такие как  [стрелочные функции](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [классы](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes), объявления [`let`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/let), и [`const`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/const). Вы можете воспользоваться [Babel REPL](babel://es5-syntax-example), чтобы узнать во что компилируется код на ES6.
 
-## Setup for the Tutorial {#setup-for-the-tutorial}
+## Настройка окружения {#setup-for-the-tutorial}
 
-There are two ways to complete this tutorial: you can either write the code in your browser, or you can set up a local development environment on your computer.
+Есть два варианта прохождения этого руководства - вы можете писать код в вашем браузере, или вы можете настроить окружение для разработки на вашем компьютере.
 
-### Setup Option 1: Write Code in the Browser {#setup-option-1-write-code-in-the-browser}
+### Вариант 1: Пишем код в браузере {#setup-option-1-write-code-in-the-browser}
 
-This is the quickest way to get started!
+Это самый быстрый способ для старта!
 
-First, open this **[Starter Code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)** in a new tab. The new tab should display an empty tic-tac-toe game board and React code. We will be editing the React code in this tutorial.
+Для начала откройте эту **[Заготовку](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)** в новой вкладке. Вы увидете пустое поле для игры в крестики-нолики и код на React. Мы будем изменять этот код по ходу написания игры.
 
-You can now skip the second setup option, and go to the [Overview](#overview) section to get an overview of React.
+Можете пропустить следующую чать и перейти к [Обзору](#overview) React.
 
 ### Setup Option 2: Local Development Environment {#setup-option-2-local-development-environment}
 
