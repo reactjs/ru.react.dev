@@ -59,54 +59,54 @@ redirect_from:
 
 Это самый быстрый способ для старта!
 
-Для начала откройте эту **[Заготовку](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)** в новой вкладке. Вы увидете пустое поле для игры в крестики-нолики и код на React. Мы будем изменять этот код по ходу написания игры.
+Для начала откройте эту **[Заготовку](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)** в новой вкладке. Вы увидите пустое поле для игры в крестики-нолики и код на React. Мы будем изменять этот код по ходу написания игры.
 
-Можете пропустить следующую чать и перейти к [Обзору](#overview) React.
+Можете пропустить следующую чаcть и перейти к [Обзору](#overview) React.
 
-### Setup Option 2: Local Development Environment {#setup-option-2-local-development-environment}
+### Вариант 2: Локальное окружение для разработки {#setup-option-2-local-development-environment}
 
-This is completely optional and not required for this tutorial!
+Это не является обязательным и не требуется руководством!
 
 <br>
 
 <details>
 
-<summary><b>Optional: Instructions for following along locally using your preferred text editor</b></summary>
+<summary><b>Опционально: Инструкции для написания кода в вашем любимом редакторе</b></summary>
 
-This setup requires more work but allows you to complete the tutorial using an editor of your choice. Here are the steps to follow:
+Эти настройки потребуют больше сил, но позволят продолжать работу с использованием выбранного вами редактора. Вот что нужно сделать:
 
-1. Make sure you have a recent version of [Node.js](https://nodejs.org/en/) installed.
-2. Follow the [installation instructions for Create React App](/docs/create-a-new-react-app.html#create-react-app) to make a new project.
+1. Убедиться, что у вас установлена последняя версия  [Node.js](https://nodejs.org/en/).
+2. Выполнить [инструкции по установке Create React App](/docs/create-a-new-react-app.html#create-react-app) для создания нового проекта.
 
 ```bash
 npx create-react-app my-app
 ```
 
-3. Delete all files in the `src/` folder of the new project 
+3. Удалить все файлы в папке `src/` нового проекта. 
 
-> Note:
+> Примечание:
 >
->**Don't delete the entire `src` folder, just the original source files inside it.** We'll replace the default source files with examples for this project in the next step.
+>**Не удаляйте саму папку `src`, только файлы внутри неё.** Следующим шагом мы заменим стандартные файлы нашими примерами.
 
 ```bash
 cd my-app
 cd src
 
-# If you're using a Mac or Linux:
+# Для пользователей Mac или Linux:
 rm -f *
 
-# Or, if you're on Windows:
+# Или, для пользователей Windows
 del *
 
-# Then, switch back to the project folder
+# Затем, вернемся в папку проекта
 cd ..
 ```
 
-4. Add a file named `index.css` in the `src/` folder with [this CSS code](https://codepen.io/gaearon/pen/oWWQNa?editors=0100).
+4. Создайте файл с именем `index.css` в папку `src/` и добавьте в него [вот этот CSS код](https://codepen.io/gaearon/pen/oWWQNa?editors=0100).
 
-5. Add a file named `index.js` in the `src/` folder with [this JS code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010).
+5. Создайте файл с именем `index.js` в папку `src/` и добавьте в него [этот JS код](https://codepen.io/gaearon/pen/oWWQNa?editors=0010).
 
-6. Add these three lines to the top of `index.js` in the `src/` folder:
+6. В начало файла `index.js` в папке`src/` добавьте следующие три строчки:
 
 ```js
 import React from 'react';
@@ -114,10 +114,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 ```
 
-Now if you run `npm start` in the project folder and open `http://localhost:3000` in the browser, you should see an empty tic-tac-toe field.
+Теперь, когда вы запустите `npm start` в папке проекта и откроете `http://localhost:3000` в браузере, вы должны увидеть пустое поле для крестиков-ноликов.
 
-We recommend following [these instructions](https://babeljs.io/docs/editors/) to configure syntax highlighting for your editor.
-
+Мы рекомендуем выполнить [эти инструкции](https://babeljs.io/docs/editors/) для настройки подсветки синтаксиса в вашем редакторе.
 </details>
 
 ### Help, I'm Stuck! {#help-im-stuck}
