@@ -173,19 +173,19 @@ JSX обладает всей мощью JavaScript. В JSX вы  можете �
 
 Приведенный выше компонент `ShoppingList` только рендерит встроенные DOM-компоненты вроде `<div />` или `<li />`. Но вы также можете составлять и рендерить собственные компоненты. Например, теперь вы можете ссылаться на весь компонент со списком покупок написав `<ShoppingList />`. Каждый React-компонент инкапсулирован и может использоваться независимо, это позволяет создавать сложный UI из простых компонентов.
 
-## Inspecting the Starter Code {#inspecting-the-starter-code}
+## Разберемся со стартовым кодом {#inspecting-the-starter-code}
 
-If you're going to work on the tutorial **in your browser,** open this code in a new tab: **[Starter Code](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**. If you're going to work on the tutorial **locally,** instead open `src/index.js` in your project folder (you have already touched this file during the [setup](#setup-option-2-local-development-environment)).
+Если вы собираетесь работать над руководством **в вашем браузере**, откройте этот код в новой вкладке **[начальный код](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**. Если вы собираетесь работать над руководством **локально**, откройте `src/index.js` в папке вашего проекта (вы уже имели дело с этим файлом в секции [первоначальной настройки](#setup-option-2-local-development-environment)).
 
-This Starter Code is the base of what we're building. We've provided the CSS styling so that you only need to focus on learning React and programming the tic-tac-toe game.
+Этот стартовый код - база, с которой мы начнем разработку. Мы предоставили CSS-стили, так что все, что вам нужно - сосредоточиться на изучении React и программировании игры крестики-нолики.
 
-By inspecting the code, you'll notice that we have three React components:
+Исследуя этот код, вы обнаружите, что у нас есть три React-компонента:
 
-* Square
-* Board
-* Game
+* Square (Квадрат)
+* Board (Поле)
+* Game (Игра)
 
-The Square component renders a single `<button>` and the Board renders 9 squares. The Game component renders a board with placeholder values which we'll modify later. There are currently no interactive components.
+Компонент `Square` отрисовывает просто `<button>`, а `Board` отрисовывает 9 таких элементов. Компонент `Game` рендерит поле c заглушками, которые мы изменим позже. Сейчас у нас нет ни одного интерактивного компонента.
 
 ### Passing Data Through Props {#passing-data-through-props}
 
