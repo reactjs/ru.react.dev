@@ -219,7 +219,7 @@ class MouseTracker extends React.Component {
 
 ```js
 // Если вам действительно необходим HOC по некоторым причинам, вы можете просто
-// создать один обычный компонент с рендер-пропсом!
+// создать обычный компонент с рендер-пропом!
 function withMouse(Component) {
   return class extends React.Component {
     render() {
