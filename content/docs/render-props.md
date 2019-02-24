@@ -270,7 +270,7 @@ Mouse.propTypes = {
 
 ## Предостережения {#caveats}
 
-### Будьте осторожны при использовании рендер-пропс вместе с React.PureComponent {#be-careful-when-using-render-props-with-reactpurecomponent}
+### Будьте осторожны при использовании рендер-проп вместе с React.PureComponent {#be-careful-when-using-render-props-with-reactpurecomponent}
 
 Использование рендер-пропса может свести на нет преимущество, которое дает [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) если вы создаете функцию внутри метода `render`. Это связано с тем, что неглубокое сравнение пропсов всегда будет возвращать `false` для новых свойств пропсов, и каждый `render` будет генерировать новое значение для рендер-пропса.
 
