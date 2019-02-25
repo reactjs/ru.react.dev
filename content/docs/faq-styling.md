@@ -32,13 +32,13 @@ render() {
 >
 >Если вы часто пишите такой код, пакет [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) может упростить его.
 
-### Могу ли я использовать инлайн стили? {#can-i-use-inline-styles}
+### Могу ли я использовать встроенные стили? {#can-i-use-inline-styles}
 
-Конечно, смотрите данную документацию [здесь](/docs/dom-elements.html#style).
+Конечно, прочитайте [документацию об элементах DOM](/docs/dom-elements.html#style).
 
-### Инлайн стили это плохо? {#are-inline-styles-bad}
+### Встроенные стили это плохо? {#are-inline-styles-bad}
 
-CSS классы как правило, лучше для производительности, чем инлайн стили.
+CSS классы, как правило, лучше для производительности, чем встроенные стили.
 
 ### Что такое CSS-in-JS? {#what-is-css-in-js}
 
