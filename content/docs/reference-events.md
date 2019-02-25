@@ -66,7 +66,7 @@ function onClick(event) {
 
 ## Поддерживаемые события {#supported-events}
 
-React нормализует события так, чтобы они содержали одинаковые свойства во всех бразурах.
+React нормализует события так, чтобы они содержали одинаковые свойства во всех браузерах.
 
 Обработчики ниже вызываются на фазе всплытия (bubbling). А чтобы зарегистрировать событие на фазе перехвата (capture), просто добавьте `Capture` к имени события; например, вместо использования `onClick` используйте `onClickCapture`, чтобы обработать событие на фазе перехвата.
 
@@ -293,7 +293,7 @@ DOMTouchList touches
 onScroll
 ```
 
-Properties:
+Свойства:
 
 ```javascript
 number detail
@@ -302,9 +302,9 @@ DOMAbstractView view
 
 * * *
 
-### Событий колеса мыши {#wheel-events}
+### События колеса мыши {#wheel-events}
 
-Event names:
+Названия событий:
 
 ```
 onWheel
@@ -321,7 +321,7 @@ number deltaZ
 
 * * *
 
-### Media Events {#media-events}
+### События в медиа объектах {#media-events}
 
 Названия событий:
 
@@ -344,7 +344,7 @@ onLoad onError
 
 * * *
 
-### События анимацй {#animation-events}
+### События анимаций {#animation-events}
 
 Названия событий:
 
