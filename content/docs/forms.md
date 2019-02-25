@@ -272,7 +272,7 @@ partialState[name] = value;
 this.setState(partialState);
 ```
 
-Кроме того, `setState()` автоматически производит [слияние части состояния с текущим состоянием](/docs/state-and-lifecycle.html#state-updates-are-merged), то есть можно вызывать этот метод только для изменяемых в данный момент частей `state`.
+Кроме того, `setState()` автоматически производит [слияние части состояния с текущим состоянием](/docs/state-and-lifecycle.html#state-updates-are-merged), то есть нам нужно передать в него только ту часть `state`, которую хотим изменить.
 
 ## Значение null управляемого компонента {#controlled-input-null-value}
 
