@@ -158,7 +158,7 @@ yarn link react react-dom
 - [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) — сборка и тестирование React
 - [6:07](https://youtu.be/wUpPsEcGsg8?t=6m7s) — создание и отправка пулреквестов
 - [8:25](https://youtu.be/wUpPsEcGsg8?t=8m25s) - структура проекта
-- [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) - работа с npm-зависимостями React
+- [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) — работа с npm-зависимостями React
 - [19:15](https://youtu.be/wUpPsEcGsg8?t=19m15s) — добавление новой функциональности
 
 Вот ещё одно видео с [выступлением на ReactNYC митапе](https://www.youtube.com/watch?v=GWCcZ6fnpn4). В нём Шон Вонг (Shawn Wang) рассказывает о своём опыте работы над React.
