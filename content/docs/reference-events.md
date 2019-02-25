@@ -218,7 +218,7 @@ boolean shiftKey
 
 ### События курсора {#pointer-events}
 
-Название собыий:
+Названия событий:
 
 ```
 onPointerDown onPointerMove onPointerUp onPointerCancel onGotPointerCapture
