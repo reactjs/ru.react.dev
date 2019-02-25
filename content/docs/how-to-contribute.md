@@ -155,7 +155,7 @@ yarn link react react-dom
 Посмотрите [этот небольшой видеоролик](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26 минут), в котором показан весь процесс разработки React.
 
 #### Таймлайн: {#video-highlights}
-- [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) - сборка и тестирование React
+- [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) — сборка и тестирование React
 - [6:07](https://youtu.be/wUpPsEcGsg8?t=6m7s) - создание и отправка пулреквестов
 - [8:25](https://youtu.be/wUpPsEcGsg8?t=8m25s) - структура проекта
 - [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) - работа с npm-зависимостями React
