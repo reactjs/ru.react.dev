@@ -278,7 +278,7 @@ Mouse.propTypes = {
 
 ```js
 class Mouse extends React.PureComponent {
-  // Та же реализация что и упомянутая выше...
+  // Та же реализация, что и упомянутая выше...
 }
 
 class MouseTracker extends React.Component {
