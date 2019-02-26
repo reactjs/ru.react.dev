@@ -288,7 +288,7 @@ class MouseTracker extends React.Component {
         <h1>Move the mouse around!</h1>
 
         {/*
-          Это плохо! Значение `render` пропа будет
+          Это плохо! Значение рендер-пропа будет
           разным при каждом рендере.
         */}
         <Mouse render={mouse => (
