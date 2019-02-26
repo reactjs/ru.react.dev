@@ -14,7 +14,7 @@ permalink: docs/render-props.html
 )}/>
 ```
 
-Библиотеками, использующий такой подход, являются [React Router](https://reacttraining.com/react-router/web/api/Route/Route-render-methods) и [Downshift](https://github.com/paypal/downshift).
+Такой подход, в частности, применяется в библиотеках [React Router](https://reacttraining.com/react-router/web/api/Route/Route-render-methods) и [Downshift](https://github.com/paypal/downshift).
 
 В этой статье мы покажем почему рендер-проп полезен и как писать свои.
 
