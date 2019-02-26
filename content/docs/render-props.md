@@ -186,7 +186,7 @@ class Mouse extends React.Component {
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
 
         {/*
-          Вместо статического представления того, что отображает <Mouse>,
+          Вместо статического представления того, что рендерит <Mouse>,
           используем `render` проп для динамического определения визуализации.
         */}
         {this.props.render(this.state)}
