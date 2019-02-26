@@ -257,7 +257,7 @@ function withMouse(Component) {
 </Mouse>
 ```
 
-Вы увидите, что эта техника используется в API библиотеки [react-motion](https://github.com/chenglou/react-motion).
+Эту технику можно увидеть в действии в API библиотеки [react-motion](https://github.com/chenglou/react-motion).
 
 
 Поскольку этот метод не совсем обычен, вы, вероятно, захотите явно указать, что `children` должен быть функцией в вашем `propTypes` при разработке такого API.
