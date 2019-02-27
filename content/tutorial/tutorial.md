@@ -720,9 +720,9 @@ class Board extends React.Component {
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/KmmrBy?editors=0010)**
 
-### Declaring a Winner {#declaring-a-winner}
+### Определение победителя {#declaring-a-winner}
 
-Now that we show which player's turn is next, we should also show when the game is won and there are no more turns to make. We can determine a winner by adding this helper function to the end of the file:
+Теперь, когда мы показываем какой игрок ходит следующим, нам так же нужно определять когда игра закончена, и больше нет ходов. Мы можем определить победителя добавив вспомогательную фукнцию в конец файла:
 
 ```javascript
 function calculateWinner(squares) {
@@ -746,23 +746,23 @@ function calculateWinner(squares) {
 }
 ```
 
-We will call `calculateWinner(squares)` in the Board's `render` function to check if a player has won. If a player has won, we can display text such as "Winner: X" or "Winner: O". We'll replace the `status` declaration in Board's `render` function with this code:
+Будем вызывать `calculateWinner(squares)` внутри метода `render` класса Board, чтобвы проверять - выиграл ли игрок. Если у нас есть победитель, мы покажем сообщение "Выиграл X" или "Выиграл O". Заменим объявление `status` в `render` следующим кодом:
 
 ```javascript{2-8}
   render() {
     const winner = calculateWinner(this.state.squares);
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = 'Выиграл ' + winner;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Следующий игрок: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
       // the rest has not changed
 ```
 
-We can now change the Board's `handleClick` function to return early by ignoring a click if someone has won the game or if a Square is already filled:
+Теперь мы можем изменить метод `handleClick` класса Board для выхода из функции и игнорировании клика, если кто-то уже победил или если поле заполнено:
 
 ```javascript{3-5}
   handleClick(i) {
@@ -780,7 +780,7 @@ We can now change the Board's `handleClick` function to return early by ignoring
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/LyyXgK?editors=0010)**
 
-Congratulations! You now have a working tic-tac-toe game. And you've just learned the basics of React too. So *you're* probably the real winner here.
+Поздравляем! Теперь у вас работающая игра в крестики-нолики. И заодно вы только что освоили основы React. Так что, похоже, здесь победитель *вы*.
 
 ## Adding Time Travel {#adding-time-travel}
 
