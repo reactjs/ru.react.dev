@@ -620,11 +620,12 @@ function Square(props) {
 >
 >Когда мы заменили Square на фукнциональный компонент, мы так же изменили `onClick={() => this.props.onClick()}` на более короткое `onClick={props.onClick}` (обратите внимание на отсутствие фигурных скобок с обеих сторон). В классе мы использовали стрелочную фукнцию для получения правильного значения `this`, но в функциональных компонентах нам не нужно беспокоиться о `this`.
 
-### Taking Turns {#taking-turns}
+### Очередность {#taking-turns}
 
-We now need to fix an obvious defect in our tic-tac-toe game: the "O"s cannot be marked on the board.
+Нам нужно исправить один очевидный момент в нашей игре крестики-нолики - "O" не может быть отмечен на поле.
 
-We'll set the first move to be "X" by default. We can set this default by modifying the initial state in our Board constructor:
+Закрепим первый ход по-умолчанию за "X". Мы можем сделать это изменяя начальное состояние внутри конструктора Board:
+
 
 ```javascript{6}
 class Board extends React.Component {
@@ -637,7 +638,7 @@ class Board extends React.Component {
   }
 ```
 
-Each time a player moves, `xIsNext` (a boolean) will be flipped to determine which player goes next and the game's state will be saved. We'll update the Board's `handleClick` function to flip the value of `xIsNext`:
+Каждый раз, когда игрок делает ход, `xIsNext` (булево взначение) будет инвертироваться, чтобы обозначить какой игрок ходит следующим, а состояние игры будет сохраняться. Мы обновим метод `handleClick` класса Board, для инверсии значения `xIsNext`:
 
 ```javascript{3,6}
   handleClick(i) {
@@ -650,17 +651,17 @@ Each time a player moves, `xIsNext` (a boolean) will be flipped to determine whi
   }
 ```
 
-With this change, "X"s and "O"s can take turns. Let's also change the "status" text in Board's `render` so that it displays which player has the next turn:
+После этих изменений "X" и "O" будут чередоваться. Давайте заодно изменим текст "status" в методе `render` класса Board, чтобы он отображал чья очередь ходить:
 
 ```javascript{2}
   render() {
-    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    const status = 'Следующий игрок: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       // the rest has not changed
 ```
 
-After applying these changes, you should have this Board component:
+После этих измнений у наш Board-компонент должен выглядеть так:
 
 ```javascript{6,11-16,29}
 class Board extends React.Component {
@@ -691,7 +692,7 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+    const status = 'Следующий игрок: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       <div>
