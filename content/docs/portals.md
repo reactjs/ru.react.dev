@@ -141,7 +141,7 @@ function Child() {
   // так как здесь не определён атрибут 'onClick' 
   return (
     <div className="modal">
-      <button>Клик</button>
+      <button>Кликните</button>
     </div>
   );
 }
