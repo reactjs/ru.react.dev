@@ -582,11 +582,11 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 Иммутабельность делает реализацию сложного функционала простой. Ниже мы реализуем функционал "путешествия во времени", который позволит просматривать историю игры, и "возврат назад", который позволит переходить к прошлым ходам. Этот функционал не является чем-то особенным для игр - возможность отменять и снова примерять действия это общий функционал приложений. Изменяя прямой мутации данных позволяет сохранять предыдущеие состояния игры без изменений и обращаться к ним позже.
 
-#### Detecting Changes {#detecting-changes}
+#### Обнаружение изменений {#detecting-changes}
 
-Detecting changes in mutable objects is difficult because they are modified directly. This detection requires the mutable object to be compared to previous copies of itself and the entire object tree to be traversed.
+Работая с мутируемыми объектами довольно сложно обнаружить изменения, потому что они изменяются напрямую. В таком случае нам требуется сравнивать объект с последней копией этого же объекта, и делать тоже самое для всего дерева объектов.
 
-Detecting changes in immutable objects is considerably easier. If the immutable object that is being referenced is different than the previous one, then the object has changed.
+Обнаружение изменений в иммутабельных объектаъ намного проще. Если указатель на иммутабельный объект изменился (отличается от предыдущего), значит объект был изменен.
 
 #### Determining When to Re-render in React {#determining-when-to-re-render-in-react}
 
