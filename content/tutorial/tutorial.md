@@ -588,11 +588,11 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 Обнаружение изменений в иммутабельных объектаъ намного проще. Если указатель на иммутабельный объект изменился (отличается от предыдущего), значит объект был изменен.
 
-#### Determining When to Re-render in React {#determining-when-to-re-render-in-react}
+#### Как React понимает, когда нужно перерендерить {#determining-when-to-re-render-in-react}
 
-The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made which helps to determine when a component requires re-rendering.
+Основным преимуществом иммутабельности является то, что он помогает создавать на React  _чистые компоненты_. Неизменяемые данные позволяют легко определить наличие изменений и момент, когда компонент нужно перерендерить.
 
-You can learn more about `shouldComponentUpdate()` and how you can build *pure components* by reading [Optimizing Performance](/docs/optimizing-performance.html#examples).
+Вы можете узнать больше о `shouldComponentUpdate()` и как создавать *чистые компоненты* в статье про [Оптимизацию Производительности](/docs/optimizing-performance.html#examples).
 
 ### Function Components {#function-components}
 
