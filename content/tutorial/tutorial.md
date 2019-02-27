@@ -594,13 +594,13 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 Вы можете узнать больше о `shouldComponentUpdate()` и как создавать *чистые компоненты* в статье про [Оптимизацию Производительности](/docs/optimizing-performance.html#examples).
 
-### Function Components {#function-components}
+### Функциональные компоненты {#function-components}
 
-We'll now change the Square to be a **function component**.
+Давайте изменим Square и сделаем его **функциональным компонентом**.
 
-In React, **function components** are a simpler way to write components that only contain a `render` method and don't have their own state. Instead of defining a class which extends `React.Component`, we can write a function that takes `props` as input and returns what should be rendered. Function components are less tedious to write than classes, and many components can be expressed this way.
+В React **функциональные компоненты** -- возможность проще описывать компоненты, которые содержат только метод `render` и не имеют собственного состояния. Вместо определения класса, который наследуется от `React.Component`, мы может написать функцию, которая принимает `props` как параметр и возвращает то, что должно быть отрендерено. Функциональные компоненты проще писать, чем классы, и многие компоненты могут быть оформлены таким образом.
 
-Replace the Square class with this function:
+Заменим класс Square следующей фукнцией:
 
 ```javascript
 function Square(props) {
@@ -612,7 +612,7 @@ function Square(props) {
 }
 ```
 
-We have changed `this.props` to `props` both times it appears.
+Мы заменили `this.props` на `props` оба раза, когда обращись к ним.
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/QvvJOv?editors=0010)**
 
