@@ -33,7 +33,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-Теперь мы включим массив `listItems` внутрь элемента `<ul>` и [отрендерить его в DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+Теперь мы включим массив `listItems` внутрь элемента `<ul>` и [отрендерим его в DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
 
 ```javascript{2}
 ReactDOM.render(
