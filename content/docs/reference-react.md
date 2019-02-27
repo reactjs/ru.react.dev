@@ -220,7 +220,7 @@ React.isValidElement(object)
 
 ### `React.Children` {#reactchildren}
 
-`React.Children` предоставляет утилиты для работы с непрозрачной структурой данных `this.props.children`.
+`React.Children` предоставляет функции для работы с непрозрачной структурой данных `this.props.children`.
 
 #### `React.Children.map` {#reactchildrenmap}
 
