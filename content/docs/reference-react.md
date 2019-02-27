@@ -359,4 +359,4 @@ function MyComponent() {
 
 >Примечание:
 >
-> `React.lazy()` и `<React.Suspense>` еще не поддерживаются `ReactDOMServer`. Это известное ограничение, которое будет устранено в будущем.
+> `React.lazy()` и `<React.Suspense>` ещё не поддерживаются `ReactDOMServer`. Это известное ограничение, которое будет устранено в будущем.
