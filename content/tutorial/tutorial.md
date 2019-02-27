@@ -552,35 +552,35 @@ class Board extends React.Component {
 Обратите внимание, что внутри `handleClick` мы вызвали `.slice()` для создания копии массива `squares` вместо изменения существующего массива. В следующей части мы объясним зачем создавать копию массива `squares`.
 
 
-### Why Immutability Is Important {#why-immutability-is-important}
+### Почему иммутабельность так важна? {#why-immutability-is-important}
 
-In the previous code example, we suggested that you use the `.slice()` operator to create a copy of the `squares` array to modify instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+В последнем примере мы советовали использовать метод `.slice()` для создания и последующего изменения копии массива `squares`, вместо изменения существующего массива. Теперь мы обсудим иммутабельность и почему ее так важно изучить.
 
-There are generally two approaches to changing data. The first approach is to *mutate* the data by directly changing the data's values. The second approach is to replace the data with a new copy which has the desired changes.
+В целом есть два подхода для изменения данных. Первый подход - *мутировать*(изменять) данные напрямую устанавливая новые значения. Второй подход - заменять данные новой копией, которая содержит изменения.
 
-#### Data Change with Mutation {#data-change-with-mutation}
+#### Мутирующее изменениее данных {#data-change-with-mutation}
 ```javascript
 var player = {score: 1, name: 'Jeff'};
 player.score = 2;
 // Now player is {score: 2, name: 'Jeff'}
 ```
 
-#### Data Change without Mutation {#data-change-without-mutation}
+#### Изменение данных без мутаций {#data-change-without-mutation}
 ```javascript
 var player = {score: 1, name: 'Jeff'};
 
 var newPlayer = Object.assign({}, player, {score: 2});
-// Now player is unchanged, but newPlayer is {score: 2, name: 'Jeff'}
+// Здесь `player` не изменился, а в `newPlayer` находится {score: 2, name: 'Jeff'}
 
-// Or if you are using object spread syntax proposal, you can write:
+// Или, если вы пользуетесь синтаксисом расширения объектов, вы можете написать:
 // var newPlayer = {...player, score: 2};
 ```
 
-The end result is the same but by not mutating (or changing the underlying data) directly, we gain several benefits described below.
+Конечный результат будет тот же, но без мутации (или без изменения базовых данных) напрямую. Ниже будут описаны преимущества от такого подхода.
 
-#### Complex Features Become Simple {#complex-features-become-simple}
+#### Сложное становится простым {#complex-features-become-simple}
 
-Immutability makes complex features much easier to implement. Later in this tutorial, we will implement a "time travel" feature that allows us to review the tic-tac-toe game's history and "jump back" to previous moves. This functionality isn't specific to games -- an ability to undo and redo certain actions is a common requirement in applications. Avoiding direct data mutation lets us keep previous versions of the game's history intact, and reuse them later.
+Иммутабельность делает реализацию сложного функционала простой. Ниже мы реализуем функционал "путешествия во времени", который позволит просматривать историю игры, и "возврат назад", который позволит переходить к прошлым ходам. Этот функционал не является чем-то особенным для игр - возможность отменять и снова примерять действия это общий функционал приложений. Изменяя прямой мутации данных позволяет сохранять предыдущеие состояния игры без изменений и обращаться к ним позже.
 
 #### Detecting Changes {#detecting-changes}
 
