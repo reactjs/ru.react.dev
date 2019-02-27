@@ -616,9 +616,9 @@ function Square(props) {
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/QvvJOv?editors=0010)**
 
->Note
+>Примечание
 >
->When we modified the Square to be a function component, we also changed `onClick={() => this.props.onClick()}` to a shorter `onClick={props.onClick}` (note the lack of parentheses on *both* sides). In a class, we used an arrow function to access the correct `this` value, but in a function component we don't need to worry about `this`.
+>Когда мы заменили Square на фукнциональный компонент, мы так же изменили `onClick={() => this.props.onClick()}` на более короткое `onClick={props.onClick}` (обратите внимание на отсутствие фигурных скобок с обеих сторон). В классе мы использовали стрелочную фукнцию для получения правильного значения `this`, но в функциональных компонентах нам не нужно беспокоиться о `this`.
 
 ### Taking Turns {#taking-turns}
 
