@@ -17,7 +17,6 @@ import {colors, media, sharedStyles} from 'theme';
 import loadScript from 'utils/loadScript';
 import createOgUrl from 'utils/createOgUrl';
 import {babelURL} from 'site-constants';
-import ReactDOM from 'react-dom';
 import logoWhiteSvg from 'icons/logo-white.svg';
 
 class Home extends Component {
@@ -134,7 +133,8 @@ class Home extends Component {
                         fontSize: 30,
                       },
                     }}>
-                    JavaScript-библиотека для создания пользовательских интерфейсов
+                    JavaScript-библиотека для создания пользовательских
+                    интерфейсов
                   </p>
                   <Flex
                     valign="center"
@@ -154,7 +154,7 @@ class Home extends Component {
                     </CtaItem>
                     <CtaItem>
                       <ButtonLink to="/tutorial/tutorial.html" type="secondary">
-                        Перейти к учебнику
+                        Перейти к введению
                       </ButtonLink>
                     </CtaItem>
                   </Flex>
@@ -309,13 +309,6 @@ Home.propTypes = {
     marketing: PropTypes.object.isRequired,
   }).isRequired,
 };
-
-function renderExamplePlaceholder(containerId) {
-  ReactDOM.render(
-    <h4>Loading code example...</h4>,
-    document.getElementById(containerId),
-  );
-}
 
 const CtaItem = ({children, primary = false}) => (
   <div
