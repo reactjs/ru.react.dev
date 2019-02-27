@@ -46,7 +46,7 @@ render() {
 >
 > При работе с порталами, помните, что нужно уделить внимание [управлению фокусом при помощи клавиатуры](/docs/accessibility.html#programmatically-managing-focus).
 >
-> Для модальных диалогов, убедитесь, что все могут взаимодействовать с ними, следуя [практикам разработки модальных окон WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal).
+> Для модальных диалогов, убедитесь, что любой пользователь будет способен взаимодействовать с ними, следуя [практикам разработки модальных окон WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal).
 
 [**Попробовать на CodePen**](https://codepen.io/gaearon/pen/yzMaBd)
 
