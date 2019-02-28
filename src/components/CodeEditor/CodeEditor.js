@@ -43,7 +43,7 @@ class CodeEditor extends Component {
   }
 
   render() {
-    const {children, containerNodeID} = this.props;
+    const {containerNodeID} = this.props;
     const {
       compiledES6,
       code,
@@ -56,12 +56,12 @@ class CodeEditor extends Component {
     if (showBabelErrorMessage) {
       errorMessage = (
         <span>
-          Babel could not be loaded.
+          Не получилось загрузить Babel.
           <br />
           <br />
-          This can be caused by an ad blocker. If you're using one, consider
-          adding reactjs.org to the whitelist so the live code examples will
-          work.
+          Это может быть связано с блокировщиком рекламы. Если вы используете
+          один из них, добавьте адрес reactjs.org в белый список, чтобы примеры
+          кода заработали.
         </span>
       );
     } else if (error != null) {
@@ -99,7 +99,7 @@ class CodeEditor extends Component {
                 color: colors.white,
               }}>
               <MetaTitle onDark={true}>
-                Live JSX Editor
+                Интерактивный JSX-редактор
                 <label
                   css={{
                     fontSize: 14,
@@ -169,7 +169,7 @@ class CodeEditor extends Component {
                   cssProps={{
                     color: colors.white,
                   }}>
-                  Error
+                  Ошибка
                 </MetaTitle>
               </div>
               <pre
@@ -200,7 +200,7 @@ class CodeEditor extends Component {
                   padding: '0 10px',
                   backgroundColor: colors.divider,
                 }}>
-                <MetaTitle>Result</MetaTitle>
+                <MetaTitle>Результат</MetaTitle>
               </div>
               <div
                 id={containerNodeID}
