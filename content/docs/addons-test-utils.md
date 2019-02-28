@@ -15,13 +15,13 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 
 ## Обзор {#overview}
 
-`ReactTestUtils` позволяет легко тестировать React-компоненты в любом тестовом фреймворке на ваш выбор. В Facebook мы используем [Jest](https://facebook.github.io/jest/) для безболезненного тестирования JavaScript. Если хотите обучится Jest, это можно сделать на соответствующей странице [Руководство по React](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
+`ReactTestUtils` позволяет легко тестировать React-компоненты в любом тестовом фреймворке на ваш выбор. В Facebook мы используем [Jest](https://facebook.github.io/jest/) для гладкого тестирования JavaScript-кода. Если хотите обучится Jest, ознакомьтесь с [руководством по React](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
 
 > Примечание:
 >
-> Мы рекомендуем использовать библиотеку [`react-testing-library`](https://git.io/react-testing-library), которая сильно облегчает написание тестов, имитирующих поведение пользователей вашего приложения в браузере, и побуждает к хорошим практикам в тестировании.
+> Мы рекомендуем использовать библиотеку [`react-testing-library`](https://git.io/react-testing-library), которая значительно облегчает написание тестов, имитируя поведение пользователей вашего приложения в браузере, и просто побуждает к хорошим практикам в тестировании.
 >
-> В качестве альтернативы, Airbnb выпустил утилиту тестирования [Enzyme](http://airbnb.io/enzyme/), которая легко позволяет утверждать, манипулировать, и просматривать выходные данные React компонентов.
+> В качестве альтернативы, Airbnb выпустил утилиту тестирования [Enzyme](http://airbnb.io/enzyme/), которая легко позволяет делать проверки, управлять, а также просматривать выходные данные React-компонентов.
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
@@ -48,7 +48,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 
 >Примечание:
 >
->Если вы используете пакет `react-test-renderer`, то он также предоставляет функцию `act`, которая ведет себя также.
+>Если вы используете пакет `react-test-renderer`, то он также предоставляет функцию `act`, которая работает аналогичным образом.
 
 Допустим, у нас есть компонент `Counter`:
 
@@ -60,10 +60,10 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
-    document.title = `Ты нажал на кнопку ${this.state.count} раз`;
+    document.title = `Вы нажали на кнопку ${this.state.count} раз`;
   }
   componentDidUpdate() {
-    document.title = `Ты нажал на кнопку ${this.state.count} раз`;
+    document.title = `Вы нажали на кнопку ${this.state.count} раз`;
   }
   handleClick() {
     this.setState(state => ({
@@ -73,7 +73,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <p>Ты нажал на кнопку {this.state.count} раз</p>
+        <p>Вы нажали на кнопку {this.state.count} раз</p>
         <button onClick={this.handleClick}>
           Нажми на меня
         </button>
@@ -110,15 +110,15 @@ it('рендер и обновление счетчика', () => {
   });
   const button = container.querySelector('button');
   const label = container.querySelector('p');
-  expect(label.textContent).toBe('Ты нажал на кнопку 0 раз');
-  expect(document.title).toBe('Ты нажал на кнопку 0 раз');
+  expect(label.textContent).toBe('Вы нажали на кнопку 0 раз');
+  expect(document.title).toBe('Вы нажали на кнопку 0 раз');
 
   // Тестируем второй рендер и метод componentDidUpdate
   act(() => {
     button.dispatchEvent(new MouseEvent('click', {bubbles: true}));
   });
-  expect(label.textContent).toBe('Ты нажал на кнопку 1 раз');
-  expect(document.title).toBe('Ты нажал на кнопку 1 раз');
+  expect(label.textContent).toBe('Вы нажали на кнопку 1 раз');
+  expect(document.title).toBe('Вы нажали на кнопку 1 раз');
 });
 ```
 
@@ -135,7 +135,7 @@ mockComponent(
 )
 ```
 
-Передаёт фиктивный модуль компонента этому методу, чтобы дополнить его полезными методами, которые позволяют использовать его в качестве фиктивного компонента React. Вместо того чтобы рендерить как обычно, компонент становится простым `<div>` (или другим тегом `mockTagName` если указан) содержащий любые предоставленные дочерние элементы.
+Передаёт фиктивный модуль компонента этому методу, чтобы дополнить его полезными методами, которые позволяют использовать его в качестве фиктивного компонента React. Вместо того чтобы рендерить как обычно, компонент становится простым элементом `<div>` (или другим тегом `mockTagName`, если указан), содержащий любые предоставленные дочерние элементы.
 
 > Примечание:
 >
@@ -182,7 +182,7 @@ isDOMComponent(instance)
 isCompositeComponent(instance)
 ```
 
-Returns `true` if `instance` is a user-defined component, such as a class or a function.
+Возвращает `true`, если `instance` является пользовательским компонентом, определённым как класс или функция.
 
 * * *
 
@@ -234,7 +234,7 @@ findRenderedDOMComponentWithClass(
 )
 ```
 
-Работает как [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass), но ожидает, что будет один результат, и возвращает этот один результат, или выдает исключение, если есть любое другое число совпадений, кроме одного.
+Работает как [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass), но ожидает, что будет один результат, и возвращает этот один результат, или выдаёт исключение, если есть любое другое число совпадений, кроме одного.
 
 * * *
 
@@ -286,7 +286,7 @@ findRenderedComponentWithType(
 )
 ```
 
-Работает так же как [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) но ожидает, что будет один результат, и возвращает этот один результат, или выдаёт исключение, если есть любое другое число совпадений, кроме одного.
+Работает так же как [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype), но ожидает, что будет один результат, и возвращает этот один результат, или выдаёт исключение, если есть любое другое число совпадений, кроме одного.
 
 ***
 
@@ -324,7 +324,7 @@ Simulate.{eventName}(
 
 `Simulate` имеет метод для [каждого события, которое React может понимать](/docs/events.html#supported-events).
 
-**Кликать на элемент**
+**Кликнуть на элемент**
 
 ```javascript
 // <button ref={(node) => this.button = node}>...</button>
@@ -332,7 +332,7 @@ const node = this.button;
 ReactTestUtils.Simulate.click(node);
 ```
 
-**Меняет значение в поле ввода и затем симулирует нажатие кнопки ENTER.**
+**Изменить значение в поле ввода, а затем эмулировать нажатие кнопки ENTER.**
 
 ```javascript
 // <input ref={(node) => this.textInput = node} />
@@ -344,6 +344,6 @@ ReactTestUtils.Simulate.keyDown(node, {key: "Enter", keyCode: 13, which: 13});
 
 > Примечание:
 >
-> Вам нужно будет предоставить все свойства события, которое вы используете в своем компоненте (например, keyCode, which и так далее), поскольку React не создаёт ничего из этого.
+> Вам нужно будет предоставить все свойства события, которое вы используете в своём компоненте (например, keyCode, which и т.д.), поскольку React не создаёт ничего из этого.
 
 * * *
