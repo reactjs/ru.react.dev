@@ -3,7 +3,7 @@
     - id: getting-started
       title: Начало работы
     - id: add-react-to-a-website
-      title: Add React to a Website
+      title: Добавляем React на сайт
     - id: create-a-new-react-app
       title: Create a New React App
     - id: cdn-links
@@ -22,7 +22,7 @@
     - id: state-and-lifecycle
       title: Состояние и жизненный цикл
     - id: handling-events
-      title: Handling Events
+      title: Обработка событий
     - id: conditional-rendering
       title: Условный рендеринг
     - id: lists-and-keys
@@ -50,13 +50,13 @@
     - id: fragments
       title: Фрагменты
     - id: higher-order-components
-      title: Higher-Order Components
+      title: Компоненты высшего порядка
     - id: integrating-with-other-libraries
       title: Integrating with Other Libraries
     - id: jsx-in-depth
       title: JSX In Depth
     - id: optimizing-performance
-      title: Optimizing Performance
+      title: Оптимизация производительности
     - id: portals
       title: Portals
     - id: react-without-es6
@@ -146,7 +146,7 @@
     - id: faq-styling
       title: Styling and CSS
     - id: faq-structure
-      title: File Structure
+      title: Структура файлов
     - id: faq-versioning
       title: Versioning Policy
     - id: faq-internals
