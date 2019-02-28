@@ -1084,34 +1084,34 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 Давайте обсудим, что это предупреждение значит.
 
-### Picking a Key {#picking-a-key}
+### Выбор ключа {#picking-a-key}
 
-When we render a list, React stores some information about each rendered list item. When we update a list, React needs to determine what has changed. We could have added, removed, re-arranged, or updated the list's items.
+Когда мы рендерим список, React хранит информацию о каждом отрендереном элементе списка. Если мы обновляем список, React должнет понять, что изменилось. Мы могли добавить, удалить, поменять порядок или обновить элементы списка.
 
-Imagine transitioning from
-
-```html
-<li>Alexa: 7 tasks left</li>
-<li>Ben: 5 tasks left</li>
-```
-
-to
+Представим изменения от
 
 ```html
-<li>Ben: 9 tasks left</li>
-<li>Claudia: 8 tasks left</li>
-<li>Alexa: 5 tasks left</li>
+<li>Алексей: 7 задач осталось</li>
+<li>Бен: 5 задач осталось</li>
 ```
 
-In addition to the updated counts, a human reading this would probably say that we swapped Alexa and Ben's ordering and inserted Claudia between Alexa and Ben. However, React is a computer program and does not know what we intended. Because React cannot know our intentions, we need to specify a *key* property for each list item to differentiate each list item from its siblings. One option would be to use the strings `alexa`, `ben`, `claudia`. If we were displaying data from a database, Alexa, Ben, and Claudia's database IDs could be used as keys.
+к
 
 ```html
-<li key={user.id}>{user.name}: {user.taskCount} tasks left</li>
+<li>Бен: 9 задач осталось</li>
+<li>Клава: 8 задач осталось</li>
+<li>Алексей: 5 задач осталось</li>
 ```
 
-When a list is re-rendered, React takes each list item's key and searches the previous list's items for a matching key. If the current list has a key that didn't exist before, React creates a component. If the current list is missing a key that existed in the previous list, React destroys the previous component. If two keys match, the corresponding component is moved. Keys tell React about the identity of each component which allows React to maintain state between re-renders. If a component's key changes, the component will be destroyed and re-created with a new state.
+В добавок к измененным цифрам, человек читающий это, вероятно сказал бы что Алексей и Бен поменялись местами, а между ними вставили Клаву. Но React -- это компьютерная программа, и не знает чего мы хотим. Посколько React не знает наших намерений, нам нужно указать свойство *key* для каждого элемента списка, чтобы отличать каждый элемент от остальных. Один из вариантов - использовать строки `Алексей`, `Бен`, `Клава`. Если мы показываем информацию из базы данных то в качестве ключей мы могли бы использовать идентефикаторы из базы.
 
-`key` is a special and reserved property in React (along with `ref`, a more advanced feature). When an element is created, React extracts the `key` property and stores the key directly on the returned element. Even though `key` may look like it belongs in `props`, `key` cannot be referenced using `this.props.key`. React automatically uses `key` to decide which components to update. A component cannot inquire about its `key`.
+```html
+<li key={user.id}>{user.name}: {user.taskCount} задач осталось</li>
+```
+
+При повторном рендеринге списка, React берет у каждого элемента списка ключ и ищет его в элементах прошлого списка. Если в новом списке есть ключ, которого раньше не было, React создает новый компонент. Если в текущем списке отстутсвует ключ, который был в прошлом списке, React уничтожет предыдущий компонент. Если два ключа совпадают, соответствующий компонент перемещается. Ключи говорит React об уникальности каждого компонента, что помогает React поддерживать состояние между повторным ренедерингом. Если у компонента меняется ключ, компонент будет уничтожет и создан занового в новом состоянии.
+
+`key` - это специальное зарезервированное свойство(проп) в React (наряду с `ref`, более продвинутым функционалом). Когда элемент создан, React извлекает свойство `key` и сохранят этот ключ непосредственно в возвращаемом элементе. Хотя `key` выглядит, как относящийся к пропсам, к нему нельзя обращаться через `this.props.key`. React автоматически использует `key` для определения того, какой компонент должен обновиться. Компонент не может узнать о своем ключе.
 
 **It's strongly recommended that you assign proper keys whenever you build dynamic lists.** If you don't have an appropriate key, you may want to consider restructuring your data so that you do.
 
