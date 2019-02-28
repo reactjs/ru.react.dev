@@ -305,7 +305,7 @@ ReactDOM.render(element, domContainer);
 
 > Примечание:
 >
-> `window`, `window.document` и `window.document.createElement` должны быть доступными **перед** тем как вы импортируете `React`. В противном случае React будет думать что не может получить доступ к DOM, и такие методы как `setState` не будут работать.
+> `window`, `window.document` и `window.document.createElement` должны быть доступными **перед** тем как вы импортируете `React`. В противном случае React будет думать что не может получить доступ к DOM и такие методы как `setState` не будут работать.
 
 * * *
 
