@@ -87,7 +87,7 @@ ReactDOM.unmountComponentAtNode(container)
 
 > Примечание:
 >
-> `findDOMNode` это лазейка, используемая для доступа к базовому узлу DOM. В большинстве случаев использование этого метода не рекомендуется, поскольку он пробивает абстракцию компонента. [Метод устарел в `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
+> `findDOMNode` — это лазейка, используемая для доступа к базовому узлу DOM. В большинстве случаев использование этого метода не рекомендуется, поскольку он пробивает абстракцию компонента. [Метод устарел в `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 
 ```javascript
 ReactDOM.findDOMNode(component)
