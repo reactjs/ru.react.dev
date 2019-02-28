@@ -15,13 +15,13 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 
 ## Обзор {#overview}
 
-`ReactTestUtils` позволяет легко тестировать React-компоненты в любом тестовом фреймворке на ваш выбор. В Facebook мы используем [Jest](https://facebook.github.io/jest/) для гладкого тестирования JavaScript-кода. Если хотите обучится Jest, ознакомьтесь с [руководством по React](http://facebook.github.io/jest/docs/en/tutorial-react.html#content).
+`ReactTestUtils` позволяет легко тестировать React-компоненты в любом тестовом фреймворке на ваш выбор. В Facebook мы используем [Jest](https://facebook.github.io/jest/) для гладкого тестирования JavaScript-кода. Если хотите обучится Jest, ознакомьтесь с [руководством по React](https://jestjs.io/docs/en/tutorial-react).
 
 > Примечание:
 >
 > Мы рекомендуем использовать библиотеку [`react-testing-library`](https://git.io/react-testing-library), которая значительно облегчает написание тестов, имитируя поведение пользователей вашего приложения в браузере, и просто побуждает к хорошим практикам в тестировании.
 >
-> В качестве альтернативы, Airbnb выпустил утилиту тестирования [Enzyme](http://airbnb.io/enzyme/), которая легко позволяет делать проверки, управлять, а также просматривать выходные данные React-компонентов.
+> В качестве альтернативы, Airbnb выпустил утилиту тестирования [Enzyme](https://airbnb.io/enzyme/), которая легко позволяет делать проверки, управлять, а также просматривать выходные данные React-компонентов.
 
  - [`act()`](#act)
  - [`mockComponent()`](#mockcomponent)
