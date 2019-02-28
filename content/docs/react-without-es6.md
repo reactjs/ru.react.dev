@@ -9,7 +9,7 @@ permalink: docs/react-without-es6.html
 ```javascript
 class Greeting extends React.Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1>Привет, {this.props.name}</h1>;
   }
 }
 ```
@@ -20,7 +20,7 @@ class Greeting extends React.Component {
 var createReactClass = require('create-react-class');
 var Greeting = createReactClass({
   render: function() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1>Привет, {this.props.name}</h1>;
   }
 });
 ```
@@ -37,7 +37,7 @@ class Greeting extends React.Component {
 }
 
 Greeting.defaultProps = {
-  name: 'Mary'
+  name: 'Лиза'
 };
 ```
 
@@ -47,7 +47,7 @@ Greeting.defaultProps = {
 var Greeting = createReactClass({
   getDefaultProps: function() {
     return {
-      name: 'Mary'
+      name: 'Лиза'
     };
   },
 
@@ -89,7 +89,7 @@ var Counter = createReactClass({
 class SayHello extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {message: 'Hello!'};
+    this.state = {message: 'Привет!'};
     // Эта строка важна!
     this.handleClick = this.handleClick.bind(this);
   }
@@ -102,7 +102,7 @@ class SayHello extends React.Component {
     // Мы можем использовать `this.handleClick` как обработчик событий, потому что он привязан
     return (
       <button onClick={this.handleClick}>
-        Say hello
+        Поздороваться
       </button>
     );
   }
@@ -114,7 +114,7 @@ class SayHello extends React.Component {
 ```javascript
 var SayHello = createReactClass({
   getInitialState: function() {
-    return {message: 'Hello!'};
+    return {message: 'Привет!'};
   },
 
   handleClick: function() {
@@ -124,7 +124,7 @@ var SayHello = createReactClass({
   render: function() {
     return (
       <button onClick={this.handleClick}>
-        Say hello
+        Поздороваться
       </button>
     );
   }
@@ -139,7 +139,7 @@ var SayHello = createReactClass({
 class SayHello extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {message: 'Hello!'};
+    this.state = {message: 'Привет!'};
   }
   // ВНИМАНИЕ! Этот синтаксис экспериментальный!
   // Здесь стрелочная функция выполняет привязку:
@@ -150,7 +150,7 @@ class SayHello extends React.Component {
   render() {
     return (
       <button onClick={this.handleClick}>
-        Say hello
+        Поздороваться
       </button>
     );
   }
@@ -208,7 +208,7 @@ var TickTock = createReactClass({
   render: function() {
     return (
       <p>
-        React has been running for {this.state.seconds} seconds.
+        React был выполнен за {this.state.seconds} секунд.
       </p>
     );
   }
