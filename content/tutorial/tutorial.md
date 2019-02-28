@@ -378,7 +378,7 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Следующий игрок: X';
+    const status = 'Следующий ход: X';
 
     return (
       <div>
@@ -655,7 +655,7 @@ class Board extends React.Component {
 
 ```javascript{2}
   render() {
-    const status = 'Следующий игрок: ' + (this.state.xIsNext ? 'X' : 'O');
+    const status = 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       // the rest has not changed
@@ -692,7 +692,7 @@ class Board extends React.Component {
   }
 
   render() {
-    const status = 'Следующий игрок: ' + (this.state.xIsNext ? 'X' : 'O');
+    const status = 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
       <div>
@@ -755,7 +755,7 @@ function calculateWinner(squares) {
     if (winner) {
       status = 'Выиграл ' + winner;
     } else {
-      status = 'Следующий игрок: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -899,7 +899,7 @@ class Board extends React.Component {
     if (winner) {
       status = 'Выиграл ' + winner;
     } else {
-      status = 'Следующий игрок: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -938,7 +938,7 @@ class Board extends React.Component {
     if (winner) {
       status = 'Выиграл ' + winner;
     } else {
-      status = 'Следующий игрок: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -1012,22 +1012,22 @@ class Board extends React.Component {
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/EmmOqJ?editors=0010)**
 
-### Showing the Past Moves {#showing-the-past-moves}
+### Показываем прошлые ходы {#showing-the-past-moves}
 
-Since we are recording the tic-tac-toe game's history, we can now display it to the player as a list of past moves.
+Поскольку мы записываем ход игры, мы теперь можем показывать игроку список предыдущих ходов.
 
-We learned earlier that React elements are first-class JavaScript objects; we can pass them around in our applications. To render multiple items in React, we can use an array of React elements.
+Раньше мы разобрали, что React-элементы -- это объекты первого класса из JavaScript, т.е. мы можем передавать их внутри нашего приложения как переменные. Для рендеринга нескольких записей в React мы может использовать массив React-элементов.
 
-In JavaScript, arrays have a [`map()` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) that is commonly used for mapping data to other data, for example:
+В JavaScript у массивов есть [`метод map()`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/map), который широко используется для приобразования данных. Например:
 
 ```js
 const numbers = [1, 2, 3];
 const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 ``` 
 
-Using the `map` method, we can map our history of moves to React elements representing buttons on the screen, and display a list of buttons to "jump" to past moves.
+Используя метод `map` мы можем отобразить историю наших ходов в React-элементы, представленные кнопками на экране, и отрисовать список кнопок для "перехода" к прошлым ходам.
 
-Let's `map` over the `history` in the Game's `render` method:
+Давайте применим `map` к `history` внутри метода `render` Game-компонента:
 
 ```javascript{6-15,34}
   render() {
@@ -1037,8 +1037,8 @@ Let's `map` over the `history` in the Game's `render` method:
 
     const moves = history.map((step, move) => {
       const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
+        'Перейти к ходу #' + move :
+        'К началу игры';
       return (
         <li>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -1048,9 +1048,9 @@ Let's `map` over the `history` in the Game's `render` method:
 
     let status;
     if (winner) {
-      status = 'Winner: ' + winner;
+      status = 'Выиграл ' + winner;
     } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+      status = 'Следущий ход: ' + (this.state.xIsNext ? 'X' : 'O');
     }
 
     return (
@@ -1072,12 +1072,17 @@ Let's `map` over the `history` in the Game's `render` method:
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
-For each move in the tic-tac-toes's game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
+Для каждого хода в истории игры мы создаем элемент списка `<li>`, который содержит кнопку `<button>`. У кнопки есть обработчик `onClick`, который вызывает метод `this.jumpTo()`. Мы еще не реализовали этот `jumbTo()` метод. Но сейчас мы должны видеть список ходов, которые были сделаны в игре и вот такое предупреждение в инструментах разработчика:
 
 >  Warning:
 >  Each child in an array or iterator should have a unique "key" prop. Check the render method of "Game".
 
-Let's discuss what the above warning means.
+Что означает:
+
+>  Предупреждение:
+>  Каждый элемент в массиве или итераторе должен иметь уникальный проп "key". Проверьте метод render в Game
+
+Давайте обсудим, что это предупреждение значит.
 
 ### Picking a Key {#picking-a-key}
 
