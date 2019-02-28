@@ -782,21 +782,21 @@ function calculateWinner(squares) {
 
 Поздравляем! Теперь у вас работающая игра в крестики-нолики. И заодно вы только что освоили основы React. Так что, похоже, здесь победитель *вы*.
 
-## Adding Time Travel {#adding-time-travel}
+## Путешествие во времени {#adding-time-travel}
 
-As a final exercise, let's make it possible to "go back in time" to the previous moves in the game.
+Под конец, давайте добавим возможность "вернуться в прошлое" - к прошлым ходам игры."
 
-### Storing a History of Moves {#storing-a-history-of-moves}
+### Сохраняем историю ходов {#storing-a-history-of-moves}
 
-If we mutated the `squares` array, implementing time travel would be very difficult.
+Если бы мы изменяли массив `squares`, реализация такой задачи была бы очень трудной.
 
-However, we used `slice()` to create a new copy of the `squares` array after every move, and [treated it as immutable](#why-immutability-is-important). This will allow us to store every past version of the `squares` array, and navigate between the turns that have already happened.
+Но мы использовали `slice()` для создания новой копии массива `squares` после каждого хода и работали с ним [не изменяя](#why-immutability-is-important). Это позволит нам хранить каждую версию массива `squares` и перемещаться по ходам, которые уже были сделаны.
 
-We'll store the past `squares` arrays in another array called `history`. The `history` array represents all board states, from the first to the last move, and has a shape like this:
+Сохраним массивы `squares` в другом массиве, назовем его `history`. Этот массив `history` будет хранить все состояния поля. С первого до последнего хода. У него будет вот такая структура:
 
 ```javascript
 history = [
-  // Before first move
+  // Перед перым ходом
   {
     squares: [
       null, null, null,
@@ -804,7 +804,7 @@ history = [
       null, null, null,
     ]
   },
-  // After first move
+  // После первого хода
   {
     squares: [
       null, null, null,
@@ -812,7 +812,7 @@ history = [
       null, null, null,
     ]
   },
-  // After second move
+  // После второго хода
   {
     squares: [
       null, null, null,
@@ -824,7 +824,7 @@ history = [
 ]
 ```
 
-Now we need to decide which component should own the `history` state.
+Осталось решить, какой компонент будет отвечать за состояние `history`.
 
 ### Lifting State Up, Again {#lifting-state-up-again}
 
