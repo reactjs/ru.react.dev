@@ -133,7 +133,7 @@ var SayHello = createReactClass({
 
 Это означает, что классы ES6 пишутся с чуть более универсальным кодом для обработчиков событий, при этом производительность громоздких приложений немного выше.
 
-Если универсальный код для вас слишком неприглядный, вы можете включить **экспериментальный** [Class Properties](https://babeljs.io/docs/plugins/transform-class-properties/) синтаксис от Babel:
+Если универсальный код для вас слишком неприглядный, вы можете включить **экспериментальный** синтаксис [свойств класса](https://babeljs.io/docs/plugins/transform-class-properties/) с помощью Babel:
 
 ```javascript
 class SayHello extends React.Component {
