@@ -54,7 +54,7 @@
     - id: integrating-with-other-libraries
       title: Integrating with Other Libraries
     - id: jsx-in-depth
-      title: JSX изнутри
+      title: JSX в деталях
     - id: optimizing-performance
       title: Оптимизация производительности
     - id: portals
