@@ -1218,26 +1218,26 @@ class Game extends React.Component {
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**
 
-### Wrapping Up {#wrapping-up}
+### Подводя итоги {#wrapping-up}
 
-Congratulations! You've created a tic-tac-toe game that:
+Поздравляем! Вы только что создали игру в крестики-нолики, которая:
 
-* Lets you play tic-tac-toe,
-* Indicates when a player has won the game,
-* Stores a game's history as a game progresses,
-* Allows players to review a game's history and see previous versions of a game's board.
+* Позволяет вам играть в крестики нолики,
+* Показывает, когда один из игроков выиграл
+* Хранит историю игры
+* Позволяет игрокам просматривать историю игры, и видешь прошлые состояния игрового поля.
 
-Nice work! We hope you now feel like you have a decent grasp on how React works.
+Хорошая работа! Мы надеемся вы чувствуете, что хорошо поняли как работает React.
 
-Check out the final result here: **[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
+Посмотреть готовую игру вы можете здесь: **[Готовый результат](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
-If you have extra time or want to practice your new React skills, here are some ideas for improvements that you could make to the tic-tac-toe game which are listed in order of increasing difficulty:
+Если у вас есть дополнительное время или вы хотите попрактиковать свои новые навыки в React, вот пара идей для улучшений, которые вы можете внедрить в крестики-нолики. Перечисленны в порядке увеличения сложности:
 
-1. Display the location for each move in the format (col, row) in the move history list.
-2. Bold the currently selected item in the move list.
-3. Rewrite Board to use two loops to make the squares instead of hardcoding them.
-4. Add a toggle button that lets you sort the moves in either ascending or descending order.
-5. When someone wins, highlight the three squares that caused the win.
-6. When no one wins, display a message about the result being a draw.
+1. Отобразите позицию для каждохо года в формате (колонка, строка) в списке истории ходов.
+2. Выделите выбранный элемент в списке ходов.
+3. Перепишите Boar, для использования вложнных циклов для создания клетов, вместо жесткого их кодирования.
+4. Добавьте переключатель, который позволит вам сортировать ходы по возрастанию или по убыванию.
+5. Когда кто-то выигрывает, подсветите три клетки, которые привели к победе.
+6. Когда нет победителя, покажите сообщение о том, что ничья.
 
-Throughout this tutorial, we touched on React concepts including elements, components, props, and state. For a more detailed explanation of each of these topics, check out [the rest of the documentation](/docs/hello-world.html). To learn more about defining components, check out the [`React.Component` API reference](/docs/react-component.html).
+В этом руководстве мы затронули концепции React, включая элементы, компоненты, пропсы и состояние. ДЛя более детального объяснения каждой из этих тем ознакомьтесь с [остальной документацией](/docs/hello-world.html). Чтобы узнать больше про объявление компонентов изучите [Документацию по API `React.Component`](/docs/react-component.html).
