@@ -36,7 +36,7 @@ permalink: docs/strict-mode.html
 
 ### Предупреждение об использовании устаревшего API строковых реф {#warning-about-legacy-string-ref-api-usage}
 
-Ранее React предоставлял два способа управления рефами: устаревшие строковые рефы и колбэк API. Хотя строковые рефы и были более удобным способом, они имели [различные недостатки](https://github.com/facebook/react/issues/1373). Поэтому мы рекомендовали [использовать колбэки вместо них](/docs/refs-and-the-dom.html#legacy-api-string-refs).
+Ранее React предоставлял два способа управления рефами: устаревшие строковые рефы и колбэк API. Хотя строковые рефы и были более удобным способом, они имели [несколько недостатков](https://github.com/facebook/react/issues/1373). Поэтому мы рекомендовали [использовать колбэки вместо них](/docs/refs-and-the-dom.html#legacy-api-string-refs).
 
 React 16.3 добавил третий способ, удобный как строковые рефы и без каких-либо недостатков:
 `embed:16-3-release-blog-post/create-ref-example.js`
