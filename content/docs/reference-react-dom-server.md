@@ -6,10 +6,10 @@ category: Reference
 permalink: docs/react-dom-server.html
 ---
 
-Объект `ReactDOMServer` позволяет вам отрендерить компоненты в статическую разметку. В основном, он используется на Node сервере.
+Объект `ReactDOMServer` позволяет отрендерить компоненты в статическую разметку. В основном, он используется на Node-сервере.
 
 ```js
-// ES модули
+// ES-модули
 import ReactDOMServer from 'react-dom/server';
 // CommonJS
 var ReactDOMServer = require('react-dom/server');
@@ -22,7 +22,7 @@ var ReactDOMServer = require('react-dom/server');
 - [`renderToString()`](#rendertostring)
 - [`renderToStaticMarkup()`](#rendertostaticmarkup)
 
-Следующие методы зависят от пакета (`stream`), поэтому **доступны только на сервере** и не могут выполняться в браузере.
+Следующие методы зависят от пакета (`stream`), поэтому **доступны только на сервере** и не будут работать в браузере.
 
 - [`renderToNodeStream()`](#rendertonodestream)
 - [`renderToStaticNodeStream()`](#rendertostaticnodestream)
@@ -37,7 +37,7 @@ var ReactDOMServer = require('react-dom/server');
 ReactDOMServer.renderToString(element)
 ```
 
-Рендерит React-элемент в исходный HTML. React вернёт HTML строку. Вы можете использовать этот метод, чтобы сгенерировать HTML на сервере и отправить разметку в ответе на запрос, ускоряя загрузку страницы и позволяя поиcковым движкам обработать ваши страницы для SEO.
+Рендерит React-элемент в исходный HTML. React вернёт HTML-строку. Вы можете использовать этот метод, чтобы сгенерировать HTML на сервере и отправить разметку в ответ на запрос, ускоряя загрузку страницы и позволяя поиcковым движкам обработать ваши страницы для SEO.
 
 Если вы вызываете [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) на узле, который уже содержит разметку, отрендеренную на сервере, React сохранит её и закрепит только обработчики событий, позволяя вам значительно ускорить первоначальную загрузку страницы.
 
@@ -48,7 +48,7 @@ ReactDOMServer.renderToString(element)
 ```javascript
 ReactDOMServer.renderToStaticMarkup(element)
 ```
-Похож на метод [`renderToString`](#rendertostring), но не создаёт дополнительных DOM-аттрибутов, таких как `data-reactroot`, используемых внутри реакта. Метод полезен, когда вы хотите использовать React для генерации простой статической страницы, где отсутствие дополнительных аттрибутов может сохранить несколько байт. 
+Похож на метод [`renderToString`](#rendertostring), но не создаёт дополнительных DOM-атрибутов, таких как `data-reactroot`, используемых внутри React. Этот Метод полезен, когда вы хотите использовать React для генерации простой статической страницы, где отсутствие дополнительных атрибутов может сохранить несколько байт. 
 
 Не пользуйтесь этим методом, если вы планируете использовать React на клиенте для создания интерактивной разметки. Вместо него используйте [`renderToString`](#rendertostring) на сервере и [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) на клиенте.
 
@@ -60,7 +60,7 @@ ReactDOMServer.renderToStaticMarkup(element)
 ReactDOMServer.renderToNodeStream(element)
 ```
 
-Рендерит React элемент в исходный HTML. Возвращает [Поток для чтения](https://nodejs.org/api/stream.html#stream_readable_streams), который отдаёт HTML строку. HTML из потока идентичен тому, что возвращает [`ReactDOMServer.renderToString`](#rendertostring). Вы можете использовать этот метод, чтобы сгенерировать HTML на сервере и отправить разметку в ответе на запрос, ускоряя загрузку страницы и позволяя поиcковым движкам обработать ваши страницы для SEO.
+Рендерит React-элемент в исходный HTML. Возвращает [поток для чтения](https://nodejs.org/api/stream.html#stream_readable_streams), который отдаёт HTML-строку. HTML из потока идентичен тому, что возвращает [`ReactDOMServer.renderToString`](#rendertostring). Вы можете использовать этот метод, чтобы сгенерировать HTML на сервере и отправить разметку в ответ на запрос, ускоряя загрузку страницы и позволяя поиcковым движкам обработать ваши страницы для SEO.
 
 Если вы вызываете [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) на узле, который уже содержит разметку, отрендеренную на сервере, React сохранит её и закрепит только обработчики событий, позволяя вам значительно ускорить первоначальную загрузку страницы.
 
@@ -78,7 +78,7 @@ ReactDOMServer.renderToNodeStream(element)
 ReactDOMServer.renderToStaticNodeStream(element)
 ```
 
-Похож на метод [`renderToNodeStream`](#rendertonodestream), но не создаёт дополнительных DOM-аттрибутов, таких как `data-reactroot`, используемых внутри реакта. Метод полезен, когда вы хотите использовать React для генерации простой статической страницы, где отсутствие дополнительных аттрибутов может сохранить несколько байт. 
+Похож на метод [`renderToNodeStream`](#rendertonodestream), но не создаёт дополнительных DOM-атрибутов, таких как `data-reactroot`, используемых внутри React. Метод полезен, когда вы хотите использовать React для генерации простой статической страницы, где отсутствие дополнительных атрибутов может сохранить несколько байт. 
 
 Поток отдаёт HTML, идентичный тому, что возвращает [`ReactDOMServer.renderToStaticMarkup`](#rendertostaticmarkup).
 
