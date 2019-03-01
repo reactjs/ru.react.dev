@@ -10,7 +10,7 @@ class App extends React.Component {
   render() {
     const {signedInUser, theme} = this.props;
 
-    // App компонент, который предоставляет начальные значения контекстов
+    // Компонент App, который предоставляет начальные значения контекстов
     // highlight-range{2-3,5-6}
     return (
       <ThemeContext.Provider value={theme}>
