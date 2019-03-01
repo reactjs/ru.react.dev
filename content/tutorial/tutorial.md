@@ -1120,17 +1120,17 @@ If no key is specified, React will present a warning and use the array index as 
 Keys do not need to be globally unique; they only need to be unique between components and their siblings.
 
 
-### Implementing Time Travel {#implementing-time-travel}
+### Реализация путешествия во времени {#implementing-time-travel}
 
-In the tic-tac-toe game's history, each past move has a unique ID associated with it: it's the sequential number of the move. The moves are never re-ordered, deleted, or inserted in the middle, so it's safe to use the move index as a key.
+В истории игры крестики-нолики каждый прошлый ход имеет уникальный идентефикатор: это номер хода в последовательности. Ходы никогда не меняют свой порядок, не удаляются и не добавляются в середину последовательности, так что вполне безопасно пользоваться индексом в качестве ключа.
 
-In the Game component's `render` method, we can add the key as `<li key={move}>` and React's warning about keys should disappear:
+В методе `render` компонента Game мы можем добавить ключ следующим образом `<li key={move}>` и предупреждения от React об отсутствующих ключах должно пропасть:
 
 ```js{6}
     const moves = history.map((step, move) => {
       const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
+        'Перейти к ходу #' + move :
+        'К началу игры';
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -1141,9 +1141,9 @@ In the Game component's `render` method, we can add the key as `<li key={move}>`
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/PmmXRE?editors=0010)**
 
-Clicking any of the list item's buttons throws an error because the `jumpTo` method is undefined. Before we implement `jumpTo`, we'll add `stepNumber` to the Game component's state to indicate which step we're currently viewing.
+Клик на любой кнопке из списка выбросит ошибку, потому что метод `jumpTo` не определен. Прежде чем реализовывать `jumpTo` мы добавим `stepNumber` в состояние компонента Game, для отображения номера хода, который сейчас показан.
 
-First, add `stepNumber: 0` to the initial state in Game's `constructor`:
+Сначала добавим `stepNumber: 0` в начальное состояние Game внутри `contructor`:
 
 ```js{8}
 class Game extends React.Component {
@@ -1159,11 +1159,11 @@ class Game extends React.Component {
   }
 ```
 
-Next, we'll define the `jumpTo` method in Game to update that `stepNumber`. We also set `xIsNext` to true if the number that we're changing `stepNumber` to is even:
+Далее, мы определим метод `jumpTo` в компоненте Game для обновления `stepNumber`. Мы также установим `xIsNext` в `true` если номер хода, на который мы меняем `stepNumber`, четный:
 
 ```javascript{5-10}
   handleClick(i) {
-    // this method has not changed
+    // Этот метод не изменялся
   }
 
   jumpTo(step) {
@@ -1174,15 +1174,15 @@ Next, we'll define the `jumpTo` method in Game to update that `stepNumber`. We a
   }
 
   render() {
-    // this method has not changed
+    // Этот метод не изменялся
   }
 ```
 
-We will now make a few changes to the Game's `handleClick` method which fires when you click on a square.
+Мы сделаем еще несколько изменений в методе Game `handleClick`, который выполняется когда вы кликаете на клетки.
 
-The `stepNumber` state we've added reflects the move displayed to the user now. After we make a new move, we need to update `stepNumber` by adding `stepNumber: history.length` as part of the `this.setState` argument. This ensures we don't get stuck showing the same move after a new one has been made.
+Добавленный нами `stepNumber` отражает номер хода, показываемый пользователю. Когда мы делаем новый шаг, нам нужно обновить `stepNumber` используя `stepNumber: history.length` как чать аргумента для `this.setState`. Это гарантирует, что мы не застрянем, показывая одно и то же после того, как был сделан новый ход.
 
-We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now become incorrect.
+Мы также заменим чтение `this.state.history` на `this.state.history.slice(0, this.state.stepNumber + 1)`. Это гарантирует, что если мы "вернемся назад", а затем сделаем новый шаг из этой точки, мы удалим всю "будущую" историю, которая стала неверной.
 
 ```javascript{2,13}
   handleClick(i) {
@@ -1203,7 +1203,7 @@ We will also replace reading `this.state.history` with `this.state.history.slice
   }
 ```
 
-Finally, we will modify the Game component's `render` method from always rendering the last move to rendering the currently selected move according to `stepNumber`:
+Ну и наконец, мы изменим метод `render` для Game, чтобы вместо рендера последнего хода он отрисовывал ход, соответствующий `stepNumber`:
 
 ```javascript{3}
   render() {
@@ -1211,10 +1211,10 @@ Finally, we will modify the Game component's `render` method from always renderi
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
 
-    // the rest has not changed
+    // Остальной код не менялся
 ```
 
-If we click on any step in the game's history, the tic-tac-toe board should immediately update to show what the board looked like after that step occurred.
+Если мы кликнем на любой шаг в игровой истории, поле должно немедленно обновиться показывая как оно выглядело после этого шага.
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**
 
