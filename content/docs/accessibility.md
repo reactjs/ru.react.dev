@@ -1,26 +1,26 @@
 ---
 id: accessibility
-title: Accessibility
+title: Доступность контента
 permalink: docs/accessibility.html
 ---
 
-## Why Accessibility? {#why-accessibility}
+## Что такое доступность контента? {#why-accessibility}
 
-Web accessibility (also referred to as [**a11y**](https://en.wiktionary.org/wiki/a11y)) is the design and creation of websites that can be used by everyone. Accessibility support is necessary to allow assistive technology to interpret web pages.
+Доступность контента -- это специальные технические и архитектурные решения, которые помогают людям с ограниченными способностями использовать веб-сайты. Применение таких решений необходимо для интерпритации страниц техническими средствами реаблилитации, встроенными в операционные системы и браузеры. Термин **«доступность контента»** также может обозначаться аббривеатурой [**a11y**](https://en.wiktionary.org/wiki/a11y).
 
-React fully supports building accessible websites, often by using standard HTML techniques.
+React с помощью стандартных возможностей HTML позволяет создавать сайты, обеспечивающие доступность контента.
 
-## Standards and Guidelines {#standards-and-guidelines}
+## Стандарты и руководства {#standards-and-guidelines}
 
-### WCAG {#wcag}
+### Руководство по обеспечению доступности контента (WCAG) {#wcag}
 
-The [Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag) provides guidelines for creating accessible web sites.
+[Руководство по обеспечению доступности контента (WCAG)](https://www.w3.org/Translations/WCAG20-ru), разработанное консорциумом W3C, описывает правила создания сайтов с доступным контентом.
 
 The following WCAG checklists provide an overview:
 
-- [WCAG checklist from Wuhcag](https://www.wuhcag.com/wcag-checklist/)
-- [WCAG checklist from WebAIM](https://webaim.org/standards/wcag/checklist)
-- [Checklist from The A11Y Project](https://a11yproject.com/checklist.html)
+- [рекомендации от Wuhcag](https://www.wuhcag.com/wcag-checklist/)
+- [рекомендации от WebAIM](https://webaim.org/standards/wcag/checklist)
+- [рекомендации от Проекта A11Y](https://a11yproject.com/checklist.html)
 
 ### WAI-ARIA {#wai-aria}
 
