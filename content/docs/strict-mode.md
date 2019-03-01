@@ -19,7 +19,7 @@ permalink: docs/strict-mode.html
 * [Обнаружении небезопасных методов жизненного цикла](#identifying-unsafe-lifecycles)
 * [Предупреждении об использовании устаревшего API строковых реф](#warning-about-legacy-string-ref-api-usage)
 * [Предупреждении об использовании устаревшего метода findDOMNode](#warning-about-deprecated-finddomnode-usage)
-* [Обраружении неожиданных побочных эффектов](#detecting-unexpected-side-effects)
+* [Обнаружении неожиданных побочных эффектов](#detecting-unexpected-side-effects)
 * [Обнаружении устаревшего API контекста](#detecting-legacy-context-api)
 
 Дополнительные проверки будут включены в будущих релизах React.
