@@ -1,6 +1,6 @@
 ---
 id: forms
-title: Forms
+title: Формы
 permalink: docs/forms.html
 prev: lists-and-keys.html
 next: lifting-state-up.html
@@ -138,7 +138,7 @@ class EssayForm extends React.Component {
 </select>
 ```
 
-Пункт списка "Кокос" выбран по умолчанию из-за установленного атрибута `selected`. React вместо этого атрибута использует `value` в корневом теге `select`. В контролируемом компоненте так удобнее, потому что обновлять значение нужно только в одном месте (`state`). Пример:
+Пункт списка «Кокос» выбран по умолчанию из-за установленного атрибута `selected`. React вместо этого атрибута использует `value` в корневом теге `select`. В контролируемом компоненте так удобнее, потому что обновлять значение нужно только в одном месте (`state`). Пример:
 
 ```javascript{4,10-12,24}
 class FlavorForm extends React.Component {
@@ -264,7 +264,7 @@ this.setState({
 });
 ```
 
-Идентичный ES5 код:
+Идентичный ES5-код:
 
 ```js{2}
 var partialState = {};
