@@ -55,7 +55,7 @@ function MyDiv(props) {
   const divProps = Object.assign({}, props);
   delete divProps.layout;
 
-  if (props.layout === 'горизонтальный') {
+  if (props.layout === 'horizontal') {
     return <div {...divProps} style={getHorizontalStyle()} />
   } else {
     return <div {...divProps} style={getVerticalStyle()} />
