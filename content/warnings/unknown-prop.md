@@ -24,7 +24,7 @@ permalink: warnings/unknown-prop.html
 
 ```js
 function MyDiv(props) {
-  if (props.layout === 'горизонтальный') {
+  if (props.layout === 'horizontal') {
     // Плохо! Потому что мы уверены, что "layout" не проп, с которым <div> работает.
     return <div {...props} style={getHorizontalStyle()} />
   } else {
