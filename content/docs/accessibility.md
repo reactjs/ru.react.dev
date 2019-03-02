@@ -16,17 +16,17 @@ React с помощью стандартных возможностей HTML п�
 
 [Руководство по обеспечению доступности контента (WCAG)](https://www.w3.org/Translations/WCAG20-ru), разработанное консорциумом W3C, описывает правила создания сайтов с доступным контентом.
 
-The following WCAG checklists provide an overview:
+Также есть ресурсы с перечнями рекомендаций по реализации требований WCAG, например:
 
 - [рекомендации от Wuhcag](https://www.wuhcag.com/wcag-checklist/)
 - [рекомендации от WebAIM](https://webaim.org/standards/wcag/checklist)
 - [рекомендации от Проекта A11Y](https://a11yproject.com/checklist.html)
 
-### WAI-ARIA {#wai-aria}
+### Доступность контента в веб-приложениях (WAI-ARIA) {#wai-aria}
 
-The [Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria) document contains techniques for building fully accessible JavaScript widgets.
+[Свод правил по доступности контента в веб-приложениях (WAI-ARIA)](https://www.w3.org/WAI/intro/aria) -- это документ, который посвящен реализации требований по доступности контента при разработке JavaScript-программ.
 
-Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most DOM properties and attributes in React are camelCased, these attributes should be hyphen-cased (also known as kebab-case, lisp-case, etc) as they are in plain HTML:
+Нужно отметить, что все HTML-атрибуты `aria-*` полностью поддерживаются в JSX. При этом хотя большинство DOM-свойств и атрибутов в React оформляются с использованием регистра в стиле camelCased, атрибуты `aria-*` должны быть оформлены с разделением дефисами (hyphen-cased). Ещё такой стиль известен под названиями кебаб (kebab-case) или лисп (lisp-case). Вот как выглядит оформление в чистом HTML без использования JSX:
 
 ```javascript{3,4}
 <input
@@ -39,16 +39,13 @@ Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most 
 />
 ```
 
-## Semantic HTML {#semantic-html}
-Semantic HTML is the foundation of accessibility in a web application. Using the various HTML elements to reinforce the meaning of information
-in our websites will often give us accessibility for free.
+## Семантическая вёрстка {#semantic-html}
 
-- [MDN HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+Семантическая вёрстка -- это основа доступности контента в веб-приложениях. Используя различные HTML-элементы  можно улучшить восприимчивость и понятность ваших сайтов. Это позволяет обеспечить доступность контента без усилий.
 
-Sometimes we break HTML semantics when we add `<div>` elements to our JSX to make our React code work, especially when working with lists (`<ol>`, `<ul>` and `<dl>`) and the HTML `<table>`.
-In these cases we should rather use [React Fragments](/docs/fragments.html) to group together multiple elements.
+- [описание всех HTML-элементов на MDN](https://developer.mozilla.org/ru/docs/Web/HTML/Element)
 
-For example,
+Бывают случаи, когда семантическая вёрстка нарушается. Например, при добавлении элемента `<div>` в JSX для обеспечения работоспособности кода на React. Особенно часто это случается при работе со списками (`<ol>`, `<ul>`, `<dl>`) или таблицами (`<table>`). В такой ситуации рекомендуется использовать [React-фрагменты](/docs/fragments.html), чтобы сгруппировать элементы, как это показано в примере:
 
 ```javascript{1,5,8}
 import React, { Fragment } from 'react';
@@ -73,14 +70,14 @@ function Glossary(props) {
 }
 ```
 
-You can map a collection of items to an array of fragments as you would any other type of element as well:
+Коллекцию объектов можно отобразить в виде массива фрагментов или любых других элементов:
 
 ```javascript{6,9}
 function Glossary(props) {
   return (
     <dl>
       {props.items.map(item => (
-        // Fragments should also have a `key` prop when mapping collections
+        // При отображении коллекций фрагменты обязательно должны иметь атрибут `key`
         <Fragment key={item.id}>
           <dt>{item.term}</dt>
           <dd>{item.description}</dd>
@@ -91,7 +88,7 @@ function Glossary(props) {
 }
 ```
 
-When you don't need any props on the Fragment tag you can use the [short syntax](/docs/fragments.html#short-syntax), if your tooling supports it:
+Если нет необходимости использовать пропсы в фрагментах, то можно применять [сокращённую запись тегов](/docs/fragments.html#short-syntax):
 
 ```javascript{3,6}
 function ListItem({ item }) {
@@ -104,7 +101,7 @@ function ListItem({ item }) {
 }
 ```
 
-For more info, see [the Fragments documentation](/docs/fragments.html).
+Обратите внимание, что не все инструменты поддерживают сокращённую запись. Подробности в [документации на фрагменты](/docs/fragments.html).
 
 ## Accessible Forms {#accessible-forms}
 
