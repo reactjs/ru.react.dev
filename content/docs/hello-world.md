@@ -1,6 +1,6 @@
 ---
 id: hello-world
-title: Hello World
+title: Привет, мир
 permalink: docs/hello-world.html
 prev: cdn-links.html
 next: introducing-jsx.html
@@ -10,12 +10,12 @@ next: introducing-jsx.html
 
 ```js
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
+  <h1>Привет, мир!</h1>,
   document.getElementById('root')
 );
 ```
 
-На странице появится заголовок «Hello, world!».
+На странице появится заголовок «Привет, мир!».
 
 [](codepen://hello-world)
 
@@ -44,5 +44,3 @@ React — это библиотека JavaScript, поэтому мы предп
 ## Начинаем! {#lets-get-started}
 
 Прокрутите страницу немного ниже, чтобы перейти к [следующей главе руководства](/docs/introducing-jsx.html).
-
-
