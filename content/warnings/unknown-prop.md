@@ -28,7 +28,7 @@ function MyDiv(props) {
     // Плохо! Потому что мы уверены, что "layout" не проп, который <div> понимает.
     return <div {...props} style={getHorizontalStyle()} />
   } else {
-    // Плохо! Потому что мы уверены, что "layout" не проп, который <div> понимает.
+    // Плохо! Потому что мы уверены, что "layout" не проп, с которым <div> работает.
     return <div {...props} style={getVerticalStyle()} />
   }
 }
