@@ -39,7 +39,7 @@ function MyDiv(props) {
 ```js
 function MyDiv(props) {
   const { layout, ...rest } = props
-  if (layout === 'горизонтальный') {
+  if (layout === 'horizontal') {
     return <div {...rest} style={getHorizontalStyle()} />
   } else {
     return <div {...rest} style={getVerticalStyle()} />
