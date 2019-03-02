@@ -54,11 +54,7 @@ permalink: docs/context.html
 
 Передача пропсов `user` и `avatarSize` вниз выглядит избыточной, если в итоге их использует только компонент `Avatar`.  Так же плохо, если компоненту `Avatar`  вдруг потребуется больше пропсов сверху, тогда вам придётся добавить их на все промежуточные уровни.
 
-<<<<<<< HEAD
 Один из способов решить эту проблему **без контекста** — [передать вниз сам компонент `Avatar`](/docs/composition-vs-inheritance.html#containment), в случае чего промежуточным компонентам не нужно знать о пропсах `user` и `avatarSize`:
-=======
-One way to solve this issue **without context** is to [pass down the `Avatar` component itself](/docs/composition-vs-inheritance.html#containment) so that the intermediate components don't need to know about the `user` or `avatarSize` props:
->>>>>>> c6b6dc2d564190a79fd6bf17af0bb2914749112b
 
 ```js
 function Page(props) {
@@ -71,15 +67,9 @@ function Page(props) {
   return <PageLayout userLink={userLink} />;
 }
 
-<<<<<<< HEAD
 // Теперь, это выглядит так:
 <Page user={user} avatarSize={avatarSize}/>
 // ... который рендерит ...
-=======
-// Now, we have:
-<Page user={user} avatarSize={avatarSize} />
-// ... which renders ...
->>>>>>> c6b6dc2d564190a79fd6bf17af0bb2914749112b
 <PageLayout userLink={...} />
 // ... который рендерит ...
 <NavigationBar userLink={...} />
