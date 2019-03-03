@@ -124,63 +124,59 @@ function ListItem({ item }) {
 
 ### Сообщения об ошибках {#notifying-the-user-of-errors}
 
-Error situations need to be understood by all users. The following link shows us how to expose error texts to screen readers as well:
+Необходимо, чтобы ошибки и их причины были понятны всем пользователям. Далее приведены ресурсы, которые демонстрируют, как правильно воспроизводить текст сообщений об ошибках с помощью экранных считывающих устройств:
 
-Необходимо, чтобы ошибки и их причины были понятны всем пользователям. Далее приведены ресурсы, которые демонстрируют, как воспроизводить текст сообщений об ошибках с помощью экранных считывающих устройств:
+- [примеры сообщений от W3C](https://www.w3.org/WAI/tutorials/forms/notifications/)
+- [порядок валидации форм от WebAIM](https://webaim.org/techniques/formvalidation/)
 
-- [демонстрация сообщений для пользователя от W3C](https://www.w3.org/WAI/tutorials/forms/notifications/)
-- [WebAIM looks at form validation](https://webaim.org/techniques/formvalidation/)
+## Управление фокусом {#focus-control}
 
-## Focus Control {#focus-control}
+Приложение с доступным контентом должно быть полностью функционально при работе только с клавиатурой. Убедитесь соответствует ли ваше приложение этому требованию:
 
-Ensure that your web application can be fully operated with the keyboard only:
+- [обсуждение доступности контента при работе с клавиатурой на сайте WebAIM](https://webaim.org/techniques/keyboard/)
 
-- [WebAIM talks about keyboard accessibility](https://webaim.org/techniques/keyboard/)
+### Фокус клавиатуры и контур элемента {#keyboard-focus-and-focus-outline}
 
-### Keyboard focus and focus outline {#keyboard-focus-and-focus-outline}
-
-Keyboard focus refers to the current element in the DOM that is selected to accept input from the keyboard. We see it everywhere as a focus outline similar to that shown in the following image:
+Фокус клавиатуры указывает на тот элемент в структуре DOM, который в данный момент готов к вводу. Обычно такой элемент выделяется контуром, как это показано на рисунке:
 
 <img src="../images/docs/keyboard-focus.png" alt="Blue keyboard focus outline around a selected link." />
 
-Only ever use CSS that removes this outline, for example by setting `outline: 0`, if you are replacing it with another focus outline implementation.
+Если вы заменяете стандартную реализацию фокуса своей, удалить контуры элементов можно с помощью CSS, установив `outline: 0`.
 
-### Mechanisms to skip to desired content {#mechanisms-to-skip-to-desired-content}
+### Механизмы для перехода к нужному контенту {#mechanisms-to-skip-to-desired-content}
 
-Provide a mechanism to allow users to skip past navigation sections in your application as this assists and speeds up keyboard navigation.
+Также на сайте нужно реализовать механизмы, которые помогают пользователям быстро переходить к нужному контенту с помощью клавиатуры.
 
-Skiplinks or Skip Navigation Links are hidden navigation links that only become visible when keyboard users interact with the page. They are very easy to implement with
-internal page anchors and some styling:
+Ссылки для быстрого перехода -- это скрытые навигационные ссылки, которые становятся видимыми, когда пользователи взаимодействуют со страницей с помощью клавиатуры. Такие ссылки очень легко сделать используя внутренние якоря страницы и CSS:
 
-- [WebAIM - Skip Navigation Links](https://webaim.org/techniques/skipnav/)
+- [WebAIM - ссылки для быстрого перехода](https://webaim.org/techniques/skipnav/)
 
-Also use landmark elements and roles, such as `<main>` and `<aside>`, to demarcate page regions as assistive technology allow the user to quickly navigate to these sections.
+Элементы семантической вёрстки, например, `<main>` или `<aside>`, нужно использовать для секционной разметки, предназначенной для быстрого перехода между логическими частями сайта.
 
-Read more about the use of these elements to enhance accessibility here:
+Узнать больше о применении секционной разметки для улучшения доступности контента можно здесь:
 
-- [Accessible Landmarks](https://www.scottohara.me/blog/2018/03/03/landmarks.html)
+- [использование секционной разметки](https://www.scottohara.me/blog/2018/03/03/landmarks.html)
 
-### Programmatically managing focus {#programmatically-managing-focus}
+### Программное управление фокусом {#programmatically-managing-focus}
 
-Our React applications continuously modify the HTML DOM during runtime, sometimes leading to keyboard focus being lost or set to an unexpected element. In order to repair this,
-we need to programmatically nudge the keyboard focus in the right direction. For example, by resetting keyboard focus to a button that opened a modal window after that modal window is closed.
+React-приложения во время своей работы постоянно изменяют структуру DOM. При этом фокус клавиатуры может быть потерян или может перейти на неправильный элемент. Чтобы исправить такую ситуацию, нужно программно перевести фокус клавиатуры на нужный элемент. Например, после закрытия модального окна перевести фокус клавиатуры на кнопку, которая его открыла.
 
-MDN Web Docs takes a look at this and describes how we can build [keyboard-navigable JavaScript widgets](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets).
+В статье на MDN рассматриваются способы [навигации с клавиатуры в JavaScript](https://developer.mozilla.org/ru/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets).
 
-To set focus in React, we can use [Refs to DOM elements](/docs/refs-and-the-dom.html).
+Чтобы устанавливать фокус в React, можно использовать [рефы на DOM-элементы](/docs/refs-and-the-dom.html).
 
-Using this, we first create a ref to an element in the JSX of a component class:
+Используя такой подход мы сначала создаём в классе компонента реф на элемент в JSX:
 
 ```javascript{4-5,8-9,13}
 class CustomTextInput extends React.Component {
   constructor(props) {
     super(props);
-    // Create a ref to store the textInput DOM element
+    // Создаём реф для сохранения textInput-элемента
     this.textInput = React.createRef();
   }
   render() {
-  // Use the `ref` callback to store a reference to the text input DOM
-  // element in an instance field (for example, this.textInput).
+  // Используем вызов рефа для связи DOM-элемента
+  // с конкретным экземпляром поля.
     return (
       <input
         type="text"
@@ -191,18 +187,17 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-Then we can focus it elsewhere in our component when needed:
+Теперь мы можем устанавливать фокус из любого места компонента когда нам это необходимо:
 
  ```javascript
  focus() {
-   // Explicitly focus the text input using the raw DOM API
-   // Note: we're accessing "current" to get the DOM node
+   // Устанавливаем фокус на текстовое поле используя вызов низкоуровневого API DOM
+   // Внимание: мы обращаемся к свойству "current", чтобы получить DOM-элемент
    this.textInput.current.focus();
  }
  ```
 
-Sometimes a parent component needs to set focus to an element in a child component. We can do this by [exposing DOM refs to parent components](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)
-through a special prop on the child component that forwards the parent's ref to the child's DOM node.
+Иногда родительскому компоненту нужно установить фокус на элемент дочернего компонента. Мы можем сделать это с помощью [рефа на родительский компонент](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components), который присваивается специальному свойству дочернего компонента для перевода родительского рефа на дочерний DOM-элемент.
 
 ```javascript{4,12,16}
 function CustomTextInput(props) {
@@ -225,21 +220,19 @@ class Parent extends React.Component {
   }
 }
 
-// Now you can set focus when required.
+// Теперь при необходимости можно устанавливать фокус на поле.
 this.inputElement.current.focus();
 ```
 
-When using a HOC to extend components, it is recommended to [forward the ref](/docs/forwarding-refs.html) to the wrapped component using the `forwardRef` function of React. If a third party HOC
-does not implement ref forwarding, the above pattern can still be used as a fallback.
+Если для расширения функциональности компонент оборачивается компонентом высшего порядка (Higher-Order Component, HOC), то рекомендуется [перенаправлять рефы](/docs/forwarding-refs.html) обёрнутого компонента с помощью React-функции `forwardRef`. В случае, когда HOC сторонней разработки не поддерживает перенаправление рефов, описанный выше паттерн всё равно можно использовать в качестве запасного варианта.
 
-A great focus management example is the [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). This is a relatively rare example of a fully accessible modal window. Not only does it set initial focus on
-the cancel button (preventing the keyboard user from accidentally activating the success action) and trap keyboard focus inside the modal, it also resets focus back to the element that
-initially triggered the modal.
+Отличный пример управления фокусом показан в проекте [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). Этот достаточно редкий случай реализации модального окна, с полностью доступным контентом. В нём кроме установки фокуса на кнопку отмены и перемещения фокуса внутри модальной формы сделан возврат на элемент, инициировавший вызов модального окна. Нужно отметить, что первоначальная установка фокуса на кнопку отмены в модальном окне предотвращает случайное нажатие на клавиатуре кнопки подтверждения запрашиваемого действия.
 
->Note:
+>Обратите внимание:
 >
->While this is a very important accessibility feature, it is also a technique that should be used judiciously. Use it to repair the keyboard focus flow when it is disturbed, not to try and anticipate how
->users want to use applications.
+>Правильное управление фокусом -- это важный момент в обеспечении доступности контента, однако стоит применять его с умом.
+>Используйте управление фокусом для восстановления нарушенной последовательности действий при работе с клавиатурой.
+>Не стоит предугадывать желания пользователя и подталкивать его к каким-либо действиям в приложении.
 
 ## Mouse and pointer events {#mouse-and-pointer-events}
 
