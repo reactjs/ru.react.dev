@@ -40,7 +40,7 @@ const NavigationFooter = ({next, prev, location}) => {
           <Flex basis="50%" type="li">
             {prev && (
               <div>
-                <SecondaryLabel>Предыдущая статья</SecondaryLabel>
+                <SecondaryLabel>Предыдущая глава</SecondaryLabel>
                 <div
                   css={{
                     paddingTop: 10,
@@ -61,7 +61,7 @@ const NavigationFooter = ({next, prev, location}) => {
                 textAlign: 'right',
               }}>
               <div>
-                <SecondaryLabel>Следующая статья</SecondaryLabel>
+                <SecondaryLabel>Следующая глава</SecondaryLabel>
                 <div
                   css={{
                     paddingTop: 10,
