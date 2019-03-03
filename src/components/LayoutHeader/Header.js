@@ -214,7 +214,7 @@ const Header = ({location}: {location: Location}) => (
                   display: 'none',
                 },
               }}>
-              Languages
+              Переводы
             </span>
           </Link>
           <a

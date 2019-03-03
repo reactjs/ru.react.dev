@@ -6,7 +6,7 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Хуки* -- новинка в React 16.8, которая позволяет использовать состояние и другие возможности React без написания классов.
 
 На [предыдущей странице](/docs/hooks-intro.html) мы познакомились с хуками на этом примере:
 

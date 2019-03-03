@@ -20,7 +20,7 @@ permalink: docs/render-props.html
 
 ## Использование рендер-пропа для сквозных задач {#use-render-props-for-cross-cutting-concerns}
 
-Компоненты это основа повторного использования кода в React. Однако бывает неочевидно, как сделать, чтобы одни компоненты разделяли своё инкапсулированное состояние или поведение с другими компонентами, заинтересованными в таком же состоянии или поведении.
+Компоненты -- это основа повторного использования кода в React. Однако бывает неочевидно, как сделать, чтобы одни компоненты разделяли своё инкапсулированное состояние или поведение с другими компонентами, заинтересованными в таком же состоянии или поведении.
 
 Например, следующий компонент отслеживает положение мыши в приложении:
 
@@ -42,8 +42,8 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
-        <h1>Move the mouse around!</h1>
-        <p>The current mouse position is ({this.state.x}, {this.state.y})</p>
+        <h1>Перемещайте курсор мыши!</h1>
+        <p>Текущее положение курсора мыши: ({this.state.x}, {this.state.y})</p>
       </div>
     );
   }
@@ -77,7 +77,7 @@ class Mouse extends React.Component {
       <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
 
         {/* ...но как можно отрендерить что-то, кроме <p>? */}
-        <p>The current mouse position is ({this.state.x}, {this.state.y})</p>
+        <p>Текущее положение курсора мыши: ({this.state.x}, {this.state.y})</p>
       </div>
     );
   }
@@ -87,7 +87,7 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div>
-        <h1>Move the mouse around!</h1>
+        <h1>Перемещайте курсор мыши!</h1>
         <Mouse />
       </div>
     );
@@ -145,7 +145,7 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div>
-        <h1>Move the mouse around!</h1>
+        <h1>Перемещайте курсор мыши!</h1>
         <MouseWithCat />
       </div>
     );
@@ -199,7 +199,7 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div>
-        <h1>Move the mouse around!</h1>
+        <h1>Перемещайте курсор мыши!</h1>
         <Mouse render={mouse => (
           <Cat mouse={mouse} />
         )}/>
@@ -239,20 +239,20 @@ function withMouse(Component) {
 
 Важно запомнить, что из названия паттерна «рендер-проп» вовсе не следует, что для его использования *вы должны обязательно называть проп `render`*. На самом деле, [*любой* проп, который используется компонентом и является функцией рендеринга, технически является и «рендер-пропом»](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce).
 
-Несмотря на то, что в вышеприведенных примерах мы используем `render`, мы можем также легко использовать проп `children`!
+Несмотря на то, что в вышеприведённых примерах мы используем `render`, мы можем также легко использовать проп `children`!
 
 ```js
 <Mouse children={mouse => (
-  <p>The mouse position is {mouse.x}, {mouse.y}</p>
+  <p>Текущее положение курсора мыши: {mouse.x}, {mouse.y}</p>
 )}/>
 ```
 
-И запомните, проп `children` не обязательно именовать в списке "атрибутов" вашего JSX элемента. Вместо этого, вы можете поместить его прямо *внутрь* элемента!
+И запомните, проп `children` не обязательно именовать в списке «атрибутов» вашего JSX-элемента. Вместо этого, вы можете поместить его прямо *внутрь* элемента!
 
 ```js
 <Mouse>
   {mouse => (
-    <p>The mouse position is {mouse.x}, {mouse.y}</p>
+    <p>Текущее положение курсора мыши: {mouse.x}, {mouse.y}</p>
   )}
 </Mouse>
 ```
@@ -272,7 +272,7 @@ Mouse.propTypes = {
 
 ### Будьте осторожны при использовании рендер-проп вместе с React.PureComponent {#be-careful-when-using-render-props-with-reactpurecomponent}
 
-Использование рендер-пропа может свести на нет преимущество, которое дает [`React.PureComponent`](/docs/react-api.html#reactpurecomponent), если вы создаете функцию внутри метода `render`. Это связано с тем, что поверхностное сравнение пропсов всегда будет возвращать `false` для новых пропсов и каждый `render` будет генерировать новое значение для рендер-пропа.
+Использование рендер-пропа может свести на нет преимущество, которое даёт [`React.PureComponent`](/docs/react-api.html#reactpurecomponent), если вы создаете функцию внутри метода `render`. Это связано с тем, что поверхностное сравнение пропсов всегда будет возвращать `false` для новых пропсов и каждый `render` будет генерировать новое значение для рендер-пропа.
 
 Например, в продолжение нашего `<Mouse>` компонента упомянутого выше, если `Mouse` наследуется от `React.PureComponent` вместо `React.Component`, наш пример будет выглядеть следующим образом:
 
@@ -285,7 +285,7 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div>
-        <h1>Move the mouse around!</h1>
+        <h1>Перемещайте курсор мыши!</h1>
 
         {/*
           Это плохо! Значение рендер-пропа будет
@@ -302,7 +302,7 @@ class MouseTracker extends React.Component {
 
 В этом примере, при каждом рендере `<MouseTracker>` генерируется новая функция в качестве значения пропа `<Mouse render>`. Это сводит на нет эффекты `React.PureComponent`, от которого наследует `<Mouse>`!
 
-Чтобы решить эту проблему, вы можете определить проп как метод экземляра, например так:
+Чтобы решить эту проблему, вы можете определить проп как метод экземпляра, например так:
 
 ```js
 class MouseTracker extends React.Component {
@@ -315,7 +315,7 @@ class MouseTracker extends React.Component {
   render() {
     return (
       <div>
-        <h1>Move the mouse around!</h1>
+        <h1>Перемещайте курсор мыши!</h1>
         <Mouse render={this.renderTheCat} />
       </div>
     );

@@ -188,7 +188,7 @@ class Chosen extends React.Component {
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/xdgKOz?editors=0010)
 
-## Интеграция с другими визульными библиотеками {#integrating-with-other-view-libraries}
+## Интеграция с другими визуальными библиотеками {#integrating-with-other-view-libraries}
 
 Благодаря гибкости [`ReactDOM.render()`](/docs/react-dom.html#render) React может встраиваться в другие приложения.
 
@@ -427,7 +427,7 @@ function Example(props) {
   );
 }
 
-const model = new Backbone.Model({ firstName: 'Frodo' });
+const model = new Backbone.Model({ firstName: 'Фродо' });
 ReactDOM.render(
   <Example model={model} />,
   document.getElementById('root')
