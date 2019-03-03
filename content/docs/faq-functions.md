@@ -29,7 +29,7 @@ class Foo extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
-    console.log('Click happened');
+    console.log('По кнопке кликнули');
   }
   render() {
     return <button onClick={this.handleClick}>Нажми на меня</button>;
@@ -43,7 +43,7 @@ class Foo extends Component {
 class Foo extends Component {
   // Примечание: данный синтаксис находится на стадии разработки и ещё не стандартизирован.
   handleClick = () => {
-    console.log('Click happened');
+    console.log('По кнопке кликнули');
   }
   render() {
     return <button onClick={this.handleClick}>Нажми на меня</button>;
@@ -56,7 +56,7 @@ class Foo extends Component {
 ```jsx
 class Foo extends Component {
   handleClick() {
-    console.log('Click happened');
+    console.log('По кнопке кликнули');
   }
   render() {
     return <button onClick={this.handleClick.bind(this)}>Нажми на меня</button>;
@@ -73,7 +73,7 @@ class Foo extends Component {
 ```jsx
 class Foo extends Component {
   handleClick() {
-    console.log('Click happened');
+    console.log('По кнопке кликнули');
   }
   render() {
     return <button onClick={() => this.handleClick()}>Нажми на меня</button>;
@@ -230,7 +230,7 @@ class Alphabet extends React.Component {
 
 > Примечание:
 >
-> `_.debounce`, `_.throttle` и `raf-schd` предусматривают метод `cancel` для отмены отложенных колбэков. Вы должны либо вызвать этот метод из componentWillUnmount, _либо_ удостоверится, что компонент все ещё встроен в пределах отложенной функции.
+> `_.debounce`, `_.throttle` и `raf-schd` предусматривают метод `cancel` для отмены отложенных колбэков. Вы должны либо вызвать этот метод из componentWillUnmount, _либо_ удостовериться, что компонент всё ещё встроен в пределах отложенной функции.
 
 #### Throttle {#throttle}
 
@@ -251,7 +251,7 @@ class LoadMoreButton extends React.Component {
   }
 
   render() {
-    return <button onClick={this.handleClickThrottled}>Load More</button>;
+    return <button onClick={this.handleClickThrottled}>Загрузить ещё</button>;
   }
 
   handleClick() {
@@ -283,7 +283,7 @@ class Searchbox extends React.Component {
       <input
         type="text"
         onChange={this.handleChange}
-        placeholder="Search..."
+        placeholder="Поиск..."
         defaultValue={this.props.value}
       />
     );
@@ -304,7 +304,7 @@ class Searchbox extends React.Component {
 
 #### `requestAnimationFrame` throttling {#requestanimationframe-throttling}
 
-[`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) — это способ организации очереди функции, которая будет выполнена в браузере за оптимальное время для производительности отрисовки. Функция, поставленная в очередь с помощью `requestAnimationFrame`, запустится в следующем кадре. Браузер приложит все усилия, чтобы обеспечить 60 кадров в секунду (60 fps — frames per second). Однако, если браузер не в состоянии справиться с этой задачей, он естественным образом *ограничит* количество кадров в секунду. Например, если ваше устройство поддерживает только 30 fps, то и получите вы только 30 кадров. Использование `requestAnimationFrame` для троттлинга является очень полезным методом, так как помогает предотвратить выполнение более 60 обновлений в секунду. Если вы выполняете 100 обновлений в секунду, это создаёт лишнюю работу для браузера, которую пользователь все равно не заметит. 
+[`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) — это способ организации очереди функции, которая будет выполнена в браузере за оптимальное время для производительности отрисовки. Функция, поставленная в очередь с помощью `requestAnimationFrame`, запустится в следующем кадре. Браузер приложит все усилия, чтобы обеспечить 60 кадров в секунду (60 fps — frames per second). Однако, если браузер не в состоянии справиться с этой задачей, он естественным образом *ограничит* количество кадров в секунду. Например, если ваше устройство поддерживает только 30 fps, то и получите вы только 30 кадров. Использование `requestAnimationFrame` для троттлинга является очень полезным методом, так как помогает предотвратить выполнение более 60 обновлений в секунду. Если вы выполняете 100 обновлений в секунду, это создаёт лишнюю работу для браузера, которую пользователь всё равно не заметит. 
 
 >**Примечание:**
 >
