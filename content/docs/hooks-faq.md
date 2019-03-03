@@ -36,15 +36,15 @@ prev: hooks-reference.html
   * [Сколько переменных состояния я могу использовать - одну или несколько?](#should-i-use-one-or-many-state-variables)
   * [Могу ли я использовать эфеект только на обновлениях компонента?](#can-i-run-an-effect-only-on-updates)
   * [Как получить прошлые пропсы или состояние](#how-to-get-the-previous-props-or-state)
-  * [How do I implement getDerivedStateFromProps?](#how-do-i-implement-getderivedstatefromprops)
-  * [Is there something like forceUpdate?](#is-there-something-like-forceupdate)
+  * [Как я могу реализовать getDerivedStateFromProps?](#how-do-i-implement-getderivedstatefromprops)
+  * [Существует что-нибудь набодобие forceUpdate?](#is-there-something-like-forceupdate)
   * [Can I make a ref to a function component?](#can-i-make-a-ref-to-a-function-component)
-  * [What does const [thing, setThing] = useState() mean?](#what-does-const-thing-setthing--usestate-mean)
-* **[Performance Optimizations](#performance-optimizations)**
-  * [Can I skip an effect on updates?](#can-i-skip-an-effect-on-updates)
-  * [How do I implement shouldComponentUpdate?](#how-do-i-implement-shouldcomponentupdate)
-  * [How to memoize calculations?](#how-to-memoize-calculations)
-  * [How to create expensive objects lazily?](#how-to-create-expensive-objects-lazily)
+  * [Что значит `const [thing, setThing] = useState()`](#what-does-const-thing-setthing--usestate-mean)
+* **[Оптимизации производительности](#performance-optimizations)**
+  * [Могу ли я пропустить эффект при обновлениях?](#can-i-skip-an-effect-on-updates)
+  * [Как я могу реализовать shouldComponentUpdate?](#how-do-i-implement-shouldcomponentupdate)
+  * [Как закешировать вычисления?](#how-to-memoize-calculations)
+  * [Как лениво создавать ресурсозатратные объекты?](#how-to-create-expensive-objects-lazily)
   * [Are Hooks slow because of creating functions in render?](#are-hooks-slow-because-of-creating-functions-in-render)
   * [How to avoid passing callbacks down?](#how-to-avoid-passing-callbacks-down)
   * [How to read an often-changing value from useCallback?](#how-to-read-an-often-changing-value-from-usecallback)
@@ -109,7 +109,7 @@ TODO
 
 В будущем, новые версии этих библиотек могут также экспортировать специальные хуки, например `useRedux()` или  `useRouter()`, которые позволят вам использовать тот же функционал без необходимости обарачивать компоненты.
 
-### Хуки поддерживают статическую типизацию? {#do-hooks-work-with-static-typing}
+### Поддерживают ли хуки статическую типизацию? {#do-hooks-work-with-static-typing}
 
 Хуки спроектированы с учётом статической типизации. Так как они являются функциями, их легче типизировать правильно чем, например, компоненты высшего порядка. Последние версии Flow и TypeScript включают в себя поддержку React-хуков.
 
@@ -372,11 +372,11 @@ function Counter() {
 
 Также смотрите [рекомендованный паттерн для полученного состояния](#how-do-i-implement-getderivedstatefromprops).
 
-### How do I implement `getDerivedStateFromProps`? {#how-do-i-implement-getderivedstatefromprops}
+### Как я могу реализовать `getDerivedStateFromProps`? {#how-do-i-implement-getderivedstatefromprops}
 
-While you probably [don't need it](/blog/2018/06/07/you-probably-dont-need-derived-state.html), in rare cases that you do (such as implementing a `<Transition>` component), you can update the state right during rendering. React will re-run the component with updated state immediately after exiting the first render so it wouldn't be expensive.
+Не смотря на то, что вам скорее всего [это не надо](/blog/2018/06/07/you-probably-dont-need-derived-state.html), в редких случаях (например, реализация компонента `<Transition>`), вы можете изменять состояние прямо во время рендера. React моментально перерендерит компонент с обновлённым состоянием сразу после первого рендера, и это не будет затратным.
 
-Here, we store the previous value of the `row` prop in a state variable so that we can compare:
+В этом примере, мы храним предыдущее значение пропса `row` в состоянии, что позволяет сранить значения:
 
 ```js
 function ScrollView({row}) {
@@ -384,7 +384,7 @@ function ScrollView({row}) {
   let [prevRow, setPrevRow] = useState(null);
 
   if (row !== prevRow) {
-    // Row changed since last render. Update isScrollingDown.
+    // Row изменился с прошлого рендера. Обновляем isScrollingDown.
     setIsScrollingDown(prevRow !== null && row > prevRow);
     setPrevRow(row);
   }
@@ -393,13 +393,13 @@ function ScrollView({row}) {
 }
 ```
 
-This might look strange at first, but an update during rendering is exactly what `getDerivedStateFromProps` has always been like conceptually.
+Сперва это может показаться странным, но изменение во время рендера - это именно то, чем всегда концептуально являлся метод `getDerivedStateFromProps`.
 
-### Is there something like forceUpdate? {#is-there-something-like-forceupdate}
+### Существует что-нибудь набодобие forceUpdate? {#is-there-something-like-forceupdate}
 
-Both `useState` and `useReducer` Hooks [bail out of updates](/docs/hooks-reference.html#bailing-out-of-a-state-update) if the next value is the same as the previous one. Mutating state in place and calling `setState` will not cause a re-render.
+Оба хука `useState` и `useReducer` [игнорируют апдейты](/docs/hooks-reference.html#bailing-out-of-a-state-update), если следующее значение равно предыдущему. Мутирование состояния и вызов `setState` не вызовет ре-рендеры.
 
-Normally, you shouldn't mutate local state in React. However, as an escape hatch, you can use an incrementing counter to force a re-render even if the state has not changed:
+Обычно, вы не должны мутировать локальное состояние в React. Однако, в качестве трюка, вы можете использовать увеличивающийся счетчик, чтобы заставлять компонент повторно рендериться, если состояние не изменилось:
 
 ```js
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
@@ -409,59 +409,60 @@ Normally, you shouldn't mutate local state in React. However, as an escape hatch
   }
 ```
 
-Try to avoid this pattern if possible.
+Старайтесь избегать этого подхода, если возможно.
 
-### Can I make a ref to a function component? {#can-i-make-a-ref-to-a-function-component}
+### Могу ли я создать реф для функционального компонента? {#can-i-make-a-ref-to-a-function-component}
 
-While you shouldn't need this often, you may expose some imperative methods to a parent component with the [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle) Hook.
+Несмотря на то, что вам не понадобится это часто, вы можете предоставить некоторые императивные методы для родительского компонента используя хук [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle).
 
-### What does `const [thing, setThing] = useState()` mean? {#what-does-const-thing-setthing--usestate-mean}
+### Что значит `const [thing, setThing] = useState()`? {#what-does-const-thing-setthing--usestate-mean}
 
-If you're not familiar with this syntax, check out the [explanation](/docs/hooks-state.html#tip-what-do-square-brackets-mean) in the State Hook documentation.
+Если вы не знакомы с этим синтаксисом, ознакомтесь с [объяснением](/docs/hooks-state.html#tip-what-do-square-brackets-mean) в документации хука для состояния.
 
 
-## Performance Optimizations {#performance-optimizations}
+## Оптимизации производительности {#performance-optimizations}
 
-### Can I skip an effect on updates? {#can-i-skip-an-effect-on-updates}
+### Могу ли я пропустить эффект при обновлениях? {#can-i-skip-an-effect-on-updates}
 
-Yes. See [conditionally firing an effect](/docs/hooks-reference.html#conditionally-firing-an-effect). Note that forgetting to handle updates often [introduces bugs](/docs/hooks-effect.html#explanation-why-effects-run-on-each-update), which is why this isn't the default behavior.
+Да. Ознакомтесь с [условным вызовом эффектов](/docs/hooks-reference.html#conditionally-firing-an-effect). Обратите внимание, что забыв обработать обновления, вы зачастую можете [создать ошибки](/docs/hooks-effect.html#explanation-why-effects-run-on-each-update). Поэтому это и не является поведением по умолчанию.
 
-### How do I implement `shouldComponentUpdate`? {#how-do-i-implement-shouldcomponentupdate}
+### Как я могу реализовать `shouldComponentUpdate`? {#how-do-i-implement-shouldcomponentupdate}
 
-You can wrap a function component with `React.memo` to shallowly compare its props:
+Вы можете обернуть функциональный компонент в вызов `React.memo` для поверхностного сравнения его пропсов:
 
 ```js
 const Button = React.memo((props) => {
-  // your component
+  // ваш компонент
 });
 ```
 
-It's not a Hook because it doesn't compose like Hooks do. `React.memo` is equivalent to `PureComponent`, but it only compares props. (You can also add a second argument to specify a custom comparison function that takes the old and new props. If it returns true, the update is skipped.)
+Это функция не является хуком, так как она не ведёт себя как хук. `React.memo` аналогична `PureComponent`, но она сравнивает только пропсы. (Вы также можете добавить второй аргумент, чтобы определить свою функцию сравнения, которая примет старые и новые пропсы. Если эта функция вернёт `true`, обновление будет пропущено.)
 
 `React.memo` doesn't compare state because there is no single state object to compare. But you can make children pure too, or even [optimize individual children with `useMemo`](/docs/hooks-faq.html#how-to-memoize-calculations).
 
+`React.memo` не сравнивает состояние, потому что не существует единого объекта, который можно сравнить. Но вы можете также сделать дочерние компоненты чистыми или даже [оптимизировать каждый дочерний компонент используя хук `useMemo`](/docs/hooks-faq.html#how-to-memoize-calculations).
 
-### How to memoize calculations? {#how-to-memoize-calculations}
+### Как закешировать вычисления? {#how-to-memoize-calculations}
 
-The [`useMemo`](/docs/hooks-reference.html#usememo) Hook lets you cache calculations between multiple renders by "remembering" the previous computation:
+Хук [`useMemo`](/docs/hooks-reference.html#usememo) позволяет вам закешировать вычисления между несколькими рендерами, путём запоминания прошлого результата:
 
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-This code calls `computeExpensiveValue(a, b)`. But if the inputs `[a, b]` haven't changed since the last value, `useMemo` skips calling it a second time and simply reuses the last value it returned.
+Этот код вызывает `computeExpensiveValue(a, b)`. Но если аргументы `[a, b]` не изменились с прошлого рендера, `useMemo` пропустит повторный вызов и повторно использует значения, которые он вернул в прошлый раз.
 
-Remember that the function passed to `useMemo` runs during rendering. Don't do anything there that you wouldn't normally do while rendering. For example, side effects belong in `useEffect`, not `useMemo`.
+Помните, что функция, передаваемая в `useMemo`, выполняется во время рендера. Не стоит делать в ней что-то, что вы обычно не делаете во время рендера. Например, побочные эффекты выполняются в хуке `useEffect`, а не в `useMemo`.
 
-**You may rely on `useMemo` as a performance optimization, not as a semantic guarantee.** In the future, React may choose to "forget" some previously memoized values and recalculate them on next render, e.g. to free memory for offscreen components. Write your code so that it still works without `useMemo` — and then add it to optimize performance. (For rare cases when a value must *never* be recomputed, you can [lazily initialize](#how-to-create-expensive-objects-lazily) a ref.)
+**Рассматриваете `useMemo`, как оптимизацию производительности, но не стоит пологаться на неё на 100%.**. В будущем React сможет `забыть` прошлые закешированные значения и провести перерасчет на следующем рендере, например, для освобождения памяти, занятой компонентами вне экрана. Пишите ваш код так, чтобы он мог работать без `useMemo`, и только тогда добавляйте оптимизацию производительности. (Для редких случаев, когда значение **не должно никогда** перерасчитываться, вы можете [лениво инициализировать](#how-to-create-expensive-objects-lazily) реф.)
 
-Conveniently, `useMemo` also lets you skip an expensive re-render of a child:
+Также удобно, что `useMemo` позволяет пропускать затратные повторные рендеры дочерних компонентов:
 
 ```js
 function Parent({ a, b }) {
-  // Only re-rendered if `a` changes:
+  // Рендерится повторно, только если `a` изменится:
   const child1 = useMemo(() => <Child1 a={a} />, [a]);
-  // Only re-rendered if `b` changes:
+  // Рендерится повторно, только если `b` изменится:
   const child2 = useMemo(() => <Child2 b={b} />, [b]);
   return (
     <>
@@ -472,51 +473,51 @@ function Parent({ a, b }) {
 }
 ```
 
-Note that this approach won't work in a loop because Hook calls [can't](/docs/hooks-rules.html) be placed inside loops. But you can extract a separate component for the list item, and call `useMemo` there.
+Обратите внимание, что этот подход не будет работать внутри циклов, так как вызовы хуков [не могут](/docs/hooks-rules.html) быть помещены внуть циклов. Но вы можете создать отдельный компонент для элемента списка, и вызвать `useMemo` там.
 
-### How to create expensive objects lazily? {#how-to-create-expensive-objects-lazily}
+### Как лениво создавать ресурсозатратные объекты? {#how-to-create-expensive-objects-lazily}
 
-`useMemo` lets you [memoize an expensive calculation](#how-to-memoize-calculations) if the inputs are the same. However, it only serves as a hint, and doesn't *guarantee* the computation won't re-run. But sometimes you need to be sure an object is only created once.
+Хук `useMemo` позволяет вам [закешировать ресурсозатратные вычисления](#how-to-memoize-calculations), если входные данные не изменились. Однако, этот способ **не гарантирует**, что повторных вычислений не случится. Иногда вам нужно удостовериться, что объект будет создан только один раз.
 
-**The first common use case is when creating the initial state is expensive:**
+**Первый частый вариант использования - создание изначального состония ресурсозатратно:**
 
 ```js
 function Table(props) {
-  // ⚠️ createRows() is called on every render
+  // ⚠️ createRows() вызывается на каждом рендере
   const [rows, setRows] = useState(createRows(props.count));
   // ...
 }
 ```
 
-To avoid re-creating the ignored initial state, we can pass a **function** to `useState`:
+Чтобы избежать повторого создания игнорируемого начального состояния, мы можем передать **функцию** в `useState`:
 
 ```js
 function Table(props) {
-  // ✅ createRows() is only called once
+  // ✅ createRows() будет вызван только один раз
   const [rows, setRows] = useState(() => createRows(props.count));
   // ...
 }
 ```
 
-React will only call this function during the first render. See the [`useState` API reference](/docs/hooks-reference.html#usestate).
+React вызовёт эту функцию один раз во время первого рендера. Смотрите [справочник API по хуку `useState`](/docs/hooks-reference.html#usestate).
 
-**You might also occasionally want to avoid re-creating the `useRef()` initial value.** For example, maybe you want to ensure some imperative class instance only gets created once:
+**Иногда, вам будет нужно избежать повторного создания начального значения от `useRef()`.** Например, возможно вы захотите убедиться, что экземпляр некоторого императивного класса создаётся только один раз:
 
 ```js
 function Image(props) {
-  // ⚠️ IntersectionObserver is created on every render
+  // ⚠️ IntersectionObserver создаётся на каждом рендере
   const ref = useRef(new IntersectionObserver(onIntersect));
   // ...
 }
 ```
 
-`useRef` **does not** accept a special function overload like `useState`. Instead, you can write your own function that creates and sets it lazily:
+У хука `useRef` **нет** реализации, принимающей специальную функцию, как у `useState`. Вместо этого, вы можете написать свою функцию, которая будет лениво создавать и назначать этот экземпляр:
 
 ```js
 function Image(props) {
   const ref = useRef(null);
 
-  // ✅ IntersectionObserver is created lazily once
+  // ✅ IntersectionObserver лениво создаётся только один раз
   function getObserver() {
     let observer = ref.current;
     if (observer !== null) {
@@ -527,13 +528,12 @@ function Image(props) {
     return newObserver;
   }
 
-  // When you need it, call getObserver()
+  // Когда он вам понадобится, вызовете getObserver()
   // ...
 }
 ```
 
-This avoids creating an expensive object until it's truly needed for the first time. If you use Flow or TypeScript, you can also give `getObserver()` a non-nullable type for convenience.
-
+Этот подход позволяет избежать создания ресурсозатратных объектов во всех случаях, кроме первого, кода это действительно необходимо. Если вы используете Flow или TypeScript, вы можете также установить для `getObserver()` непустой тип для уверенности.
 
 ### Are Hooks slow because of creating functions in render? {#are-hooks-slow-because-of-creating-functions-in-render}
 
