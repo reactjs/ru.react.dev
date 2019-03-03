@@ -71,7 +71,7 @@ prev: hooks-reference.html
 
 No. There are [no plans](/docs/hooks-intro.html#gradual-adoption-strategy) to remove classes from React -- we all need to keep shipping products and can't afford rewrites. We recommend trying Hooks in new code.
 
-Нет. [Планов по удалению классов из React нет](/docs/hooks-intro.html#gradual-adoption-strategy) -- нам всем необходимо добавлять новую функциональность, вместо переписывания всего приложения. Мы рекомендуем пробовать Хуки в новом коде.
+Нет. [Мы не собираемся удалять классы из React](/docs/hooks-intro.html#gradual-adoption-strategy). Это новая функциональность, которая не заставляет переписывать всё приложение. Мы рекомендуем пробовать Хуки только в новом коде.
 
 ### Что я могу сделать с помощью Хуков, что не смог бы с помощью классов? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
