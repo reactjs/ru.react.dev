@@ -32,10 +32,10 @@ prev: hooks-reference.html
   * [Что конкретно правила линтера проверяют в Хуках?](#what-exactly-do-the-lint-rules-enforce)
 * **[От классов к Хукам](#from-classes-to-hooks)**
   * [Как методы жизненного цикла соответствуют Хукам?](#how-do-lifecycle-methods-correspond-to-hooks)
-  * [Is there something like instance variables?](#is-there-something-like-instance-variables)
-  * [Should I use one or many state variables?](#should-i-use-one-or-many-state-variables)
-  * [Can I run an effect only on updates?](#can-i-run-an-effect-only-on-updates)
-  * [How to get the previous props or state?](#how-to-get-the-previous-props-or-state)
+  * [Существует что-нибудь наподобие полей экземпляра?](#is-there-something-like-instance-variables)
+  * [Сколько переменных состояния я могу использовать - одну или несколько?](#should-i-use-one-or-many-state-variables)
+  * [Могу ли я использовать эфеект только на обновлениях компонента?](#can-i-run-an-effect-only-on-updates)
+  * [Как получить прошлые пропсы или состояние](#how-to-get-the-previous-props-or-state)
   * [How do I implement getDerivedStateFromProps?](#how-do-i-implement-getderivedstatefromprops)
   * [Is there something like forceUpdate?](#is-there-something-like-forceupdate)
   * [Can I make a ref to a function component?](#can-i-make-a-ref-to-a-function-component)
@@ -214,11 +214,11 @@ it('can render and update a counter', () => {
 
 * `componentDidCatch` и `getDerivedStateFromError`: В данный момент не существует Хуков-аналогов для этих методов, но они будут скоро добавлены.
 
-### Is there something like instance variables? {#is-there-something-like-instance-variables}
+### Существует что-нибудь наподобие полей экземпляра? {#is-there-something-like-instance-variables}
 
-Yes! The [`useRef()`](/docs/hooks-reference.html#useref) Hook isn't just for DOM refs. The "ref" object is a generic container whose `current` property is mutable and can hold any value, similar to an instance property on a class.
+Да! Хук [`useRef()`](/docs/hooks-reference.html#useref) может использоваться не только для DOM рефов. Реф - это общий контейнер, а его поле `current` -- изменяемое и может хранить любое значение, как и поле экземпляра класса.
 
-You can write to it from inside `useEffect`:
+Вы можете использовать его внутри `useEffect`:
 
 ```js{2,8}
 function Timer() {
@@ -238,7 +238,7 @@ function Timer() {
 }
 ```
 
-If we just wanted to set an interval, we wouldn't need the ref (`id` could be local to the effect), but it's useful if we want to clear the interval from an event handler:
+Если мы захотим просто установить интервал, нам не нужен будет реф (`id` может использоваться только внутри эффекта). Но реф будет полезным, если мы захотим очистить интервал из обработчика события:
 
 ```js{3}
   // ...
@@ -248,11 +248,11 @@ If we just wanted to set an interval, we wouldn't need the ref (`id` could be lo
   // ...
 ```
 
-Conceptually, you can think of refs as similar to instance variables in a class. Unless you're doing [lazy initialization](#how-to-create-expensive-objects-lazily), avoid setting refs during rendering -- this can lead to surprising behavior. Instead, typically you want to modify refs in event handlers and effects.
+В целом вы можете рассматривать рефы как поля экземпляра класса. Старайтесь избегать установки рефов во время рендера, пока вы не занимаетесь  [ленивой инициализацией](#how-to-create-expensive-objects-lazily), так как это может привести к неожиданному поведению. Вместо этого, зачастую вы будете изменять рефы в обработчиках событий и эффектах.
 
-### Should I use one or many state variables? {#should-i-use-one-or-many-state-variables}
+### Сколько переменных состояния я могу использовать - одну или несколько? {#should-i-use-one-or-many-state-variables}
 
-If you're coming from classes, you might be tempted to always call `useState()` once and put all state into a single object. You can do it if you'd like. Here is an example of a component that follows the mouse movement. We keep its position and size in the local state:
+Если вы привыкли писать классовые компоненты, вы скорее всего всегда вызываете `useState()` один раз для одного изменения состояния и храните всё состояние в одном объекте. Вы можете делать то же самое с хуками, если пожелаете. Взгляните на пример компонента, который следует за движением  курсора. Мы храним позицию и размер этого компонента в локальном состоянии.
 
 ```js
 function Box() {
@@ -261,27 +261,27 @@ function Box() {
 }
 ```
 
-Now let's say we want to write some logic that changes `left` and `top` when the user moves their mouse. Note how we have to merge these fields into the previous state object manually:
+Допустим, мы хотим написать некоторую логику, которая будет изменять значения `left` и `top`, когда пользователь двигает курсор мышки. Обратите внимание, что мы обязаны объединять эти поля с предыдущим объектом состоянии вручную:
 
 ```js{4,5}
   // ...
   useEffect(() => {
     function handleWindowMouseMove(e) {
-      // Spreading "...state" ensures we don't "lose" width and height
+      // Использование "...state" гарантирует, что мы не `потеряем` поля width и height
       setState(state => ({ ...state, left: e.pageX, top: e.pageY }));
     }
-    // Note: this implementation is a bit simplified
+    // Примичание: эта реализация немного упрощена
     window.addEventListener('mousemove', handleWindowMouseMove);
     return () => window.removeEventListener('mousemove', handleWindowMouseMove);
   }, []);
   // ...
 ```
 
-This is because when we update a state variable, we *replace* its value. This is different from `this.setState` in a class, which *merges* the updated fields into the object.
+Это необходимо, потому что мы изменяем переменную состояния, *заменяя* её значение. Данное поведение отличается от `this.setState`, ведь этот классовый метод *объединяет* изменённые поля и текущий объект состояния.
 
-If you miss automatic merging, you can write a custom `useLegacyState` Hook that merges object state updates. However, instead **we recommend to split state into multiple state variables based on which values tend to change together.**
+Если вам не хватает автоматического объединения состояния, вы можете например свой хук `useLegacyState`, который будет объединять обновленные поля. Однако, вместо этого **мы рекомендуем разделять состояние на несколько переменных, учитывая какие поля логически относятся друг к другу и будут изменяться вместе.**
 
-For example, we could split our component state into `position` and `size` objects, and always replace the `position` with no need for merging:
+Например, мы можем разделить состояние нашего компонента на объекты `position` и `size`, что поможет всегда изменять только `position`, без необходимости волноваться об объединении:
 
 ```js{2,7}
 function Box() {
@@ -295,7 +295,7 @@ function Box() {
     // ...
 ```
 
-Separating independent state variables also has another benefit. It makes it easy to later extract some related logic into a custom Hook, for example:
+В разделении состояния на независимые переменные есть еще одно преимущество. Это поможет легко вынести некоторую логику в отдельный хук в будущем, например:
 
 ```js{2,7}
 function Box() {
@@ -313,17 +313,17 @@ function useWindowPosition() {
 }
 ```
 
-Note how we were able to move the `useState` call for the `position` state variable and the related effect into a custom Hook without changing their code. If all state was in a single object, extracting it would be more difficult.
+Обратите внимание, как мы смогли вынести вызов `useState`, изменящий `position`, и соответствующих эффект в отдельный хук, практически не меняя их код. Если бы всё состояние хранилось в одном объекте, сделать это перемещение было бы на порядок сложнее.
 
-Both putting all state in a single `useState` call, and having a `useState` call per each field can work. Components tend to be most readable when you find a balance between these two extremes, and group related state into a few independent state variables. If the state logic becomes complex, we recommend [managing it with a reducer](/docs/hooks-reference.html#usereducer) or a custom Hook.
+Оба варинта работают на самом деле работают. Компоненты будут более читаемыми, если вы найдёте баланс между двумя подходами и будете групировать связанные друг с другом данные. Если работа с состоянием становится сложной, мы советуем [использовать редюсер](/docs/hooks-reference.html#usereducer) или выносить логику в отдельные хуки.
 
-### Can I run an effect only on updates? {#can-i-run-an-effect-only-on-updates}
+### Могу ли я использовать эфеект только на обновлениях компонента? {#can-i-run-an-effect-only-on-updates}
 
-This is a rare use case. If you need it, you can [use a mutable ref](#is-there-something-like-instance-variables) to manually store a boolean value corresponding to whether you are on the first or a subsequent render, then check that flag in your effect. (If you find yourself doing this often, you could create a custom Hook for it.)
+Это - довольно редкий случай. Вы можете [использовать изменяемый реф](#is-there-something-like-instance-variables), чтобы вручную хранить логическое значение, показывающее, прошел ли первый рендер. В свою очередь эффект может опираться на это значение. Если вы замечаете, что эта логика нужна вам часто, вы можете вынести её в отдельный хук.
 
-### How to get the previous props or state? {#how-to-get-the-previous-props-or-state}
+### Как получить прошлые пропсы или состояние? {#how-to-get-the-previous-props-or-state}
 
-Currently, you can do it manually [with a ref](#is-there-something-like-instance-variables):
+Сейчас, вы можете сделать это вручную, [используя реф](#is-there-something-like-instance-variables):
 
 ```js{6,8}
 function Counter() {
@@ -335,17 +335,17 @@ function Counter() {
   });
   const prevCount = prevCountRef.current;
 
-  return <h1>Now: {count}, before: {prevCount}</h1>;
+  return <h1>Сейчас: {count}, до этого: {prevCount}</h1>;
 }
 ```
 
-This might be a bit convoluted but you can extract it into a custom Hook:
+Это может показаться чрезмерно сложным, но вы можете вынести эту логику в отдельный хук:
 
 ```js{3,7}
 function Counter() {
   const [count, setCount] = useState(0);
   const prevCount = usePrevious(count);
-  return <h1>Now: {count}, before: {prevCount}</h1>;
+  return <h1>Сейчас: {count}, до этого: {prevCount}</h1>;
 }
 
 function usePrevious(value) {
@@ -357,7 +357,7 @@ function usePrevious(value) {
 }
 ```
 
-Note how this would work for props, state, or any other calculated value.
+Обратите внимание, как это будет работать для пропсов, состояния или любого другого вычисляемого значения.
 
 ```js{5}
 function Counter() {
@@ -368,9 +368,9 @@ function Counter() {
   // ...
 ```
 
-It's possible that in the future React will provide a `usePrevious` Hook out of the box since it's a relatively common use case.
+Возмонжо, в будущем React добавит хук `usePrevious` в свой API, так как это довольно распространенный случай в разработке.
 
-See also [the recommended pattern for derived state](#how-do-i-implement-getderivedstatefromprops).
+Также смотрите [рекомендованный паттерн для полученного состояния](#how-do-i-implement-getderivedstatefromprops).
 
 ### How do I implement `getDerivedStateFromProps`? {#how-do-i-implement-getderivedstatefromprops}
 
