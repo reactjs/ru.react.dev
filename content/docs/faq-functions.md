@@ -32,7 +32,7 @@ class Foo extends Component {
     console.log('Click happened');
   }
   render() {
-    return <button onClick={this.handleClick}>Click Me</button>;
+    return <button onClick={this.handleClick}>Нажми на меня</button>;
   }
 }
 ```
@@ -46,7 +46,7 @@ class Foo extends Component {
     console.log('Click happened');
   }
   render() {
-    return <button onClick={this.handleClick}>Click Me</button>;
+    return <button onClick={this.handleClick}>Нажми на меня</button>;
   }
 }
 ```
@@ -59,7 +59,7 @@ class Foo extends Component {
     console.log('Click happened');
   }
   render() {
-    return <button onClick={this.handleClick.bind(this)}>Click Me</button>;
+    return <button onClick={this.handleClick.bind(this)}>Нажми на меня</button>;
   }
 }
 ```
@@ -76,7 +76,7 @@ class Foo extends Component {
     console.log('Click happened');
   }
   render() {
-    return <button onClick={() => this.handleClick()}>Click Me</button>;
+    return <button onClick={() => this.handleClick()}>Нажми на меня</button>;
   }
 }
 ```
@@ -117,7 +117,7 @@ method();
 ```jsx
 render() {
   // Неправильно: вместо ссылки была вызвана функция handleClick!
-  return <button onClick={this.handleClick()}>Click Me</button>
+  return <button onClick={this.handleClick()}>Нажми на меня</button>
 }
 ```
 
@@ -126,7 +126,7 @@ render() {
 ```jsx
 render() {
   // Правильно: handleClick передаётся как ссылка!
-  return <button onClick={this.handleClick}>Click Me</button>
+  return <button onClick={this.handleClick}>Нажми на меня</button>
 }
 ```
 
@@ -222,9 +222,9 @@ class Alphabet extends React.Component {
 
 Если вы используете обработчики событий, такие как `onClick`  или `onScroll`, и хотите предотвратить быстрое срабатывание колбэков, вы можете ограничить скорость выполнения колбэка. Для этого вы можете использовать: 
 
-- **тротлинг**: выборочные изменения, зависимые от частоты, основанной на времени (напр. [`_.throttle`](https://lodash.com/docs#throttle))
+- **троттлинг**: выборочные изменения, зависимые от частоты, основанной на времени (напр. [`_.throttle`](https://lodash.com/docs#throttle))
 - **дебаунсинг**: изменения, задействованные после некого периода бездействия (напр. [`_.debounce`](https://lodash.com/docs#debounce))
-- **тротлинг с помощью `requestAnimationFrame`**: выборочные изменения, основанные на [`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) (напр. [`raf-schd`](https://github.com/alexreardon/raf-schd))
+- **троттлинг с помощью `requestAnimationFrame`**: выборочные изменения, основанные на [`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) (напр. [`raf-schd`](https://github.com/alexreardon/raf-schd))
 
 Взгляните на [визуализацию](https://demo.nimius.net/debounce_throttle/), которая сравнивает функции `throttle` и `debounce`.
 
@@ -234,7 +234,7 @@ class Alphabet extends React.Component {
 
 #### Throttle {#throttle}
 
-Тротлинг предотвращает повторный вызов функции в заданный период времени. Этот метод был задействован в примере ниже, чтобы не допустить вызов обработчика "click" чаще чем раз в секунду.
+Троттлинг предотвращает повторный вызов функции в заданный период времени. Этот метод был задействован в примере ниже, чтобы не допустить вызов обработчика "click" чаще чем раз в секунду.
 
 ```jsx
 import throttle from 'lodash.throttle';
@@ -304,7 +304,7 @@ class Searchbox extends React.Component {
 
 #### `requestAnimationFrame` throttling {#requestanimationframe-throttling}
 
-[`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) — это способ организации очереди функции, которая будет выполнена в браузере за оптимальное время для производительности отрисовки. Функция, поставленная в очередь с помощью `requestAnimationFrame`, запустится в следующем кадре. Браузер приложит все усилия, чтобы обеспечить 60 кадров в секунду (60 fps — frames per second). Однако, если браузер не в состоянии справиться с этой задачей, он естественным образом *ограничит* количество кадров в секунду. Например, если ваше устройство поддерживает только 30 fps, то и получите вы только 30 кадров. Использование `requestAnimationFrame` для тротлинга является очень полезным методом, так как помогает предотвратить выполнение более 60 обновлений в секунду. Если вы выполняете 100 обновлений в секунду, это создаёт лишнюю работу для браузера, которую пользователь все равно не заметит. 
+[`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/DOM/window.requestAnimationFrame) — это способ организации очереди функции, которая будет выполнена в браузере за оптимальное время для производительности отрисовки. Функция, поставленная в очередь с помощью `requestAnimationFrame`, запустится в следующем кадре. Браузер приложит все усилия, чтобы обеспечить 60 кадров в секунду (60 fps — frames per second). Однако, если браузер не в состоянии справиться с этой задачей, он естественным образом *ограничит* количество кадров в секунду. Например, если ваше устройство поддерживает только 30 fps, то и получите вы только 30 кадров. Использование `requestAnimationFrame` для троттлинга является очень полезным методом, так как помогает предотвратить выполнение более 60 обновлений в секунду. Если вы выполняете 100 обновлений в секунду, это создаёт лишнюю работу для браузера, которую пользователь все равно не заметит. 
 
 >**Примечание:**
 >
