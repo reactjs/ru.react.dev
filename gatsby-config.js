@@ -160,5 +160,6 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
+    'gatsby-remark-typography', // only for Russian translation
   ],
 };

@@ -54,6 +54,7 @@
     "request-promise": "^4.2.2",
     "rimraf": "^2.6.1",
     "slugify": "^1.2.1",
+    "typograf": "^6.8.0",
     "unist-util-visit": "^1.1.3"
   },
   "engines": {
