@@ -75,7 +75,7 @@ No. There are [no plans](/docs/hooks-intro.html#gradual-adoption-strategy) to re
 
 ### Что я могу сделать с помощью Хуков, что не смог бы с помощью классов? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
-Хуки дают отличный способ повторного использования кода между компонентами. ["Создание ваших Хуков"](/docs/hooks-custom.html) показывает, что вы сможете сделать. [Эта статья](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889), написанная одим из главных участников React-команды, описывает новые возможности, разблокированные релизом Хуков.
+Хуки дают новый мощный способ переиспользования кода между компонентами. ["Создание ваших хуков"](/docs/hooks-custom.html) даст представление об их возможностях. [Эта статья](https://medium.com/@dan_abramov/making-sense-of-react-hooks-fdbde8803889), написанная одним из участников команды React, описывает новые возможности, которые открывают хуки.
 
 ### Какая часть моих знаний о React всё еще актуальна? {#how-much-of-my-react-knowledge-stays-relevant}
 
