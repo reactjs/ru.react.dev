@@ -78,7 +78,7 @@ ReactDOM.render(
 
 Давайте преобразуем функциональный компонент `Clock` в классовый компонент за 5 шагов:
 
-1. Создаем [ES6-класс](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes) с таким же именем, указываем `React.Component` в качестве родительского класса
+1. Создаём [ES6-класс](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes) с таким же именем, указываем `React.Component` в качестве родительского класса
 
 2. Добавим в класс пустой метод `render()`
 
