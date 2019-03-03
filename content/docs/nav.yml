@@ -103,7 +103,7 @@
     - id: javascript-environment-requirements
       title: Требования к среде JavaScript
     - id: glossary
-      title: Glossary
+      title: Словарь терминов React
 - title: Хуки (Новое)
   isOrdered: true
   items:
