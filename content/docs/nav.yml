@@ -12,7 +12,7 @@
   isOrdered: true
   items:
     - id: hello-world
-      title: Hello World
+      title: Привет, мир
     - id: introducing-jsx
       title: Знакомство с JSX
     - id: rendering-elements
@@ -28,7 +28,7 @@
     - id: lists-and-keys
       title: Списки и ключи
     - id: forms
-      title: Forms
+      title: Формы
     - id: lifting-state-up
       title: Lifting State Up
     - id: composition-vs-inheritance
@@ -42,41 +42,41 @@
     - id: code-splitting
       title: Code-Splitting
     - id: context
-      title: Context
+      title: Контекст
     - id: error-boundaries
-      title: Error Boundaries
+      title: Предохранители
     - id: forwarding-refs
-      title: Forwarding Refs
+      title: Перенаправление рефов
     - id: fragments
       title: Фрагменты
     - id: higher-order-components
       title: Компоненты высшего порядка
     - id: integrating-with-other-libraries
-      title: Integrating with Other Libraries
+      title: Взаимодействие со сторонними библиотеками
     - id: jsx-in-depth
       title: JSX In Depth
     - id: optimizing-performance
       title: Оптимизация производительности
     - id: portals
-      title: Portals
+      title: Порталы
     - id: react-without-es6
-      title: React Without ES6
+      title: React без ES6
     - id: react-without-jsx
       title: React без JSX
     - id: reconciliation
-      title: Reconciliation
+      title: Согласование
     - id: refs-and-the-dom
       title: Refs and the DOM
     - id: render-props
-      title: Render Props
+      title: Рендер-пропсы
     - id: static-type-checking
-      title: Static Type Checking
+      title:  Статическая типизация
     - id: strict-mode
       title: Строгий режим
     - id: typechecking-with-proptypes
       title: Проверка типов с помощью PropTypes
     - id: uncontrolled-components
-      title: Uncontrolled Components
+      title: Неконтролируемые компоненты
     - id: web-components
       title: Web Components
 - title: Справочник API
@@ -91,7 +91,7 @@
     - id: react-dom-server
       title: ReactDOMServer
     - id: dom-elements
-      title: DOM Elements
+      title: Элементы DOM
     - id: events
       title: SyntheticEvent
     - id: test-utils
@@ -101,24 +101,24 @@
     - id: test-renderer
       title: Test Renderer
     - id: javascript-environment-requirements
-      title: Требования к среде JS
+      title: Требования к среде JavaScript
     - id: glossary
       title: Glossary
 - title: Хуки (Новое)
   isOrdered: true
   items:
       - id: hooks-intro
-        title: Introducing Hooks
+        title: Введение в хуки
       - id: hooks-overview
-        title: Hooks at a Glance
+        title: Краткий обзор хуков
       - id: hooks-state
         title: Использование хука Состояние
       - id: hooks-effect
-        title: Using the Effect Hook
+        title: Использование хука эффекта
       - id: hooks-rules
-        title: Rules of Hooks
+        title: Правила хуков
       - id: hooks-custom
-        title: Building Your Own Hooks
+        title: Создание пользовательских хуков
       - id: hooks-reference
         title: Hooks API Reference
       - id: hooks-faq
@@ -126,7 +126,7 @@
 - title: Участие в проекте
   items:
   - id: how-to-contribute
-    title: How to Contribute
+    title: Как внести свой вклад?
   - id: codebase-overview
     title: Codebase Overview
   - id: implementation-notes
@@ -140,14 +140,14 @@
     - id: faq-build
       title: Babel, JSX и этапы сборки
     - id: faq-functions
-      title: Passing Functions to Components
+      title: Передача функций в компоненты
     - id: faq-state
-      title: Component State
+      title: Состояние компонента
     - id: faq-styling
-      title: Styling and CSS
+      title: Стилизация и CSS
     - id: faq-structure
       title: Структура файлов
     - id: faq-versioning
       title: Versioning Policy
     - id: faq-internals
-      title: Virtual DOM and Internals
+      title: Виртуальный DOM и детали его реализации в React
