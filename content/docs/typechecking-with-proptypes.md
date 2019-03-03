@@ -40,7 +40,7 @@ Greeting.propTypes = {
 import PropTypes from 'prop-types';
 
 MyComponent.propTypes = {
-  // Можно объявить проп на соответствиее определённому JS-типу.
+  // Можно объявить проп на соответствие определённому JS-типу.
   // По умолчанию это не обязательно.
   optionalArray: PropTypes.array,
   optionalBool: PropTypes.bool,
@@ -94,7 +94,7 @@ MyComponent.propTypes = {
   requiredAny: PropTypes.any.isRequired,
 
   // Можно добавить собственный валидатор.
-  // Он должен возращать объект `Error` при ошибке валидации.
+  // Он должен возвращать объект `Error` при ошибке валидации.
   // Не используйте `console.warn` или `throw` 
   // - это не будет работать внутри `oneOfType`
   customProp: function(props, propName, componentName) {
@@ -133,7 +133,7 @@ import PropTypes from 'prop-types';
 class MyComponent extends React.Component {
   render() {
     // Это должен быть ровно один элемент.
-    // Иначе вы увидете предупреждение
+    // Иначе вы увидите предупреждение
     const children = this.props.children;
     return (
       <div>
