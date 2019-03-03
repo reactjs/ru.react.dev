@@ -112,7 +112,7 @@
       - id: hooks-overview
         title: Краткий обзор хуков
       - id: hooks-state
-        title: Использование хука Состояние
+        title: Использование хука состояния
       - id: hooks-effect
         title: Использование хука эффекта
       - id: hooks-rules
