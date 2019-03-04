@@ -42,7 +42,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
 
 Этот код выведет список чисел от 1 до 5.
 
@@ -94,7 +94,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
 
 ## Ключи {#keys}
 
@@ -202,7 +202,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
 
 Как правило, элементам внутри `map()` нужны ключи.
 
@@ -246,7 +246,7 @@ ReactDOM.render(
 );
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)
 
 Ключи служат подсказками для React, но они никогда не передаются в ваши компоненты. Если в компоненте нужно то же самое значение, то передайте его явно через проп с другим именем:
 
@@ -296,6 +296,6 @@ function NumberList(props) {
 }
 ```
 
-[**Try it on CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
+[**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
 Иногда это приводит к более чистому коду, но бывает и наоборот. Как и в любом JavaScript-коде, вам придётся самостоятельно решать, стоит ли извлекать код в переменную ради читабельности. Не забывайте, что если код внутри `map()` слишком громоздкий, имеет смысл [извлечь его в отдельный компонент](/docs/components-and-props.html#extracting-components).
