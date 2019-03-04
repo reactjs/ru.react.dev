@@ -24,7 +24,7 @@ const PageNotFound = ({location}: Props) => (
           <Header>Страница не найдена</Header>
           <TitleAndMetaTags title="React - Страница не найдена" />
           <div css={sharedStyles.markdown}>
-            <p>Мы не нашли то, что вы искали.</p>
+            <p>Мы не смогли найти то, что вы искали.</p>
             <p>
               Пожалуйста, свяжитесь с владельцем сайта и сообщите URL этой страницы, 
               чтобы дать знать о сломанной ссылке.
