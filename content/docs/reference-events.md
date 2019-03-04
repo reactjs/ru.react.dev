@@ -8,7 +8,7 @@ category: Reference
 
 В этом справочном руководстве описана обёртка `SyntheticEvent`, которая является частью системы событий React. Смотрите руководство [Обработка событий](/docs/handling-events.html) для детальной информации.
 
-## Беглый обзор {#overview}
+## Обзор {#overview}
 
 Ваши обработчики событий получают экземпляр `SyntheticEvent`, это кроссбраузерная обёртка над нативным экземпляром события. У нeё такой же интерфейс, как и у нативного события, включая методы `stopPropagation()` и `preventDefault()`. Эта обёртка помогает событиям работать одинаково во всех браузерах.
 
@@ -43,7 +43,7 @@ string type
 
 ```javascript
 function onClick(event) {
-  console.log(event); // => nullified object.
+  console.log(event); // => null-объект.
   console.log(event.type); // => "click"
   const eventType = event.type; // => "click"
 
@@ -52,10 +52,10 @@ function onClick(event) {
     console.log(eventType); // => "click"
   }, 0);
 
-  // Won't work. this.state.clickEvent will only contain null values.
+  // Не сработает, поскольку this.state.clickEvent будет содержать только null-значения.
   this.setState({clickEvent: event});
 
-  // You can still export event properties.
+  // По-прежнему можно экспортировать свойства события.
   this.setState({eventType: event.type});
 }
 ```
@@ -89,7 +89,7 @@ React нормализует события так, чтобы они содер
 
 * * *
 
-## Reference {#reference}
+## Справочник {#reference}
 
 ### События буфера обмена {#clipboard-events}
 
@@ -149,7 +149,7 @@ boolean shiftKey
 number which
 ```
 
-Свойство `key` может содержать любое из документированных в [DOM Level 3 Events spec](https://www.w3.org/TR/uievents-key/#named-key-attribute-values) значений.
+Свойство `key` может содержать любое из документированных значений в [спефицикации событий DOM третьего уровня](https://www.w3.org/TR/uievents-key/#named-key-attribute-values).
 
 * * *
 
@@ -179,7 +179,7 @@ DOMEventTarget relatedTarget
 onChange onInput onInvalid onSubmit
 ```
 
-Больше информации о событии onChange тут — [Forms](/docs/forms.html).
+Больше информации о событии onChange тут — [Формы](/docs/forms.html).
 
 * * *
 
@@ -229,7 +229,7 @@ onLostPointerCapture onPointerEnter onPointerLeave onPointerOver onPointerOut
 
 Свойства:
 
-По определению из [W3 spec](https://www.w3.org/TR/pointerevents/), события курсора наследуют [События мыши](#mouse-events) со следующими свойствами:
+По определению из [спефицикации W3](https://www.w3.org/TR/pointerevents/), события курсора наследуют [события мыши](#mouse-events) со следующими свойствами:
 
 ```javascript
 number pointerId
@@ -246,7 +246,7 @@ boolean isPrimary
 
 На заметку по поводу кроссбраузерности:
 
-События указателя ещё не поддерживаются во всех браузерах (на момент написания этой статьи поддерживают браузеры: Chrome, Firefox, Edge и Internet Explorer). React сознательно не полифилит поддержку в других браузерах потому что это значительно бы увеличило размер `react-dom`.
+События указателя ещё не поддерживаются во всех браузерах (на момент написания этой страницы есть поддержка в Chrome, Firefox, Edge и Internet Explorer). React сознательно не добавляет полифил для поддержки в других браузерах, потому что это значительно бы увеличило размер пакета `react-dom`.
 
 Если вашему приложению нужны события указателя, мы рекомендуем использовать сторонний полифил.
 
@@ -302,7 +302,7 @@ DOMAbstractView view
 
 * * *
 
-### События колеса мыши {#wheel-events}
+### События колёсика мыши {#wheel-events}
 
 Названия событий:
 
@@ -321,7 +321,7 @@ number deltaZ
 
 * * *
 
-### События в медиа объектах {#media-events}
+### События медиа-элементов {#media-events}
 
 Названия событий:
 
