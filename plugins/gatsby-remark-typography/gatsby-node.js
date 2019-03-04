@@ -9,6 +9,6 @@ exports.onPreExtractQueries = async ({store, getNodes}) => {
   });
 
   markdownNodes.forEach(node => {
-    node.frontmatter.title = tp.execute(node.frontmatter.title)
+    node.frontmatter.title = tp.execute(node.frontmatter.title);
   });
 };
