@@ -23,8 +23,8 @@ category: FAQ
 ```
 {
   "items": [
-    { "id": 1, "name": "Apples",  "price": "$2" },
-    { "id": 2, "name": "Peaches", "price": "$5" }
+    { "id": 1, "name": "Яблоки",  "price": "$2" },
+    { "id": 2, "name": "Персики", "price": "$5" }
   ] 
 }
 ```

@@ -33,7 +33,7 @@ redirect_from:
 
 ```html
 <a href="#" onclick="console.log('По ссылке кликнули.'); return false">
-  Кликни меня
+  Нажми на меня
 </a>
 ```
 
@@ -48,7 +48,7 @@ function ActionLink() {
 
   return (
     <a href="#" onClick={handleClick}>
-      Кликни меня
+      Нажми на меня
     </a>
   );
 }
@@ -110,7 +110,7 @@ class LoggingButton extends React.Component {
   render() {
     return (
       <button onClick={this.handleClick}>
-        Кликни по мне
+        Нажми на меня
       </button>
     );
   }
@@ -131,7 +131,7 @@ class LoggingButton extends React.Component {
     // Такой синтаксис гарантирует, что `this` привязан к handleClick.
     return (
       <button onClick={(e) => this.handleClick(e)}>
-        Кликни по мне
+        Нажми на меня
       </button>
     );
   }

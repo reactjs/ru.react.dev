@@ -45,22 +45,22 @@ class Columns extends React.Component {
   render() {
     return (
       <div>
-        <td>Hello</td>
-        <td>World</td>
+        <td>Привет</td>
+        <td>Мир</td>
       </div>
     );
   }
 }
 ```
 
-результатом вывода `<Table />` будет:
+Результатом вывода `<Table />` будет:
 
 ```jsx
 <table>
   <tr>
     <div>
-      <td>Hello</td>
-      <td>World</td>
+      <td>Привет</td>
+      <td>Мир</td>
     </div>
   </tr>
 </table>
@@ -75,21 +75,21 @@ class Columns extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <td>Hello</td>
-        <td>World</td>
+        <td>Привет</td>
+        <td>Мир</td>
       </React.Fragment>
     );
   }
 }
 ```
 
-результатом будет правильный вывод `<Table />`:
+Результатом будет правильный вывод `<Table />`:
 
 ```jsx
 <table>
   <tr>
-    <td>Hello</td>
-    <td>World</td>
+    <td>Привет</td>
+    <td>Мир</td>
   </tr>
 </table>
 ```
@@ -103,8 +103,8 @@ class Columns extends React.Component {
   render() {
     return (
       <>
-        <td>Hello</td>
-        <td>World</td>
+        <td>Привет</td>
+        <td>Мир</td>
       </>
     );
   }

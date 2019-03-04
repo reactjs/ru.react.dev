@@ -21,7 +21,7 @@ function Example() {
     <div>
       <p>Вы кликнули {count} раз(а)</p>
       <button onClick={() => setCount(count + 1)}>
-        Кликни по мне
+        Нажми на меня
       </button>
     </div>
   );
@@ -48,7 +48,7 @@ class Example extends React.Component {
       <div>
         <p>Вы кликнули {this.state.count} раз(а)</p>
         <button onClick={() => this.setState({ count: this.state.count + 1 })}>
-          Кликни по мне
+          Нажми на меня
         </button>
       </div>
     );
@@ -175,7 +175,7 @@ function Example() {
 
 ```js{1}
   <button onClick={() => this.setState({ count: this.state.count + 1 })}>
-    Кликни по мне
+    Нажми на меня
   </button>
 ```
 
@@ -183,7 +183,7 @@ function Example() {
 
 ```js{1}
   <button onClick={() => setCount(count + 1)}>
-    Кликни по мне
+    Нажми на меня
   </button>
 ```
 
@@ -205,7 +205,7 @@ function Example() {
  7:      <div>
  8:        <p>Вы кликнули {count} раз(а)</p>
  9:        <button onClick={() => setCount(count + 1)}>
-10:         Кликни по мне
+10:         Нажми на меня
 11:        </button>
 12:      </div>
 13:    );

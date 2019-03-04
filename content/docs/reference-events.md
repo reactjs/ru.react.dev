@@ -149,7 +149,7 @@ boolean shiftKey
 number which
 ```
 
-Свойство `key` может содержать любое из документированных значений в [спефицикации событий DOM третьего уровня](https://www.w3.org/TR/uievents-key/#named-key-attribute-values).
+Свойство `key` может содержать любое из документированных значений в [спецификации событий DOM третьего уровня](https://www.w3.org/TR/uievents-key/#named-key-attribute-values).
 
 * * *
 
@@ -229,7 +229,7 @@ onLostPointerCapture onPointerEnter onPointerLeave onPointerOver onPointerOut
 
 Свойства:
 
-По определению из [спефицикации W3](https://www.w3.org/TR/pointerevents/), события курсора наследуют [события мыши](#mouse-events) со следующими свойствами:
+По определению из [спецификации W3](https://www.w3.org/TR/pointerevents/), события курсора наследуют [события мыши](#mouse-events) со следующими свойствами:
 
 ```javascript
 number pointerId
