@@ -148,6 +148,6 @@
     - id: faq-structure
       title: Структура файлов
     - id: faq-versioning
-      title: Versioning Policy
+      title: Политика версионирования
     - id: faq-internals
       title: Виртуальный DOM и детали его реализации в React
