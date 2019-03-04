@@ -163,7 +163,7 @@ class SignUpDialog extends React.Component {
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/gwZbYa?editors=0010)
 
-## Так что насчет наследования? {#so-what-about-inheritance}
+## Так что насчёт наследования? {#so-what-about-inheritance}
 
 В Facebook мы используем React в тысячах компонентов, и мы не находили случаев, когда мы бы рекомендовали создавать иерархии наследования компонентов.
 
