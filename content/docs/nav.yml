@@ -120,7 +120,7 @@
       - id: hooks-custom
         title: Building Your Own Hooks
       - id: hooks-reference
-        title: Hooks API Reference
+        title: Справочник API Хуков
       - id: hooks-faq
         title: Hooks FAQ
 - title: Участие в проекте
