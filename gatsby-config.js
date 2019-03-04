@@ -8,10 +8,12 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'React: JavaScript-библиотека для создания пользовательских интерфейсов',
-    siteUrl: 'https://reactjs.org',
+    title:
+      'React: JavaScript-библиотека для создания пользовательских интерфейсов',
+    siteUrl: 'https://ru.reactjs.org',
     rssFeedTitle: 'React',
-    rssFeedDescription: 'JavaScript-библиотека для создания пользовательских интерфейсов',
+    rssFeedDescription:
+      'JavaScript-библиотека для создания пользовательских интерфейсов',
   },
   mapping: {
     'MarkdownRemark.frontmatter.author': 'AuthorYaml',
@@ -59,7 +61,7 @@ module.exports = {
           {
             resolve: 'gatsby-remark-code-repls',
             options: {
-              defaultText: '<b>Try it on CodePen</b>',
+              defaultText: '<b>Посмотреть на CodePen</b>',
               directory: `${__dirname}/examples/`,
               externals: [
                 `//unpkg.com/react/umd/react.development.js`,
@@ -94,7 +96,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: 'UA-41298772-1',
+        trackingId: 'UA-130682870-2',
       },
     },
     {
@@ -158,5 +160,6 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
+    'gatsby-remark-typography', // only for Russian translation
   ],
 };

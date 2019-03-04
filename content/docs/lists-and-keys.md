@@ -33,7 +33,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-Теперь мы включим массив `listItems` внутрь элемента `<ul>` и [отрендерить его в DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+Теперь мы включим массив `listItems` внутрь элемента `<ul>` и [отрендерим его в DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
 
 ```javascript{2}
 ReactDOM.render(
@@ -298,4 +298,4 @@ function NumberList(props) {
 
 [**Try it on CodePen**](https://codepen.io/gaearon/pen/BLvYrB?editors=0010)
 
-Иногда это приводит к более чистому коду, но бывает и наоборот. Как и в любом JavaScript-коде, вам придется самостоятельно решать, стоит ли извлекать код в переменную ради читабельности. Не забывайте, что если код внутри `map()` слишком громоздкий, имеет смысл [извлечь его в отдельный компонент](/docs/components-and-props.html#extracting-components).
+Иногда это приводит к более чистому коду, но бывает и наоборот. Как и в любом JavaScript-коде, вам придётся самостоятельно решать, стоит ли извлекать код в переменную ради читабельности. Не забывайте, что если код внутри `map()` слишком громоздкий, имеет смысл [извлечь его в отдельный компонент](/docs/components-and-props.html#extracting-components).

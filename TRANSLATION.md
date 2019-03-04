@@ -135,8 +135,8 @@ ReactDOM.render(element, document.getElementById('корень'));
 
 ```js
 // Пример
-const elemento = <h1>Здравствуй, мир!</h1>;
-ReactDOM.отрендери(elemento, documento.obtenerElementoPorId('корень'));
+пост элемент = <з1>Здравствуй, мир!</з1>;
+РеактДОМ.отрендери(элемент, документ.получиЭлементПоАйди('корень'));
 ```
 
 ### Внешние ссылки
@@ -193,13 +193,14 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | development | разработка |
 | development mode | режим разработки |
 | developer tools | инструменты разработки |
+| display name | отображаемое имя |
 | DOM container | DOM-контейнер |
 | effect | эффект |
 | error | ошибка |
 | error boundary | предохранитель |
 | escape hatch | лазейка (*напр., императивные лазейки*) |
 | fallback | запасной |
-| feature | возможность |
+| feature | возможность (*менее предпочтительный синоним: функциональность*) |
 | folder | папка |
 | framework | фреймворк |
 | function component | функциональный компонент |
