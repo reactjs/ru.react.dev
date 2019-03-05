@@ -15,7 +15,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 
 ## Обзор {#overview}
 
-`ReactTestUtils` позволяет легко тестировать React-компоненты в любом тестовом фреймворке на ваш выбор. В Facebook мы используем [Jest](https://facebook.github.io/jest/) для гладкого тестирования JavaScript-кода. Если хотите обучится Jest, ознакомьтесь с [руководством по React](https://jestjs.io/docs/en/tutorial-react).
+`ReactTestUtils` позволяет легко тестировать React-компоненты в любом тестовом фреймворке на ваш выбор. В Facebook мы используем [Jest](https://facebook.github.io/jest/) для гладкого тестирования JavaScript-кода. Если хотите обучиться Jest, ознакомьтесь с [руководством по React](https://jestjs.io/docs/en/tutorial-react).
 
 > Примечание:
 >
@@ -139,7 +139,7 @@ mockComponent(
 
 > Примечание:
 >
-> API-метод `mockComponent()` объявлен устаревшим. Поэтому вместо него рекомендуется использоваться [поверхностный рендеринг](/docs/shallow-renderer.html) или [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock).
+> API-метод `mockComponent()` объявлен устаревшим. Поэтому вместо него рекомендуется использовать [поверхностный рендеринг](/docs/shallow-renderer.html) или [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock).
 
 * * *
 
