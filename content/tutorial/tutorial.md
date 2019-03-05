@@ -119,7 +119,7 @@ import './index.css';
 
 ### Помогите, я застрял! {#help-im-stuck}
 
-Если вы застряли - обратитесь к [поддержке сообщества](/community/support.html). В частности [Чат Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n) - это прекрасное место, где вам помогут. Если вы не дождались ответа или все ещё не решили вопрос, пожалуйста, [задайте вопрос](https://github.com/reactjs/ru.reactjs.org/issues/new) и мы вам поможем.
+Если вы застряли – обратитесь к [поддержке сообщества](/community/support.html). В частности [Чат Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n) – это прекрасное место, где вам помогут. Если вы не дождались ответа или всё ещё не решили вопрос, пожалуйста, [задайте вопрос](https://github.com/reactjs/ru.reactjs.org/issues/new) и мы вам поможем.
 
 ## Обзор {#overview}
 
