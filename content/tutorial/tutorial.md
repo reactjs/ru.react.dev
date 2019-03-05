@@ -250,7 +250,7 @@ class Square extends React.Component {
 
 >Примечание
 >
->Чтобы меньше печатать и избегать [странного поведения `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), мы будем использовать [синтаксис стрелочных фукнций](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions) для обработчиков событий (здесь и ниже):
+>Чтобы меньше печатать и избегать [странного поведения `this`](https://yehudakatz.com/2011/08/11/understanding-javascript-function-invocation-and-this/), мы будем использовать [синтаксис стрелочных функций](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions) для обработчиков событий (здесь и ниже):
 >
 >```javascript{4}
 >class Square extends React.Component {
