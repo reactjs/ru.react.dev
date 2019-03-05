@@ -20,4 +20,4 @@ category: FAQ
 
 ### Что такое «React Fiber»? {#what-is-react-fiber}
 
-Fiber – новый механизм согласования в React 16, основная цель которого сделать рендеринг виртуального DOM постепенным. [Узнать больше](https://github.com/acdlite/react-fiber-architecture).
+Fiber – новый механизм согласования в React 16, основная цель которого сделать рендеринг виртуального DOM инкрементным. [Узнать больше об этом](https://github.com/acdlite/react-fiber-architecture).

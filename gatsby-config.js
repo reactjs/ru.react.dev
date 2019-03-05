@@ -88,6 +88,7 @@ module.exports = {
           },
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
+          'gatsby-remark-typography', // only for Russian translation
         ],
       },
     },
