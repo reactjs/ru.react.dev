@@ -296,7 +296,7 @@ class Square extends React.Component {
 >
 >В [JavaScript классах](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes), вы всегда должны вызывать `super`, при объявлении конструктора в классе-наследнике. Все классовые React-компоненты у которых есть `constructor` должны начинаться с вызова `super(props)`.
 
-Теперь изменим метод `render` Square-компонента, для отображения текущего значения из стостояния при клике:
+Теперь изменим метод `render` Square-компонента для отображения текущего значения из состояния при клике:
 
 * Заменим `this.props.value` на `this.state.value` внутри тега `<button>`.
 * Заменим обработчик `onClick={...}` на `onClick={() => this.setState({value: 'X'})}`.
