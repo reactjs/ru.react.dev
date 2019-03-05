@@ -330,7 +330,7 @@ class Square extends React.Component {
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/VbbVLg?editors=0010)**
 
-### Инструменты разработчика {#developer-tools}
+### Инструменты разработки {#developer-tools}
 
 Расширения React Devtools для браузеров [Chrome](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en) и [Firefox](https://addons.mozilla.org/en-US/firefox/addon/react-devtools/) позволяют вам изучать дерево React-компонентов внутри панели инструментов разработчика вашего браузера.
 
