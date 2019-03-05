@@ -778,7 +778,7 @@ function calculateWinner(squares) {
 
 ```javascript
 history = [
-  // Перед перым ходом
+  // Перед первым ходом
   {
     squares: [
       null, null, null,
