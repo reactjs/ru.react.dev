@@ -15,7 +15,7 @@ React и [веб-компоненты](https://developer.mozilla.org/ru/docs/Web
 ```javascript
 class HelloMessage extends React.Component {
   render() {
-    return <div>Привет <x-search>{this.props.name}</x-search>!</div>;
+    return <div>Привет, <x-search>{this.props.name}</x-search>!</div>;
   }
 }
 ```
