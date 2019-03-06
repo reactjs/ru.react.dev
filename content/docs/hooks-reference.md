@@ -267,7 +267,7 @@ function Counter({initialCount}) {
 
 #### Выход из отправки {#bailing-out-of-a-dispatch}
 
-Если вы вернете то же значение из редьюсера хука, что и текущее состояние, React выйдет без перерисовки дочерних элементов или запуска эффектов. (React использует [алгоритм сравнения Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
+Если вы вернёте то же значение из редьюсера хука, что и текущее состояние, React выйдет без перерисовки дочерних элементов или запуска эффектов. (React использует [алгоритм сравнения Object.is](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
 
 ### `useCallback` {#usecallback}
 
