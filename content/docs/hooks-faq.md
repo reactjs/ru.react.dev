@@ -45,12 +45,12 @@ prev: hooks-reference.html
   * [Как я могу реализовать shouldComponentUpdate?](#how-do-i-implement-shouldcomponentupdate)
   * [Как закешировать вычисления?](#how-to-memoize-calculations)
   * [Как лениво создавать ресурсозатратные объекты?](#how-to-create-expensive-objects-lazily)
-  * [Are Hooks slow because of creating functions in render?](#are-hooks-slow-because-of-creating-functions-in-render)
-  * [How to avoid passing callbacks down?](#how-to-avoid-passing-callbacks-down)
-  * [How to read an often-changing value from useCallback?](#how-to-read-an-often-changing-value-from-usecallback)
-* **[Under the Hood](#under-the-hood)**
-  * [How does React associate Hook calls with components?](#how-does-react-associate-hook-calls-with-components)
-  * [What is the prior art for Hooks?](#what-is-the-prior-art-for-hooks)
+  * [Являются ли хуки медленными из-за создания функций на каждом рендере?](#are-hooks-slow-because-of-creating-functions-in-render)
+  * [Как избежать передачи колбэков вниз?](#how-to-avoid-passing-callbacks-down)
+  * [Как получить часто изменяемое значение из хука `useCallback`?](#how-to-read-an-often-changing-value-from-usecallback)
+* **[Под капотом](#under-the-hood)**
+  * [Как React связывает вызовы хуков с компонентом?](#how-does-react-associate-hook-calls-with-components)
+  * [Что послужило прообразом Хуков?](#what-is-the-prior-art-for-hooks)
 
 ## Внедрение хуков {#adoption-strategy}
 
@@ -535,19 +535,21 @@ function Image(props) {
 
 Этот подход позволяет избежать создания ресурсозатратных объектов во всех случаях, кроме первого, кода это действительно необходимо. Если вы используете Flow или TypeScript, вы можете также установить для `getObserver()` непустой тип для уверенности.
 
-### Are Hooks slow because of creating functions in render? {#are-hooks-slow-because-of-creating-functions-in-render}
+### Являются ли хуки медленными из-за создания функций на каждом рендере? {#are-hooks-slow-because-of-creating-functions-in-render}
 
-No. In modern browsers, the raw performance of closures compared to classes doesn't differ significantly except in extreme scenarios.
+Нет. В современных браузерах чистая производительность замыканий не сильно отличается от классов, кроме особых случаев.
 
-In addition, consider that the design of Hooks is more efficient in a couple ways:
+Также учитывайте, что реализация хуков более эффективная по нескольким причинам:
 
-* Hooks avoid a lot of the overhead that classes require, like the cost of creating class instances and binding event handlers in the constructor.
+* Хуки не требуют больших затрат, которые неизбежны в классах. Например,  создание экземпляра класса и связывание обработчиков событий в конструкторе.
 
 * **Idiomatic code using Hooks doesn't need the deep component tree nesting** that is prevalent in codebases that use higher-order components, render props, and context. With smaller component trees, React has less work to do.
 
-Traditionally, performance concerns around inline functions in React have been related to how passing new callbacks on each render breaks `shouldComponentUpdate` optimizations in child components. Hooks approach this problem from three sides.
+TODO
 
-* The [`useCallback`](/docs/hooks-reference.html#usecallback) Hook lets you keep the same callback reference between re-renders so that `shouldComponentUpdate` continues to work:
+Традиционно, проблемы с оптимизацией строчных функций в React связаны с тем, как передача новых колбэков на каждом рендере ломает `shouldComponentUpdate` оптимизации в дочерних компонентах. Подход с хуками может решить эту проблему тремя способами.
+
+* Хук [`useCallback`](/docs/hooks-reference.html#usecallback) позволяет сохранять ту же самую ссылку на колбэк между повторными рендерами, поэтому `shouldComponentUpdate` продолжит корректную работу:
 
     ```js{2}
     // Will not change unless `a` or `b` changes
@@ -556,21 +558,22 @@ Traditionally, performance concerns around inline functions in React have been r
     }, [a, b]);
     ```
 
-* The [`useMemo` Hook](/docs/hooks-faq.html#how-to-memoize-calculations) makes it easier to control when individual children update, reducing the need for pure components.
+* Хук [`useMemo` Hook](/docs/hooks-faq.html#how-to-memoize-calculations) облегчает контроль, когда конкретный дочерний компонент должен обновляться, уменьшая нужду в использовании чистых компонентов.
 
-* Finally, the `useReducer` Hook reduces the need to pass callbacks deeply, as explained below.
+* В конец концов, хук `useReducer` уменьшает нужду в передачи колбэков глубоко вниз по дереву, как описано ниже.
 
-### How to avoid passing callbacks down? {#how-to-avoid-passing-callbacks-down}
+### Как избежать передачи колбэков вниз? {#how-to-avoid-passing-callbacks-down}
 
-We've found that most people don't enjoy manually passing callbacks through every level of a component tree. Even though it is more explicit, it can feel like a lot of "plumbing".
+Мы поняли, что большинству разработчиков не нравится вручную передавать колбэки вниз на каждом уровне дерева компонентов. Даже учитывая, что этот подход более явный, это может показаться чересчур громоздким.
 
-In large component trees, an alternative we recommend is to pass down a `dispatch` function from [`useReducer`](/docs/hooks-reference.html#usereducer) via context:
+В качестве альтернативы для больших деревьев компонентов, мы рекомендуем передавать вниз функцию `dispatch` из хука [`useReducer`](/docs/hooks-reference.html#usereducer) через контекст:
+
 
 ```js{4,5}
 const TodosDispatch = React.createContext(null);
 
 function TodosApp() {
-  // Note: `dispatch` won't change between re-renders
+  // Примечание: `dispatch` не изменится во время повторных рендеров
   const [todos, dispatch] = useReducer(todosReducer);
 
   return (
@@ -581,11 +584,11 @@ function TodosApp() {
 }
 ```
 
-Any child in the tree inside `TodosApp` can use the `dispatch` function to pass actions up to `TodosApp`:
+Любой дочерний компонент в дереве внутри `TodosApp` может использовать функцию `dispatch`, чтобы вызвать действия из `TodosApp`:
 
 ```js{2,3}
 function DeepChild(props) {
-  // If we want to perform an action, we can get dispatch from context.
+  // Если мы хотим выполнить действие, мы можем получить dispatch из контекста.
   const dispatch = useContext(TodosDispatch);
 
   function handleClick() {
@@ -598,19 +601,21 @@ function DeepChild(props) {
 }
 ```
 
-This is both more convenient from the maintenance perspective (no need to keep forwarding callbacks), and avoids the callback problem altogether. Passing `dispatch` down like this is the recommended pattern for deep updates.
+Этот вариант более удобный, как с точки зрения поддержки кода (не нужно добавлять пропсы для новых колбэков), так и в разрезе избежания общих проблем с колбэками. Передача функции `dispatch` по такому принципу - это рекомендуемый подход для обновлений в глубине дерева компонентов.
 
-Note that you can still choose whether to pass the application *state* down as props (more explicit) or as context (more convenient for very deep updates). If you use context to pass down the state too, use two different context types -- the `dispatch` context never changes, so components that read it don't need to rerender unless they also need the application state.
+Обратите внимание, что вы также можете передавать *состояние* приложения вниз через пропсы (более явно) или через контекст (более удобно для глубокого дерева). Если вы используете контекст также для передачи состояния, используете два разных контекста, так как функция `dispatch` никогда не изменяется. Поэтому компоненты, использующие только эту функцию, не будут нуждаться в повторном рендере, пока они не начнут использовать второй контекст с состоянием.
 
-### How to read an often-changing value from `useCallback`? {#how-to-read-an-often-changing-value-from-usecallback}
+### Как получить часто изменяемое значение из хука `useCallback`? {#how-to-read-an-often-changing-value-from-usecallback}
 
->Note
+> Примечание
 >
->We recommend to [pass `dispatch` down in context](#how-to-avoid-passing-callbacks-down) rather than individual callbacks in props. The approach below is only mentioned here for completeness and as an escape hatch.
+> Мы рекомендуем [передавать `dispatch` вниз через контекст](#how-to-avoid-passing-callbacks-down) вместо передачи отдельных колбэков через пропсы. Следующий подход приведён тут только для полноты картины в качестве трюка.
 >
->Also note that this pattern might cause problems in the [concurrent mode](/blog/2018/03/27/update-on-async-rendering.html). We plan to provide more ergonomic alternatives in the future, but the safest solution right now is to always invalidate the callback if some value it depends on changes.
+> Также обратите внимание, что этот подход может вызвать проблемы в [параллельном режиме](/blog/2018/03/27/update-on-async-rendering.html). Мы планируем предоставить более удобные альтернативы в будущем, но самый безопасный вариант сейчас -- всегда инвалидировать колбэк, если значение, на которое он опирается, поменялось.
 
 In some rare cases you might need to memoize a callback with [`useCallback`](/docs/hooks-reference.html#usecallback) but the memoization doesn't work very well because the inner function has to be re-created too often. If the function you're memoizing is an event handler and isn't used during rendering, you can use [ref as an instance variable](#is-there-something-like-instance-variables), and save the last committed value into it manually:
+
+В некоторых редких случаях, вам может понадобится закешировать колбэк с помощью хука [`useCallback`](/docs/hooks-reference.html#usecallback), но кэширование не будет работать хорошо, потому что внутренняя функция будет пересоздоваться слишком часто. Если функция, которую вы кэшируете, являтеся обработчиком событий и не используется во время рендера, вы можете использовать [реф в качестве поля экземпляра](#is-there-something-like-instance-variables), и вручную сохранить туда последнее значение.
 
 ```js{6,10}
 function Form() {
@@ -618,13 +623,13 @@ function Form() {
   const textRef = useRef();
 
   useLayoutEffect(() => {
-    textRef.current = text; // Write it to the ref
+    textRef.current = text; // Записать в реф
   });
 
   const handleSubmit = useCallback(() => {
-    const currentText = textRef.current; // Read it from the ref
+    const currentText = textRef.current; // Прочитать из рефа
     alert(currentText);
-  }, [textRef]); // Don't recreate handleSubmit like [text] would do
+  }, [textRef]); // Избегаем повторных созданий handleSubmit
 
   return (
     <>
@@ -635,12 +640,12 @@ function Form() {
 }
 ```
 
-This is a rather convoluted pattern but it shows that you can do this escape hatch optimization if you need it. It's more bearable if you extract it to a custom Hook:
+Это крайне тяжелый подход, но он показывает, что вы можете сделать эту хитрую оптимизацию, если это действительно вам необходимо. В любом случае, советуем вынести эту логику в отдельный хук:
 
 ```js{4,16}
 function Form() {
   const [text, updateText] = useState('');
-  // Will be memoized even if `text` changes:
+  // Будет закешировано, даже если значение `text` измениться:
   const handleSubmit = useEventCallback(() => {
     alert(text);
   }, [text]);
@@ -655,7 +660,7 @@ function Form() {
 
 function useEventCallback(fn, dependencies) {
   const ref = useRef(() => {
-    throw new Error('Cannot call an event handler while rendering.');
+    throw new Error('Невозможно вызвать обработчик события во время рендера.');
   });
 
   useLayoutEffect(() => {
@@ -669,27 +674,27 @@ function useEventCallback(fn, dependencies) {
 }
 ```
 
-In either case, we **don't recommend this pattern** and only show it here for completeness. Instead, it is preferable to [avoid passing callbacks deep down](#how-to-avoid-passing-callbacks-down).
+В любом случае мы **не советуем использовать этот подход** и показываем его тут только для полноты картины. Вместо этого, старайтесь [избегать передачи колбэков вниз глубоко в дерево](#how-to-avoid-passing-callbacks-down).
 
 
-## Under the Hood {#under-the-hood}
+## Под капотом {#under-the-hood}
 
-### How does React associate Hook calls with components? {#how-does-react-associate-hook-calls-with-components}
+### Как React связывает вызовы хуков с компонентом? {#how-does-react-associate-hook-calls-with-components}
 
-React keeps track of the currently rendering component. Thanks to the [Rules of Hooks](/docs/hooks-rules.html), we know that Hooks are only called from React components (or custom Hooks -- which are also only called from React components).
+React следит за тем, какой компонент рендерится в данный момент. Благодоря [правилам хуков](/docs/hooks-rules.html), мы знаем, что хуки вызываются только из React-компонентов (отдельные хуки, написанные вами, также вызываются только из React-компонентов).
 
-There is an internal list of "memory cells" associated with each component. They're just JavaScript objects where we can put some data. When you call a Hook like `useState()`, it reads the current cell (or initializes it during the first render), and then moves the pointer to the next one. This is how multiple `useState()` calls each get independent local state.
+Существует внутренний список `ячеек памяти`, связанных с каждым компонентом. Они являются JavaScript-объектами, в которых мы можем хранить некоторые данные. Когда вы вызывается некий хук, например `useState()`, он читает значение текущей ячейки (или инициализирует её во время первого рендера) и двигает указатель на следующую. Таким способом каждый вызов `useState()` получит своё независимое состояние.
 
-### What is the prior art for Hooks? {#what-is-the-prior-art-for-hooks}
+### Что послужило прообразом Хуков? {#what-is-the-prior-art-for-hooks}
 
-Hooks synthesize ideas from several different sources:
+Хуки были основаны на следующих идеях и эксперементах:
 
-* Our old experiments with functional APIs in the [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) repository.
-* React community's experiments with render prop APIs, including [Ryan Florence](https://github.com/ryanflorence)'s [Reactions Component](https://github.com/reactions/component).
-* [Dominic Gannaway](https://github.com/trueadm)'s [`adopt` keyword](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067) proposal as a sugar syntax for render props.
-* State variables and state cells in [DisplayScript](http://displayscript.org/introduction.html).
-* [Reducer components](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html) in ReasonReact.
-* [Subscriptions](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html) in Rx.
-* [Algebraic effects](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting) in Multicore OCaml.
+* Наши старые эксперементы с функциональным API в репозитории [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State).
+* Эксперементы с рендер-пропс API от React-сообщества, включая [Reactions-компонент](https://github.com/reactions/component) от [Ryan Florence](https://github.com/ryanflorence).
+* [Dominic Gannaway](https://github.com/trueadm) и его предложение [ключевого слова `adopt`](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067), в качестве синтаксического сахара для паттерна рендер-пропс.
+* Переменные и ячейки состояния в [DisplayScript](http://displayscript.org/introduction.html).
+* [Компоненты-редукторы](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html) в ReasonReact.
+* [Подписки](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html) в Rx.
+* [Алгебраические эффекты](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting) в Multicore OCaml.
 
-[Sebastian Markbåge](https://github.com/sebmarkbage) came up with the original design for Hooks, later refined by [Andrew Clark](https://github.com/acdlite), [Sophie Alpert](https://github.com/sophiebits), [Dominic Gannaway](https://github.com/trueadm), and other members of the React team.
+[Sebastian Markbåge](https://github.com/sebmarkbage) предложил изначальный дизайн хуков, который позднее улучшили [Andrew Clark](https://github.com/acdlite), [Sophie Alpert](https://github.com/sophiebits), [Dominic Gannaway](https://github.com/trueadm) и другие участники команды React.
