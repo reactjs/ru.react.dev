@@ -379,7 +379,7 @@ useDebugValue(value)
 
 `useDebugValue` может использоваться для отображения метки для пользовательских хуков в React DevTools.
 
-Например, рассмотрим пользовательский хук `useFriendStatus`, описанный в разделе ["Создание собственных хуков"](/docs/hooks-custom.html):
+Например, рассмотрим пользовательский хук `useFriendStatus`, описанный в разделе [«Создание собственных хуков»](/docs/hooks-custom.html):
 
 ```js{6-8}
 function useFriendStatus(friendID) {
