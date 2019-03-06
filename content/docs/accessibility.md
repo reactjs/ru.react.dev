@@ -377,42 +377,42 @@ class BlurExample extends React.Component {
 - [примеры из блога Хейдона Пикеринга (Heydon Pickering)](https://heydonworks.com/practical_aria_examples/)
 - [инклюзивные компоненты](https://inclusive-components.design/)
 
-## Other Points for Consideration {#other-points-for-consideration}
+## На что ещё нужно обратить внимание {#other-points-for-consideration}
 
-### Setting the language {#setting-the-language}
+### Определение языка {#setting-the-language}
 
-Indicate the human language of page texts as screen reader software uses this to select the correct voice settings:
+Обязательно указывайте язык текста на странице. Это необходимо для корректной установки опций экранных считывающих устройств:
 
-- [WebAIM - Document Language](https://webaim.org/techniques/screenreader/#language)
+- [WebAIM - определение языка страниц](https://webaim.org/techniques/screenreader/#language)
 
-### Setting the document title {#setting-the-document-title}
+### Заголовок страницы {#setting-the-document-title}
 
-Set the document `<title>` to correctly describe the current page content as this ensures that the user remains aware of the current page context:
+Всегда устанавливайте заголовок `<title>` для правильного описания контента текущей страницы. Это позволит пользователю постоянно быть в курсе контекста страницы:
 
-- [WCAG - Understanding the Document Title Requirement](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html)
+- [разъяснение требований WCAG к заголовкам](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html)
 
-We can set this in React using the [React Document Title Component](https://github.com/gaearon/react-document-title).
+Реализовать эти требования в React можно с помощью [компонента `DocumentTitle`](https://github.com/gaearon/react-document-title).
 
-### Color contrast {#color-contrast}
+### Цветовая контрастность {#color-contrast}
 
-Ensure that all readable text on your website has sufficient color contrast to remain maximally readable by users with low vision:
+Убедитесь, что все тексты на вашем сайте имеют правильную цветовую контрастность, чтобы обеспечить максимальное удобство чтения для пользователей с плохим зрением:
 
-- [WCAG - Understanding the Color Contrast Requirement](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
-- [Everything About Color Contrast And Why You Should Rethink It](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
-- [A11yProject - What is Color Contrast](https://a11yproject.com/posts/what-is-color-contrast/)
+- [разъяснение требований WCAG к цветовой контрастности](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
+- [всё о цветовой контрастности и о том почему вы должны переосмыстить подход к ней](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
+- [статья о цветовой контрастности на сайте Проекта A11y](https://a11yproject.com/posts/what-is-color-contrast/)
 
-It can be tedious to manually calculate the proper color combinations for all cases in your website so instead, you can [calculate an entire accessible color palette with Colorable](https://jxnblk.com/colorable/).
+Ручной рассчёт правильных цветовых комбинаций для всех вариантов сайта может быть очень утомительным. Вместо этого вы можете рассчитать все необходимые палитры [с помощью Colorable](https://jxnblk.com/colorable/).
 
-Both the aXe and WAVE tools mentioned below also include color contrast tests and will report on contrast errors.
+Оба инструмента, aXe и WAVE, о которых будет рассказано ниже, включают тесты контрастности. Они помогут выявить ошибки в подборе цветов.
 
-If you want to extend your contrast testing abilities you can use these tools:
+Если вы хотите провести более полное тестирование контрастности, то можете воспользоваться этими программами:
 
 - [WebAIM - Color Contrast Checker](https://webaim.org/resources/contrastchecker/)
 - [The Paciello Group - Color Contrast Analyzer](https://www.paciellogroup.com/resources/contrastanalyser/)
 
 ## Инструменты для разработки и тестирования {#development-and-testing-tools}
 
-There are a number of tools we can use to assist in the creation of accessible web applications.
+Далее перечислены инструменты, которые могут быть полезны при разработке веб-приложений с доступным контентом.
 
 ### The keyboard {#the-keyboard}
 
