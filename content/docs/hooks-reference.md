@@ -90,7 +90,7 @@ const [state, setState] = useState(() => {
 
 #### Выход из состояния обновления {#bailing-out-of-a-state-update}
 
-Если вы обновите состояние хука до того же значения, что и текущее состояние, React выйдет без перерисовки дочерних элементов или запуска эффектов. (React использует [`Object.is` алгоритм сравнения](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
+Если вы обновите состояние хука до того же значения, что и текущее состояние, React выйдет без перерисовки дочерних элементов или запуска эффектов. (React использует [алгоритм сравнения `Object.is`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
 
 ### `useEffect` {#useeffect}
 
