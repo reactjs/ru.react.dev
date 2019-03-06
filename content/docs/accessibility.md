@@ -107,7 +107,7 @@ function ListItem({ item }) {
 
 ### Подписи {#labeling}
 
-Каждый элемент управления, например, `<input>` или `<textarea>`, должны иметь подпись, обеспечивающую доступность контента. Подписи нужно выполнять так, чтобы их могли использовать экранные считывающие устройства и другие технические средства реабилитации.
+Каждый элемент управления, например, `<input>` или `<textarea>`, должен иметь подпись, обеспечивающую доступность контента. Подписи нужно выполнять так, чтобы их могли использовать экранные считывающие устройства и другие технические средства реабилитации.
 
 Вот рекомендации о том, как это делать:
 
@@ -414,14 +414,14 @@ class BlurExample extends React.Component {
 
 Далее перечислены инструменты, которые могут быть полезны при разработке веб-приложений с доступным контентом.
 
-### The keyboard {#the-keyboard}
+### Тестирование клавиатуры {#the-keyboard}
 
-By far the easiest and also one of the most important checks is to test if your entire website can be reached and used with the keyboard alone. Do this by:
+Самый простой и одновременно наиболее важный вид проверки -- это тестирование клавиатуры. Она позволяет определить доступность контента на вашем сайте при работе только с клавиатурой. Чтобы протестировать клавиатуру, выполните следующие действия:
 
-1. Plugging out your mouse.
-1. Using `Tab` and `Shift+Tab` to browse.
-1. Using `Enter` to activate elements.
-1. Where required, using your keyboard arrow keys to interact with some elements, such as menus and dropdowns.
+1. Отсоедините мышь.
+1. Используйте `Tab` и `Shift+Tab` для перемещения по странице.
+1. Используйте `Enter` для активации элементов.
+1. Там, где необходимо, используйте стрелки, для работы с меню или выпадающими списками.
 
 ### Development assistance {#development-assistance}
 
