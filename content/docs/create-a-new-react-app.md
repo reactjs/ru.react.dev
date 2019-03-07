@@ -1,4 +1,4 @@
-﻿---
+---
 id: create-a-new-react-app
 title: Create a New React App
 permalink: docs/create-a-new-react-app.html
@@ -36,11 +36,9 @@ next: cdn-links.html
 - Если вы создаете **статический контент-ориентированный сайт,** попробуйте [Gatsby](#gatsby).
 - Если вы создаете **библиотеку компонентов** или **интегрируетесь с  - существующей кодовой базой**, попробуйте [более гибкие наборы инструментов](#more-flexible-toolchains).
 
-###Create React App {#create-react-app}
+### Create React App {#create-react-app}
 
-[Create React App](https://github.com/facebookincubator/create-react-app)
- - удобная среда для **изучения React** и лучший способ начать создание **нового [одностраничного](/docs/glossary.html#single-page-application)
- приложения** в React.
+[Create React App](https://github.com/facebookincubator/create-react-app)- удобная среда для **изучения React** и лучший способ начать создание **нового [одностраничного](/docs/glossary.html#single-page-application) приложения** в React.
 
 Она настраивает вашу среду разработки таким образом, чтобы вы могли использовать новейшие функции JavaScript,  предоставляет приятные возможности  для разработчиков и оптимизирует  ваше приложение для работы. У вас должен быть установлен Node  версии не менее 6 и NPM  версии не менн 5.2. Для создания проекта введите:
 
@@ -59,7 +57,7 @@ Create React App не обрабатывает внутреннюю логику
 
 Когда вы будете готовы к развертыванию в рабочей среде, запуск `npm run build` создаст оптимизированную сборку вашего приложения в `build` папке. Вы можете узнать больше о Creat React App [из его README](https://github.com/facebookincubator/create-react-app#create-react-app-) и [пользовательского руководства](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
 
-###Next.js {#nextjs}
+### Next.js {#nextjs}
 
 
 [Next.js](https://nextjs.org/)  это популярная и простая  платформа для **статических и серверных приложений**, созданная с помощью React. Она включает в себя **готовые решения для стилизации и маршрутизации**  и предполагает, что вы используете [Node.js](https://nodejs.org/) в качестве серверной среды.
