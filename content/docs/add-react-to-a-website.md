@@ -110,11 +110,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 ### Совет: Минификация JavaScript для продакшена {#tip-minify-javascript-for-production}
 
-<<<<<<< HEAD
 Публикуя ваш сайт на продакшен, имейте в виду, что несжатый JavaScript значительно замедляет страницу для ваших пользователей.
-=======
-Before deploying your website to production, be mindful that unminified JavaScript can significantly slow down the page for your users.
->>>>>>> b50fe64c1e88489022eddf2cfff0995778827f84
 
 Если вы уже минифицируете свои скрипты, то не забудьте подготовить к продакшену сам React. Для этого поменяйте окончания ссылок на React на `production.min.js`:
 
