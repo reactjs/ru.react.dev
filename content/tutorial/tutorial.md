@@ -12,7 +12,7 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-Это введение не предполагает наличие знаний React.
+Вам не обязательно знать React, чтобы проходить это введение.
 
 ## Прежде чем начать {#before-we-start-the-tutorial}
 
