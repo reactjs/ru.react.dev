@@ -105,7 +105,7 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-React поместит DOM элемент в свойство `current` при монтировании компонента и вернет обратно значение `null` при размонтировании. Обновление свойства `ref` происходит перед вызовом методов `componentDidMount` или `componentDidUpdate`.
+React присвоит DOM-элемент свойству `current` при монтировании компонента и присвоит обратно значение `null` при размонтировании. Обновление свойства `ref` происходит перед вызовом методов `componentDidMount` и `componentDidUpdate`.
 
 #### Добавление рефа к классовому компоненту {#adding-a-ref-to-a-class-component}
 
