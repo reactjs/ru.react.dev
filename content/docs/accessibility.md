@@ -318,10 +318,9 @@ class BlurExample extends React.Component {
     }));
   }
 
-  // We close the popover on the next tick by using setTimeout.
-  // This is necessary because we need to first check if
-  // another child of the element has received focus as
-  // the blur event fires prior to the new focus event.
+  // Мы закрываем выпадающий список по таймеру setTimeout.
+  // Это нужно чтобы для дочерних элементов событие выделения
+  // происходило пере событием получения фокуса.
   onBlurHandler() {
     this.timeOutId = setTimeout(() => {
       this.setState({
@@ -448,68 +447,67 @@ class BlurExample extends React.Component {
 
 Компания Deque Systems предлагает модуль [aXe-core](https://github.com/dequelabs/axe-core) для автоматизированного и сквозного тестирования веб-приложений. Этот модуль имеет интеграцию с Selenium.
 
-На основе `aXe-core` разработан продукт компании Deque Systems под названием [The Accessibility Engine](https://www.deque.com/products/axe/) или aXe. Это расширения для браузеров, предназначенные для комплексного тестирования доступности контанта сайтов.
+На основе `aXe-core` разработан продукт компании Deque Systems под названием [The Accessibility Engine](https://www.deque.com/products/axe/) или aXe. Это дополнение для браузеров, предназначенное для комплексного тестирования доступности контанта сайтов.
 
 Также вы можете использовать модуль [react-axe](https://github.com/dylanb/react-axe) для вывода сообщений от aXe в консоль в процессе программирования или отладки.
 
 #### WebAIM WAVE {#webaim-wave}
 
-[Web Accessibility Evaluation Tool](https://wave.webaim.org/extension/) ещё одно расширение для браузера, которое используется для улучшения доступности контента веб-сайтов.
+[Web Accessibility Evaluation Tool](https://wave.webaim.org/extension/) ещё одно дополнение для браузера, которое используется для улучшения доступности контента веб-сайтов.
 
-#### Accessibility inspectors and the Accessibility Tree {#accessibility-inspectors-and-the-accessibility-tree}
+#### Инспекторы доступности контента и дерево доступности {#accessibility-inspectors-and-the-accessibility-tree}
 
-[The Accessibility Tree](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/) is a subset of the DOM tree that contains accessible objects for every DOM element that should be exposed
-to assistive technology, such as screen readers.
+[Дерево доступности](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/) -- это подмножество DOM-дерева. В нём содержатся объекты, которые нужны для работы технологий поддержки доступности контента, например, для экранных считывающих устройств.
 
-In some browsers we can easily view the accessibility information for each element in the accessibility tree:
+В некоторых браузерах можно легко получить информацию о всех элементах в дереве доступности:
 
-- [Using the Accessibility Inspector in Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
-- [Activate the Accessibility Inspector in Chrome](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
-- [Using the Accessibility Inspector in OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
+- [использование инспектора доступности в Firefox](https://developer.mozilla.org/ru/docs/Tools/Accessibility_inspector)
+- [активация инспектора доступности в Chrome](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
+- [использование инспектора доступности в OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
 
-### Screen readers {#screen-readers}
+### Экранные считывающие устройства {#screen-readers}
 
-Testing with a screen reader should form part of your accessibility tests.
+Проверка работы экранных считывающих устройств должна быть частью комплексного тестирования доступности контента.
 
-Please note that browser / screen reader combinations matter. It is recommended that you test your application in the browser best suited to your screen reader of choice.
+Учтите, что сочетание браузера и экранного считывающего устройства имеет большое значение. Рекомендуется протестировать ваше приложение в браузере, чтобы определить наиболее подходящий экранный считыватель.
 
-### Commonly Used Screen Readers {#commonly-used-screen-readers}
+### Общедоступные экранные считыватели {#commonly-used-screen-readers}
 
-#### NVDA in Firefox {#nvda-in-firefox}
+#### NVDA в Firefox {#nvda-in-firefox}
 
-[NonVisual Desktop Access](https://www.nvaccess.org/) or NVDA is an open source Windows screen reader that is widely used.
+[NonVisual Desktop Access](https://www.nvaccess.org/) или NVDA -- это широко распространённый экранный считыватель с открытым исходным кодом для Windows.
 
-Refer to the following guides on how to best use NVDA:
+Вот несколько руководств по работе с NVDA:
 
-- [WebAIM - Using NVDA to Evaluate Web Accessibility](https://webaim.org/articles/nvda/)
-- [Deque - NVDA Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
+- [WebAIM -- использование NVDA для улучшения доступности контента](https://webaim.org/articles/nvda/)
+- [Deque -- сочетания быстрых клавиш для NVDA](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
 
-#### VoiceOver in Safari {#voiceover-in-safari}
+#### VoiceOver в Safari {#voiceover-in-safari}
 
-VoiceOver is an integrated screen reader on Apple devices.
+VoiceOver -- это экранный считыватель, встроенный в продукты Apple.
 
-Refer to the following guides on how activate and use VoiceOver:
+Здесь приведены руководства по активации и использованию VoiceOver:
 
-- [WebAIM - Using VoiceOver to Evaluate Web Accessibility](https://webaim.org/articles/voiceover/)
-- [Deque - VoiceOver for OS X Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
-- [Deque - VoiceOver for iOS Shortcuts](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
+- [WebAIM -- использование VoiceOver для улучшения доступности контента](https://webaim.org/articles/voiceover/)
+- [Deque -- сочетания быстрых клавиш для VoiceOver в OS X](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
+- [Deque -- комбинации жестов для VoiceOver в iOS](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
 
-#### JAWS in Internet Explorer {#jaws-in-internet-explorer}
+#### JAWS в Internet Explorer {#jaws-in-internet-explorer}
 
-[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/) or JAWS, is a prolifically used screen reader on Windows.
+[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/) or JAWS -- это экранный считыватель, который чаще всего используется в Windows.
 
-Refer to the following guides on how to best use JAWS:
+Руководства по JAWS:
 
-- [WebAIM - Using JAWS to Evaluate Web Accessibility](https://webaim.org/articles/jaws/)
-- [Deque - JAWS Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
+- [WebAIM -- использование JAWS для улучшения доступности контента](https://webaim.org/articles/jaws/)
+- [Deque -- сочетания быстрых клавиш для JAWS](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
 
-### Other Screen Readers {#other-screen-readers}
+### Прочие экранные считыватели {#other-screen-readers}
 
-#### ChromeVox in Google Chrome {#chromevox-in-google-chrome}
+#### ChromeVox в Google Chrome {#chromevox-in-google-chrome}
 
-[ChromeVox](https://www.chromevox.com/) is an integrated screen reader on Chromebooks and is available [as an extension](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en) for Google Chrome.
+[ChromeVox](https://www.chromevox.com/) -- это встроенный экранный считыватель для сервиса Chromebooks. Он доступен для Google Chrome [в виде дополнения](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=ru).
 
-Refer to the following guides on how best to use ChromeVox:
+Ссылки на руководства по ChromeVox:
 
-- [Google Chromebook Help - Use the Built-in Screen Reader](https://support.google.com/chromebook/answer/7031755?hl=en)
-- [ChromeVox Classic Keyboard Shortcuts Reference](https://www.chromevox.com/keyboard_shortcuts.html)
+- [Google Chromebook -- как использовать встроенноу программу чтения с экрана](https://support.google.com/chromebook/answer/7031755?hl=ru)
+- [быстрые клавиши для ChromeVox](https://www.chromevox.com/keyboard_shortcuts.html)
