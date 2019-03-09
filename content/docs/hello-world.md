@@ -1,6 +1,6 @@
 ---
 id: hello-world
-title: Привет, мир
+title: Hello, world
 permalink: docs/hello-world.html
 prev: cdn-links.html
 next: introducing-jsx.html
@@ -10,12 +10,12 @@ next: introducing-jsx.html
 
 ```js
 ReactDOM.render(
-  <h1>Привет, мир!</h1>,
+  <h1>Hello, world!</h1>,
   document.getElementById('root')
 );
 ```
 
-На странице появится заголовок «Привет, мир!».
+На странице появится заголовок «Hello, world!».
 
 [](codepen://hello-world)
 

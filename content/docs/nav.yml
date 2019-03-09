@@ -12,7 +12,7 @@
   isOrdered: true
   items:
     - id: hello-world
-      title: Привет, мир
+      title: Hello, world
     - id: introducing-jsx
       title: Знакомство с JSX
     - id: rendering-elements

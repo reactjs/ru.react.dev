@@ -16,7 +16,7 @@ next: handling-events.html
 function tick() {
   const element = (
     <div>
-      <h1>Привет, мир!</h1>
+      <h1>Hello, world!</h1>
       <h2>Сейчас {new Date().toLocaleTimeString()}.</h2>
     </div>
   );
@@ -39,7 +39,7 @@ setInterval(tick, 1000);
 function Clock(props) {
   return (
     <div>
-      <h1>Привет, мир!</h1>
+      <h1>Hello, world!</h1>
       <h2>Сейчас {props.date.toLocaleTimeString()}.</h2>
     </div>
   );
@@ -94,7 +94,7 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Привет, мир!</h1>
+        <h1>Hello, world!</h1>
         <h2>Сейчас {this.props.date.toLocaleTimeString()}.</h2>
       </div>
     );
@@ -119,7 +119,7 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Привет, мир!</h1>
+        <h1>Hello, world!</h1>
         <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
@@ -139,7 +139,7 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Привет, мир!</h1>
+        <h1>Hello, world!</h1>
         <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
@@ -182,7 +182,7 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Привет, мир!</h1>
+        <h1>Hello, world!</h1>
         <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
@@ -227,7 +227,7 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Привет, мир!</h1>
+        <h1>Hello, world!</h1>
         <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );
@@ -291,7 +291,7 @@ class Clock extends React.Component {
   render() {
     return (
       <div>
-        <h1>Привет, мир!</h1>
+        <h1>Hello, world!</h1>
         <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
       </div>
     );

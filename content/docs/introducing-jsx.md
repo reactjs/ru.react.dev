@@ -9,7 +9,7 @@ next: rendering-elements.html
 Рассмотрим объявление переменной:
 
 ```js
-const element = <h1>Привет, мир!</h1>;
+const element = <h1>Hello, world!</h1>;
 ```
 
 Этот странный тег — ни строка, ни фрагмент HTML.
@@ -157,7 +157,7 @@ const element = (
 const element = React.createElement(
   'h1',
   {className: 'greeting'},
-  'Привет, мир!'
+  'Hello, world!'
 );
 ```
 
@@ -169,7 +169,7 @@ const element = {
   type: 'h1',
   props: {
     className: 'greeting',
-    children: 'Привет, мир!'
+    children: 'Hello, world!'
   }
 };
 ```

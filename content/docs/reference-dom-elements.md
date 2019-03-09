@@ -73,7 +73,7 @@ const divStyle = {
 };
 
 function HelloWorldComponent() {
-  return <div style={divStyle}>Привет, мир!</div>;
+  return <div style={divStyle}>Hello, world!</div>;
 }
 ```
 
@@ -97,12 +97,12 @@ React автоматически добавит суффикс «px» к сво�
 ```js
 // Результат: '10px'
 <div style={{ height: 10 }}>
-  Привет, мир!
+  Hello, world!
 </div>
 
 // Результат: '10%'
 <div style={{ height: '10%' }}>
-  Привет, мир!
+  Hello, world!
 </div>
 ```
 

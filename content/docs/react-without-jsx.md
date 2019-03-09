@@ -49,7 +49,7 @@ ReactDOM.render(
 const e = React.createElement;
 
 ReactDOM.render(
-  e('div', null, 'Привет, мир!'),
+  e('div', null, 'Hello, world!'),
   document.getElementById('root')
 );
 ```

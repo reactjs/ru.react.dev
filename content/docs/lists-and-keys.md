@@ -237,7 +237,7 @@ function Blog(props) {
 }
 
 const posts = [
-  {id: 1, title: 'Привет, мир', content: 'Добро пожаловать в документацию React!'},
+  {id: 1, title: 'Hello, world', content: 'Добро пожаловать в документацию React!'},
   {id: 2, title: 'Установка', content: 'React можно установить из npm.'}
 ];
 ReactDOM.render(
