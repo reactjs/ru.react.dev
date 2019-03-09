@@ -277,13 +277,13 @@ class Parent extends React.Component {
 
 В представленном выше примере, `Parent` передает свой колбэк реф как проп `inputRef` компоненту `CustomTextInput`, а `CustomTextInput` передает ту же самую функцию как специальный атрибут `ref` элементу `<input>`. В итоге, свойство `this.inputElement` компонента `Parent` будет хранить значение DOM-узла, соответствующего `<input>`-элементу в `CustomTextInput`.
 
-### Legacy API: String Refs {#legacy-api-string-refs}
+### Устаревший API: строчные рефы {#legacy-api-string-refs}
 
-If you worked with React before, you might be familiar with an older API where the `ref` attribute is a string, like `"textInput"`, and the DOM node is accessed as `this.refs.textInput`. We advise against it because string refs have [some issues](https://github.com/facebook/react/pull/8333#issuecomment-271648615), are considered legacy, and **are likely to be removed in one of the future releases**. 
+Если вы уже работали с  React ранее, возможно вы знакомы с более старым API, в котором атрибут `ref` является строкой, например`"textInput"`, а DOM-узел доступен в `this.refs.textInput`. Мы не советуем пользоваться таким решением, т.к. у срочных рефов есть [некоторые недоработки](https://github.com/facebook/react/pull/8333#issuecomment-271648615), они являются устаревшими и **скорее всего потеряют поддержку в будущем**. 
 
-> Note
+> Заметка
 >
-> If you're currently using `this.refs.textInput` to access refs, we recommend using either the [callback pattern](#callback-refs) or the [`createRef` API](#creating-refs) instead.
+> Если вы используете `this.refs.textInput` для доступа к рефам в своих проектах, мы рекомендуем перейти к использованию [колбэк паттерна](#callback-refs) или [`createRef` API](#creating-refs).
 
 ### Caveats with callback refs {#caveats-with-callback-refs}
 
