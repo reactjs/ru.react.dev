@@ -189,17 +189,17 @@ function CustomTextInput(props) {
 }
 ```
 
-### Exposing DOM Refs to Parent Components {#exposing-dom-refs-to-parent-components}
+### Передача DOM-рефов родительским компонентам {#exposing-dom-refs-to-parent-components}
 
-In rare cases, you might want to have access to a child's DOM node from a parent component. This is generally not recommended because it breaks component encapsulation, but it can occasionally be useful for triggering focus or measuring the size or position of a child DOM node.
+В редких случаях, вам может понадобиться доступ к дочернему DOM-узлу из родительского компонента. В общем случае, такой подход не рекомендуется, т.к. ведет к нарушению инкапсуляции компонента, но иногда он может пригодиться для задания фокуса или измерения размеров или положения дочернего DOM-узла.
 
-While you could [add a ref to the child component](#adding-a-ref-to-a-class-component), this is not an ideal solution, as you would only get a component instance rather than a DOM node. Additionally, this wouldn't work with function components.
+Несмотря на то, что можно было бы [добавить реф к дочернему компоненту](#adding-a-ref-to-a-class-component), такое решение не является идеальным, т.к. вы получите экземпляр компонента вместо DOM-узла. Кроме того, это не сработает с функциональными компонентами.
 
-If you use React 16.3 or higher, we recommend to use [ref forwarding](/docs/forwarding-refs.html) for these cases. **Ref forwarding lets components opt into exposing any child component's ref as their own**. You can find a detailed example of how to expose a child's DOM node to a parent component [in the ref forwarding documentation](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
+Если вы работаете с  React 16.3 или выше, мы рекомендуем использовать [перенаправление рефов](/docs/forwarding-refs.html) для таких случаев. **Перенаправление рефов позволяет компонентам осуществлять передачу рефа любого дочернего компонента как своего собственного**. Вы можете найти детальные примеры того, как передать дочерний DOM-узел родительскому компоненту [в документации по перенаправлению рефов](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
 
-If you use React 16.2 or lower, or if you need more flexibility than provided by ref forwarding, you can use [this alternative approach](https://gist.github.com/gaearon/1a018a023347fe1c2476073330cc5509) and explicitly pass a ref as a differently named prop.
+Если вы используете React версии 16.2 или ниже, или если вам нужно решение более гибкое чем перенаправление рефов, вы можете использовать [данный альтернативный подход](https://gist.github.com/gaearon/1a018a023347fe1c2476073330cc5509) и явно передавать реф как проп с другим именем.
 
-When possible, we advise against exposing DOM nodes, but it can be a useful escape hatch. Note that this approach requires you to add some code to the child component. If you have absolutely no control over the child component implementation, your last option is to use [`findDOMNode()`](/docs/react-dom.html#finddomnode), but it is discouraged and deprecated in [`StrictMode`](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage).
+По возможности, мы советуем избегать передачи DOM-узлов, но это может быть полезной лазейкой. Заметим, что данный подход требует добавления кода в дочерний компонент. Если у вас нет никакого контроля над реализацией дочернего компонента, последним вариантом является использование [`findDOMNode()`](/docs/react-dom.html#finddomnode), но такое решение не рекомендуется и не поддерживается в [`StrictMode`](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage).
 
 ### Callback Refs {#callback-refs}
 
