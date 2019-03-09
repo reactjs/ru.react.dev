@@ -275,7 +275,7 @@ class Parent extends React.Component {
 }
 ```
 
-В представленном выше примере, `Parent` передает свой колбэк реф как проп `inputRef` компоненту `CustomTextInput`, а `CustomTextInput` передает ту же самую функцию как специальный атрибут `ref` элементу `<input>`. В итоге, свойство `this.inputElement` компонента `Parent` будет хранить значение DOM-узла соответствующего `<input>`-элементу в `CustomTextInput`.
+В представленном выше примере, `Parent` передает свой колбэк реф как проп `inputRef` компоненту `CustomTextInput`, а `CustomTextInput` передает ту же самую функцию как специальный атрибут `ref` элементу `<input>`. В итоге, свойство `this.inputElement` компонента `Parent` будет хранить значение DOM-узла, соответствующего `<input>`-элементу в `CustomTextInput`.
 
 ### Legacy API: String Refs {#legacy-api-string-refs}
 
