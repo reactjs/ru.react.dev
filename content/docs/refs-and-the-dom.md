@@ -285,6 +285,7 @@ class Parent extends React.Component {
 >
 > Если вы используете `this.refs.textInput` для доступа к рефам в своих проектах, мы рекомендуем перейти к использованию [колбэк паттерна](#callback-refs) или [`createRef` API](#creating-refs).
 
-### Caveats with callback refs {#caveats-with-callback-refs}
+### Предостережения насчет колбэк рефов {#caveats-with-callback-refs}
 
-If the `ref` callback is defined as an inline function, it will get called twice during updates, first with `null` and then again with the DOM element. This is because a new instance of the function is created with each render, so React needs to clear the old ref and set up the new one. You can avoid this by defining the `ref` callback as a bound method on the class, but note that it shouldn't matter in most cases.
+Если `ref` колбэк определен как встроенная функция, он будет вызван дважды во время обновлений: первый раз со значением `null`, а затем снова с DOM-элементом. Это связано с тем, что с каждым рендером создается новый экземпляр функции, поэтому React должен очистить старый реф и задать новый. Такого поведения можно избежать, если `ref` колбэк будет определен с привязанным к классу контекстом, но, заметим, что это не будет играть роли в большинстве случаев.
+
