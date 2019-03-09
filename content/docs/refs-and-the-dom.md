@@ -87,8 +87,8 @@ class CustomTextInput extends React.Component {
   }
 
   render() {
-    // tell React that we want to associate the <input> ref
-    // with the `textInput` that we created in the constructor
+    // описываем, что мы хотим связать <input> реф
+    // с `textInput` созданным в конструкторе
     return (
       <div>
         <input
@@ -201,13 +201,13 @@ function CustomTextInput(props) {
 
 По возможности, мы советуем избегать передачи DOM-узлов, но это может быть полезной лазейкой. Заметим, что данный подход требует добавления кода в дочерний компонент. Если у вас нет никакого контроля над реализацией дочернего компонента, последним вариантом является использование [`findDOMNode()`](/docs/react-dom.html#finddomnode), но такое решение не рекомендуется и не поддерживается в [`StrictMode`](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage).
 
-### Callback Refs {#callback-refs}
+### Колбэк рефы {#callback-refs}
 
-React also supports another way to set refs called "callback refs", which gives more fine-grain control over when refs are set and unset.
+Кроме того, React поддерживает другой способ определения рефов, который называется "колбэк рефы" и предоставляет более полный контроль над их присвоением и сбросом.
 
-Instead of passing a `ref` attribute created by `createRef()`, you pass a function. The function receives the React component instance or HTML DOM element as its argument, which can be stored and accessed elsewhere. 
+Вместо того чтобы передавать атрибут `ref` созданный с помощью `createRef()`, вы можете передать функцию. Данная функция получит экземпляр React-компонента или HTML DOM-элемент в качестве аргумента, которые потом могут быть сохранены или доступны в любом другом месте.
 
-The example below implements a common pattern: using the `ref` callback to store a reference to a DOM node in an instance property.
+Представленный ниже пример реализует общий паттерн: использование `ref` колбэка для хранения ссылки на DOM-узел в свойстве экземпляра.
 
 ```javascript{5,7-9,11-14,19,29,34}
 class CustomTextInput extends React.Component {
@@ -221,19 +221,19 @@ class CustomTextInput extends React.Component {
     };
 
     this.focusTextInput = () => {
-      // Focus the text input using the raw DOM API
+      // Определяем фокус на текстовом поле ввода с помощью чистого DOM API
       if (this.textInput) this.textInput.focus();
     };
   }
 
   componentDidMount() {
-    // autofocus the input on mount
+    // определяем автофокус на input при монтировании
     this.focusTextInput();
   }
 
   render() {
-    // Use the `ref` callback to store a reference to the text input DOM
-    // element in an instance field (for example, this.textInput).
+    // Используем `ref` колбэк, чтобы сохранить ссылку на DOM-элемент
+    // поля текстового ввода в поле экземпляра (например, this.textInput).
     return (
       <div>
         <input
@@ -251,9 +251,9 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-React will call the `ref` callback with the DOM element when the component mounts, and call it with `null` when it unmounts. Refs are guaranteed to be up-to-date before `componentDidMount` or `componentDidUpdate` fires.
+React вызовет `ref` колбэк с DOM-элементом при монтировании компонента, а также вызовет его со значением `null` при размонтировании. Рефы будут хранить актуальное значение перед вызовом методов `componentDidMount` или `componentDidUpdate`.
 
-You can pass callback refs between components like you can with object refs that were created with `React.createRef()`.
+Вы можете передавать колбэк рефы между компонентами точно так же как и объектные рефы, созданные с помощью `React.createRef()`.
 
 ```javascript{4,13}
 function CustomTextInput(props) {
@@ -275,7 +275,7 @@ class Parent extends React.Component {
 }
 ```
 
-In the example above, `Parent` passes its ref callback as an `inputRef` prop to the `CustomTextInput`, and the `CustomTextInput` passes the same function as a special `ref` attribute to the `<input>`. As a result, `this.inputElement` in `Parent` will be set to the DOM node corresponding to the `<input>` element in the `CustomTextInput`.
+В представленном выше примере, `Parent` передает свой колбэк реф как проп `inputRef` компоненту `CustomTextInput`, а `CustomTextInput` передает ту же самую функцию как специальный атрибут `ref` элементу `<input>`. В итоге, свойство `this.inputElement` компонента `Parent` будет хранить значение DOM-узла соответствующего `<input>`-элементу в `CustomTextInput`.
 
 ### Legacy API: String Refs {#legacy-api-string-refs}
 
