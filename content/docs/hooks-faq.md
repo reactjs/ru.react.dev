@@ -517,7 +517,7 @@ function Image(props) {
     return newObserver;
   }
 
-  // Когда он вам понадобится, вызовете getObserver()
+  // Когда он вам понадобится, вызовите getObserver()
   // ...
 }
 ```
