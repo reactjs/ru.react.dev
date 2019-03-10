@@ -22,7 +22,7 @@ prev: hooks-reference.html
   * [В какой версии React появились хуки?](#which-versions-of-react-include-hooks)
   * [Надо ли переписать все мои классовые компоненты?](#do-i-need-to-rewrite-all-my-class-components)
   * [Что можно сделать с помощью хуков, что невозможно с помощью классов?](#what-can-i-do-with-hooks-that-i-couldnt-with-classes)
-  * [Какая часть моих знаний о React всё еще актуальна?](#how-much-of-my-react-knowledge-stays-relevant)
+  * [Какая часть моих знаний о React всё ещё актуальна?](#how-much-of-my-react-knowledge-stays-relevant)
   * [Что мне использовать: хуки, классы или оба подхода?](#should-i-use-hooks-classes-or-a-mix-of-both)
   * [Дают ли хуки все возможности классов?](#do-hooks-cover-all-use-cases-for-classes)
   * [Являются ли хуки заменой рендер-пропсам и компонентам высшего порядка?](#do-hooks-replace-render-props-and-higher-order-components)
