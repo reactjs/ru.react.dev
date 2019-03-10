@@ -38,7 +38,7 @@
 - title: Продвинутые темы
   items:
     - id: accessibility
-      title: Accessibility
+      title: Доступность контента
     - id: code-splitting
       title: Code-Splitting
     - id: context
