@@ -50,7 +50,7 @@ prev: hooks-reference.html
   * [Как получить часто изменяемое значение из хука `useCallback`?](#how-to-read-an-often-changing-value-from-usecallback)
 * **[Под капотом](#under-the-hood)**
   * [Как React связывает вызовы хуков с компонентом?](#how-does-react-associate-hook-calls-with-components)
-  * [Что послужило прообразом Хуков?](#what-is-the-prior-art-for-hooks)
+  * [Что послужило прообразом хуков?](#what-is-the-prior-art-for-hooks)
 
 ## Внедрение хуков {#adoption-strategy}
 
