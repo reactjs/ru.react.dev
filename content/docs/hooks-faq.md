@@ -109,7 +109,7 @@ prev: hooks-reference.html
 
 Importantly, custom Hooks give you the power to constrain React API if you'd like to type them more strictly in some way. React gives you the primitives, but you can combine them in different ways than what we provide out of the box. TODO
 
-### Как тестировать компоненты, которые используют Хуки? {#how-to-test-components-that-use-hooks}
+### Как тестировать компоненты, которые используют хуки? {#how-to-test-components-that-use-hooks}
 
 С точки зрения React, компонент, использующий хуки, является обычным компонентом. Если ваш способ тестирования не опирается на внутреннюю часть React, тестирование компонентов с хуками не должно отличатся от тестирования других компонентов.
 
