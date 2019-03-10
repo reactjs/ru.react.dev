@@ -54,7 +54,7 @@ prev: hooks-reference.html
 
 ## Внедрение хуков {#adoption-strategy}
 
-### В какой версии React появились хуки?{#which-versions-of-react-include-hooks}
+### В какой версии React появились хуки? {#which-versions-of-react-include-hooks}
 
 Начиная с релиза 16.8.0, React включает в себя стабильную реализацию хуков для:
 
