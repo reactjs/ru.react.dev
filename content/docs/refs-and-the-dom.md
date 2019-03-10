@@ -167,7 +167,8 @@ class Parent extends React.Component {
 
 ```javascript{2,3,6,13}
 function CustomTextInput(props) {
-  // переменная textInput должна быть объявлена на верхнем уровне, чтобы реф мог иметь к ней доступ
+  // переменная textInput должна быть объявлена на верхнем уровне, 
+  // чтобы реф мог иметь к ней доступ
   let textInput = React.createRef();
 
   function handleClick() {
