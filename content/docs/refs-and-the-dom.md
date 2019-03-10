@@ -53,7 +53,7 @@ class MyComponent extends React.Component {
 
 ### Доступ к рефам {#accessing-refs}
 
-Когда реф передается элементу в методе `render`, ссылка на данный узел становится доступной через атрибут `current` в рефе.
+Когда реф передаётся элементу в методе `render`, ссылка на данный узел доступна через свойство рефа `current`.
 
 ```javascript
 const node = this.myRef.current;
