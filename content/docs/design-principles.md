@@ -1,6 +1,6 @@
 ---
 id: design-principles
-title: Design Principles
+title: Принципы разработки
 layout: contributing
 permalink: docs/design-principles.html
 prev: implementation-notes.html
@@ -8,85 +8,86 @@ redirect_from:
   - "contributing/design-principles.html"
 ---
 
-We wrote this document so that you have a better idea of how we decide what React does and what React doesn't do, and what our development philosophy is like. While we are excited to see community contributions, we are not likely to choose a path that violates one or more of these principles.
+Мы написали эту статью, чтобы вы лучше понимали, как принимаются решения о том что React должен делать и чего не должен, и что из себя представляют наши принципы разработки. Хоть мы и рады видеть вклад сообщества, вряд ли мы выберем путь, который нарушает один или несколько из этих принципов.
 
->**Note:**
+>**Примечание:**
 >
->This document assumes a strong understanding of React. It describes the design principles of *React itself*, not React components or applications.
+>Эта статья подразумевает глубокое понимание React. В ней описаны концепции разработки *самого React*, но не React-компонент или приложений.
 >
->For an introduction to React, check out [Thinking in React](/docs/thinking-in-react.html) instead.
+>Для знакомства с React лучше почитайте [Философия React](/docs/thinking-in-react.html).
 
-### Composition {#composition}
+### Композиция {#composition}
 
-The key feature of React is composition of components. Components written by different people should work well together. It is important to us that you can add functionality to a component without causing rippling changes throughout the codebase.
+Ключевая возможность React – это композиция компонент. Компоненты, написанные разными людьми, должны хорошо работать вместе. Для нас важно, что вы можете добавлять в компонент функционал, не вызывая волну изменений по всему коду.
 
-For example, it should be possible to introduce some local state into a component without changing any of the components using it. Similarly, it should be possible to add some initialization and teardown code to any component when necessary.
+Например, должна быть возможность вводить некое локальное состояние в компонент без изменения использующих его компонент. Так же, должна быть возможность добавлять при необходимости код инициализации и разрушения в любой компонент.
 
-There is nothing "bad" about using state or lifecycle methods in components. Like any powerful feature, they should be used in moderation, but we have no intention to remove them. On the contrary, we think they are integral parts of what makes React useful. We might enable [more functional patterns](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) in the future, but both local state and lifecycle methods will be a part of that model.
+Нет ничего "плохого" в использовании состояния или методов жизненного цикла в компонентах. Как и любую мощную возможность, их стоит использовать в меру, но мы не собираемся их удалять. Напротив, мы считаем, что они являются неотъемлемой частью того, что делает React полезным. Возможно, мы добавим [больше функциональных шаблонов](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) в будущем, но как локальное состояние, так и методы жизненного цикла будут частью этой модели.
 
-Components are often described as "just functions" but in our view they need to be more than that to be useful. In React, components describe any composable behavior, and this includes rendering, lifecycle, and state. Some external libraries like [Relay](https://facebook.github.io/relay/) augment components with other responsibilities such as describing data dependencies. It is possible that those ideas might make it back into React too in some form.
+Компоненты часто описываются как "просто функции", но, на наш взгляд, они должны быть более полезными. В React компоненты описывают любое поведение композиции, включая рендеринг, жизненный цикл и состояние. Некоторые сторонние библиотеки, вроде [Relay](https://facebook.github.io/relay/), дополняют компоненты другими функциями, например описанием зависимостей данных. Вполне возможно, что в той или иной форме эти идеи могут прийти в React.
 
-### Common Abstraction {#common-abstraction}
+### Общая абстракция {#common-abstraction}
 
-In general we [resist adding features](https://www.youtube.com/watch?v=4anAwXYqLG8) that can be implemented in userland. We don't want to bloat your apps with useless library code. However, there are exceptions to this.
+В целом, мы [против добавления функционала](https://www.youtube.com/watch?v=4anAwXYqLG8), который может быть реализован в пользовательских приложениях. Мы не хотим раздувать ваши приложения бесполезным кодом библиотеки. Но, из этого правила есть исключения.
 
-For example, if React didn't provide support for local state or lifecycle methods, people would create custom abstractions for them. When there are multiple abstractions competing, React can't enforce or take advantage of the properties of either of them. It has to work with the lowest common denominator.
+Например, если бы React не предоставлял поддержку локального состояния или методов жизненного цикла, люди бы создавали собственные абстракции для них. Когда есть несколько конкурирующих абстракций, React не может применить или использовать их свойства. Он должен работать с наименьшим общим знаменателем.
 
-This is why sometimes we add features to React itself. If we notice that many components implement a certain feature in incompatible or inefficient ways, we might prefer to bake it into React. We don't do it lightly. When we do it, it's because we are confident that raising the abstraction level benefits the whole ecosystem. State, lifecycle methods, cross-browser event normalization are good examples of this.
+Вот почему иногда мы добавляем функционал в сам React. Если мы замечаем, что какой-то функционал реализуется несовместимо или неэффективно во многих компонентах, мы можем захотеть внедрить его в React. Это не происходит просто так. 
+Если мы добавляем новый функционал, значит мы уверены, что повышение уровня абстракции принесет выгоду всей экосистеме. Хорошие примеры для этого – состояние, методы жизненного цикла, кросс-браузерная нормализация событий.
 
-We always discuss such improvement proposals with the community. You can find some of those discussions by the ["big picture"](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"Type:+Big+Picture") label on the React issue tracker.
+Мы всегда обсуждаем с сообществом такие предложения по улучшению. Некоторые их этих обсуждений можно найти по метке ["big picture"](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"Type:+Big+Picture") в трекере задач React.
 
-### Escape Hatches {#escape-hatches}
+### Лазейки {#escape-hatches}
 
-React is pragmatic. It is driven by the needs of the products written at Facebook. While it is influenced by some paradigms that are not yet fully mainstream such as functional programming, staying accessible to a wide range of developers with different skills and experience levels is an explicit goal of the project.
+React прагматичен. Это обусловлено потребностями продуктов, написанных в Facebook. Хоть на него и влияют некоторые не самые популярные парадигмы, такие как функциональное программирование, цель проекта – оставаться доступным для широкого круга разработчиков с разным уровнем опыта и навыками.
 
-If we want to deprecate a pattern that we don't like, it is our responsibility to consider all existing use cases for it and [educate the community about the alternatives](/blog/2016/07/13/mixins-considered-harmful.html) before we deprecate it. If some pattern that is useful for building apps is hard to express in a declarative way, we will [provide an imperative API](/docs/more-about-refs.html) for it. If we can't figure out a perfect API for something that we found necessary in many apps, we will [provide a temporary subpar working API](/docs/legacy-context.html) as long as it is possible to get rid of it later and it leaves the door open for future improvements.
+Если мы хотим отказаться от паттерна, который нам не нравится, мы должны рассмотреть все существующие варианты его использования и [проинформировать сообщество об альтернативах](/blog/2016/07/13/mixins-considered-harmful.html), прежде чем отказаться от него. Если какой-то паттерн, полезный для создания приложений, трудно описать декларативно, мы [предоставим для него императивное API](/docs/more-about-refs.html). Если мы не можем найти идеальное API для того, что мы считаем необходимым во многих приложениях, мы [предоставим временное, частично работающее API](/docs/legacy-context.html), позже от него можно будет избавиться. Это оставляет открытую дверь для будущих улучшений.
 
-### Stability {#stability}
+### Стабильность {#stability}
 
-We value API stability. At Facebook, we have more than 50 thousand components using React. Many other companies, including [Twitter](https://twitter.com/) and [Airbnb](https://www.airbnb.com/), are also heavy users of React. This is why we are usually reluctant to change public APIs or behavior.
+Мы ценим стабильность API. У нас в Facebook более 50 тысяч компонент, использующих React. Многие другие компании, включая [Twitter](https://twitter.com/) и [Airbnb](https://www.airbnb.com/), также активно используют React. Поэтому мы обычно неохотно меняем публичные API или поведение.
 
-However we think stability in the sense of "nothing changes" is overrated. It quickly turns into stagnation. Instead, we prefer the stability in the sense of "It is heavily used in production, and when something changes, there is a clear (and preferably automated) migration path."
+Однако, мы считаем преувеличением думать, что стабильность это когда "ничего не меняется". Это быстро приводит к застою. Вместо этого, мы предпочитаем воспринимать стабильность в смысле "это много используется в продакшене и когда что-то меняется, существует четкий (и желательно автоматизированный) план миграции".
 
-When we deprecate a pattern, we study its internal usage at Facebook and add deprecation warnings. They let us assess the impact of the change. Sometimes we back out if we see that it is too early, and we need to think more strategically about getting the codebases to the point where they are ready for this change.
+Когда мы исключаем паттерн, мы изучаем как он используется внутри Facebook и добавляем предупреждения об исключении. Что позволяет нам оценить эффект изменения. Иногда мы отменяем изменения, если видим, что еще слишком рано и нам нужно продумать стратегию продвижения кодовой базы к точке готовности к изменениям.
 
-If we are confident that the change is not too disruptive and the migration strategy is viable for all use cases, we release the deprecation warning to the open source community. We are closely in touch with many users of React outside of Facebook, and we monitor popular open source projects and guide them in fixing those deprecations.
+Если мы уверены, что изменение не слишком большое и для всех случаев использования возможна миграция, мы выпускаем предупреждение об исключении в OSS-сообщество. Мы тесно общаемся со многими React-пользователями вне Facebook, следим за популярными OSS-проектами и помогаем им исправлять устаревший код.
 
-Given the sheer size of the Facebook React codebase, successful internal migration is often a good indicator that other companies won't have problems either. Nevertheless sometimes people point out additional use cases we haven't thought of, and we add escape hatches for them or rethink our approach.
+Учитывая огромный размер кодовой базы React в Facebook, успешная внутренняя миграция часто является хорошим индикатором того, что в других компаниях также не будет проблем. Тем не менее, люди иногда указывают на неучтенные варианты использования и мы добавляем лазейки или пересматриваем подход.
 
-We don't deprecate anything without a good reason. We recognize that sometimes deprecations warnings cause frustration but we add them because deprecations clean up the road for the improvements and new features that we and many people in the community consider valuable.
+Мы ничего не исключаем без веской причины. Мы понимаем, что иногда предупреждения об исключениях разочаровывают. Но мы их добавляем, так как исключения открывают дорогу для улучшений и новых возможностей, которые мы и сообщество считаем важными.
 
-For example, we added a [warning about unknown DOM props](/warnings/unknown-prop.html) in React 15.2.0. Many projects were affected by this. However fixing this warning is important so that we can introduce the support for [custom attributes](https://github.com/facebook/react/issues/140) to React. There is a reason like this behind every deprecation that we add.
+Например, мы добавили [предупреждение о неизвестных DOM-свойствах](/warnings/unknown-prop.html) в React 15.2.0. Этим мы затронули многие проекты. Однако, исправление этого предупреждения важно для добавления в React поддержки [пользовательских атрибутов](https://github.com/facebook/react/issues/140). Подобная причина стоит за каждым исключением, которое мы добавляем.
 
-When we add a deprecation warning, we keep it for the rest of the current major version, and [change the behavior in the next major version](/blog/2016/02/19/new-versioning-scheme.html). If there is a lot of repetitive manual work involved, we release a [codemod](https://www.youtube.com/watch?v=d0pOgY8__JM) script that automates most of the change. Codemods enable us to move forward without stagnation in a massive codebase, and we encourage you to use them as well.
+При добавлении предупреждения об исключении, мы не удаляем его пока текущая мажорная версия не устарела, [изменяя поведение только в следующей мажорной версии](/blog/2016/02/19/new-versioning-scheme.html). Если исключение создает много повторяющейся ручной работы, мы публикуем [codemod-скрипт](https://www.youtube.com/watch?v=d0pOgY8__JM), который автоматизирует большую часть изменений. Codemod-скрипты дают нам возможность двигаться вперед, не закапываясь в куче кода. Рекомендуем вам тоже их использовать.
 
-You can find the codemods that we released in the [react-codemod](https://github.com/reactjs/react-codemod) repository.
+Вы можете найти уже вышедшие codemod-скрипты в [react-codemod](https://github.com/reactjs/react-codemod) репозитории.
 
-### Interoperability {#interoperability}
+### Совместимость {#interoperability}
 
-We place high value in interoperability with existing systems and gradual adoption. Facebook has a massive non-React codebase. Its website uses a mix of a server-side component system called XHP, internal UI libraries that came before React, and React itself. It is important to us that any product team can [start using React for a small feature](https://www.youtube.com/watch?v=BF58ZJ1ZQxY) rather than rewrite their code to bet on it.
+Мы придаем большое значение совместимости с существующими системами и возможности постепенного внедрения. В Facebook есть много кода, написанного не на React. Сайт использует смесь из  XHP – системы серверных компонент, внутренних UI-библиотек, которые пришли до React, и самого React. Для нас важно, что любая продуктовая команда может [начать использовать React для небольшого функционала](https://www.youtube.com/watch?v=BF58ZJ1ZQxY), а не делать ставку на переписывание своего кода.
 
-This is why React provides escape hatches to work with mutable models, and tries to work well together with other UI libraries. You can wrap an existing imperative UI into a declarative component, and vice versa. This is crucial for gradual adoption.
+По этой причине React предоставляет лазейки для работы с изменяемыми моделями и пытается хорошо работать вместе с другими UI-библиотеками. Вы можете обернуть существующий императивный UI в декларативный компонент и наоборот. Это очень важно для постепенного внедрения.
 
-### Scheduling {#scheduling}
+### Планирование {#scheduling}
 
-Even when your components are described as functions, when you use React you don't call them directly. Every component returns a [description of what needs to be rendered](/blog/2015/12/18/react-components-elements-and-instances.html#elements-describe-the-tree), and that description may include both user-written components like `<LikeButton>` and platform-specific components like `<div>`. It is up to React to "unroll" `<LikeButton>` at some point in the future and actually apply changes to the UI tree according to the render results of the components recursively.
+Даже если компоненты описаны как функции, при использовании React они не вызываются напрямую. Каждый компонент возвращает [описание того, что должно быть отрендерено](/blog/2015/12/18/react-components-elements-and-instances.html#elements-describe-the-tree). Описание может включать как пользовательские компоненты,  такие как `<LikeButton>`, так и платформо-зависимые компоненты, такие как `<div>`. В дальнейшем в какой-то момент React может "развернуть" `<LikeButton>` и фактически применить изменения к UI-дереву в соответствии с результатами рекурсивного рендеринга компонент.
 
-This is a subtle distinction but a powerful one. Since you don't call that component function but let React call it, it means React has the power to delay calling it if necessary. In its current implementation React walks the tree recursively and calls render functions of the whole updated tree during a single tick. However in the future it might start [delaying some updates to avoid dropping frames](https://github.com/facebook/react/issues/6170).
+Это тонкое, но сильное различие. Поскольку вы не вызываете этот функциональный компонент, а позволяете React вызывать его, это означает, что React может отложить вызов при необходимости. В текущей реализации React рекурсивно обходит дерево и вызывает функции рендера всего обновленного дерева за один проход. Но в будущем он может начать [задерживать некоторые обновления, чтобы избежать потери кадров](https://github.com/facebook/react/issues/6170).
 
-This is a common theme in React design. Some popular libraries implement the "push" approach where computations are performed when the new data is available. React, however, sticks to the "pull" approach where computations can be delayed until necessary.
+Это основная тема в дизайне React. Некоторые популярные библиотеки реализуют "push" подход, когда вычисления выполняются при наличии новых данных. React, наоборот, придерживается "pull" подхода, когда вычисления могут быть отложены до необходимости.
 
-React is not a generic data processing library. It is a library for building user interfaces. We think that it is uniquely positioned in an app to know which computations are relevant right now and which are not.
+React не является универсальной библиотекой обработки данных. Это библиотека для создания пользовательских интерфейсов. Мы считаем, что приложение должно знать какие вычисления сейчас актуальны, а какие нет.
 
-If something is offscreen, we can delay any logic related to it. If data is arriving faster than the frame rate, we can coalesce and batch updates. We can prioritize work coming from user interactions (such as an animation caused by a button click) over less important background work (such as rendering new content just loaded from the network) to avoid dropping frames.
+Если что-то находится вне экрана, мы можем отложить любую связанную с этим логику. Если данные поступают быстрее, чем кадры успевают обновиться, мы можем объединить их и обновлять пакетами. Мы можем приоритизировать работу, вызванную пользовательским взаимодействием (например, анимация нажатия кнопки), над менее важной фоновой работой (например, рендеринг только что загруженного из сети компонента), чтобы избежать потери кадров.
 
-To be clear, we are not taking advantage of this right now. However the freedom to do something like this is why we prefer to have control over scheduling, and why `setState()` is asynchronous. Conceptually, we think of it as "scheduling an update".
+Чтобы было понятно, мы не пользуемся этим прямо сейчас. Однако, подобная свобода объясняет, почему мы предпочитаем контролировать планирование и почему `setState()` асинхронна. Концептуально мы думаем об этом как о "планировании обновления".
 
-The control over scheduling would be harder for us to gain if we let the user directly compose views with a "push" based paradigm common in some variations of [Functional Reactive Programming](https://en.wikipedia.org/wiki/Functional_reactive_programming). We want to own the "glue" code.
+Нам было бы труднее получить контроль над планированием, если бы мы позволили пользователям напрямую создавать представления на основе "push" парадигмы, распространенной в некоторых вариациях [Функционального Реактивного Программирования](https://en.wikipedia.org/wiki/Functional_reactive_programming). Мы хотим владеть "склеивающим" кодом.
 
-It is a key goal for React that the amount of the user code that executes before yielding back into React is minimal. This ensures that React retains the capability to schedule and split work in chunks according to what it knows about the UI.
+Ключевая задача для React - минимизировать количество пользовательского кода, выполняемого перед возвращением обратно в React. Это гарантирует, что React сохранит возможность планировать и разбивать работу на части в соответствии с тем, что ему известно о UI.
 
-There is an internal joke in the team that React should have been called "Schedule" because React does not want to be fully "reactive".
+В команде есть внутренняя шутка, что React должен был называться "Schedule", потому что React не хочет быть полностью "реактивным".
 
 ### Developer Experience {#developer-experience}
 
