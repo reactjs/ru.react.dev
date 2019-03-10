@@ -192,7 +192,7 @@ it('can render and update a counter', () => {
 
 ### Как методы жизненного цикла соответствуют хукам? {#how-do-lifecycle-methods-correspond-to-hooks}
 
-* `constructor`: Функциональному компоненту не нужен конструктор.  Вы можете инициализировать состояние, используя вызов [`useState`](/docs/hooks-reference.html#usestate). Если вычисления состояния трудозатратны, вы можете передать функцию в `useState`.
+* `constructor`: Функциональному компоненту не нужен конструктор. Вы можете инициализировать состояние, используя вызов [`useState`](/docs/hooks-reference.html#usestate). Если вычисления состояния затратны, вы можете передать функцию в `useState`.
 
 * `getDerivedStateFromProps`: Запланировать обновление [вместо рендера](#how-do-i-implement-getderivedstatefromprops).
 
