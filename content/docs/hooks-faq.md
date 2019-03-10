@@ -43,7 +43,7 @@ prev: hooks-reference.html
 * **[Оптимизации производительности](#performance-optimizations)**
   * [Могу ли я пропустить эффект при обновлениях?](#can-i-skip-an-effect-on-updates)
   * [Как я могу реализовать shouldComponentUpdate?](#how-do-i-implement-shouldcomponentupdate)
-  * [Как закэшировать вычисления?](#how-to-memoize-calculations)
+  * [Как закешировать вычисления?](#how-to-memoize-calculations)
   * [Как лениво создавать большие объекты?](#how-to-create-expensive-objects-lazily)
   * [Являются ли хуки медленными из-за создания функций на каждом рендере?](#are-hooks-slow-because-of-creating-functions-in-render)
   * [Как избежать передачи колбэков вниз?](#how-to-avoid-passing-callbacks-down)
