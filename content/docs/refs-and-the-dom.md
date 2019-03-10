@@ -233,7 +233,7 @@ class CustomTextInput extends React.Component {
   }
 
   render() {
-    // Используем `ref` колбэк, чтобы сохранить ссылку на DOM-элемент
+    // Используем колбэк в `ref`, чтобы сохранить ссылку на DOM-элемент
     // поля текстового ввода в поле экземпляра (например, this.textInput).
     return (
       <div>
