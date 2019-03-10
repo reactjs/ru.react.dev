@@ -87,7 +87,7 @@ class CustomTextInput extends React.Component {
   }
 
   render() {
-    // описываем, что мы хотим связать <input> реф
+    // описываем, что мы хотим связать реф <input>
     // с `textInput` созданным в конструкторе
     return (
       <div>
