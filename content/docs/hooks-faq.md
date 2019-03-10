@@ -33,7 +33,7 @@ prev: hooks-reference.html
 * **[От классов к хукам](#from-classes-to-hooks)**
   * [Как методы жизненного цикла соответствуют хукам?](#how-do-lifecycle-methods-correspond-to-hooks)
   * [Существует что-нибудь наподобие полей экземпляра?](#is-there-something-like-instance-variables)
-  * [Сколько переменных состояния я могу использовать - одну или несколько?](#should-i-use-one-or-many-state-variables)
+  * [Сколько переменных состояния я могу использовать – одну или несколько?](#should-i-use-one-or-many-state-variables)
   * [Могу ли я использовать эффект только на обновлениях компонента?](#can-i-run-an-effect-only-on-updates)
   * [Как получить прошлые пропсы или состояние](#how-to-get-the-previous-props-or-state)
   * [Как я могу реализовать getDerivedStateFromProps?](#how-do-i-implement-getderivedstatefromprops)
