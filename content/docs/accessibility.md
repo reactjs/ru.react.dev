@@ -175,7 +175,7 @@ class CustomTextInput extends React.Component {
     this.textInput = React.createRef();
   }
   render() {
-  // Используем вызов рефа для связи DOM-элемента
+  // Используем колбэк-реф для связи DOM-элемента
   // с конкретным экземпляром поля.
     return (
       <input
