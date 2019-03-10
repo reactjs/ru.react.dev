@@ -222,7 +222,7 @@ testInstance.type
 testInstance.props
 ```
 
-Пропсы компонента для его тестового инстанса. Например, у компонента `<Button size="small" />` пропсами будут `{size: "small"}`.
+Пропсы компонента для его тестового эеземпляра. Например, у компонента `<Button size="small" />` пропсами будут `{size: "small"}`.
 
 ### `testInstance.parent` {#testinstanceparent}
 
