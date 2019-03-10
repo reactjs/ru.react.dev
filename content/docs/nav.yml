@@ -122,7 +122,7 @@
       - id: hooks-reference
         title: Hooks API Reference
       - id: hooks-faq
-        title: Хуки - вопросы и ответы
+        title: "Хуки: ответы на вопросы"
 - title: Участие в проекте
   items:
   - id: how-to-contribute

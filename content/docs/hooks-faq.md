@@ -1,6 +1,6 @@
 ---
 id: hooks-faq
-title: Хуки - вопросы и ответы
+title: "Хуки: ответы на вопросы"
 permalink: docs/hooks-faq.html
 prev: hooks-reference.html
 ---
