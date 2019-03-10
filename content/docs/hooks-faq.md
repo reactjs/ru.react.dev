@@ -29,7 +29,7 @@ prev: hooks-reference.html
   * [Как хуки повлияют на популярные API - например Redux `connect()` и React Router?](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
   * [Поддерживают ли хуки статическую типизацию?](#do-hooks-work-with-static-typing)
   * [Как тестировать компоненты, которые используют хуки?](#how-to-test-components-that-use-hooks)
-  * [Что конкретно правила линтера проверяют в хуках?](#what-exactly-do-the-lint-rules-enforce)
+  * [Что конкретно проверяют правила линтера в хуках?](#what-exactly-do-the-lint-rules-enforce)
 * **[От классов к хукам](#from-classes-to-hooks)**
   * [Как методы жизненного цикла соответствуют хукам?](#how-do-lifecycle-methods-correspond-to-hooks)
   * [Существует что-нибудь наподобие полей экземпляра?](#is-there-something-like-instance-variables)
