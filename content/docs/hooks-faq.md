@@ -682,4 +682,4 @@ React следит за тем, какой компонент рендеритс
 * [Подписки](http://reactivex.io/rxjs/class/es6/Subscription.js~Subscription.html) в Rx.
 * [Алгебраические эффекты](https://github.com/ocamllabs/ocaml-effects-tutorial#2-effectful-computations-in-a-pure-setting) в Multicore OCaml.
 
-[Sebastian Markbåge](https://github.com/sebmarkbage) предложил изначальный дизайн хуков, который позднее улучшили [Andrew Clark](https://github.com/acdlite), [Sophie Alpert](https://github.com/sophiebits), [Dominic Gannaway](https://github.com/trueadm) и другие участники команды React.
+[Себастьян Маркбаге (Sebastian Markbåge)](https://github.com/sebmarkbage) предложил изначальный дизайн хуков, который позднее улучшили [Эндрю Кларк (Andrew Clark)](https://github.com/acdlite), [Софи Алперт (Sophie Alpert)](https://github.com/sophiebits), [Доминик Ганнауэй (Dominic Gannaway)](https://github.com/trueadm) и другие участники команды React.
