@@ -104,16 +104,13 @@ TestRenderer.create(element, options);
 
 Создание экземпляра `TestRenderer` с переданным React-элементом. Реальный DOM не будет использоваться – дерево компонентов будет полностью отрендерено в памяти и его можно будет тестировать. У созданного экземпляра `TestRenderer` будут присутствовать следующие методы и свойства: 
 
-
 ### `testRenderer.toJSON()` {#testrenderertojson}
 
 ```javascript
 testRenderer.toJSON()
 ```
 
-Возвращает объект, представляющий собой отрендеренное дерево. В дереве будут присутствовать только те узлы, которые специфичны для платформы (например, узлы `<div>` или `<View>`) и их пропсы. А вот компонентов, созданных разработчиками, в этом дереве не будет. Это очень удобно для тестирования с помощью снимков. 
-для платформы (например, ноды `<div>` или `<View>`) и их пропсы. А вот компонентов, созданных пользователями, в этом дереве не будет. Это очень удобно для тестирования с помощью снимков.  
-
+Возвращает объект, представляющий собой отрендеренное дерево. В дереве будут присутствовать только те узлы, которые специфичны для платформы (например, узлы `<div>` или `<View>`) и их пропсы. А вот компонентов, созданных разработчиками, в этом дереве не будет. Это очень удобно для тестирования с помощью снимков.
 
 ### `testRenderer.toTree()` {#testrenderertotree}
 
@@ -123,7 +120,6 @@ testRenderer.toTree()
 
 Возвращает объект, представляющий собой отрендеренное дерево. В отличии от `toJSON()` в отрендеренное дерево попадут и самописные компоненты. Скорее всего, этот метод вряд ли будет полезен, пока вы не захотите создать поверх `TestRenderer` собственную бибилотеку тестирования.  
 
-
 ### `testRenderer.update()` {#testrendererupdate}
 
 ```javascript
@@ -131,7 +127,6 @@ testRenderer.update(element)
 ```
 
 Повторный рендер находящегося в памяти дерева компонентов с учётом нового корневого элемента. По сути, это симуляция вызова React-обновления для корневого элемента. Если новый элемент имеет тот же тип и ключ, что и предыдущий, то дерево будет обновлено. Иначе, будет перемонтированно новое дерево.
-
 
 ### `testRenderer.unmount()` {#testrendererunmount}
 
@@ -149,7 +144,6 @@ testRenderer.getInstance()
 
 Получить, если возможно, экземпляр соответствующий верхнему элементу. Этот метод не сработает, если верхним элементом будет функциональный компонент, т.к. они не имеют экземляров (в отличии от классовых компонентов).   
 
-
 ### `testRenderer.root` {#testrendererroot}
 
 ```javascript
@@ -166,7 +160,6 @@ testInstance.find(test)
 
 Поиск единственного вложенного тестового экземпляра для которого `test(testInstance)` вернёт `true`. Метод `test(testInstance)` должен вернуть `true` ровно для одного тестового экземпляра, в противном случае вернётся ошибка.
 
-
 ### `testInstance.findByType()` {#testinstancefindbytype}
 
 ```javascript
@@ -174,7 +167,6 @@ testInstance.findByType(type)
 ```
 
 Находит один вложенный тестовый экземпляр с указанным `type`. Метод `findByType` вернёт ошибку, если тестовых экземпляров с указанным `type` не найдено или найдено больше одного.
-
 
 ### `testInstance.findByProps()` {#testinstancefindbyprops}
 
@@ -184,7 +176,6 @@ testInstance.findByProps(props)
 
 Находит один вложенный тестовый экземлпяр с указанными `props`. Метод `findByProps` вернёт ошибку, если тестовых экземпляров с указанными пропсами не найдено или найдено больше одного.
 
-
 ### `testInstance.findAll()` {#testinstancefindall}
 
 ```javascript
@@ -192,7 +183,6 @@ testInstance.findAll(test)
 ```
 
 Находит все вложенные тестовые экземпляры, для которых `test(testInstance)` возвращает `true`.
-
 
 ### `testInstance.findAllByType()` {#testinstancefindallbytype}
 
@@ -210,7 +200,6 @@ testInstance.findAllByProps(props)
 
 Найти все вложенные тестовые экземпляры c указанными пропсами.
 
-
 ### `testInstance.instance` {#testinstanceinstance}
 
 ```javascript
@@ -218,7 +207,6 @@ testInstance.instance
 ```
 
 Экземпляр компонента, соответствующий его тестовому экземпляру. Свойство доступно только для классовых компонентов, т.к. функциональные компоненты не имеют экземпляров. Этот экземпляр компонента будет соответствовать значению this внутри данного компонента.
-
 
 ### `testInstance.type` {#testinstancetype}
 
@@ -228,17 +216,13 @@ testInstance.type
 
 Тип компонента для его тестового экземпляра. Например, компонента `<Button />` имеет тип `Button`.
 
-
 ### `testInstance.props` {#testinstanceprops}
 
 ```javascript
 testInstance.props
 ```
 
-The props corresponding to this test instance. For example, a `<Button size="small" />` component has `{size: 'small'}` as props.
-
 Пропсы компонента для его тестового инстанса. Например, у компонента `<Button size="small" />` пропсами будут `{size: "small"}`.
-
 
 ### `testInstance.parent` {#testinstanceparent}
 
@@ -246,10 +230,7 @@ The props corresponding to this test instance. For example, a `<Button size="sma
 testInstance.parent
 ```
 
-The parent test instance of this test instance.
-
 Родительский тестовый экземпляр текущего тестового экземпляра.
-
 
 ### `testInstance.children` {#testinstancechildren}
 
@@ -259,12 +240,10 @@ testInstance.children
 
 Дочерние тестовые экземпляры текущего тестового экземпляра.
 
-
 ## Используем Тестовый рендерер {#ideas}
 
 Можно передать функцию `createNodeMock` в `TestRenderer.create` как параметр для создания собственных фиктивных рефов. 
 Функция `createNodeMock` принимает элемент и возвращает фиктивный реф-объект. Это может быть полезно для тестирования компонентов, которые используют рефы.
-
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
