@@ -30,7 +30,7 @@
     - id: forms
       title: Формы
     - id: lifting-state-up
-      title: Lifting State Up
+      title: Подъём состояния
     - id: composition-vs-inheritance
       title: Composition vs Inheritance
     - id: thinking-in-react
