@@ -69,7 +69,7 @@ const node = this.myRef.current;
 
 #### Добавление рефа к DOM-элементу {#adding-a-ref-to-a-dom-element}
 
-В представленном ниже примере `реф` используется для хранения ссылки на DOM-элемент.
+В представленном ниже примере `ref` используется для хранения ссылки на DOM-элемент.
 
 ```javascript{5,12,22}
 class CustomTextInput extends React.Component {
