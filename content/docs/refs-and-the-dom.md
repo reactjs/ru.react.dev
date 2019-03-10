@@ -227,7 +227,7 @@ class CustomTextInput extends React.Component {
   }
 
   componentDidMount() {
-    // определяем автофокус на input при монтировании
+    // устанавливаем фокус на input при монтировании
     this.focusTextInput();
   }
 
