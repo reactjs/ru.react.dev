@@ -67,7 +67,7 @@ prev: hooks-reference.html
 
 Поддержка хуков в React Native добавится в следующем стабильном релизе.
 
-### Надо ли переписать все мои классовые компоненты?{#do-i-need-to-rewrite-all-my-class-components}
+### Надо ли переписать все мои классовые компоненты? {#do-i-need-to-rewrite-all-my-class-components}
 
 Нет, мы [не собираемся](/docs/hooks-intro.html#gradual-adoption-strategy) удалять классы из React, да никто бы и не смог позволить себе такой глобальный рефакторинг. Мы советуем пробовать хуки только в новом коде.
 
