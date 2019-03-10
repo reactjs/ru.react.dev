@@ -262,7 +262,7 @@ function Box() {
       // Использование "...state" гарантирует, что мы не потеряем поля width и height
       setState(state => ({ ...state, left: e.pageX, top: e.pageY }));
     }
-    // Примичание: эта реализация немного упрощена
+    // Примечание: эта реализация немного упрощена
     window.addEventListener('mousemove', handleWindowMouseMove);
     return () => window.removeEventListener('mousemove', handleWindowMouseMove);
   }, []);
