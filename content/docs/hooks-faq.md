@@ -675,7 +675,7 @@ React следит за тем, какой компонент рендеритс
 Хуки были основаны на следующих идеях и экспериментах:
 
 * Наши старые эксперименты с функциональным API в репозитории [react-future](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State).
-* Эксперименты с рендер-пропс API от React-сообщества, включая [Reactions-компонент](https://github.com/reactions/component) от [Ryan Florence](https://github.com/ryanflorence).
+* Эксперименты с API рендер-пропс от React-сообщества, включая [компонент Reactions](https://github.com/reactions/component) от [Райна Флоренса (Ryan Florence)](https://github.com/ryanflorence).
 * [Dominic Gannaway](https://github.com/trueadm) и его предложение [ключевого слова `adopt`](https://gist.github.com/trueadm/17beb64288e30192f3aa29cad0218067), в качестве синтаксического сахара для паттерна рендер-пропс.
 * Переменные и ячейки состояния в [DisplayScript](http://displayscript.org/introduction.html).
 * [Компоненты-редюсеры](https://reasonml.github.io/reason-react/docs/en/state-actions-reducer.html) в ReasonReact.
