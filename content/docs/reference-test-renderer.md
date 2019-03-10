@@ -242,8 +242,9 @@ testInstance.children
 
 ## Используем Тестовый рендерер {#ideas}
 
-Можно передать функцию `createNodeMock` в `TestRenderer.create` как параметр для создания собственных фиктивных рефов. 
-Функция `createNodeMock` принимает элемент и возвращает фиктивный реф-объект. Это может быть полезно для тестирования компонентов, которые используют рефы.
+Можно передать функцию `createNodeMock` в `TestRenderer.create` как параметр для создания собственных фиктивных рефов. Функция `createNodeMock` принимает элемент и возвращает фиктивный реф-объект. 
+
+Это может быть полезно для тестирования компонентов, которые используют рефы.
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
@@ -267,7 +268,7 @@ TestRenderer.create(
   {
     createNodeMock: (element) => {
       if (element.type === 'input') {
-        // возврщаем фиктивную функцию "focus"
+        // возвращаем фиктивную функцию "focus"
         return {
           focus: () => {
             focused = true;
