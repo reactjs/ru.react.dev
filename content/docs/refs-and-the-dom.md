@@ -75,7 +75,7 @@ const node = this.myRef.current;
 class CustomTextInput extends React.Component {
   constructor(props) {
     super(props);
-    // создаем реф для хранения значения DOM-элемента поля ввода текста
+    // создадим реф в поле `textInput` для хранения DOM-элемента
     this.textInput = React.createRef();
     this.focusTextInput = this.focusTextInput.bind(this);
   }
