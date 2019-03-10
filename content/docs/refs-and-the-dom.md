@@ -283,7 +283,7 @@ class Parent extends React.Component {
 
 > Заметка
 >
-> Если вы используете `this.refs.textInput` для доступа к рефам в своих проектах, мы рекомендуем перейти к использованию [колбэк паттерна](#callback-refs) или [`createRef` API](#creating-refs).
+> Если вы используете `this.refs.textInput` для доступа к рефам в своих проектах, мы рекомендуем перейти к использованию [паттерна с колбэком](#callback-refs) или [`createRef` API](#creating-refs).
 
 ### Предостережения насчет колбэк рефов {#caveats-with-callback-refs}
 
