@@ -81,7 +81,7 @@ class CustomTextInput extends React.Component {
   }
 
   focusTextInput() {
-    // Задаем фокус на текстовое поле с помощью чистого DOM API
+    // Установим фокус на текстовое поле с помощью чистого DOM API
     // Примечание: обращаемся к "current", чтобы получить DOM-узел
     this.textInput.current.focus();
   }
