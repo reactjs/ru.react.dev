@@ -66,7 +66,7 @@
     - id: reconciliation
       title: Согласование
     - id: refs-and-the-dom
-      title: Refs and the DOM
+      title: Рефы и DOM
     - id: render-props
       title: Рендер-пропсы
     - id: static-type-checking
