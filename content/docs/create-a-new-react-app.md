@@ -71,7 +71,7 @@ Create React App не обрабатывает бэкенд логику или 
 Узнайте больше о Gatsby из [его официального руководства](https://www.gatsbyjs.org/docs/) и [галереи стартовых комплектов](https://www.gatsbyjs.org/docs/gatsby-starters/).
 
 ### Более гибкие наборы инструментов {#more-flexible-toolchains}                             
-Следующие наборы инструментов предлагают больший набор. Мы рекомендуем их более опытным пользователям:
+Следующие наборы инструментов предлагают больше гибкости и выбора. Мы рекомендуем их более опытным разработчикам:
 
 
 -**[Neutrino](https://neutrinojs.org/)** сочетает в себе мощь [webpack](https://webpack.js.org/) с простотой пресетов и включает в себя пресеты для [React-приложений](https://neutrinojs.org/packages/react/) и [ React-компонентов](https://neutrinojs.org/packages/react-components/) .
