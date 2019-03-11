@@ -69,7 +69,7 @@ prev: hooks-reference.html
 
 ### Надо ли переписать все мои классовые компоненты? {#do-i-need-to-rewrite-all-my-class-components}
 
-Нет, мы [не собираемся](/docs/hooks-intro.html#gradual-adoption-strategy) удалять классы из React, да никто бы и не смог позволить себе такой глобальный рефакторинг. Мы советуем пробовать хуки только в новом коде.
+Нет, мы [не собираемся](/docs/hooks-intro.html#gradual-adoption-strategy) удалять классы из React, поскольку никто не может позволить себе такой глобальный рефакторинг. Мы советуем пробовать хуки только в новом коде.
 
 ### Что можно сделать с помощью хуков, чего невозможно добиться, используя классы? {#what-can-i-do-with-hooks-that-i-couldnt-with-classes}
 
