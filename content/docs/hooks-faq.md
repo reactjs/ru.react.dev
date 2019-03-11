@@ -105,7 +105,7 @@ prev: hooks-reference.html
 
 ### Поддерживают ли хуки статическую типизацию? {#do-hooks-work-with-static-typing}
 
-Хуки спроектированы с учётом статической типизации. Так как они являются функциями, их легче типизировать правильным образом (например, в сравнении с компонентами высшего порядка). Последние версии Flow и TypeScript включают в себя поддержку React-хуков.
+Хуки спроектированы с учётом статической типизации. Так как они являются функциями, их легче правильно типизировать чем, например, компоненты высшего порядка. Последние версии определений типов React для Flow и TypeScript поддерживают хуки.
 
 Importantly, custom Hooks give you the power to constrain React API if you'd like to type them more strictly in some way. React gives you the primitives, but you can combine them in different ways than what we provide out of the box. TODO
 
