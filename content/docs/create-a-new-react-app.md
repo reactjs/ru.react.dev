@@ -81,7 +81,7 @@ Create React App не обрабатывает бэкенд логику или 
 -**[Parcel](https://parceljs.org/)** – быстрый упаковщик веб-приложений с нулевой конфигурацией, [который работает с React](https://parceljs.org/recipes.html#react).
 
 
--**[Razzle](https://github.com/jaredpalmer/razzle)** - это инфраструктура рендеринга сервера, которая не требует какой-либо настройки, но предлагает большую гибкость, чем Next.js.
+-**[Razzle](https://github.com/jaredpalmer/razzle)** – это фреймворк для серверного рендеринга, который не требует какой-либо настройки, но более гибкий, чем Next.js.
 
 
 ## Создание набора инструментов с нуля {#creating-a-toolchain-from-scratch}
