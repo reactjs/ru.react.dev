@@ -53,7 +53,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 Допустим, у нас есть компонент `Counter`:
 
 ```js
-class App extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {count: 0};
