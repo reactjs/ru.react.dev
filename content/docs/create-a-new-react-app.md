@@ -74,7 +74,7 @@ Create React App не обрабатывает бэкенд логику или 
 Следующие наборы инструментов предлагают больший набор. Мы рекомендуем их более опытным пользователям:
 
 
--**[Neutrino](https://neutrinojs.org/)** сочетает в себе мощь [веб-пакета](https://webpack.js.org/) с простотой предустановок и включает в себя предустановку для [приложений React](https://neutrinojs.org/packages/react/) и [компонентов React](https://neutrinojs.org/packages/react-components/) .
+-**[Neutrino](https://neutrinojs.org/)** сочетает в себе мощь [webpack](https://webpack.js.org/) с простотой пресетов и включает в себя пресеты для [React-приложений](https://neutrinojs.org/packages/react/) и [ React-компонентов](https://neutrinojs.org/packages/react-components/) .
 
 -**[nwb](https://github.com/insin/nwb)** особенно хорош для [публикации компонентов React для npm](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb). Его [также можно использовать](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb) для создания приложений React.
 
