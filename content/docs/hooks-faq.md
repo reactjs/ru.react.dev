@@ -107,7 +107,7 @@ prev: hooks-reference.html
 
 Хуки спроектированы с учётом статической типизации. Так как они являются функциями, их легче правильно типизировать чем, например, компоненты высшего порядка. Последние версии определений типов React для Flow и TypeScript поддерживают хуки.
 
-Importantly, custom Hooks give you the power to constrain React API if you'd like to type them more strictly in some way. React gives you the primitives, but you can combine them in different ways than what we provide out of the box. TODO
+Заметьте, что пользовательские хуки дают вам возможность накладывать ограничения на API React, если вы хотите типизировать их более строго каким-то образом. React предоставляет примитивы, которые вы можете комбинировать по своему усмотрению даже такими способами, которые и не были изначально предусмотрены.
 
 ### Как тестировать компоненты, которые используют хуки? {#how-to-test-components-that-use-hooks}
 
