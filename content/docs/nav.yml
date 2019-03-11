@@ -78,7 +78,7 @@
     - id: uncontrolled-components
       title: Неконтролируемые компоненты
     - id: web-components
-      title: Web Components
+      title: Веб-компоненты
 - title: Справочник API
   items:
     - id: react-api

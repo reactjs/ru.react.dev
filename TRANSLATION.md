@@ -175,6 +175,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | bind | привязка |
 | bug | баг, дефект |
 | bundler | бандлер |
+| cache | кеш |
 | callback | колбэк |
 | camelCase | *camelCase* |
 | child | дочерний |
