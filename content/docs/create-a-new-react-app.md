@@ -99,4 +99,4 @@ Create React App не обрабатывает внутреннюю логику
 
 Если вы предпочитаете создать свой собственный набор инструментов JavaScript с нуля, [ознакомьтесь с этим руководством](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658), в котором воссоздаются некоторые функции Create React App.
 
-Не забудьте убедиться, что ваш собственный набор инструментов [правильно настроен для работы](/docs/optimizing-performance.html#use-the-production-build).
+Не забудьте убедиться, что ваш собственный набор инструментов [правильно настроен для продакшена](/docs/optimizing-performance.html#use-the-production-build).
