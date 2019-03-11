@@ -78,7 +78,7 @@ Create React App не обрабатывает бэкенд логику или 
 
 -**[nwb](https://github.com/insin/nwb)** особенно хорош для [публикации компонентов React для npm](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb). Его [также можно использовать](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb) для создания приложений React.
 
--**[Parcel](https://parceljs.org/)** - быстрый упаковщик веб-приложений с нулевой конфигурацией, [который работает с React](https://parceljs.org/recipes.html#react).
+-**[Parcel](https://parceljs.org/)** – быстрый упаковщик веб-приложений с нулевой конфигурацией, [который работает с React](https://parceljs.org/recipes.html#react).
 
 
 -**[Razzle](https://github.com/jaredpalmer/razzle)** - это инфраструктура рендеринга сервера, которая не требует какой-либо настройки, но предлагает большую гибкость, чем Next.js.
