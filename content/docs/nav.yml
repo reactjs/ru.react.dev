@@ -40,7 +40,7 @@
     - id: accessibility
       title: Доступность контента
     - id: code-splitting
-      title: Code-Splitting
+      title: Разделение кода
     - id: context
       title: Контекст
     - id: error-boundaries
