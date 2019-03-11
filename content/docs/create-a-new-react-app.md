@@ -36,7 +36,7 @@ next: cdn-links.html
 - Если вы создаете **статический контент-ориентированный сайт,** попробуйте [Gatsby](#gatsby).
 - Если вы создаете **библиотеку компонентов** или **интегрируетесь с существующей кодовой базой**, попробуйте [более гибкие наборы инструментов](#more-flexible-toolchains).
 
-### Create react aap {#create-react-app}
+### Create React App {#create-react-app}
 
 [Create React App](https://github.com/facebookincubator/create-react-app)- удобная среда для **изучения React** и лучший способ начать создание **нового [одностраничного](/docs/glossary.html#single-page-application) приложения** в React.
 
