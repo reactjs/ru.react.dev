@@ -632,7 +632,7 @@ function Form() {
 ```js{4,16}
 function Form() {
   const [text, updateText] = useState('');
-  // Будет закешировано, даже если значение `text` измениться:
+  // Будет закешировано, даже если значение `text` изменится:
   const handleSubmit = useEventCallback(() => {
     alert(text);
   }, [text]);
