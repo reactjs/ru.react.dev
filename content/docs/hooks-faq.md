@@ -119,7 +119,7 @@ prev: hooks-reference.html
 function Example() {
   const [count, setCount] = useState(0);
   useEffect(() => {
-    document.title = `Вы нажали ${count} раз`;
+    document.title = `Вы кликнули ${count} раз`;
   });
   return (
     <div>
