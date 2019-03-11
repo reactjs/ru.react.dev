@@ -38,7 +38,7 @@ next: cdn-links.html
 
 ### Create React App {#create-react-app}
 
-[Create React App](https://github.com/facebookincubator/create-react-app)- удобная среда для **изучения React** и лучший способ начать создание **нового [одностраничного](/docs/glossary.html#single-page-application) приложения** в React.
+[Create React App](https://github.com/facebookincubator/create-react-app) – удобная среда для **изучения React** и лучший способ начать создание **нового [одностраничного](/docs/glossary.html#single-page-application) приложения** на React.
 
 Инструмент настраивает среду разработки таким образом, чтобы вы можете использовать новейшие возможности JavaScript, предоставляет хороший опыт разработки и оптимизирует приложение для продакшена. Вам понадобится Node версии >= 6 и npm версии >= 5.2 на вашем компьютере. Для создания проекта выполните:
 
