@@ -26,7 +26,7 @@ prev: hooks-reference.html
   * [Что мне использовать: хуки, классы или оба подхода?](#should-i-use-hooks-classes-or-a-mix-of-both)
   * [Дают ли хуки все возможности классов?](#do-hooks-cover-all-use-cases-for-classes)
   * [Являются ли хуки заменой рендер-пропсам и компонентам высшего порядка?](#do-hooks-replace-render-props-and-higher-order-components)
-  * [Как хуки повлияют на популярные API – например Redux `connect()` и React Router?](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
+  * [Как хуки повлияют на популярные API, такие как Redux `connect()` и React Router?](#what-do-hooks-mean-for-popular-apis-like-redux-connect-and-react-router)
   * [Поддерживают ли хуки статическую типизацию?](#do-hooks-work-with-static-typing)
   * [Как тестировать компоненты, которые используют хуки?](#how-to-test-components-that-use-hooks)
   * [Что конкретно проверяют правила линтера в хуках?](#what-exactly-do-the-lint-rules-enforce)
