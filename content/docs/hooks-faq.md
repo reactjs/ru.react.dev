@@ -123,7 +123,7 @@ function Example() {
   });
   return (
     <div>
-      <p>Вы нажали {count} раз</p>
+      <p>Вы кликнули {count} раз</p>
       <button onClick={() => setCount(count + 1)}>
         Нажми на меня
       </button>
