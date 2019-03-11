@@ -369,7 +369,7 @@ FancyInput = forwardRef(FancyInput);
 
 > Cовет
 >
-> Если вы переносите код из компонента класса, `useLayoutEffect` запускается в той же фазе, что и `componentDidMount` и `componentDidUpdate`, поэтому, если вы не уверены, какой хук эффект использовать, это, вероятно, наименее рискованно.
+> Если вы переносите код из классового компонента, `useLayoutEffect` запускается в той же фазе, что и `componentDidMount` и `componentDidUpdate`, поэтому, если вы не уверены, какой хук эффект использовать, это, вероятно, наименее рискованно.
 
 ### `useDebugValue` {#usedebugvalue}
 
