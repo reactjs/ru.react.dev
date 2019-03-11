@@ -55,7 +55,7 @@ npm start
 
 Create React App не обрабатывает внутреннюю логику базы данных, он просто создает  сборку вашего внешнего интерфейса, поэтому вы можете использовать его с любым нужным бэкэндом. Внутри он использует [Babel](https://babeljs.io/)  и [WedPack](https://webpack.js.org/) но вам не  нужно ничего знать о них.
 
-Когда вы будете готовы к развертыванию в рабочей среде, запуск `npm run build` создаст оптимизированную сборку вашего приложения в `build` папке. Вы можете узнать больше о Creat React App [из его README](https://github.com/facebookincubator/create-react-app#create-react-app-) и [пользовательского руководства](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
+Когда ваше приложение готово к развёртыванию на продакшене, запуск команды `npm run build` создаст оптимизированную сборку вашего приложения в папке `build`. Вы можете узнать больше о Creat React App [из его README](https://github.com/facebookincubator/create-react-app#create-react-app-) и [его пользовательского руководства](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
 
 ### Next.js {#nextjs}
 
