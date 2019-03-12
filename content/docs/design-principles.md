@@ -14,7 +14,7 @@ redirect_from:
 >
 >Эта статья подразумевает глубокое понимание React. В ней описаны концепции разработки *самого React*, но не React-компонент или приложений.
 >
->Для знакомства с React лучше почитайте [Философия React](/docs/thinking-in-react.html).
+>Для знакомства с React почитайте [Философия React](/docs/thinking-in-react.html).
 
 ### Композиция {#composition}
 
