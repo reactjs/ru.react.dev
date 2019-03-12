@@ -71,7 +71,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 
 * [`TestRenderer.create()`](#testrenderercreate)
 
-### TestRenderer instance {#testrenderer-instance}
+### Методы и поля экземпляра TestRenderer {#testrenderer-instance}
 
 * [`testRenderer.toJSON()`](#testrenderertojson)
 * [`testRenderer.toTree()`](#testrenderertotree)
@@ -94,7 +94,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 * [`testInstance.parent`](#testinstanceparent)
 * [`testInstance.children`](#testinstancechildren)
 
-## Reference {#reference}
+## Справочник {#reference}
 
 ### `TestRenderer.create()` {#testrenderercreate}
 
@@ -240,7 +240,7 @@ testInstance.children
 
 Дочерние тестовые экземпляры текущего тестового экземпляра.
 
-## Используем Тестовый рендерер {#ideas}
+## Используем тестовый рендерер {#ideas}
 
 Можно передать функцию `createNodeMock` в `TestRenderer.create` как параметр для создания собственных фиктивных рефов. Функция `createNodeMock` принимает элемент и возвращает фиктивный реф-объект.
 
