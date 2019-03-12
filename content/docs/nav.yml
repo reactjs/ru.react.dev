@@ -99,7 +99,7 @@
     - id: shallow-renderer
       title: Поверхностный рендерер
     - id: test-renderer
-      title: Test Renderer
+      title: Тестовый рендерер
     - id: javascript-environment-requirements
       title: Требования к среде JavaScript
     - id: glossary
