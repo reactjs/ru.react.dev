@@ -4,7 +4,7 @@ title: Разделение кода
 permalink: docs/code-splitting.html
 ---
 
-## Бандлинг модулей {#bundling}
+## Бандлинг {#bundling}
 
 Большинство React приложений собираются инструментами типа
 [Webpack](https://webpack.js.org/) или [Browserify](http://browserify.org/) и состоят из нескольких "бандл" файлов.
