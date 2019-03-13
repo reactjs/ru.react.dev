@@ -40,7 +40,7 @@ console.log(testRenderer.toJSON());
 
 Jest может автоматически сохранять в файл снимок копии дерева в виде JSON, а затем проверять в тестах, что в этом снимке ничего не изменилось с момента прошлого исполнения теста: [узнать подробнее](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html).
 
-Также есть возможность искать в дереве конкретные узлы и проверять утверждения на них:
+Также есть возможность искать в дереве конкретные узлы и проверять утверждения относительно них:
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
@@ -198,7 +198,7 @@ testInstance.findAllByType(type)
 testInstance.findAllByProps(props)
 ```
 
-Найти все вложенные тестовые экземпляры c указанными пропсами `props`.
+Находит все вложенные тестовые экземпляры c указанными пропсами `props`.
 
 ### `testInstance.instance` {#testinstanceinstance}
 
@@ -214,7 +214,7 @@ testInstance.instance
 testInstance.type
 ```
 
-Тип компонента для его тестового экземпляра. Например, компонент `<Button />` имеет тип `Button`.
+Тип компонента, соответствующий его тестовому экземпляру. Например, компонент `<Button />` имеет тип `Button`.
 
 ### `testInstance.props` {#testinstanceprops}
 
