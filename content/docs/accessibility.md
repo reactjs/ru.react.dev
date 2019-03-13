@@ -489,7 +489,7 @@ VoiceOver -- это экранный считыватель, встроенны�
 Здесь приведены руководства по активации и использованию VoiceOver:
 
 - [WebAIM -- использование VoiceOver для улучшения доступности контента](https://webaim.org/articles/voiceover/)
-- [Deque -- сочетания быстрых клавиш для VoiceOver в OS X](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
+- [Deque -- сочетания клавиш для VoiceOver в OS X](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
 - [Deque -- комбинации жестов для VoiceOver в iOS](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
 
 #### JAWS в Internet Explorer {#jaws-in-internet-explorer}
