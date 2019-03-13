@@ -50,7 +50,7 @@ npm start
 
 >Примечание
 >
->`npx` в первой строке не является опечаткой. Это [инструмент запуска пакетов, появившийся в npm версии 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+>`npx` в первой строке не является опечаткой. Это [инструмент запуска пакетов, доступный в версиях npm  5.2 и выше](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
 
 Create React App не обрабатывает бэкенд логику или базы данных, он только предоставляет команды для сборки фронтенда, поэтому вы можете использовать его с любым бэкэндом. «Под капотом» используются [Babel](https://babeljs.io/) и [webpack](https://webpack.js.org/), но вам не нужно ничего знать о них.
