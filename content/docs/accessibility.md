@@ -480,7 +480,7 @@ class BlurExample extends React.Component {
 Вот несколько руководств по работе с NVDA:
 
 - [WebAIM -- использование NVDA для улучшения доступности контента](https://webaim.org/articles/nvda/)
-- [Deque -- сочетания быстрых клавиш для NVDA](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
+- [Deque -- сочетания клавиш для NVDA](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
 
 #### VoiceOver в Safari {#voiceover-in-safari}
 
