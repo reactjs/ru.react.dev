@@ -198,7 +198,7 @@ testInstance.findAllByType(type)
 testInstance.findAllByProps(props)
 ```
 
-Найти все вложенные тестовые экземпляры c указанными пропсами.
+Найти все вложенные тестовые экземпляры c указанными пропсами `props`.
 
 ### `testInstance.instance` {#testinstanceinstance}
 
