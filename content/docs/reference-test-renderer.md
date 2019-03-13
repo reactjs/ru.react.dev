@@ -190,7 +190,7 @@ testInstance.findAll(test)
 testInstance.findAllByType(type)
 ```
 
-Находит все вложенные тестовые экземпляры с указанным `type`.
+Находит все вложенные тестовые экземпляры с указанным типом `type`.
 
 ### `testInstance.findAllByProps()` {#testinstancefindallbyprops}
 
