@@ -79,7 +79,7 @@ React сначала может показаться сложным, но при
 
 >Совет
 >
->Если всё-таки у вас есть пробелы в знаниях, то сайты [MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript) и [javascript.info](https://javascript.info/) будут отличными источниками информации о JavaScript. Также всегда можно задать вопрос или попросить помощи на [форумах нашего сообщества](/community/support.html).
+>Если всё-таки у вас есть пробелы в знаниях, то сайты [MDN](https://developer.mozilla.org/ru/docs/Web/JavaScript) и [learn.javascript.ru](https://learn.javascript.ru/) будут отличными источниками информации о JavaScript. Также всегда можно задать вопрос или попросить помощи на [форумах нашего сообщества](/community/support.html).
 
 ### Введение {#practical-tutorial}
 
