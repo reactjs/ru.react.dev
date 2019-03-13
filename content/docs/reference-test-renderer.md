@@ -214,7 +214,7 @@ testInstance.instance
 testInstance.type
 ```
 
-Тип компонента для его тестового экземпляра. Например, компонента `<Button />` имеет тип `Button`.
+Тип компонента для его тестового экземпляра. Например, компонент `<Button />` имеет тип `Button`.
 
 ### `testInstance.props` {#testinstanceprops}
 
