@@ -99,4 +99,4 @@ Create React App не обрабатывает бэкенд логику или 
 
 Если вы предпочтёте создать свой собственный набор JavaScript-инструментов с нуля, [ознакомьтесь с этим руководством](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658), в котором воссоздаются некоторые функции Create React App.
 
-Не забудьте убедиться, что ваш собственный набор инструментов [правильно настроен для продакшена](/docs/optimizing-performance.html#use-the-production-build).
+Не забудьте убедиться, что ваш набор инструментов [правильно настроен для продакшена](/docs/optimizing-performance.html#use-the-production-build).
