@@ -70,7 +70,7 @@
     - id: render-props
       title: Рендер-пропсы
     - id: static-type-checking
-      title:  Статическая типизация
+      title: Статическая типизация
     - id: strict-mode
       title: Строгий режим
     - id: typechecking-with-proptypes

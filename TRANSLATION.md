@@ -186,7 +186,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | codemod | codemod-скрипт |
 | commit | фиксация |
 | context | контекст |
-| (un)controlled component | (не)контролируемый компонент |
+| (un)controlled component | (не)управляемый компонент |
 | cross-cutting concerns | cквозная функциональность |
 | custom | пользовательский (*напр., пользовательские хуки*) |
 | debugging | отладка |
