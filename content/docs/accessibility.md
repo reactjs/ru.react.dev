@@ -499,7 +499,7 @@ VoiceOver -- это экранный считыватель, встроенны�
 Руководства по JAWS:
 
 - [WebAIM -- использование JAWS для улучшения доступности контента](https://webaim.org/articles/jaws/)
-- [Deque -- сочетания быстрых клавиш для JAWS](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
+- [Deque -- сочетания клавиш для JAWS](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
 
 ### Прочие экранные считыватели {#other-screen-readers}
 
