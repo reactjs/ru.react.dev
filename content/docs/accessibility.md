@@ -126,7 +126,7 @@ function ListItem({ item }) {
 
 Необходимо, чтобы ошибки и их причины были понятны всем пользователям. Далее приведены ресурсы, которые демонстрируют, как правильно воспроизводить текст сообщений об ошибках с помощью экранных считывающих устройств:
 
-- [примеры сообщений от W3C](https://www.w3.org/WAI/tutorials/forms/notifications/)
+- [W3C демонстрирует примеры уведомлений пользователя](https://www.w3.org/WAI/tutorials/forms/notifications/)
 - [порядок валидации форм от WebAIM](https://webaim.org/techniques/formvalidation/)
 
 ## Управление фокусом {#focus-control}
