@@ -89,76 +89,76 @@ React не является универсальной библиотекой о
 
 В команде есть внутренняя шутка, что React должен был называться «Планировщик», потому что React не хочет быть полностью «реактивным».
 
-### Developer Experience {#developer-experience}
+### Удобство разработки {#developer-experience}
 
-Providing a good developer experience is important to us.
+Нам важно сделать разработку удобной.
 
-For example, we maintain [React DevTools](https://github.com/facebook/react-devtools) which let you inspect the React component tree in Chrome and Firefox. We have heard that it brings a big productivity boost both to the Facebook engineers and to the community.
+Например, мы поддерживаем [React DevTools](https://github.com/facebook/react-devtools), при помощи которых можно просмотреть дерево React-компонент в Chrome и Firefox. Мы слышали, что это повышает производительность как инженеров Facebook, так и сообщества.
 
-We also try to go an extra mile to provide helpful developer warnings. For example, React warns you in development if you nest tags in a way that the browser doesn't understand, or if you make a common typo in the API. Developer warnings and the related checks are the main reason why the development version of React is slower than the production version.
+Мы также стараемся сделать всё возможное, чтобы предоставить полезные предупреждения для разработчиков. Например, во время разработки React предупреждает вас, если теги вложены непонятным для браузера образом, или если в API сделана опечатка. Предупреждения и связанные с ними проверки являются основной причиной, почему версия React для разработчиков медленнее чем продакшен версия.
 
-The usage patterns that we see internally at Facebook help us understand what the common mistakes are, and how to prevent them early. When we add new features, we try to anticipate the common mistakes and warn about them.
+Наблюдение за использованием паттернов внутри Facebook, помогает нам найти наиболее частые ошибки и понять как предотвратить их заранее. Когда мы добавляем новые возможности, мы стараемся предугадать возникновение частых ошибок и предупреждаем о них.
 
-We are always looking out for ways to improve the developer experience. We love to hear your suggestions and accept your contributions to make it even better.
+Мы всегда ищем способы сделать разработку удобнее. И рады вашим предложениям и содействию по улучшениям.
 
-### Debugging {#debugging}
+### Отладка {#debugging}
 
-When something goes wrong, it is important that you have breadcrumbs to trace the mistake to its source in the codebase. In React, props and state are those breadcrumbs.
+Когда что-то идёт не так, важно иметь хлебные крошки, чтобы найти источник ошибки в кодовой базе. В React хлебными крошками являются свойства и состояние.
 
-If you see something wrong on the screen, you can open React DevTools, find the component responsible for rendering, and then see if the props and state are correct. If they are, you know that the problem is in the component’s `render()` function, or some function that is called by `render()`. The problem is isolated.
+Если вы видите на экране, что что-то не так, можете открыть React DevTools, найти компонент, отвечающий за рендеринг, а затем проверить правильность свойств и состояния. Если они в порядке, значит проблема в `render()` функции компонента или в какой-то функции, вызываемой в `render()`. Проблема изолирована.
 
-If the state is wrong, you know that the problem is caused by one of the `setState()` calls in this file. This, too, is relatively simple to locate and fix because usually there are only a few `setState()` calls in a single file.
+Если состояние неверно, значит проблему спровоцировал один из вызовов `setState()` в этом файле. Её также относительно просто найти и исправить, так как в одном файле обычно всего несколько вызовов `setState()`.
 
-If the props are wrong, you can traverse the tree up in the inspector, looking for the component that first "poisoned the well" by passing bad props down.
+Если свойства неверны, вы можете пройти в инспекторе вверх по дереву, в поисках первого компонента, который «отравил колодец», передав плохие свойства вниз.
 
-This ability to trace any UI to the data that produced it in the form of current props and state is very important to React. It is an explicit design goal that state is not "trapped" in closures and combinators, and is available to React directly.
+Для React очень важна возможность отследить любой UI до данных, на которых он построен, в виде текущих свойств и состояния. Явная цель проектирования, чтобы состояние не «пропадало» в замыканиях и вычислениях, и было доступно напрямую в React.
 
-While the UI is dynamic, we believe that synchronous `render()` functions of props and state turn debugging from guesswork into a boring but finite procedure. We would like to preserve this constraint in React even though it makes some use cases, like complex animations, harder.
+Хотя UI динамичен, мы считаем, что синхронные `render()` функции свойств и состояния превращают отладку из гадания в скучный, но конечный процесс. Мы хотели бы сохранить это ограничение в React, хотя это усложняет некоторые варианты использования, такие как сложная анимация.
 
-### Configuration {#configuration}
+### Конфигурация {#configuration}
 
-We find global runtime configuration options to be problematic.
+Мы считаем, что возможность глобальной конфигурации во время выполнения, может стать проблемой.
 
-For example, it is occasionally requested that we implement a function like `React.configure(options)` or `React.register(component)`. However this poses multiple problems, and we are not aware of good solutions to them.
+Например, иногда нас просят реализовать такую функцию, как `React.configure(options)` или `React.register(component)`. Но это создаёт множество проблем, и мы не знаем хороших решений для них.
 
-What if somebody calls such a function from a third-party component library? What if one React app embeds another React app, and their desired configurations are incompatible? How can a third-party component specify that it requires a particular configuration? We think that global configuration doesn't work well with composition. Since composition is central to React, we don't provide global configuration in code.
+Что если кто-то вызовет такую функцию из сторонней библиотеки компонентов? Что если одно React-приложение встраивает другое React-приложение и нужные им конфигурации несовместимы? Как сторонний компонент может указать, что ему нужна определённая конфигурация? Мы думаем, что глобальная конфигурация плохо работает с композицией. Поскольку композиция для React первостепенна, мы не позволяем менять глобальную конфигурацию в коде.
 
-We do, however, provide some global configuration on the build level. For example, we provide separate development and production builds. We may also [add a profiling build](https://github.com/facebook/react/issues/6627) in the future, and we are open to considering other build flags.
+Однако, мы предоставляем некоторые глобальные настройки на уровне сборки. Например, мы предоставляем отдельные сборки для разработки и продакшена. В будущем мы можем [добавить профилирующую сборку](https://github.com/facebook/react/issues/6627). Мы также открыты для рассмотрения других флагов сборки.
 
-### Beyond the DOM {#beyond-the-dom}
+### За пределами DOM {#beyond-the-dom}
 
-We see the value of React in the way it allows us to write components that have fewer bugs and compose together well. DOM is the original rendering target for React but [React Native](https://facebook.github.io/react-native/) is just as important both to Facebook and the community.
+Мы видим ценность React в том, что он позволяет писать компоненты, в которых меньше ошибок и которые хорошо сочетаются друг с другом. Исходной целью рендеринга для React является DOM, но [React Native](https://facebook.github.io/react-native/) также важен, как для Facebook, так и для сообщества.
 
-Being renderer-agnostic is an important design constraint of React. It adds some overhead in the internal representations. On the other hand, any improvements to the core translate across platforms.
+Быть независимым от визуализации — важное ограничение в дизайне React. Это создаёт некоторые накладные расходы во внутренних представлениях. С другой стороны, любые улучшения ядра переносятся между платформами.
 
-Having a single programming model lets us form engineering teams around products instead of platforms. So far the tradeoff has been worth it for us.
+Наличие единой модели программирования позволяет нам создавать инженерные команды вокруг продуктов, а не платформ. Пока компромисс того стоил.
 
-### Implementation {#implementation}
+### Реализация {#implementation}
 
-We try to provide elegant APIs where possible. We are much less concerned with the implementation being elegant. The real world is far from perfect, and to a reasonable extent we prefer to put the ugly code into the library if it means the user does not have to write it. When we evaluate new code, we are looking for an implementation that is correct, performant and affords a good developer experience. Elegance is secondary.
+Мы стараемся предоставлять изящное API везде где возможно. Но мы гораздо меньше обеспокоены изящностью реализации. Реальный мир далёк от идеала и мы предпочитаем добавлять некрасивый код в библиотеку в разумной степени, если это означает, что пользователю не нужно его писать. Когда мы оцениваем новый код, мы смотрим на правильность реализации, производительность и удобство разработки. Изящность вторична.
 
-We prefer boring code to clever code. Code is disposable and often changes. So it is important that it [doesn't introduce new internal abstractions unless absolutely necessary](https://youtu.be/4anAwXYqLG8?t=13m9s). Verbose code that is easy to move around, change and remove is preferred to elegant code that is prematurely abstracted and hard to change.
+Мы предпочитаем скучный код умному. Код одноразовый и часто меняется. Поэтому важно, чтобы он [не привносил новых внутренних абстракций без крайней необходимости](https://youtu.be/4anAwXYqLG8?t=13m9s). Подробный код, который легко перемещать, изменять и удалять, предпочтительнее изящного, преждевременно абстрагированного и трудно изменяемого кода.
 
-### Optimized for Tooling {#optimized-for-tooling}
+### Оптимизирован для инструментов {#optimized-for-tooling}
 
-Some commonly used APIs have verbose names. For example, we use `componentDidMount()` instead of `didMount()` or `onMount()`. This is [intentional](https://github.com/reactjs/react-future/issues/40#issuecomment-142442124). The goal is to make the points of interaction with the library highly visible.
+Некоторые часто используемые API имеют длинные имена. Например, мы [специально](https://github.com/reactjs/react-future/issues/40#issuecomment-142442124) используем `componentDidMount()` вместо `didMount()` или `onMount()`. Цель в том, чтобы сделать точки взаимодействия с библиотекой хорошо заметными.
 
-In a massive codebase like Facebook, being able to search for uses of specific APIs is very important. We value distinct verbose names, and especially for the features that should be used sparingly. For example, `dangerouslySetInnerHTML` is hard to miss in a code review.
+В такой большой кодовой базе, как у Facebook, очень важно иметь возможность поиска использования определённых API. Мы ценим разные длинные имена, особенно для функционала, который следует использовать редко. Например, `dangerouslySetInnerHTML` трудно пропустить на кодревью.
 
-Optimizing for search is also important because of our reliance on [codemods](https://www.youtube.com/watch?v=d0pOgY8__JM) to make breaking changes. We want it to be easy and safe to apply vast automated changes across the codebase, and unique verbose names help us achieve this. Similarly, distinctive names make it easy to write custom [lint rules](https://github.com/yannickcr/eslint-plugin-react) about using React without worrying about potential false positives.
+Оптимизация для поиска также важна, так как мы зависим от [codemod](https://www.youtube.com/watch?v=d0pOgY8__JM)-скриптов для внесения критических изменений. Мы хотим, чтобы было легко и безопасно вносить большие автоматизированные изменения в кодовую базу, а уникальные длинные имена нам в этом помогают. Подобно этому, уникальные имена позволяют легко создавать собственные [правила анализа](https://github.com/yannickcr/eslint-plugin-react) использования React, не беспокоясь о возможных ложных срабатываниях.
 
-[JSX](/docs/introducing-jsx.html) plays a similar role. While it is not required with React, we use it extensively at Facebook both for aesthetic and pragmatic reasons.
+Аналогичную роль играет [JSX](/docs/introducing-jsx.html). Хотя он необязателен для работы React, мы широко используем его в Facebook как по эстетическим, так и по практическим соображениям.
 
-In our codebase, JSX provides an unambiguous hint to the tools that they are dealing with a React element tree. This makes it possible to add build-time optimizations such as [hoisting constant elements](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/), safely lint and codemod internal component usage, and [include JSX source location](https://github.com/facebook/react/pull/6771) into the warnings.
+В нашей кодовой базе JSX предоставляет однозначные подсказки для инструментов, работающих с деревом React-элементов. Это позволяет добавлять оптимизации во время сборки, такие как [всплытие неизменяющихся элементов](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/), безопасный анализ и использование внутреннего компонента codemod, и добавление в предупреждения [пути до исходников JSX кода](https://github.com/facebook/react/pull/6771).
 
-### Dogfooding {#dogfooding}
+### Догфудинг {#dogfooding}
 
-We try our best to address the problems raised by the community. However we are likely to prioritize the issues that people are *also* experiencing internally at Facebook. Perhaps counter-intuitively, we think this is the main reason why the community can bet on React.
+Мы стараемся решать проблемы, поднятые сообществом. Однако, скорее всего, мы будем отдавать приоритет тем проблем, с которыми люди *также* сталкиваются внутри Facebook. Возможно нелогично, но мы думаем, что это основная причина, по которой сообщество может полагаться на React.
 
-Heavy internal usage gives us the confidence that React won't disappear tomorrow. React was created at Facebook to solve its problems. It brings tangible business value to the company and is used in many of its products. [Dogfooding](https://en.wikipedia.org/wiki/Eating_your_own_dog_food) it means that our vision stays sharp and we have a focused direction going forward.
+Интенсивное внутреннее использование даёт нам уверенность в том, что React не исчезнет завтра. React был создан в Facebook для решения своих проблем. Он приносит ощутимую бизнес-ценность компании и используется во многих её продуктах. [Догфудинг](https://en.wikipedia.org/wiki/Eating_your_own_dog_food) — это означает, что наше видение остаётся ясным и мы сфокусированы на движении вперёд.
 
-This doesn't mean that we ignore the issues raised by the community. For example, we added support for [web components](/docs/webcomponents.html) and [SVG](https://github.com/facebook/react/pull/6243) to React even though we don't rely on either of them internally. We are actively [listening to your pain points](https://github.com/facebook/react/issues/2686) and [address them](/blog/2016/07/11/introducing-reacts-error-code-system.html) to the best of our ability. The community is what makes React special to us, and we are honored to contribute back.
+Это не означает, что мы игнорируем вопросы, поднятые сообществом. Например, мы добавили поддержку [web-компонентов](/docs/webcomponents.html) и [SVG](https://github.com/facebook/react/pull/6243) в React, хотя мы не используем их внутри. Мы активно [следим за вашими проблемами](https://github.com/facebook/react/issues/2686) и [устраняем их](/blog/2016/07/11/introducing-reacts-error-code-system.html) по мере наших возможностей. Сообщество — это то что делает React особенным для нас и мы рады внести свой вклад.
 
-After releasing many open source projects at Facebook, we have learned that trying to make everyone happy at the same time produced projects with poor focus that didn't grow well. Instead, we found that picking a small audience and focusing on making them happy brings a positive net effect. That's exactly what we did with React, and so far solving the problems encountered by Facebook product teams has translated well to the open source community.
+Выпустив много OSS-проектов в Facebook, мы поняли, что попытка сделать всех счастливыми в то же время приводит к созданию слишком общих проектов, которые плохо развиваются. Наоборот, мы обнаружили, что выбор узкой аудитории и фокусировка ней, приносит положительный конечный результат. Именно это мы сделали с React. И до сих пор решение проблем, с которыми сталкиваются продуктовые команды Facebook, хорошо транслировались на OSS-сообщество.
 
-The downside of this approach is that sometimes we fail to give enough focus to the things that Facebook teams don't have to deal with, such as the "getting started" experience. We are acutely aware of this, and we are thinking of how to improve in a way that would benefit everyone in the community without making the same mistakes we did with open source projects before.
+Недостатком этого подхода является то, что иногда мы не уделяем достаточного внимания тем вещам, с которыми командам Facebook не приходится сталкиваться, такими как опыт «начала работы». Мы хорошо знаем об этой проблеме. И думаем над тем как сделать лучше так, чтобы это принесло пользу всем в сообществе, не совершая тех же ошибок, которые мы делали в OSS-проектах до этого.
