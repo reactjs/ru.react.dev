@@ -7,7 +7,7 @@ permalink: docs/code-splitting.html
 ## Бандлинг {#bundling}
 
 Большинство React-приложений «собирают» свои файлы такими инструментами, как
-[Webpack](https://webpack.js.org/) или [Browserify](http://browserify.org/) и состоят из нескольких "бандл" файлов.
+[Webpack](https://webpack.js.org/) или [Browserify](http://browserify.org/).
 Бандлинг -- это процесс отслеживания импортированных файлов и их объединения их в один «бандл-файл».
 Этот бандл после подключения на веб-страницу загружает всё приложение за один раз.
 
