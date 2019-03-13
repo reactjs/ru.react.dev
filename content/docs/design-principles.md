@@ -1,6 +1,6 @@
 ---
 id: design-principles
-title: Принципы разработки
+title: Принципы проектирования React
 layout: contributing
 permalink: docs/design-principles.html
 prev: implementation-notes.html
