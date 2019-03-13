@@ -113,7 +113,7 @@ function ListItem({ item }) {
 
 - [демонстрация подписи элементов от консорциума W3C](https://www.w3.org/WAI/tutorials/forms/labels/)
 - [демонстрация подписи элементов от WebAIM](https://webaim.org/techniques/forms/controls)
-- [разъяснения по доступности наименований от Paciello Group](https://www.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
+- [разъяснения от Paciello Group по доступности наименований](https://www.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
 
 Эти стандартные для HTML способы могут использоваться в React напрямую, однако не забывайте, что атрибут `for` в JSX записывается как `htmlFor`:
 
