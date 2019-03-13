@@ -510,4 +510,4 @@ VoiceOver -- это экранный считыватель, встроенны�
 Ссылки на руководства по ChromeVox:
 
 - [Google Chromebook -- как использовать встроенную программу чтения с экрана](https://support.google.com/chromebook/answer/7031755?hl=ru)
-- [быстрые клавиши для ChromeVox](https://www.chromevox.com/keyboard_shortcuts.html)
+- [сочетания клавиш для ChromeVox](https://www.chromevox.com/keyboard_shortcuts.html)
