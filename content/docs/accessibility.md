@@ -220,7 +220,7 @@ class Parent extends React.Component {
   }
 }
 
-// Теперь при необходимости можно устанавливать фокус на поле.
+// Теперь при необходимости можно устанавливать фокус на поле `<input>`.
 this.inputElement.current.focus();
 ```
 
