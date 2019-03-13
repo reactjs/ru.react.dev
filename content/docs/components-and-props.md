@@ -26,7 +26,7 @@ next: state-and-lifecycle.html
 
 ```js
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Привет, {props.name}</h1>;
 }
 ```
 
@@ -37,7 +37,7 @@ function Welcome(props) {
 ```js
 class Welcome extends React.Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1>Привет, {this.props.name}</h1>;
   }
 }
 ```
@@ -99,7 +99,7 @@ ReactDOM.render(
 
 ```js{8-10}
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>Привет, {props.name}</h1>;
 }
 
 function App() {

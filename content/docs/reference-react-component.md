@@ -31,7 +31,7 @@ class Welcome extends React.Component {
 
 Единственный *обязательный* метод в подклассе `React.Component` – [`render()`](#render). Все остальные методы, описанные ниже, являются необязательными.
 
-**Мы рекомендуем не создавать собственные классы базовых компонентов.** В компонентах React переиспользование кода обычно достигается за счет [композиции, а не наследования](/docs/composition-vs-inheritance.html).
+**Мы рекомендуем не создавать собственные классы базовых компонентов.** В компонентах React переиспользование кода обычно достигается за счёт [композиции, а не наследования](/docs/composition-vs-inheritance.html).
 
 > Примечание:
 >
@@ -283,7 +283,7 @@ static getDerivedStateFromProps(props, state)
 
 * Чтобы **повторно вычислить данные при изменении пропсов**, используйте [функцию мемоизации](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization).
 
-* Чтобы **«сбросить» некоторое состояние при изменении пропсов**, используйте [контролируемые компоненты](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component) или [неконтролируемые компоненты с ключом](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key).
+* Чтобы **«сбросить» некоторое состояние при изменении пропсов**, используйте [управляемые компоненты](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component) или [неуправляемые компоненты с ключом](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key).
 
 Этот метод не имеет доступа к экземпляру компонента. Чтобы использовать пропсы, состояние и методы класса в `getDerivedStateFromProps()`, их нужно вынести за пределы класса в виде чистых функций.
 
@@ -453,7 +453,7 @@ UNSAFE_componentWillReceiveProps(nextProps)
 >
 > * Чтобы **выполнить побочный эффект при изменении пропсов** (например, сетевой запрос или анимацию) используйте [`componentDidUpdate`](#componentdidupdate).
 > * Чтобы **повторно вычислить данные при изменении пропсов** вместо `componentWillReceiveProps` используйте [функцию мемоизации](/blog/2018/06/07/you-probably-dont-need-derived-state.html#what-about-memoization).
-> * Чтобы **«сбросить» некоторое состояние при изменении пропсов** вместо `componentWillReceiveProps` используйте [контролируемые компоненты](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component) или [неконтролируемые компоненты с ключом](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key).
+> * Чтобы **«сбросить» некоторое состояние при изменении пропсов** вместо `componentWillReceiveProps` используйте [управляемые компоненты](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-controlled-component) или [неуправляемые компоненты с ключом](/blog/2018/06/07/you-probably-dont-need-derived-state.html#recommendation-fully-uncontrolled-component-with-a-key).
 >
 > Другие рекомендации можно посмотреть [в статье про производное состояние](/blog/2018/06/07/you-probably-dont-need-derived-state.html).
 
@@ -614,7 +614,7 @@ CustomButton.defaultProps = {
 
 ### `displayName` {#displayname}
 
-Строка `displayName` используется в сообщениях для отладки. Обычно вам не нужно её явно указывать. По умолчанию используется имя функции или класса, указанное при определении компонента. Если вам нужно установить его явно, например, для отладки или создания компонента высшего порядка, посмотрите раздел [Обертка отображаемого имени для простой отладки](/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging).
+Строка `displayName` используется в сообщениях для отладки. Обычно вам не нужно её явно указывать. По умолчанию используется имя функции или класса, указанное при определении компонента. Если вам нужно установить его явно, например, для отладки или создания компонента высшего порядка, посмотрите раздел [Обёртка отображаемого имени для простой отладки](/docs/higher-order-components.html#convention-wrap-the-display-name-for-easy-debugging).
 
 * * *
 

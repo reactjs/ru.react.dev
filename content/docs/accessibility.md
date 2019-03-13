@@ -1,32 +1,32 @@
 ---
 id: accessibility
-title: Accessibility
+title: Доступность контента
 permalink: docs/accessibility.html
 ---
 
-## Why Accessibility? {#why-accessibility}
+## Что такое доступность контента? {#why-accessibility}
 
-Web accessibility (also referred to as [**a11y**](https://en.wiktionary.org/wiki/a11y)) is the design and creation of websites that can be used by everyone. Accessibility support is necessary to allow assistive technology to interpret web pages.
+Доступность контента -- это специальные технические и архитектурные решения, которые помогают людям с ограниченными возможностями использовать сайты. Применение таких решений необходимо для интерпретации страниц техническими средствами реабилитации, встроенными в операционные системы и браузеры. Термин **«доступность контента»** также может обозначаться аббревиатурой [**a11y**](https://en.wiktionary.org/wiki/a11y).
 
-React fully supports building accessible websites, often by using standard HTML techniques.
+React поддерживает создание сайтов c доступным контентом в том числе с помощью стандартных возможностей HTML.
 
-## Standards and Guidelines {#standards-and-guidelines}
+## Стандарты и руководства {#standards-and-guidelines}
 
-### WCAG {#wcag}
+### Руководство по обеспечению доступности контента (WCAG) {#wcag}
 
-The [Web Content Accessibility Guidelines](https://www.w3.org/WAI/intro/wcag) provides guidelines for creating accessible web sites.
+[Руководство по обеспечению доступности контента (WCAG)](https://www.w3.org/Translations/WCAG20-ru), разработанное консорциумом W3C, описывает рекомендации по созданию сайтов с доступным контентом.
 
-The following WCAG checklists provide an overview:
+Также есть ресурсы с чек-листами требований WCAG, например:
 
-- [WCAG checklist from Wuhcag](https://www.wuhcag.com/wcag-checklist/)
-- [WCAG checklist from WebAIM](https://webaim.org/standards/wcag/checklist)
-- [Checklist from The A11Y Project](https://a11yproject.com/checklist.html)
+- [рекомендации от Wuhcag](https://www.wuhcag.com/wcag-checklist/)
+- [рекомендации от WebAIM](https://webaim.org/standards/wcag/checklist)
+- [рекомендации от A11Y Project](https://a11yproject.com/checklist.html)
 
-### WAI-ARIA {#wai-aria}
+### Доступность контента в веб-приложениях (WAI-ARIA) {#wai-aria}
 
-The [Web Accessibility Initiative - Accessible Rich Internet Applications](https://www.w3.org/WAI/intro/aria) document contains techniques for building fully accessible JavaScript widgets.
+[Свод правил по доступности контента в веб-приложениях (WAI-ARIA)](https://www.w3.org/WAI/intro/aria) -- это документ, который посвящён реализации требований доступности контента при разработке JavaScript-программ и компонентов.
 
-Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most DOM properties and attributes in React are camelCased, these attributes should be hyphen-cased (also known as kebab-case, lisp-case, etc) as they are in plain HTML:
+Нужно отметить, что все HTML-атрибуты `aria-*` полностью поддерживаются в JSX. Несмотря на то, что большинство DOM-свойств и атрибутов в React пишутся в стиле camelCase, атрибуты `aria-*` должны быть написаны с разделением дефисами. Такой стиль ещё известен как шашлычная нотация (kebab-case) или в стиле языка Лисп (lisp-case). Вот как выглядит такое оформление в чистом HTML без использования JSX:
 
 ```javascript{3,4}
 <input
@@ -39,16 +39,13 @@ Note that all `aria-*` HTML attributes are fully supported in JSX. Whereas most 
 />
 ```
 
-## Semantic HTML {#semantic-html}
-Semantic HTML is the foundation of accessibility in a web application. Using the various HTML elements to reinforce the meaning of information
-in our websites will often give us accessibility for free.
+## Семантическая вёрстка {#semantic-html}
 
-- [MDN HTML elements reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+Семантическая вёрстка -- это основа доступности контента в веб-приложениях. Используя различные HTML-элементы можно улучшить восприимчивость и понятность ваших сайтов. Это позволяет сделать контент доступным без особых усилий.
 
-Sometimes we break HTML semantics when we add `<div>` elements to our JSX to make our React code work, especially when working with lists (`<ol>`, `<ul>` and `<dl>`) and the HTML `<table>`.
-In these cases we should rather use [React Fragments](/docs/fragments.html) to group together multiple elements.
+- [Полный перечень HTML-элементов на MDN](https://developer.mozilla.org/ru/docs/Web/HTML/Element)
 
-For example,
+Бывают случаи, когда семантическая вёрстка нарушается. Например, при добавлении элемента `<div>` в JSX для обеспечения работоспособности кода на React. Особенно часто это случается при работе со списками (`<ol>`, `<ul>`, `<dl>`) или таблицами (`<table>`). В такой ситуации рекомендуется использовать [фрагменты](/docs/fragments.html), чтобы сгруппировать элементы, как это показано в примере:
 
 ```javascript{1,5,8}
 import React, { Fragment } from 'react';
@@ -73,14 +70,14 @@ function Glossary(props) {
 }
 ```
 
-You can map a collection of items to an array of fragments as you would any other type of element as well:
+Коллекцию элементов можно преобразовать в массив фрагментов или любых других элементов:
 
 ```javascript{6,9}
 function Glossary(props) {
   return (
     <dl>
       {props.items.map(item => (
-        // Fragments should also have a `key` prop when mapping collections
+        // При отображении коллекций фрагменты обязательно должны иметь атрибут `key`
         <Fragment key={item.id}>
           <dt>{item.term}</dt>
           <dd>{item.description}</dd>
@@ -91,7 +88,7 @@ function Glossary(props) {
 }
 ```
 
-When you don't need any props on the Fragment tag you can use the [short syntax](/docs/fragments.html#short-syntax), if your tooling supports it:
+Если нет необходимости использовать пропсы, то можно применять [сокращённую запись фрагментов](/docs/fragments.html#short-syntax):
 
 ```javascript{3,6}
 function ListItem({ item }) {
@@ -104,83 +101,82 @@ function ListItem({ item }) {
 }
 ```
 
-For more info, see [the Fragments documentation](/docs/fragments.html).
+Обратите внимание, что не все инструменты поддерживают сокращённую запись. Подробности в [документации фрагментов](/docs/fragments.html).
 
-## Accessible Forms {#accessible-forms}
+## Доступность контента в формах {#accessible-forms}
 
-### Labeling {#labeling}
-Every HTML form control, such as `<input>` and `<textarea>`, needs to be labeled accessibly. We need to provide descriptive labels that are also exposed to screen readers.
+### Подписи {#labeling}
 
-The following resources show us how to do this:
+Каждый элемент управления, например, `<input>` или `<textarea>`, должен иметь подпись, обеспечивающую доступность контента. Подписи нужно выполнять так, чтобы их могли использовать экранные считывающие устройства и другие технические средства реабилитации.
 
-- [The W3C shows us how to label elements](https://www.w3.org/WAI/tutorials/forms/labels/)
-- [WebAIM shows us how to label elements](https://webaim.org/techniques/forms/controls)
-- [The Paciello Group explains accessible names](https://www.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
+Вот рекомендации о том, как это делать:
 
-Although these standard HTML practices can be directly used in React, note that the `for` attribute is written as `htmlFor` in JSX:
+- [демонстрация подписи элементов от консорциума W3C](https://www.w3.org/WAI/tutorials/forms/labels/)
+- [демонстрация подписи элементов от WebAIM](https://webaim.org/techniques/forms/controls)
+- [разъяснения от Paciello Group по доступности наименований](https://www.paciellogroup.com/blog/2017/04/what-is-an-accessible-name/)
+
+Эти стандартные для HTML способы могут использоваться в React напрямую, однако не забывайте, что атрибут `for` в JSX записывается как `htmlFor`:
 
 ```javascript{1}
 <label htmlFor="namedInput">Name:</label>
 <input id="namedInput" type="text" name="name"/>
 ```
 
-### Notifying the user of errors {#notifying-the-user-of-errors}
+### Сообщения об ошибках {#notifying-the-user-of-errors}
 
-Error situations need to be understood by all users. The following link shows us how to expose error texts to screen readers as well:
+Необходимо, чтобы ошибки и их причины были понятны всем пользователям. Далее приведены ресурсы, которые демонстрируют, как правильно воспроизводить текст сообщений об ошибках с помощью экранных считывающих устройств:
 
-- [The W3C demonstrates user notifications](https://www.w3.org/WAI/tutorials/forms/notifications/)
-- [WebAIM looks at form validation](https://webaim.org/techniques/formvalidation/)
+- [W3C демонстрирует примеры уведомлений пользователя](https://www.w3.org/WAI/tutorials/forms/notifications/)
+- [WebAIM описывает валидацию форм](https://webaim.org/techniques/formvalidation/)
 
-## Focus Control {#focus-control}
+## Управление фокусом {#focus-control}
 
-Ensure that your web application can be fully operated with the keyboard only:
+Приложение с доступным контентом должно функционировать при использовании только клавиатуры. Убедитесь соответствует ли ваше приложение этому требованию:
 
-- [WebAIM talks about keyboard accessibility](https://webaim.org/techniques/keyboard/)
+- [обсуждение доступности контента при работе с клавиатурой на сайте WebAIM](https://webaim.org/techniques/keyboard/)
 
-### Keyboard focus and focus outline {#keyboard-focus-and-focus-outline}
+### Фокус клавиатуры и контур элемента {#keyboard-focus-and-focus-outline}
 
-Keyboard focus refers to the current element in the DOM that is selected to accept input from the keyboard. We see it everywhere as a focus outline similar to that shown in the following image:
+Фокус клавиатуры указывает на тот элемент в структуре DOM, который в данный момент готов принимать ввод с клавиатуры. Обычно такой элемент выделяется контуром, как это показано на рисунке:
 
-<img src="../images/docs/keyboard-focus.png" alt="Blue keyboard focus outline around a selected link." />
+<img src="../images/docs/keyboard-focus.png" alt="Синий контур вокруг выделенного элемента." />
 
-Only ever use CSS that removes this outline, for example by setting `outline: 0`, if you are replacing it with another focus outline implementation.
+Если вы заменяете стандартную реализацию фокуса своей, удалить контуры элементов можно с помощью CSS, установив `outline: 0`.
 
-### Mechanisms to skip to desired content {#mechanisms-to-skip-to-desired-content}
+### Механизмы быстрого перехода к нужному контенту {#mechanisms-to-skip-to-desired-content}
 
-Provide a mechanism to allow users to skip past navigation sections in your application as this assists and speeds up keyboard navigation.
+Также на сайте нужно реализовать механизмы, которые помогают пользователям быстро переходить к нужному контенту с помощью клавиатуры.
 
-Skiplinks or Skip Navigation Links are hidden navigation links that only become visible when keyboard users interact with the page. They are very easy to implement with
-internal page anchors and some styling:
+Ссылки для быстрого перехода -- это скрытые навигационные ссылки, которые становятся видимыми, когда пользователи взаимодействуют со страницей с помощью клавиатуры. Такие ссылки очень легко сделать, используя внутренние якоря страницы и CSS:
 
-- [WebAIM - Skip Navigation Links](https://webaim.org/techniques/skipnav/)
+- [WebAIM – ссылки для быстрого перехода](https://webaim.org/techniques/skipnav/)
 
-Also use landmark elements and roles, such as `<main>` and `<aside>`, to demarcate page regions as assistive technology allow the user to quickly navigate to these sections.
+Элементы семантической вёрстки, например, `<main>` или `<aside>`, нужно использовать в качестве секционной разметки, предназначенной для быстрого перехода между логическими частями сайта.
 
-Read more about the use of these elements to enhance accessibility here:
+Узнать больше о применении секционной разметки для улучшения доступности контента можно здесь:
 
-- [Accessible Landmarks](https://www.scottohara.me/blog/2018/03/03/landmarks.html)
+- [использование секционной разметки](https://www.scottohara.me/blog/2018/03/03/landmarks.html)
 
-### Programmatically managing focus {#programmatically-managing-focus}
+### Программное управление фокусом {#programmatically-managing-focus}
 
-Our React applications continuously modify the HTML DOM during runtime, sometimes leading to keyboard focus being lost or set to an unexpected element. In order to repair this,
-we need to programmatically nudge the keyboard focus in the right direction. For example, by resetting keyboard focus to a button that opened a modal window after that modal window is closed.
+React-приложения во время своей работы постоянно изменяют структуру DOM. Иногда из-за этого фокус клавиатуры может быть потерян или может перейти на неправильный элемент. Чтобы исправить такую ситуацию, нужно запрограммировать перевод фокуса клавиатуры на нужный элемент. Например, после закрытия модального окна перевести фокус клавиатуры на кнопку, которая его открыла.
 
-MDN Web Docs takes a look at this and describes how we can build [keyboard-navigable JavaScript widgets](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets).
+В статье на MDN рассматриваются способы [навигации с клавиатуры в JavaScript](https://developer.mozilla.org/ru/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets).
 
-To set focus in React, we can use [Refs to DOM elements](/docs/refs-and-the-dom.html).
+Чтобы управлять фокусом в React, можно использовать [рефы на DOM-элементы](/docs/refs-and-the-dom.html).
 
-Using this, we first create a ref to an element in the JSX of a component class:
+При таком подходе мы сначала создаём в классе компонента реф на элемент в JSX:
 
 ```javascript{4-5,8-9,13}
 class CustomTextInput extends React.Component {
   constructor(props) {
     super(props);
-    // Create a ref to store the textInput DOM element
+    // Создаём реф для сохранения textInput-элемента
     this.textInput = React.createRef();
   }
   render() {
-  // Use the `ref` callback to store a reference to the text input DOM
-  // element in an instance field (for example, this.textInput).
+  // Используем колбэк-реф для связи DOM-элемента
+  // с конкретным экземпляром поля.
     return (
       <input
         type="text"
@@ -191,18 +187,17 @@ class CustomTextInput extends React.Component {
 }
 ```
 
-Then we can focus it elsewhere in our component when needed:
+Теперь при необходимости можно установить фокус на этот элемент из любого места компонента:
 
  ```javascript
  focus() {
-   // Explicitly focus the text input using the raw DOM API
-   // Note: we're accessing "current" to get the DOM node
+   // Устанавливаем фокус на текстовое поле, используя вызов низкоуровневого API DOM
+   // Внимание: мы обращаемся к свойству «current», чтобы получить DOM-элемент
    this.textInput.current.focus();
  }
  ```
 
-Sometimes a parent component needs to set focus to an element in a child component. We can do this by [exposing DOM refs to parent components](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components)
-through a special prop on the child component that forwards the parent's ref to the child's DOM node.
+Иногда родительскому компоненту нужно установить фокус на элемент дочернего компонента. Мы можем сделать это с помощью [рефа на родительский компонент](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components), который присваивается специальному свойству дочернего компонента и используется для ссылки из родительского компонента на DOM-элемент дочернего.
 
 ```javascript{4,12,16}
 function CustomTextInput(props) {
@@ -225,32 +220,29 @@ class Parent extends React.Component {
   }
 }
 
-// Now you can set focus when required.
+// Теперь при необходимости можно устанавливать фокус на поле `<input>`.
 this.inputElement.current.focus();
 ```
 
-When using a HOC to extend components, it is recommended to [forward the ref](/docs/forwarding-refs.html) to the wrapped component using the `forwardRef` function of React. If a third party HOC
-does not implement ref forwarding, the above pattern can still be used as a fallback.
+Если для расширения функциональности компонент оборачивается компонентом высшего порядка, то рекомендуется [перенаправлять рефы](/docs/forwarding-refs.html) обёрнутого компонента с помощью React-функции `forwardRef`. В случае, когда сторонний HOC не поддерживает перенаправление рефов, описанный выше подход всё равно можно использовать в качестве запасного варианта.
 
-A great focus management example is the [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). This is a relatively rare example of a fully accessible modal window. Not only does it set initial focus on
-the cancel button (preventing the keyboard user from accidentally activating the success action) and trap keyboard focus inside the modal, it also resets focus back to the element that
-initially triggered the modal.
+Отличный пример управления фокусом показан в проекте [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). Этот достаточно редкий случай реализации модального окна с полностью доступным контентом. В нём, кроме установки фокуса на кнопку отмены и перемещения фокуса внутри модальной формы, сделан возврат на элемент, инициировавший вызов модального окна. Нужно отметить, что первоначальная установка фокуса на кнопку отмены в модальном окне предотвращает случайное нажатие на клавиатуре кнопки подтверждения запрашиваемого действия.
 
->Note:
+>Примечание:
 >
->While this is a very important accessibility feature, it is also a technique that should be used judiciously. Use it to repair the keyboard focus flow when it is disturbed, not to try and anticipate how
->users want to use applications.
+>Правильное управление фокусом -- это важный момент в обеспечении доступности контента, однако стоит применять его с умом.
+>Используйте управление фокусом для восстановления нарушенной последовательности действий при работе с клавиатурой.
+>Не стоит предугадывать желания пользователя и подталкивать его к каким-либо действиям в приложении.
 
-## Mouse and pointer events {#mouse-and-pointer-events}
+## Работа с событиями мыши {#mouse-and-pointer-events}
 
-Ensure that all functionality exposed through a mouse or pointer event can also be accessed using the keyboard alone. Depending only on the pointer device will lead to many cases where
-keyboard users cannot use your application.
+Позаботьтесь, чтобы вся функциональность, связанная с событиями мыши, была доступна при работе только с клавиатурой. Если приложение сильно зависит от действий мыши, многие пользователи, которые используют только клавиатуру, не смогут работать с ним.
 
-To illustrate this, let's look at a prolific example of broken accessibility caused by click events. This is the outside click pattern, where a user can disable an opened popover by clicking outside the element.
+Чтобы продемонстрировать это, рассмотрим подробный пример, когда доступность контента нарушается из-за ориентации только на щелчок мыши. В примере показан паттерн закрытия всплывающего списка при щелчке мышью за пределами этого элемента.
 
-<img src="../images/docs/outerclick-with-mouse.gif" alt="A toggle button opening a popover list implemented with the click outside pattern and operated with a mouse showing that the close action works." />
+<img src="../images/docs/outerclick-with-mouse.gif" alt="Реализация паттерна закрытия всплывающего списка с помощью щелчка за его пределами." />
 
-This is typically implemented by attaching a `click` event to the `window` object that closes the popover:
+Обычно такая функциональность реализуется событием `click` объекта `window`, обработчик которого закрывает выпадающий список:
 
 ```javascript{12-14,26-30}
 class OuterClickExample extends React.Component {
@@ -301,12 +293,11 @@ constructor(props) {
 }
 ```
 
-This may work fine for users with pointer devices, such as a mouse, but operating this with the keyboard alone leads to broken functionality when tabbing to the next element
-as the `window` object never receives a `click` event. This can lead to obscured functionality which blocks users from using your application.
+Такой подход хорош для тех, кто использует мыши, тачпады или другие координатные устройства, однако для пользователей, работающих только с клавиатурой, он может стать причиной нарушения работы программы при попытке перехода к следующему элементу с помощью клавиши `Tab`. Причиной этого является то, что в данной ситуации объект `window` никогда не получит событие `click`. В итоге мы имеем заблокированную функциональность и невозможность продолжения работы с приложением.
 
-<img src="../images/docs/outerclick-with-keyboard.gif" alt="A toggle button opening a popover list implemented with the click outside pattern and operated with the keyboard showing the popover not being closed on blur and it obscuring other screen elements." />
+<img src="../images/docs/outerclick-with-keyboard.gif" alt="Реализация паттерна закрытия списка с помощью щелчка за его пределами с возможностью выбора следующего элемента на клавиатуре." />
 
-The same functionality can be achieved by using an appropriate event handlers instead, such as `onBlur` and `onFocus`:
+Подобное поведение можно получить используя обработчики сопутствующих событий, например, `onBlur` или `onFocus`:
 
 ```javascript{19-29,31-34,37-38,40-41}
 class BlurExample extends React.Component {
@@ -327,10 +318,9 @@ class BlurExample extends React.Component {
     }));
   }
 
-  // We close the popover on the next tick by using setTimeout.
-  // This is necessary because we need to first check if
-  // another child of the element has received focus as
-  // the blur event fires prior to the new focus event.
+  // Мы закрываем выпадающий список по таймеру setTimeout.
+  // Это нужно чтобы для дочерних элементов событие выделения
+  // происходило перед событием получения фокуса.
   onBlurHandler() {
     this.timeOutId = setTimeout(() => {
       this.setState({
@@ -339,7 +329,7 @@ class BlurExample extends React.Component {
     });
   }
 
-  // If a child receives focus, do not close the popover.
+  // Не закрывать выпадающий список при получении фокуса дочерним элементом.
   onFocusHandler() {
     clearTimeout(this.timeOutId);
   }
@@ -368,86 +358,79 @@ class BlurExample extends React.Component {
 }
 ```
 
-This code exposes the functionality to both pointer device and keyboard users. Also note the added `aria-*` props to support screen-reader users. For simplicity's sake
-the keyboard events to enable `arrow key` interaction of the popover options have not been implemented.
+С этой программой можно работать и с помощью клавиатуры, и с помощью координатного устройства. Также в неё добавлены атрибуты `aria-*` для людей, использующих экранные считывающие устройства. Для упрощения примера, в нём не реализовано перемещение по списку с помощью стрелок на клавиатуре.
 
-<img src="../images/docs/blur-popover-close.gif" alt="A popover list correctly closing for both mouse and keyboard users." />
+<img src="../images/docs/blur-popover-close.gif" alt="Теперь выпадающий список корректно работает и с мышью, и с клавиатурой." />
 
-This is one example of many cases where depending on only pointer and mouse events will break functionality for keyboard users. Always testing with the keyboard will immediately
-highlight the problem areas which can then be fixed by using keyboard aware event handlers.
+Это один из множества случаев, когда поведение программы зависит только от положения курсора и событий мыши, а для пользователей, работающих с клавиатурой, её функциональность недоступна. Тестирование пользовательского интерфейса с помощью клавиатуры позволяет быстро найти проблемные места, работу которых можно улучшить, используя обработчики событий клавиатуры.
 
-## More Complex Widgets {#more-complex-widgets}
+## Сложные компоненты {#more-complex-widgets}
 
-A more complex user experience should not mean a less accessible one. Whereas accessibility is most easily achieved by coding as close to HTML as possible,
-even the most complex widget can be coded accessibly.
+Усложнение пользовательского интерфейса не должно ухудшать доступность контента. Несмотря на то, что лучший результат достигается при максимальном использовании синтаксиса HTML, даже очень сложный компонент можно сделать доступным для всех.
 
-Here we require knowledge of [ARIA Roles](https://www.w3.org/TR/wai-aria/#roles) as well as [ARIA States and Properties](https://www.w3.org/TR/wai-aria/#states_and_properties).
-These are toolboxes filled with HTML attributes that are fully supported in JSX and enable us to construct fully accessible, highly functional React components.
+В руководстве по доступности контента в веб-приложениях собраны все необходимые сведения о [ролях ARIA](https://www.w3.org/TR/wai-aria/#roles), а также о [состояниях и свойствах ARIA](https://www.w3.org/TR/wai-aria/#states_and_properties). Описанные в руководствах HTML-атрибуты полностью поддерживаются в JSX. Используя их можно создавать функционально нагруженные и при этом полностью доступные React-компоненты.
 
-Each type of widget has a specific design pattern and is expected to function in a certain way by users and user agents alike:
+Каждый тип компонентов имеет специфическую архитектуру и предполагает определённую функциональность, как для пользователей, так и для браузеров:
 
-- [WAI-ARIA Authoring Practices - Design Patterns and Widgets](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
-- [Heydon Pickering - ARIA Examples](https://heydonworks.com/practical_aria_examples/)
-- [Inclusive Components](https://inclusive-components.design/)
+- [практические рекомендации WAI-ARIA по архитектуре и компонентам](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
+- [примеры из блога Хейдона Пикеринга (Heydon Pickering)](https://heydonworks.com/practical_aria_examples/)
+- [инклюзивные компоненты](https://inclusive-components.design/)
 
-## Other Points for Consideration {#other-points-for-consideration}
+## На что ещё нужно обратить внимание {#other-points-for-consideration}
 
-### Setting the language {#setting-the-language}
+### Определение языка {#setting-the-language}
 
-Indicate the human language of page texts as screen reader software uses this to select the correct voice settings:
+Обязательно указывайте язык текста на странице. Это необходимо для корректной установки опций экранных считывающих устройств:
 
-- [WebAIM - Document Language](https://webaim.org/techniques/screenreader/#language)
+- [WebAIM - определение языка страниц](https://webaim.org/techniques/screenreader/#language)
 
-### Setting the document title {#setting-the-document-title}
+### Заголовок страницы {#setting-the-document-title}
 
-Set the document `<title>` to correctly describe the current page content as this ensures that the user remains aware of the current page context:
+Всегда устанавливайте заголовок `<title>` для правильного описания контента текущей страницы. Это позволит пользователю постоянно быть в курсе контекста страницы:
 
-- [WCAG - Understanding the Document Title Requirement](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html)
+- [разъяснение требований WCAG к заголовкам](https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html)
 
-We can set this in React using the [React Document Title Component](https://github.com/gaearon/react-document-title).
+Реализовать эти требования в React можно с помощью [компонента `DocumentTitle`](https://github.com/gaearon/react-document-title).
 
-### Color contrast {#color-contrast}
+### Цветовая контрастность {#color-contrast}
 
-Ensure that all readable text on your website has sufficient color contrast to remain maximally readable by users with low vision:
+Убедитесь, что все тексты на вашем сайте имеют правильную цветовую контрастность, чтобы обеспечить максимальное удобство чтения для пользователей с плохим зрением:
 
-- [WCAG - Understanding the Color Contrast Requirement](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
-- [Everything About Color Contrast And Why You Should Rethink It](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
-- [A11yProject - What is Color Contrast](https://a11yproject.com/posts/what-is-color-contrast/)
+- [разъяснение требований WCAG к цветовой контрастности](https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html)
+- [всё о цветовой контрастности и о том, почему вы должны переосмыслить подход к ней](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
+- [статья о цветовой контрастности на сайте A11y Project](https://a11yproject.com/posts/what-is-color-contrast/)
 
-It can be tedious to manually calculate the proper color combinations for all cases in your website so instead, you can [calculate an entire accessible color palette with Colorable](https://jxnblk.com/colorable/).
+Ручной расчёт правильных цветовых комбинаций для всех вариантов сайта может быть очень утомительным. Вместо этого вы можете рассчитать все необходимые палитры [с помощью Colorable](https://jxnblk.com/colorable/).
 
-Both the aXe and WAVE tools mentioned below also include color contrast tests and will report on contrast errors.
+Оба инструмента, aXe и WAVE, о которых будет рассказано ниже, включают тесты контрастности. Они помогут выявить ошибки в подборе цветов.
 
-If you want to extend your contrast testing abilities you can use these tools:
+Если вы хотите провести более полное тестирование контрастности, то можете воспользоваться этими программами:
 
 - [WebAIM - Color Contrast Checker](https://webaim.org/resources/contrastchecker/)
 - [The Paciello Group - Color Contrast Analyzer](https://www.paciellogroup.com/resources/contrastanalyser/)
 
-## Development and Testing Tools {#development-and-testing-tools}
+## Инструменты для разработки и тестирования {#development-and-testing-tools}
 
-There are a number of tools we can use to assist in the creation of accessible web applications.
+Далее перечислены инструменты, которые могут быть полезны при разработке веб-приложений с доступным контентом.
 
-### The keyboard {#the-keyboard}
+### Тестирование клавиатуры {#the-keyboard}
 
-By far the easiest and also one of the most important checks is to test if your entire website can be reached and used with the keyboard alone. Do this by:
+Самый простой и одновременно наиболее важный вид проверки -- это тестирование клавиатуры. Такая проверка позволяет определить доступность контента на вашем сайте при работе только с клавиатурой. Чтобы протестировать клавиатуру, выполните следующие действия:
 
-1. Plugging out your mouse.
-1. Using `Tab` and `Shift+Tab` to browse.
-1. Using `Enter` to activate elements.
-1. Where required, using your keyboard arrow keys to interact with some elements, such as menus and dropdowns.
+1. Отсоедините мышь.
+1. Используйте `Tab` и `Shift+Tab` для перемещения по странице.
+1. Используйте `Enter` для активации элементов.
+1. Там, где необходимо, используйте клавиши со стрелками, например, для работы с меню или выпадающими списками.
 
-### Development assistance {#development-assistance}
+### Инструменты разработчика {#development-assistance}
 
-We can check some accessibility features directly in our JSX code. Often intellisense checks are already provided in JSX aware IDE's for the ARIA roles, states and properties. We also
-have access to the following tool:
+Выполнение некоторых требований по доступности контента можно контролировать непосредственно в JSX. Обычно среда разработки обладает средствами автоматической подстановки, которые могут использоваться при написании JSX для выбора ролей, состояний и свойств ARIA. Кроме этого можно воспользоваться следующими инструментами:
 
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
 
-The [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) plugin for ESLint provides AST linting feedback regarding accessibility issues in your JSX. Many
-IDE's allow you to integrate these findings directly into code analysis and source code windows.
+Плагин [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) для ESLint выполняет проверку абстрактного синтаксического дерева JSX на предмет поиска проблем, связанных с доступностью контента. Многие среды разработки могут интегрироваться с этим инструментом и выводить сообщения линтера в окно анализа кода или прямо в окно исходного кода.
 
-[Create React App](https://github.com/facebookincubator/create-react-app) has this plugin with a subset of rules activated. If you want to enable even more accessibility rules,
-you can create an `.eslintrc` file in the root of your project with this content:
+В [Create React App](https://github.com/facebookincubator/create-react-app) этот плагин используется с заранее установленным набором правил. Если необходимо задействовать дополнительные правила, вам нужно создать в корне проекта файл `.eslintrc` со следующим кодом:
 
   ```json
   {
@@ -456,77 +439,75 @@ you can create an `.eslintrc` file in the root of your project with this content
   }
   ```
 
-### Testing accessibility in the browser {#testing-accessibility-in-the-browser}
+### Тестирование доступности контента в браузере {#testing-accessibility-in-the-browser}
 
-A number of tools exist that can run accessibility audits on web pages in your browser. Please use them in combination with other accessibility checks mentioned here as they can only
-test the technical accessibility of your HTML.
+Существуют инструменты для аудита доступности контента веб-страниц в браузере. Используйте их совместно с теми инструментами для проверки HTML, которые были описаны выше.
 
-#### aXe, aXe-core and react-axe {#axe-axe-core-and-react-axe}
+#### aXe, aXe-core и react-axe {#axe-axe-core-and-react-axe}
 
-Deque Systems offers [aXe-core](https://github.com/dequelabs/axe-core) for automated and end-to-end accessibility tests of your applications. This module includes integrations for Selenium.
+Компания Deque Systems предлагает модуль [aXe-core](https://github.com/dequelabs/axe-core) для автоматизированного и сквозного тестирования веб-приложений. Этот модуль имеет интеграцию с Selenium.
 
-[The Accessibility Engine](https://www.deque.com/products/axe/) or aXe, is an accessibility inspector browser extension built on `aXe-core`.
+На основе `aXe-core` разработан продукт компании Deque Systems под названием [The Accessibility Engine](https://www.deque.com/products/axe/) или aXe. Это расширение для браузеров, предназначенное для комплексного тестирования доступности контента сайтов.
 
-You can also use the [react-axe](https://github.com/dylanb/react-axe) module to report these accessibility findings directly to the console while developing and debugging.
+Также вы можете использовать модуль [react-axe](https://github.com/dylanb/react-axe) для вывода сообщений от aXe в консоль в процессе программирования или отладки.
 
 #### WebAIM WAVE {#webaim-wave}
 
-The [Web Accessibility Evaluation Tool](https://wave.webaim.org/extension/) is another accessibility browser extension.
+[Web Accessibility Evaluation Tool](https://wave.webaim.org/extension/) ещё одно расширение для браузера, которое используется для улучшения доступности контента веб-сайтов.
 
-#### Accessibility inspectors and the Accessibility Tree {#accessibility-inspectors-and-the-accessibility-tree}
+#### Инспекторы доступности контента и дерево доступности {#accessibility-inspectors-and-the-accessibility-tree}
 
-[The Accessibility Tree](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/) is a subset of the DOM tree that contains accessible objects for every DOM element that should be exposed
-to assistive technology, such as screen readers.
+[Дерево доступности](https://www.paciellogroup.com/blog/2015/01/the-browser-accessibility-tree/) -- это подмножество DOM-дерева. В нём содержатся объекты, которые нужны для работы технологий поддержки доступности контента, например, для экранных считывающих устройств.
 
-In some browsers we can easily view the accessibility information for each element in the accessibility tree:
+В некоторых браузерах можно легко получить информацию обо всех элементах в дереве доступности:
 
-- [Using the Accessibility Inspector in Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
-- [Activate the Accessibility Inspector in Chrome](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
-- [Using the Accessibility Inspector in OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
+- [использование инспектора доступности в Firefox](https://developer.mozilla.org/ru/docs/Tools/Accessibility_inspector)
+- [активация инспектора доступности в Chrome](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
+- [использование инспектора доступности в OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
 
-### Screen readers {#screen-readers}
+### Экранные считывающие устройства {#screen-readers}
 
-Testing with a screen reader should form part of your accessibility tests.
+Проверка работы экранных считывающих устройств должна быть частью комплексного тестирования доступности контента.
 
-Please note that browser / screen reader combinations matter. It is recommended that you test your application in the browser best suited to your screen reader of choice.
+Учтите, что сочетание браузера и экранного считывающего устройства имеет большое значение. Рекомендуется протестировать ваше приложение в том браузере, который лучше всего подходит для избранного вами экранного считывателя.
 
-### Commonly Used Screen Readers {#commonly-used-screen-readers}
+### Общедоступные экранные считыватели {#commonly-used-screen-readers}
 
-#### NVDA in Firefox {#nvda-in-firefox}
+#### NVDA в Firefox {#nvda-in-firefox}
 
-[NonVisual Desktop Access](https://www.nvaccess.org/) or NVDA is an open source Windows screen reader that is widely used.
+[NonVisual Desktop Access](https://www.nvaccess.org/) или NVDA -- это широко распространённый экранный считыватель с открытым исходным кодом для Windows.
 
-Refer to the following guides on how to best use NVDA:
+Вот несколько руководств по работе с NVDA:
 
-- [WebAIM - Using NVDA to Evaluate Web Accessibility](https://webaim.org/articles/nvda/)
-- [Deque - NVDA Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
+- [WebAIM -- использование NVDA для улучшения доступности контента](https://webaim.org/articles/nvda/)
+- [Deque -- сочетания клавиш для NVDA](https://dequeuniversity.com/screenreaders/nvda-keyboard-shortcuts)
 
-#### VoiceOver in Safari {#voiceover-in-safari}
+#### VoiceOver в Safari {#voiceover-in-safari}
 
-VoiceOver is an integrated screen reader on Apple devices.
+VoiceOver -- это экранный считыватель, встроенный в продукты Apple.
 
-Refer to the following guides on how activate and use VoiceOver:
+Здесь приведены руководства по активации и использованию VoiceOver:
 
-- [WebAIM - Using VoiceOver to Evaluate Web Accessibility](https://webaim.org/articles/voiceover/)
-- [Deque - VoiceOver for OS X Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
-- [Deque - VoiceOver for iOS Shortcuts](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
+- [WebAIM -- использование VoiceOver для улучшения доступности контента](https://webaim.org/articles/voiceover/)
+- [Deque -- сочетания клавиш для VoiceOver в OS X](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
+- [Deque -- комбинации жестов для VoiceOver в iOS](https://dequeuniversity.com/screenreaders/voiceover-ios-shortcuts)
 
-#### JAWS in Internet Explorer {#jaws-in-internet-explorer}
+#### JAWS в Internet Explorer {#jaws-in-internet-explorer}
 
-[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/) or JAWS, is a prolifically used screen reader on Windows.
+[Job Access With Speech](https://www.freedomscientific.com/Products/software/JAWS/) or JAWS -- это экранный считыватель, который чаще всего используется в Windows.
 
-Refer to the following guides on how to best use JAWS:
+Руководства по JAWS:
 
-- [WebAIM - Using JAWS to Evaluate Web Accessibility](https://webaim.org/articles/jaws/)
-- [Deque - JAWS Keyboard Shortcuts](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
+- [WebAIM -- использование JAWS для улучшения доступности контента](https://webaim.org/articles/jaws/)
+- [Deque -- сочетания клавиш для JAWS](https://dequeuniversity.com/screenreaders/jaws-keyboard-shortcuts)
 
-### Other Screen Readers {#other-screen-readers}
+### Прочие экранные считыватели {#other-screen-readers}
 
-#### ChromeVox in Google Chrome {#chromevox-in-google-chrome}
+#### ChromeVox в Google Chrome {#chromevox-in-google-chrome}
 
-[ChromeVox](https://www.chromevox.com/) is an integrated screen reader on Chromebooks and is available [as an extension](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=en) for Google Chrome.
+[ChromeVox](https://www.chromevox.com/) -- это встроенный экранный считыватель для сервиса Chromebooks. Он доступен для Google Chrome [в виде расширения](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=ru).
 
-Refer to the following guides on how best to use ChromeVox:
+Ссылки на руководства по ChromeVox:
 
-- [Google Chromebook Help - Use the Built-in Screen Reader](https://support.google.com/chromebook/answer/7031755?hl=en)
-- [ChromeVox Classic Keyboard Shortcuts Reference](https://www.chromevox.com/keyboard_shortcuts.html)
+- [Google Chromebook -- как использовать встроенную программу чтения с экрана](https://support.google.com/chromebook/answer/7031755?hl=ru)
+- [сочетания клавиш для ChromeVox](https://www.chromevox.com/keyboard_shortcuts.html)

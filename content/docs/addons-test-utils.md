@@ -15,7 +15,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 
 ## Обзор {#overview}
 
-`ReactTestUtils` позволяет легко тестировать React-компоненты в любом тестовом фреймворке на ваш выбор. В Facebook мы используем [Jest](https://facebook.github.io/jest/) для гладкого тестирования JavaScript-кода. Если хотите обучится Jest, ознакомьтесь с [руководством по React](https://jestjs.io/docs/en/tutorial-react).
+`ReactTestUtils` позволяет легко тестировать React-компоненты в любом тестовом фреймворке на ваш выбор. В Facebook мы используем [Jest](https://facebook.github.io/jest/) для гладкого тестирования JavaScript-кода. Если хотите обучиться Jest, ознакомьтесь с [руководством по React](https://jestjs.io/docs/en/tutorial-react).
 
 > Примечание:
 >
@@ -53,7 +53,7 @@ var ReactTestUtils = require('react-dom/test-utils'); // ES5 с npm
 Допустим, у нас есть компонент `Counter`:
 
 ```js
-class App extends React.Component {
+class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {count: 0};
@@ -103,7 +103,7 @@ afterEach(() => {
   container = null;
 });
 
-it('рендер и обновление счетчика', () => {
+it('рендер и обновление счётчика', () => {
   // Тестируем первый рендер и метод componentDidMount
   act(() => {
     ReactDOM.render(<Counter />, container);
@@ -139,7 +139,7 @@ mockComponent(
 
 > Примечание:
 >
-> API-метод `mockComponent()` объявлен устаревшим. Поэтому вместо него рекомендуется использоваться [поверхностный рендеринг](/docs/shallow-renderer.html) или [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock).
+> API-метод `mockComponent()` объявлен устаревшим. Поэтому вместо него рекомендуется использовать [поверхностный рендеринг](/docs/shallow-renderer.html) или [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock).
 
 * * *
 
@@ -221,7 +221,7 @@ scryRenderedDOMComponentsWithClass(
 )
 ```
 
-Находит все DOM-элементы компонентов в отображаемом дереве, которые являются DOM-компонентами с сопоставлением имен классов `className`.
+Находит все DOM-элементы компонентов в отображаемом дереве, которые являются DOM-компонентами с сопоставлением имён классов `className`.
 
 * * *
 
@@ -247,7 +247,7 @@ scryRenderedDOMComponentsWithTag(
 )
 ```
 
-Ищет все DOM-элементы компонентов в отображенном дереве, которые являются DOM-компонентами, и имя которых соответствует `tagName`.
+Ищет все DOM-элементы компонентов в отображённом дереве, которые являются DOM-компонентами, и имя которых соответствует `tagName`.
 
 * * *
 

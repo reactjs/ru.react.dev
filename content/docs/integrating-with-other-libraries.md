@@ -16,7 +16,7 @@ React не знает про изменения DOM, которые сделан
 
 ### Как решить проблему {#how-to-approach-the-problem}
 
-Для демонстрации давайте набросаем обёртку вокруг обобщенного jQuery-плагина.
+Для демонстрации давайте набросаем обёртку вокруг обобщённого jQuery-плагина.
 
 Мы установим [реф](/docs/refs-and-the-dom.html) на корневой DOM-элемент. Внутри `componentDidMount` мы получим ссылку на этот реф и передадим её в jQuery-плагин.
 
@@ -67,7 +67,7 @@ function Example() {
 }
 ```
 
-Для простоты мы будем реализовывать [неконтролируемый компонент](/docs/uncontrolled-components.html).
+Для простоты мы будем реализовывать [неуправляемый компонент](/docs/uncontrolled-components.html).
 
 Сначала создадим пустой компонент, с методом `render()`, который возвращает `<select>`, обёрнутый в `<div>`:
 
@@ -108,7 +108,7 @@ componentWillUnmount() {
 <select className="Chosen-select" ref={el => this.el = el}>
 ```
 
-Этого достаточно, чтобы наш компонент отрендерился, но мы бы хотели получать уведомления об изменении значений. Для этого мы подпишемся на jQuery событие `change` на `<select>`, контролируемом Chosen.
+Этого достаточно, чтобы наш компонент отрендерился, но мы бы хотели получать уведомления об изменении значений. Для этого мы подпишемся на jQuery событие `change` на `<select>`, управляемом Chosen.
 
 Мы не станем передавать в Chosen `this.props.onChange` напрямую, потому что пропсы компонента могут со временем измениться (в том числе и обработчики событий). Вместо этого мы объявим метод `handleChange()`, который будет вызывать `this.props.onChange`, и подпишем его на jQuery-событие `change`:
 
@@ -188,7 +188,7 @@ class Chosen extends React.Component {
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/xdgKOz?editors=0010)
 
-## Интеграция с другими визульными библиотеками {#integrating-with-other-view-libraries}
+## Интеграция с другими визуальными библиотеками {#integrating-with-other-view-libraries}
 
 Благодаря гибкости [`ReactDOM.render()`](/docs/react-dom.html#render) React может встраиваться в другие приложения.
 
@@ -289,7 +289,7 @@ const ParagraphView = Backbone.View.extend({
 
 Самый простой способ использовать модели и коллекции [Backbone](https://backbonejs.org) из React-компонентов — это обработка различных событий и ручное обновление компонентов.
 
-Компоненты, отвечающие за рендеринг моделей, будут обрабатывать событие `'change'`, а компоненты, отвечающие за рендеринг коллекций, будут обрабатывать события `'add'` и `'remove'`. В обоих случаях для отображения новых данных нужно вызвать [`this.forceUpdate()`]](/docs/react-component.html#forceupdate).
+Компоненты, отвечающие за рендеринг моделей, будут обрабатывать событие `'change'`, а компоненты, отвечающие за рендеринг коллекций, будут обрабатывать события `'add'` и `'remove'`. В обоих случаях для отображения новых данных нужно вызвать [`this.forceUpdate()`](/docs/react-component.html#forceupdate).
 
 В следующем примере компонент `list` рендерит Backbone-коллекцию, используя компонент `Item` для рендеринга отдельных элементов.
 
@@ -427,7 +427,7 @@ function Example(props) {
   );
 }
 
-const model = new Backbone.Model({ firstName: 'Frodo' });
+const model = new Backbone.Model({ firstName: 'Фродо' });
 ReactDOM.render(
   <Example model={model} />,
   document.getElementById('root')

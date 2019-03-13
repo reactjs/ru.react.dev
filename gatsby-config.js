@@ -10,7 +10,7 @@ module.exports = {
   siteMetadata: {
     title:
       'React: JavaScript-библиотека для создания пользовательских интерфейсов',
-    siteUrl: 'https://reactjs.org',
+    siteUrl: 'https://ru.reactjs.org',
     rssFeedTitle: 'React',
     rssFeedDescription:
       'JavaScript-библиотека для создания пользовательских интерфейсов',
@@ -88,6 +88,7 @@ module.exports = {
           },
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
+          'gatsby-remark-typography', // only for Russian translation
         ],
       },
     },

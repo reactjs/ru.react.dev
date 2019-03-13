@@ -14,7 +14,7 @@ permalink: docs/render-props.html
 )}/>
 ```
 
-Такой подход, в частности, применяется в библиотеках [React Router](https://reacttraining.com/react-router/web/api/Route/Route-render-methods) и [Downshift](https://github.com/paypal/downshift).
+Такой подход, в частности, применяется в библиотеках [React Router](https://reacttraining.com/react-router/web/api/Route/render-func) и [Downshift](https://github.com/paypal/downshift).
 
 В этой статье мы покажем, чем полезны и как писать рендер-пропсы.
 
@@ -247,7 +247,7 @@ function withMouse(Component) {
 )}/>
 ```
 
-И запомните, проп `children` не обязательно именовать в списке "атрибутов" вашего JSX элемента. Вместо этого, вы можете поместить его прямо *внутрь* элемента!
+И запомните, проп `children` не обязательно именовать в списке «атрибутов» вашего JSX-элемента. Вместо этого, вы можете поместить его прямо *внутрь* элемента!
 
 ```js
 <Mouse>
@@ -272,7 +272,7 @@ Mouse.propTypes = {
 
 ### Будьте осторожны при использовании рендер-проп вместе с React.PureComponent {#be-careful-when-using-render-props-with-reactpurecomponent}
 
-Использование рендер-пропа может свести на нет преимущество, которое даёт [`React.PureComponent`](/docs/react-api.html#reactpurecomponent), если вы создаете функцию внутри метода `render`. Это связано с тем, что поверхностное сравнение пропсов всегда будет возвращать `false` для новых пропсов и каждый `render` будет генерировать новое значение для рендер-пропа.
+Использование рендер-пропа может свести на нет преимущество, которое даёт [`React.PureComponent`](/docs/react-api.html#reactpurecomponent), если вы создаёте функцию внутри метода `render`. Это связано с тем, что поверхностное сравнение пропсов всегда будет возвращать `false` для новых пропсов и каждый `render` будет генерировать новое значение для рендер-пропа.
 
 Например, в продолжение нашего `<Mouse>` компонента упомянутого выше, если `Mouse` наследуется от `React.PureComponent` вместо `React.Component`, наш пример будет выглядеть следующим образом:
 
@@ -302,7 +302,7 @@ class MouseTracker extends React.Component {
 
 В этом примере, при каждом рендере `<MouseTracker>` генерируется новая функция в качестве значения пропа `<Mouse render>`. Это сводит на нет эффекты `React.PureComponent`, от которого наследует `<Mouse>`!
 
-Чтобы решить эту проблему, вы можете определить проп как метод экземляра, например так:
+Чтобы решить эту проблему, вы можете определить проп как метод экземпляра, например так:
 
 ```js
 class MouseTracker extends React.Component {

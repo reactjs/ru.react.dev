@@ -1,25 +1,25 @@
 ---
 id: test-renderer
-title: Test Renderer
+title: Тестовый рендерер
 permalink: docs/test-renderer.html
 layout: docs
 category: Reference
 ---
 
-**Importing**
+**Импортирование**
 
 ```javascript
 import TestRenderer from 'react-test-renderer'; // ES6
-const TestRenderer = require('react-test-renderer'); // ES5 with npm
+const TestRenderer = require('react-test-renderer'); // ES5 с помощью npm
 ```
 
-## Overview {#overview}
+## Обзор {#overview}
 
-This package provides a React renderer that can be used to render React components to pure JavaScript objects, without depending on the DOM or a native mobile environment.
+В этом пакете вы найдёте рендерер, который умеет рендерить React-компоненты в обычные JavaScript-объекты, не используя при этом DOM или мобильное окружение.
 
-Essentially, this package makes it easy to grab a snapshot of the platform view hierarchy (similar to a DOM tree) rendered by a React DOM or React Native component without using a browser or [jsdom](https://github.com/tmpvar/jsdom).
+Пакет `react-test-renderer` облегчает получение снимка иерархии представления платформы (чем-то похожего на DOM-дерево), отрендереного компонентом React DOM или React Native. При этом не используются ни браузер, ни [jsdom](https://github.com/tmpvar/jsdom).
 
-Example:
+Пример:
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
@@ -38,9 +38,9 @@ console.log(testRenderer.toJSON());
 //   children: [ 'Facebook' ] }
 ```
 
-You can use Jest's snapshot testing feature to automatically save a copy of the JSON tree to a file and check in your tests that it hasn't changed: [Learn more about it](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html).
+Jest может автоматически сохранять в файл снимок копии дерева в виде JSON, а затем проверять в тестах, что в этом снимке ничего не изменилось с момента прошлого исполнения теста: [узнать подробнее](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html).
 
-You can also traverse the output to find specific nodes and make assertions about them.
+Также есть возможность искать в дереве конкретные узлы и проверять утверждения относительно них:
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
@@ -71,7 +71,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 
 * [`TestRenderer.create()`](#testrenderercreate)
 
-### TestRenderer instance {#testrenderer-instance}
+### Методы и поля экземпляра TestRenderer {#testrenderer-instance}
 
 * [`testRenderer.toJSON()`](#testrenderertojson)
 * [`testRenderer.toTree()`](#testrenderertotree)
@@ -94,7 +94,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 * [`testInstance.parent`](#testinstanceparent)
 * [`testInstance.children`](#testinstancechildren)
 
-## Reference {#reference}
+## Справочник {#reference}
 
 ### `TestRenderer.create()` {#testrenderercreate}
 
@@ -102,7 +102,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 TestRenderer.create(element, options);
 ```
 
-Create a `TestRenderer` instance with the passed React element. It doesn't use the real DOM, but it still fully renders the component tree into memory so you can make assertions about it. The returned instance has the following methods and properties.
+Создаёт экземпляр `TestRenderer` для переданного React-элемента. И хотя реальный DOM не будет использоваться, дерево компонентов будет полностью отрендерено в памяти и его можно будет протестировать с помощью утверждений. У созданного экземпляра `TestRenderer` будут присутствовать следующие методы и свойства:
 
 ### `testRenderer.toJSON()` {#testrenderertojson}
 
@@ -110,7 +110,7 @@ Create a `TestRenderer` instance with the passed React element. It doesn't use t
 testRenderer.toJSON()
 ```
 
-Return an object representing the rendered tree. This tree only contains the platform-specific nodes like `<div>` or `<View>` and their props, but doesn't contain any user-written components. This is handy for [snapshot testing](https://facebook.github.io/jest/docs/en/snapshot-testing.html#snapshot-testing-with-jest).
+Возвращает объект, представляющий собой отрендеренное дерево. В дереве будут присутствовать только те узлы, которые специфичны для платформы (например, узлы `<div>` или `<View>`) и их пропсы. А вот компонентов, созданных разработчиками, в этом дереве не будет. Это очень удобно для тестирования с [помощью снимков](https://jestjs.io/docs/ru/snapshot-testing#%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%81-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5%D0%BC-%D1%81%D0%BD%D0%B8%D0%BC%D0%BA%D0%BE%D0%B2-%D0%B2-jest).
 
 ### `testRenderer.toTree()` {#testrenderertotree}
 
@@ -118,7 +118,7 @@ Return an object representing the rendered tree. This tree only contains the pla
 testRenderer.toTree()
 ```
 
-Return an object representing the rendered tree. Unlike `toJSON()`, the representation is more detailed than the one provided by `toJSON()`, and includes the user-written components. You probably don't need this method unless you're writing your own assertion library on top of the test renderer.
+Возвращает объект, представляющий собой отрендеренное дерево. В отличии от `toJSON()` в отрендеренное дерево попадут и пользовательские компоненты. Скорее всего, этот метод вряд ли будет полезен, пока вы не захотите создать собственную бибилотеку тестирования поверх `TestRenderer`.
 
 ### `testRenderer.update()` {#testrendererupdate}
 
@@ -126,7 +126,7 @@ Return an object representing the rendered tree. Unlike `toJSON()`, the represen
 testRenderer.update(element)
 ```
 
-Re-render the in-memory tree with a new root element. This simulates a React update at the root. If the new element has the same type and key as the previous element, the tree will be updated; otherwise, it will re-mount a new tree.
+Повторно рендерит находящееся в памяти дерево компонентов с учётом нового корневого элемента. По сути, это симуляция вызова React-обновления для корневого элемента. Если новый элемент имеет тот же тип и ключ, что и предыдущий, то дерево будет обновлено. Иначе, будет перемонтированно новое дерево.
 
 ### `testRenderer.unmount()` {#testrendererunmount}
 
@@ -134,7 +134,7 @@ Re-render the in-memory tree with a new root element. This simulates a React upd
 testRenderer.unmount()
 ```
 
-Unmount the in-memory tree, triggering the appropriate lifecycle events.
+Демонтирует дерево, находящееся в памяти. При этом запустятся необходимые события жизненного цикла.
 
 ### `testRenderer.getInstance()` {#testrenderergetinstance}
 
@@ -142,7 +142,7 @@ Unmount the in-memory tree, triggering the appropriate lifecycle events.
 testRenderer.getInstance()
 ```
 
-Return the instance corresponding to the root element, if available. This will not work if the root element is a function component because they don't have instances.
+Возвращает экземпляр соответствующий корневому элементу, если таковой существует. Этот метод не сработает, если верхним элементом будет функциональный компонент, потому что они не имеют экземляров (в отличие от классовых компонентов).
 
 ### `testRenderer.root` {#testrendererroot}
 
@@ -150,7 +150,7 @@ Return the instance corresponding to the root element, if available. This will n
 testRenderer.root
 ```
 
-Returns the root "test instance" object that is useful for making assertions about specific nodes in the tree. You can use it to find other "test instances" deeper below.
+Возвращает корневой тестовый экземпляр, который полезен для проверок конкретных узлов дерева. Полученный экземпляр можно использовать и для поиска других тестовых экземпляров, расположенных глубже в дереве.
 
 ### `testInstance.find()` {#testinstancefind}
 
@@ -158,7 +158,7 @@ Returns the root "test instance" object that is useful for making assertions abo
 testInstance.find(test)
 ```
 
-Find a single descendant test instance for which `test(testInstance)` returns `true`. If `test(testInstance)` does not return `true` for exactly one test instance, it will throw an error.
+Находит единственный вложенный тестовый экземпляр для которого `test(testInstance)` возвращает `true`. Метод `test(testInstance)` должен вернуть `true` ровно для одного тестового экземпляра, в противном случае будет сгенерирована ошибка.
 
 ### `testInstance.findByType()` {#testinstancefindbytype}
 
@@ -166,7 +166,7 @@ Find a single descendant test instance for which `test(testInstance)` returns `t
 testInstance.findByType(type)
 ```
 
-Find a single descendant test instance with the provided `type`. If there is not exactly one test instance with the provided `type`, it will throw an error.
+Находит единственный вложенный тестовый экземпляр с указанным типом `type`. Метод `findByType` сгенерирует ошибку, если тестовых экземпляров с указанным `type` не найдено или найдено больше одного.
 
 ### `testInstance.findByProps()` {#testinstancefindbyprops}
 
@@ -174,7 +174,7 @@ Find a single descendant test instance with the provided `type`. If there is not
 testInstance.findByProps(props)
 ```
 
-Find a single descendant test instance with the provided `props`. If there is not exactly one test instance with the provided `props`, it will throw an error.
+Находит единственный вложенный тестовый экземлпяр с указанными пропсами `props`. Метод `findByProps` сгенерирует ошибку, если тестовых экземпляров с указанными пропсами не найдено или найдено больше одного.
 
 ### `testInstance.findAll()` {#testinstancefindall}
 
@@ -182,7 +182,7 @@ Find a single descendant test instance with the provided `props`. If there is no
 testInstance.findAll(test)
 ```
 
-Find all descendant test instances for which `test(testInstance)` returns `true`.
+Находит все вложенные тестовые экземпляры, для которых `test(testInstance)` возвращает `true`.
 
 ### `testInstance.findAllByType()` {#testinstancefindallbytype}
 
@@ -190,7 +190,7 @@ Find all descendant test instances for which `test(testInstance)` returns `true`
 testInstance.findAllByType(type)
 ```
 
-Find all descendant test instances with the provided `type`.
+Находит все вложенные тестовые экземпляры с указанным типом `type`.
 
 ### `testInstance.findAllByProps()` {#testinstancefindallbyprops}
 
@@ -198,7 +198,7 @@ Find all descendant test instances with the provided `type`.
 testInstance.findAllByProps(props)
 ```
 
-Find all descendant test instances with the provided `props`.
+Находит все вложенные тестовые экземпляры c указанными пропсами `props`.
 
 ### `testInstance.instance` {#testinstanceinstance}
 
@@ -206,7 +206,7 @@ Find all descendant test instances with the provided `props`.
 testInstance.instance
 ```
 
-The component instance corresponding to this test instance. It is only available for class components, as function components don't have instances. It matches the `this` value inside the given component.
+Экземпляр компонента, соответствующий его тестовому экземпляру. Свойство доступно только для классовых компонентов, т.к. функциональные компоненты не имеют экземпляров. Этот экземпляр компонента будет соответствовать значению `this` внутри данного компонента.
 
 ### `testInstance.type` {#testinstancetype}
 
@@ -214,7 +214,7 @@ The component instance corresponding to this test instance. It is only available
 testInstance.type
 ```
 
-The component type corresponding to this test instance. For example, a `<Button />` component has a type of `Button`.
+Тип компонента, соответствующий его тестовому экземпляру. Например, компонент `<Button />` имеет тип `Button`.
 
 ### `testInstance.props` {#testinstanceprops}
 
@@ -222,7 +222,7 @@ The component type corresponding to this test instance. For example, a `<Button 
 testInstance.props
 ```
 
-The props corresponding to this test instance. For example, a `<Button size="small" />` component has `{size: 'small'}` as props.
+Пропсы, соответствующие тестовому экземпляру. Например, у компонента `<Button size="small" />` пропсами будут `{size: "small"}`.
 
 ### `testInstance.parent` {#testinstanceparent}
 
@@ -230,7 +230,7 @@ The props corresponding to this test instance. For example, a `<Button size="sma
 testInstance.parent
 ```
 
-The parent test instance of this test instance.
+Родительский тестовый экземпляр текущего тестового экземпляра.
 
 ### `testInstance.children` {#testinstancechildren}
 
@@ -238,13 +238,13 @@ The parent test instance of this test instance.
 testInstance.children
 ```
 
-The children test instances of this test instance.
+Дочерние тестовые экземпляры текущего тестового экземпляра.
 
-## Ideas {#ideas}
+## Используем тестовый рендерер {#ideas}
 
-You can pass `createNodeMock` function to `TestRenderer.create` as the option, which allows for custom mock refs.
-`createNodeMock` accepts the current element and should return a mock ref object.
-This is useful when you test a component that relies on refs.
+Можно передать функцию `createNodeMock` в `TestRenderer.create` как параметр для создания собственных фиктивных рефов. Функция `createNodeMock` принимает элемент и возвращает фиктивный реф-объект.
+
+Это может быть полезно для тестирования компонентов, которые используют рефы.
 
 ```javascript
 import TestRenderer from 'react-test-renderer';
@@ -268,7 +268,7 @@ TestRenderer.create(
   {
     createNodeMock: (element) => {
       if (element.type === 'input') {
-        // mock a focus function
+        // возвращаем фиктивную функцию "focus"
         return {
           focus: () => {
             focused = true;

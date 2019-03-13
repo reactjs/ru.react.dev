@@ -55,7 +55,7 @@ const Header = ({location}: {location: Location}) => (
             },
 
             [media.greaterThan('small')]: {
-              width: 'calc(100% / 6)',
+              width: '100px',
             },
             [media.lessThan('small')]: {
               flex: '0 0 auto',
@@ -140,11 +140,6 @@ const Header = ({location}: {location: Location}) => (
             title="Сообщество"
             to="/community/support.html"
           />
-          <HeaderLink
-            isActive={location.pathname.includes('/community/')}
-            title="Community"
-            to="/community/support.html"
-          />
         </nav>
 
         <DocSearch />
@@ -214,7 +209,7 @@ const Header = ({location}: {location: Location}) => (
                   display: 'none',
                 },
               }}>
-              Languages
+              Переводы
             </span>
           </Link>
           <a

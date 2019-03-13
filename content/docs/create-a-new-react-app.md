@@ -1,6 +1,6 @@
 ---
 id: create-a-new-react-app
-title: Create a New React App
+title: Создаём новое React-приложение
 permalink: docs/create-a-new-react-app.html
 redirect_from:
   - "docs/add-react-to-a-new-app.html"
@@ -8,38 +8,39 @@ prev: add-react-to-a-website.html
 next: cdn-links.html
 ---
 
-Use an integrated toolchain for the best user and developer experience.
+Используйте встроенный набор инструментов для лучшего взаимодействия пользователя и разработчика. 
 
-This page describes a few popular React toolchains which help with tasks like:
+На этой странице описано несколько популярных наборов инструментов React, которые помогают в таких задачах как:
 
-* Scaling to many files and components.
-* Using third-party libraries from npm.
-* Detecting common mistakes early.
-* Live-editing CSS and JS in development.
-* Optimizing the output for production.
+* Масштабирование до большого количества файлов и компонентов.
+* Использование сторонних библиотек из npm.
+* Раннее обнаружение распространённых ошибок.
+* Отражение изменений CSS и JS на лету в процессе разработки.
+* Оптимизация кода для продакшена.
 
-The toolchains recommended on this page **don't require configuration to get started**.
+Рекомендованные на этой странице инструменты **не требуют дополнительной настройки для начала работы.**
 
-## You Might Not Need a Toolchain {#you-might-not-need-a-toolchain}
+## Возможно, вам не нужен дополнительный набор инструментов {#you-might-not-need-a-toolchain}
 
-If you don't experience the problems described above or don't feel comfortable using JavaScript tools yet, consider [adding React as a plain `<script>` tag on an HTML page](/docs/add-react-to-a-website.html), optionally [with JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx).
+Если у вас нет проблем, описанных выше, или пока не чувствуете себя уверенно, используя инструменты JavaScript, рассмотрите возможность [добавления React в виде простого тега `<script>` на HTML странице](/docs/add-react-to-a-website.html), [при необходимости с JSX](/docs/add-react-to-a-website.html#optional-try-react-with-jsx).
 
-This is also **the easiest way to integrate React into an existing website.** You can always add a larger toolchain if you find it helpful!
+Также это **самый простой способ добавить React в существующий веб-сайт**. Вы всегда можете расширить набор инструментов, если посчитаете это нужным.
 
-## Recommended Toolchains {#recommended-toolchains}
 
-The React team primarily recommends these solutions:
+## Рекомендуемый набор инструментов {#recommended-toolchains}
 
-- If you're **learning React** or **creating a new [single-page](/docs/glossary.html#single-page-application) app,** use [Create React App](#create-react-app).
-- If you're building a **server-rendered website with Node.js,** try [Next.js](#nextjs).
-- If you're building a **static content-oriented website,** try [Gatsby](#gatsby).
-- If you're building a **component library** or **integrating with an existing codebase**, try [More Flexible Toolchains](#more-flexible-toolchains).
+Команда React в первую очередь рекомендует следующие решения:
+
+- Если вы **изучаете React** или **создаёте новое [одностраничное](/docs/glossary.html#single-page-application) приложение**, используйте [Create React App](#create-react-app).
+- Если вы создаете **серверный сайт с Node.js,** попробуйте [Next.js](#nextjs).
+- Если вы создаете **статический контент-ориентированный сайт,** попробуйте [Gatsby](#gatsby).
+- Если вы создаете **библиотеку компонентов** или **интегрируетесь с существующей кодовой базой**, попробуйте [более гибкие наборы инструментов](#more-flexible-toolchains).
 
 ### Create React App {#create-react-app}
 
-[Create React App](https://github.com/facebookincubator/create-react-app) is a comfortable environment for **learning React**, and is the best way to start building **a new [single-page](/docs/glossary.html#single-page-application) application** in React.
+[Create React App](https://github.com/facebookincubator/create-react-app) – удобная среда для **изучения React** и лучший способ начать создание **нового [одностраничного](/docs/glossary.html#single-page-application) приложения** на React.
 
-It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 6 and npm >= 5.2 on your machine. To create a project, run:
+Инструмент настраивает среду для использования новейших возможностей JavaScript, оптимизирует приложение для продакшена и обеспечивает комфорт во время разработки. Вам понадобятся Node.js не ниже версии 6 и npm не ниже версии 5.2 на вашем компьютере. Для создания проекта выполните команды:
 
 ```bash
 npx create-react-app my-app
@@ -47,48 +48,55 @@ cd my-app
 npm start
 ```
 
->Note
+>Примечание
 >
->`npx` on the first line is not a typo -- it's a [package runner tool that comes with npm 5.2+](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
+>`npx` в первой строке не является опечаткой. Это [инструмент запуска пакетов, доступный в версиях npm  5.2 и выше](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b).
 
-Create React App doesn't handle backend logic or databases; it just creates a frontend build pipeline, so you can use it with any backend you want. Under the hood, it uses [Babel](https://babeljs.io/) and [webpack](https://webpack.js.org/), but you don't need to know anything about them.
 
-When you're ready to deploy to production, running `npm run build` will create an optimized build of your app in the `build` folder. You can learn more about Create React App [from its README](https://github.com/facebookincubator/create-react-app#create-react-app-) and the [User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
+Create React App не обрабатывает бэкенд логику или базы данных, он только предоставляет команды для сборки фронтенда, поэтому вы можете использовать его с любым бэкэндом. «Под капотом» используются [Babel](https://babeljs.io/) и [webpack](https://webpack.js.org/), но вам не нужно ничего знать о них.
+
+Когда ваше приложение готово к развёртыванию в продакшене, запуск команды `npm run build` создаст оптимизированную сборку вашего приложения в папке `build`. Вы можете узнать больше о Creat React App [из его README](https://github.com/facebookincubator/create-react-app#create-react-app--) и [его пользовательского руководства](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
 
 ### Next.js {#nextjs}
 
-[Next.js](https://nextjs.org/) is a popular and lightweight framework for **static and server‑rendered applications** built with React. It includes **styling and routing solutions** out of the box, and assumes that you're using [Node.js](https://nodejs.org/) as the server environment.
 
-Learn Next.js from [its official guide](https://nextjs.org/learn/).
+[Next.js](https://nextjs.org/) – это популярный легковесный фреймворк для **статических и серверных приложений**, использующих React. Он включает в себя **готовые решения для стилизации и маршрутизации** и предполагает, что вы используете [Node.js](https://nodejs.org/) в качестве серверной среды.
+
+Узнайте больше о Next.js из [его официального руководства](https://nextjs.org/learn/). 
 
 ### Gatsby {#gatsby}
 
-[Gatsby](https://www.gatsbyjs.org/) is the best way to create **static websites** with React. It lets you use React components, but outputs pre-rendered HTML and CSS to guarantee the fastest load time.
+[Gatsby](https://www.gatsbyjs.org/) – лучший способ для создания **статических сайтов** с помощью React. Он позволяет использовать React-компоненты, но выводит предварительно отрендеренный HTML и CSS, чтобы гарантировать минимальное время загрузки.
 
-Learn Gatsby from [its official guide](https://www.gatsbyjs.org/docs/) and a [gallery of starter kits](https://www.gatsbyjs.org/docs/gatsby-starters/).
+Узнайте больше о Gatsby из [его официального руководства](https://www.gatsbyjs.org/docs/) и [галереи стартовых комплектов](https://www.gatsbyjs.org/docs/gatsby-starters/).
 
-### More Flexible Toolchains {#more-flexible-toolchains}
+### Более гибкие наборы инструментов {#more-flexible-toolchains}                             
+Следующие наборы инструментов предлагают больше гибкости и выбора. Мы рекомендуем их более опытным разработчикам:
 
-The following toolchains offer more flexiblity and choice. We recommend them to more experienced users:
 
-- **[Neutrino](https://neutrinojs.org/)** combines the power of [webpack](https://webpack.js.org/) with the simplicity of presets, and includes a preset for [React apps](https://neutrinojs.org/packages/react/) and [React components](https://neutrinojs.org/packages/react-components/).
+- **[Neutrino](https://neutrinojs.org/)** сочетает в себе возможности [webpack](https://webpack.js.org/) и простоту пресетов. Инструмент включает в себя пресеты для [React-приложений](https://neutrinojs.org/packages/react/) и [React-компонентов](https://neutrinojs.org/packages/react-components/).
 
-- **[nwb](https://github.com/insin/nwb)** is particularly great for [publishing React components for npm](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb). It [can be used](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb) for creating React apps, too. 
+- **[nwb](https://github.com/insin/nwb)** хорошо подходит для [публикации React-компонентов в npm](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb). Его [также можно использовать](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb) для создания React-приложений.
 
-- **[Parcel](https://parceljs.org/)** is a fast, zero configuration web application bundler that [works with React](https://parceljs.org/recipes.html#react).
+- **[Parcel](https://parceljs.org/)** – быстрый упаковщик веб-приложений с нулевой конфигурацией, [который работает с React](https://parceljs.org/recipes.html#react).
 
-- **[Razzle](https://github.com/jaredpalmer/razzle)** is a server-rendering framework that doesn't require any configuration, but offers more flexibility than Next.js.
 
-## Creating a Toolchain from Scratch {#creating-a-toolchain-from-scratch}
+- **[Razzle](https://github.com/jaredpalmer/razzle)** – это фреймворк для серверного рендеринга, более гибкий чем Next.js, но не требующий обязательной настройки.
 
-A JavaScript build toolchain typically consists of:
 
-* A **package manager**, such as [Yarn](https://yarnpkg.com/) or [npm](https://www.npmjs.com/). It lets you take advantage of a vast ecosystem of third-party packages, and easily install or update them.
+## Создание набора инструментов с нуля {#creating-a-toolchain-from-scratch}
 
-* A **bundler**, such as [webpack](https://webpack.js.org/) or [Parcel](https://parceljs.org/). It lets you write modular code and bundle it together into small packages to optimize load time.
+В набор инструментов для сборки JavaScript обычно входят:
 
-* A **compiler** such as [Babel](https://babeljs.io/). It lets you write modern JavaScript code that still works in older browsers.
 
-If you prefer to set up your own JavaScript toolchain from scratch, [check out this guide](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658) that re-creates some of the Create React App functionality.
+* **Менеджер пакетов**, такой как [Yarn](https://yarnpkg.com/) или [npm](https://www.npmjs.com/). Он позволяет вам использовать обширную экосистему сторонних пакетов и легко устанавливать или обновлять их.
 
-Don't forget to ensure your custom toolchain [is correctly set up for production](/docs/optimizing-performance.html#use-the-production-build).
+
+* **Сборщик**, такой как [webpack](https://webpack.js.org/) или [Parcel](https://parceljs.org/). Он позволяет писать модульный код и объединять его в небольшие пакеты, чтобы оптимизировать время загрузки.
+
+
+* **Компилятор**, такой как [Babel](https://babeljs.io/). Он позволяет писать современный код JavaScript, который будет работать даже в старых браузерах.
+
+Если вы предпочтёте создать свой собственный набор JavaScript-инструментов с нуля, [ознакомьтесь с этим руководством](https://blog.usejournal.com/creating-a-react-app-from-scratch-f3c693b84658), в котором воссоздаются некоторые функции Create React App.
+
+Не забудьте убедиться, что ваш набор инструментов [правильно настроен для продакшена](/docs/optimizing-performance.html#use-the-production-build).
