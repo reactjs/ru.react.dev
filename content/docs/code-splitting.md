@@ -97,7 +97,7 @@ import("./math").then(math => {
 Он также поддерживается из коробки в [Next.js](https://github.com/zeit/next.js/#dynamic-import).
 
 Если вы настраиваете Webpack самостоятельно, то, вероятно, вы захотите прочитать [руководство Webpack по разделению кода](https://webpack.js.org/guides/code-splitting/).
-Ваш Webpack конфиг должен выглядеть [примерно так](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
+Файл конфигурации Webpack должен выглядеть [примерно так](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
 
 Если вы используете [Babel](https://babeljs.io/), вам необходимо убедиться, что он понимает синтаксис динамического импорта.
 Для этого вам необходимо установить плагин [@babel/plugin-syntax-dynamic-import](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import).
