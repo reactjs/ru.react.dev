@@ -24,8 +24,8 @@ const Versions = ({location}: Props) => (
     <Container>
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
-          <Header>React Versions</Header>
-          <TitleAndMetaTags title="React - Versions" />
+          <Header>Версии React</Header>
+          <TitleAndMetaTags title="React — Версии" />
           <div css={sharedStyles.markdown}>
             <p>
               Полная история версий React доступна{' '}
