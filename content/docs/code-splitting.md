@@ -59,7 +59,7 @@ console.log(add(16, 26)); // 42
 
 Чтобы предотвратить разрастание бандла, стоит начать «разделять» ваш бандл.
 [Разделение кода](https://webpack.js.org/guides/code-splitting/) это возможность, поддерживаемая такими бандлерами
-как Webpack или Browserify (с [factor-bundle](https://github.com/browserify/factor-bundle)), она может разделить
+как Webpack или Browserify (с [factor-bundle](https://github.com/browserify/factor-bundle)), которая может создавать
 ваш бандл на несколько кусочков и загружать их по мере необходимости.
 
 Хоть вы и не уменьшите общий объём кода вашего приложения, но вы избежите загрузки кода, который
