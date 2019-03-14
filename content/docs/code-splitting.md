@@ -93,7 +93,7 @@ import("./math").then(math => {
 
 Когда Webpack сталкивается с таким синтаксисом, он автоматически запускает разделение кода вашего приложения.
 Если вы используете Create React App, то он уже настроен,
-вы можете [начать использовать](https://facebook.github.io/create-react-app/docs/code-splitting) этот синтаксис прямо сейчас.
+вы можете сразу [начать использовать](https://facebook.github.io/create-react-app/docs/code-splitting) синтаксис динамического импорта.
 Он также поддерживается из коробки в [Next.js](https://github.com/zeit/next.js/#dynamic-import).
 
 Если вы настраиваете Webpack самостоятельно, то, вероятно, вы захотите прочитать [руководство Webpack по разделению кода](https://webpack.js.org/guides/code-splitting/).
