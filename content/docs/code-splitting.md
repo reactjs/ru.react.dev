@@ -107,7 +107,7 @@ import("./math").then(math => {
 
 > Примечание:
 >
-> `React.lazy` и Suspense пока недоступны для рендеринга на стороне сервера.
+> Возможности `React.lazy` и задержки (suspense) пока недоступны для рендеринга на стороне сервера.
 > Если вам нужно разделение кода в серверном приложении, мы рекомендуем [Loadable Components](https://github.com/smooth-code/loadable-components).
 > У них есть хорошее [руководство по разделению бандла](https://github.com/smooth-code/loadable-components/blob/master/packages/server/README.md) с серверным рендерингом.
 
