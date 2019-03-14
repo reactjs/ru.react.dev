@@ -48,7 +48,7 @@ console.log(add(16, 26)); // 42
 Иначе, вам нужно будет настроить webpack самостоятельно.
 Для этого ознакомьтесь со страницами
 [Установка](https://webpack.js.org/guides/installation/) и
-[Начала работы](https://webpack.js.org/guides/getting-started/) в документации по Webpack.  
+[Начало работы](https://webpack.js.org/guides/getting-started/) в документации по Webpack.  
 
 ## Разделение кода {#code-splitting}
 
