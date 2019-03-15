@@ -198,17 +198,17 @@ class FriendStatus extends React.Component {
 
 Вы должно быть подумали, что нам потребуется отдельный эффект для выполнения сброса. Так как код для оформления и отмены подписки тесно связан с `useEffect`, мы решили объединить их. Если ваш эффект возвращает функцию, React выполнит её только тогда, когда наступит время сбросить эффект.
 
-```js{10-16}
+```js{6-16}
 import React, { useState, useEffect } from 'react';
 
 function FriendStatus(props) {
   const [isOnline, setIsOnline] = useState(null);
 
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
-
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     // Указываем, как сбросить этот эффект:
     return function cleanup() {
@@ -237,6 +237,10 @@ function FriendStatus(props) {
 
 ```js
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -316,15 +320,15 @@ function FriendStatusWithCounter(props) {
 
   const [isOnline, setIsOnline] = useState(null);
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
     };
   });
-
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
   // ...
 }
 ```
@@ -394,6 +398,7 @@ function FriendStatusWithCounter(props) {
 function FriendStatus(props) {
   // ...
   useEffect(() => {
+    // ...
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -449,8 +454,12 @@ useEffect(() => {
 
 Это также работает для эффектов с этапом сброса:
 
-```js{6}
+```js{10}
 useEffect(() => {
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
   ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
   return () => {
     ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -462,9 +471,19 @@ useEffect(() => {
 
 >Примечание
 >
+<<<<<<< HEAD
 >Если вы хотите использовать эту оптимизацию, обратите внимание на то, чтобы массив включал в себя **все значения из внешней области видимости, которые могут изменяться с течением времени, и которые будут использоваться эффектом**. В противном случае, ваш код будет ссылаться на устаревшее значение из предыдущих рендеров. Мы рассмотрим другие возможные оптимизации на странице [справочник API хуков](/docs/hooks-reference.html). 
 >
 >Если вы хотите выполнять эффект и сбрасывать его однократно (при монтировании и размонтировании), вы можете передать пустой массив вторым аргументом. React посчитает, что ваш эффект не зависит от *каких-либо* значений из пропсов или состояния, и таким образом, он будет знать, что ему не надо его выполнять повторно. Это не расценивается как особый случай -- он напрямую следует из логики работы массивов при вводе. Хотя передача `[]` ближе по мысли к модели знакомых `componentDidMount` и `componentWillUnmount`, мы не советуем привыкать к этому, так как это часто приводит к багам, [как было рассмотрено ранее](#explanation-why-effects-run-on-each-update). Не забывайте, что React откладывает выполнение `useEffect` пока браузер не отрисует все изменения, поэтому выполнение дополнительной работы не является существенной проблемой.
+=======
+>If you use this optimization, make sure the array includes **all values from the component scope (such as props and state) that change over time and that are used by the effect**. Otherwise, your code will reference stale values from previous renders. Learn more about [how to deal with functions](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) and [what to do when the array changes too often](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
+>
+>If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array (`[]`) as a second argument. This tells React that your effect doesn't depend on *any* values from props or state, so it never needs to re-run. This isn't handled as a special case -- it follows directly from how the inputs array always works.
+>
+>If you pass an empty array (`[]`), the props and state inside the effect will always have their initial values. While passing `[]` as the second argument is closer to the familiar `componentDidMount` and `componentWillUnmount` mental model, there are usually [better](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [solutions](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) to avoid re-running effects too often. Also, don't forget that React defers running `useEffect` until after the browser has painted, so doing extra work is less of a problem.
+>
+>We recommend using the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) rule as part of our [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It warns when dependencies are specified incorrectly and suggests a fix.
+>>>>>>> 1fe2e0ae29b2fe8a8a09ab10048bb9fe284ff568
 
 ## Следующие шаги {#next-steps}
 
