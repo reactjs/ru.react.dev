@@ -120,7 +120,7 @@
       - id: hooks-custom
         title: Создание пользовательских хуков
       - id: hooks-reference
-        title: Справочник API Хуков
+        title: Справочник API хуков
       - id: hooks-faq
         title: "Хуки: ответы на вопросы"
 - title: Участие в проекте
