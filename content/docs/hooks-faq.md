@@ -213,8 +213,6 @@ it('can render and update a counter', () => {
 
 Ознакомьтесь [со статьёй](https://www.robinwieruch.de/react-hooks-fetch-data/), которая рассказывает как делать запросы данных с помощью хуков.
 
-### Is there something like instance variables? {#is-there-something-like-instance-variables}
-
 ### Существует что-нибудь наподобие полей экземпляра? {#is-there-something-like-instance-variables}
 
 Да! Хук [`useRef()`](/docs/hooks-reference.html#useref) может использоваться не только для DOM-рефов. Реф – это общий контейнер, а его поле `current` -- изменяемое и может хранить любое значение, подобно полю экземпляра класса.
