@@ -211,7 +211,7 @@ it('can render and update a counter', () => {
 
 ### Как осуществлять запросы данных с помощью хуков? {#how-can-i-do-data-fetching}
 
-Ознакомьтесь [со статьёй](https://www.robinwieruch.de/react-hooks-fetch-data/), которая рассказывает, как делать запросы данных с помощью хуков.
+Ознакомьтесь [со статьёй](https://www.robinwieruch.de/react-hooks-fetch-data/), которая рассказывает как делать запросы данных с помощью хуков.
 
 ### Is there something like instance variables? {#is-there-something-like-instance-variables}
 
