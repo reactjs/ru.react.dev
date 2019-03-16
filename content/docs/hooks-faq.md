@@ -32,7 +32,7 @@ prev: hooks-reference.html
   * [Что конкретно проверяют правила линтера в хуках?](#what-exactly-do-the-lint-rules-enforce)
 * [От классов к хукам](#from-classes-to-hooks)
   * [Как методы жизненного цикла соответствуют хукам?](#how-do-lifecycle-methods-correspond-to-hooks)
-  * [Как осуществлять запросы данных с помощью хуков?](#how-can-i-do-data-fetching)
+  * [Как осуществлять запросы данных с помощью хуков?](#how-can-i-do-data-fetching-with-hooks)
   * [Существует что-нибудь наподобие полей экземпляра?](#is-there-something-like-instance-variables)
   * [Сколько переменных состояния я могу использовать – одну или несколько?](#should-i-use-one-or-many-state-variables)
   * [Могу ли я использовать эффект только на обновлениях компонента?](#can-i-run-an-effect-only-on-updates)
