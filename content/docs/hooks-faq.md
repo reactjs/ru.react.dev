@@ -209,7 +209,7 @@ it('can render and update a counter', () => {
 
 * `componentDidCatch` и `getDerivedStateFromError`: В данный момент не существует хуков-аналогов для этих методов, но они будут скоро добавлены.
 
-### Как осуществлять запросы данных с помощью хуков? {#how-can-i-do-data-fetching}
+### Как осуществлять запросы данных с помощью хуков? {#how-can-i-do-data-fetching-with-hooks}
 
 Ознакомьтесь [со статьёй](https://www.robinwieruch.de/react-hooks-fetch-data/), которая рассказывает как делать запросы данных с помощью хуков.
 
