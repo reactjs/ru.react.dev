@@ -40,7 +40,7 @@
     - id: accessibility
       title: Доступность контента
     - id: code-splitting
-      title: Code-Splitting
+      title: Разделение кода
     - id: context
       title: Контекст
     - id: error-boundaries
@@ -120,7 +120,7 @@
       - id: hooks-custom
         title: Создание пользовательских хуков
       - id: hooks-reference
-        title: Hooks API Reference
+        title: Справочник API хуков
       - id: hooks-faq
         title: "Хуки: ответы на вопросы"
 - title: Участие в проекте
@@ -132,7 +132,7 @@
   - id: implementation-notes
     title: Implementation Notes
   - id: design-principles
-    title: Design Principles
+    title: Принципы проектирования React
 - title: FAQ
   items:
     - id: faq-ajax
