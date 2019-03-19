@@ -210,8 +210,7 @@ it('can render and update a counter', () => {
 * `componentDidCatch` и `getDerivedStateFromError`: В данный момент не существует хуков-аналогов для этих методов, но они будут скоро добавлены.
 
 ### Как осуществлять запросы данных с помощью хуков? {#how-can-i-do-data-fetching-with-hooks}
-
-Ознакомьтесь [со статьёй](https://www.robinwieruch.de/react-hooks-fetch-data/), которая рассказывает как делать запросы данных с помощью хуков.
+Посмотрите [небольшое демо](https://codesandbox.io/s/jvvkoo8pq3), а затем ознакомьтесь [со статьёй](https://www.robinwieruch.de/react-hooks-fetch-data/), которая рассказывает как делать запросы данных с помощью хуков.
 
 ### Существует что-нибудь наподобие полей экземпляра? {#is-there-something-like-instance-variables}
 
@@ -471,7 +470,7 @@ function ScrollView({row}) {
 Вообще говоря, это небезопасно.
 
 ```js{3,8}
-function Example() {
+function Example({ someProp }) {
   function doSomething() {
     console.log(someProp);
   }
@@ -485,7 +484,7 @@ function Example() {
 Сложно помнить, какие пропсы и состояние используются функцией определённой вне эффекта. Именно поэтому, **лучше объявлять функции нужные эффекту *внутри* него**. Тогда легче увидеть, от каких значений из области видимости компонента зависит эффект:
 
 ```js{4,8}
-function Example() {
+function Example({ someProp }) {
   useEffect(() => {
     function doSomething() {
       console.log(someProp);
@@ -576,7 +575,7 @@ function ProductPage({ productId }) {
 
 >Совет
 >
->Прочитайте [эту статью](https://www.robinwieruch.de/react-hooks-fetch-data/), чтобы узнать больше о том, как запрашивать данные с помощью хуков.
+>Посмотрите [этот небольшой пример](https://codesandbox.io/s/jvvkoo8pq3) и [эту статью](https://www.robinwieruch.de/react-hooks-fetch-data/), чтобы узнать больше о загрузке данных с помощью хуков.
 
 **Если по какой-то причине вы _не_ можете переместить функцию в эффект, есть другие варианты:**
 

@@ -3,7 +3,7 @@ id: hooks-state
 title: Использование хука эффекта
 permalink: docs/hooks-effect.html
 next: hooks-rules.html
-prev: hooks-intro.html
+prev: hooks-state.html
 ---
 
 *Хуки* — нововведение в React 16.8, которое позволяет использовать состояние и другие возможности React без написания классов.
