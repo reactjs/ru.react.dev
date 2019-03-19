@@ -212,7 +212,7 @@ it('can render and update a counter', () => {
 <<<<<<< HEAD
 ### Как осуществлять запросы данных с помощью хуков? {#how-can-i-do-data-fetching-with-hooks}
 =======
-Here is a [small demo](https://codesandbox.io/s/jvvkoo8pq3) to get you started. To learn more, check out [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) about data fetching with Hooks.
+Для начала - [небольшое демо](https://codesandbox.io/s/jvvkoo8pq3). Чтобы узнать больше, загляните в [эту статью](https://www.robinwieruch.de/react-hooks-fetch-data/) о загрузке данных с помощью хуков.
 >>>>>>> 877431a60bb64c4694d51cca79dfc4230d6af603
 
 Ознакомьтесь [со статьёй](https://www.robinwieruch.de/react-hooks-fetch-data/), которая рассказывает как делать запросы данных с помощью хуков.
