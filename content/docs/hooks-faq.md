@@ -583,7 +583,7 @@ function ProductPage({ productId }) {
 <<<<<<< HEAD
 >Прочитайте [эту статью](https://www.robinwieruch.de/react-hooks-fetch-data/), чтобы узнать больше о том, как запрашивать данные с помощью хуков.
 =======
->Check out [this small demo](https://codesandbox.io/s/jvvkoo8pq3) and [this article](https://www.robinwieruch.de/react-hooks-fetch-data/) to learn more about data fetching with Hooks.
+>Посмотрите [этот небольшой пример](https://codesandbox.io/s/jvvkoo8pq3) и [эту статью](https://www.robinwieruch.de/react-hooks-fetch-data/), чтобы узнать больше о загрузке данных с помощью хуков.
 >>>>>>> 877431a60bb64c4694d51cca79dfc4230d6af603
 
 **Если по какой-то причине вы _не_ можете переместить функцию в эффект, есть другие варианты:**
