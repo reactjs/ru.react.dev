@@ -209,13 +209,8 @@ it('can render and update a counter', () => {
 
 * `componentDidCatch` и `getDerivedStateFromError`: В данный момент не существует хуков-аналогов для этих методов, но они будут скоро добавлены.
 
-<<<<<<< HEAD
 ### Как осуществлять запросы данных с помощью хуков? {#how-can-i-do-data-fetching-with-hooks}
-=======
-Для начала - [небольшое демо](https://codesandbox.io/s/jvvkoo8pq3). Чтобы узнать больше, загляните в [эту статью](https://www.robinwieruch.de/react-hooks-fetch-data/) о загрузке данных с помощью хуков.
->>>>>>> 877431a60bb64c4694d51cca79dfc4230d6af603
-
-Ознакомьтесь [со статьёй](https://www.robinwieruch.de/react-hooks-fetch-data/), которая рассказывает как делать запросы данных с помощью хуков.
+Посмотрите [небольшое демо](https://codesandbox.io/s/jvvkoo8pq3), а затем ознакомьтесь [со статьёй](https://www.robinwieruch.de/react-hooks-fetch-data/), которая рассказывает как делать запросы данных с помощью хуков.
 
 ### Существует что-нибудь наподобие полей экземпляра? {#is-there-something-like-instance-variables}
 
@@ -580,11 +575,7 @@ function ProductPage({ productId }) {
 
 >Совет
 >
-<<<<<<< HEAD
->Прочитайте [эту статью](https://www.robinwieruch.de/react-hooks-fetch-data/), чтобы узнать больше о том, как запрашивать данные с помощью хуков.
-=======
 >Посмотрите [этот небольшой пример](https://codesandbox.io/s/jvvkoo8pq3) и [эту статью](https://www.robinwieruch.de/react-hooks-fetch-data/), чтобы узнать больше о загрузке данных с помощью хуков.
->>>>>>> 877431a60bb64c4694d51cca79dfc4230d6af603
 
 **Если по какой-то причине вы _не_ можете переместить функцию в эффект, есть другие варианты:**
 
