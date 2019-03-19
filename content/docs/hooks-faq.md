@@ -683,7 +683,7 @@ const Button = React.memo((props) => {
 
 ### Как закешировать вычисления? {#how-to-memoize-calculations}
 
-Хук [`useMemo`](/docs/hooks-reference.html#usememo) позволяет вам закэшировать вычисления между несколькими рендерами, путём запоминания прошлого результата:
+Хук [`useMemo`](/docs/hooks-reference.html#usememo) позволяет вам закешировать вычисления между несколькими рендерами, путём запоминания прошлого результата:
 
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
