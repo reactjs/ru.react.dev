@@ -218,7 +218,7 @@ React создаёт и поддерживает внутреннее предс
 - [Firefox Browser Extension](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
 - [Standalone Node Package](https://www.npmjs.com/package/react-devtools)
 
-В консоли разработчика выберите параметр **Highlight Updates** на вкдадке **React**:
+В консоли разработчика выберите параметр **Highlight Updates** на вкладке **React**:
 
 <center><img src="../images/blog/devtools-highlight-updates.png" style="max-width:100%; margin-top:10px;" alt="Как включить подсветку обновлений" /></center>
 
