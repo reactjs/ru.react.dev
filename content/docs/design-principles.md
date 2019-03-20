@@ -148,7 +148,7 @@ There is an internal joke in the team that React should have been called "Schedu
 
 Аналогичную роль играет [JSX](/docs/introducing-jsx.html). Хотя он необязателен для работы React, мы широко используем его в Facebook как по эстетическим, так и по практическим соображениям.
 
-В нашей кодовой базе JSX предоставляет однозначные подсказки для инструментов, работающих с деревом React-элементов. Это позволяет добавлять оптимизации во время сборки, такие как [всплытие неизменяющихся элементов](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/), безопасный анализ и использование внутреннего компонента codemod, и добавление в предупреждения [пути до исходников JSX кода](https://github.com/facebook/react/pull/6771).
+В нашей кодовой базе JSX предоставляет однозначную подсказку инструментам, что они работают с деревом React-элементов. Это позволяет добавлять оптимизации во время сборки, такие как [всплытие неизменяющихся элементов](https://babeljs.io/docs/en/babel-plugin-transform-react-constant-elements/), безопасный анализ и использование внутреннего компонента codemod, а также добавление в предупреждения [пути до исходников JSX кода](https://github.com/facebook/react/pull/6771).
 
 ### Использование React в Facebook {#dogfooding}
 
