@@ -90,7 +90,7 @@ There is an internal joke in the team that React should have been called "Schedu
 
 ### Удобство разработки {#developer-experience}
 
-Нам важно сделать разработку удобной.
+Нам важно сделать процесс разработки комфортным.
 
 Например, мы поддерживаем [React DevTools](https://github.com/facebook/react-devtools), при помощи которого можно просматривать дерево React-компонентов в Chrome и Firefox. Мы часто слышим, что это повышает производительность как инженеров Facebook, так и сообщества.
 
