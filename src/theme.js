@@ -287,6 +287,7 @@ const sharedStyles = {
     '& h2': {
       borderTop: `1px solid ${colors.divider}`,
       marginTop: 44,
+      position: 'relative',
       paddingTop: 40,
       lineHeight: 1.2,
 
@@ -296,11 +297,20 @@ const sharedStyles = {
         paddingTop: 0,
       },
 
+      '& .hided-anchor': {
+        top: -10,
+        fontSize: 0,
+      },
+
       [media.lessThan('large')]: {
         fontSize: 20,
       },
       [media.greaterThan('xlarge')]: {
         fontSize: 35,
+
+        '& .hided-anchor': {
+          top: -20,
+        },
       },
     },
 
@@ -311,6 +321,12 @@ const sharedStyles = {
 
     '& h3': {
       paddingTop: 45,
+      position: 'relative',
+
+      '& .hided-anchor': {
+        top: -5,
+        fontSize: 0,
+      },
 
       [media.lessThan('small')]: {
         overflowWrap: 'break-word',
@@ -320,6 +336,10 @@ const sharedStyles = {
       [media.greaterThan('xlarge')]: {
         fontSize: 25,
         lineHeight: 1.3,
+
+        '& .hided-anchor': {
+          top: -15,
+        },
       },
     },
 
