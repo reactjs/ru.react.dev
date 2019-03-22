@@ -96,6 +96,8 @@ const [state, setState] = useState(() => {
 
 Если вы обновите состояние хука тем же значением, что и текущее состояние, React досрочно выйдет из хука без повторного рендера дочерних элементов и запуска эффектов. (React использует [алгоритм сравнения `Object.is`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
 
+Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
+
 ### `useEffect` {#useeffect}
 
 ```js
@@ -171,12 +173,32 @@ useEffect(
 ### `useContext` {#usecontext}
 
 ```js
-const context = useContext(Context);
+const value = useContext(MyContext);
 ```
 
+<<<<<<< HEAD
 Принимает объект контекста (значение, возвращённое из `React.createContext`) и возвращает текущее значение контекста, как указано ближайшим поставщиком контекста для данного контекста.
 
 Когда провайдер обновляется, этот хук инициирует повторный рендер с последним значением контекста.
+=======
+Accepts a context object (the value returned from `React.createContext`) and returns the current context value for that context. The current context value is determined by the `value` prop of the nearest `<MyContext.Provider>` above the calling component in the tree.
+
+When the nearest `<MyContext.Provider>` above the component updates, this Hook will trigger a rerender with the latest context `value` passed to that `MyContext` provider.
+
+Don't forget that the argument to `useContext` must be the *context object itself*:
+
+ * **Correct:** `useContext(MyContext)`
+ * **Incorrect:** `useContext(MyContext.Consumer)`
+ * **Incorrect:** `useContext(MyContext.Provider)`
+
+A component calling `useContext` will always re-render when the context value changes. If re-rendering the component is expensive, you can [optimize it by using memoization](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
+
+>Tip
+>
+>If you're familiar with the context API before Hooks, `useContext(MyContext)` is equivalent to `static contextType = MyContext` in a class, or to `<MyContext.Consumer>`.
+>
+>`useContext(MyContext)` only lets you *read* the context and subscribe to its changes. You still need a `<MyContext.Provider>` above in the tree to *provide* the value for this context.
+>>>>>>> 1f2dbb7a4f531d1c9d70ae69e025eac992b37c6a
 
 ## Дополнительные хуки {#additional-hooks}
 
@@ -283,6 +305,8 @@ function Counter({initialCount}) {
 
 Если вы вернёте то же значение из редюсера хука, что и текущее состояние, React выйдет без перерисовки дочерних элементов или запуска эффектов. (React использует [алгоритм сравнения Object.is](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
 
+Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
+
 ### `useCallback` {#usecallback}
 
 ```js
@@ -354,7 +378,20 @@ function TextInputWithFocusButton() {
 }
 ```
 
+<<<<<<< HEAD
 Обратите внимание, что `useRef()` полезен не только для атрибута `ref`. Он также [удобен для хранения любого изменяемого значения](/docs/hooks-faq.html#is-there-something-like-instance-variables) примерно так же, как вы используете поля экземпляров в классах.
+=======
+Essentially, `useRef` is like a "box" that can hold a mutable value in its `.current` property.
+
+You might be familiar with refs primarily as a way to [access the DOM](/docs/refs-and-the-dom.html). If you pass a ref object to React with `<div ref={myRef} />`, React will set its `.current` property to the corresponding DOM node whenever that node changes.
+
+However, `useRef()` is useful for more than the `ref` attribute. It's [handy for keeping any mutable value around](/docs/hooks-faq.html#is-there-something-like-instance-variables) similar to how you'd use instance fields in classes.
+
+This works because `useRef()` creates a plain JavaScript object. The only difference between `useRef()` and creating a `{current: ...}` object yourself is that `useRef` will give you the same ref object on every render.
+
+Keep in mind that `useRef` *doesn't* notify you when its content changes. Mutating the `.current` property doesn't cause a re-render. If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a [callback ref](/docs/hooks-faq.html#how-can-i-measure-a-dom-node) instead.
+
+>>>>>>> 1f2dbb7a4f531d1c9d70ae69e025eac992b37c6a
 
 ### `useImperativeHandle` {#useimperativehandle}
 
@@ -387,7 +424,15 @@ FancyInput = forwardRef(FancyInput);
 
 > Совет
 >
+<<<<<<< HEAD
 > Если вы переносите код из классового компонента, `useLayoutEffect` запускается в той же фазе, что и `componentDidMount` и `componentDidUpdate`, поэтому, если вы не уверены, какой хук эффект использовать, это, вероятно, наименее рискованно.
+=======
+> If you're migrating code from a class component, note `useLayoutEffect` fires in the same phase as `componentDidMount` and `componentDidUpdate`. However, **we recommend starting with `useEffect` first** and only trying `useLayoutEffect` if that causes a problem.
+>
+>If you use server rendering, keep in mind that *neither* `useLayoutEffect` nor `useEffect` can run until the JavaScript is downloaded. This is why React warns when a server-rendered component contains `useLayoutEffect`. To fix this, either move that logic to `useEffect` (if it isn't necessary for the first render), or delay showing that component until after the client renders (if the HTML looks broken until `useLayoutEffect` runs).
+>
+>To exclude a component that needs layout effects from the server-rendered HTML, render it conditionally with `showChild && <Child />` and defer showing it with `useEffect(() => { setShowChild(true); }, [])`. This way, the UI doesn't appear broken before hydration.
+>>>>>>> 1f2dbb7a4f531d1c9d70ae69e025eac992b37c6a
 
 ### `useDebugValue` {#usedebugvalue}
 
