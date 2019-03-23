@@ -176,29 +176,24 @@ useEffect(
 const value = useContext(MyContext);
 ```
 
-<<<<<<< HEAD
-Принимает объект контекста (значение, возвращённое из `React.createContext`) и возвращает текущее значение контекста, как указано ближайшим поставщиком контекста для данного контекста.
+Принимает объект контекста (значение, возвращаемое из `React.createContext`) и возвращает текущее значение контекста для этого контекста. Текущее значение контекста определяется пропом `value` ближайшего `<MyContext.Provider>` над вызывающим компонентом в дереве.
 
-Когда провайдер обновляется, этот хук инициирует повторный рендер с последним значением контекста.
-=======
-Accepts a context object (the value returned from `React.createContext`) and returns the current context value for that context. The current context value is determined by the `value` prop of the nearest `<MyContext.Provider>` above the calling component in the tree.
+Когда ближайший `<MyContext.Provider>` находится над обновлениями компонентов этот хук вызовет повторный рендер с последним значением контекста, переданным этому провайдеру `MyContext`.
 
-When the nearest `<MyContext.Provider>` above the component updates, this Hook will trigger a rerender with the latest context `value` passed to that `MyContext` provider.
+Не забывайте, что аргумент `useContext` должен быть самим объектом *context*:
 
-Don't forget that the argument to `useContext` must be the *context object itself*:
+ * **Правильно:** `useContext(MyContext)`
+ * **Неправильно:** `useContext(MyContext.Consumer)`
+ * **Неправильно:** `useContext(MyContext.Provider)`
 
- * **Correct:** `useContext(MyContext)`
- * **Incorrect:** `useContext(MyContext.Consumer)`
- * **Incorrect:** `useContext(MyContext.Provider)`
+Компонент вызывает `useContext` всегда будет перерендерится при изменении контекста значение. При повторной визуализации компонент стоит дорого, вы можете [оптимизировать его с помощью мемоизации](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
 
-A component calling `useContext` will always re-render when the context value changes. If re-rendering the component is expensive, you can [optimize it by using memoization](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
-
->Tip
+>Подсказка
 >
->If you're familiar with the context API before Hooks, `useContext(MyContext)` is equivalent to `static contextType = MyContext` in a class, or to `<MyContext.Consumer>`.
+
+>Если вы знакомы с контекстным API до хуков, `useContext(MyContext)` эквивалентно `static contextType = MyContext` в классе или `<MyContext.Provider`.
 >
->`useContext(MyContext)` only lets you *read* the context and subscribe to its changes. You still need a `<MyContext.Provider>` above in the tree to *provide* the value for this context.
->>>>>>> 1f2dbb7a4f531d1c9d70ae69e025eac992b37c6a
+>`useContext (MyContext)` позволяет только *читать* контекст и подписываться на его изменения. Вам все еще нужен `<MyContext.Provider>` выше в дереве ,чтобы *предоставить* значение для этого контекста.
 
 ## Дополнительные хуки {#additional-hooks}
 
@@ -378,20 +373,16 @@ function TextInputWithFocusButton() {
 }
 ```
 
-<<<<<<< HEAD
-Обратите внимание, что `useRef()` полезен не только для атрибута `ref`. Он также [удобен для хранения любого изменяемого значения](/docs/hooks-faq.html#is-there-something-like-instance-variables) примерно так же, как вы используете поля экземпляров в классах.
-=======
-Essentially, `useRef` is like a "box" that can hold a mutable value in its `.current` property.
+По сути, `useRef` - это как «коробка», которая может содержать изменяемое значение в своем `текущем` свойстве.
 
-You might be familiar with refs primarily as a way to [access the DOM](/docs/refs-and-the-dom.html). If you pass a ref object to React with `<div ref={myRef} />`, React will set its `.current` property to the corresponding DOM node whenever that node changes.
+Вы можете быть знакомы с рефами в первую очередь как со способом [access the DOM](/docs/refs-and-the-dom.html). Если вы передадите объект рефа для реакции с `<div ref={myRef}/>`, React установит его `.current` текущим для соответствующего узла DOM при каждом изменении этого узла.
 
-However, `useRef()` is useful for more than the `ref` attribute. It's [handy for keeping any mutable value around](/docs/hooks-faq.html#is-there-something-like-instance-variables) similar to how you'd use instance fields in classes.
+Однако `useRef()` полезен не только для атрибута реф. Это [удобно для сохранения любого изменяемого значения](/docs/hooks-faq.html#is-there-something-like-instance-variables) аналогично тому, как вы бы использовали поля экземпляра в классах.
 
-This works because `useRef()` creates a plain JavaScript object. The only difference between `useRef()` and creating a `{current: ...}` object yourself is that `useRef` will give you the same ref object on every render.
+Это работает, потому что `useRef()` создает простой объект JavaScript. Единственное различие между `useRef()` и созданием` {current:...} `сам объект заключается в том, что `useRef` даст вам один и тот же объект реф для каждого рендеринга.
 
-Keep in mind that `useRef` *doesn't* notify you when its content changes. Mutating the `.current` property doesn't cause a re-render. If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a [callback ref](/docs/hooks-faq.html#how-can-i-measure-a-dom-node) instead.
+Имейте в виду, что `useRef` *не уведомляет вас, когда изменяется его содержимое. Мутация свойство `.current` не вызывает повторной визуализации. Если вы хотите запустить некоторый код, когда React присоединяет или отсоединяет реф к узлу DOM, вы можете использовать [колбек рефа](/docs/hooks-faq.html#how-can-i-measure-a-dom-node) вместо этого.
 
->>>>>>> 1f2dbb7a4f531d1c9d70ae69e025eac992b37c6a
 
 ### `useImperativeHandle` {#useimperativehandle}
 
@@ -424,15 +415,11 @@ FancyInput = forwardRef(FancyInput);
 
 > Совет
 >
-<<<<<<< HEAD
-> Если вы переносите код из классового компонента, `useLayoutEffect` запускается в той же фазе, что и `componentDidMount` и `componentDidUpdate`, поэтому, если вы не уверены, какой хук эффект использовать, это, вероятно, наименее рискованно.
-=======
-> If you're migrating code from a class component, note `useLayoutEffect` fires in the same phase as `componentDidMount` and `componentDidUpdate`. However, **we recommend starting with `useEffect` first** and only trying `useLayoutEffect` if that causes a problem.
+> Если вы переносите код из классового компонента, `useLayoutEffect` запускается в той же фазе, что и `componentDidMount` и `componentDidUpdate`. Однако, *мы рекомендуем начать вначале с `useEffect`** и только попробовать `useLayoutEffect`, если это вызывает проблему.
 >
->If you use server rendering, keep in mind that *neither* `useLayoutEffect` nor `useEffect` can run until the JavaScript is downloaded. This is why React warns when a server-rendered component contains `useLayoutEffect`. To fix this, either move that logic to `useEffect` (if it isn't necessary for the first render), or delay showing that component until after the client renders (if the HTML looks broken until `useLayoutEffect` runs).
+>Если вы используете серверный рендер, имейте в виду, что *ни* `useLayoutEffect`, ни `useEffect` не могут работать до загрузки JavaScript. Вот почему React предупреждает, когда серверный компонент содержит `useLayoutEffect`. Чтобы исправить это, либо переместите эту логику в `useEffect` (если это не необходимо для первого рендера), либо задержите показ этого компонента до тех пор, пока клиент не отрисовает (если HTML выглядит сломанным до запуска `useLayoutEffect`).
 >
->To exclude a component that needs layout effects from the server-rendered HTML, render it conditionally with `showChild && <Child />` and defer showing it with `useEffect(() => { setShowChild(true); }, [])`. This way, the UI doesn't appear broken before hydration.
->>>>>>> 1f2dbb7a4f531d1c9d70ae69e025eac992b37c6a
+>Чтобы исключить компонент, который нуждается в эффектах макета из HTML-кода, отображаемого сервером, сделайте его условно с помощью `showChild & & <Child / >` и отложите показ с помощью ` useEffect(() => { setShowChild(true);}, [])`. Таким образом, пользовательский интерфейс не отображается сломанным перед гидратацией.
 
 ### `useDebugValue` {#usedebugvalue}
 
