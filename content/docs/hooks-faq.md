@@ -456,7 +456,7 @@ function ScrollView({row}) {
 
 ### Как я могу измерить узел DOM? {#how-can-i-measure-a-dom-node}
 
-Для измерения положения или размера узла DOM можно использовать [реф-колбэк](/docs/refs-and-the-dom.html#callback-refs). React будет вызывать этот колбэк всякий раз, когда ref подключается к другому узлу. Вот [небольшая демонстрация](https://codesandbox.io/s/l7m0v5x4v9):
+Для измерения положения или размера узла DOM можно использовать [колбэк-реф](/docs/refs-and-the-dom.html#callback-refs). React будет вызывать этот колбэк всякий раз, когда ref подключается к другому узлу. Вот [небольшая демонстрация](https://codesandbox.io/s/l7m0v5x4v9):
 
 ```js{4-8,12}
 function MeasureExample() {
