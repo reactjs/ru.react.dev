@@ -912,7 +912,7 @@ function Form() {
   const textRef = useRef();
 
   useEffect(() => {
-    textRef.current = text; // Write it to the ref
+    textRef.current = text; // Записать это в реф
   });
 
   const handleSubmit = useCallback(() => {
