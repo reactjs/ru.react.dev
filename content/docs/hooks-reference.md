@@ -96,7 +96,7 @@ const [state, setState] = useState(() => {
 
 Если вы обновите состояние хука тем же значением, что и текущее состояние, React досрочно выйдет из хука без повторного рендера дочерних элементов и запуска эффектов. (React использует [алгоритм сравнения `Object.is`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
 
-Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
+Обратите внимание, что для React всё еще может быть необходим повторный рендер этого компонента. Это не должно быть проблемой, потому что React не будет сильно «углубляться» в дерево. Если вы делаете дорогостоящие вычисления во время рендеринга, вы можете оптимизировать их с помощью `useMemo`.
 
 ### `useEffect` {#useeffect}
 
