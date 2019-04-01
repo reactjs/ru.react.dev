@@ -14,7 +14,7 @@ React имеет сообщество из миллионов разработч
 
 ## Stack Overflow {#stack-overflow}
 
-Stack Overflow это популярный форум для вопросов на уровне кода или если вы не можете решит ошибку. Почитайте [существующие вопросы](https://stackoverflow.com/questions/tagged/reactjs) с тегом **reactjs** или [спросите сами](https://stackoverflow.com/questions/ask?tags=reactjs)!
+Stack Overflow – популярный форум для вопросов про написание кода, там помогут решить конкретную ошибку. Прочитайте [существующие вопросы](https://stackoverflow.com/questions/tagged/reactjs) с тегом **reactjs** или [спросите сами](https://stackoverflow.com/questions/ask?tags=reactjs)!
 
 ## Популярные форумы {#popular-discussion-forums}
 
