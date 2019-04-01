@@ -131,7 +131,11 @@ class Welcome extends React.Component {
 Методы жизненного цикла — это настраиваемые функции, которые выполняются на различных этапах жизни компонента. Существуют специальные методы для первоначального рендеринга компонента в DOM ([монтирование](/docs/react-component.html#mounting)), его обновления, размонтирования и удаления.
 
 
+<<<<<<< HEAD
  ## [Управляемые](/docs/forms.html#controlled-components) и [неуправляемые компоненты](/docs/uncontrolled-components.html)
+=======
+The most important difference between `state` and `props` is that `props` are passed from a parent component, but `state` is managed by the component itself. A component cannot change its `props`, but it can change its `state`.
+>>>>>>> 59c3c0a1551841cedfc8478524808492289e61f5
 
 В React существует два различных подхода для управления формами.
 
