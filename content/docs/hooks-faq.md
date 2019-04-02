@@ -471,7 +471,7 @@ function MeasureExample() {
   return (
     <>
       <h1 ref={measuredRef}>Привет, мир</h1>
-      <h2>Заголовок выше {Math.round(height)} пикселей в высоту</h2>
+      <h2>Заголовок выше имеет высоту {Math.round(height)} пикселей</h2>
     </>
   );
 }
