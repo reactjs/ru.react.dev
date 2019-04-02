@@ -66,15 +66,10 @@ function Counter({initialCount}) {
   );
 }
 ```
+
 Кнопки «+» и «-» используют функциональную форму, потому что обновленное значение основано на предыдущем значении. Но кнопка «Сбросить» использует обычную форму, потому что она всегда устанавливает счетчик обратно в 0.
 
-<<<<<<< HEAD
 > Примечание
-=======
-The "+" and "-" buttons use the functional form, because the updated value is based on the previous value. But the "Reset" button uses the normal form, because it always sets the count back to the initial value.
-
-> Note
->>>>>>> 59c3c0a1551841cedfc8478524808492289e61f5
 >
 > В отличие от метода `setState`, который вы можете найти в классовых компонентах, `setState` не объединяет объекты обновления автоматически. Вы можете повторить это поведение, комбинируя форму функции обновления с синтаксисом расширения объекта:
 >
@@ -102,7 +97,7 @@ const [state, setState] = useState(() => {
 
 Если вы обновите состояние хука тем же значением, что и текущее состояние, React досрочно выйдет из хука без повторного рендера дочерних элементов и запуска эффектов. (React использует [алгоритм сравнения `Object.is`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
 
-Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
+Обратите внимание, что для React всё еще может быть необходим повторный рендер этого компонента. Это не должно быть проблемой, потому что React не будет сильно «углубляться» в дерево. Если вы делаете дорогостоящие вычисления во время рендеринга, вы можете оптимизировать их с помощью `useMemo`.
 
 ### `useEffect` {#useeffect}
 
@@ -182,29 +177,25 @@ useEffect(
 const value = useContext(MyContext);
 ```
 
-<<<<<<< HEAD
-Принимает объект контекста (значение, возвращённое из `React.createContext`) и возвращает текущее значение контекста, как указано ближайшим поставщиком контекста для данного контекста.
+Принимает объект контекста (значение, возвращённое из `React.createContext`) и возвращает текущее значение контекста для этого контекста. Текущее значение контекста определяется пропом `value` ближайшего `<MyContext.Provider>` над вызывающим компонентом в дереве.
 
-Когда провайдер обновляется, этот хук инициирует повторный рендер с последним значением контекста.
-=======
-Accepts a context object (the value returned from `React.createContext`) and returns the current context value for that context. The current context value is determined by the `value` prop of the nearest `<MyContext.Provider>` above the calling component in the tree.
+Когда ближайший `<MyContext.Provider>` над компонентом обновляется, этот хук вызовет повторный рендер с последним значением контекста, переданным этому провайдеру `MyContext`.
 
-When the nearest `<MyContext.Provider>` above the component updates, this Hook will trigger a rerender with the latest context `value` passed to that `MyContext` provider.
+Запомните, аргумент для `useContext` должен быть *непосредственно сам объект контекста*:
 
-Don't forget that the argument to `useContext` must be the *context object itself*:
+ * **Правильно:** `useContext(MyContext)`
+ * **Неправильно:** `useContext(MyContext.Consumer)`
+ * **Неправильно:** `useContext(MyContext.Provider)`
 
- * **Correct:** `useContext(MyContext)`
- * **Incorrect:** `useContext(MyContext.Consumer)`
- * **Incorrect:** `useContext(MyContext.Provider)`
+Компонент, вызывающий `useContext`, всегда будет перерендериваться при изменении значения контекста. Если повторный рендер компонента затратен, вы можете [оптимизировать его с помощью мемоизации](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
 
-A component calling `useContext` will always re-render when the context value changes. If re-rendering the component is expensive, you can [optimize it by using memoization](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
-
->Tip
+>Совет
 >
->If you're familiar with the context API before Hooks, `useContext(MyContext)` is equivalent to `static contextType = MyContext` in a class, or to `<MyContext.Consumer>`.
+
+>Если вы были знакомы с API контекстов до появления хуков, то вызов `useContext(MyContext)` аналогичен выражению `static contextType = MyContext` в классе, либо компоненту `<MyContext.Provider>`.
 >
->`useContext(MyContext)` only lets you *read* the context and subscribe to its changes. You still need a `<MyContext.Provider>` above in the tree to *provide* the value for this context.
->>>>>>> 59c3c0a1551841cedfc8478524808492289e61f5
+>`useContext (MyContext)` позволяет только *читать* контекст и подписываться на его изменения. Вам всё ещё нужен `<MyContext.Provider>` выше в дереве, чтобы *предоставить* значение для этого контекста.
+>>>>>>> master -- Current Change
 
 ## Дополнительные хуки {#additional-hooks}
 
@@ -311,7 +302,7 @@ function Counter({initialCount}) {
 
 Если вы вернёте то же значение из редюсера хука, что и текущее состояние, React выйдет без перерисовки дочерних элементов или запуска эффектов. (React использует [алгоритм сравнения Object.is](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
 
-Note that React may still need to render that specific component again before bailing out. That shouldn't be a concern because React won't unnecessarily go "deeper" into the tree. If you're doing expensive calculations while rendering, you can optimize them with `useMemo`.
+Обратите внимание, что для React всё еще может быть необходим повторный рендер этого компонента. Это не должно быть проблемой, потому что React не будет сильно «углубляться» в дерево. Если вы делаете дорогостоящие вычисления во время рендеринга, вы можете оптимизировать их с помощью `useMemo`.
 
 ### `useCallback` {#usecallback}
 
@@ -324,9 +315,9 @@ const memoizedCallback = useCallback(
 );
 ```
 
-Возвращает [запомненный](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%BC%D0%BE%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F) колбэк.
+Возвращает [мемоизированный](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%BC%D0%BE%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F) колбэк.
 
-Передайте встроенный колбэк и массив зависимостей. Хук `useCallback` вернёт запомненную версию колбэка, который изменяется только в случае изменения значения одной из зависимостей. Это полезно при передаче колбэков оптимизированным дочерним компонентам, которые полагаются на равенство ссылок для предотвращения ненужных рендеров (например, `shouldComponentUpdate`).
+Передайте встроенный колбэк и массив зависимостей. Хук `useCallback` вернёт мемоизированную версию колбэка, который изменяется только, если изменяются значения одной из зависимостей. Это полезно при передаче колбэков оптимизированным дочерним компонентам, которые полагаются на равенство ссылок для предотвращения ненужных рендеров (например, `shouldComponentUpdate`).
 
 `useCallback(fn, deps)` – это эквивалент `useMemo(() => fn, deps)`.
 
@@ -342,15 +333,15 @@ const memoizedCallback = useCallback(
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-Возвращает [запомненное](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%BC%D0%BE%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F) значение.
+Возвращает [мемоизированное](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%BC%D0%BE%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F) значение.
 
-Передайте «создающую» функцию и массив зависимостей. `useMemo` будет повторно вычислять запомненное значение только тогда, когда значение какой-либо из зависимостей изменилось. Эта оптимизация помогает избежать дорогостоящих вычислений при каждом рендере.
+Передайте «создающую» функцию и массив зависимостей. `useMemo` будет повторно вычислять мемоизированное значение только тогда, когда значение какой-либо из зависимостей изменилось. Эта оптимизация помогает избежать дорогостоящих вычислений при каждом рендере.
 
 Помните, что функция, переданная `useMemo`, запускается во время рендеринга. Не делайте там ничего, что вы обычно не делаете во время рендеринга. Например, побочные эффекты принадлежат `useEffect`, а не `useMemo`.
 
 Если массив не был передан, новое значение будет вычисляться при каждом рендере.
 
-**Вы можете использовать `useMemo` как оптимизацию производительности, а не как семантическую гарантию.** В будущем React может решить «забыть» некоторые ранее запомненные значения и пересчитать их при следующем рендере, например, чтобы освободить память для компонентов вне области видимости экрана. Напишите свой код, чтобы он по-прежнему работал без `useMemo`, а затем добавьте его для оптимизации производительности.
+**Вы можете использовать `useMemo` как оптимизацию производительности, а не как семантическую гарантию.** В будущем React может решить «забыть» некоторые ранее мемоизированные значения и пересчитать их при следующем рендере, например, чтобы освободить память для компонентов вне области видимости экрана. Напишите свой код, чтобы он по-прежнему работал без `useMemo`, а затем добавьте его для оптимизации производительности.
 
 > Примечание
 >
@@ -384,20 +375,15 @@ function TextInputWithFocusButton() {
 }
 ```
 
-<<<<<<< HEAD
-Обратите внимание, что `useRef()` полезен не только для атрибута `ref`. Он также [удобен для хранения любого изменяемого значения](/docs/hooks-faq.html#is-there-something-like-instance-variables) примерно так же, как вы используете поля экземпляров в классах.
-=======
-Essentially, `useRef` is like a "box" that can hold a mutable value in its `.current` property.
+По сути, `useRef` похож на «коробку», которая может содержать изменяемое значение в своём свойстве `.current`.
 
-You might be familiar with refs primarily as a way to [access the DOM](/docs/refs-and-the-dom.html). If you pass a ref object to React with `<div ref={myRef} />`, React will set its `.current` property to the corresponding DOM node whenever that node changes.
+Возможно, вы знакомы с рефами в основном как со способом [получить доступ к DOM](/docs/refs-and-the-dom.html). Если вы передадите React объект рефа с помощью подобного выражения `<div ref={myRef}/>`, React установит собственное свойство `.current` на соответствующий DOM-узел при каждом его изменении.
 
-However, `useRef()` is useful for more than the `ref` attribute. It's [handy for keeping any mutable value around](/docs/hooks-faq.html#is-there-something-like-instance-variables) similar to how you'd use instance fields in classes.
+Но хук `useRef()` полезен не только установкой атрибута с рефом. Он [удобен для сохранения любого мутируемого значения](/docs/hooks-faq.html#is-there-something-like-instance-variables), по аналогии с тем, как вы используете поля экземпляра в классах.
 
-This works because `useRef()` creates a plain JavaScript object. The only difference between `useRef()` and creating a `{current: ...}` object yourself is that `useRef` will give you the same ref object on every render.
+Это возможно, поскольку `useRef()` создаёт обычный JavaScript-объект. Единственная разница между `useRef()` и просто созданием самого объекта `{current: ...}` — это то, что хук `useRef` даст один и тот же объект с рефом при каждом рендере.
 
-Keep in mind that `useRef` *doesn't* notify you when its content changes. Mutating the `.current` property doesn't cause a re-render. If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a [callback ref](/docs/hooks-faq.html#how-can-i-measure-a-dom-node) instead.
-
->>>>>>> 59c3c0a1551841cedfc8478524808492289e61f5
+Имейте в виду, что `useRef` *не* уведомляет вас, когда изменяется его содержимое. Мутирование свойства `.current` не вызывает повторный рендер. Если вы хотите запустить некоторый код, когда React присоединяет или отсоединяет реф к узлу DOM, вы можете использовать [колбэк-реф](/docs/hooks-faq.html#how-can-i-measure-a-dom-node) вместо этого.
 
 ### `useImperativeHandle` {#useimperativehandle}
 
@@ -430,15 +416,12 @@ FancyInput = forwardRef(FancyInput);
 
 > Совет
 >
-<<<<<<< HEAD
-> Если вы переносите код из классового компонента, `useLayoutEffect` запускается в той же фазе, что и `componentDidMount` и `componentDidUpdate`, поэтому, если вы не уверены, какой хук эффект использовать, это, вероятно, наименее рискованно.
-=======
-> If you're migrating code from a class component, note `useLayoutEffect` fires in the same phase as `componentDidMount` and `componentDidUpdate`. However, **we recommend starting with `useEffect` first** and only trying `useLayoutEffect` if that causes a problem.
+> Если вы переносите код из классового компонента, `useLayoutEffect` запускается в той же фазе, что и `componentDidMount` и `componentDidUpdate`. Тем не менее, *мы рекомендуем начать с `useEffect`**, и попробовать использовать `useLayoutEffect`, если тот приводит к возникновению проблем.
 >
->If you use server rendering, keep in mind that *neither* `useLayoutEffect` nor `useEffect` can run until the JavaScript is downloaded. This is why React warns when a server-rendered component contains `useLayoutEffect`. To fix this, either move that logic to `useEffect` (if it isn't necessary for the first render), or delay showing that component until after the client renders (if the HTML looks broken until `useLayoutEffect` runs).
+>Если вы используете серверный рендеринг, имейте в виду, что *ни* `useLayoutEffect`, ни `useEffect` не могут работать до загрузки JavaScript. Вот почему React предупреждает, когда серверный компонент содержит `useLayoutEffect`. Чтобы справиться с данной проблемой, либо переместите эту логику в `useEffect` (если она не нужна для первого рендера), либо задержите отображение этого компонента до тех пор, пока не выполнится рендеринг на стороне клиента (если HTML некорректный до запуска `useLayoutEffect`).
 >
->To exclude a component that needs layout effects from the server-rendered HTML, render it conditionally with `showChild && <Child />` and defer showing it with `useEffect(() => { setShowChild(true); }, [])`. This way, the UI doesn't appear broken before hydration.
->>>>>>> 59c3c0a1551841cedfc8478524808492289e61f5
+>Чтобы исключить компонент, который нуждается в эффектах макета из HTML-кода, полученного в результате серверного рендеринга, выполните его рендер по условию `showChild && <Child />` и отложите отображение с помощью `useEffect(() => { setShowChild(true); }, [])``. Таким образом, пользовательский интерфейс не будет выглядеть некорректно перед гидратацией.
+>>>>>>> master -- Current Change
 
 ### `useDebugValue` {#usedebugvalue}
 
