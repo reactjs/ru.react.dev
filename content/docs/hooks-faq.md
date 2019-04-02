@@ -488,7 +488,7 @@ function MeasureExample() {
   const [rect, ref] = useClientRect();
   return (
     <>
-      <h1 ref={ref}>Hello, world</h1>
+      <h1 ref={ref}>Привет, мир</h1>
       {rect !== null &&
         <h2>The above header is {Math.round(rect.height)}px tall</h2>
       }
