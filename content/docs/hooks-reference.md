@@ -189,7 +189,7 @@ const value = useContext(MyContext);
 
 Компонент вызывающий `useContext` всегда будет перерендериваться при изменении значения контекста. Если повторный рендер компонента затратен, вы можете [оптимизировать его с помощью мемоизации](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
 
->Подсказка
+>Совет
 >
 
 >Если вы знакомы с контекстным API до хуков, `useContext(MyContext)` эквивалентно `static contextType = MyContext` в классе или `<MyContext.Provider`.
