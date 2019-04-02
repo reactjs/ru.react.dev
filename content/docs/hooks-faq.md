@@ -41,6 +41,7 @@ prev: hooks-reference.html
   * [Как я могу реализовать `getDerivedStateFromProps`?](#how-do-i-implement-getderivedstatefromprops)
   * [Существует что-нибудь наподобие forceUpdate?](#is-there-something-like-forceupdate)
   * [Могу ли я изменить реф, переданный в функциональный компонент?](#can-i-make-a-ref-to-a-function-component)
+  * [Как я могу измерить узел DOM?](#how-can-i-measure-a-dom-node)
   * [Что значит `const [thing, setThing] = useState()`?](#what-does-const-thing-setthing--usestate-mean)
 * [Оптимизации производительности](#performance-optimizations)
   * [Могу ли я пропустить эффект при обновлениях?](#can-i-skip-an-effect-on-updates)
@@ -403,7 +404,7 @@ function Example() {
 
 Если вы намеренно хотите считать из асинхронного колбэка *свежайшее* состояние, вы можете сперва сохранить его [в реф](/docs/hooks-faq.html#is-there-something-like-instance-variables), потом изменить его и затем считать его из рефа.
 
-Наконец, возможна другая ситуация, почему вы видите устаревшие пропсы или состояние: когда вы используете оптимизацию с помощью «массива зависимостей», но неправильно указали какие-то зависимости. Например, если эффект передаёт вторым параметром `[]`, но при этом использует `someProp`, то он продолжит «видеть» исходное значение `someProp`. Правильным решением является либо исправление массива, либо отказ от его использования. 
+Наконец, возможна другая ситуация, почему вы видите устаревшие пропсы или состояние: когда вы используете оптимизацию с помощью «массива зависимостей», но неправильно указали какие-то зависимости. Например, если эффект передаёт вторым параметром `[]`, но при этом использует `someProp`, то он продолжит «видеть» исходное значение `someProp`. Правильным решением является либо исправление массива, либо отказ от его использования.
 По этим ссылкам описаны [подходы к функциям](#is-it-safe-to-omit-functions-from-the-list-of-dependencies) в аналогичных ситуациях и [другие известные способы](#what-can-i-do-if-my-effect-dependencies-change-too-often) снижения частоты вызова эффектов, исключающие передачу неправильных зависимостей.
 
 >Примечание
@@ -451,8 +452,61 @@ function ScrollView({row}) {
 
 ### Могу ли я изменить реф, переданный в функциональный компонент? {#can-i-make-a-ref-to-a-function-component}
 
-
 Несмотря на то, что вам не понадобится это часто, вы можете предоставить некоторые императивные методы родительскому компоненту, используя хук [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle).
+
+### Как я могу измерить узел DOM? {#how-can-i-measure-a-dom-node}
+
+Для определения положения или размера DOM-узла можно использовать [колбэк-реф](/docs/refs-and-the-dom.html#callback-refs). React будет вызывать этот колбэк всякий раз, когда реф привязывается к другому узлу. Вот [небольшая демонстрация](https://codesandbox.io/s/l7m0v5x4v9):
+
+```js{4-8,12}
+function MeasureExample() {
+  const [height, setHeight] = useState(0);
+
+  const measuredRef = useCallback(node => {
+    if (node !== null) {
+      setHeight(node.getBoundingClientRect().height);
+    }
+  }, []);
+
+  return (
+    <>
+      <h1 ref={measuredRef}>Привет, мир</h1>
+      <h2>Заголовок выше имеет высоту {Math.round(height)} пикселей</h2>
+    </>
+  );
+}
+```
+
+Мы не выбрали `useRef` в этом примере, потому что объект рефа не уведомляет нас об *изменениях* текущего значения рефа. Использование колбэк-рефа гарантирует, что [даже если дочерний компонент отображает измеренный узел позже](https://codesandbox.io/s/818zzk8m78) (например, в ответ на клик), мы по-прежнему получаем уведомление об этом в родительском компоненте и можем обновлять измерения.
+
+Обратите внимание, что мы передаем `[]` как массив зависимостей в `useCallback`. Это гарантирует, что наш колбэк-реф не изменится между повторными рендерами, а значит React не будет вызывать его без необходимости.
+
+При желании вы можете [извлечь эту логику](https://codesandbox.io/s/m5o42082xy) в переиспользуемый хук:
+
+```js{2}
+function MeasureExample() {
+  const [rect, ref] = useClientRect();
+  return (
+    <>
+      <h1 ref={ref}>Привет, мир</h1>
+      {rect !== null &&
+      <h2>Заголовок выше имеет высоту {Math.round(height)} пикселей</h2>
+      }
+    </>
+  );
+}
+
+function useClientRect() {
+  const [rect, setRect] = useState(null);
+  const ref = useCallback(node => {
+    if (node !== null) {
+      setRect(node.getBoundingClientRect());
+    }
+  }, []);
+  return [rect, ref];
+}
+```
+
 
 ### Что значит `const [thing, setThing] = useState()`? {#what-does-const-thing-setthing--usestate-mean}
 
@@ -857,8 +911,8 @@ function Form() {
   const [text, updateText] = useState('');
   const textRef = useRef();
 
-  useLayoutEffect(() => {
-    textRef.current = text; // Записать в реф
+  useEffect(() => {
+    textRef.current = text; // Записать это в реф
   });
 
   const handleSubmit = useCallback(() => {
@@ -898,7 +952,7 @@ function useEventCallback(fn, dependencies) {
     throw new Error('Невозможно вызвать обработчик события во время рендера.');
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     ref.current = fn;
   }, [fn, ...dependencies]);
 
