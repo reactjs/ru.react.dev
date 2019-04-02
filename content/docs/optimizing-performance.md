@@ -430,6 +430,6 @@ x === z; // true
 
 В этом случае, поскольку после мутирования `x` возвращается новая ссылка, мы можем использовать строгое сравнение (в данном случае по ссылке) `(x === y)` для того, чтобы убедиться, что новое значение хранящееся в `y` отличается от исходного значения, хранящегося в `x`.
 
-Есть две другие библиотеки, которые могут помочь вам использовать иммутабельные данные: [seamless-immutable](https://github.com/rtfeldman/seamless-immutable) и [immutability-helper](https://github.com/kolodny/immutability-helper).
+Есть две другие библиотеки, которые могут помочь вам использовать иммутабельные данные: [Immer](https://github.com/mweststrate/immer), [immutability-helper](https://github.com/kolodny/immutability-helper) и [seamless-immutable](https://github.com/rtfeldman/seamless-immutable).
 
 Иммутабельные структуры данных предоставляют вам дешёвый способ отслеживания изменений в объектах и всё, что вам нужно для реализации `shouldComponentUpdate`. В большинстве случаев это даст вам хороший прирост в производительности.

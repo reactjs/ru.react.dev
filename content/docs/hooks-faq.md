@@ -507,7 +507,6 @@ function useClientRect() {
 }
 ```
 
-
 ### Что значит `const [thing, setThing] = useState()`? {#what-does-const-thing-setthing--usestate-mean}
 
 Если вы не знакомы с этим синтаксисом, ознакомьтесь с [объяснением](/docs/hooks-state.html#tip-what-do-square-brackets-mean) в документации хука состояния.
