@@ -1,6 +1,6 @@
 # ru.reactjs.org
 
-Этот репозиторий содержит исходный код и документы для работы [ru.reactjs.org](https://ru.reactjs.org/).
+Этот репозиторий содержит исходный код и документацию сайта [ru.reactjs.org](https://ru.reactjs.org/).
 
 ## Начало
 
@@ -60,11 +60,10 @@
 
 Если вы заинтересованы в переводе `ru.reactjs.org`, ознакомьтесь с текущим прогрессом перевода на [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/).
 
-Если на вашем языке нет перевода и вы хотите его создать, следуйте инструкциям на [странице переводов reactjs.org](https://github.com/reactjs/reactjs.org-translation#reactjsorg-translation).
-
 ## Решение проблем
 
-- `yarn reset` для очистки локального кэша
+- `yarn reset` для очистки локального кеша
 
-## License
-Контент, предоставленый на [ru.reactjs.org](https://ru.reactjs.org/), предоставлен по лицензии CC-BY-4.0, как указано в [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md) file.
+## Лицензия
+
+Контент на [ru.reactjs.org](https://ru.reactjs.org/) предоставлен по лицензии CC-BY-4.0, как указано в [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md) file.
