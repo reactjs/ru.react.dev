@@ -6,7 +6,7 @@ permalink: docs/react-without-jsx.html
 
 JSX не является обязательным для работы с React. React можно использовать без JSX. Это особенно удобно, когда вы не хотите настраивать транспиляцию в процессе сборки.
 
-Каждый JSX элемент -- это просто синтаксический сахар для вызова `React.createElement(component, props, ...children)`. Так что всё, что вы можете сделать при помощи JSX, может быть сделано на чистом JavaScript.
+Каждый JSX-элемент -- это просто синтаксический сахар для вызова `React.createElement(component, props, ...children)`. Так что всё, что вы можете сделать при помощи JSX, может быть сделано на чистом JavaScript.
 
 Например, вот код с JSX:
 
@@ -19,7 +19,7 @@ class Hello extends React.Component {
 }
 
 ReactDOM.render(
-  <Hello toWhat="World" />,
+  <Hello toWhat="мир" />,
   document.getElementById('root')
 );
 ```
@@ -34,7 +34,7 @@ class Hello extends React.Component {
 }
 
 ReactDOM.render(
-  React.createElement(Hello, {toWhat: 'World'}, null),
+  React.createElement(Hello, {toWhat: 'мир'}, null),
   document.getElementById('root')
 );
 ```
