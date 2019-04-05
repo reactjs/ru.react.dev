@@ -47,28 +47,28 @@ const Languages = ({location}: Props) => (
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
           <Header>Languages</Header>
-          <TitleAndMetaTags title="React - Languages" />
+          <TitleAndMetaTags title="React - Переводы" />
 
           <div css={sharedStyles.markdown}>
             <p>
-              The React documentation is available in the following languages:
+              Документация React переведена на следующие языки:
             </p>
 
             <LanguagesGrid languages={complete} />
 
-            <h2>In Progress</h2>
+            <h2>В процессе перевода</h2>
             <LanguagesGrid languages={partial} />
 
-            <h2>Needs Contributors</h2>
+            <h2>Нужны участники</h2>
             <LanguagesGrid languages={incomplete} />
 
             <p>
-              Don't see your language above?{' '}
+              Нет вашего языка?{' '}
               <a
                 href="https://github.com/reactjs/reactjs.org-translation#reactjsorg-translation"
                 target="_blank"
                 rel="noopener">
-                Let us know
+                Сообщите нам
               </a>
               .
             </p>
