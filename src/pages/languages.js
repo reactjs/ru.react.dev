@@ -50,9 +50,7 @@ const Languages = ({location}: Props) => (
           <TitleAndMetaTags title="React - Переводы" />
 
           <div css={sharedStyles.markdown}>
-            <p>
-              Документация React переведена на следующие языки:
-            </p>
+            <p>Документация React переведена на следующие языки:</p>
 
             <LanguagesGrid languages={complete} />
 
