@@ -505,7 +505,7 @@ VoiceOver -- это экранный считыватель, встроенны�
 
 #### ChromeVox в Google Chrome {#chromevox-in-google-chrome}
 
-[ChromeVox](https://www.chromevox.com/) -- это встроенный экранный считыватель для сервиса Chromebooks. Он доступен для Google Chrome [в виде расширения](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=ru).
+[ChromeVox](https://www.chromevox.com/) -- это встроенный экранный считыватель для ноутбуков Chromebook. Он доступен для Google Chrome [в виде расширения](https://chrome.google.com/webstore/detail/chromevox/kgejglhpjiefppelpmljglcjbhoiplfn?hl=ru).
 
 Ссылки на руководства по ChromeVox:
 
