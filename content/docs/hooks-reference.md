@@ -51,7 +51,25 @@ setState(newState);
 
 #### Функциональные обновления {#functional-updates}
 
-Если новое состояние вычисляется с использованием предыдущего состояния, вы можете передать функцию `setState`. Функция получит предыдущее значение и вернёт обновленное значение. Вот пример компонента счётчик, который использует обе формы `setState`:
+Если новое состояние вычисляется с использованием предыдущего состояния, вы можете передать функцию `setState`. Функция получит предыдущее значение и вернёт обновленное значение. 
+
+Вот "класический" пример:
+
+```js
+function Counter({initialCount}) {
+  const [count, setCount] = useState(initialCount);
+  return (
+    <>
+      Счёт: {count}
+      <button onClick={() => setCount(initialCount)}>Сбросить</button>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <button onClick={() => setCount(count - 1)}>-</button>
+    </>
+  );
+}
+```
+
+Вот пример компонента счётчик, который использует обе формы `setState`:
 
 ```js
 function Counter({initialCount}) {
