@@ -76,7 +76,7 @@
     - id: typechecking-with-proptypes
       title: Проверка типов с помощью PropTypes
     - id: uncontrolled-components
-      title: Неконтролируемые компоненты
+      title: Неуправляемые компоненты
     - id: web-components
       title: Веб-компоненты
 - title: Справочник API
