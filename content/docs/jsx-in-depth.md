@@ -27,7 +27,7 @@ JSX — синтаксический сахар для функции `React.cre
 React.createElement(
   MyButton,
   {color: 'blue', shadowSize: 2},
-  'Click Me'
+  'Нажми на меня'
 )
 ```
 
