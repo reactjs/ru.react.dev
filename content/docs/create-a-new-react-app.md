@@ -26,7 +26,6 @@ next: cdn-links.html
 
 Также это **самый простой способ добавить React в существующий веб-сайт**. Вы всегда можете расширить набор инструментов, если посчитаете это нужным.
 
-
 ## Рекомендуемый набор инструментов {#recommended-toolchains}
 
 Команда React в первую очередь рекомендует следующие решения:
@@ -80,12 +79,7 @@ Create React App не обрабатывает бэкенд логику или 
 
 - **[Parcel](https://parceljs.org/)** – быстрый упаковщик веб-приложений с нулевой конфигурацией, [который работает с React](https://parceljs.org/recipes.html#react).
 
-
-<<<<<<< HEAD
 - **[Razzle](https://github.com/jaredpalmer/razzle)** – это фреймворк для серверного рендеринга, более гибкий чем Next.js, но не требующий обязательной настройки.
-=======
-The following toolchains offer more flexibility and choice. We recommend them to more experienced users:
->>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
 
 
 ## Создание набора инструментов с нуля {#creating-a-toolchain-from-scratch}
