@@ -198,11 +198,7 @@ React.cloneElement(
 React.createFactory(type)
 ```
 
-<<<<<<< HEAD
-Возвращает функцию, которая создаёт элементы React заданного типа. Как и [`React.createElement()`](#createElement), аргументом `type` может быть строка содержащая имя тега (например, `'div'` или `'span'`), React-компонент (класс или функция) или [React-фрагмент](#reactfragment).
-=======
-Return a function that produces React elements of a given type. Like [`React.createElement()`](#createelement), the type argument can be either a tag name string (such as `'div'` or `'span'`), a [React component](/docs/components-and-props.html) type (a class or a function), or a [React fragment](#reactfragment) type.
->>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
+Возвращает функцию, которая создаёт элементы React заданного типа. Как и [`React.createElement()`](#createelement), аргументом `type` может быть строка содержащая имя тега (например, `'div'` или `'span'`), React-компонент (класс или функция) или [React-фрагмент](#reactfragment).
 
 Этот вспомогательный метод считается устаревшим, и мы рекомендуем использовать либо JSX, либо напрямую `React.createElement()`.
 
