@@ -115,7 +115,11 @@ React сначала может показаться сложным, но при
 
 Также вы можете подписаться на наш аккаунт [@reactjs](https://twitter.com/reactjs) в Twitter. Однако вы не пропустите ничего важного, если будете следить только за блогом.
 
+<<<<<<< HEAD
 В блоге мы пишем не о всех релизах React, но всегда есть возможность посмотреть полный список изменений [в файле `CHANGELOG.md` в репозитории React](https://github.com/facebook/react/blob/master/CHANGELOG.md), а также на странице [Релизы](https://github.com/facebook/react).
+=======
+Not every React release deserves its own blog post, but you can find a detailed changelog for every release [in the `CHANGELOG.md` file in the React repository](https://github.com/facebook/react/blob/master/CHANGELOG.md), as well as on the [Releases](https://github.com/facebook/react/releases) page.
+>>>>>>> 6bc6e7b1411d4befc3ecfbe45b898ca474116020
 
 ## Документация на старые версии React {#versioned-documentation}
 
