@@ -1,6 +1,6 @@
 # ru.reactjs.org
 
-Этот репозиторий содержит исходный код и документацию сайта [ru.reactjs.org](https://ru.reactjs.org/).
+Этот репозиторий содержит исходный код и содержимое сайта [ru.reactjs.org](https://ru.reactjs.org/).
 
 ## Начало
 
@@ -19,7 +19,7 @@
 
 ### Запуск проекта локально
 
-1. `yarn dev` для старта сервера в режиме разработки, с поддержкой перезагрузки на лету (на основе [Gatsby](https://www.gatsbyjs.org))
+1. `yarn dev` для старта сервера в режиме разработки с поддержкой перезагрузки на лету (на основе [Gatsby](https://www.gatsbyjs.org))
 1. `open http://localhost:8000` откроет сайт в вашем браузере по умолчанию
 
 ## Помощь проекту
@@ -66,4 +66,4 @@
 
 ## Лицензия
 
-Контент на [ru.reactjs.org](https://ru.reactjs.org/) предоставлен по лицензии CC-BY-4.0, как указано в [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md) file.
+Контент на [ru.reactjs.org](https://ru.reactjs.org/) распространяется по лицензии CC-BY-4.0, как указано в файле [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md).
