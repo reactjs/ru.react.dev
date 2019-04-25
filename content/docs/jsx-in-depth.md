@@ -205,9 +205,9 @@ function NumberDescriber(props) {
 Вы можете передать строковый литерал как проп. Эти два выражения эквивалентны:
 
 ```js
-<MyComponent message="hello world" />
+<MyComponent message="привет, мир" />
 
-<MyComponent message={'hello world'} />
+<MyComponent message={'привет, мир'} />
 ```
 
 Когда вы передаёте строковый литерал, все его возможные символы будут преобразованы в соответствующие HTML-сущности. Поэтому эти два JSX-выражения будут эквивалентны:
