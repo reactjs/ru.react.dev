@@ -99,7 +99,11 @@ React сначала может показаться сложным, но при
 
 ### Углублённое изучение React {#advanced-concepts}
 
+<<<<<<< HEAD
 После того, как вы изучите [основные принципы React](#main-concepts) и немного поиграетесь с ним, можно углубиться в более продвинутые темы документации. В этих главах описаны полезные, но не так часто используемые возможности React. Например, [контекст](/docs/context.html) и [рефы](/docs/refs-and-the-dom.html).
+=======
+Once you're comfortable with the [main concepts](/docs/hello-world.html) and played with React a little bit, you might be interested in more advanced topics. This section will introduce you to the powerful, but less commonly used React features like [context](/docs/context.html) and [refs](/docs/refs-and-the-dom.html).
+>>>>>>> b8b3db7acbba117addeea8a7fb86957eb046d7ce
 
 ### Справочник API {#api-reference}
 

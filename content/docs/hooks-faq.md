@@ -208,7 +208,11 @@ it('can render and update a counter', () => {
 
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: [Хук `useEffect`](/docs/hooks-reference.html#useeffect) заменяет все их комбинации (включая [более](#can-i-skip-an-effect-on-updates) [редкие](#can-i-run-an-effect-only-on-updates) случаи).
 
+<<<<<<< HEAD
 * `componentDidCatch` и `getDerivedStateFromError`: В данный момент не существует хуков-аналогов для этих методов, но они будут скоро добавлены.
+=======
+### How can I do data fetching with Hooks? {#how-can-i-do-data-fetching-with-hooks}
+>>>>>>> b8b3db7acbba117addeea8a7fb86957eb046d7ce
 
 ### Как осуществлять запросы за данными с помощью хуков? {#how-can-i-do-data-fetching-with-hooks}
 Посмотрите [небольшое демо](https://codesandbox.io/s/jvvkoo8pq3), а затем ознакомьтесь [со статьёй](https://www.robinwieruch.de/react-hooks-fetch-data/), которая рассказывает как делать запросы данных с помощью хуков.
@@ -656,7 +660,11 @@ function ProductDetails({ fetchProduct })
 
 Заметьте, что в примере выше мы всё ещё **должны** указать функцию в списке зависимостей. Тогда гарантируется, что изменение пропа `productId` у `ProductPage` приведёт к повторному запрашиванию данных в компоненте `ProductDetails`.
 
+<<<<<<< HEAD
 ### Что делать, если зависимости эффекта изменяются слишком часто? {#what-can-i-do-if-my-effect-dependencies-change-too-often}
+=======
+### What can I do if my effect dependencies change too often? {#what-can-i-do-if-my-effect-dependencies-change-too-often}
+>>>>>>> b8b3db7acbba117addeea8a7fb86957eb046d7ce
 
 Бывают случаи, когда эффект может зависеть от состояние, которое очень часто изменяется. У вас может возникнуть желание не включать это состояние в список зависимостей хука, но это как правило приводит к багам:
 
