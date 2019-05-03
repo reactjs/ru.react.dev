@@ -8,11 +8,7 @@ prev: hooks-overview.html
 
 *Хуки* — нововведение в React 16.8, которое позволяет использовать состояние и другие возможности React без написания классов.
 
-<<<<<<< HEAD
-На [предыдущей странице](/docs/hooks-intro.html) мы познакомились с хуками на этом примере:
-=======
-The [introduction page](/docs/hooks-intro.html) used this example to get familiar with Hooks:
->>>>>>> b1691780aa3178d39694264863210d34ad5a5f81
+На [странице введения в хуки](/docs/hooks-intro.html) мы познакомились с ними на этом примере:
 
 ```js{4-5}
 import React, { useState } from 'react';
