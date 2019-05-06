@@ -812,13 +812,10 @@ function Image(props) {
 
   // ✅ IntersectionObserver лениво создаётся только один раз
   function getObserver() {
-    let observer = ref.current;
-    if (observer !== null) {
-      return observer;
+    if (ref.current === null) {
+      ref.current = new IntersectionObserver(onIntersect);
     }
-    let newObserver = new IntersectionObserver(onIntersect);
-    ref.current = newObserver;
-    return newObserver;
+    return ref.current;
   }
 
   // Когда он вам понадобится, вызовите getObserver()
