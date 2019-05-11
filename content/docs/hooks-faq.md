@@ -743,11 +743,7 @@ const Button = React.memo((props) => {
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-<<<<<<< HEAD
-Этот код вызовет `computeExpensiveValue(a, b)`. Но если аргументы `[a, b]` не изменились с прошлого рендера, `useMemo` пропустит повторный вызов и повторно использует значения, которые он вернул в прошлый раз.
-=======
-This code calls `computeExpensiveValue(a, b)`. But if the dependencies `[a, b]` haven't changed since the last value, `useMemo` skips calling it a second time and simply reuses the last value it returned.
->>>>>>> b91049c05702b53445367e54a1652053b6081c1d
+Этот код вызовет `computeExpensiveValue(a, b)`. Но если зависимости `[a, b]` не изменились с прошлого рендера, `useMemo` пропустит повторный вызов и повторно использует значения, которые он вернул в прошлый раз.
 
 Помните, что функция, передаваемая в `useMemo`, выполняется во время рендера. Не стоит делать в ней что-то, что вы обычно не делаете во время рендера. Например, побочные эффекты выполняются в хуке `useEffect`, а не в `useMemo`.
 
@@ -774,11 +770,7 @@ function Parent({ a, b }) {
 
 ### Как лениво создавать большие объекты? {#how-to-create-expensive-objects-lazily}
 
-<<<<<<< HEAD
-Хук `useMemo` позволяет вам [закешировать ресурсозатратные вычисления](#how-to-memoize-calculations), если входные данные не изменились. Однако, этот способ **не гарантирует**, что повторных вычислений не случится. Иногда вам нужно удостовериться, что объект будет создан только один раз.
-=======
-`useMemo` lets you [memoize an expensive calculation](#how-to-memoize-calculations) if the dependencies are the same. However, it only serves as a hint, and doesn't *guarantee* the computation won't re-run. But sometimes you need to be sure an object is only created once.
->>>>>>> b91049c05702b53445367e54a1652053b6081c1d
+Хук `useMemo` позволяет вам [закешировать ресурсозатратные вычисления](#how-to-memoize-calculations), если зависимости не изменились. Однако, этот способ **не гарантирует**, что повторных вычислений не случится. Иногда вам нужно удостовериться, что объект будет создан только один раз.
 
 **Первый частый вариант использования – создание изначального состояния затратно:**
 
