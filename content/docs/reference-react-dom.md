@@ -30,7 +30,7 @@ React поддерживает все популярные браузеры, в�
 
 ## Справочник {#browser-support}
 
-### `render()`
+### `render()` {#render}
 
 ```javascript
 ReactDOM.render(element, container[, callback])

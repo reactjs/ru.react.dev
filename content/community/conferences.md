@@ -57,11 +57,6 @@ August 22-23, 2019. Salt Lake City, USA.
 
 [Website](https://www.reactrally.com/) - [Twitter](https://twitter.com/ReactRally) - [Instagram](https://www.instagram.com/reactrally/)
 
-### React Rally 2019
-August 22-23, 2019. Salt Lake City, USA.
-
-[Website](https://www.reactrally.com/) - [Twitter](https://twitter.com/ReactRally) - [Instagram](https://www.instagram.com/reactrally/)
-
 ### ComponentsConf 2019 {#componentsconf-2019}
 September 6, 2019 in Melbourne, Australia
 
