@@ -83,11 +83,7 @@ class Foo extends Component {
 
 >**Примечание:**
 >
-<<<<<<< HEAD
->Использование стрелочной функции в render() создаёт новую функцию при каждой отрисовке компонента, что может повлиять на производительность (см. ниже).
-=======
->Using an arrow function in render creates a new function each time the component renders, which may break optimizations based on strict identity comparison.
->>>>>>> d2d2ee420de13803fa3f02dca55e2020d42a411f
+>Использование стрелочной функции в render() создаёт новую функцию при каждой отрисовке компонента, что может нарушать оптимизации, использующие строгое сравнение для определения идентичности.
 
 ### Можно ли использовать стрелочные функции в методе render()? {#is-it-ok-to-use-arrow-functions-in-render-methods}
 
