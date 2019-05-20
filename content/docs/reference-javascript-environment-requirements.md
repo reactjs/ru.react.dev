@@ -11,8 +11,8 @@ React 16 полагается на типы коллекций [Map](https://dev
 Окружение для React 16, использующее core-js для поддержки старых браузеров, может выглядеть следующим образом:
 
 ```js
-import 'core-js/es6/map';
-import 'core-js/es6/set';
+import 'core-js/es/map';
+import 'core-js/es/set';
 
 import React from 'react';
 import ReactDOM from 'react-dom';

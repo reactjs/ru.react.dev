@@ -153,7 +153,11 @@ new webpack.DefinePlugin({
 new webpack.optimize.UglifyJsPlugin()
 ```
 
+<<<<<<< HEAD
 Вы можете узнать об этом больше в [документации webpack](https://webpack.js.org/guides/production-build/).
+=======
+You can learn more about this in [webpack documentation](https://webpack.js.org/guides/production/).
+>>>>>>> 7b217c701075b1af7ddabd6a237ed847df98853c
 
 Помните, что это нужно делать только для продакшен-сборки. Вам не стоит использовать `UglifyJsPlugin` или `DefinePlugin` со значением `'production'` в процессе разработки, потому что тогда скроются вспомогательные предупреждения React и замедлится процесс сборки.
 
