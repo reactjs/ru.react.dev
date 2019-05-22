@@ -697,7 +697,11 @@ function Counter() {
 
 В более сложных случаях (например, когда одно состояние зависит от другого), попробуйте перенести логику обновления состояния из хука эффекта в хук [`useReducer`](/docs/hooks-reference.html#usereducer). [Эта статья](https://adamrackis.dev/state-and-use-reducer/) иллюстрирует пример того, как это сделать. **Идентичность функции `dispatch` из хука `useReducer` всегда стабильна** — даже если функция редюсера объявлена внутри компонента и считывает его пропсы.
 
+<<<<<<< HEAD
 В крайнем случае если вы хотите реализовать что-то наподобие `this` в классах, вы можете [использовать реф](/docs/hooks-faq.html#is-there-something-like-instance-variables), чтобы хранить в нём изменяемую переменную. Тогда можно писать и читать из него. Например:
+=======
+As a last resort, if you want something like `this` in a class, you can [use a ref](/docs/hooks-faq.html#is-there-something-like-instance-variables) to hold a mutable variable. Then you can write and read to it. For example:
+>>>>>>> 1f27bba9484f26ec6dab383b09730ad7ed59f732
 
 ```js{2-6,10-11,16}
 function Example(props) {
