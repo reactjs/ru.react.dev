@@ -201,11 +201,7 @@ function ChatRecipientPicker() {
 
 Попробуйте не добавлять абстракцию слишком рано. Теперь, когда функциональные компоненты обладают большими возможностями, вполне вероятно, средний функциональный компонент станет длиннее в вашей кодовой базе. Это нормально, не думайте, что вы *должны* немедленно разделить его на хуки. Но мы также рекомендуем вам находить ситуации, когда пользовательский хук поможет скрыть сложную логику за простым интерфейсом или распутать большой компонент.
 
-<<<<<<< HEAD
 Например, у вас есть сложный компонент, содержащий множество внутренних состояний, каждое из которых управляется особым образом. `useState` не упрощает централизацию логики обновления, поэтому её можно попробовать переписать как [Redux](https://redux.js.org/)-редюсер:
-=======
-For example, maybe you have a complex component that contains a lot of local state that is managed in an ad-hoc way. `useState` doesn't make centralizing the update logic any easier so you might prefer to write it as a [Redux](https://redux.js.org/) reducer:
->>>>>>> 1f27bba9484f26ec6dab383b09730ad7ed59f732
 
 ```js
 function todosReducer(state, action) {
