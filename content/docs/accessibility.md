@@ -147,7 +147,11 @@ function ListItem({ item }) {
 
 Также на сайте нужно реализовать механизмы, которые помогают пользователям быстро переходить к нужному контенту с помощью клавиатуры.
 
+<<<<<<< HEAD
 Ссылки для быстрого перехода -- это скрытые навигационные ссылки, которые становятся видимыми, когда пользователи взаимодействуют со страницей с помощью клавиатуры. Такие ссылки очень легко сделать, используя внутренние якоря страницы и CSS:
+=======
+Skiplinks or Skip Navigation Links are hidden navigation links that only become visible when keyboard users interact with the page. They are very easy to implement with internal page anchors and some styling:
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 - [WebAIM – ссылки для быстрого перехода](https://webaim.org/techniques/skipnav/)
 
@@ -159,7 +163,11 @@ function ListItem({ item }) {
 
 ### Программное управление фокусом {#programmatically-managing-focus}
 
+<<<<<<< HEAD
 React-приложения во время своей работы постоянно изменяют структуру DOM. Иногда из-за этого фокус клавиатуры может быть потерян или может перейти на неправильный элемент. Чтобы исправить такую ситуацию, нужно запрограммировать перевод фокуса клавиатуры на нужный элемент. Например, после закрытия модального окна перевести фокус клавиатуры на кнопку, которая его открыла.
+=======
+Our React applications continuously modify the HTML DOM during runtime, sometimes leading to keyboard focus being lost or set to an unexpected element. In order to repair this, we need to programmatically nudge the keyboard focus in the right direction. For example, by resetting keyboard focus to a button that opened a modal window after that modal window is closed.
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 В статье на MDN рассматриваются способы [навигации с клавиатуры в JavaScript](https://developer.mozilla.org/ru/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets).
 
@@ -197,7 +205,11 @@ class CustomTextInput extends React.Component {
  }
  ```
 
+<<<<<<< HEAD
 Иногда родительскому компоненту нужно установить фокус на элемент дочернего компонента. Мы можем сделать это с помощью [рефа на родительский компонент](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components), который присваивается специальному свойству дочернего компонента и используется для ссылки из родительского компонента на DOM-элемент дочернего.
+=======
+Sometimes a parent component needs to set focus to an element in a child component. We can do this by [exposing DOM refs to parent components](/docs/refs-and-the-dom.html#exposing-dom-refs-to-parent-components) through a special prop on the child component that forwards the parent's ref to the child's DOM node.
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 ```javascript{4,12,16}
 function CustomTextInput(props) {
@@ -224,9 +236,16 @@ class Parent extends React.Component {
 this.inputElement.current.focus();
 ```
 
+<<<<<<< HEAD
 Если для расширения функциональности компонент оборачивается компонентом высшего порядка, то рекомендуется [перенаправлять рефы](/docs/forwarding-refs.html) обёрнутого компонента с помощью React-функции `forwardRef`. В случае, когда сторонний HOC не поддерживает перенаправление рефов, описанный выше подход всё равно можно использовать в качестве запасного варианта.
 
 Отличный пример управления фокусом показан в проекте [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). Этот достаточно редкий случай реализации модального окна с полностью доступным контентом. В нём, кроме установки фокуса на кнопку отмены и перемещения фокуса внутри модальной формы, сделан возврат на элемент, инициировавший вызов модального окна. Нужно отметить, что первоначальная установка фокуса на кнопку отмены в модальном окне предотвращает случайное нажатие на клавиатуре кнопки подтверждения запрашиваемого действия.
+=======
+When using a HOC to extend components, it is recommended to [forward the ref](/docs/forwarding-refs.html) to the wrapped component using the `forwardRef` function of React. If a third party HOC does not implement ref forwarding, the above pattern can still be used as a fallback.
+
+A great focus management example is the [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). This is a relatively rare example of a fully accessible modal window. Not only does it set initial focus on
+the cancel button (preventing the keyboard user from accidentally activating the success action) and trap keyboard focus inside the modal, it also resets focus back to the element that initially triggered the modal.
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 >Примечание:
 >
@@ -236,7 +255,11 @@ this.inputElement.current.focus();
 
 ## Работа с событиями мыши {#mouse-and-pointer-events}
 
+<<<<<<< HEAD
 Позаботьтесь, чтобы вся функциональность, связанная с событиями мыши, была доступна при работе только с клавиатурой. Если приложение сильно зависит от действий мыши, многие пользователи, которые используют только клавиатуру, не смогут работать с ним.
+=======
+Ensure that all functionality exposed through a mouse or pointer event can also be accessed using the keyboard alone. Depending only on the pointer device will lead to many cases where keyboard users cannot use your application.
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 Чтобы продемонстрировать это, рассмотрим подробный пример, когда доступность контента нарушается из-за ориентации только на щелчок мыши. В примере показан паттерн закрытия всплывающего списка при щелчке мышью за пределами этого элемента.
 
@@ -293,7 +316,11 @@ constructor(props) {
 }
 ```
 
+<<<<<<< HEAD
 Такой подход хорош для тех, кто использует мыши, тачпады или другие координатные устройства, однако для пользователей, работающих только с клавиатурой, он может стать причиной нарушения работы программы при попытке перехода к следующему элементу с помощью клавиши `Tab`. Причиной этого является то, что в данной ситуации объект `window` никогда не получит событие `click`. В итоге мы имеем заблокированную функциональность и невозможность продолжения работы с приложением.
+=======
+This may work fine for users with pointer devices, such as a mouse, but operating this with the keyboard alone leads to broken functionality when tabbing to the next element as the `window` object never receives a `click` event. This can lead to obscured functionality which blocks users from using your application.
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 <img src="../images/docs/outerclick-with-keyboard.gif" alt="Реализация паттерна закрытия списка с помощью щелчка за его пределами с возможностью выбора следующего элемента на клавиатуре." />
 
@@ -358,15 +385,27 @@ class BlurExample extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 С этой программой можно работать и с помощью клавиатуры, и с помощью координатного устройства. Также в неё добавлены атрибуты `aria-*` для людей, использующих экранные считывающие устройства. Для упрощения примера, в нём не реализовано перемещение по списку с помощью стрелок на клавиатуре.
+=======
+This code exposes the functionality to both pointer device and keyboard users. Also note the added `aria-*` props to support screen-reader users. For simplicity's sake the keyboard events to enable `arrow key` interaction of the popover options have not been implemented.
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 <img src="../images/docs/blur-popover-close.gif" alt="Теперь выпадающий список корректно работает и с мышью, и с клавиатурой." />
 
+<<<<<<< HEAD
 Это один из множества случаев, когда поведение программы зависит только от положения курсора и событий мыши, а для пользователей, работающих с клавиатурой, её функциональность недоступна. Тестирование пользовательского интерфейса с помощью клавиатуры позволяет быстро найти проблемные места, работу которых можно улучшить, используя обработчики событий клавиатуры.
+=======
+This is one example of many cases where depending on only pointer and mouse events will break functionality for keyboard users. Always testing with the keyboard will immediately highlight the problem areas which can then be fixed by using keyboard aware event handlers.
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 ## Сложные компоненты {#more-complex-widgets}
 
+<<<<<<< HEAD
 Усложнение пользовательского интерфейса не должно ухудшать доступность контента. Несмотря на то, что лучший результат достигается при максимальном использовании синтаксиса HTML, даже очень сложный компонент можно сделать доступным для всех.
+=======
+A more complex user experience should not mean a less accessible one. Whereas accessibility is most easily achieved by coding as close to HTML as possible, even the most complex widget can be coded accessibly.
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 В руководстве по доступности контента в веб-приложениях собраны все необходимые сведения о [ролях ARIA](https://www.w3.org/TR/wai-aria/#roles), а также о [состояниях и свойствах ARIA](https://www.w3.org/TR/wai-aria/#states_and_properties). Описанные в руководствах HTML-атрибуты полностью поддерживаются в JSX. Используя их можно создавать функционально нагруженные и при этом полностью доступные React-компоненты.
 
@@ -417,13 +456,21 @@ class BlurExample extends React.Component {
 
 Самый простой и одновременно наиболее важный вид проверки -- это тестирование клавиатуры. Такая проверка позволяет определить доступность контента на вашем сайте при работе только с клавиатурой. Чтобы протестировать клавиатуру, выполните следующие действия:
 
+<<<<<<< HEAD
 1. Отсоедините мышь.
 1. Используйте `Tab` и `Shift+Tab` для перемещения по странице.
 1. Используйте `Enter` для активации элементов.
 1. Там, где необходимо, используйте клавиши со стрелками, например, для работы с меню или выпадающими списками.
+=======
+1. Disconnecting your mouse.
+1. Using `Tab` and `Shift+Tab` to browse.
+1. Using `Enter` to activate elements.
+1. Where required, using your keyboard arrow keys to interact with some elements, such as menus and dropdowns.
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
 ### Инструменты разработчика {#development-assistance}
 
+<<<<<<< HEAD
 Выполнение некоторых требований по доступности контента можно контролировать непосредственно в JSX. Обычно среда разработки обладает средствами автоматической подстановки, которые могут использоваться при написании JSX для выбора ролей, состояний и свойств ARIA. Кроме этого можно воспользоваться следующими инструментами:
 
 #### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
@@ -431,6 +478,15 @@ class BlurExample extends React.Component {
 Плагин [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) для ESLint выполняет проверку абстрактного синтаксического дерева JSX на предмет поиска проблем, связанных с доступностью контента. Многие среды разработки могут интегрироваться с этим инструментом и выводить сообщения линтера в окно анализа кода или прямо в окно исходного кода.
 
 В [Create React App](https://github.com/facebookincubator/create-react-app) этот плагин используется с заранее установленным набором правил. Если необходимо задействовать дополнительные правила, вам нужно создать в корне проекта файл `.eslintrc` со следующим кодом:
+=======
+We can check some accessibility features directly in our JSX code. Often intellisense checks are already provided in JSX aware IDE's for the ARIA roles, states and properties. We also have access to the following tool:
+
+#### eslint-plugin-jsx-a11y {#eslint-plugin-jsx-a11y}
+
+The [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y) plugin for ESLint provides AST linting feedback regarding accessibility issues in your JSX. Many IDE's allow you to integrate these findings directly into code analysis and source code windows.
+
+[Create React App](https://github.com/facebookincubator/create-react-app) has this plugin with a subset of rules activated. If you want to enable even more accessibility rules, you can create an `.eslintrc` file in the root of your project with this content:
+>>>>>>> 23b242edc4c7eeee5798953ba205e36cc71016b8
 
   ```json
   {
