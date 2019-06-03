@@ -297,11 +297,7 @@ class OuterClickExample extends React.Component {
 
 <img src="../images/docs/outerclick-with-keyboard.gif" alt="Реализация паттерна закрытия списка с помощью щелчка за его пределами с возможностью выбора следующего элемента на клавиатуре." />
 
-<<<<<<< HEAD
 Подобное поведение можно получить используя обработчики сопутствующих событий, например, `onBlur` или `onFocus`:
-=======
-The same functionality can be achieved by using appropriate event handlers instead, such as `onBlur` and `onFocus`:
->>>>>>> c93286c071bca17ecba91cd130908fe2e33a4766
 
 ```javascript{19-29,31-34,37-38,40-41}
 class BlurExample extends React.Component {
