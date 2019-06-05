@@ -47,18 +47,9 @@
 1. По возможности проверьте визуальные изменения во всех последних версиях распространённых браузеров: и настольных, и мобильных.
 1. Запустите `yarn check-all` из корня проекта. (Это запустит Prettier, ESLint и Flow.)
 
-
-<<<<<<< HEAD
 ### Отправка изменений
-=======
-1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fix header logo on Android`) to stage and commit your changes
-1. `git push my-fork-name the-name-of-my-branch`
-1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
-1. Follow GitHub's instructions.
-1. If possible, include screenshots of visual changes. A Netlify build will also be automatically created once you make your PR so other people can see your change.
->>>>>>> 957f0b3a4067a9ba46d1ffda898658925ffa0549
 
-1. `git add -A && git commit -m "Мой текст"` (замените `Мой текст` на подходящее сообщение, например `Fixed header logo on Android`) для c сохранения ваших изменений
+1. `git add -A && git commit -m "Мой текст"` (замените `Мой текст` на подходящее сообщение, например `Fix header logo on Android`) для c сохранения ваших изменений
 1. `git push my-fork-name the-name-of-my-branch`
 1. Перейдите на [страницу репозитория ru.reactjs.org](https://github.com/reactjs/ru.reactjs.org) — вы должны увидеть вашу веткy.
 1. Следуйте инструкциям на GitHub.
