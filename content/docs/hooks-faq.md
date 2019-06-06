@@ -429,7 +429,7 @@ function ScrollView({row}) {
     setPrevRow(row);
   }
 
-  return `Scrolling down: ${isScrollingDown}`;
+  return `Прокрутка вниз: ${isScrollingDown}`;
 }
 ```
 
@@ -879,11 +879,11 @@ function DeepChild(props) {
   const dispatch = useContext(TodosDispatch);
 
   function handleClick() {
-    dispatch({ type: 'add', text: 'hello' });
+    dispatch({ type: 'add', text: 'Привет' });
   }
 
   return (
-    <button onClick={handleClick}>Add todo</button>
+    <button onClick={handleClick}>Добавить задание</button>
   );
 }
 ```

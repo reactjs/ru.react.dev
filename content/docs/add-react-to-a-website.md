@@ -84,7 +84,7 @@ const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
 ```
 
-Этот код ищет контейнер `<div>`, который мы добавили на первом шаге, а затем отображает наш React-компонент с кнопкой «Like» внутри него.
+Этот код ищет контейнер `<div>`, который мы добавили на первом шаге, а затем отображает наш React-компонент с кнопкой "Нравится" внутри него.
 
 ### Готово! {#thats-it}
 
@@ -98,7 +98,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 ### Совет: Повторное использование компонентов {#tip-reuse-a-component}
 
-Зачастую, вам может понадобиться отобразить React-компонент в нескольких местах одной и той же HTML-страницы. Вот как можно показать сразу три кнопки «Like» с разными данными:
+Зачастую, вам может понадобиться отобразить React-компонент в нескольких местах одной и той же HTML-страницы. Вот как можно показать сразу три кнопки «Нравится» с разными данными:
 
 [Посмотреть исходный код примера](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
@@ -128,21 +128,21 @@ ReactDOM.render(e(LikeButton), domContainer);
 ```js
 const e = React.createElement;
 
-// Отобразить <button> с текстом «Like» 
+// Отобразить <button> с текстом «Нравится»
 return e(
   'button',
   { onClick: () => this.setState({ liked: true }) },
-  'Like'
+  'Нравится'
 );
 ```
 
 Однако, React позволяет использовать специальный синтаксис, называющийся [JSX](/docs/introducing-jsx.html):
 
 ```js
-// Отобразить <button> с текстом «Like» 
+// Отобразить <button> с текстом «Нравится»
 return (
   <button onClick={() => this.setState({ liked: true })}>
-    Like
+    Нравится
   </button>
 );
 ```

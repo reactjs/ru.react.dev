@@ -119,7 +119,6 @@ onCompositionEnd onCompositionStart onCompositionUpdate
 
 ```javascript
 string data
-
 ```
 
 * * *

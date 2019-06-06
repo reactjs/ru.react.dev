@@ -27,7 +27,7 @@ function Example() {
 
   return (
     <div>
-      <p>You clicked {count} times</p>
+      <p>Вы нажали {count} раз</p>
       <button onClick={() => setCount(count + 1)}>
         Нажми на меня
       </button>

@@ -534,18 +534,20 @@ class Board extends React.Component {
 В целом есть два подхода к изменению данных. Первый подход – *мутировать*(изменять) данные, напрямую устанавливая новые значения. Второй подход – заменять данные новой копией, которая содержит изменения.
 
 #### Мутирующее изменение данных {#data-change-with-mutation}
+
 ```javascript
-var player = {score: 1, name: 'Jeff'};
+var player = {score: 1, name: 'Джефф'};
 player.score = 2;
-// Now player is {score: 2, name: 'Jeff'}
+// Теперь player имеет значение {score: 2, name: 'Джефф'}
 ```
 
 #### Изменение данных без мутаций {#data-change-without-mutation}
+
 ```javascript
-var player = {score: 1, name: 'Jeff'};
+var player = {score: 1, name: 'Джефф'};
 
 var newPlayer = Object.assign({}, player, {score: 2});
-// Здесь `player` не изменился, а в `newPlayer` находится {score: 2, name: 'Jeff'}
+// Здесь `player` не изменился, а в `newPlayer` находится {score: 2, name: 'Джефф'}
 
 // Или, если вы пользуетесь синтаксисом расширения объектов, вы можете написать:
 // var newPlayer = {...player, score: 2};
@@ -635,7 +637,7 @@ class Board extends React.Component {
     const status = 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
 
     return (
-      // the rest has not changed
+      // остальное не изменилось
 ```
 
 После этих изменений наш Board-компонент должен выглядеть так:
@@ -738,7 +740,7 @@ function calculateWinner(squares) {
     }
 
     return (
-      // the rest has not changed
+      // остальное не изменилось
 ```
 
 Теперь мы можем изменить метод `handleClick` класса Board для выхода из функции и игнорировании клика, если кто-то уже победил или если поле полностью заполнено:

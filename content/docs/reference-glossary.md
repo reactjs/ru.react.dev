@@ -89,6 +89,7 @@ class Welcome extends React.Component {
 // Неправильно!
 props.number = 42;
 ```
+
 Если вам нужно поменять значение в ответ на пользовательский ввод или ответ сервера, используйте `state` (состояние).
 
 ### `props.children` {#propschildren}
