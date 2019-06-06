@@ -349,7 +349,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // Здесь можно рендерить запасной интерфейс
-      return <h1>Something went wrong.</h1>;
+      return <h1>Что-то пошло не так.</h1>;
     }
 
     return this.props.children;
@@ -400,7 +400,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       // Здесь можно рендерить запасной интерфейс
-      return <h1>Something went wrong.</h1>;
+      return <h1>Что-то пошло не так.</h1>;
     }
 
     return this.props.children;
@@ -598,7 +598,7 @@ CustomButton.defaultProps = {
 
 ```js
   render() {
-    return <CustomButton /> ; // props.color will be set to blue
+    return <CustomButton /> ; // props.color будет установлен в 'синий'
   }
 ```
 
@@ -606,7 +606,7 @@ CustomButton.defaultProps = {
 
 ```js
   render() {
-    return <CustomButton color={null} /> ; // props.color will remain null
+    return <CustomButton color={null} /> ; // props.color останется null
   }
 ```
 

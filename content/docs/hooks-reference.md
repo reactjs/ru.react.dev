@@ -438,8 +438,8 @@ function useFriendStatus(friendID) {
   // ...
 
   // Показывать ярлык в DevTools рядом с этим хуком
-  // например, «FriendStatus: Online»
-  useDebugValue(isOnline ? 'Online' : 'Offline');
+  // например, «Статус друга: В сети»
+  useDebugValue(isOnline ? 'В сети' : 'Не в сети');
 
   return isOnline;
 }

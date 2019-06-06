@@ -286,7 +286,6 @@ ReactDOM.render(<input value="Привет" />, mountNode);
 setTimeout(function() {
   ReactDOM.render(<input value={null} />, mountNode);
 }, 1000);
-
 ```
 
 ## Альтернативы управляемым компонентам {#alternatives-to-controlled-components}

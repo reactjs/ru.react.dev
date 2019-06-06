@@ -48,6 +48,7 @@ ReactDOMServer.renderToString(element)
 ```javascript
 ReactDOMServer.renderToStaticMarkup(element)
 ```
+
 Похож на метод [`renderToString`](#rendertostring), но не создаёт дополнительных DOM-атрибутов, таких как `data-reactroot`, используемых внутри React. Этот метод полезен, когда вы хотите использовать React для генерации простой статической страницы, где отсутствие дополнительных атрибутов может сохранить несколько байтов. 
 
 Не пользуйтесь этим методом, если вы планируете использовать React на клиенте для создания интерактивной разметки. Вместо него используйте [`renderToString`](#rendertostring) на сервере и [`ReactDOM.hydrate()`](/docs/react-dom.html#hydrate) на клиенте.

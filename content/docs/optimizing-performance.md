@@ -325,7 +325,7 @@ class WordAdder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      words: ['marklar']
+      words: ['словцо']
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -333,7 +333,7 @@ class WordAdder extends React.Component {
   handleClick() {
     // Данная секция содержит плохой код и приводит к багам
     const words = this.state.words;
-    words.push('marklar');
+    words.push('словцо');
     this.setState({words: words});
   }
 
@@ -357,7 +357,7 @@ class WordAdder extends React.Component {
 ```javascript
 handleClick() {
   this.setState(state => ({
-    words: state.words.concat(['marklar'])
+    words: state.words.concat(['словцо'])
   }));
 }
 ```
@@ -367,7 +367,7 @@ ES6 поддерживает [синтаксис расширения](https://d
 ```js
 handleClick() {
   this.setState(state => ({
-    words: [...state.words, 'marklar'],
+    words: [...state.words, 'словцо'],
   }));
 };
 ```

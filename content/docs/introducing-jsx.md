@@ -148,7 +148,7 @@ Babel компилирует JSX в вызовы `React.createElement()`.
 ```js
 const element = (
   <h1 className="greeting">
-    Hello, world!
+    Привет, мир!
   </h1>
 );
 ```
@@ -157,7 +157,7 @@ const element = (
 const element = React.createElement(
   'h1',
   {className: 'greeting'},
-  'Hello, world!'
+  'Привет, мир!'
 );
 ```
 

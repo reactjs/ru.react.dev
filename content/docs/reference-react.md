@@ -170,7 +170,7 @@ React.createElement(
 
 ### `cloneElement()` {#cloneelement}
 
-```
+```js
 React.cloneElement(
   element,
   [props],

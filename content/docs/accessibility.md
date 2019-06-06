@@ -118,7 +118,7 @@ function ListItem({ item }) {
 Эти стандартные для HTML способы могут использоваться в React напрямую, однако не забывайте, что атрибут `for` в JSX записывается как `htmlFor`:
 
 ```javascript{1}
-<label htmlFor="namedInput">Name:</label>
+<label htmlFor="namedInput">Имя:</label>
 <input id="namedInput" type="text" name="name"/>
 ```
 

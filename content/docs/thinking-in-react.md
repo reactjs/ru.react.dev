@@ -20,7 +20,7 @@ prev: composition-vs-inheritance.html
 
 Наш JSON API возвращает данные, которые выглядят так:
 
-```
+```json
 [
   {category: "Sporting Goods", price: "$49.99", stocked: true, name: "Football"},
   {category: "Sporting Goods", price: "$9.99", stocked: true, name: "Baseball"},

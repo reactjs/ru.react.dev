@@ -31,7 +31,7 @@ class Message extends React.Component {
   render() {
     return (
       <div>
-        {this.props.text} <Button color={this.props.color}>Delete</Button>
+        {this.props.text} <Button color={this.props.color}>Удалить</Button>
       </div>
     );
   }
@@ -71,7 +71,7 @@ class Message extends React.Component {
   render() {
     return (
       <div>
-        {this.props.text} <Button>Delete</Button>
+        {this.props.text} <Button>Удалить</Button>
       </div>
     );
   }
@@ -118,9 +118,9 @@ const BasicExample = () => (
   <Router>
     <div>
       <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/topics">Topics</Link></li>
+        <li><Link to="/">Главная</Link></li>
+        <li><Link to="/about">О нас</Link></li>
+        <li><Link to="/topics">Темы</Link></li>
       </ul>
 
       <hr />

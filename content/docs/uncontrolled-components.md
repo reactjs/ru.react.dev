@@ -54,7 +54,7 @@ render() {
       <label>
         Имя:
         <input
-          defaultValue="Bob"
+          defaultValue="Боб"
           type="text"
           ref={this.input} />
       </label>
