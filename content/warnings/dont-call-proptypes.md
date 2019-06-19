@@ -24,7 +24,7 @@ Button.propTypes = {
 
 В этом плане ничего не изменилось.
 
-### Не вызвайте PropTypes напрямую {#dont-call-proptypes-directly}
+### Не вызывайте PropTypes напрямую {#dont-call-proptypes-directly}
 
 Использование PropTypes вне React-компонентов больше не поддерживается:
 
