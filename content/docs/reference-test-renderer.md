@@ -38,11 +38,7 @@ console.log(testRenderer.toJSON());
 //   children: [ 'Facebook' ] }
 ```
 
-<<<<<<< HEAD
-Jest может автоматически сохранять в файл снимок копии дерева в виде JSON, а затем проверять в тестах, что в этом снимке ничего не изменилось с момента прошлого исполнения теста: [узнать подробнее](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html).
-=======
-You can use Jest's snapshot testing feature to automatically save a copy of the JSON tree to a file and check in your tests that it hasn't changed: [Learn more about it](https://jestjs.io/docs/en/snapshot-testing).
->>>>>>> 899411236d5b1520ab8b8e7fad7d48c681abc69b
+Jest может автоматически сохранять в файл снимок копии дерева в виде JSON, а затем проверять в тестах, что в этом снимке ничего не изменилось с момента прошлого исполнения теста: [узнать подробнее](https://jestjs.io/docs/ru/snapshot-testing).
 
 Также есть возможность искать в дереве конкретные узлы и проверять утверждения относительно них:
 
