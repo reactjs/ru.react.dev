@@ -613,7 +613,7 @@ function ProductPage({ productId }) {
 
 Это также позволяет обрабатывать ответы, пришедшие не в порядке запросов, с помощью локальной переменной внутри эффекта:
 
-```js{2,6,8}
+```js{2,6,10}
   useEffect(() => {
     let ignore = false;
     async function fetchProduct() {
@@ -621,6 +621,8 @@ function ProductPage({ productId }) {
       const json = await response.json();
       if (!ignore) setProduct(json);
     }
+    
+    fetchProduct();
     return () => { ignore = true };
   }, [productId]);
 ```
