@@ -52,7 +52,7 @@ npm install eslint-plugin-react-hooks --save-dev
 
 ## Объяснение {#explanation}
 
-Как мы [ранее узнали](/docs/hooks-state.html#tip-using-multiple-state-variables) хуки состояния или эффектов в одном и том же компоненте можно использовать многократно:
+Как мы [ранее узнали,](/docs/hooks-state.html#tip-using-multiple-state-variables) хуки состояния или эффектов в одном и том же компоненте можно использовать многократно:
 
 ```js
 function Form() {
