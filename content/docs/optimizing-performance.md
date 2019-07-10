@@ -102,7 +102,7 @@ browserify ./index.js \
 
 Для наиболее эффективной продакшен-сборки с Rollup, установите несколько плагинов:
 
-```
+```bash
 # В случае использования npm
 npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 
