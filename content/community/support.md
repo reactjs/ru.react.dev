@@ -12,6 +12,11 @@ React имеет сообщество из миллионов разработч
 
 На этой странице мы перечислили несколько сообществ, связанных с React, к которым вы можете присоединиться. На других страницах этого раздела можно найти дополнительные материалы для обучения.
 
+## Telegram {#telegram}
+
+* [react_js](https://telegram.me/react_js) - самое крупное русскоговорящее сообщество по React
+* [react_ru](http://t.me/react_ru) - независимое сообщество React-разработчиков на русском языке
+
 ## Stack Overflow {#stack-overflow}
 
 Stack Overflow – популярный форум для вопросов по коду, там помогут решить конкретную ошибку. Прочитайте [существующие вопросы](https://stackoverflow.com/questions/tagged/reactjs) с тегом **reactjs** или [спросите сами](https://stackoverflow.com/questions/ask?tags=reactjs)!
