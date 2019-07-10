@@ -92,7 +92,7 @@ yarn add --dev envify terser uglifyify
 ```
 browserify ./index.js \
   -g [ envify --NODE_ENV production ] \
-  -g terser \
+  -g uglifyify \
   | terser --compress --mangle > ./bundle.js
 ```
 
