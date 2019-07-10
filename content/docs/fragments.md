@@ -18,11 +18,7 @@ render() {
 }
 ```
 
-<<<<<<< HEAD
 Также существует [сокращённая запись](#short-syntax).
-=======
-There is also a new [short syntax](#short-syntax) for declaring them.
->>>>>>> e200fd7b93377accb8d387676266f015787e0d33
 
 ## Мотивация {#motivation}
 
@@ -117,15 +113,9 @@ class Columns extends React.Component {
 
 Можно использовать `<></>` так же, как используется любой другой элемент. Однако такая запись не поддерживает ключи или атрибуты.
 
-<<<<<<< HEAD
 ### Фрагменты с ключами {#keyed-fragments}
 
 Фрагменты, объявленные с помощью `<React.Fragment>`, могут иметь ключи. Например, их можно использовать при создании списка определений, преобразовав коллекцию в массив фрагментов.
-=======
-### Keyed Fragments {#keyed-fragments}
-
-Fragments declared with the explicit `<React.Fragment>` syntax may have keys. A use case for this is mapping a collection to an array of fragments -- for example, to create a description list:
->>>>>>> e200fd7b93377accb8d387676266f015787e0d33
 
 ```jsx
 function Glossary(props) {
