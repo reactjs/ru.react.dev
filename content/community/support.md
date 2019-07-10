@@ -14,7 +14,8 @@ React имеет сообщество из миллионов разработч
 
 ## Telegram {#telegram}
 
-[react_ru](http://t.me/react_ru) - Независимое сообщество реакт разработчиков на русском языке.
+* [react_js](https://telegram.me/react_js) - самое крупное русскоговорящее сообщество по React
+* [react_ru](http://t.me/react_ru) - независимое сообщество React-разработчиков на русском языке
 
 ## Stack Overflow {#stack-overflow}
 
