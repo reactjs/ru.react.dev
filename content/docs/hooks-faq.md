@@ -70,7 +70,11 @@ prev: hooks-reference.html
 
 Обратите внимание, что **хуки будут доступны, только если все React-пакеты версии 16.8.0 или выше**. Хуки не будут работать, если вы, например, забыли обновить React DOM.
 
+<<<<<<< HEAD
 Поддержка хуков в React Native добавится в следующем стабильном релизе.
+=======
+React Native 0.59 and above support Hooks.
+>>>>>>> 4af9f2dcd1014c18ea6ce98794ba0d63874ac9d2
 
 ### Надо ли переписать все мои классовые компоненты? {#do-i-need-to-rewrite-all-my-class-components}
 
@@ -678,7 +682,13 @@ function Counter() {
 }
 ```
 
+<<<<<<< HEAD
 Если переписать список зависимостей как `[count]`, то баг будет устранён, но это приведёт к сбрасыванию интервала при каждом изменении. Такое поведение может быть нежелательно. Чтобы исправить это, мы можем применить [форму функционального обновления хука `setState`](/docs/hooks-reference.html#functional-updates), которая позволяет указать, *как* должно меняться состояние, не ссылаясь явно на *текущее* состояние:
+=======
+The empty set of dependencies, `[]`, means that the effect will only run once when the component mounts, and not on every re-render. The problem is that inside the `setInterval` callback, the value of `count` does not change, because we've created a closure with the value of `count` set to `0` as it was when the effect callback ran. Every second, this callback then calls `setCount(0 + 1)`, so the count never goes above 1.
+
+Specifying `[count]` as a list of dependencies would fix the bug, but would cause the interval to be reset on every change. Effectively, each `setInterval` would get one chance to execute before being cleared (similar to a `setTimout`.) That may not be desirable. To fix this, we can use the [functional update form of `setState`](/docs/hooks-reference.html#functional-updates). It lets us specify *how* the state needs to change without referencing the *current* state:
+>>>>>>> 4af9f2dcd1014c18ea6ce98794ba0d63874ac9d2
 
 ```js{6,9}
 function Counter() {
@@ -697,7 +707,13 @@ function Counter() {
 
 (Идентичность функции `setCount` гарантирована, поэтому её можно безопасно не включать в список зависимостей.)
 
+<<<<<<< HEAD
 В более сложных случаях (например, когда одно состояние зависит от другого), попробуйте перенести логику обновления состояния из хука эффекта в хук [`useReducer`](/docs/hooks-reference.html#usereducer). [Эта статья](https://adamrackis.dev/state-and-use-reducer/) иллюстрирует пример того, как это сделать. **Идентичность функции `dispatch` из хука `useReducer` всегда стабильна** — даже если функция редюсера объявлена внутри компонента и считывает его пропсы.
+=======
+Now, the `setInterval` callback executes once a second, but each time the inner call to `setCount` can use an up-to-date value for `count` (called `c` in the callback here.)
+
+In more complex cases (such as if one state depends on another state), try moving the state update logic outside the effect with the [`useReducer` Hook](/docs/hooks-reference.html#usereducer). [This article](https://adamrackis.dev/state-and-use-reducer/) offers an example of how you can do this. **The identity of the `dispatch` function from `useReducer` is always stable** — even if the reducer function is declared inside the component and reads its props.
+>>>>>>> 4af9f2dcd1014c18ea6ce98794ba0d63874ac9d2
 
 В крайнем случае если вы хотите реализовать что-то наподобие `this` в классах, вы можете [использовать реф](/docs/hooks-faq.html#is-there-something-like-instance-variables), чтобы хранить в нём изменяемую переменную. Тогда можно писать и читать из него. Например:
 

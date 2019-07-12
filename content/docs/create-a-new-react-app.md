@@ -39,7 +39,11 @@ next: cdn-links.html
 
 [Create React App](https://github.com/facebookincubator/create-react-app) – удобная среда для **изучения React** и лучший способ начать создание **нового [одностраничного](/docs/glossary.html#single-page-application) приложения** на React.
 
+<<<<<<< HEAD
 Инструмент настраивает среду для использования новейших возможностей JavaScript, оптимизирует приложение для продакшена и обеспечивает комфорт во время разработки. Вам понадобятся Node.js не ниже версии 6 и npm не ниже версии 5.2 на вашем компьютере. Для создания проекта выполните команды:
+=======
+It sets up your development environment so that you can use the latest JavaScript features, provides a nice developer experience, and optimizes your app for production. You’ll need to have Node >= 8.10 and npm >= 5.6 on your machine. To create a project, run:
+>>>>>>> 4af9f2dcd1014c18ea6ce98794ba0d63874ac9d2
 
 ```bash
 npx create-react-app my-app
