@@ -32,7 +32,7 @@ export class SampleComponent extends React.Component {
   }
 
   render() {
-    return <div className={this.props.className}>тест</div>;
+    return <div className={this.props.className}>foo</div>;
   }
 }
 ```
