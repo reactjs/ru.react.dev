@@ -6,7 +6,7 @@ layout: docs
 category: Reference
 ---
 
-> Note:
+> Примечание:
 >
 > `shallowCompare` устарел. Используйте вместо этого [`React.memo`](/docs/react-api.html#reactmemo) или [`React.PureComponent`](/docs/react-api.html#reactpurecomponent).
 
