@@ -1,6 +1,6 @@
 ---
 id: shallow-compare
-title: Shallow Compare
+title: Поверхностное сравнение
 permalink: docs/shallow-compare.html
 layout: docs
 category: Reference
