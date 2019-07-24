@@ -58,8 +58,16 @@ MyComponent.propTypes = {
   // React-элемент
   optionalElement: PropTypes.element,
 
+<<<<<<< HEAD
   // Можно указать, что проп должен быть экземпляром класса
   // Для этого используется оператор `instanceof`.
+=======
+  // A React element type (ie. MyComponent).
+  optionalElementType: PropTypes.elementType,
+  
+  // You can also declare that a prop is an instance of a class. This uses
+  // JS's instanceof operator.
+>>>>>>> d00058b1f922438cd9a6ac858cf4c0883c28eddc
   optionalMessage: PropTypes.instanceOf(Message),
 
   // Вы можете задать ограничение конкретными значениями
@@ -84,6 +92,12 @@ MyComponent.propTypes = {
     color: PropTypes.string,
     fontSize: PropTypes.number
   }),
+  
+  // An object with warnings on extra properties
+  optionalObjectWithStrictShape: PropTypes.exact({
+    name: PropTypes.string,
+    quantity: PropTypes.number
+  }),   
 
   // Можно добавить`isRequired` к любому из приведённому выше типу,
   // чтобы показывать предупреждение,
