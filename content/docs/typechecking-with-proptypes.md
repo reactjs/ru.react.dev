@@ -58,6 +58,9 @@ MyComponent.propTypes = {
   // React-элемент
   optionalElement: PropTypes.element,
 
+  // Тиа React-элемент (MyComponent).
+  optionalElementType: PropTypes.elementType,
+  
   // Можно указать, что проп должен быть экземпляром класса
   // Для этого используется оператор `instanceof`.
   optionalMessage: PropTypes.instanceOf(Message),
@@ -84,6 +87,12 @@ MyComponent.propTypes = {
     color: PropTypes.string,
     fontSize: PropTypes.number
   }),
+  
+  // An object with warnings on extra properties
+  optionalObjectWithStrictShape: PropTypes.exact({
+    name: PropTypes.string,
+    quantity: PropTypes.number
+  }),   
 
   // Можно добавить`isRequired` к любому из приведённому выше типу,
   // чтобы показывать предупреждение,
