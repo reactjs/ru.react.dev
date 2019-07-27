@@ -1,29 +1,29 @@
 ---
 id: shallow-compare
-title: Shallow Compare
+title: Поверхностное сравнение
 permalink: docs/shallow-compare.html
 layout: docs
 category: Reference
 ---
 
-> Note:
+> Примечание:
 >
-> `shallowCompare` is a legacy add-on. Use [`React.memo`](/docs/react-api.html#reactmemo) or [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) instead.
+> `shallowCompare` устарел. Используйте вместо этого [`React.memo`](/docs/react-api.html#reactmemo) или [`React.PureComponent`](/docs/react-api.html#reactpurecomponent).
 
-**Importing**
+**Импортирование**
 
 ```javascript
 import shallowCompare from 'react-addons-shallow-compare'; // ES6
 var shallowCompare = require('react-addons-shallow-compare'); // ES5 with npm
 ```
 
-## Overview {#overview}
+## Обзор {#overview}
 
-Before [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) was introduced, `shallowCompare` was commonly used to achieve the same functionality as [`PureRenderMixin`](pure-render-mixin.html) while using ES6 classes with React.
+Перед появленияем [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) `shallowCompare` использовался для того же, что и [`PureRenderMixin`](pure-render-mixin.html) при использовании ES6-классов с React.
 
-If your React component's render function is "pure" (in other words, it renders the same result given the same props and state), you can use this helper function for a performance boost in some cases.
+Если функция рендера React-компонента является «чистой» (возвращается тот же результат при таких же пропсах и состоянии), вы можете в некоторых случаях использовать эту функцию для повышения производительности.
 
-Example:
+Пример:
 
 ```js
 export class SampleComponent extends React.Component {
@@ -37,8 +37,8 @@ export class SampleComponent extends React.Component {
 }
 ```
 
-`shallowCompare` performs a shallow equality check on the current `props` and `nextProps` objects as well as the current `state` and `nextState` objects.  
-It does this by iterating on the keys of the objects being compared and returning true when the values of a key in each object are not strictly equal.
+`shallowCompare` поверхностно сравнивает объекты текущих `props` и `state` с будущими `nextProps` и `nextState`. 
+При переборе ключей сравниваемых объектов возвращается `true`, если значения ключа в каждом объекте имеют нестрогое равенство.
 
-`shallowCompare` returns `true` if the shallow comparison for props or state fails and therefore the component should update.  
-`shallowCompare` returns `false` if the shallow comparison for props and state both pass and therefore the component does not need to update.
+`shallowCompare` возвращает `true`, если поверхностное сравнение пропсов или состояния находит разницу. В таком случае компонент обновится. 
+`shallowCompare` возвращает `false`, если поверхностное сравнении пропсов и состояния не находит разницу. Компонент не нуждается в обновлении.
