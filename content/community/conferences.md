@@ -410,7 +410,3 @@ June 21, 2019 Chicago, Illinois USA
 July 11-12, 2019. Portland, OR, USA.
 
 [Website](https://infinite.red/ChainReactConf)
-<<<<<<< HEAD
-=======
-
->>>>>>> e200fd7b93377accb8d387676266f015787e0d33

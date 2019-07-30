@@ -78,7 +78,7 @@ brunch build -p
 npm install --save-dev envify terser uglifyify 
 
 # В случае использования Yarn
-yarn add --dev envify terser uglifyify 
+yarn add --dev envify terser uglifyify
 ```
 
 При создании продакшен-сборки, убедитесь, что вы добавили эти пакеты для преобразования **(порядок имеет значение)**:
@@ -147,14 +147,14 @@ const TerserPlugin = require('terser-webpack-plugin');
 module.exports = {
   mode: 'production'
   optimization: {
-    minimizer: [new TerserPlugin({ /* дополнительные опции */ })],
+    minimizer: [new TerserPlugin({ /* additional options here */ })],
   },
 };
 ```
 
 Вы можете узнать об этом больше в [документации webpack](https://webpack.js.org/guides/production/).
 
-Помните, что это нужно делать только для продакшен-сборки. Вам не стоит использовать `TerserPlugin`, потому что тогда скроются вспомогательные предупреждения React и замедлится процесс сборки.
+Помните, что это нужно делать только для продакшен-сборки. Вам не стоит использовать `TerserPlugin` в процессе разработки, потому что тогда скроются вспомогательные предупреждения React и замедлится процесс сборки.
 
 ## Анализ производительности компонентов с помощью вкладки Chrome «Performance» {#profiling-components-with-the-chrome-performance-tab}
 
