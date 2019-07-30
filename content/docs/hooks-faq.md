@@ -570,11 +570,7 @@ useEffect(() => {
 
 Давайте разберёмся, почему это важно.
 
-<<<<<<< HEAD
 Когда вы указываете [список зависимостей](/docs/hooks-reference.html#conditionally-firing-an-effect) через последний аргумент хуков `useEffect`, `useMemo`, `useCallback` или `useImperativeHandle`, в него должны войти все использованные значения, которые задействованы в потоке данных React, включая пропсы, состояние и их производные.
-=======
-If you specify a [list of dependencies](/docs/hooks-reference.html#conditionally-firing-an-effect) as the last argument to `useEffect`, `useMemo`, `useCallback`, or `useImperativeHandle`, it must include all values used inside that participate in the React data flow. That includes props, state, and anything derived from them.
->>>>>>> e200fd7b93377accb8d387676266f015787e0d33
 
 Безопасно опускать в списке **только** те функции, которые не используют ни сами, ни через функции, которые они вызывают, пропсы, состояние или их производные. Так, в следующем примере показан баг:
 
