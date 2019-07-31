@@ -462,15 +462,9 @@ class BlurExample extends React.Component {
 
 В некоторых браузерах можно легко получить информацию обо всех элементах в дереве доступности:
 
-<<<<<<< HEAD
 - [использование инспектора доступности в Firefox](https://developer.mozilla.org/ru/docs/Tools/Accessibility_inspector)
-- [активация инспектора доступности в Chrome](https://gist.github.com/marcysutton/0a42f815878c159517a55e6652e3b23a)
+- [активация инспектора доступности в Chrome](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
 - [использование инспектора доступности в OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
-=======
-- [Using the Accessibility Inspector in Firefox](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector)
-- [Using the Accessibility Inspector in Chrome](https://developers.google.com/web/tools/chrome-devtools/accessibility/reference#pane)
-- [Using the Accessibility Inspector in OS X Safari](https://developer.apple.com/library/content/documentation/Accessibility/Conceptual/AccessibilityMacOSX/OSXAXTestingApps.html)
->>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 
 ### Экранные считывающие устройства {#screen-readers}
 

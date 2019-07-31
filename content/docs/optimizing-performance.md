@@ -51,7 +51,6 @@ npm run build
 
 ### Brunch {#brunch}
 
-<<<<<<< HEAD
 Для наиболее эффективной продакшен-сборки с Brunch, установите плагин [`terser-brunch`](https://github.com/brunch/terser-brunch).
 
 ```
@@ -59,15 +58,6 @@ npm run build
 npm install --save-dev terser-brunch
 
 # В случае использования Yarn
-=======
-For the most efficient Brunch production build, install the [`terser-brunch`](https://github.com/brunch/terser-brunch) plugin:
-
-```
-# If you use npm
-npm install --save-dev terser-brunch
-
-# If you use Yarn
->>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 yarn add --dev terser-brunch
 ```
 
@@ -84,32 +74,18 @@ brunch build -p
 Для наиболее эффективной продакшен-сборки с Browserify, установите несколько плагинов:
 
 ```
-<<<<<<< HEAD
 # В случае использования npm
 npm install --save-dev envify terser uglifyify  
 
 # В случае использования Yarn
 yarn add --dev envify terser uglifyify  
-=======
-# If you use npm
-npm install --save-dev envify terser uglifyify 
-
-# If you use Yarn
-yarn add --dev envify terser uglifyify 
->>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 ```
 
 При создании продакшен-сборки, убедитесь, что вы добавили эти пакеты для преобразования **(порядок имеет значение)**:
 
-<<<<<<< HEAD
 * Плагин [`envify`](https://github.com/hughsk/envify) обеспечивает правильную среду для сборки. Сделайте его глобальным (`-g`).
 * Плагин [`uglifyify`](https://github.com/hughsk/uglifyify) удаляет импорты, добавленные при разработке. Сделайте его глобальным (`-g`).
 * Наконец, полученная сборка отправляется к [`terser`](https://github.com/terser-js/terser) для минификации ([прочитайте, зачем это нужно](https://github.com/hughsk/uglifyify#motivationusage)).
-=======
-* The [`envify`](https://github.com/hughsk/envify) transform ensures the right build environment is set. Make it global (`-g`).
-* The [`uglifyify`](https://github.com/hughsk/uglifyify) transform removes development imports. Make it global too (`-g`).
-* Finally, the resulting bundle is piped to [`terser`](https://github.com/terser-js/terser) for mangling ([read why](https://github.com/hughsk/uglifyify#motivationusage)).
->>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 
 К примеру:
 
@@ -120,42 +96,25 @@ browserify ./index.js \
   | terser --compress --mangle > ./bundle.js
 ```
 
-<<<<<<< HEAD
 Помните, что это нужно делать только для продакшен-сборки. Вам не следует использовать эти плагины в процессе разработки, потому что это скроет вспомогательные предупреждения React и замедлит процесс сборки.
-=======
-Remember that you only need to do this for production builds. You shouldn't apply these plugins in development because they will hide useful React warnings, and make the builds much slower.
->>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 
 ### Rollup {#rollup}
 
 Для наиболее эффективной продакшен-сборки с Rollup, установите несколько плагинов:
 
 ```bash
-<<<<<<< HEAD
 # В случае использования npm
 npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 
 # В случае использования Yarn
-=======
-# If you use npm
-npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
-
-# If you use Yarn
->>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 ```
 
 При создании продакшен-сборки, убедитесь, что вы добавили эти плагины **(порядок имеет значение)**:
 
-<<<<<<< HEAD
 * Плагин [`replace`](https://github.com/rollup/rollup-plugin-replace) обеспечивает правильную среду для сборки.
 * Плагин [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) обеспечивает поддержку CommonJS в Rollup.
 * Плагин [`terser`](https://github.com/TrySound/rollup-plugin-terser) сжимает и оптимизирует финальную сборку.
-=======
-* The [`replace`](https://github.com/rollup/rollup-plugin-replace) plugin ensures the right build environment is set.
-* The [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) plugin provides support for CommonJS in Rollup.
-* The [`terser`](https://github.com/TrySound/rollup-plugin-terser) plugin compresses and mangles the final bundle.
->>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 
 ```js
 plugins: [
@@ -171,11 +130,7 @@ plugins: [
 
 Полный пример настройки можно [посмотреть здесь](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0).
 
-<<<<<<< HEAD
 Помните, что это нужно делать только для продакшен-сборки. Вам не следует использовать плагин `terser` или плагин `replace` со значением `'production'` в процессе разработки, потому что это скроет вспомогательные предупреждения React и замедлит процесс сборки.
-=======
-Remember that you only need to do this for production builds. You shouldn't apply the `terser` plugin or the `replace` plugin with `'production'` value in development because they will hide useful React warnings, and make the builds much slower.
->>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 
 ### webpack {#webpack}
 
@@ -184,11 +139,7 @@ Remember that you only need to do this for production builds. You shouldn't appl
 >Если вы используете Create React App, пожалуйста, следуйте [инструкциям выше](#create-react-app).<br>
 >Этот раздел подойдёт для тех, кто самостоятельно настраивает webpack.
 
-<<<<<<< HEAD
 Webpack v4 + будет минимизировать ваш код по умолчанию в продакшен-режиме.
-=======
-Webpack v4+ will minify your code by default in production mode.
->>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 
 ```js
 const TerserPlugin = require('terser-webpack-plugin');
@@ -203,11 +154,7 @@ module.exports = {
 
 Вы можете узнать об этом больше в [документации webpack](https://webpack.js.org/guides/production/).
 
-<<<<<<< HEAD
 Помните, что это нужно делать только для продакшен-сборки. Вам не стоит использовать `TerserPlugin` в процессе разработки, потому что тогда скроются вспомогательные предупреждения React и замедлится процесс сборки.
-=======
-Remember that you only need to do this for production builds. You shouldn't apply `TerserPlugin` in development because it will hide useful React warnings, and make the builds much slower.
->>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 
 ## Анализ производительности компонентов с помощью вкладки Chrome «Performance» {#profiling-components-with-the-chrome-performance-tab}
 
