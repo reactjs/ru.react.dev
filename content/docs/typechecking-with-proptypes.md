@@ -58,11 +58,19 @@ MyComponent.propTypes = {
   // React-элемент
   optionalElement: PropTypes.element,
 
+<<<<<<< HEAD
   // Тиа React-элемент (MyComponent).
   optionalElementType: PropTypes.elementType,
   
   // Можно указать, что проп должен быть экземпляром класса
   // Для этого используется оператор `instanceof`.
+=======
+  // A React element type (ie. MyComponent).
+  optionalElementType: PropTypes.elementType,
+  
+  // You can also declare that a prop is an instance of a class. This uses
+  // JS's instanceof operator.
+>>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
   optionalMessage: PropTypes.instanceOf(Message),
 
   // Вы можете задать ограничение конкретными значениями
@@ -94,9 +102,14 @@ MyComponent.propTypes = {
     quantity: PropTypes.number
   }),   
 
+<<<<<<< HEAD
   // Можно добавить`isRequired` к любому из приведённому выше типу,
   // чтобы показывать предупреждение,
   // если проп не передан
+=======
+  // You can chain any of the above with `isRequired` to make sure a warning
+  // is shown if the prop isn't provided.
+>>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
   requiredFunc: PropTypes.func.isRequired,
 
   // Значение любого типа

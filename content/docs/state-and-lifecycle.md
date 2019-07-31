@@ -245,7 +245,11 @@ class Clock extends React.Component {
   }
 ```
 
+<<<<<<< HEAD
 Обратите внимание, что мы сохраняем ID таймера в `this` (`this.timerID`).
+=======
+Note how we save the timer ID right on `this` (`this.timerID`).
+>>>>>>> 4b8aa88fe29e637439af4e08df02539d828175f4
 
 Поля `this.props` и `this.state` в классах особенные, и их устанавливает сам React. Вы можете вручную добавить новые поля, если компоненту нужно хранить дополнительную информацию (например, ID таймера).
 
