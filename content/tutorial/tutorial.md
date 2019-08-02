@@ -16,7 +16,11 @@ redirect_from:
 
 ## Прежде чем начать {#before-we-start-the-tutorial}
 
+<<<<<<< HEAD
 В этом введении мы будем постепенно создавать небольшую игру. **Возможно, вы захотите пропустить его, потому что не разрабатываете игры, но вам стоит попробовать.** Подходы, которые вы изучите в этом введении, являются основополагающими для создания любого React-приложения. Их освоение даст вам глубокое понимание React.
+=======
+We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React app, and mastering it will give you a deep understanding of React.
+>>>>>>> e200fd7b93377accb8d387676266f015787e0d33
 
 >Совет
 >

@@ -49,9 +49,14 @@ React использует [семантическое версионирова�
 
 У Facebook есть [программа Bug Bounty](https://www.facebook.com/whitehat/) для сообщения о багах безопасности. Пожалуйста, не публикуйте ишью о таких проблемах в открытом доступе. Если вы обнаружили дыру в безопасности React, зайдите на [эту страницу](https://www.facebook.com/whitehat/) и следуйте инструкциям.
 
+<<<<<<< HEAD
 ### Наши контакты {#how-to-get-in-touch}
 * IRC: [#reactjs на freenode](https://webchat.freenode.net/?channels=reactjs)
 * [Форум](https://reactjs.org/community/support.html#popular-discussion-forums)
+=======
+* IRC: [#reactjs on freenode](https://webchat.freenode.net/?channels=reactjs)
+* [Discussion forums](https://reactjs.org/community/support.html#popular-discussion-forums)
+>>>>>>> e200fd7b93377accb8d387676266f015787e0d33
 
 Кроме этого есть [сообщество пользователей React на платформе чатов Discord](https://www.reactiflux.com/). Туда вы также можете обратиться за помощью.
 
