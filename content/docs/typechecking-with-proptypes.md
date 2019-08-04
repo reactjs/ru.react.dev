@@ -58,7 +58,7 @@ MyComponent.propTypes = {
   // React-элемент
   optionalElement: PropTypes.element,
 
-  // Тип React-элемент (MyComponent).
+  // Тип React-элемент (например, MyComponent).
   optionalElementType: PropTypes.elementType,
   
   // Можно указать, что проп должен быть экземпляром класса
@@ -88,7 +88,8 @@ MyComponent.propTypes = {
     fontSize: PropTypes.number
   }),
   
-  // An object with warnings on extra properties
+  // Объект со строгой структурой,
+  // при наличии необъявленных свойств будут сформированы предупреждения
   optionalObjectWithStrictShape: PropTypes.exact({
     name: PropTypes.string,
     quantity: PropTypes.number
