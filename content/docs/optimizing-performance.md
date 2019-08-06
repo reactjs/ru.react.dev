@@ -75,10 +75,10 @@ brunch build -p
 
 ```
 # В случае использования npm
-npm install --save-dev envify terser uglifyify  
+npm install --save-dev envify terser uglifyify 
 
 # В случае использования Yarn
-yarn add --dev envify terser uglifyify  
+yarn add --dev envify terser uglifyify
 ```
 
 При создании продакшен-сборки, убедитесь, что вы добавили эти пакеты для преобразования **(порядок имеет значение)**:
@@ -139,7 +139,7 @@ plugins: [
 >Если вы используете Create React App, пожалуйста, следуйте [инструкциям выше](#create-react-app).<br>
 >Этот раздел подойдёт для тех, кто самостоятельно настраивает webpack.
 
-Webpack v4 + будет минимизировать ваш код по умолчанию в продакшен-режиме.
+Webpack 4.0 и выше по умолчанию минифицирует код в продакшен-режиме.
 
 ```js
 const TerserPlugin = require('terser-webpack-plugin');

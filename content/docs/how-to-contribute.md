@@ -51,7 +51,7 @@ React использует [семантическое версионирова�
 
 ### Наши контакты {#how-to-get-in-touch}
 * IRC: [#reactjs на freenode](https://webchat.freenode.net/?channels=reactjs)
-* [Форум](https://reactjs.org/community/support.html#popular-discussion-forums)
+* [Дискуссионные форумы](https://ru.reactjs.org/community/support.html#popular-discussion-forums)
 
 Кроме этого есть [сообщество пользователей React на платформе чатов Discord](https://www.reactiflux.com/). Туда вы также можете обратиться за помощью.
 
