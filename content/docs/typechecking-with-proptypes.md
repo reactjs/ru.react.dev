@@ -58,7 +58,7 @@ MyComponent.propTypes = {
   // React-элемент
   optionalElement: PropTypes.element,
 
-  // Тиа React-элемент (MyComponent).
+  // Тип React-элемент (MyComponent).
   optionalElementType: PropTypes.elementType,
   
   // Можно указать, что проп должен быть экземпляром класса
