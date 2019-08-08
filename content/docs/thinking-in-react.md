@@ -49,11 +49,7 @@ prev: composition-vs-inheritance.html
   4. **`ProductCategoryRow` (голубой):** наименования *категорий*
   5. **`ProductRow` (красный):** отдельно взятый *товар*
 
-<<<<<<< HEAD
 Обратите внимание, что внутри `ProductTable` заголовок таблицы ("Name" и "Price") сам по себе отдельным компонентом не является. Отделять его или нет — вопрос личного предпочтения. В данном примере мы решили не придавать этому особого значения и оставить заголовок частью большего компонента `ProductTable`, так как он является всего лишь малой частью общего *списка данных*. Тем не менее, если в будущем заголовок пополнится новыми функциями (например, возможностью сортировать товар), имеет смысл извлечь его в самостоятельный компонент `ProductTableHeader`.
-=======
-If you look at `ProductTable`, you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and there's an argument to be made either way. For this example, we left it as part of `ProductTable` because it is part of rendering the *data collection* which is `ProductTable`'s responsibility. However, if this header grows to be complex (e.g., if we were to add affordances for sorting), it would certainly make sense to make this its own `ProductTableHeader` component.
->>>>>>> 986381c56879983269c52863d9c205c7a7ba0174
 
 Теперь, когда мы определили компоненты в нашем макете, давайте расположим их согласно иерархии. Компоненты, которые являются частью других компонентов, в иерархии отображаются как дочерние:
 
