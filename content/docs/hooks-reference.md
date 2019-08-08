@@ -191,9 +191,9 @@ const value = useContext(MyContext);
 
 >Совет
 >
->Если вы были знакомы с API контекстов до появления хуков, то вызов `useContext(MyContext)` аналогичен выражению `static contextType = MyContext` в классе, либо компоненту `<MyContext.Provider>`.
+>Если вы были знакомы с API контекстов до появления хуков, то вызов `useContext(MyContext)` аналогичен выражению `static contextType = MyContext` в классе, либо компоненту `<MyContext.Consumer>`.
 >
->`useContext (MyContext)` позволяет только *читать* контекст и подписываться на его изменения. Вам всё ещё нужен `<MyContext.Provider>` выше в дереве, чтобы *предоставить* значение для этого контекста.
+>`useContext(MyContext)` позволяет только *читать* контекст и подписываться на его изменения. Вам всё ещё нужен `<MyContext.Provider>` выше в дереве, чтобы *предоставить* значение для этого контекста.
 
 ## Дополнительные хуки {#additional-hooks}
 
