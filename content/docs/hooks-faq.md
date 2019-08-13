@@ -106,13 +106,9 @@ prev: hooks-reference.html
 
 Вы можете продолжить использовать тот же самый API, который вы использовали – всё продолжит работать как прежде.
 
-<<<<<<< HEAD
-В будущем новые версии этих библиотек могут добавить специальные хуки, например `useRedux()` или `useRouter()`, которые позволят вам использовать ту же функциональность без необходимости оборачивать компоненты.
-=======
-React Redux since v7.1.0 [supports Hooks API](https://react-redux.js.org/api/hooks) and exposes hooks like `useDispatch` or `useSelector`.
+Начиная с версии 7.1.0, React Redux [поддерживает API хуков](https://react-redux.js.org/api/hooks) и предоставляет такие хуки как `useDispatch` и `useSelector`.
 
-Libraries like React Router might support hooks in the future.
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
+В будущем библиотеки наподобие React Router могут также начать предоставлять хуки.
 
 ### Поддерживают ли хуки статическую типизацию? {#do-hooks-work-with-static-typing}
 
@@ -124,15 +120,11 @@ Libraries like React Router might support hooks in the future.
 
 С точки зрения React, компонент, использующий хуки, является обычным компонентом. Если ваш способ тестирования не опирается на внутреннюю реализацию React, тестирование компонентов с хуками не должно отличатся от тестирования других компонентов.
 
-<<<<<<< HEAD
-Например, у нас есть следующий компонент-счётчик:
-=======
->Note
+>Примечание
 >
->[Testing Recipes](/docs/testing-recipes.html) include many examples that you can copy and paste.
+>[Рецепты Тестирования](/docs/testing-recipes.html) включают в себя множество примеров, которые вы можете скопировать себе.
 
-For example, let's say we have this counter component:
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
+Например, у нас есть следующий компонент-счётчик:
 
 ```js
 function Example() {
@@ -194,13 +186,9 @@ it('can render and update a counter', () => {
 
 Если вам надо протестировать пользовательский хук, вы можете создать компонент в ваших тестах и использовать в нём этот хук. После этого вы можете протестировать сам компонент.
 
-<<<<<<< HEAD
-Для уменьшения однотипного кода, мы советуем использовать библиотеку [`react-testing-library`](https://git.io/react-testing-library). Она была создана для написания тестов, использующих ваши компоненты и имитирующих поведение пользователей в браузере.
-=======
-To reduce the boilerplate, we recommend using [React Testing Library](https://testing-library.com/react) which is designed to encourage writing tests that use your components as the end users do.
+Для уменьшения однотипного кода, мы советуем использовать библиотеку [React Testing Library](https://testing-library.com/react). Она была создана для написания тестов, использующих ваши компоненты и имитирующих поведение пользователей в браузере.
 
-For more information, check out [Testing Recipes](/docs/testing-recipes.html).
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
+За более подробной информацией обратитесь к [Рецептам Тестирования](/docs/testing-recipes.html).
 
 ### Что конкретно проверяют [правила линтера](https://www.npmjs.com/package/eslint-plugin-react-hooks) в хуках?{#what-exactly-do-the-lint-rules-enforce}
 
@@ -586,11 +574,7 @@ useEffect(() => {
 
 >Примечание
 >
-<<<<<<< HEAD
->Мы предоставляем правило [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) в пакете нашего линтера [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). Оно поможет выявлять компоненты, не обрабатывающие обновления должным образом.
-=======
->We provide the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint rule as a part of the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It helps you find components that don't handle updates consistently.
->>>>>>> ddbd064d41d719f9ec0c2f6a4227f797a5828310
+>Мы предоставляем правило [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) в пакете нашего линтера [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). Оно поможет выявлять компоненты, не обрабатывающие обновления консистентно.
 
 Давайте разберёмся, почему это важно.
 
