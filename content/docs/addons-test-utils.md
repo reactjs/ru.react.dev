@@ -122,7 +122,9 @@ it('рендер и обновление счётчика', () => {
 });
 ```
 
-Не забывайте, что отправка DOM-событий работает только если DOM-контейнер добавлен в `document`. Можно использовать вспомогательную библиотеку [`react-testing-library`](https://github.com/kentcdodds/react-testing-library), чтобы уменьшить количество шаблонного кода.
+- Не забывайте, что отправка DOM-событий работает только если DOM-контейнер добавлен в `document`. Можно использовать вспомогательную библиотеку [React Testing Library](https://testing-library.com/react), чтобы уменьшить количество шаблонного кода.
+
+- В ["рецептах"](/docs/recipes.html) содержится больше примеров и деталей о том, как работает `act()`.
 
 * * *
 
@@ -139,7 +141,7 @@ mockComponent(
 
 > Примечание:
 >
-> API-метод `mockComponent()` объявлен устаревшим. Поэтому вместо него рекомендуется использовать [поверхностный рендеринг](/docs/shallow-renderer.html) или [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock).
+> API-метод `mockComponent()` объявлен устаревшим. Поэтому вместо него рекомендуется использовать [`jest.mock()`](https://facebook.github.io/jest/docs/en/tutorial-react-native.html#mock-native-modules-using-jestmock).
 
 * * *
 
