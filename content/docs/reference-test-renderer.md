@@ -111,11 +111,11 @@ TestRenderer.create(element, options);
 TestRenderer.act(callback);
 ```
 
-Подобно [помощнику `act()` из `react-dom/test-utils`](/docs/test-utils.html#act), `TestRenderer.act` подготавливает компонент для проверки утверждений. Используйте эту версию `act()` для оборачивания `TestRenderer.create` и `testRenderer.update`.
+Подобно [вспомогательному методу `act()` из `react-dom/test-utils`](/docs/test-utils.html#act), `TestRenderer.act` подготавливает компонент для проверки утверждений. Используйте эту версию `act()` для оборачивания `TestRenderer.create` и `testRenderer.update`.
 
 ```javascript
 import {create, act} from 'react-test-renderer';
-import App from './app.js'; // The component being tested
+import App from './app.js'; // Тестируемый компонент
 
 // рендер компонента
 let root; 
