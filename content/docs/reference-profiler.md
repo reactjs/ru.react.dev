@@ -44,7 +44,11 @@ render(
     <Profiler id="Main" onRender={callback}>
       <Main {...props} />
     </Profiler>
+<<<<<<< HEAD
     </App>
+=======
+  </App>
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 );
 ```
 

@@ -64,13 +64,18 @@ prev: hooks-reference.html
 Начиная с релиза 16.8.0, React включает в себя стабильную реализацию хуков для:
 
 * React DOM
+* React Native
 * React DOM Server
 * React Test Renderer
 * React Shallow Renderer
 
 Обратите внимание, что **хуки будут доступны, только если все React-пакеты версии 16.8.0 или выше**. Хуки не будут работать, если вы, например, забыли обновить React DOM.
 
+<<<<<<< HEAD
 Поддержка хуков в React Native появилась в версии 0.59.
+=======
+[React Native 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) and above support Hooks.
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 ### Надо ли переписать все мои классовые компоненты? {#do-i-need-to-rewrite-all-my-class-components}
 
@@ -106,7 +111,13 @@ prev: hooks-reference.html
 
 Вы можете продолжить использовать тот же самый API, который вы использовали – всё продолжит работать как прежде.
 
+<<<<<<< HEAD
 Начиная с версии 7.1.0, React Redux [поддерживает API хуков](https://react-redux.js.org/api/hooks) и предоставляет такие хуки как `useDispatch` и `useSelector`.
+=======
+React Redux since v7.1.0 [supports Hooks API](https://react-redux.js.org/api/hooks) and exposes hooks like `useDispatch` or `useSelector`.
+
+Libraries like React Router might support hooks in the future.
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 В будущем библиотеки наподобие React Router могут также начать предоставлять хуки.
 
@@ -118,6 +129,7 @@ prev: hooks-reference.html
 
 ### Как тестировать компоненты, которые используют хуки? {#how-to-test-components-that-use-hooks}
 
+<<<<<<< HEAD
 С точки зрения React, компонент, использующий хуки, является обычным компонентом. Если ваш способ тестирования не опирается на внутреннюю реализацию React, тестирование компонентов с хуками не должно отличатся от тестирования других компонентов.
 
 >Примечание
@@ -125,6 +137,13 @@ prev: hooks-reference.html
 >[Рецепты Тестирования](/docs/testing-recipes.html) включают в себя множество примеров, которые вы можете скопировать себе.
 
 Например, у нас есть следующий компонент-счётчик:
+=======
+>Note
+>
+>[Testing Recipes](/docs/testing-recipes.html) include many examples that you can copy and paste.
+
+For example, let's say we have this counter component:
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 ```js
 function Example() {
@@ -190,7 +209,13 @@ it('can render and update a counter', () => {
 
 За более подробной информацией обратитесь к [Рецептам Тестирования](/docs/testing-recipes.html).
 
+<<<<<<< HEAD
 ### Что конкретно проверяют [правила линтера](https://www.npmjs.com/package/eslint-plugin-react-hooks) в хуках?{#what-exactly-do-the-lint-rules-enforce}
+=======
+To reduce the boilerplate, we recommend using [React Testing Library](https://testing-library.com/react) which is designed to encourage writing tests that use your components as the end users do.
+
+For more information, check out [Testing Recipes](/docs/testing-recipes.html).
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 Мы предоставляем [плагин к ESLint](https://www.npmjs.com/package/eslint-plugin-react-hooks), который принуждает следовать [правилам хуков](/docs/hooks-rules.html), чтобы избежать ошибок. Подразумевается, что любая функция, имя который начинается с «`use`» и заглавной буквы далее, является хуком. Мы понимаем, что это предположение не идеальное, и могут случаться ложные срабатывания. Однако, без этого важного соглашения, было бы невозможно заставить хуки работать хорошо, а более длинные имена могли бы помешать людям начать использовать хуки или следовать соглашению.
 
@@ -574,7 +599,11 @@ useEffect(() => {
 
 >Примечание
 >
+<<<<<<< HEAD
 >Мы предоставляем правило [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) в пакете нашего линтера [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). Оно поможет выявлять компоненты, не обрабатывающие обновления консистентно.
+=======
+>We provide the [`exhaustive-deps`](https://github.com/facebook/react/issues/14920) ESLint rule as a part of the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation) package. It helps you find components that don't handle updates consistently.
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 Давайте разберёмся, почему это важно.
 

@@ -425,7 +425,11 @@ function ListOfTenThings() {
 <div>{true}</div>
 ```
 
+<<<<<<< HEAD
 Этот подход может быть полезным для рендера по условию. Вот пример, где JSX рендерит `<Header />`, если `showHeader` равняется `true`:
+=======
+This can be useful to conditionally render React elements. This JSX renders the `<Header />` component only if `showHeader` is `true`:
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 ```js{2}
 <div>

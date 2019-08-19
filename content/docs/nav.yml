@@ -58,7 +58,11 @@
     - id: optimizing-performance
       title: Оптимизация производительности
     - id: portals
+<<<<<<< HEAD
       title: Порталы
+=======
+      title: Portals
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
     - id: profiler
       title: Profiler
     - id: react-without-es6
@@ -124,7 +128,11 @@
       - id: hooks-reference
         title: Справочник API хуков
       - id: hooks-faq
+<<<<<<< HEAD
         title: "Хуки: ответы на вопросы"
+=======
+        title: Hooks FAQ
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 - title: Testing
   items:
     - id: testing 
@@ -133,7 +141,11 @@
       title: Testing Recipes
     - id: testing-environments
       title: Testing Environments
+<<<<<<< HEAD
 - title: Участие в проекте
+=======
+- title: Contributing
+>>>>>>> de497e250340ff597ce4964279369f16315b8b4b
   items:
   - id: how-to-contribute
     title: Как внести свой вклад?
