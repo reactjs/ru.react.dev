@@ -399,4 +399,4 @@ function updateColorMap(colormap) {
 
 Если вы используете Create React App, то `Object.assign` и синтаксис расширения объектов доступны вам по умолчанию.
 
-When you deal with deeply nested objects, updating them in an immutable way can feel convoluted. If you run into this problem, check out [Immer](https://github.com/mweststrate/immer) or [immutability-helper](https://github.com/kolodny/immutability-helper). These libraries let you write highly readable code without losing the benefits of immutability.
+При работе с глубоко вложенными объектами, постоянное их обновление может запутать. Если вы столкнулись с такой проблемой, обратите внимание на [Immer](https://github.com/mweststrate/immer) или [immutability-helper](https://github.com/kolodny/immutability-helper). Эти библиотеки позволяют писать хорошо читаемый код, не теряя преимуществ иммутабельности.
