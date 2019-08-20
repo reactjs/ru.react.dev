@@ -211,7 +211,6 @@ React создаёт и поддерживает внутреннее предс
 
 Когда изменяются пропсы или состояние компонента, React решает нужно ли обновление DOM, сравнивая возвращённый элемент с ранее отрендеренным. Если они не равны, React обновит DOM.
 
-<<<<<<< HEAD
 Вы можете визуализировать эти перерисовки виртуального DOM с помощью инструментов разработчика React:
 
 - [Chrome Browser Extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
@@ -231,9 +230,6 @@ React создаёт и поддерживает внутреннее предс
 Обратите внимание, что когда мы вводим вторую задачу, первая также мигает на экране при каждом нажатии клавиши. Это означает, что она ререндерится вместе с полем ввода. Иногда это называют "бесполезным" рендерингом. Мы знаем, что в этом нет необходимости, так как содержимое первой задачи не изменилось, но React этого не знает.
 
 Несмотря на то, что React обновляет только изменённые DOM-узлы, повторный рендеринг всё же занимает некоторое время. В большинстве случаев это не проблема, но если замедление заметно, то вы можете всё ускорить, переопределив метод жизненного цикла `shouldComponentUpdate`, который вызывается перед началом процесса ререндеринга. Реализация этой функции по умолчанию возвращает `true`, указывая React выполнить обновление:
-=======
-Even though React only updates the changed DOM nodes, re-rendering still takes some time. In many cases it's not a problem, but if the slowdown is noticeable, you can speed all of this up by overriding the lifecycle function `shouldComponentUpdate`, which is triggered before the re-rendering process starts. The default implementation of this function returns `true`, leaving React to perform the update:
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
 
 ```javascript
 shouldComponentUpdate(nextProps, nextState) {
@@ -403,7 +399,6 @@ function updateColorMap(colormap) {
 
 Если вы используете Create React App, то `Object.assign` и синтаксис расширения объектов доступны вам по умолчанию.
 
-<<<<<<< HEAD
 ## Использование неизменяемых структур данных {#using-immutable-data-structures}
 
 Библиотека [Immutable.js](https://github.com/facebook/immutable-js) -- ещё один способ решить эту проблему. Эта библиотека предоставляет иммутабельные, персистентные коллекции, которые работают с помощью механизма "structural sharing":

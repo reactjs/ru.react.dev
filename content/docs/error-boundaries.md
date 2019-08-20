@@ -36,11 +36,7 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-<<<<<<< HEAD
     // Можно также сохранить информацию об ошибке в соответствующую службу журнала ошибок
-=======
-    // You can also log the error to an error reporting service
->>>>>>> de497e250340ff597ce4964279369f16315b8b4b
     logErrorToMyService(error, errorInfo);
   }
 
