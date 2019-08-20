@@ -123,7 +123,7 @@ act(() => {
   root = create(<App value={1}/>)
 });
 
-// проверка утверждений  
+// проверка утверждений
 expect(root.toJSON()).toMatchSnapshot();
 
 // обновление с некоторыми отличающимися пропсами
@@ -131,7 +131,7 @@ act(() => {
   root = root.update(<App value={2}/>);
 })
 
-// проверка утверждений 
+// проверка утверждений
 expect(root.toJSON()).toMatchSnapshot();
 ```
 
