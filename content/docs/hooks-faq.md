@@ -64,13 +64,14 @@ prev: hooks-reference.html
 Начиная с релиза 16.8.0, React включает в себя стабильную реализацию хуков для:
 
 * React DOM
+* React Native
 * React DOM Server
 * React Test Renderer
 * React Shallow Renderer
 
 Обратите внимание, что **хуки будут доступны, только если все React-пакеты версии 16.8.0 или выше**. Хуки не будут работать, если вы, например, забыли обновить React DOM.
 
-Поддержка хуков в React Native появилась в версии 0.59.
+Поддержка хуков в React Native появилась в [версии 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059).
 
 ### Надо ли переписать все мои классовые компоненты? {#do-i-need-to-rewrite-all-my-class-components}
 

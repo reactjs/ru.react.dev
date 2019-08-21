@@ -48,5 +48,4 @@ _Обратите внимание, что данная функциональн
 
 ### Можно создавать анимации в React? {#can-i-do-animations-in-react}
 
-
 React может использоваться для создания крутых анимаций! В качестве примера посмотрите библиотеки [React Transition Group](https://reactcommunity.org/react-transition-group/), [React Motion](https://github.com/chenglou/react-motion) или [React Spring](https://github.com/react-spring/react-spring).

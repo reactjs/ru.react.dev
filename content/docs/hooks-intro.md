@@ -32,6 +32,7 @@ function Example() {
 >Примечание
 >
 >React 16.8.0 это первый релиз, поддерживающий хуки. При обновлении версии, не забудьте обновить и все зависимости, включая React DOM. React Native будет поддерживать хуки в следующем стабильном релизе.
+>Поддержка хуков в React Native появилась в [версии 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059).
 
 ## Видео-представление {#video-introduction}
 

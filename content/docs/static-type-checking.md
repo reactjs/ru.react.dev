@@ -84,13 +84,13 @@ Flow дополняет JavaScript собственным синтаксисом
 Если для своего проекта вы самостоятельно настраивали Babel, нужно установить специальный пресет для работы с Flow:
 
 ```bash
-yarn add --dev babel-preset-flow
+yarn add --dev @babel/preset-flow
 ```
 
 Или `npm`:
 
 ```bash
-npm install --save-dev babel-preset-flow
+npm install --save-dev @babel/preset-flow
 ```
 
 Затем добавьте установленный пресет `flow` в свою [конфигурацию Babel](https://babeljs.io/docs/usage/babelrc/). Например так, если вы используете конфигурационный файл `.babelrc`:
@@ -98,7 +98,7 @@ npm install --save-dev babel-preset-flow
 ```js{3}
 {
   "presets": [
-    "flow",
+    "@babel/preset-flow",
     "react"
   ]
 }

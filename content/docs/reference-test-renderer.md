@@ -103,7 +103,7 @@ expect(testInstance.findByProps({className: "sub"}).children).toEqual(['Sub']);
 TestRenderer.create(element, options);
 ```
 
-Создаёт экземпляр `TestRenderer` для переданного React-элемента. И хотя реальный DOM не будет использоваться, дерево компонентов будет полностью отрендерено в памяти и его можно будет протестировать с помощью утверждений. У созданного экземпляра `TestRenderer` будут присутствовать следующие методы и свойства:
+Создаёт экземпляр `TestRenderer` для переданного React-элемента. И хотя реальный DOM не будет использоваться, дерево компонентов будет полностью отрендерено в памяти и его можно будет протестировать с помощью утверждений. Возвращает [экземпляр TestRenderer](#testrenderer-instance)
 
 ### `TestRenderer.act()` {#testrendereract}
 
@@ -131,7 +131,7 @@ act(() => {
   root = root.update(<App value={2}/>);
 })
 
-// проверка утвеждений 
+// проверка утверждений
 expect(root.toJSON()).toMatchSnapshot();
 ```
 
