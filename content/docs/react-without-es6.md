@@ -37,7 +37,7 @@ class Greeting extends React.Component {
 }
 
 Greeting.defaultProps = {
-  name: 'Лиза'
+  name: 'Василиса'
 };
 ```
 
@@ -47,7 +47,7 @@ Greeting.defaultProps = {
 var Greeting = createReactClass({
   getDefaultProps: function() {
     return {
-      name: 'Лиза'
+      name: 'Василиса'
     };
   },
 
