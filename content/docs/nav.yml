@@ -128,7 +128,7 @@
 - title: Testing
   items:
     - id: testing 
-      title: Введение в тестирование
+      title: Основы тестирования
     - id: testing-recipes
       title: Testing Recipes
     - id: testing-environments
