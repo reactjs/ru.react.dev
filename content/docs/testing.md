@@ -36,5 +36,5 @@ next: testing-recipes.html
 
 Этот раздел состоит из двух страниц:
 
-- [Рецепты](/docs/testing-recipes.html): Основные шаблоны написания тестов для React-компонентов.
+- [Рецепты](/docs/testing-recipes.html): Общие принципы написания тестов React-компонентов.
 - [Среды](/docs/testing-environments.html): Что следует учитывать при настройке среды тестирования React-компонентов.
