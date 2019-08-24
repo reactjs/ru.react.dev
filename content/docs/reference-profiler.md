@@ -1,6 +1,6 @@
 ---
 id: profiler
-title: API для работы с профайлером
+title: API для работы с Profiler
 layout: docs
 category: Reference
 permalink: docs/profiler.html
@@ -12,7 +12,7 @@ permalink: docs/profiler.html
 >
 > Профайлинг увеличивает нагрузку на систему, поэтому **он отключен в [продакшен-режиме](https://ru.reactjs.org/docs/optimizing-performance.html#use-the-production-build)**.
 > 
-> Для отладки на продакшене, React предоставляет специльную продакшен-сборку с включенным профайлингом.
+> Для отладки на продакшене, React предоставляет специальную продакшен-сборку с включенным профайлингом.
 > Узнать больше про то, как пользоваться этой сборкой, вы можете по [данной ссылке](https://fb.me/react-profiling).
 
 ## Использование
