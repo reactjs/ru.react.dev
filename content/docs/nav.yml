@@ -125,7 +125,7 @@
         title: Справочник API хуков
       - id: hooks-faq
         title: "Хуки: ответы на вопросы"
-- title: Testing
+- title: Тестирование
   items:
     - id: testing 
       title: Основы тестирования
