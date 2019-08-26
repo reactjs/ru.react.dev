@@ -14,11 +14,7 @@ permalink: docs/render-props.html
 )}/>
 ```
 
-<<<<<<< HEAD
-Такой подход, в частности, применяется в библиотеках [React Router](https://reacttraining.com/react-router/web/api/Route/render-func) и [Downshift](https://github.com/paypal/downshift).
-=======
-Libraries that use render props include [React Router](https://reacttraining.com/react-router/web/api/Route/render-func), [Downshift](https://github.com/paypal/downshift) and [Formik](https://github.com/jaredpalmer/formik).
->>>>>>> 519a3aec91a426b0c8c9ae59e292d064df48c66a
+Такой подход, в частности, применяется в библиотеках [React Router](https://reacttraining.com/react-router/web/api/Route/render-func), [Downshift](https://github.com/paypal/downshift) и [Formik](https://github.com/jaredpalmer/formik).
 
 В этой статье мы покажем, чем полезны и как писать рендер-пропсы.
 

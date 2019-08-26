@@ -28,11 +28,7 @@ next: testing-recipes.html
 
 ### Рекомендуемые инструменты {#tools}
 
-<<<<<<< HEAD
-**[Jest](https://facebook.github.io/jest/)** – исполнитель тестов на JavaScript, который позволяет взаимодействовать с DOM через [`jsdom`](/docs/testing-environments.html#mocking-a-rendering-surface). Несмотря на то, что jsdom только приблизительно реализует работу браузера, в большинстве случаев этого достаточно для тестирования React-компонентов. Jest предлагает отличную скорость итераций вместе с мощными возможностями, например фиктивные [модули](/docs/testing-recipes.html#mocking-modules) и [таймеры](/docs/testing-recipes.html#mocking-timers), которые дают больше контроля над исполнением кода.
-=======
-**[Jest](https://facebook.github.io/jest/)** is a JavaScript test runner that lets you access the DOM via [`jsdom`](/docs/testing-environments.html#mocking-a-rendering-surface). While jsdom is only an approximation of how the browser works, it is often good enough for testing React components. Jest provides a great iteration speed combined with powerful features like mocking [modules](/docs/testing-environments.html#mocking-modules) and [timers](/docs/testing-environments.html#mocking-timers) so you can have more control over how the code executes.
->>>>>>> 519a3aec91a426b0c8c9ae59e292d064df48c66a
+**[Jest](https://facebook.github.io/jest/)** – исполнитель тестов на JavaScript, который позволяет взаимодействовать с DOM через [`jsdom`](/docs/testing-environments.html#mocking-a-rendering-surface). Несмотря на то, что jsdom только приблизительно реализует работу браузера, в большинстве случаев этого достаточно для тестирования React-компонентов. Jest предлагает отличную скорость итераций вместе с мощными возможностями, например фиктивные [модули](/docs/testing-environments.html#mocking-modules) и [таймеры](/docs/testing-environments.html#mocking-timers), которые дают больше контроля над исполнением кода.
 
 **[React Testing Library](https://testing-library.com/react)** – это набор вспомогательных функций, позволяющий тестировать React-компоненты не полагаясь на их внутреннюю реализацию. Такой подход упрощает рефакторинг, а также подталкивает вас применять лучшие практики по улучшению доступности. Несмотря на то, что библиотека не позволяет делать «поверхностный» рендер компонента без дочерних компонентов, исполнители тестов, например, Jest позволяет это сделать через фиктивные [модули](/docs/testing-recipes.html#mocking-modules).
 
