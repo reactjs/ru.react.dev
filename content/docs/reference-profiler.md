@@ -118,4 +118,4 @@ Set-набор ["взаимодействий"](http://fb.me/react-interaction-t
 >
 > Взаимодействия могут быть использованы для установки причины обновления, хотя API для их отслеживания все еще экспериментальное.
 >
-> Вы можете узнать больше по [данной ссылке](http://fb.me/react-interaction-tracing).
+> Вы можете узнать подробнее на [fb.me/react-interaction-tracing](http://fb.me/react-interaction-tracing).
