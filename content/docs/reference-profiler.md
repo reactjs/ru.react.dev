@@ -6,7 +6,7 @@ category: Reference
 permalink: docs/profiler.html
 ---
 `Profiler` измеряет то, как часто рендерится React-приложение и какова «стоимость» этого.
-Его задача — помочь найти медленные части приложения, которые можно оптимизировать (например, через [кэширование](https://ru.reactjs.org/docs/hooks-faq.html#how-to-memoize-calculations)).
+Его задача — помочь найти медленные части приложения, которые можно оптимизировать (например, через [мемоизацию](https://ru.reactjs.org/docs/hooks-faq.html#how-to-memoize-calculations)).
 
 > Примечание:
 >
