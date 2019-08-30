@@ -10,7 +10,7 @@ permalink: docs/profiler.html
 
 > Примечание:
 >
-> Профайлинг увеличивает нагрузку на систему, поэтому **он отключен в [продакшен-режиме](https://ru.reactjs.org/docs/optimizing-performance.html#use-the-production-build)**.
+> Профайлинг добавляет накладные расходы, поэтому **он отключён в [продакшен-режиме](https://ru.reactjs.org/docs/optimizing-performance.html#use-the-production-build)**.
 > 
 > Для отладки на продакшене, React предоставляет специальную продакшен-сборку с включенным профайлингом.
 > Узнать больше про то, как пользоваться этой сборкой, вы можете по [данной ссылке](https://fb.me/react-profiling).
