@@ -1,4 +1,4 @@
-nav---
+---
 id: higher-order-components
 title: Компоненты высшего порядка
 permalink: docs/higher-order-components.html
