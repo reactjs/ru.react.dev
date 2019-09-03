@@ -119,11 +119,7 @@ React сначала может показаться сложным, но при
 
 ## Документация на старые версии React {#versioned-documentation}
 
-<<<<<<< HEAD
-Документация на сайте всегда соответствует последнему стабильному релизу. Начиная с 16 версии React, мы публикуем старые версии документации [на отдельной странице](/versions). Учтите, что копии документации создаются в момент выхода релиза и больше не обновляются.
-=======
-This documentation always reflects the latest stable version of React. Since React 16, you can find older versions of the documentation on a [separate page](/versions). Note that documentation for past versions is snapshotted at the time of the release, and isn't being continuously updated.
->>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
+Документация на сайте всегда соответствует последнему стабильному релизу. Начиная с 16 версии React, мы публикуем старые версии документации на [отдельной странице](/versions). Учтите, что копии документации создаются в момент выхода релиза и больше не обновляются.
 
 ## Обратная связь {#something-missing}
 
