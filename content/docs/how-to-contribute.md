@@ -11,15 +11,9 @@ redirect_from:
 
 React -- это один из первых проектов c открытым исходным кодом в компании Facebook, который очень активно развивается и в то же время используется для разработки [facebook.com](https://www.facebook.com). Мы стараемся сделать процесс открытой разработки как можно более простым и прозрачным, но нам ещё есть над чем поработать. Надеемся, что этот раздел прояснит многие вопросы, касающиеся участия в разработке React.
 
-<<<<<<< HEAD
-### [Правила поведения](https://code.facebook.com/codeofconduct) {#code-of-conduct}
+### [Правила поведения](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
 
-Компанией Facebook установлены **Правила поведения** для разработчиков. Пожалуйста, прочитайте [эти правила](https://code.facebook.com/codeofconduct), чтобы понимать, как правильно себя вести, а как поступать недопустимо.
-=======
-### [Code of Conduct](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
-
-Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
->>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
+Компания Facebook приняла [соглашение участника](https://www.contributor-covenant.org/) в качестве своего кодекса поведения, поэтому мы ожидаем, что участники проекта будут его придерживаться. Пожалуйста, прочитайте [полный текст](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md), чтобы понимать, как правильно себя вести, а как 
 
 ### Открытая разработка {#open-development}
 
@@ -27,11 +21,7 @@ Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant
 
 ### Модель ветвления {#branch-organization}
 
-<<<<<<< HEAD
-Мы стараемся сохранять ветку [`master`](https://github.com/facebook/react/tree/master) чистой и постоянно тестируем её. Однако для поддержания темпа разработки мы вносим в `master` изменения, которые могут быть несовместимы с вашими проектами. Поэтому мы рекомендуем использовать в своей работе не `master`, а [последнюю стабильную версию React](/downloads.html).
-=======
-We will do our best to keep the [`master` branch](https://github.com/facebook/react/tree/master) in good shape, with tests passing at all times. But in order to move fast, we will make API changes that your application might not be compatible with. We recommend that you use [the latest stable version of React](/versions.html).
->>>>>>> 941f54180ef5e652221f54ef6d1f6f2e9e063597
+Мы стараемся сохранять ветку [`master`](https://github.com/facebook/react/tree/master) чистой и постоянно тестируем её. Однако для поддержания темпа разработки мы вносим в `master` изменения, которые могут быть несовместимы с вашими проектами. Поэтому мы рекомендуем использовать в своей работе не `master`, а [последнюю стабильную версию React](/versions.html).
 
 Ветки стабильных релизов мы ведём отдельно. Пулреквесты в них не принимаются. Для пулреквестов предназначена ветка `master`. Отлаженные изменения из неё переносятся в ветку текущего стабильного релиза.
 
