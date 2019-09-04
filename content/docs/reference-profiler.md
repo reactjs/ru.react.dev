@@ -11,7 +11,7 @@ permalink: docs/profiler.html
 
 > Примечание:
 >
-> Профилирование добавляет накладные расходы, поэтому **оно отключёно в [продакшен-режиме](https://ru.reactjs.org/docs/optimizing-performance.html#use-the-production-build)**.
+> Профилирование добавляет накладные расходы, поэтому **оно отключено в [продакшен-режиме](https://ru.reactjs.org/docs/optimizing-performance.html#use-the-production-build)**.
 > 
 > Для отладки на продакшене, React предоставляет специальную продакшен-сборку с включенным профилированием.
 > Подробнее об использовании данной сборки можно узнать на [fb.me/react-profiling](https://fb.me/react-profiling).
