@@ -594,7 +594,7 @@ it("should render a greeting", () => {
 
   expect(
     pretty(container.innerHTML)
-  ).toMatchInlineSnapshot(); /* ... автоматически заполняется Jest'ом ... */
+  ).toMatchInlineSnapshot(); /* ... автоматически заполняется Jest ... */
 });
 ```
 
