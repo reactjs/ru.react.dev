@@ -235,8 +235,8 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | props | пропсы *(мн. ч.)* |
 | production | продакшен |
 | production mode | продакшен-режим |
-| profiling | профайлинг, профилирование |
-| Profiler | Profiler *(если имеется в виду компонент Profiler)*; профайлер *(если имеется в виду инструмент для профилирования)*
+| profiling | профилирование |
+| Profiler | Profiler *(если имеется в виду компонент Profiler)*; профилировщик *(если имеется в виду инструмент для профилирования)*
 | React | React |
 | React element | React-элемент, элемент React |
 | reconciliation | согласование |
