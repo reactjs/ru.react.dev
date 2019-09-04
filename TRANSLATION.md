@@ -251,7 +251,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | render props | рендер-пропсы *(мн. ч.)* |
 | reuse | повторное использование |
 | (previous/next) section | (предыдущая/следующая) глава *(только в разделе Основные понятия)* |
-| Set of interactions | Set-набор взаимодействий
+| Set of interactions | Множество взаимодействий
 | shallow | поверхностное (сравнение, равенство), поверхностный (рендеринг) |
 | side effect | побочный эффект |
 | snapshot | снимок |
