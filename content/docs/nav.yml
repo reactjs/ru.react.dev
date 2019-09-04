@@ -60,7 +60,7 @@
     - id: portals
       title: Порталы
     - id: profiler
-      title: Profiler
+      title: API для компонента Profiler
     - id: react-without-es6
       title: React без ES6
     - id: react-without-jsx
@@ -127,7 +127,7 @@
         title: "Хуки: ответы на вопросы"
 - title: Тестирование
   items:
-    - id: testing 
+    - id: testing
       title: Основы тестирования
     - id: testing-recipes
       title: Рецепты тестирования
