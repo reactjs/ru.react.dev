@@ -337,9 +337,13 @@ class Square extends React.Component {
 <img src="../images/tutorial/devtools.png" alt="React Devtools" style="max-width: 100%">
 
 
+<<<<<<< HEAD
 Расширение React DevTools позволяет просматривать пропсы и состояние ваших React-компонентов.
 
 После установки React DevTools, вы можете кликнуть правой кнопкой мыши на любой элемент страницы и нажать `Inspect` (`Просмотреть код`) для открытия инструментов разработчика. Вкладка React будет крайней справа.
+=======
+After installing React DevTools, you can right-click on any element on the page, click "Inspect" to open the developer tools, and the React tabs ("⚛️ Components" and "⚛️ Profiler") will appear as the last tabs to the right. Use "⚛️ Components" to inspect the component tree.
+>>>>>>> 8b30ae43439818009213da86eca872a3d869c5eb
 
 
 **Внимание, чтобы это работало на CodePen нужно сделать ещё несколько действий:**
