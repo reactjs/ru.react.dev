@@ -132,7 +132,7 @@
     - id: testing-recipes
       title: Рецепты тестирования
     - id: testing-environments
-      title: Testing Environments
+      title: Среды тестирования
 - title: Участие в проекте
   items:
   - id: how-to-contribute
