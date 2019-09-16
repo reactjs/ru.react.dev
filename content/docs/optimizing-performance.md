@@ -145,7 +145,7 @@ Webpack 4.0 и выше по умолчанию минифицирует код 
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  mode: 'production'
+  mode: 'production',
   optimization: {
     minimizer: [new TerserPlugin({ /* additional options here */ })],
   },
