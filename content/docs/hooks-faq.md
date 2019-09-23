@@ -657,7 +657,7 @@ function ProductPage({ productId }) {
   return <ProductDetails fetchProduct={fetchProduct} />;
 }
 
-function ProductDetails({ fetchProduct })
+function ProductDetails({ fetchProduct }) {
   useEffect(() => {
     fetchProduct();
   }, [fetchProduct]); // ✅ Перечисляем все зависимости useEffect
