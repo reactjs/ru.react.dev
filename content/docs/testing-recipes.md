@@ -543,11 +543,7 @@ it("should accept selections", () => {
 
 ### Тестирование снимками {#snapshot-testing}
 
-<<<<<<< HEAD
 Фреймворки, такие как Jest, позволяют сохранять «снимки» данных используя [`toMatchSnapshot` / `toMatchInlineSnapshot`](https://jestjs.io/docs/ru/snapshot-testing). С их помощью мы можем «сохранить» результат рендера компонента и убедиться, что изменение в нём явно отражено в снимке.
-=======
-Frameworks like Jest also let you save "snapshots" of data with [`toMatchSnapshot` / `toMatchInlineSnapshot`](https://jestjs.io/docs/en/snapshot-testing). With these, we can "save" the rendered component output and ensure that a change to it has to be explicitly committed as a change to the snapshot.
->>>>>>> 8edfc7ce78cbf5b6024ab5f891f0eee69c792d1f
 
 В следующем примере мы рендерим компонент и форматируем отрендеренный HTML, используя пакет [`pretty`](https://www.npmjs.com/package/pretty), перед его сохранением в виде встроенного снимка:
 

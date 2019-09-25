@@ -124,21 +124,13 @@ import OtherComponent from './OtherComponent';
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 ```
 
-<<<<<<< HEAD
-Она автоматически загрузит бандл содержащий `OtherComponent`, когда этот компонент будет отрендерен.
-=======
-This will automatically load the bundle containing the `OtherComponent` when this component is first rendered.
->>>>>>> 8edfc7ce78cbf5b6024ab5f891f0eee69c792d1f
+Она автоматически загрузит бандл содержащий `OtherComponent`, когда этот компонент будет впервые отрендерен.
 
 `React.lazy` принимает функцию, которая должна вызвать динамический `import()`. Результатом возвращённого Promise является модуль, который экспортирует по умолчанию React-компонент (`export default`).
 
-<<<<<<< HEAD
 ### Задержка {#suspense}
 
-Если модуль, содержащий `OtherComponent`, ещё не загружен к моменту рендеринга `MyComponent`, пока ожидаем, мы должны показать запасное содержимое, например индикатор загрузки. Это можно сделать с помощью компонента `Suspense`.
-=======
-The lazy component should then be rendered inside a `Suspense` component, which allows us to show some fallback content (such as a loading indicator) while we're waiting for the lazy component to load.
->>>>>>> 8edfc7ce78cbf5b6024ab5f891f0eee69c792d1f
+Ленивый компонент должен рендериться внутри компонента `Suspense`, который позволяет нам показать запасное содержимое (например, индикатор загрузки) пока происходит загрузка ленивого компонента.
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
