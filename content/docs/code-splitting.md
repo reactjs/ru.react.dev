@@ -124,7 +124,7 @@ import OtherComponent from './OtherComponent';
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
 ```
 
-Она автоматически загрузит бандл содержащий `OtherComponent`, когда этот компонент будет впервые отрендерен.
+Она автоматически загрузит бандл, содержащий `OtherComponent`, когда этот компонент будет впервые отрендерен.
 
 `React.lazy` принимает функцию, которая должна вызвать динамический `import()`. Результатом возвращённого Promise является модуль, который экспортирует по умолчанию React-компонент (`export default`).
 
