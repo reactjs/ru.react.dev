@@ -116,37 +116,21 @@ import("./math").then(math => {
 
 ```js
 import OtherComponent from './OtherComponent';
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
 **После:**
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
-
-function MyComponent() {
-  return (
-    <div>
-      <OtherComponent />
-    </div>
-  );
-}
 ```
 
-Она автоматически загрузит бандл содержащий `OtherComponent`, когда этот компонент будет отрендерен.
+Она автоматически загрузит бандл, содержащий `OtherComponent`, когда этот компонент будет впервые отрендерен.
 
 `React.lazy` принимает функцию, которая должна вызвать динамический `import()`. Результатом возвращённого Promise является модуль, который экспортирует по умолчанию React-компонент (`export default`).
 
 ### Задержка {#suspense}
 
-Если модуль, содержащий `OtherComponent`, ещё не загружен к моменту рендеринга `MyComponent`, пока ожидаем, мы должны показать запасное содержимое, например индикатор загрузки. Это можно сделать с помощью компонента `Suspense`.
+Компонент с ленивой загрузкой должен рендериться внутри компонента `Suspense`, который позволяет нам показать запасное содержимое (например, индикатор загрузки) пока происходит загрузка ленивого компонента.
 
 ```js
 const OtherComponent = React.lazy(() => import('./OtherComponent'));
