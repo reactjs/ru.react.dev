@@ -109,7 +109,13 @@ prev: hooks-reference.html
 
 Начиная с версии 7.1.0, React Redux [поддерживает API хуков](https://react-redux.js.org/api/hooks) и предоставляет такие хуки как `useDispatch` и `useSelector`.
 
+<<<<<<< HEAD
 В будущем библиотеки наподобие React Router могут также начать предоставлять хуки.
+=======
+React Router [supports hooks](https://reacttraining.com/react-router/web/api/Hooks) since v5.1.
+
+Other libraries might support hooks in the future too.
+>>>>>>> 647b639259919f96e9b667bf41ec16621e1b84dc
 
 ### Поддерживают ли хуки статическую типизацию? {#do-hooks-work-with-static-typing}
 
