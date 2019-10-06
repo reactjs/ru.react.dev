@@ -23,7 +23,7 @@ author: [tesseralis]
 
 Если вам хочется помочь с переводом, посетите страницу [переводов](/languages) и нажмите на ссылку «‎Contribute»‎ у вашего языка.
 
-Не можете найти свой язык? Если хотите мейнтейнить форк перевода на ваш язык, следуйте инструкциям в [репозитории переводов](https://github.com/reactjs/reactjs.org-translation#starting-a-new-translation)!
+Не можете найти свой язык? Если хотите поддерживать форк перевода на ваш язык, тогда следуйте инструкциям в [репозитории переводов](https://github.com/reactjs/reactjs.org-translation#starting-a-new-translation)!
 
 ## Предыстория {#backstory}
 
