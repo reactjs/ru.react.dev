@@ -1008,7 +1008,7 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 Используя метод `map`, мы можем отобразить историю наших ходов в React-элементы, представленные кнопками на экране, и отрисовать список кнопок для «перехода» к прошлым ходам.
 
-Давайте применим `map` к `history` внутри метода `render` Game-компонента:
+Давайте применим `map` к `history` внутри метода `render` Game-компонента (мы не будем использовать первый аргумент, поэтому обозначим его `_`):
 
 ```javascript{6-15,34}
   render() {
@@ -1016,13 +1016,13 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
     const current = history[history.length - 1];
     const winner = calculateWinner(current.squares);
 
-    const moves = history.map((step, move) => {
-      const desc = move ?
-        'Перейти к ходу #' + move :
+    const moves = history.map((_, step) => {
+      const desc = step ?
+        'Перейти к ходу #' + step :
         'К началу игры';
       return (
         <li>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button onClick={() => this.jumpTo(step)}>{desc}</button>
         </li>
       );
     });
@@ -1105,16 +1105,16 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 В истории игры крестики-нолики каждый прошлый ход имеет уникальный идентификатор: это номер хода в последовательности. Ходы никогда не меняют свой порядок, не удаляются и не добавляются в середину последовательности, так что вполне безопасно пользоваться индексом в качестве ключа.
 
-В методе `render` компонента Game мы можем добавить ключ следующим образом `<li key={move}>` и предупреждения от React об отсутствующих ключах должны пропасть:
+В методе `render` компонента Game мы можем добавить ключ следующим образом `<li key={step}>` и предупреждения от React об отсутствующих ключах должны пропасть:
 
 ```js{6}
-    const moves = history.map((step, move) => {
-      const desc = move ?
-        'Перейти к ходу #' + move :
+    const moves = history.map((_, step) => {
+      const desc = step ?
+        'Перейти к ходу #' + step :
         'К началу игры';
       return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        <li key={step}>
+          <button onClick={() => this.jumpTo(step)}>{desc}</button>
         </li>
       );
     });
