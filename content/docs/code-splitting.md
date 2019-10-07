@@ -57,19 +57,11 @@ console.log(add(16, 26)); // 42
 Вам нужно следить за кодом, который вы подключаете, чтобы случайно не сделать приложение настолько большим,
 что его загрузка займёт слишком много времени.
 
-<<<<<<< HEAD
 Чтобы предотвратить разрастание бандла, стоит начать «разделять» ваш бандл.
-[Разделение кода](https://webpack.js.org/guides/code-splitting/) это возможность, поддерживаемая такими бандлерами
-как Webpack или Browserify (с [factor-bundle](https://github.com/browserify/factor-bundle)), которая может создавать
+Разделение кода — это возможность, поддерживаемая такими бандлерами
+как [Webpack](https://webpack.js.org/guides/code-splitting/), [Rollup](https://rollupjs.org/guide/en/#code-splitting) или Browserify 
+(с [factor-bundle](https://github.com/browserify/factor-bundle)), которая может создавать
 несколько бандлов и загружать их по мере необходимости.
-=======
-To avoid winding up with a large bundle, it's good to get ahead of the problem
-and start "splitting" your bundle.
-Code-Splitting is a feature
-supported by bundlers like [Webpack](https://webpack.js.org/guides/code-splitting/), [Rollup](https://rollupjs.org/guide/en/#code-splitting) and Browserify (via
-[factor-bundle](https://github.com/browserify/factor-bundle)) which can create
-multiple bundles that can be dynamically loaded at runtime.
->>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 Хоть вы и не уменьшите общий объём кода вашего приложения, но избежите загрузки кода, который
 может никогда не понадобиться пользователю и уменьшите объём кода, необходимый для начальной загрузки.

@@ -396,8 +396,6 @@ June 21, 2019 Chicago, Illinois USA
 July 11-12, 2019. Portland, OR, USA.
 
 [Website](https://infinite.red/ChainReactConf)
-<<<<<<< HEAD
-=======
 
 ### React Rally 2019 {#react-rally-2019}
 August 22-23, 2019. Salt Lake City, USA.
@@ -444,4 +442,3 @@ September 26-28, 2019 in Alicante, Spain
 
 [Website](http://reactalicante.es/) - [Twitter](https://twitter.com/reactalicante) - [Facebook](https://www.facebook.com/ReactAlicante)
 
->>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f

@@ -15,22 +15,13 @@ permalink: docs/context.html
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
-<<<<<<< HEAD
+  - [Context.displayName](#contextdisplayname)
 - [Примеры](#examples)
   - [Динамический контекст](#dynamic-context)
   - [Изменение контекста из вложенного компонента](#updating-context-from-a-nested-component)
   - [Использование нескольких контекстов](#consuming-multiple-contexts)
 - [Предостережения](#caveats)
 - [Устаревший API](#legacy-api)
-=======
-  - [Context.displayName](#contextdisplayname)
-- [Examples](#examples)
-  - [Dynamic Context](#dynamic-context)
-  - [Updating Context from a Nested Component](#updating-context-from-a-nested-component)
-  - [Consuming Multiple Contexts](#consuming-multiple-contexts)
-- [Caveats](#caveats)
-- [Legacy API](#legacy-api)
->>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
 
 ## Когда использовать контекст {#when-to-use-context}
 
@@ -206,25 +197,21 @@ class MyClass extends React.Component {
 >
 > Подробнее про паттерн «_функция как дочерний компонент_» можно узнать на странице [Рендер-пропсы](/docs/render-props.html).
 
-<<<<<<< HEAD
-## Примеры {#examples}
-=======
 ### `Context.displayName` {#contextdisplayname}
 
-Context object accepts a `displayName` string property. React DevTools uses this string to determine what to display for the context.
+Объекту контекста можно задать строковое свойтсво `displayName`. React DevTools использует это свойство чтобы определить что to determine what to display for the context.
 
-For example, the following component will appear as MyDisplayName in the DevTools:
+К примеру, следующие компонент будет отображаться под именем MyDisplayName в DevTools:
 
 ```js{2}
-const MyContext = React.createContext(/* some value */);
+const MyContext = React.createContext(/* некоторое значение */);
 MyContext.displayName = 'MyDisplayName';
 
-<MyContext.Provider> // "MyDisplayName.Provider" in DevTools
-<MyContext.Consumer> // "MyDisplayName.Consumer" in DevTools
+<MyContext.Provider> // "MyDisplayName.Provider" в DevTools
+<MyContext.Consumer> // "MyDisplayName.Consumer" в DevTools
 ```
 
-## Examples {#examples}
->>>>>>> 5c371e5e3fd8f92e1d06dfdf1f28edc50fb5d83f
+## Примеры {#examples}
 
 ### Динамический контекст {#dynamic-context}
 
