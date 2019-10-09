@@ -1,5 +1,5 @@
 ---
-title: "Итоги React Conf: хуки, задержка и асинхронный рендеринг"
+title: "Итоги React Conf: хуки, задержка и конкурентный рендеринг"
 author: [tomocchino]
 ---
 
@@ -15,7 +15,7 @@ author: [tomocchino]
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ByBPyMBTzM0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Утро второго дня Эндрю Кларк и Брайан Вон начали с презентации асинхронного рендеринга в React. Эндрю рассказал о недавно анонсированном API для разделения кода -- [React.Lazy](/blog/2018/10/23/react-v-16-6.html) -- и продемонстрировал новый функционал: асинхронный режим и задержку. А Брайан наглядно показал, как ускорять приложения на базе React при помощи инструментов [нового React Profiler](/blog/2018/09/10/introducing-the-react-profiler.html).
+Утро второго дня Эндрю Кларк и Брайан Вон начали с презентации конкурентного рендеринга в React. Эндрю рассказал о недавно анонсированном API для разделения кода -- [React.Lazy](/blog/2018/10/23/react-v-16-6.html) -- и продемонстрировал новый функционал: конкурентный режим и задержку. А Брайан наглядно показал, как ускорять приложения на базе React при помощи инструментов [нового React Profiler](/blog/2018/09/10/introducing-the-react-profiler.html).
 
 <br>
 
