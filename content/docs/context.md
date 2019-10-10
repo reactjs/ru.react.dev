@@ -199,9 +199,9 @@ class MyClass extends React.Component {
 
 ### `Context.displayName` {#contextdisplayname}
 
-Объекту контекста можно задать строковое свойтсво `displayName`. React DevTools использует это свойство чтобы определить что to determine what to display for the context.
+Объекту Context можно задать строковое свойство `displayName`. React DevTools с помощью этого свойства определяет, что отображать для контекста.
 
-К примеру, следующие компонент будет отображаться под именем MyDisplayName в DevTools:
+К примеру, следующий компонент будет отображаться под именем MyDisplayName в DevTools:
 
 ```js{2}
 const MyContext = React.createContext(/* некоторое значение */);

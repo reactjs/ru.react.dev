@@ -49,7 +49,7 @@ React следует принципам [семантического верси
 
 Если мы думаем, что изменения могут вызвать проблемы в сообществе, мы постараемся сделать всё возможное, чтобы предоставить плавный переход от старой версии к новой.
 
-### If a Minor Release Includes No New Features, Why Isn't It a Patch? {#minors-versus-patches}
+### Если минорный релиз не содержит новых возможностей, почему это не патч релиз? {#minors-versus-patches}
 
 It's possible that a minor release will not include new features. [This is allowed by semver](https://semver.org/#spec-item-7), which states **"[a minor version] MAY be incremented if substantial new functionality or improvements are introduced within the private code. It MAY include patch level changes."**
 
