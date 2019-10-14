@@ -29,11 +29,19 @@ Stack Overflow – популярный форум для вопросов по 
 
 Каждое сообщество имеет несколько тысяч пользователей React.
 
+<<<<<<< HEAD
 * [Сообщество React на DEV](https://dev.to/t/react)
 * [Сообщество React на Hashnode](https://hashnode.com/n/reactjs)
 * [Чат на Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n)
 * [Сообщество React на Reddit](https://www.reddit.com/r/reactjs/)
 * [Сообщество React на Spectrum](https://spectrum.chat/react)
+=======
+* [DEV's React community](https://dev.to/t/react)
+* [Hashnode's React community](https://hashnode.com/n/reactjs)
+* [Reactiflux online chat](https://discord.gg/reactiflux)
+* [Reddit's React community](https://www.reddit.com/r/reactjs/)
+* [Spectrum's React community](https://spectrum.chat/react)
+>>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
 
 ## Новости {#news}
 

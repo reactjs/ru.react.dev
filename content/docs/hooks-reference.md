@@ -58,10 +58,16 @@ function Counter({initialCount}) {
   const [count, setCount] = useState(initialCount);
   return (
     <>
+<<<<<<< HEAD
       Счёт: {count}
       <button onClick={() => setCount(initialCount)}>Сбросить</button>
       <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
+=======
+      Count: {count}
+      <button onClick={() => setCount(initialCount)}>Reset</button>
+>>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
       <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
     </>
   );
 }
@@ -111,7 +117,11 @@ useEffect(didUpdate);
 
 Вместо этого используйте `useEffect`. Функция, переданная в `useEffect`, будет запущена после того, как рендер будет зафиксирован на экране. Думайте об эффектах как о лазейке из чисто функционального мира React в мир императивов.
 
+<<<<<<< HEAD
 По умолчанию эффекты запускаются после каждого завершённого рендеринга, но вы можете решить запускать их [только при изменении определённых значений](#conditionally-firing-an-effect).
+=======
+By default, effects run after every completed render, but you can choose to fire them [only when certain values have changed](#conditionally-firing-an-effect).
+>>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
 
 #### Очистка эффекта {#cleaning-up-an-effect}
 
@@ -195,7 +205,55 @@ const value = useContext(MyContext);
 >
 >`useContext(MyContext)` позволяет только *читать* контекст и подписываться на его изменения. Вам всё ещё нужен `<MyContext.Provider>` выше в дереве, чтобы *предоставить* значение для этого контекста.
 
+<<<<<<< HEAD
 ## Дополнительные хуки {#additional-hooks}
+=======
+**Putting it together with Context.Provider**
+```js{31-36}
+const themes = {
+  light: {
+    foreground: "#000000",
+    background: "#eeeeee"
+  },
+  dark: {
+    foreground: "#ffffff",
+    background: "#222222"
+  }
+};
+
+const ThemeContext = React.createContext(themes.light);
+
+function App() {
+  return (
+    <ThemeContext.Provider value={themes.dark}>
+      <Toolbar />
+    </ThemeContext.Provider>
+  );
+}
+
+function Toolbar(props) {
+  return (
+    <div>
+      <ThemedButton />
+    </div>
+  );
+}
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <button style={{ background: theme.background, color: theme.foreground }}>
+      I am styled by theme context!
+    </button>
+  );
+}
+```
+This example is modified for hooks from a previous example in the [Context Advanced Guide](/docs/context.html), where you can find more information about when and how to use Context.
+
+
+## Additional Hooks {#additional-hooks}
+>>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
 
 Следующие хуки являются вариантами базовых из предыдущего раздела или необходимы только для конкретных крайних случаев. Их не требуется основательно изучать заранее.
 
@@ -230,8 +288,8 @@ function Counter() {
   return (
     <>
       Count: {state.count}
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }
@@ -289,8 +347,8 @@ function Counter({initialCount}) {
         onClick={() => dispatch({type: 'reset', payload: initialCount})}>
         Reset
       </button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }
