@@ -31,7 +31,7 @@ Stack Overflow – популярный форум для вопросов по 
 
 * [Сообщество React на DEV](https://dev.to/t/react)
 * [Сообщество React на Hashnode](https://hashnode.com/n/reactjs)
-* [Чат на Reactiflux](https://discord.gg/0ZcbPKXt5bZjGY5n)
+* [Чат на Reactiflux](https://discord.gg/reactiflux)
 * [Сообщество React на Reddit](https://www.reddit.com/r/reactjs/)
 * [Сообщество React на Spectrum](https://spectrum.chat/react)
 

@@ -8,7 +8,9 @@ permalink: community/ui-components.html
 ## Free Components {#free-components}
 * **[Amaze UI React](https://github.com/amazeui/amazeui-react) (in Chinese):** [Amaze UI](https://github.com/allmobilize/amazeui) components built with React.
 * **[Ant Design of React](https://github.com/ant-design/ant-design)** An enterprise-class UI design language and React-based implementation.
+* **[Base Web](http://baseweb.design):** A foundation for initiating, evolving, and unifying web products.
 * **[Belle](https://github.com/nikgraf/belle/):** Configurable React Components with great UX.
+* **[Chakra UI](https://chakra-ui.com/)**: Simple, modular and accessible component library.
 * **[chartify](https://github.com/kirillstepkin/chartify)**: Ultra lightweight and customizable React.js chart component.
 * **[Elemental UI](http://elemental-ui.com):** A UI toolkit for React websites and apps, themeable and composed of individually packaged components
 * **[Grommet](https://grommet.io/)** The most advanced open source UX framework for enterprise applications.
@@ -79,3 +81,4 @@ permalink: community/ui-components.html
 * **[jQWidgets React components](https://www.jqwidgets.com/react/)**: Enterprise Ready 70+ UI Components.
 * **[KendoReact](https://www.telerik.com/kendo-react-ui/)**: UI for React Developers.
 * **[Mobiscroll React UI Components](https://mobiscroll.com/react)** Mobile UI Controls for the Productive React Developer.
+* **[React UI Toolkit](https://react-ui-tools.com/)**: 115+ professionally maintainted UI components ranging from a robust grid to charts and more. Try for FREE and build React apps faster.

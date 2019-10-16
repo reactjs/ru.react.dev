@@ -60,8 +60,8 @@ function Counter({initialCount}) {
     <>
       Счёт: {count}
       <button onClick={() => setCount(initialCount)}>Сбросить</button>
-      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
       <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
     </>
   );
 }
@@ -230,8 +230,8 @@ function Counter() {
   return (
     <>
       Count: {state.count}
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }
@@ -289,8 +289,8 @@ function Counter({initialCount}) {
         onClick={() => dispatch({type: 'reset', payload: initialCount})}>
         Reset
       </button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }

@@ -15,6 +15,7 @@ permalink: docs/context.html
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
+  - [Context.displayName](#contextdisplayname)
 - [Примеры](#examples)
   - [Динамический контекст](#dynamic-context)
   - [Изменение контекста из вложенного компонента](#updating-context-from-a-nested-component)
@@ -195,6 +196,20 @@ class MyClass extends React.Component {
 > Примечание
 >
 > Подробнее про паттерн «_функция как дочерний компонент_» можно узнать на странице [Рендер-пропсы](/docs/render-props.html).
+
+### `Context.displayName` {#contextdisplayname}
+
+Объекту Context можно задать строковое свойство `displayName`. React DevTools использует это свойство при отображении контекста.
+
+К примеру, следующий компонент будет отображаться под именем MyDisplayName в DevTools:
+
+```js{2}
+const MyContext = React.createContext(/* некоторое значение */);
+MyContext.displayName = 'MyDisplayName';
+
+<MyContext.Provider> // "MyDisplayName.Provider" в DevTools
+<MyContext.Consumer> // "MyDisplayName.Consumer" в DevTools
+```
 
 ## Примеры {#examples}
 
