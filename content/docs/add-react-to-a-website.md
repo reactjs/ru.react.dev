@@ -69,21 +69,13 @@ next: create-a-new-react-app.html
 
 Создайте файл с именем `like_button.js` рядом с вашим HTML файлом.
 
-<<<<<<< HEAD
-Возьмите **[этот стартовый код](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** и вставьте его в созданный ранее файл.
-=======
-Open **[this starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** and paste it into the file you created.
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
+Возьмите **[этот стартовый код](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)** и вставьте его в созданный ранее файл.
 
 >Совет
 >
 >В данном коде создаётся React-компонент с именем `LikeButton`. Не беспокойтесь, если что-то кажется вам непонятным -- мы подробно разберём принципы разработки на React позже, в нашем [практическом руководстве](/tutorial/tutorial.html) и во [введении в основные понятия](/docs/hello-world.html). Пока же мы просто посмотрим, как это выглядит на экране.
 
-<<<<<<< HEAD
-Добавьте ещё 2 строки в конец файла `like_button.js`, после **[стартового кода](https://cdn.rawgit.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**:
-=======
-After **[the starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, add two lines to the bottom of `like_button.js`:
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
+Добавьте ещё 2 строки в конец файла `like_button.js`, после **[стартового кода](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**:
 
 ```js{3,4}
 // ... стартовый код ...
@@ -203,11 +195,7 @@ npx babel --watch src --out-dir . --presets react-app/prod
 
 Дожидаться завершения работы команды не нужно -- она работает в режиме наблюдения за изменениями в JSX-коде.
 
-<<<<<<< HEAD
-Попробуйте создать файл с названием `src/like_button.js` и вставить в него **[этот стартовый JSX-код](https://cdn.rawgit.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**. Препроцессор автоматически трансформирует новый код в чистый JavaScript, пригодный для выполнения в браузере, и сохранит его в новый файл `like_button.js`. При редактировании JSX-кода в существующих файлах трансформация также происходит автоматически.
-=======
-If you now create a file called `src/like_button.js` with this **[JSX starter code](https://gist.github.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**, the watcher will create a preprocessed `like_button.js` with the plain JavaScript code suitable for the browser. When you edit the source file with JSX, the transform will re-run automatically.
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
+Попробуйте создать файл с названием `src/like_button.js` и вставить в него **[этот стартовый JSX-код](https://gist.github.com/gaearon/c8e112dc74ac44aac4f673f2c39d19d1/raw/09b951c86c1bf1116af741fa4664511f2f179f0a/like_button.js)**. Препроцессор автоматически трансформирует новый код в чистый JavaScript, пригодный для выполнения в браузере, и сохранит его в новый файл `like_button.js`. При редактировании JSX-кода в существующих файлах трансформация также происходит автоматически.
 
 Кроме препроцессинга JSX, вы в качестве бонуса получаете синтаксические новинки JavaScript, такие как классы, без головной боли с их браузерной поддержкой. Всё это доступно благодаря использованию инструмента под названием Babel, информацию о котором вы можете узнать из [его документации](https://babeljs.io/docs/en/babel-cli/).
 

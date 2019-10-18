@@ -10,25 +10,15 @@ React следует принципам [семантического верси
 
 Это значит, что для номера версии вида **x.y.z**:
 
-<<<<<<< HEAD
-* При выпуске **обратно несовместимых изменений**, мы делаем **мажорный релиз**, изменяя число **x**  (например, с 15.6.2 до 16.0.0).
-* При выпуске **новых возможностей**, мы делаем **минорный релиз**, изменяя число **y** (например, с 15.6.2 до 15.7.0).
 * При выпуске **исправлений ошибок**, мы делаем **патч-релиз**, изменяя число **z** (например, с 15.6.2 до 15.6.3).
-=======
-* When releasing **critical bug fixes**, we make a **patch release** by changing the **z** number (ex: 15.6.2 to 15.6.3).
-* When releasing **new features** or **non-critical fixes**, we make a **minor release** by changing the **y** number (ex: 15.6.2 to 15.7.0).
-* When releasing **breaking changes**, we make a **major release** by changing the **x** number (ex: 15.6.2 to 16.0.0).
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
+* При выпуске **новых возможностей** или **несущественных исправлений**, мы делаем **минорный релиз**, изменяя число **y** (например, с 15.6.2 до 15.7.0).
+* При выпуске **обратно несовместимых изменений**, мы делаем **мажорный релиз**, изменяя число **x**  (например, с 15.6.2 до 16.0.0).
 
 Мажорные релизы могут содержать новые возможности. Каждый релиз может содержать исправления ошибок.
 
-<<<<<<< HEAD
-### Обратно несовместимые изменения {#breaking-changes}
-=======
-Minor releases are the most common type of release.
+Минорный релиз — самый распостранённый тип релизов.
 
-### Breaking Changes {#breaking-changes}
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
+### Обратно несовместимые изменения {#breaking-changes}
 
 Обратно несовместимые изменения неудобны для всех, поэтому мы стараемся минимизировать количество мажорных релизов. Например, React 15 был выпущен в апреле 2016 года, а React 16 — в сентябре 2017 года. React 17 ожидается не раньше 2019 года.
 
@@ -57,22 +47,18 @@ Minor releases are the most common type of release.
 
 Наша политика разработана, чтобы быть практичной. Мы не хотим создавать вам головную боль. Если бы мы поднимали мажорную версию слишком часто, то доставили бы множество проблем всему сообществу. И это бы не позволило улучшать React так быстро, как нам хотелось.
 
-<<<<<<< HEAD
 Если мы думаем, что изменения могут вызвать проблемы в сообществе, мы постараемся сделать всё возможное, чтобы предоставить плавный переход от старой версии к новой.
-=======
-That said, if we expect that a change on this list will cause broad problems in the community, we will still do our best to provide a gradual migration path.
 
-### If a Minor Release Includes No New Features, Why Isn't It a Patch? {#minors-versus-patches}
+### Если минорный релиз не содержит новых возможностей, почему это не патч релиз? {#minors-versus-patches}
 
-It's possible that a minor release will not include new features. [This is allowed by semver](https://semver.org/#spec-item-7), which states **"[a minor version] MAY be incremented if substantial new functionality or improvements are introduced within the private code. It MAY include patch level changes."**
+Иногда минорный релиз может не включать новых возможностей. [Это допускается семантическим версионированием](https://semver.org/lang/ru/#spec-item-7), в котором говорится, что **"[минорная версия] МОЖЕТ быть увеличена в случае реализации новой функциональности или существенного усовершенствования в приватном коде. Версия МОЖЕТ включать изменения, характерные для патчей."**
 
-However, it does raise the question of why these releases aren't versioned as patches instead.
+Тем не менее, возникает вопрос, почему эти версии не являются патчами.
 
-The answer is that any change to React (or other software) carries some risk of breaking in unexpected ways. Imagine a scenario where a patch release that fixes one bug accidentally introduces a different bug. This would not only be disruptive to developers, but also harm their confidence in future patch releases. It's especially regrettable if the original fix is for a bug that is rarely encountered in practice.
+Ответ прост: любое изменение в React (как и в любой другой программе) несёт определённый риск непредвиденных ситуаций. Представьте ситуацию, в которой выпуск патч-релиза, исправляющий один баг, случайно вносит новый. Подобное не только негативно влияет на разработчиков, но и подрывает их уверенность в будущих патч-релизах. Особенно печально, если исправлялся баг, редко встречающийся на практике.
 
-We have a pretty good track record for keeping React releases free of bugs, but patch releases have an even higher bar for reliability because most developers assume they can be adopted without adverse consequences.
+У нас довольно хороший опыт в выпуске релизов React без багов, но патч-релизы имеют более высокую планку надёжности, поскольку большинство разработчиков предполагают, что они могут быть приняты без негативных последствий.
 
-For these reasons, we reserve patch releases only for the most critical bugs and security vulnerabilities.
+По этим причинам мы используем патч-релизы только для критических багов и уязвимостей в безопасности.
 
-If a release includes non-essential changes — such as internal refactors, changes to implementation details, performance improvements, or minor bugfixes — we will bump the minor version even when there are no new features.
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
+Если в релиз включены несущественные изменения — такие как внутренний рефакторинг, изменения деталей реализации, улучшение производительности или исправление мелких багов — мы увеличим минорную версию, даже если ничего нового нет.
