@@ -195,10 +195,7 @@ const value = useContext(MyContext);
 >
 >`useContext(MyContext)` позволяет только *читать* контекст и подписываться на его изменения. Вам всё ещё нужен `<MyContext.Provider>` выше в дереве, чтобы *предоставить* значение для этого контекста.
 
-<<<<<<< HEAD
-## Дополнительные хуки {#additional-hooks}
-=======
-**Putting it together with Context.Provider**
+**Соеденим все вместе с Context.Provider**
 ```js{31-36}
 const themes = {
   light: {
@@ -234,16 +231,15 @@ function ThemedButton() {
 
   return (
     <button style={{ background: theme.background, color: theme.foreground }}>
-      I am styled by theme context!
+      Я стилизован темой из контекста!
     </button>
   );
 }
 ```
-This example is modified for hooks from a previous example in the [Context Advanced Guide](/docs/context.html), where you can find more information about when and how to use Context.
+Этот пример с хуками — это модифицированный пример из раздела [Продвинутые темы: Контекст](/docs/context.html), где можно найти больше информации о том как и когда использовать объект Context.
 
 
-## Additional Hooks {#additional-hooks}
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
+## Дополнительные хуки {#additional-hooks}
 
 Следующие хуки являются вариантами базовых из предыдущего раздела или необходимы только для конкретных крайних случаев. Их не требуется основательно изучать заранее.
 

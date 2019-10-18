@@ -333,11 +333,7 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 ### `React.Suspense` {#reactsuspense}
 
-<<<<<<< HEAD
 `React.Suspense` позволяет показать индикатор загрузки в случае, если некоторые компоненты в дереве под ним ещё не готовы к рендеру. Сегодня ленивая загрузка компонентов — это **единственный** вариант использования, поддерживаемый `<React.Suspense>`:
-=======
-`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
->>>>>>> 81124465ac68335b2e3fdf21952a51265de6877f
 
 ```js
 // Этот компонент загружается динамически
