@@ -4,11 +4,7 @@ title: Неуправляемые компоненты
 permalink: docs/uncontrolled-components.html
 ---
 
-<<<<<<< HEAD
-В большинстве случаев при работе с формами мы рекомендуем использовать [управляемые компоненты](/docs/forms.html). В управляемом компоненте, данные формы обрабатываются React-компонентом. В качестве альтернативы можно использовать неуправляемые компоненты. Они хранят данные формы прямо в DOM.
-=======
-In most cases, we recommend using [controlled components](/docs/forms.html#controlled-components) to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.
->>>>>>> d2ade76cce133af47ab198188fa2de03fa51834b
+В большинстве случаев при работе с формами мы рекомендуем использовать [управляемые компоненты](/docs/forms.html#controlled-components). В управляемом компоненте, данные формы обрабатываются React-компонентом. В качестве альтернативы можно использовать неуправляемые компоненты. Они хранят данные формы прямо в DOM.
 
 Вместо того, чтобы писать обработчик события для каждого обновления состояния, вы можете использовать неуправляемый компонент и читать значения из DOM через [реф](/docs/refs-and-the-dom.html).
 
