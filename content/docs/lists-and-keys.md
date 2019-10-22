@@ -12,7 +12,7 @@ next: forms.html
 
 ```javascript{2}
 const numbers = [1, 2, 3, 4, 5];
-const doubled = numbers.map((number) => number * 2);
+const doubled = numbers.map((numbers) => numbers * 2);
 console.log(doubled);
 ```
 
