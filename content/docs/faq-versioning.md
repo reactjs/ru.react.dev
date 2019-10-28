@@ -18,7 +18,13 @@ React следует принципам [семантического верси
 
 Минорный релиз — самый распостранённый тип релизов.
 
+<<<<<<< HEAD
 ### Обратно несовместимые изменения {#breaking-changes}
+=======
+> This versioning policy does not apply to prerelease builds in the Next or Experimental channels. [Learn more about prereleases.](/docs/release-channels.html)
+
+### Breaking Changes {#breaking-changes}
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
 
 Обратно несовместимые изменения неудобны для всех, поэтому мы стараемся минимизировать количество мажорных релизов. Например, React 15 был выпущен в апреле 2016 года, а React 16 — в сентябре 2017 года. React 17 ожидается не раньше 2019 года.
 

@@ -7,8 +7,15 @@
     - id: create-a-new-react-app
       title: Создаём новое React-приложение
     - id: cdn-links
+<<<<<<< HEAD
       title: Ссылки на CDN
 - title: Основные понятия
+=======
+      title: CDN Links
+    - id: release-channels
+      title: Release Channels
+- title: Main Concepts
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
   isOrdered: true
   items:
     - id: hello-world
@@ -105,6 +112,7 @@
     - id: javascript-environment-requirements
       title: Требования к среде JavaScript
     - id: glossary
+<<<<<<< HEAD
       title: Словарь терминов React
 - title: Хуки (Новое)
   isOrdered: true
@@ -129,9 +137,36 @@
   items:
     - id: testing
       title: Основы тестирования
+=======
+      title: Glossary
+- title: Hooks
+  isOrdered: true
+  items:
+    - id: hooks-intro
+      title: Introducing Hooks
+    - id: hooks-overview
+      title: Hooks at a Glance
+    - id: hooks-state
+      title: Using the State Hook
+    - id: hooks-effect
+      title: Using the Effect Hook
+    - id: hooks-rules
+      title: Rules of Hooks
+    - id: hooks-custom
+      title: Building Your Own Hooks
+    - id: hooks-reference
+      title: Hooks API Reference
+    - id: hooks-faq
+      title: Hooks FAQ
+- title: Testing
+  items:
+    - id: testing
+      title: Testing Overview
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
     - id: testing-recipes
       title: Рецепты тестирования
     - id: testing-environments
+<<<<<<< HEAD
       title: Среды тестирования
 - title: Участие в проекте
   items:
@@ -143,6 +178,32 @@
     title: Implementation Notes
   - id: design-principles
     title: Принципы проектирования React
+=======
+      title: Testing Environments
+- title: Concurrent Mode (Experimental)
+  isOrdered: true
+  items:
+    - id: concurrent-mode-intro
+      title: Introducing Concurrent Mode
+    - id: concurrent-mode-suspense
+      title: Suspense for Data Fetching
+    - id: concurrent-mode-patterns
+      title: Concurrent UI Patterns
+    - id: concurrent-mode-adoption
+      title: Adopting Concurrent Mode
+    - id: concurrent-mode-reference
+      title: Concurrent Mode API Reference
+- title: Contributing
+  items:
+    - id: how-to-contribute
+      title: How to Contribute
+    - id: codebase-overview
+      title: Codebase Overview
+    - id: implementation-notes
+      title: Implementation Notes
+    - id: design-principles
+      title: Design Principles
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
 - title: FAQ
   items:
     - id: faq-ajax
@@ -160,4 +221,8 @@
     - id: faq-versioning
       title: Политика версионирования
     - id: faq-internals
+<<<<<<< HEAD
       title: Виртуальный DOM и детали его реализации в React
+=======
+      title: Virtual DOM and Internals
+>>>>>>> 081bb31226919062938ef924472ba1b4170facfc
