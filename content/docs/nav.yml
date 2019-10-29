@@ -8,6 +8,8 @@
       title: Создаём новое React-приложение
     - id: cdn-links
       title: Ссылки на CDN
+    - id: release-channels
+      title: Release Channels
 - title: Основные понятия
   isOrdered: true
   items:
@@ -106,7 +108,7 @@
       title: Требования к среде JavaScript
     - id: glossary
       title: Словарь терминов React
-- title: Хуки (Новое)
+- title: Хуки
   isOrdered: true
   items:
       - id: hooks-intro
@@ -133,6 +135,19 @@
       title: Рецепты тестирования
     - id: testing-environments
       title: Среды тестирования
+- title: Concurrent Mode (Experimental)
+  isOrdered: true
+  items:
+    - id: concurrent-mode-intro
+      title: Introducing Concurrent Mode
+    - id: concurrent-mode-suspense
+      title: Suspense for Data Fetching
+    - id: concurrent-mode-patterns
+      title: Concurrent UI Patterns
+    - id: concurrent-mode-adoption
+      title: Adopting Concurrent Mode
+    - id: concurrent-mode-reference
+      title: Concurrent Mode API Reference
 - title: Участие в проекте
   items:
   - id: how-to-contribute
