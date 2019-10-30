@@ -30,7 +30,7 @@ render() {
 
 >Совет
 >
->Если вы часто пишите похожий код, то пакет [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) поможет упростить его.
+>Если вы часто пишете похожий код, то пакет [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) поможет упростить его.
 
 ### Как можно использовать встроенные стили? {#can-i-use-inline-styles}
 
