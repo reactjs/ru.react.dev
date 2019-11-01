@@ -153,7 +153,7 @@
   - id: how-to-contribute
     title: Как внести свой вклад?
   - id: codebase-overview
-    title: Codebase Overview
+    title: Архитектура кодовой базы
   - id: implementation-notes
     title: Implementation Notes
   - id: design-principles
