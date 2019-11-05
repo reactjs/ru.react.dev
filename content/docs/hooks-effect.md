@@ -3,7 +3,7 @@ id: hooks-state
 title: Использование хука эффекта
 permalink: docs/hooks-effect.html
 next: hooks-rules.html
-prev: hooks-intro.html
+prev: hooks-state.html
 ---
 
 *Хуки* — нововведение в React 16.8, которое позволяет использовать состояние и другие возможности React без написания классов.
@@ -131,6 +131,7 @@ function Example() {
   useEffect(() => {
     document.title = `Вы нажали ${count} раз`;
   });
+}
 ```
 
 Мы объявляем переменную состояния `count` и говорим React, что мы хотим использовать эффект. Далее, мы передаём функцию в хук `useEffect`. Эта функция как раз и *будет* нашим эффектом. Внутри этого эффекта мы устанавливаем заголовок документа, используя API браузера `document.title`. Мы можем получать доступ к актуальной переменной `count` изнутри эффекта, так как он находится в области видимости нашей функции. Когда React рендерит наш компонент, он запоминает эффект, который мы использовали, и запускает его после того, как обновит DOM. Это будет происходить при каждом рендере, в том числе и при первоначальном.
@@ -198,17 +199,17 @@ class FriendStatus extends React.Component {
 
 Вы должно быть подумали, что нам потребуется отдельный эффект для выполнения сброса. Так как код для оформления и отмены подписки тесно связан с `useEffect`, мы решили объединить их. Если ваш эффект возвращает функцию, React выполнит её только тогда, когда наступит время сбросить эффект.
 
-```js{10-16}
+```js{6-16}
 import React, { useState, useEffect } from 'react';
 
 function FriendStatus(props) {
   const [isOnline, setIsOnline] = useState(null);
 
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
-
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     // Указываем, как сбросить этот эффект:
     return function cleanup() {
@@ -237,6 +238,10 @@ function FriendStatus(props) {
 
 ```js
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -316,15 +321,15 @@ function FriendStatusWithCounter(props) {
 
   const [isOnline, setIsOnline] = useState(null);
   useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
     };
   });
-
-  function handleStatusChange(status) {
-    setIsOnline(status.isOnline);
-  }
   // ...
 }
 ```
@@ -353,7 +358,7 @@ function FriendStatusWithCounter(props) {
   }
 ```
 
-**Но что же произойдёт, если проп `friend` поменяется**, пока компонент все ещё находится на экране? Наш компонент будет отображать статус в сети уже какого-нибудь другого друга. Это как раз таки баг. Это также может привести к утечки памяти или вообще к вылету нашего приложения при размонтировании, так как метод отписки будет использовать неправильный ID друга, от которого мы хотим отписаться.
+**Но что же произойдёт, если проп `friend` поменяется**, пока компонент все ещё находится на экране? Наш компонент будет отображать статус в сети уже какого-нибудь другого друга. Это как раз таки баг. Это также может привести к утечке памяти или вообще к вылету нашего приложения при размонтировании, так как метод отписки будет использовать неправильный ID друга, от которого мы хотим отписаться.
 
 В классовом компоненте нам бы пришлось добавить `componentDidUpdate`, чтобы решить эту задачу:
 
@@ -394,6 +399,7 @@ function FriendStatusWithCounter(props) {
 function FriendStatus(props) {
   // ...
   useEffect(() => {
+    // ...
     ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
     return () => {
       ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -401,7 +407,7 @@ function FriendStatus(props) {
   });
 ```
 
-Этого бага в данном компонент нет. (Но мы и не изменили там ничего)
+Этого бага в данном компоненте нет. (Но мы и не изменили там ничего)
 
 Здесь нет никакого особого кода для решения проблем с обновлениями, так как `useEffect` решает их *по умолчанию*. Он сбрасывает предыдущие эффекты прежде чем выполнить новые. Чтобы показать это на практике, давайте рассмотрим последовательность подписок и отписок, которые этот компонент может выполнить в течение некоторого времени.
 
@@ -449,8 +455,12 @@ useEffect(() => {
 
 Это также работает для эффектов с этапом сброса:
 
-```js{6}
+```js{10}
 useEffect(() => {
+  function handleStatusChange(status) {
+    setIsOnline(status.isOnline);
+  }
+
   ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
   return () => {
     ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
@@ -462,9 +472,14 @@ useEffect(() => {
 
 >Примечание
 >
->Если вы хотите использовать эту оптимизацию, обратите внимание на то, чтобы массив включал в себя **все значения из внешней области видимости, которые могут изменяться с течением времени, и которые будут использоваться эффектом**. В противном случае, ваш код будет ссылаться на устаревшее значение из предыдущих рендеров. Мы рассмотрим другие возможные оптимизации на странице [справочник API хуков](/docs/hooks-reference.html). 
+>Если вы хотите использовать эту оптимизацию, обратите внимание на то, чтобы массив включал в себя **все значения из области видимости компонента (такие как пропсы и состояние), которые могут изменяться с течением времени, и которые будут использоваться эффектом**. В противном случае, ваш код будет ссылаться на устаревшее значение из предыдущих рендеров. Отдельные страницы документации рассказывают о том, [как поступить с функциями](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) и [что делать с часто изменяющимися массивами](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
 >
->Если вы хотите выполнять эффект и сбрасывать его однократно (при монтировании и размонтировании), вы можете передать пустой массив вторым аргументом. React посчитает, что ваш эффект не зависит от *каких-либо* значений из пропсов или состояния, и таким образом, он будет знать, что ему не надо его выполнять повторно. Это не расценивается как особый случай -- он напрямую следует из логики работы массивов при вводе. Хотя передача `[]` ближе по мысли к модели знакомых `componentDidMount` и `componentWillUnmount`, мы не советуем привыкать к этому, так как это часто приводит к багам, [как было рассмотрено ранее](#explanation-why-effects-run-on-each-update). Не забывайте, что React откладывает выполнение `useEffect` пока браузер не отрисует все изменения, поэтому выполнение дополнительной работы не является существенной проблемой.
+>Если вы хотите запустить эффект и сбросить его только один раз (при монтировании и размонтировании), вы можете передать пустой массив (`[]`) вторым аргументом. React посчитает, что ваш эффект не зависит от *каких-либо* значений из пропсов или состояния и поэтому не будет выполнять повторных рендеров. Это не обрабатывается как особый случай -- он напрямую следует из логики работы массивов зависимостей.
+>
+>Если вы передадите пустой массив (`[]`), пропсы и состояние внутри эффекта всегда будут иметь значения, присвоенные им изначально. Хотя передача `[]` ближе по модели мышления к знакомым `componentDidMount` и `componentWillUnmount`, обычно есть [более хорошие](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [способы](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) избежать частых повторных рендеров. Не забывайте, что React откладывает выполнение `useEffect`, пока браузер не отрисует все изменения, поэтому выполнение дополнительной работы не является существенной проблемой.
+>
+>Мы рекомендуем использовать правило [`exhaustive-deps`](https://github.com/facebook/react/issues/14920), входящее в наш пакет правил линтера [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). Оно предупреждает, когда зависимости указаны неправильно и предлагает исправление.
+
 
 ## Следующие шаги {#next-steps}
 

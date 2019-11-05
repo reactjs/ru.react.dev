@@ -10,6 +10,7 @@ import Container from 'components/Container';
 import Header from 'components/Header';
 import TitleAndMetaTags from 'components/TitleAndMetaTags';
 import React from 'react';
+import {urlRoot} from 'site-constants';
 import {sharedStyles} from 'theme';
 
 // $FlowFixMe This is a valid path
@@ -24,24 +25,27 @@ const Versions = ({location}: Props) => (
     <Container>
       <div css={sharedStyles.articleLayout.container}>
         <div css={sharedStyles.articleLayout.content}>
-          <Header>React Versions</Header>
-          <TitleAndMetaTags title="React - Versions" />
+          <Header>Версии React</Header>
+          <TitleAndMetaTags
+            title="React — Версии"
+            canonicalUrl={`${urlRoot}/versions/`}
+          />
           <div css={sharedStyles.markdown}>
             <p>
-              A complete release history for React is available{' '}
+              Полная история версий React доступна{' '}
               <a
                 href="https://github.com/facebook/react/releases"
                 target="_blank"
                 rel="noopener">
-                on GitHub
+                на GitHub
               </a>
               .<br />
-              Documentation for recent releases can also be found below.
+              Документация к последним версиям может быть также найдена ниже.
             </p>
             <p>
-              See our FAQ for information about{' '}
+              Секция FAQ содержит информацию о{' '}
               <a href="/docs/faq-versioning.html">
-                our versioning policy and commitment to stability
+                нашем подходе к версионированию и отношении к стабильности
               </a>
               .
             </p>
@@ -51,13 +55,13 @@ const Versions = ({location}: Props) => (
                 <ul>
                   <li>
                     <a href={version.changelog} target="_blank" rel="noopener">
-                      Changelog
+                      Список изменений
                     </a>
                   </li>
                   {version.path && (
                     <li>
                       <a href={version.path} rel="nofollow">
-                        Documentation
+                        Документация
                       </a>
                     </li>
                   )}

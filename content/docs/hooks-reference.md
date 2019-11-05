@@ -1,22 +1,22 @@
 ---
 id: hooks-reference
-title: Hooks API Reference
+title: Справочник API хуков
 permalink: docs/hooks-reference.html
 prev: hooks-custom.html
 next: hooks-faq.html
 ---
 
-*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+*Хуки* — нововведение в React 16.8, которое позволяет использовать состояние и другие возможности React без написания классов.
 
-This page describes the APIs for the built-in Hooks in React.
+На этой странице описан API, относящийся к встроенным хукам React.
 
-If you're new to Hooks, you might want to check out [the overview](/docs/hooks-overview.html) first. You may also find useful information in the [frequently asked questions](/docs/hooks-faq.html) section.
+Если вы новичок в хуках, вы можете сначала ознакомиться с [общим обзором](/docs/hooks-overview.html). Вы также можете найти полезную информацию в главе [«Хуки: ответы на вопросы»](/docs/hooks-faq.html).
 
-- [Basic Hooks](#basic-hooks)
+- [Основные хуки](#basic-hooks)
   - [`useState`](#usestate)
   - [`useEffect`](#useeffect)
   - [`useContext`](#usecontext)
-- [Additional Hooks](#additional-hooks)
+- [Дополнительные хуки](#additional-hooks)
   - [`useReducer`](#usereducer)
   - [`useCallback`](#usecallback)
   - [`useMemo`](#usememo)
@@ -25,7 +25,7 @@ If you're new to Hooks, you might want to check out [the overview](/docs/hooks-o
   - [`useLayoutEffect`](#uselayouteffect)
   - [`useDebugValue`](#usedebugvalue)
 
-## Basic Hooks {#basic-hooks}
+## Основные хуки {#basic-hooks}
 
 ### `useState` {#usestate}
 
@@ -33,54 +33,58 @@ If you're new to Hooks, you might want to check out [the overview](/docs/hooks-o
 const [state, setState] = useState(initialState);
 ```
 
-Returns a stateful value, and a function to update it.
+Возвращает значение с состоянием и функцию для его обновления.
 
-During the initial render, the returned state (`state`) is the same as the value passed as the first argument (`initialState`).
+Во время первоначального рендеринга возвращаемое состояние (`state`) совпадает со значением, переданным в качестве первого аргумента (`initialState`).
 
-The `setState` function is used to update the state. It accepts a new state value and enqueues a re-render of the component.
+Функция `setState` используется для обновления состояния. Она принимает новое значение состояния и ставит в очередь повторный рендер компонента.
 
 ```js
 setState(newState);
 ```
 
-During subsequent re-renders, the first value returned by `useState` will always be the most recent state after applying updates.
+Во время последующих повторных рендеров первое значение, возвращаемое `useState`, всегда будет самым последним состоянием после применения обновлений.
 
-#### Functional updates {#functional-updates}
+>Примечание
+>
+>React гарантирует, что идентичность функции `setState` стабильна и не изменяется при повторных рендерах. Поэтому её можно безопасно не включать в списки зависимостей хуков `useEffect` и `useCallback`.
 
-If the new state is computed using the previous state, you can pass a function to `setState`. The function will receive the previous value, and return an updated value. Here's an example of a counter component that uses both forms of `setState`:
+#### Функциональные обновления {#functional-updates}
+
+Если новое состояние вычисляется с использованием предыдущего состояния, вы можете передать функцию в `setState`. Функция получит предыдущее значение и вернёт обновлённое значение. Вот пример компонента счётчик, который использует обе формы `setState`:
 
 ```js
 function Counter({initialCount}) {
   const [count, setCount] = useState(initialCount);
   return (
     <>
-      Count: {count}
-      <button onClick={() => setCount(initialCount)}>Reset</button>
-      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
+      Счёт: {count}
+      <button onClick={() => setCount(initialCount)}>Сбросить</button>
       <button onClick={() => setCount(prevCount => prevCount - 1)}>-</button>
+      <button onClick={() => setCount(prevCount => prevCount + 1)}>+</button>
     </>
   );
 }
 ```
 
-The "+" and "-" buttons use the functional form, because the updated value is based on the previous value. But the "Reset" button uses the normal form, because it always sets the count back to 0.
+Кнопки «+» и «-» используют функциональную форму, потому что обновлённое значение основано на предыдущем значении. Но кнопка «Сбросить» использует обычную форму, потому что она всегда устанавливает счётчик обратно в 0.
 
-> Note
+> Примечание
 >
-> Unlike the `setState` method found in class components, `useState` does not automatically merge update objects. You can replicate this behavior by combining the function updater form with object spread syntax:
+> В отличие от метода `setState`, который вы можете найти в классовых компонентах, `useState` не объединяет объекты обновления автоматически. Вы можете повторить это поведение, комбинируя форму функции обновления с синтаксисом расширения объекта:
 >
 > ```js
 > setState(prevState => {
->   // Object.assign would also work
+>   // Object.assign также будет работать
 >   return {...prevState, ...updatedValues};
 > });
 > ```
 >
-> Another option is `useReducer`, which is more suited for managing state objects that contain multiple sub-values.
+> Другой вариант – `useReducer`, который больше подходит для управления объектами состояния, содержащими несколько значений.
 
-#### Lazy initial state {#lazy-initial-state}
+#### Ленивая инициализация состояния {#lazy-initial-state}
 
-The `initialState` argument is the state used during the initial render. In subsequent renders, it is disregarded. If the initial state is the result of an expensive computation, you may provide a function instead, which will be executed only on the initial render:
+Аргумент `initialState` – это состояние, используемое во время начального рендеринга. В последующих рендерах это не учитывается. Если начальное состояние является результатом дорогостоящих вычислений, вы можете вместо этого предоставить функцию, которая будет выполняться только при начальном рендеринге:
 
 ```js
 const [state, setState] = useState(() => {
@@ -89,9 +93,11 @@ const [state, setState] = useState(() => {
 });
 ```
 
-#### Bailing out of a state update {#bailing-out-of-a-state-update}
+#### Досрочное прекращение обновления состояния {#bailing-out-of-a-state-update}
 
-If you update a State Hook to the same value as the current state, React will bail out without rendering the children or firing effects. (React uses the [`Object.is` comparison algorithm](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
+Если вы обновите состояние хука тем же значением, что и текущее состояние, React досрочно выйдет из хука без повторного рендера дочерних элементов и запуска эффектов. (React использует [алгоритм сравнения `Object.is`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
+
+Обратите внимание, что для React всё ещё может быть необходим повторный рендер этого компонента. Это не должно быть проблемой, потому что React не будет сильно «углубляться» в дерево. Если вы делаете дорогостоящие вычисления во время рендеринга, вы можете оптимизировать их с помощью `useMemo`.
 
 ### `useEffect` {#useeffect}
 
@@ -99,45 +105,45 @@ If you update a State Hook to the same value as the current state, React will ba
 useEffect(didUpdate);
 ```
 
-Accepts a function that contains imperative, possibly effectful code.
+Принимает функцию, которая содержит императивный код, возможно, с эффектами.
 
-Mutations, subscriptions, timers, logging, and other side effects are not allowed inside the main body of a function component (referred to as React's _render phase_). Doing so will lead to confusing bugs and inconsistencies in the UI.
+Мутации, подписки, таймеры, логирование и другие побочные эффекты не допускаются внутри основного тела функционального компонента (называемого _этапом рендеринга_ React). Это приведёт к запутанным ошибкам и несоответствиям в пользовательском интерфейсе.
 
-Instead, use `useEffect`. The function passed to `useEffect` will run after the render is committed to the screen. Think of effects as an escape hatch from React's purely functional world into the imperative world.
+Вместо этого используйте `useEffect`. Функция, переданная в `useEffect`, будет запущена после того, как рендер будет зафиксирован на экране. Думайте об эффектах как о лазейке из чисто функционального мира React в мир императивов.
 
-By default, effects run after every completed render, but you can choose to fire it [only when certain values have changed](#conditionally-firing-an-effect).
+По умолчанию эффекты запускаются после каждого завершённого рендеринга, но вы можете решить запускать их [только при изменении определённых значений](#conditionally-firing-an-effect).
 
-#### Cleaning up an effect {#cleaning-up-an-effect}
+#### Очистка эффекта {#cleaning-up-an-effect}
 
-Often, effects create resources that need to be cleaned up before the component leaves the screen, such as a subscription or timer ID. To do this, the function passed to `useEffect` may return a clean-up function. For example, to create a subscription:
+Часто эффекты создают ресурсы, которые необходимо очистить (или сбросить) перед тем, как компонент покидает экран, например подписку или идентификатор таймера. Чтобы сделать это, функция переданная в `useEffect`, может вернуть функцию очистки. Например, чтобы создать подписку:
 
 ```js
 useEffect(() => {
   const subscription = props.source.subscribe();
   return () => {
-    // Clean up the subscription
+    // Очистить подписку
     subscription.unsubscribe();
   };
 });
 ```
 
-The clean-up function runs before the component is removed from the UI to prevent memory leaks. Additionally, if a component renders multiple times (as they typically do), the **previous effect is cleaned up before executing the next effect**. In our example, this means a new subscription is created on every update. To avoid firing an effect on every update, refer to the next section.
+Функция очистки запускается до удаления компонента из пользовательского интерфейса, чтобы предотвратить утечки памяти. Кроме того, если компонент рендерится несколько раз (как обычно происходит), **предыдущий эффект очищается перед выполнением следующего эффекта**. В нашем примере это означает, что новая подписка создаётся при каждом обновлении. Чтобы избежать воздействия на каждое обновление, обратитесь к следующему разделу.
 
-#### Timing of effects {#timing-of-effects}
+#### Порядок срабатывания эффектов {#timing-of-effects}
 
-Unlike `componentDidMount` and `componentDidUpdate`, the function passed to `useEffect` fires **after** layout and paint, during a deferred event. This makes it suitable for the many common side effects, like setting up subscriptions and event handlers, because most types of work shouldn't block the browser from updating the screen.
+В отличие от `componentDidMount` и `componentDidUpdate`, функция, переданная в `useEffect`, запускается во время отложенного события **после** разметки и отрисовки. Это делает хук подходящим для многих распространённых побочных эффектов, таких как настройка подписок и обработчиков событий, потому что большинство типов работы не должны блокировать обновление экрана браузером.
 
-However, not all effects can be deferred. For example, a DOM mutation that is visible to the user must fire synchronously before the next paint so that the user does not perceive a visual inconsistency. (The distinction is conceptually similar to passive versus active event listeners.) For these types of effects, React provides one additional Hook called [`useLayoutEffect`](#uselayouteffect). It has the same signature as `useEffect`, and only differs in when it is fired.
+Однако не все эффекты могут быть отложены. Например, изменение DOM, которое видно пользователю, должно запускаться синхронно до следующей отрисовки, чтобы пользователь не замечал визуального несоответствие. (Различие концептуально схоже с пассивным и активным слушателями событий.) Для этих типов эффектов React предоставляет один дополнительный хук, называемый [`useLayoutEffect`](#uselayouteffect). Он имеет ту же сигнатуру, что и `useEffect`, и отличается только в его запуске.
 
-Although `useEffect` is deferred until after the browser has painted, it's guaranteed to fire before any new renders. React will always flush a previous render's effects before starting a new update.
+Хотя `useEffect` откладывается до тех пор, пока браузер не выполнит отрисовку, он гарантированно срабатывает перед любыми новыми рендерами. React всегда полностью применяет эффекты предыдущего рендера перед началом нового обновления.
 
-#### Conditionally firing an effect {#conditionally-firing-an-effect}
+#### Условное срабатывание эффекта {#conditionally-firing-an-effect}
 
-The default behavior for effects is to fire the effect after every completed render. That way an effect is always recreated if one of its inputs changes.
+По умолчанию эффекты запускаются после каждого завершённого рендера. Таким образом, эффект всегда пересоздаётся, если значение какой-то из зависимости изменилось.
 
-However, this may be overkill in some cases, like the subscription example from the previous section. We don't need to create a new subscription on every update, only if the `source` props has changed.
+Однако в некоторых случаях это может быть излишним, например, в примере подписки из предыдущего раздела. Нам не нужно создавать новую подписку на каждое обновление, а только если изменился проп `source`.
 
-To implement this, pass a second argument to `useEffect` that is the array of values that the effect depends on. Our updated example now looks like this:
+Чтобы реализовать это, передайте второй аргумент в `useEffect`, который является массивом значений, от которых зависит эффект. Наш обновлённый пример теперь выглядит так:
 
 ```js
 useEffect(
@@ -151,27 +157,91 @@ useEffect(
 );
 ```
 
-Now the subscription will only be recreated when `props.source` changes.
+Теперь подписка будет создана повторно только при изменении `props.source`.
 
-Passing in an empty array `[]` of inputs tells React that your effect doesn't depend on any values from the component, so that effect would run only on mount and clean up on unmount; it won't run on updates.
-
-> Note
+>Примечание
 >
-> The array of inputs is not passed as arguments to the effect function. Conceptually, though, that's what they represent: every value referenced inside the effect function should also appear in the inputs array. In the future, a sufficiently advanced compiler could create this array automatically.
+>Если вы хотите использовать эту оптимизацию, обратите внимание на то, чтобы массив включал в себя **все значения из области видимости компонента (такие как пропсы и состояние), которые могут изменяться с течением времени, и которые будут использоваться эффектом**. В противном случае, ваш код будет ссылаться на устаревшее значение из предыдущих рендеров. Отдельные страницы документации рассказывают о том, [как поступить с функциями](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) и [что делать с часто изменяющимися массивами](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often).
+>
+>Если вы хотите запустить эффект и сбросить его только один раз (при монтировании и размонтировании), вы можете передать пустой массив (`[]`) вторым аргументом. React посчитает, что ваш эффект не зависит от *каких-либо* значений из пропсов или состояния и поэтому не будет выполнять повторных запусков эффекта. Это не обрабатывается как особый случай -- он напрямую следует из логики работы входных массивов.
+>
+>Если вы передадите пустой массив (`[]`), пропсы и состояние внутри эффекта всегда будут иметь значения, присвоенные им изначально. Хотя передача `[]` ближе по модели мышления к знакомым `componentDidMount` и `componentWillUnmount`, обычно есть [более хорошие](/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies) [способы](/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often) избежать частых повторных рендеров. Не забывайте, что React откладывает выполнение `useEffect`, пока браузер не отрисует все изменения, поэтому выполнение дополнительной работы не является существенной проблемой.
+>
+>Мы рекомендуем использовать правило [`exhaustive-deps`](https://github.com/facebook/react/issues/14920), входящее в наш пакет правил линтера [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). Оно предупреждает, когда зависимости указаны неправильно и предлагает исправление.
+
+Массив зависимостей не передаётся в качестве аргументов функции эффекта. Тем не менее, в теории вот что происходит: каждое значение, на которое ссылается функция эффекта, должно также появиться в массиве зависимостей. В будущем достаточно продвинутый компилятор сможет создать этот массив автоматически.
 
 ### `useContext` {#usecontext}
 
 ```js
-const context = useContext(Context);
+const value = useContext(MyContext);
 ```
 
-Accepts a context object (the value returned from `React.createContext`) and returns the current context value, as given by the nearest context provider for the given context.
+Принимает объект контекста (значение, возвращённое из `React.createContext`) и возвращает текущее значение контекста для этого контекста. Текущее значение контекста определяется пропом `value` ближайшего `<MyContext.Provider>` над вызывающим компонентом в дереве.
 
-When the provider updates, this Hook will trigger a rerender with the latest context value.
+Когда ближайший `<MyContext.Provider>` над компонентом обновляется, этот хук вызовет повторный рендер с последним значением контекста, переданным этому провайдеру `MyContext`.
 
-## Additional Hooks {#additional-hooks}
+Запомните, аргумент для `useContext` должен быть *непосредственно сам объект контекста*:
 
-The following Hooks are either variants of the basic ones from the previous section, or only needed for specific edge cases. Don't stress about learning them up front.
+ * **Правильно:** `useContext(MyContext)`
+ * **Неправильно:** `useContext(MyContext.Consumer)`
+ * **Неправильно:** `useContext(MyContext.Provider)`
+
+Компонент, вызывающий `useContext`, всегда будет перерендериваться при изменении значения контекста. Если повторный рендер компонента затратен, вы можете [оптимизировать его с помощью мемоизации](https://github.com/facebook/react/issues/15156#issuecomment-474590693).
+
+>Совет
+>
+>Если вы были знакомы с API контекстов до появления хуков, то вызов `useContext(MyContext)` аналогичен выражению `static contextType = MyContext` в классе, либо компоненту `<MyContext.Consumer>`.
+>
+>`useContext(MyContext)` позволяет только *читать* контекст и подписываться на его изменения. Вам всё ещё нужен `<MyContext.Provider>` выше в дереве, чтобы *предоставить* значение для этого контекста.
+
+**Соеденим все вместе с Context.Provider**
+```js{31-36}
+const themes = {
+  light: {
+    foreground: "#000000",
+    background: "#eeeeee"
+  },
+  dark: {
+    foreground: "#ffffff",
+    background: "#222222"
+  }
+};
+
+const ThemeContext = React.createContext(themes.light);
+
+function App() {
+  return (
+    <ThemeContext.Provider value={themes.dark}>
+      <Toolbar />
+    </ThemeContext.Provider>
+  );
+}
+
+function Toolbar(props) {
+  return (
+    <div>
+      <ThemedButton />
+    </div>
+  );
+}
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+
+  return (
+    <button style={{ background: theme.background, color: theme.foreground }}>
+      Я стилизован темой из контекста!
+    </button>
+  );
+}
+```
+Это пример из раздела [Продвинутые темы: Контекст](/docs/context.html), только переписанный с использованием хуков. В этом же разделе можно найти больше информации о том, как и когда использовать объект Context.
+
+
+## Дополнительные хуки {#additional-hooks}
+
+Следующие хуки являются вариантами базовых из предыдущего раздела или необходимы только для конкретных крайних случаев. Их не требуется основательно изучать заранее.
 
 ### `useReducer` {#usereducer}
 
@@ -179,11 +249,11 @@ The following Hooks are either variants of the basic ones from the previous sect
 const [state, dispatch] = useReducer(reducer, initialArg, init);
 ```
 
-An alternative to [`useState`](#usestate). Accepts a reducer of type `(state, action) => newState`, and returns the current state paired with a `dispatch` method. (If you're familiar with Redux, you already know how this works.)
+Альтернатива для [`useState`](#usestate). Принимает редюсер типа `(state, action) => newState` и возвращает текущее состояние в паре с методом `dispatch`. (Если вы знакомы с Redux, вы уже знаете, как это работает.)
 
-`useReducer` is usually preferable to `useState` when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one. `useReducer` also lets you optimize performance for components that trigger deep updates because [you can pass `dispatch` down instead of callbacks](/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down).
+Хук `useReducer` обычно предпочтительнее `useState`, когда у вас сложная логика состояния, которая включает в себя несколько значений, или когда следующее состояние зависит от предыдущего. `useReducer` также позволяет оптимизировать производительность компонентов, которые запускают глубокие обновления, [поскольку вы можете передавать `dispatch` вместо колбэков](/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down).
 
-Here's the counter example from the [`useState`](#usestate) section, rewritten to use a reducer:
+Вот пример счётчика из раздела [`useState`](#usestate), переписанный для использования редюсера:
 
 ```js
 const initialState = {count: 0};
@@ -199,21 +269,25 @@ function reducer(state, action) {
   }
 }
 
-function Counter({initialState}) {
+function Counter() {
   const [state, dispatch] = useReducer(reducer, initialState);
   return (
     <>
       Count: {state.count}
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }
 ```
 
-#### Specifying the initial state {#specifying-the-initial-state}
+>Примечание
+>
+>React гарантирует, что идентичность функции `dispatch` стабильна и не изменяется при повторных рендерах. Поэтому её можно безопасно не включать в списки зависимостей хуков `useEffect` и `useCallback`.
 
-There’s two different ways to initialize `useReducer` state. You may choose either one depending on the use case. The simplest way to pass the initial state as a second argument:
+#### Указание начального состояния {#specifying-the-initial-state}
+
+Существует два разных способа инициализации состояния `useReducer`. Вы можете выбрать любой из них в зависимости от ситуации. Самый простой способ -- передать начальное состояние в качестве второго аргумента:
 
 ```js{3}
   const [state, dispatch] = useReducer(
@@ -222,15 +296,15 @@ There’s two different ways to initialize `useReducer` state. You may choose ei
   );
 ```
 
->Note
+>Примечание
 >
->React doesn’t use the `state = initialState` argument convention popularized by Redux. The initial value sometimes needs to depend on props and so is specified from the Hook call instead. If you feel strongly about this, you can call `useReducer(reducer, undefined, reducer)` to emulate the Redux behavior, but it's not encouraged.
+>React не использует соглашение об аргументах `state = initialState`, популярное в Redux. Начальное значение иногда должно зависеть от пропсов и поэтому указывается вместо вызова хука. Если вы сильно в этом уверены, вы можете вызвать `useReducer(reducer, undefined, reducer)`, чтобы эмулировать поведение Redux, но это не рекомендуется.
 
-#### Lazy initialization {#lazy-initialization}
+#### Ленивая инициализация {#lazy-initialization}
 
-You can also create the initial state lazily. To do this, you can pass an `init` function as the third argument. The initial state will be set to `init(initialArg)`.
+Вы также можете создать начальное состояние лениво. Для этого вы можете передать функцию `init` в качестве третьего аргумента. Начальное состояние будет установлено равным результату вызова `init(initialArg)`.
 
-It lets you extract the logic for calculating the initial state outside the reducer. This is also handy for resetting the state later in response to an action:
+Это позволяет извлечь логику для расчёта начального состояния за пределы редюсера. Это также удобно для сброса состояния позже в ответ на действие:
 
 ```js{1-3,11-12,19,24}
 function init(initialCount) {
@@ -259,16 +333,18 @@ function Counter({initialCount}) {
         onClick={() => dispatch({type: 'reset', payload: initialCount})}>
         Reset
       </button>
-      <button onClick={() => dispatch({type: 'increment'})}>+</button>
       <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
     </>
   );
 }
 ```
 
-#### Bailing out of a dispatch {#bailing-out-of-a-dispatch}
+#### Досрочное прекращение `dispatch` {#bailing-out-of-a-dispatch}
 
-If you return the same value from a Reducer Hook as the current state, React will bail out without rendering the children or firing effects. (React uses the [`Object.is` comparison algorithm](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
+Если вы вернёте то же значение из редюсера хука, что и текущее состояние, React выйдет без перерисовки дочерних элементов или запуска эффектов. (React использует [алгоритм сравнения Object.is](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).)
+
+Обратите внимание, что для React всё ещё может быть необходим повторный рендер этого компонента. Это не должно быть проблемой, потому что React не будет сильно «углубляться» в дерево. Если вы делаете дорогостоящие вычисления во время рендеринга, вы можете оптимизировать их с помощью `useMemo`.
 
 ### `useCallback` {#usecallback}
 
@@ -281,15 +357,17 @@ const memoizedCallback = useCallback(
 );
 ```
 
-Returns a [memoized](https://en.wikipedia.org/wiki/Memoization) callback.
+Возвращает [мемоизированный](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%BC%D0%BE%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F) колбэк.
 
-Pass an inline callback and an array of inputs. `useCallback` will return a memoized version of the callback that only changes if one of the inputs has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. `shouldComponentUpdate`).
+Передайте встроенный колбэк и массив зависимостей. Хук `useCallback` вернёт мемоизированную версию колбэка, который изменяется только, если изменяются значения одной из зависимостей. Это полезно при передаче колбэков оптимизированным дочерним компонентам, которые полагаются на равенство ссылок для предотвращения ненужных рендеров (например, `shouldComponentUpdate`).
 
-`useCallback(fn, inputs)` is equivalent to `useMemo(() => fn, inputs)`.
+`useCallback(fn, deps)` – это эквивалент `useMemo(() => fn, deps)`.
 
-> Note
+> Примечание
 >
-> The array of inputs is not passed as arguments to the callback. Conceptually, though, that's what they represent: every value referenced inside the callback should also appear in the inputs array. In the future, a sufficiently advanced compiler could create this array automatically.
+> Массив зависимостей не передаётся в качестве аргументов для колбэка. Концептуально, однако, это то, что они представляют: каждое значение, использованное в колбэке, должно также появиться в массиве зависимостей. В будущем достаточно продвинутый компилятор может создать этот массив автоматически.
+>
+> Мы рекомендуем использовать правило [`exhaustive-deps`](https://github.com/facebook/react/issues/14920), входящее в наш пакет правил линтера [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). Оно предупреждает, когда зависимости указаны неправильно и предлагает исправление.
 
 ### `useMemo` {#usememo}
 
@@ -297,19 +375,21 @@ Pass an inline callback and an array of inputs. `useCallback` will return a memo
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
 
-Returns a [memoized](https://en.wikipedia.org/wiki/Memoization) value.
+Возвращает [мемоизированное](https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D0%BC%D0%BE%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F) значение.
 
-Pass a "create" function and an array of inputs. `useMemo` will only recompute the memoized value when one of the inputs has changed. This optimization helps to avoid expensive calculations on every render.
+Передайте «создающую» функцию и массив зависимостей. `useMemo` будет повторно вычислять мемоизированное значение только тогда, когда значение какой-либо из зависимостей изменилось. Эта оптимизация помогает избежать дорогостоящих вычислений при каждом рендере.
 
-Remember that the function passed to `useMemo` runs during rendering. Don't do anything there that you wouldn't normally do while rendering. For example, side effects belong in `useEffect`, not `useMemo`.
+Помните, что функция, переданная `useMemo`, запускается во время рендеринга. Не делайте там ничего, что вы обычно не делаете во время рендеринга. Например, побочные эффекты принадлежат `useEffect`, а не `useMemo`.
 
-If no array is provided, a new value will be computed whenever a new function instance is passed as the first argument. (With an inline function, on every render.)
+Если массив не был передан, новое значение будет вычисляться при каждом рендере.
 
-**You may rely on `useMemo` as a performance optimization, not as a semantic guarantee.** In the future, React may choose to "forget" some previously memoized values and recalculate them on next render, e.g. to free memory for offscreen components. Write your code so that it still works without `useMemo` — and then add it to optimize performance.
+**Вы можете использовать `useMemo` как оптимизацию производительности, а не как семантическую гарантию.** В будущем React может решить «забыть» некоторые ранее мемоизированные значения и пересчитать их при следующем рендере, например, чтобы освободить память для компонентов вне области видимости экрана. Напишите свой код, чтобы он по-прежнему работал без `useMemo`, а затем добавьте его для оптимизации производительности.
 
-> Note
+> Примечание
 >
-> The array of inputs is not passed as arguments to the function. Conceptually, though, that's what they represent: every value referenced inside the function should also appear in the inputs array. In the future, a sufficiently advanced compiler could create this array automatically.
+> Массив зависимостей не передаётся в качестве аргументов функции. Концептуально, однако, это то, что они представляют: каждое значение, на которое ссылается функция, должно также появиться в массиве зависимостей. В будущем достаточно продвинутый компилятор может создать этот массив автоматически.
+>
+> Мы рекомендуем использовать правило [`exhaustive-deps`](https://github.com/facebook/react/issues/14920), входящее в наш пакет правил линтера [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). Оно предупреждает, когда зависимости указаны неправильно и предлагает исправление.
 
 ### `useRef` {#useref}
 
@@ -317,35 +397,43 @@ If no array is provided, a new value will be computed whenever a new function in
 const refContainer = useRef(initialValue);
 ```
 
-`useRef` returns a mutable ref object whose `.current` property is initialized to the passed argument (`initialValue`). The returned object will persist for the full lifetime of the component.
+`useRef` возвращает изменяемый ref-объект, свойство `.current` которого инициализируется переданным аргументом (`initialValue`). Возвращённый объект будет сохраняться в течение всего времени жизни компонента.
 
-A common use case is to access a child imperatively:
+Обычный случай использования – это доступ к потомку в императивном стиле:
 
 ```js
 function TextInputWithFocusButton() {
   const inputEl = useRef(null);
   const onButtonClick = () => {
-    // `current` points to the mounted text input element
+    // `current` указывает на смонтированный элемент `input`
     inputEl.current.focus();
   };
   return (
     <>
       <input ref={inputEl} type="text" />
-      <button onClick={onButtonClick}>Focus the input</button>
+      <button onClick={onButtonClick}>Установить фокус на поле ввода</button>
     </>
   );
 }
 ```
 
-Note that `useRef()` is useful for more than the `ref` attribute. It's [handy for keeping any mutable value around](/docs/hooks-faq.html#is-there-something-like-instance-variables) similar to how you'd use instance fields in classes.
+По сути, `useRef` похож на «коробку», которая может содержать изменяемое значение в своём свойстве `.current`.
+
+Возможно, вы знакомы с рефами в основном как со способом [получить доступ к DOM](/docs/refs-and-the-dom.html). Если вы передадите React объект рефа с помощью подобного выражения `<div ref={myRef}/>`, React установит собственное свойство `.current` на соответствующий DOM-узел при каждом его изменении.
+
+Но хук `useRef()` полезен не только установкой атрибута с рефом. Он [удобен для сохранения любого мутируемого значения](/docs/hooks-faq.html#is-there-something-like-instance-variables), по аналогии с тем, как вы используете поля экземпляра в классах.
+
+Это возможно, поскольку `useRef()` создаёт обычный JavaScript-объект. Единственная разница между `useRef()` и просто созданием самого объекта `{current: ...}` — это то, что хук `useRef` даст один и тот же объект с рефом при каждом рендере.
+
+Имейте в виду, что `useRef` *не* уведомляет вас, когда изменяется его содержимое. Мутирование свойства `.current` не вызывает повторный рендер. Если вы хотите запустить некоторый код, когда React присоединяет или отсоединяет реф к узлу DOM, вы можете использовать [колбэк-реф](/docs/hooks-faq.html#how-can-i-measure-a-dom-node) вместо этого.
 
 ### `useImperativeHandle` {#useimperativehandle}
 
 ```js
-useImperativeHandle(ref, createHandle, [inputs])
+useImperativeHandle(ref, createHandle, [deps])
 ```
 
-`useImperativeHandle` customizes the instance value that is exposed to parent components when using `ref`. As always, imperative code using refs should be avoided in most cases. `useImperativeHandle` should be used with `forwardRef`:
+`useImperativeHandle` настраивает значение экземпляра, которое предоставляется родительским компонентам при использовании `ref`. Как всегда, в большинстве случаев следует избегать императивного кода, использующего ссылки. `useImperativeHandle` должен использоваться с `forwardRef`:
 
 ```js
 function FancyInput(props, ref) {
@@ -360,17 +448,21 @@ function FancyInput(props, ref) {
 FancyInput = forwardRef(FancyInput);
 ```
 
-In this example, a parent component that renders `<FancyInput ref={fancyInputRef} />` would be able to call `fancyInputRef.current.focus()`.
+В этом примере родительский компонент, который отображает `<FancyInput ref={fancyInputRef} />`, сможет вызывать `fancyInputRef.current.focus()`.
 
 ### `useLayoutEffect` {#uselayouteffect}
 
-The signature is identical to `useEffect`, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside `useLayoutEffect` will be flushed synchronously, before the browser has a chance to paint.
+Сигнатура идентична `useEffect`, но этот хук запускается синхронно после всех изменений DOM. Используйте его для чтения макета из DOM и синхронного повторного рендеринга. Обновления, запланированные внутри `useLayoutEffect`, будут полностью применены синхронно перед тем, как браузер получит шанс осуществить отрисовку.
 
-Prefer the standard `useEffect` when possible to avoid blocking visual updates.
+Предпочитайте стандартный `useEffect`, когда это возможно, чтобы избежать блокировки визуальных обновлений.
 
-> Tip
+> Совет
 >
-> If you're migrating code from a class component, `useLayoutEffect` fires in the same phase as `componentDidMount` and `componentDidUpdate`, so if you're unsure of which effect Hook to use, it's probably the least risky.
+> Если вы переносите код из классового компонента, `useLayoutEffect` запускается в той же фазе, что и `componentDidMount` и `componentDidUpdate`. Тем не менее, **мы рекомендуем начать с `useEffect`**, и попробовать использовать `useLayoutEffect`, если тот приводит к возникновению проблем.
+>
+>Если вы используете серверный рендеринг, имейте в виду, что *ни* `useLayoutEffect`, ни `useEffect` не могут работать до загрузки JavaScript. Вот почему React предупреждает, когда серверный компонент содержит `useLayoutEffect`. Чтобы справиться с данной проблемой, либо переместите эту логику в `useEffect` (если она не нужна для первого рендера), либо задержите отображение этого компонента до тех пор, пока не выполнится рендеринг на стороне клиента (если HTML некорректный до запуска `useLayoutEffect`).
+>
+>Чтобы исключить компонент, который нуждается в эффектах макета из HTML-кода, полученного в результате серверного рендеринга, выполните его рендер по условию `showChild && <Child />` и отложите отображение с помощью `useEffect(() => { setShowChild(true); }, [])`. Таким образом, пользовательский интерфейс не будет выглядеть некорректно перед гидратацией.
 
 ### `useDebugValue` {#usedebugvalue}
 
@@ -378,9 +470,9 @@ Prefer the standard `useEffect` when possible to avoid blocking visual updates.
 useDebugValue(value)
 ```
 
-`useDebugValue` can be used to display a label for custom hooks in React DevTools.
+`useDebugValue` может использоваться для отображения метки для пользовательских хуков в React DevTools.
 
-For example, consider the `useFriendStatus` custom Hook described in ["Building Your Own Hooks"](/docs/hooks-custom.html):
+Например, рассмотрим пользовательский хук `useFriendStatus`, описанный в разделе [«Создание собственных хуков»](/docs/hooks-custom.html):
 
 ```js{6-8}
 function useFriendStatus(friendID) {
@@ -388,25 +480,25 @@ function useFriendStatus(friendID) {
 
   // ...
 
-  // Show a label in DevTools next to this Hook
-  // e.g. "FriendStatus: Online"
-  useDebugValue(isOnline ? 'Online' : 'Offline');
+  // Показывать ярлык в DevTools рядом с этим хуком
+  // например, «Статус друга: В сети»
+  useDebugValue(isOnline ? 'В сети' : 'Не в сети');
 
   return isOnline;
 }
 ```
 
-> Tip
+> Совет
 >
-> We don't recommend adding debug values to every custom Hook. It's most valuable for custom Hooks that are part of shared libraries.
+> Мы не рекомендуем добавлять значения отладки в каждый пользовательский хук. Это наиболее ценно для пользовательских хуков, которые являются частью общих библиотек.
 
-#### Defer formatting debug values {#defer-formatting-debug-values}
+#### Отложите форматирование значений отладки {#defer-formatting-debug-values}
 
-In some cases formatting a value for display might be an expensive operation. It's also unnecessary unless a Hook is actually inspected.
+В некоторых случаях форматирование значения для отображения может быть дорогой операцией. Это также не нужно, если хук не проверен.
 
-For this reason `useDebugValue` accepts a formatting function as an optional second parameter. This function is only called if the Hooks are inspected. It receives the debug value as a parameter and should return a formatted display value.
+По этой причине `useDebugValue` принимает функцию форматирования в качестве необязательного второго параметра. Эта функция вызывается только при проверке хуков. Она получает значение отладки в качестве параметра и должна возвращать форматированное отображаемое значение.
 
-For example a custom Hook that returned a `Date` value could avoid calling the `toDateString` function unnecessarily by passing the following formatter:
+Например, пользовательский хук, который возвратил значение `Date`, может избежать ненужного вызова функции `toDateString`, передав следующую функцию форматирования:
 
 ```js
 useDebugValue(date, date => date.toDateString());

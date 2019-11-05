@@ -50,7 +50,7 @@ MyComponent.propTypes = {
   optionalString: PropTypes.string,
   optionalSymbol: PropTypes.symbol,
 
-  // Все, что может быть отренедерено:
+  // Все, что может быть отрендерено:
   // числа, строки, элементы или массивы
   // (или фрагменты) содержащие эти типы
   optionalNode: PropTypes.node,
@@ -58,6 +58,9 @@ MyComponent.propTypes = {
   // React-элемент
   optionalElement: PropTypes.element,
 
+  // Тип React-элемент (например, MyComponent).
+  optionalElementType: PropTypes.elementType,
+  
   // Можно указать, что проп должен быть экземпляром класса
   // Для этого используется оператор `instanceof`.
   optionalMessage: PropTypes.instanceOf(Message),
@@ -84,13 +87,20 @@ MyComponent.propTypes = {
     color: PropTypes.string,
     fontSize: PropTypes.number
   }),
+  
+  // Объект со строгой структурой,
+  // при наличии необъявленных свойств будут сформированы предупреждения
+  optionalObjectWithStrictShape: PropTypes.exact({
+    name: PropTypes.string,
+    quantity: PropTypes.number
+  }),   
 
   // Можно добавить`isRequired` к любому из приведённому выше типу,
   // чтобы показывать предупреждение,
   // если проп не передан
   requiredFunc: PropTypes.func.isRequired,
 
-  // Значене любого типа
+  // Значение любого типа
   requiredAny: PropTypes.any.isRequired,
 
   // Можно добавить собственный валидатор.

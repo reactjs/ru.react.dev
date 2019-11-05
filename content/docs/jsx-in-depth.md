@@ -27,7 +27,7 @@ JSX — синтаксический сахар для функции `React.cre
 React.createElement(
   MyButton,
   {color: 'blue', shadowSize: 2},
-  'Click Me'
+  'Нажми меня'
 )
 ```
 
@@ -190,11 +190,11 @@ function Story(props) {
 function NumberDescriber(props) {
   let description;
   if (props.number % 2 == 0) {
-    description = <strong>even</strong>;
+    description = <strong>чётным</strong>;
   } else {
-    description = <i>odd</i>;
+    description = <i>нечётным</i>;
   }
-  return <div>{props.number} is an {description} number</div>;
+  return <div>{props.number} является {description} числом</div>;
 }
 ```
 
@@ -205,9 +205,9 @@ function NumberDescriber(props) {
 Вы можете передать строковый литерал как проп. Эти два выражения эквивалентны:
 
 ```js
-<MyComponent message="hello world" />
+<MyComponent message="привет, мир" />
 
-<MyComponent message={'hello world'} />
+<MyComponent message={'привет, мир'} />
 ```
 
 Когда вы передаёте строковый литерал, все его возможные символы будут преобразованы в соответствующие HTML-сущности. Поэтому эти два JSX-выражения будут эквивалентны:
@@ -259,7 +259,7 @@ const Button = props => {
 const App = () => {
   return (
     <div>
-      <Button kind="primary" onClick={() => console.log("clicked!")}>
+      <Button kind="primary" onClick={() => console.log("Кнопка нажата!")}>
         Привет, мир!
       </Button>
     </div>
@@ -287,7 +287,7 @@ const App = () => {
 Это корректный JSX-код, в котором значение `props.children` в `MyComponent` будет строкой `"Привет, мир!"`. HTML не экранируется, поэтому JSX можно писать также как HTML:
 
 ```html
-<div>This is valid HTML &amp; JSX at the same time.</div>
+<div>Это одновременно и валидный HTML и JSX.</div>
 ```
 
 JSX удаляет пустые строки и пробелы в начале и конце строки. Новые строки, примыкающие к тегу будут удалены. Новые строки между строковых литералов сжимаются в один пробел. Следующие три примера кода рендерят одинаковый результат:
@@ -352,9 +352,9 @@ render() {
 Вы можете передать любое JavaScript-выражение как дочерний компонент, обернув его в `{}`. К примеру, эти выражения эквивалентны:
 
 ```js
-<MyComponent>foo</MyComponent>
+<MyComponent>Пример</MyComponent>
 
-<MyComponent>{'foo'}</MyComponent>
+<MyComponent>{'Пример'}</MyComponent>
 ```
 
 Часто это бывает полезно при рендере списка JSX-выражений произвольной длины. Например, эта запись рендерит HTML-список:

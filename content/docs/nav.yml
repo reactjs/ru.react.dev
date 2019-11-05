@@ -8,6 +8,8 @@
       title: Создаём новое React-приложение
     - id: cdn-links
       title: Ссылки на CDN
+    - id: release-channels
+      title: Release Channels
 - title: Основные понятия
   isOrdered: true
   items:
@@ -32,7 +34,7 @@
     - id: lifting-state-up
       title: Подъём состояния
     - id: composition-vs-inheritance
-      title: Composition vs Inheritance
+      title: Композиция против наследования
     - id: thinking-in-react
       title: Философия React
 - title: Продвинутые темы
@@ -40,7 +42,7 @@
     - id: accessibility
       title: Доступность контента
     - id: code-splitting
-      title: Code-Splitting
+      title: Разделение кода
     - id: context
       title: Контекст
     - id: error-boundaries
@@ -59,6 +61,8 @@
       title: Оптимизация производительности
     - id: portals
       title: Порталы
+    - id: profiler
+      title: API для компонента Profiler
     - id: react-without-es6
       title: React без ES6
     - id: react-without-jsx
@@ -76,7 +80,7 @@
     - id: typechecking-with-proptypes
       title: Проверка типов с помощью PropTypes
     - id: uncontrolled-components
-      title: Неконтролируемые компоненты
+      title: Неуправляемые компоненты
     - id: web-components
       title: Веб-компоненты
 - title: Справочник API
@@ -95,7 +99,7 @@
     - id: events
       title: SyntheticEvent
     - id: test-utils
-      title: Test Utilities
+      title: ReactTestUtils
     - id: shallow-renderer
       title: Поверхностный рендерер
     - id: test-renderer
@@ -104,7 +108,7 @@
       title: Требования к среде JavaScript
     - id: glossary
       title: Словарь терминов React
-- title: Хуки (Новое)
+- title: Хуки
   isOrdered: true
   items:
       - id: hooks-intro
@@ -120,9 +124,30 @@
       - id: hooks-custom
         title: Создание пользовательских хуков
       - id: hooks-reference
-        title: Hooks API Reference
+        title: Справочник API хуков
       - id: hooks-faq
         title: "Хуки: ответы на вопросы"
+- title: Тестирование
+  items:
+    - id: testing
+      title: Основы тестирования
+    - id: testing-recipes
+      title: Рецепты тестирования
+    - id: testing-environments
+      title: Среды тестирования
+- title: Concurrent Mode (Experimental)
+  isOrdered: true
+  items:
+    - id: concurrent-mode-intro
+      title: Introducing Concurrent Mode
+    - id: concurrent-mode-suspense
+      title: Suspense for Data Fetching
+    - id: concurrent-mode-patterns
+      title: Concurrent UI Patterns
+    - id: concurrent-mode-adoption
+      title: Adopting Concurrent Mode
+    - id: concurrent-mode-reference
+      title: Concurrent Mode API Reference
 - title: Участие в проекте
   items:
   - id: how-to-contribute
@@ -132,7 +157,7 @@
   - id: implementation-notes
     title: Implementation Notes
   - id: design-principles
-    title: Design Principles
+    title: Принципы проектирования React
 - title: FAQ
   items:
     - id: faq-ajax

@@ -1,69 +1,68 @@
 # ru.reactjs.org
 
-This repo contains the source code and documentation powering [ru.reactjs.org](https://ru.reactjs.org/).
+Этот репозиторий содержит исходный код и содержимое сайта [ru.reactjs.org](https://ru.reactjs.org/).
 
-## Getting started
+## Начало
 
-### Prerequisites
+### Предварительные требования
 
 1. Git
-1. Node: any 8.x version starting with 8.4.0 or greater
-1. Yarn: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
-1. A fork of the repo (for any contributions)
-1. A clone of the [ru.reactjs.org repo](https://github.com/reactjs/ru.reactjs.org) on your local machine
+1. Node: любая версия 8.x, начиная с 8.4.0 или выше
+1. Yarn: Смотрите [сайт Yarn с инструкциями по установке](https://yarnpkg.com/lang/en/docs/install/)
+1. Сделать форк этого репозитория (для предложения изменений)
+1. Копия [репозитория ru.reactjs.org](https://github.com/reactjs/ru.reactjs.org) на вашем компьютере
 
-### Installation
+### Установка
 
-1. `cd ru.reactjs.org` to go into the project root
-1. `yarn` to install the website's npm dependencies
+1. `cd ru.reactjs.org` для перехода в директорию проекта
+1. `yarn` для установки npm-зависимостей проекта
 
-### Running locally
+### Запуск проекта локально
 
-1. `yarn dev` to start the hot-reloading development server (powered by [Gatsby](https://www.gatsbyjs.org))
-1. `open http://localhost:8000` to open the site in your favorite browser
+1. `yarn dev` для старта сервера в режиме разработки с поддержкой перезагрузки на лету (на основе [Gatsby](https://www.gatsbyjs.org))
+1. `open http://localhost:8000` откроет сайт в вашем браузере по умолчанию
 
-## Contributing
+## Помощь проекту
 
-### Guidelines
+### Рекомендации
 
-The documentation is divided into several sections with a different tone and purpose. If you plan to write more than a few sentences, you might find it helpful to get familiar with the [contributing guidelines](https://github.com/reactjs/ru.reactjs.org/blob/master/CONTRIBUTING.md#guidelines-for-text) for the appropriate sections.
+Документация разделена на несколько частей, с разными характером и целями. Если вы планируете написать больше, чем несколько фраз, вам может быть полезно ознакомиться с [рекомендациями для участия](https://github.com/reactjs/ru.reactjs.org/blob/master/CONTRIBUTING.md#guidelines-for-text) и его конкретными разделами.
 
-### Create a branch
+### Создание ветки
 
-1. `git checkout master` from any folder in your local `ru.reactjs.org` repository
-1. `git pull origin master` to ensure you have the latest main code
-1. `git checkout -b the-name-of-my-branch` (replacing `the-name-of-my-branch` with a suitable name) to create a branch
+1. `git checkout master` из любой папки в вашей локальной копии репозитория `ru.reactjs.org`
+1. `git pull origin master`, чтобы убедиться, что у вас самая последняя версия кода
+1. `git checkout -b the-name-of-my-branch` (замените `the-name-of-my-branch` на подходящее имя) для создания ветки
 
-### Make the change
+### Внесение изменений
 
-1. Follow the "Running locally" instructions
-1. Save the files and check in the browser
-  1. Changes to React components in `src` will hot-reload
-  1. Changes to markdown files in `content` will hot-reload
-  1. If working with plugins, you may need to remove the `.cache` directory and restart the server
+1. Следуйте инструкциям из раздела «Запуск проекта локально»
+1. Сохраните файлы и проверьте в вашем браузере
+  1. Изменения в React-компонентах внутри `src` применяются на лету
+  1. Изменения в markdown-файлах внутри `content` применяются на лету
+  1. При работе с плагинами может понадобится удаление папки `.cache` и перезапуск сервера
 
-### Test the change
+### Проверка изменений
 
-1. If possible, test any visual changes in all latest versions of common browsers, on both desktop and mobile.
-1. Run `yarn check-all` from the project root. (This will run Prettier, ESLint, and Flow.)
+1. По возможности проверьте визуальные изменения во всех последних версиях распространённых браузеров: и настольных, и мобильных.
+1. Запустите `yarn check-all` из корня проекта. (Это запустит Prettier, ESLint и Flow.)
 
-### Push it
+### Отправка изменений
 
-1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fixed header logo on Android`) to stage and commit your changes
+1. `git add -A && git commit -m "Мой текст"` (замените `Мой текст` на подходящее сообщение, например `Fix header logo on Android`) для сохранения ваших изменений
 1. `git push my-fork-name the-name-of-my-branch`
-1. Go to the [ru.reactjs.org repo](https://github.com/reactjs/ru.reactjs.org) and you should see recently pushed branches.
-1. Follow GitHub's instructions.
-1. If possible, include screenshots of visual changes. A Netlify build will also be automatically created once you make your PR so other people can see your change.
+1. Перейдите на [страницу репозитория ru.reactjs.org](https://github.com/reactjs/ru.reactjs.org) — вы должны увидеть вашу веткy.
+1. Следуйте инструкциям на GitHub.
+1. По возможности добавьте скриншот с наглядными изменениями. Как только вы сделаете PR, автоматически будет создан Netlify-билд, так что люди смогут посмотреть ваши изменения.
 
-## Translation
+## Перевод
 
-If you are interested in translating `ru.reactjs.org`, please see the current translation efforts at [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/).
+Если вы заинтересованы в переводе `reactjs.org`, ознакомьтесь с текущим прогрессом перевода на [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/).
 
-If your language does not have a translation and you would like to create one, please follow the instructions at [reactjs.org Translations](https://github.com/reactjs/reactjs.org-translation#reactjsorg-translation).
+## Решение проблем
 
-## Troubleshooting
+- `yarn reset` для очистки локального кеша
 
-- `yarn reset` to clear the local cache
+## Лицензия
 
-## License
-Content submitted to [ru.reactjs.org](https://ru.reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md) file.
+Контент на [ru.reactjs.org](https://ru.reactjs.org/) распространяется по лицензии CC-BY-4.0, как указано в файле [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md).

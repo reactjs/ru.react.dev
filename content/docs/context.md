@@ -15,6 +15,7 @@ permalink: docs/context.html
   - [Context.Provider](#contextprovider)
   - [Class.contextType](#classcontexttype)
   - [Context.Consumer](#contextconsumer)
+  - [Context.displayName](#contextdisplayname)
 - [Примеры](#examples)
   - [Динамический контекст](#dynamic-context)
   - [Изменение контекста из вложенного компонента](#updating-context-from-a-nested-component)
@@ -34,7 +35,7 @@ permalink: docs/context.html
 
 ## Перед тем, как вы начнёте использовать контекст {#before-you-use-context}
 
-Обычно контекст используется, если необходимо обеспечить доступ данных во *многих* компонентах на разных уровнях вложенности. По возможности не используйте его, так как это усложняет переиспользование компонентов.
+Обычно контекст используется, если необходимо обеспечить доступ данных во *многих* компонентах на разных уровнях вложенности. По возможности не используйте его, так как это усложняет повторное использование компонентов.
 
 **Если вы хотите избавиться от передачи некоторых пропсов на множество уровней вниз, обычно [композиция компонентов](/docs/composition-vs-inheritance.html) является более простым решением, чем контекст.**
 
@@ -135,7 +136,7 @@ const MyContext = React.createContext(defaultValue);
 
 > Примечание
 >
-> Способ, по которому определяются изменения, может вызвать проблемы при передачи объекта в `value`: смотрите [Предостережения](#caveats).
+> Способ, по которому определяются изменения, может вызвать проблемы при передаче объекта в `value`: смотрите [Предостережения](#caveats).
 
 ### `Class.contextType` {#classcontexttype}
 
@@ -196,6 +197,20 @@ class MyClass extends React.Component {
 >
 > Подробнее про паттерн «_функция как дочерний компонент_» можно узнать на странице [Рендер-пропсы](/docs/render-props.html).
 
+### `Context.displayName` {#contextdisplayname}
+
+Объекту Context можно задать строковое свойство `displayName`. React DevTools использует это свойство при отображении контекста.
+
+К примеру, следующий компонент будет отображаться под именем MyDisplayName в DevTools:
+
+```js{2}
+const MyContext = React.createContext(/* некоторое значение */);
+MyContext.displayName = 'MyDisplayName';
+
+<MyContext.Provider> // "MyDisplayName.Provider" в DevTools
+<MyContext.Consumer> // "MyDisplayName.Consumer" в DevTools
+```
+
 ## Примеры {#examples}
 
 ### Динамический контекст {#dynamic-context}
@@ -246,4 +261,4 @@ class MyClass extends React.Component {
 
 > Примечание
 >
-> В прошлом React имел только экспериментальный API контекстa. Старый API будет поддерживаться во всех 16.x релизах, но использующие его приложения должны перейти на новую версию. Устаревший API будет удалён в будущем крупном релизе React. Вы можете прочитать [документацию устаревшего контекста здесь](/docs/legacy-context.html).
+> В прошлом React имел только экспериментальный API контекста. Старый API будет поддерживаться во всех 16.x релизах, но использующие его приложения должны перейти на новую версию. Устаревший API будет удалён в будущем крупном релизе React. Вы можете прочитать [документацию устаревшего контекста здесь](/docs/legacy-context.html).

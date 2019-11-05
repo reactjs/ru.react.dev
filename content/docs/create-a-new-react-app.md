@@ -26,21 +26,20 @@ next: cdn-links.html
 
 Также это **самый простой способ добавить React в существующий веб-сайт**. Вы всегда можете расширить набор инструментов, если посчитаете это нужным.
 
-
 ## Рекомендуемый набор инструментов {#recommended-toolchains}
 
 Команда React в первую очередь рекомендует следующие решения:
 
 - Если вы **изучаете React** или **создаёте новое [одностраничное](/docs/glossary.html#single-page-application) приложение**, используйте [Create React App](#create-react-app).
-- Если вы создаете **серверный сайт с Node.js,** попробуйте [Next.js](#nextjs).
-- Если вы создаете **статический контент-ориентированный сайт,** попробуйте [Gatsby](#gatsby).
-- Если вы создаете **библиотеку компонентов** или **интегрируетесь с существующей кодовой базой**, попробуйте [более гибкие наборы инструментов](#more-flexible-toolchains).
+- Если вы создаёте **серверный сайт с Node.js,** попробуйте [Next.js](#nextjs).
+- Если вы создаёте **статический контент-ориентированный сайт,** попробуйте [Gatsby](#gatsby).
+- Если вы создаёте **библиотеку компонентов** или **интегрируетесь с существующей кодовой базой**, попробуйте [более гибкие наборы инструментов](#more-flexible-toolchains).
 
 ### Create React App {#create-react-app}
 
 [Create React App](https://github.com/facebookincubator/create-react-app) – удобная среда для **изучения React** и лучший способ начать создание **нового [одностраничного](/docs/glossary.html#single-page-application) приложения** на React.
 
-Инструмент настраивает среду для использования новейших возможностей JavaScript, оптимизирует приложение для продакшена и обеспечивает комфорт во время разработки. Вам понадобятся Node.js не ниже версии 6 и npm не ниже версии 5.2 на вашем компьютере. Для создания проекта выполните команды:
+Инструмент настраивает среду для использования новейших возможностей JavaScript, оптимизирует приложение для продакшена и обеспечивает комфорт во время разработки. Вам понадобятся Node.js не ниже версии 8.10 и npm не ниже версии 5.6 на вашем компьютере. Для создания проекта выполните команды:
 
 ```bash
 npx create-react-app my-app
@@ -55,7 +54,7 @@ npm start
 
 Create React App не обрабатывает бэкенд логику или базы данных, он только предоставляет команды для сборки фронтенда, поэтому вы можете использовать его с любым бэкэндом. «Под капотом» используются [Babel](https://babeljs.io/) и [webpack](https://webpack.js.org/), но вам не нужно ничего знать о них.
 
-Когда ваше приложение готово к развёртыванию в продакшене, запуск команды `npm run build` создаст оптимизированную сборку вашего приложения в папке `build`. Вы можете узнать больше о Creat React App [из его README](https://github.com/facebookincubator/create-react-app#create-react-app--) и [его пользовательского руководства](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#table-of-contents).
+Когда ваше приложение готово к развёртыванию в продакшене, запуск команды `npm run build` создаст оптимизированную сборку вашего приложения в папке `build`. Вы можете узнать больше о Create React App [из его README](https://github.com/facebookincubator/create-react-app#create-react-app--) и [его пользовательского руководства](https://facebook.github.io/create-react-app/).
 
 ### Next.js {#nextjs}
 
@@ -79,7 +78,6 @@ Create React App не обрабатывает бэкенд логику или 
 - **[nwb](https://github.com/insin/nwb)** хорошо подходит для [публикации React-компонентов в npm](https://github.com/insin/nwb/blob/master/docs/guides/ReactComponents.md#developing-react-components-and-libraries-with-nwb). Его [также можно использовать](https://github.com/insin/nwb/blob/master/docs/guides/ReactApps.md#developing-react-apps-with-nwb) для создания React-приложений.
 
 - **[Parcel](https://parceljs.org/)** – быстрый упаковщик веб-приложений с нулевой конфигурацией, [который работает с React](https://parceljs.org/recipes.html#react).
-
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)** – это фреймворк для серверного рендеринга, более гибкий чем Next.js, но не требующий обязательной настройки.
 

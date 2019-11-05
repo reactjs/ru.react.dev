@@ -24,7 +24,7 @@ Button.propTypes = {
 
 В этом плане ничего не изменилось.
 
-### Не вызвайте PropTypes напрямую {#dont-call-proptypes-directly}
+### Не вызывайте PropTypes напрямую {#dont-call-proptypes-directly}
 
 Использование PropTypes вне React-компонентов больше не поддерживается:
 
@@ -67,7 +67,7 @@ Button.propTypes = {
 export default function deprecated(propType, explanation) {
   return function validate(props, propName, componentName) {
     if (props[propName] != null) {
-      const message = `"${propName}" property of "${componentName}" has been deprecated.\n${explanation}`;
+      const message = `"Проп ${propName}" компонента "${componentName}" объявлен устаревшим.\n${explanation}`;
       if (!warned[message]) {
         warning(false, message);
         warned[message] = true;
@@ -85,7 +85,7 @@ export default function deprecated(propType, explanation) {
 export default function deprecated(propType, explanation) {
   return function validate(props, propName, componentName, ...rest) { // Обратите на ...rest вот тут
     if (props[propName] != null) {
-      const message = `"${propName}" property of "${componentName}" has been deprecated.\n${explanation}`;
+      const message = `"Проп ${propName}" компонента "${componentName}" объявлен устаревшим.\n${explanation}`;
       if (!warned[message]) {
         warning(false, message);
         warned[message] = true;

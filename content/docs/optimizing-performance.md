@@ -51,14 +51,14 @@ npm run build
 
 ### Brunch {#brunch}
 
-Для наиболее эффективной продакшен-сборки с Brunch, установите плагин [`uglify-js-brunch`](https://github.com/brunch/uglify-js-brunch).
+Для наиболее эффективной продакшен-сборки с Brunch, установите плагин [`terser-brunch`](https://github.com/brunch/terser-brunch).
 
 ```
 # В случае использования npm
-npm install --save-dev uglify-js-brunch
+npm install --save-dev terser-brunch
 
 # В случае использования Yarn
-yarn add --dev uglify-js-brunch
+yarn add --dev terser-brunch
 ```
 
 Затем, для создания продакшен сборки, добавьте флаг `-p` к команде `build`:
@@ -75,17 +75,17 @@ brunch build -p
 
 ```
 # В случае использования npm
-npm install --save-dev envify uglify-js uglifyify 
+npm install --save-dev envify terser uglifyify 
 
 # В случае использования Yarn
-yarn add --dev envify uglify-js uglifyify 
+yarn add --dev envify terser uglifyify
 ```
 
 При создании продакшен-сборки, убедитесь, что вы добавили эти пакеты для преобразования **(порядок имеет значение)**:
 
 * Плагин [`envify`](https://github.com/hughsk/envify) обеспечивает правильную среду для сборки. Сделайте его глобальным (`-g`).
 * Плагин [`uglifyify`](https://github.com/hughsk/uglifyify) удаляет импорты, добавленные при разработке. Сделайте его глобальным (`-g`).
-* Наконец, полученная сборка отправляется к [`uglify-js`](https://github.com/mishoo/UglifyJS2) для минификации ([прочитайте, зачем это нужно](https://github.com/hughsk/uglifyify#motivationusage)).
+* Наконец, полученная сборка отправляется к [`terser`](https://github.com/terser-js/terser) для минификации ([прочитайте, зачем это нужно](https://github.com/hughsk/uglifyify#motivationusage)).
 
 К примеру:
 
@@ -93,13 +93,8 @@ yarn add --dev envify uglify-js uglifyify
 browserify ./index.js \
   -g [ envify --NODE_ENV production ] \
   -g uglifyify \
-  | uglifyjs --compress --mangle > ./bundle.js
+  | terser --compress --mangle > ./bundle.js
 ```
-
->**Примечание:**
->
->Имя пакета `uglify-js`, но фактически он предоставляет исполняемый файл с именем `uglifyjs`.<br>
->Это не опечатка.
 
 Помните, что это нужно делать только для продакшен-сборки. Вам не следует использовать эти плагины в процессе разработки, потому что это скроет вспомогательные предупреждения React и замедлит процесс сборки.
 
@@ -107,19 +102,19 @@ browserify ./index.js \
 
 Для наиболее эффективной продакшен-сборки с Rollup, установите несколько плагинов:
 
-```
+```bash
 # В случае использования npm
-npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+npm install --save-dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 
 # В случае использования Yarn
-yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-uglify 
+yarn add --dev rollup-plugin-commonjs rollup-plugin-replace rollup-plugin-terser
 ```
 
 При создании продакшен-сборки, убедитесь, что вы добавили эти плагины **(порядок имеет значение)**:
 
 * Плагин [`replace`](https://github.com/rollup/rollup-plugin-replace) обеспечивает правильную среду для сборки.
 * Плагин [`commonjs`](https://github.com/rollup/rollup-plugin-commonjs) обеспечивает поддержку CommonJS в Rollup.
-* Плагин [`uglify`](https://github.com/TrySound/rollup-plugin-uglify) сжимает и оптимизирует финальную сборку.
+* Плагин [`terser`](https://github.com/TrySound/rollup-plugin-terser) сжимает и оптимизирует финальную сборку.
 
 ```js
 plugins: [
@@ -128,14 +123,14 @@ plugins: [
     'process.env.NODE_ENV': JSON.stringify('production')
   }),
   require('rollup-plugin-commonjs')(),
-  require('rollup-plugin-uglify')(),
+  require('rollup-plugin-terser')(),
   // ...
 ]
 ```
 
 Полный пример настройки можно [посмотреть здесь](https://gist.github.com/Rich-Harris/cb14f4bc0670c47d00d191565be36bf0).
 
-Помните, что это нужно делать только для продакшен-сборки. Вам не следует использовать плагин `uglify` или плагин `replace` со значением `'production'` в процессе разработки, потому что это скроет вспомогательные предупреждения React и замедлит процесс сборки.
+Помните, что это нужно делать только для продакшен-сборки. Вам не следует использовать плагин `terser` или плагин `replace` со значением `'production'` в процессе разработки, потому что это скроет вспомогательные предупреждения React и замедлит процесс сборки.
 
 ### webpack {#webpack}
 
@@ -144,18 +139,22 @@ plugins: [
 >Если вы используете Create React App, пожалуйста, следуйте [инструкциям выше](#create-react-app).<br>
 >Этот раздел подойдёт для тех, кто самостоятельно настраивает webpack.
 
-Для наиболее эффективной продакшен-сборки с помощью webpack обязательно включите эти плагины в конфигурацию:
+Webpack 4.0 и выше по умолчанию минифицирует код в продакшен-режиме.
 
 ```js
-new webpack.DefinePlugin({
-  'process.env.NODE_ENV': JSON.stringify('production')
-}),
-new webpack.optimize.UglifyJsPlugin()
+const TerserPlugin = require('terser-webpack-plugin');
+
+module.exports = {
+  mode: 'production',
+  optimization: {
+    minimizer: [new TerserPlugin({ /* additional options here */ })],
+  },
+};
 ```
 
-Вы можете узнать об этом больше в [документации webpack](https://webpack.js.org/guides/production-build/).
+Вы можете узнать об этом больше в [документации webpack](https://webpack.js.org/guides/production/).
 
-Помните, что это нужно делать только для продакшен-сборки. Вам не стоит использовать `UglifyJsPlugin` или `DefinePlugin` со значением `'production'` в процессе разработки, потому что тогда скроются вспомогательные предупреждения React и замедлится процесс сборки.
+Помните, что это нужно делать только для продакшен-сборки. Вам не стоит использовать `TerserPlugin` в процессе разработки, потому что тогда скроются вспомогательные предупреждения React и замедлится процесс сборки.
 
 ## Анализ производительности компонентов с помощью вкладки Chrome «Performance» {#profiling-components-with-the-chrome-performance-tab}
 
@@ -204,31 +203,13 @@ new webpack.optimize.UglifyJsPlugin()
 
 Если ваше приложение рендерит длинные списки данных (сотни или тысячи строк), мы рекомендуем использовать метод известный как "оконный доступ". Этот метод рендерит только небольшое подмножество строк в данный момент времени и может значительно сократить время, необходимое для повторного рендера компонентов, а также количество создаваемых DOM-узлов.
 
-[react-window](https://react-window.now.sh/) и [react-virtualized](https://bvaughn.github.io/react-virtualized/) -- это популярные библиотеки для оконного доступа. Они предоставляют несколько переиспользуемых компонентов для отображения списков, сеток и табличных данных. Если вы хотите использовать что-то более специфическое для вашего конкретного случая, то вы можете создать собственный компонент с оконным доступом, как это сделано в [Twitter](https://medium.com/@paularmstrong/twitter-lite-and-high-performance-react-progressive-web-apps-at-scale-d28a00e780a3).
+[react-window](https://react-window.now.sh/) и [react-virtualized](https://bvaughn.github.io/react-virtualized/) -- это популярные библиотеки для оконного доступа. Они предоставляют несколько повторно используемых компонентов для отображения списков, сеток и табличных данных. Если вы хотите использовать что-то более специфическое для вашего конкретного случая, то вы можете создать собственный компонент с оконным доступом, как это сделано в [Twitter](https://medium.com/@paularmstrong/twitter-lite-and-high-performance-react-progressive-web-apps-at-scale-d28a00e780a3).
 
 ## Избежание согласования {#avoid-reconciliation}
 
 React создаёт и поддерживает внутреннее представление отображаемого пользовательского интерфейса. Оно также включает React-элементы возвращаемые из ваших компонентов. Это представление позволяет React избегать создания DOM-узлов и не обращаться к текущим без необходимости, поскольку эти операции могут быть медленнее, чем операции с JavaScript-объектами. Иногда его называют "виртуальный DOM", но в React Native это работает точно так же.
 
-Когда изменяются пропсы или состояние компонента, React решает нужно ли обновление DOM, сравнивая возвращённый элемент с ранее отрендереным. Если они не равны, React обновит DOM.
-
-Вы можете визуализировать эти перерисовки виртуального DOM с помощью инструментов разработчика React:
-
-- [Chrome Browser Extension](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
-- [Firefox Browser Extension](https://addons.mozilla.org/en-GB/firefox/addon/react-devtools/)
-- [Standalone Node Package](https://www.npmjs.com/package/react-devtools)
-
-В консоли разработчика выберите параметр **Highlight Updates** на вкдадке **React**:
-
-<center><img src="../images/blog/devtools-highlight-updates.png" style="max-width:100%; margin-top:10px;" alt="Как включить подсветку обновлений" /></center>
-
-Взаимодействуя со своей страницей, вы должны увидеть, что вокруг любых компонентов, которые были повторно отрендерены появляются цветные границы. Это позволит вам выявлять лишний повторный рендеринг. Вы можете узнать больше о возможностях инструментов разработки React из [этого поста](https://blog.logrocket.com/make-react-fast-again-part-3-highlighting-component-updates-6119e45e6833) в блоге [Бена Эдельштейна (Ben Edelstein)](https://blog.logrocket.com/@edelstein).
-
-Рассмотрим такой пример:
-
-<center><img src="../images/blog/highlight-updates-example.gif" style="max-width:100%; margin-top:20px;" alt="Пример как инструменты разработчика React подсвечивают обновления" /></center>
-
-Обратите внимание, что когда мы вводим вторую задачу, первая также мигает на экране при каждом нажатии клавиши. Это означает, что она ререндерится вместе с полем ввода. Иногда это называют "бесполезным" рендерингом. Мы знаем, что в этом нет необходимости, так как содержимое первой задачи не изменился, но React этого не знает.
+Когда изменяются пропсы или состояние компонента, React решает нужно ли обновление DOM, сравнивая возвращённый элемент с ранее отрендеренным. Если они не равны, React обновит DOM.
 
 Несмотря на то, что React обновляет только изменённые DOM-узлы, повторный рендеринг всё же занимает некоторое время. В большинстве случаев это не проблема, но если замедление заметно, то вы можете всё ускорить, переопределив метод жизненного цикла `shouldComponentUpdate`, который вызывается перед началом процесса ререндеринга. Реализация этой функции по умолчанию возвращает `true`, указывая React выполнить обновление:
 
@@ -325,7 +306,7 @@ class WordAdder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      words: ['marklar']
+      words: ['словцо']
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -333,7 +314,7 @@ class WordAdder extends React.Component {
   handleClick() {
     // Данная секция содержит плохой код и приводит к багам
     const words = this.state.words;
-    words.push('marklar');
+    words.push('словцо');
     this.setState({words: words});
   }
 
@@ -357,7 +338,7 @@ class WordAdder extends React.Component {
 ```javascript
 handleClick() {
   this.setState(state => ({
-    words: state.words.concat(['marklar'])
+    words: state.words.concat(['словцо'])
   }));
 }
 ```
@@ -367,7 +348,7 @@ ES6 поддерживает [синтаксис расширения](https://d
 ```js
 handleClick() {
   this.setState(state => ({
-    words: [...state.words, 'marklar'],
+    words: [...state.words, 'словцо'],
   }));
 };
 ```
@@ -400,36 +381,4 @@ function updateColorMap(colormap) {
 
 Если вы используете Create React App, то `Object.assign` и синтаксис расширения объектов доступны вам по умолчанию.
 
-## Использование неизменяемых структур данных {#using-immutable-data-structures}
-
-Библиотека [Immutable.js](https://github.com/facebook/immutable-js) -- ещё один способ решить эту проблему. Эта библиотека предоставляет иммутабельные, персистентные коллекции, которые работают с помощью механизма "structural sharing":
-
-* *Иммутабельность*: после создания коллекции она не может быть изменена.
-* *Персистентность*: новые коллекции могут быть созданы из предыдущей коллекции и мутированы c помощью set. После создания новой коллекции исходная коллекция останется по-прежнему неизменной.
-* *Structural Sharing*: новые коллекции создаются с использованием такой же структуры как у исходной коллекции, что позволяет сократить количество копий до минимума для повышения производительности.
-
-Иммутабельность делает отслеживание изменений дешёвым. Изменение всегда приведёт к созданию нового объекта, поэтому нам нужно только проверить, изменилась ли ссылка на объект. Например, в этом обычном JavaScript коде:
-
-```javascript
-const x = { foo: 'bar' };
-const y = x;
-y.foo = 'baz';
-x === y; // true
-```
-
-Несмотря на то, что `y` был изменён, поскольку это ссылка на тот же объект, что и `x`, сравнение вернёт `true`. Вы можете написать аналогичный код с помощью immutable.js:
-
-```javascript
-const SomeRecord = Immutable.Record({ foo: null });
-const x = new SomeRecord({ foo: 'bar' });
-const y = x.set('foo', 'baz');
-const z = x.set('foo', 'bar');
-x === y; // false
-x === z; // true
-```
-
-В этом случае, поскольку после мутирования `x` возвращается новая ссылка, мы можем использовать строгое сравнение (в данном случае по ссылке) `(x === y)` для того, чтобы убедиться, что новое значение хранящееся в `y` отличается от исходного значения, хранящегося в `x`.
-
-Есть две другие библиотеки, которые могут помочь вам использовать иммутабельные данные: [seamless-immutable](https://github.com/rtfeldman/seamless-immutable) и [immutability-helper](https://github.com/kolodny/immutability-helper).
-
-Иммутабельные структуры данных предоставляют вам дешёвый способ отслеживания изменений в объектах и всё, что вам нужно для реализации `shouldComponentUpdate`. В большинстве случаев это даст вам хороший прирост в производительности.
+При работе с глубоко вложенными объектами, постоянное их обновление может запутать. Если вы столкнулись с такой проблемой, обратите внимание на [Immer](https://github.com/mweststrate/immer) или [immutability-helper](https://github.com/kolodny/immutability-helper). Эти библиотеки позволяют писать хорошо читаемый код, не теряя преимуществ иммутабельности.

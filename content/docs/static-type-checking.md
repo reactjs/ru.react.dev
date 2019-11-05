@@ -2,8 +2,6 @@
 id: static-type-checking
 title: Статическая типизация
 permalink: docs/static-type-checking.html
-prev: typechecking-with-proptypes.html
-next: refs-and-the-dom.html
 ---
 
 Инструменты для статической типизации, такие как [Flow](https://flow.org/) или [TypeScript](https://www.typescriptlang.org/), позволяют отлавливать большую часть ошибок ещё до исполнения кода. Кроме того, они существенно улучшают процессы разработки, добавляя автодополнение и другие возможности. Для приложений с большой кодовой базой мы рекомендуем использовать Flow или TypeScript вместо `PropTypes`.
@@ -84,13 +82,13 @@ Flow дополняет JavaScript собственным синтаксисом
 Если для своего проекта вы самостоятельно настраивали Babel, нужно установить специальный пресет для работы с Flow:
 
 ```bash
-yarn add --dev babel-preset-flow
+yarn add --dev @babel/preset-flow
 ```
 
 Или `npm`:
 
 ```bash
-npm install --save-dev babel-preset-flow
+npm install --save-dev @babel/preset-flow
 ```
 
 Затем добавьте установленный пресет `flow` в свою [конфигурацию Babel](https://babeljs.io/docs/usage/babelrc/). Например так, если вы используете конфигурационный файл `.babelrc`:
@@ -98,7 +96,7 @@ npm install --save-dev babel-preset-flow
 ```js{3}
 {
   "presets": [
-    "flow",
+    "@babel/preset-flow",
     "react"
   ]
 }
@@ -108,7 +106,7 @@ npm install --save-dev babel-preset-flow
 
 >Примечание:
 >
->Для работы с Flow не требуется отдельно устанавливать пресет `react` — Flow уже понимает JSX синтаксис. Тем не менее, часто используют оба пресета одновременно.
+>Для работы с Flow не требуется отдельно устанавливать пресет `react` — Flow уже понимает JSX-синтаксис. Тем не менее, часто используют оба пресета одновременно.
 
 #### Другие инструменты сборки {#other-build-setups}
 
@@ -259,9 +257,9 @@ npx tsc --init
 
 ### Расширения файлов {#file-extensions}
 
-В React мы почти всегда используем `.js` в качестве расширений файлов компонентов. В TypeScript лучше разделать файлы на два типа: 
+В React мы почти всегда используем `.js` в качестве расширений файлов компонентов. В TypeScript лучше разделять файлы на два типа: 
 
-`.tsx` для файлов, содержащих `JSX` разметку, и `.ts` для всего остального.  
+`.tsx` для файлов, содержащих разметку `JSX`, и `.ts` для всего остального.  
 
 ### Запуск TypeScript {#running-typescript}
 

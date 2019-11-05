@@ -57,6 +57,7 @@ module.exports = {
               maxWidth: 840,
             },
           },
+          'gatsby-remark-external-links',
           'gatsby-remark-header-custom-ids',
           {
             resolve: 'gatsby-remark-code-repls',
@@ -161,5 +162,20 @@ module.exports = {
     },
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-catch-links',
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'Документация React',
+        short_name: 'React [RU]',
+        // Translators: please change this and two above options (see https://www.gatsbyjs.org/packages/gatsby-plugin-manifest/#feature-configuration---optional)
+        lang: 'ru',
+        start_url: '/',
+        background_color: '#20232a',
+        theme_color: '#20232a',
+        display: 'standalone',
+        icon: 'static/logo-512x512.png',
+        legacy: true,
+      },
+    },
   ],
 };

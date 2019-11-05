@@ -12,7 +12,7 @@ import {createLinkBlog} from 'utils/createLink';
 
 const toSectionList = allMarkdownRemark => [
   {
-    title: 'Recent Posts',
+    title: 'Последние посты',
     items: allMarkdownRemark.edges
       .map(({node}) => ({
         id: node.fields.slug,
@@ -20,7 +20,7 @@ const toSectionList = allMarkdownRemark => [
       }))
       .concat({
         id: '/blog/all.html',
-        title: 'All posts ...',
+        title: 'Все посты ...',
       }),
   },
 ];
@@ -57,7 +57,7 @@ export const pageQuery = graphql`
         }
       }
       fields {
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "DD MMMM, YYYY", locale: "ru")
         path
         slug
       }

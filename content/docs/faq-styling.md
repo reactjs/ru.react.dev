@@ -30,7 +30,7 @@ render() {
 
 >Совет
 >
->Если вы часто пишите похожий код, то пакет [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) поможет упростить его.
+>Если вы часто пишете похожий код, то пакет [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) поможет упростить его.
 
 ### Как можно использовать встроенные стили? {#can-i-use-inline-styles}
 
@@ -48,4 +48,4 @@ _Обратите внимание, что данная функциональн
 
 ### Можно создавать анимации в React? {#can-i-do-animations-in-react}
 
-React может использоваться для создания крутых анимаций! В качестве примера посмотрите библиотеки [React Transition Group](https://reactcommunity.org/react-transition-group/) и [React Motion](https://github.com/chenglou/react-motion).
+React может использоваться для создания крутых анимаций! В качестве примера посмотрите библиотеки [React Transition Group](https://reactcommunity.org/react-transition-group/), [React Motion](https://github.com/chenglou/react-motion) или [React Spring](https://github.com/react-spring/react-spring).

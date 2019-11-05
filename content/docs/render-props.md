@@ -14,7 +14,7 @@ permalink: docs/render-props.html
 )}/>
 ```
 
-Такой подход, в частности, применяется в библиотеках [React Router](https://reacttraining.com/react-router/web/api/Route/render-func) и [Downshift](https://github.com/paypal/downshift).
+Такой подход, в частности, применяется в библиотеках [React Router](https://reacttraining.com/react-router/web/api/Route/render-func), [Downshift](https://github.com/paypal/downshift) и [Formik](https://github.com/jaredpalmer/formik).
 
 В этой статье мы покажем, чем полезны и как писать рендер-пропсы.
 
@@ -133,7 +133,7 @@ class MouseWithCat extends React.Component {
           Мы могли бы просто поменять <p> на <Cat>... но тогда
           нам нужно создать отдельный компонент <MouseWithSomethingElse>
           каждый раз, когда он нужен нам, поэтому <MouseWithCat>
-          пока что нельзя переиспользовать.
+          пока что нельзя повторно использовать.
         */}
         <Cat mouse={this.state} />
       </div>
