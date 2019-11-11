@@ -221,7 +221,7 @@ it("renders user data", async () => {
   expect(container.querySelector("strong").textContent).toBe(fakeUser.age);
   expect(container.textContent).toContain(fakeUser.address);
 
-  // выключаем фиктивный fetch, чтобы убедится, что тесты полностью изолированы
+  // выключаем фиктивный fetch, чтобы убедиться, что тесты полностью изолированы
   global.fetch.mockRestore();
 });
 ```
