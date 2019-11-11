@@ -176,7 +176,11 @@ module.exports = {
 
 6. События React будут сгруппированы под меткой **User Timing**.
 
+<<<<<<< HEAD
 Для более детального ознакомления, посмотрите [эту статью от Бена Шварца (Ben Schwarz)](https://calibreapp.com/blog/2017-11-28-debugging-react/).
+=======
+For a more detailed walkthrough, check out [this article by Ben Schwarz](https://building.calibreapp.com/debugging-react-performance-with-react-16-and-chrome-devtools-c90698a522ad).
+>>>>>>> bbea52211971834d041e76871df8981066c42a3b
 
 Обратите внимание, что **результаты являются относительными и в продакшене рендеринг компонентов будет быстрее**. Всё же это должно помочь вам понять, когда не имеющий отношения пользовательский компонент обновляется по ошибке, а также как глубоко и часто обновляется пользовательский интерфейс.
 
