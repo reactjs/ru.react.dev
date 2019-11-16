@@ -18,7 +18,7 @@ next: concurrent-mode-reference.html
 - [К чему готовиться?](#what-to-expect)
   - [Промежуточный этап: блокирующий режим](#migration-step-blocking-mode)
   - [Зачем столько режимов?](#why-so-many-modes)
-  - [Сравнение режимов](#feature-comparison)
+  - [Сравнение возможностей](#feature-comparison)
 
 ## Установка {#installation}
 
