@@ -24,6 +24,7 @@ next: concurrent-mode-reference.html
 
 Конкурентный режим доступен только в [экспериментальных сборках](/blog/2019/10/22/react-release-channels.html#experimental-channel) React. Чтобы установить их, выполните:
 
+```
 npm install react@experimental react-dom@experimental
 ```
 
