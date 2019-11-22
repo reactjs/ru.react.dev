@@ -147,7 +147,7 @@
     - id: concurrent-mode-adoption
       title: Знакомство с конкурентным режимом
     - id: concurrent-mode-reference
-      title: Справочник API конкурентного режима
+      title: Concurrent Mode API Reference
 - title: Участие в проекте
   items:
   - id: how-to-contribute
