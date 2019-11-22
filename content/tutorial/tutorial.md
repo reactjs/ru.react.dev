@@ -196,6 +196,7 @@ class Board extends React.Component {
   renderSquare(i) {
     return <Square value={i} />;
   }
+}
 ```
 
 Изменим метод `render` внутри Square, заменив `{/* TODO */}` на `{this.props.value}`:
