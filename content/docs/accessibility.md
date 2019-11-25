@@ -487,11 +487,7 @@ class BlurExample extends React.Component {
 
 VoiceOver -- это экранный считыватель, встроенный в продукты Apple.
 
-<<<<<<< HEAD
 Здесь приведены руководства по активации и использованию VoiceOver:
-=======
-Refer to the following guides on how to activate and use VoiceOver:
->>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
 
 - [WebAIM -- использование VoiceOver для улучшения доступности контента](https://webaim.org/articles/voiceover/)
 - [Deque -- сочетания клавиш для VoiceOver в OS X](https://dequeuniversity.com/screenreaders/voiceover-keyboard-shortcuts)
