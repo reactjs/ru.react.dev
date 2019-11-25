@@ -86,6 +86,7 @@ import("./math").then(math => {
 });
 ```
 
+<<<<<<< HEAD
 > Примечание:
 > 
 > Синтаксис динамического импорта `import()` -- это ECMAScript (JavaScript)
@@ -99,6 +100,12 @@ import("./math").then(math => {
 
 Если вы настраиваете Webpack самостоятельно, то, вероятно, захотите прочитать [руководство Webpack по разделению кода](https://webpack.js.org/guides/code-splitting/).
 Файл конфигурации Webpack должен выглядеть [примерно так](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
+=======
+When Webpack comes across this syntax, it automatically starts code-splitting
+your app. If you're using Create React App, this is already configured for you
+and you can [start using it](https://facebook.github.io/create-react-app/docs/code-splitting) immediately. It's also supported
+out of the box in [Next.js](https://github.com/zeit/next.js/#dynamic-import).
+>>>>>>> 99b790188735016c72a9265a42dbfc87c3221729
 
 Если вы используете [Babel](https://babeljs.io/), вам необходимо убедиться, что он понимает синтаксис динамического импорта.
 Для этого вам необходимо установить плагин [@babel/plugin-syntax-dynamic-import](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import).
