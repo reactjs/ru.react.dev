@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-adoption
-title: Знакомство с конкурентным режимом (экспериментально)
+title: Применение конкурентного режима (экспериментально)
 permalink: docs/concurrent-mode-adoption.html
 prev: concurrent-mode-patterns.html
 next: concurrent-mode-reference.html
