@@ -141,7 +141,7 @@
     - id: concurrent-mode-intro
       title: Introducing Concurrent Mode
     - id: concurrent-mode-suspense
-      title: Suspense for Data Fetching
+      title: Задержка при получении данных
     - id: concurrent-mode-patterns
       title: Concurrent UI Patterns
     - id: concurrent-mode-adoption
