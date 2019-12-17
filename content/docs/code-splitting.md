@@ -102,11 +102,7 @@ import("./math").then(math => {
 
 > Примечание:
 >
-<<<<<<< HEAD
-> Возможности `React.lazy` и задержки (suspense) пока недоступны для рендеринга на стороне сервера. Если вам нужно разделение кода в серверном приложении, мы рекомендуем [Loadable Components](https://github.com/smooth-code/loadable-components). У них есть хорошее [руководство по разделению бандла](https://www.smooth-code.com/open-source/loadable-components/docs/server-side-rendering/) с серверным рендерингом.
-=======
-> `React.lazy` and Suspense are not yet available for server-side rendering. If you want to do code-splitting in a server rendered app, we recommend [Loadable Components](https://github.com/gregberge/loadable-components). It has a nice [guide for bundle splitting with server-side rendering](https://loadable-components.com/docs/server-side-rendering/).
->>>>>>> 401b97e9591ac573eaf35c7cf57e5f145276d140
+Возможности `React.lazy` и задержки (suspense) пока недоступны для рендеринга на стороне сервера. Если вам нужно разделение кода в серверном приложении, мы рекомендуем [Loadable Components](https://github.com/gregberge/loadable-components). У них есть хорошее [руководство по разделению бандла](https://loadable-components.com/docs/server-side-rendering/) с серверным рендерингом.
 
 Функция `React.lazy` позволяет рендерить динамический импорт как обычный компонент.
 
