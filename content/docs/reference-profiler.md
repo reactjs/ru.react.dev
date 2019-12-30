@@ -110,10 +110,18 @@ function onRenderCallback(
 Временная метка, когда React зафиксировал текущее обновление.
 Это значение доступно для всех профилировщиков при фиксации, позволяя группировать их, если в этом есть необходимость.
 * **`interactions: Set`** -
+<<<<<<< HEAD
 Множество [«взаимодействий»](http://fb.me/react-interaction-tracing), которые были зафиксированы во время подготовки изменения (например, когда `render` или `setState` были вызваны).
+=======
+Set of ["interactions"](https://fb.me/react-interaction-tracing) that were being traced the update was scheduled (e.g. when `render` or `setState` were called).
+>>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
 
 > Примечание:
 >
 > Взаимодействия могут быть использованы для установки причины обновления, хотя API для их отслеживания все еще экспериментальное.
 >
+<<<<<<< HEAD
 > Вы можете узнать подробнее на [fb.me/react-interaction-tracing](http://fb.me/react-interaction-tracing).
+=======
+> Learn more about it at [fb.me/react-interaction-tracing](https://fb.me/react-interaction-tracing)
+>>>>>>> 5b6ad388804aaa5cf5504ccd04329f52960e17ae
