@@ -56,7 +56,11 @@ function ActionLink() {
 
 В приведённом выше коде `e` — это синтетическое событие. React определяет синтетические события в соответствии со [спецификацией W3C](https://www.w3.org/TR/DOM-Level-3-Events/), поэтому не волнуйтесь о кроссбраузерности. Посмотрите [руководство о `SyntheticEvent`](/docs/events.html), чтобы узнать о них больше.
 
+<<<<<<< HEAD
 При использовании React обычно не нужно вызывать `addEventListener`, чтобы добавить обработчики в DOM-элемент после его создания. Вместо этого добавьте обработчик сразу после того, как элемент отрендерился.
+=======
+When using React, you generally don't need to call `addEventListener` to add listeners to a DOM element after it is created. Instead, just provide a listener when the element is initially rendered.
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 В компоненте, определённом с помощью [ES6-класса](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes), в качестве обработчика события обычно выступает один из методов класса. Например, этот компонент `Toggle` рендерит кнопку, которая позволяет пользователю переключать состояния между «Включено» и «Выключено»:
 
@@ -142,7 +146,11 @@ class LoggingButton extends React.Component {
 
 ## Передача аргументов в обработчики событий {#passing-arguments-to-event-handlers}
 
+<<<<<<< HEAD
 Внутри цикла часто нужно передать дополнительный аргумент в обработчик события. Например, если `id` — это идентификатор строки, можно использовать следующие варианты:
+=======
+Inside a loop, it is common to want to pass an extra parameter to an event handler. For example, if `id` is the row ID, either of the following would work:
+>>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ```js
 <button onClick={(e) => this.deleteRow(id, e)}>Удалить строку</button>
