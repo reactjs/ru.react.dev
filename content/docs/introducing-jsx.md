@@ -180,8 +180,4 @@ const element = {
 
 >**Совет:**
 >
-<<<<<<< HEAD
->Мы рекомендуем настроить ваш любимый редактор кода использовать [Babel](https://babeljs.io/docs/editors) чтобы и ES6, и JSX код были подсвечены должным образом. Настоящий сайт использует совместимую цветовую схему [Oceanic Next](https://labs.voronianski.com/oceanic-next-color-scheme/).
-=======
->We recommend using the ["Babel" language definition](https://babeljs.io/docs/editors) for your editor of choice so that both ES6 and JSX code is properly highlighted.
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+>Мы рекомендуем настроить ваш любимый редактор кода использовать [Babel](https://babeljs.io/docs/editors) чтобы и ES6, и JSX код были подсвечены должным образом.

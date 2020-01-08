@@ -106,11 +106,7 @@ function Page(props) {
 
 Этого паттерна достаточно для большинства случаев, когда вам необходимо отделить дочерний компонент от его промежуточных родителей. Вы можете пойти ещё дальше, используя [рендер-пропсы](/docs/render-props.html), если дочерним компонентам необходимо взаимодействовать с родителем перед рендером.
 
-<<<<<<< HEAD
 Однако, иногда одни и те же данные должны быть доступны во многих компонентах на разных уровнях дерева и вложенности. Контекст позволяет распространить эти данные и их изменения на все компоненты ниже по дереву. Управление текущим языком, UI темой или кешем данных — это пример тех случаев, когда реализация с помощью контекста будет проще использования альтернативных подходов.
-=======
-However, sometimes the same data needs to be accessible by many components in the tree, and at different nesting levels. Context lets you "broadcast" such data, and changes to it, to all components below. Common examples where using context might be simpler than the alternatives include managing the current locale, theme, or a data cache.
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ## API {#api}
 
@@ -134,23 +130,14 @@ const MyContext = React.createContext(defaultValue);
 
 Принимает проп `value`, который будут передан во все компоненты, использующие этот контекст и являющиеся потомками этого Provider компонента. Один Provider может быть связан с несколькими компонентами, потребляющими контекст. Так же Provider компоненты могут быть вложены друг в друга, переопределяя значение контекста глубже в дереве.
 
-<<<<<<< HEAD
-Все потребители, которые являются потомками Provider, будут повторно рендериться, как только проп `value` у Provider изменится. Потребитель перерендерится при изменении контекста, даже если его родитель, не использующий данный контекст, блокирует повторные рендеры с помощью `shouldComponentUpdate`.
+Все потребители, которые являются потомками Provider, будут повторно рендериться, как только проп `value` у Provider изменится. Потребитель (включая [`.contextType`](#classcontexttype) и [`useContext`](/docs/hooks-reference.html#usecontext)) перерендерится при изменении контекста, даже если его родитель, не использующий данный контекст, блокирует повторные рендеры с помощью `shouldComponentUpdate`.
 
 Изменения определяются с помощью сравнения нового и старого значения, используя алгоритм, аналогичный [`Object.is`](//developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).
 
 > Примечание
 >
 > Способ, по которому определяются изменения, может вызвать проблемы при передаче объекта в `value`: смотрите [Предостережения](#caveats).
-=======
-All consumers that are descendants of a Provider will re-render whenever the Provider's `value` prop changes. The propagation from Provider to its descendant consumers (including [`.contextType`](#classcontexttype) and [`useContext`](/docs/hooks-reference.html#usecontext)) is not subject to the `shouldComponentUpdate` method, so the consumer is updated even when an ancestor component skips an update.
 
-Changes are determined by comparing the new and old values using the same algorithm as [`Object.is`](//developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description).
-
-> Note
->
-> The way changes are determined can cause some issues when passing objects as `value`: see [Caveats](#caveats).
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ### `Class.contextType` {#classcontexttype}
 
@@ -207,15 +194,9 @@ class MyClass extends React.Component {
 
 `Consumer` принимает [функцию в качестве дочернего компонента](/docs/render-props.html#using-props-other-than-render). Эта функция принимает текущее значение контекста и возвращает React-компонент. Передаваемый аргумент `value` будет равен ближайшему (вверх по дереву) значению этого контекста, а именно пропу `value` Provider компонента. Если такого Provider компонента не существует, аргумент `value` будет равен значению `defaultValue`, которое было передано в `createContext()`.
 
-<<<<<<< HEAD
 > Примечание
 >
 > Подробнее про паттерн «_функция как дочерний компонент_» можно узнать на странице [Рендер-пропсы](/docs/render-props.html).
-=======
-> Note
->
-> For more information about the 'function as a child' pattern, see [render props](/docs/render-props.html).
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 ### `Context.displayName` {#contextdisplayname}
 
@@ -261,11 +242,7 @@ MyContext.displayName = 'MyDisplayName';
 
 ### Использование нескольких контекстов {#consuming-multiple-contexts}
 
-<<<<<<< HEAD
 Чтобы последующие рендеры (связанные с контекстом) были быстрыми, React делает каждого потребителя контекста отдельным компонентом в дереве.
-=======
-To keep context re-rendering fast, React needs to make each context consumer a separate node in the tree.
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 `embed:context/multiple-contexts.js`
 
@@ -283,13 +260,7 @@ To keep context re-rendering fast, React needs to make each context consumer a s
 
 ## Устаревший API {#legacy-api}
 
-<<<<<<< HEAD
 > Примечание
 >
 > В прошлом React имел только экспериментальный API контекста. Старый API будет поддерживаться во всех 16.x релизах, но использующие его приложения должны перейти на новую версию. Устаревший API будет удалён в будущем крупном релизе React. Вы можете прочитать [документацию устаревшего контекста здесь](/docs/legacy-context.html).
-=======
-> Note
->
-> React previously shipped with an experimental context API. The old API will be supported in all 16.x releases, but applications using it should migrate to the new version. The legacy API will be removed in a future major React version. Read the [legacy context docs here](/docs/legacy-context.html).
 
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4

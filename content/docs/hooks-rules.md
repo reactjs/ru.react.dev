@@ -46,11 +46,7 @@ npm install eslint-plugin-react-hooks --save-dev
 }
 ```
 
-<<<<<<< HEAD
-В будущем мы намереваемся включать этот плагин в Create React App и подобные инструменты по умолчанию.
-=======
-This plugin is included by default in [Create React App](/docs/create-a-new-react-app.html#create-react-app).
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+Этот плагин включён по умолчанию в [Create React App](/docs/create-a-new-react-app.html#create-react-app).
 
 **Вы можете пропустить остаток этой страницы и перейти к созданию [собственного хука](/docs/hooks-custom.html).** Но если вам интересно, ниже приведено объяснение, почему правила хуков необходимы.
 

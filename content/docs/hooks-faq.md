@@ -468,11 +468,7 @@ function ScrollView({row}) {
 
 ### Как я могу измерить узел DOM? {#how-can-i-measure-a-dom-node}
 
-<<<<<<< HEAD
-Для определения положения или размера DOM-узла можно использовать [колбэк-реф](/docs/refs-and-the-dom.html#callback-refs). React будет вызывать этот колбэк всякий раз, когда реф привязывается к другому узлу. Вот [небольшая демонстрация](https://codesandbox.io/s/l7m0v5x4v9):
-=======
-One rudimentary way to measure the position or size of a DOM node is to use a [callback ref](/docs/refs-and-the-dom.html#callback-refs). React will call that callback whenever the ref gets attached to a different node. Here is a [small demo](https://codesandbox.io/s/l7m0v5x4v9):
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+Один из элементарных способов определения положения или размера DOM-узла это использование [колбэк-реф](/docs/refs-and-the-dom.html#callback-refs). React будет вызывать этот колбэк всякий раз, когда реф привязывается к другому узлу. Вот [небольшая демонстрация](https://codesandbox.io/s/l7m0v5x4v9):
 
 ```js{4-8,12}
 function MeasureExample() {
@@ -497,13 +493,10 @@ function MeasureExample() {
 
 Обратите внимание, что мы передаём `[]` как массив зависимостей в `useCallback`. Это гарантирует, что наш колбэк-реф не изменится между повторными рендерами, а значит React не будет вызывать его без необходимости.
 
-<<<<<<< HEAD
-При желании вы можете [извлечь эту логику](https://codesandbox.io/s/m5o42082xy) в повторно используемый хук:
-=======
+В данном примере колбэк-реф будет вызвана только при монтировании и размонтировании компонента, хотя отрендеренный компонент `<h1>` остается на месте на протяжении любых повторных рендеров.
 In this example, the callback ref will be called only when the component mounts and unmounts, since the rendered `<h1>` component stays present throughout any rerenders. If you want to be notified any time a component resizes, you may want to use [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) or a third-party Hook built on it.
 
-If you want, you can [extract this logic](https://codesandbox.io/s/m5o42082xy) into a reusable Hook:
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+При желании вы можете [извлечь эту логику](https://codesandbox.io/s/m5o42082xy) в повторно используемый хук:
 
 ```js{2}
 function MeasureExample() {
@@ -727,13 +720,8 @@ function Counter() {
 
 ```js{2-6,10-11,16}
 function Example(props) {
-<<<<<<< HEAD
   // Сохраняем свежайшие значения пропсов в ref
-  let latestProps = useRef(props);
-=======
-  // Keep latest props in a ref.
   const latestProps = useRef(props);
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
   useEffect(() => {
     latestProps.current = props;
   });

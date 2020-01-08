@@ -104,11 +104,7 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
-<<<<<<< HEAD
 `React.PureComponent` похож на [`React.Component`](#reactcomponent). Отличие заключается в том, что [`React.Component`](#reactcomponent) не реализует [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), а `React.PureComponent` реализует его поверхностным сравнением пропсов и состояния.
-=======
-`React.PureComponent` is similar to [`React.Component`](#reactcomponent). The difference between them is that [`React.Component`](#reactcomponent) doesn't implement [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), but `React.PureComponent` implements it with a shallow prop and state comparison.
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
 
 Если метод `render()` вашего React-компонента всегда рендерит одинаковый результат при одних и тех же пропсах и состояниях, для повышения производительности в некоторых случаях вы можете использовать `React.PureComponent`.
 
@@ -132,13 +128,9 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 Если ваш функциональный компонент всегда рендерит одинаковый результат для одних и тех же пропсов, вы можете обернуть его в вызов `React.memo` для повышения производительности в некоторых случаях, мемоизируя результат. Это значит, что React будет использовать результат последнего рендера, избегая повторного рендеринга.
 
-<<<<<<< HEAD
-По умолчанию он поверхностно сравнивает вложенные объекты в объекте `props`. Если вы хотите контролировать сравнение, вы можете передать свою функцию сравнения в качестве второго аргумента.
-=======
 `React.memo` only affects props changes. If your function component wrapped in `React.memo` has a [`useState`](/docs/hooks-state.html) or [`useContext`](/docs/hooks-reference.html#usecontext) Hook in its implementation, it will still rerender when state or context change.
 
-By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, you can also provide a custom comparison function as the second argument.
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+По умолчанию он поверхностно сравнивает вложенные объекты в объекте `props`. Если вы хотите контролировать сравнение, вы можете передать свою функцию сравнения в качестве второго аргумента.
 
 ```javascript
 function MyComponent(props) {

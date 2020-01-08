@@ -48,11 +48,7 @@ React изначально был спроектирован так, чтобы 
 
 Когда вы начинаете проект на React, [то простая HTML-страница со script-тегами](/docs/add-react-to-a-website.html) может быть лучшим вариантом. Её можно сделать за минуту.
 
-<<<<<<< HEAD
-Однако для разработки более развесистого приложения вам, скорее всего, придётся рассмотреть другие варианты настройки рабочего окружения, объединяющие в себе различные технологии. Вот [несколько наборов JavaScript-инструментов](/docs/create-a-new-react-app.html), которые мы рекомендуем для создания приложения. Каждый из этих инструментов может работать практически без настройки и позволит раскрыть все возможности экосистемы React. 
-=======
-As your application grows, you might want to consider a more integrated setup. There are several JavaScript toolchains we recommend for larger applications. Each of them can work with little to no configuration and lets you take full advantage of the rich React ecosystem. [Learn how.](/docs/create-a-new-react-app.html)
->>>>>>> 071f5b0e1622465fb6fe5cf6c1cbd2aaef7c5ef4
+Однако для разработки более развесистого приложения вам, скорее всего, придётся рассмотреть другие варианты настройки рабочего окружения, объединяющие в себе различные технологии. Вот несколько наборов JavaScript-инструментов, которые мы рекомендуем для создания приложения. Каждый из этих инструментов может работать практически без настройки и позволит раскрыть все возможности экосистемы React. [Подробнее об инструментах.](/docs/create-a-new-react-app.html)
 
 ## Изучаем React {#learn-react}
 
