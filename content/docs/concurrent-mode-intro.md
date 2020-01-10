@@ -1,6 +1,6 @@
 ---
 id: concurrent-mode-intro
-title: Introducing Concurrent Mode (Experimental)
+title: Введение в конкурентный режим (эксперимент)
 permalink: docs/concurrent-mode-intro.html
 next: concurrent-mode-suspense.html
 ---
@@ -14,87 +14,87 @@ next: concurrent-mode-suspense.html
 
 <div class="scary">
 
->Caution:
+>Внимание:
 >
->This page describes **experimental features that are [not yet available](/docs/concurrent-mode-adoption.html) in a stable release**. Don't rely on experimental builds of React in production apps. These features may change significantly and without a warning before they become a part of React.
+>На странице описаны **экспериментальные функции, которых еще нет в стабильной версии**. Не используйте экспериментальные сборки React в продакшен-приложениях. Эти функции могут значительно измениться без предупреждения перед тем, как попасть в React.
 >
->This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now.
+>Эта документация предназначена для ранних пользователей и интересующихся. **Если вы новичок в React, не беспокойтесь об этих возможностях** -- вам не нужно изучать их прямо сейчас.
 
 </div>
 
-This page provides a theoretical overview of Concurrent Mode. **For a more practical introduction, you might want to check out the next sections:**
+На этой странице представлен теоретический обзор конкурентного режима. **Больше практических моментов, вы можете найти в следующих разделах:**
 
-* [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html) describes a new mechanism for fetching data in React components.
-* [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html) shows some UI patterns made possible by Concurrent Mode and Suspense.
-* [Adopting Concurrent Mode](/docs/concurrent-mode-adoption.html) explains how you can try Concurrent Mode in your project.
-* [Concurrent Mode API Reference](/docs/concurrent-mode-reference.html) documents the new APIs available in experimental builds.
+* [Задержка при запросе данных](/docs/concurrent-mode-suspense.html) описывает новый механизм запроса данных в React-компонентах.
+* [Паттерны конкурентного UI](/docs/concurrent-mode-patterns.html) показывает некоторые паттерны UI, ставшие возможными благодаря конкурентному режиму и *задержке*.
+* [Использование конкурентного режима](/docs/concurrent-mode-adoption.html) объясняет, как вы можете попробовать конкурентный режим в своем проекте.
+* [API конкурентного режима](/docs/concurrent-mode-reference.html) документирует новые API, доступные в экспериментальных сборках.
 
-## What Is Concurrent Mode? {#what-is-concurrent-mode}
+## Что такое конкурентный режим? {#what-is-concurrent-mode}
 
-Concurrent Mode is a set of new features that help React apps stay responsive and gracefully adjust to the user's device capabilities and network speed.
+Конкурентный режим - это набор новых возможностей, которые помогают приложениям реагировать и корректно адаптироваться к устройствам пользователя и скорости сети.
 
-These features are still experimental and are subject to change. They are not yet a part of a stable React release, but you can try them in an experimental build.
+Эти функции пока являются экспериментальными и могут быть изменены. Они не являются частью стабильного выпуска React, но вы можете попробовать их в экспериментальной сборке.
 
-## Blocking vs Interruptible Rendering {#blocking-vs-interruptible-rendering}
+## Сравнение блокировки и прерываемого рендеринга {#blocking-vs-interruptible-rendering}
 
-**To explain Concurrent Mode, we'll use version control as a metaphor.** If you work on a team, you probably use a version control system like Git and work on branches. When a branch is ready, you can merge your work into master so that other people can pull it.
+**Чтобы объяснить конкурентный режим, мы будем использовать в качестве метафоры управление версиями.** Если вы работаете в команде, вы, вероятно, используете систему управления версиями, такую как Git, и работаете с ветками. Когда ветка готова, вы можете объединить свою работу с мастером, чтобы другие люди смогли её притянуть.
 
-Before version control existed, the development workflow was very different. There was no concept of branches. If you wanted to edit some files, you had to tell everyone not to touch those files until you've finished your work. You couldn't even start working on them concurrently with that person — you were literally *blocked* by them.
+До того, как появился контроль версий, рабочий процесс разработки был совсем другим. Концепция веток не существовала. Если вы хотите отредактировать некоторые файлы, вы должны попросить всех не трогать эти файлы, пока вы не закончите свою работу. Вы даже не могли начать работать над ними паралелльно с этим человеком — вы были буквально «заблокированы» ими.
 
-This illustrates how UI libraries, including React, typically work today. Once they start rendering an update, including creating new DOM nodes and running the code inside components, they can't interrupt this work. We'll call this approach "blocking rendering".
+Это иллюстрирует, как UI-библиотеки, включая React, обычно работают сегодня. Как только они начинают рендерить обновление, включая создание новых узлов DOM и запуск кода внутри компонентов, они не могут прервать эту работу. Мы будем называть этот подход «блокирующим рендерингом».
 
-In Concurrent Mode, rendering is not blocking. It is interruptible. This improves the user experience. It also unlocks new features that weren't possible before. Before we look at concrete examples in the [next](/docs/concurrent-mode-suspense.html) [chapters](/docs/concurrent-mode-patterns.html), we'll do a high-level overview of new features.
+В конкурентном режиме рендеринг не блокируется. Он прерывается. Это улучшает пользовательский опыт и открывает новые возможности. Прежде чем мы рассмотрим конкретные примеры в [следующих](/docs/concurrent-mode-suspense.html) [главах](/docs/concurrent-mode-patterns.html), мы посмотрим на новые возможности.
 
-### Interruptible Rendering {#interruptible-rendering}
+### Прерываемый рендеринг {#interruptible-rendering}
 
-Consider a filterable product list. Have you ever typed into a list filter and felt that it stutters on every key press? Some of the work to update the product list might be unavoidable, such as creating new DOM nodes or the browser performing layout. However, *when* and *how* we perform that work plays a big role.
+Представим список продуктов, который можно отфильтровать. Вы когда-нибудь печатали в фильтре списка и чувствовали, что он залипает при каждом нажатии клавиши? Некоторая часть работы по обновлению списка продуктов может быть неизбежна, например, создание новых DOM-узлов или построение вёрстки браузером. Однако, *когда* и *как* мы выполняем эту работу играет большую роль.
 
-A common way to work around the stutter is to "debounce" the input. When debouncing, we only update the list *after* the user stops typing. However, it can be frustrating that the UI doesn't update while we're typing. As an alternative, we could "throttle" the input, and update the list with a certain maximum frequency. But then on lower-powered devices we'd still end up with stutter. Both debouncing and throttling create a suboptimal user experience.
+Распространенный способ обойти залипание - не обрабатывать входные данные при каждом изменении (debounce). В таком случае мы обновляем список только после того, как пользователь перестает печатать. Однако может быть неприятно если пользовательский интерфейс не обновляется во время ввода текста. В качестве альтернативы мы могли бы «тормозить» (throttle) обработку данных и обновлять список с определенной максимальной частотой. Но тогда на маломощных устройствах всё равно останется залипание. Оба подхода создают неоптимальный пользовательский интерфейс.
 
-The reason for the stutter is simple: once rendering begins, it can't be interrupted. So the browser can't update the text input right after the key press. No matter how good a UI library (such as React) might look on a benchmark, if it uses blocking rendering, a certain amount of work in your components will always cause stutter. And, often, there is no easy fix.
+Причина залипания проста: как только начинается рендер, его уже нельзя прервать. Таким образом, браузер не может обновить ввод текста сразу после нажатия клавиши. Независимо от того, насколько хорошо UI-библиотека (например, React) может выглядеть при тестах производительности, если она использует блокировку рендера, определенный объем работы в ваших компонентах всегда будет вызывать залипания. И, зачастую, это не так просто исправить.
 
-**Concurrent Mode fixes this fundamental limitation by making rendering interruptible.** This means when the user presses another key, React doesn't need to block the browser from updating the text input. Instead, it can let the browser paint an update to the input, and then continue rendering the updated list *in memory*. When the rendering is finished, React updates the DOM, and changes are reflected on the screen.
+**Конкурентный режим устраняет это фундаментальное ограничение, делая рендеринг прерываемым.** Это означает, что когда пользователь нажимает другую клавишу, React не нужно блокировать браузер от обновления ввода текста. Вместо этого он может позволить браузеру нарисовать обновление для входных данных, а затем продолжить визуализацию обновленного списка *в памяти*. Когда рендеринг завершен, React обновляет DOM, и изменения отражаются на экране.
 
-Conceptually, you can think of this as React preparing every update "on a branch". Just like you can abandon work in branches or switch between them, React in Concurrent Mode can interrupt an ongoing update to do something more important, and then come back to what it was doing earlier. This technique might also remind you of [double buffering](https://wiki.osdev.org/Double_Buffering) in video games.
+Концептуально это можно считать реакцией на подготовку каждого обновления «в ветке». Точно так же, как вы можете отказаться от работы в ветках или переключаться между ними, React в конкурентном режиме может прервать текущее обновление, чтобы сделать что-то более важное, а затем вернуться к тому, что он делал раньше. Этот метод также может напоминать вам о [двойной буферизации](https://wiki.osdev.org/Double_Buffering) в видеоиграх.
 
-Concurrent Mode techniques reduce the need for debouncing and throttling in UI. Because rendering is interruptible, React doesn't need to artificially *delay* work to avoid stutter. It can start rendering right away, but interrupt this work when needed to keep the app responsive.
+Возможности конкурентного режима уменьшают необходимость применять ожидание (debouncing) и торможение (throttling) в пользовательском интерфейсе. Поскольку рендеринг прерываем, React не нужно искусственно *задерживать* работу, чтобы избежать залипание. Он может начать визуализацию сразу же, но прервать эту работу при необходимости, чтобы сохранить отзывчивость приложения.
 
-### Intentional Loading Sequences {#intentional-loading-sequences}
+### Преднамеренная последовательность загрузкок {#intentional-loading-sequences}
 
-We've said before that Concurrent Mode is like React working "on a branch". Branches are useful not only for short-term fixes, but also for long-running features. Sometimes you might work on a feature, but it could take weeks before it's in a "good enough state" to merge into master. This side of our version control metaphor applies to rendering too.
+Мы уже говорили, что конкурентный режим похож на работу React «в ветке». Ветки полезны не только для краткосрочных исправлений, но и для долгосрочных задач. Иногда вы можете работать над задачей, но это может занять недели, прежде чем она будет в «достаточно хорошем состоянии», чтобы влиться в master. Эта сторона нашей метафоры управления версиями относится и к рендеру.
 
-Imagine we're navigating between two screens in an app. Sometimes, we might not have enough code and data loaded to show a "good enough" loading state to the user on the new screen. Transitioning to an empty screen or a large spinner can be a jarring experience. However, it's also common that the necessary code and data doesn't take too long to fetch. **Wouldn't it be nicer if React could stay on the old screen for a little longer, and "skip" the "bad loading state" before showing the new screen?**
+Представьте себе, что мы перемещаемся между двумя экранами в приложении. Иногда у нас может быть недостаточно загруженного кода и данных, чтобы показать пользователю «достаточно хорошее» состояние загрузки на новом экране. Переход к пустому экрану или большому спиннеру может быть неприятным. Однако часто бывает так, что получение необходимого кода и данных не занимает слишком много времени. **Может было бы лучше, если React смог бы оставаться на старом экране немного дольше и «пропустить» «плохое состояние загрузки», прежде чем показывать новый экран?**
 
-While this is possible today, it can be difficult to orchestrate. In Concurrent Mode, this feature is built-in. React starts preparing the new screen in memory first — or, as our metaphor goes, "on a different branch". So React can wait before updating the DOM so that more content can load. In Concurrent Mode, we can tell React to keep showing the old screen, fully interactive, with an inline loading indicator. And when the new screen is ready, React can take us to it.
+Хоть это возможно сделать и сегодня, такое трудно организовать. В конкурентном режиме эта функция встроена. Сначала React начинает готовить новый экран в памяти — или, как говорится в нашей метафоре, «на другой ветке». Поэтому React может подождать до обновления DOM, чтобы загрузить больше контента. В конкурентном режиме мы можем сказать React, чтобы он продолжил показывать старый экран, полностью интерактивный, с встроенным индикатором загрузки. И когда новый экран будет готов, React может привести нас к нему.
 
-### Concurrency {#concurrency}
+### Конкурентность {#concurrency}
 
-Let's recap the two examples above and see how Concurrent Mode unifies them. **In Concurrent Mode, React can work on several state updates *concurrently*** — just like branches let different team members work independently:
+Давайте повторим два примера выше и посмотрим, как конкурентный режим объединяет их. **В конкурентном режиме React может работать с несколькими обновлениями состояния *одновременно*** - так же, как ветки позволяют различным членам команды работать независимо:
 
-* For CPU-bound updates (such as creating DOM nodes and running component code), concurrency means that a more urgent update can "interrupt" rendering that has already started.
-* For IO-bound updates (such as fetching code or data from the network), concurrency means that React can start rendering in memory even before all the data arrives, and skip showing jarring empty loading states.
+* Для обновлений с привязкой к CPU (таких как создание узлов DOM и запуск кода компонента) конкурентность означает, что более срочное обновление может «прервать» уже начатую визуализацию.
+* Для обновлений с привязкой к IO (таких как извлечение кода или данных из сети) конкурентность означает, что React может начать визуализацию в памяти еще до того, как все данные поступят, и пропустить показ раздражающих пустых состояний загрузки.
 
-Importantly, the way you *use* React is the same. Concepts like components, props, and state fundamentally work the same way. When you want to update the screen, you set the state.
+Важно отметить, что способ, которым вы *используете* React, один и тот же. Такие понятия, как компоненты, пропсы и стейт, в принципе работают одинаково. Когда вы хотите обновить страницу, вы устанавливаете состояние.
 
-React uses a heuristic to decide how "urgent" an update is, and lets you adjust it with a few lines of code so that you can achieve the desired user experience for every interaction.
+React использует эвристику, чтобы решить, насколько «срочно» обновление, и позволяет настроить его с помощью нескольких строк кода, чтобы вы могли достичь желаемого взаимодействия с пользователем.
 
-## Putting Research into Production {#putting-research-into-production}
+## Опыт внедрения в продакшн {#putting-research-into-production}
 
-There is a common theme around Concurrent Mode features. **Its mission is to help integrate the findings from the Human-Computer Interaction research into real UIs.**
+Существует общая тема вокруг возможностей конкурентного режима. **Его миссия заключается в том, чтобы помочь интегрировать результаты исследований взаимодействия человека и компьютера в реальный UI.**
 
-For example, research shows that displaying too many intermediate loading states when transitioning between screens makes a transition feel *slower*. This is why Concurrent Mode shows new loading states on a fixed "schedule" to avoid jarring and too frequent updates.
+Например, исследования показывают, что отображение слишком большого количества промежуточных состояний загрузки при переходе между экранами делает переход более медленным. Вот почему конкурентный режим показывает новые состояния загрузки по фиксированному «расписанию», чтобы избежать резких и слишком частых обновлений.
 
-Similarly, we know from research that interactions like hover and text input need to be handled within a very short period of time, while clicks and page transitions can wait a little longer without feeling laggy. The different "priorities" that Concurrent Mode uses internally roughly correspond to the interaction categories in the human perception research.
+Точно так же мы знаем из исследований, что такие взаимодействия, как наведение курсора и ввод текста, должны быть обработаны в течение очень короткого периода времени, в то время как клики и переходы по  страницам могут подождать немного дольше, не чувствуя задержки. Различные «приоритеты», которые использует конкурентный режим, внутренне примерно соответствуют категориям взаимодействия в исследовании человеческого восприятия.
 
-Teams with a strong focus on user experience sometimes solve similar problems with one-off solutions. However, those solutions rarely survive for a long time, as they're hard to maintain. With Concurrent Mode, our goal is to bake the UI research findings into the abstraction itself, and provide idiomatic ways to use them. As a UI library, React is well-positioned to do that.
+Команды с сильным акцентом на пользовательский опыт иногда решают подобные проблемы с помощью одноразовых решений. Однако эти решения редко сохраняются в течение длительного времени, поскольку их трудно поддерживать. В конкуретном режиме наша цель состоит в том, чтобы превратить результаты исследований пользовательского интерфейса в саму абстракцию и обеспечить идиоматические способы их использования. Как UI-библиотека, React хорошо подходит для этого.
 
-## Next Steps {#next-steps}
+## Следующие шаги {#next-steps}
 
-Now you know what Concurrent Mode is all about!
+Теперь вы знаете, что такое конкурентный режим.
 
-On the next pages, you'll learn more details about specific topics:
+Страницы, на которых можно узнать больше деталей по конкретным темам:
 
-* [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html) describes a new mechanism for fetching data in React components.
-* [Concurrent UI Patterns](/docs/concurrent-mode-patterns.html) shows some UI patterns made possible by Concurrent Mode and Suspense.
-* [Adopting Concurrent Mode](/docs/concurrent-mode-adoption.html) explains how you can try Concurrent Mode in your project.
-* [Concurrent Mode API Reference](/docs/concurrent-mode-reference.html) documents the new APIs available in experimental builds.
+* [Задержка при запросе данных](/docs/concurrent-mode-suspense.html) описывает новый механизм запроса данных в React-компонентах.
+* [Паттерны конкурентного UI](/docs/concurrent-mode-patterns.html) показывает некоторые паттерны UI, ставшие возможными благодаря конкурентному режиму и *задержке*.
+* [Использование конкурентного режима](/docs/concurrent-mode-adoption.html) объясняет, как вы можете попробовать конкурентный режим в своем проекте.
+* [API конкурентного режима](/docs/concurrent-mode-reference.html) документирует новые API, доступные в экспериментальных сборках.
