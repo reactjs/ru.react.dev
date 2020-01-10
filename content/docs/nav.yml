@@ -155,7 +155,7 @@
   - id: codebase-overview
     title: Codebase Overview
   - id: implementation-notes
-    title: Вырезки из реализации
+    title: Детали реализации
   - id: design-principles
     title: Принципы проектирования React
 - title: FAQ
