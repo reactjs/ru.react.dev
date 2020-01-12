@@ -181,7 +181,7 @@ const value = useContext(MyContext);
 
 Принимает объект контекста (значение, возвращённое из `React.createContext`) и возвращает текущее значение контекста для этого контекста. Текущее значение контекста определяется пропом `value` ближайшего `<MyContext.Provider>` над вызывающим компонентом в дереве.
 
-Когда ближайший `<MyContext.Provider>` над компонентом обновляется, этот хук вызовет повторный рендер с последним значением контекста, переданным этому провайдеру `MyContext`. Even if an ancestor uses [`React.memo`](/docs/react-api.html#reactmemo) or [`shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate), a rerender will still happen starting at the component itself using `useContext`.
+Когда ближайший `<MyContext.Provider>` над компонентом обновляется, этот хук вызовет повторный рендер с последним значением контекста, переданным этому провайдеру `MyContext`. Даже если родительский компонент использует [`React.memo`](/docs/react-api.html#reactmemo) или реализует [`shouldComponentUpdate`](/docs/react-component.html#shouldcomponentupdate), то повторный рендер будет выполняться для компонента, использующего `useContext`.
 
 Запомните, аргумент для `useContext` должен быть *непосредственно сам объект контекста*:
 

@@ -493,8 +493,7 @@ function MeasureExample() {
 
 Обратите внимание, что мы передаём `[]` как массив зависимостей в `useCallback`. Это гарантирует, что наш колбэк-реф не изменится между повторными рендерами, а значит React не будет вызывать его без необходимости.
 
-В данном примере колбэк-реф будет вызвана только при монтировании и размонтировании компонента, хотя отрендеренный компонент `<h1>` остается на месте на протяжении любых повторных рендеров.
-In this example, the callback ref will be called only when the component mounts and unmounts, since the rendered `<h1>` component stays present throughout any rerenders. If you want to be notified any time a component resizes, you may want to use [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) or a third-party Hook built on it.
+В данном примере колбэк-реф будет вызван только при монтировании и размонтировании компонента, хотя отрендеренный компонент `<h1>` остаётся на месте при последующих повторных рендеров. Если необходимо отследить изменение размера компонента, воспользуйтесь [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) или сторонним хуком, использующий этот API.
 
 При желании вы можете [извлечь эту логику](https://codesandbox.io/s/m5o42082xy) в повторно используемый хук:
 
