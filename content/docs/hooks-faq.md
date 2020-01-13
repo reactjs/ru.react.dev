@@ -431,8 +431,8 @@ function Example() {
 
 ```js
 function ScrollView({row}) {
-  let [isScrollingDown, setIsScrollingDown] = useState(false);
-  let [prevRow, setPrevRow] = useState(null);
+  const [isScrollingDown, setIsScrollingDown] = useState(false);
+  const [prevRow, setPrevRow] = useState(null);
 
   if (row !== prevRow) {
     // Row изменился с прошлого рендера. Обновляем isScrollingDown.
@@ -468,7 +468,7 @@ function ScrollView({row}) {
 
 ### Как я могу измерить узел DOM? {#how-can-i-measure-a-dom-node}
 
-Для определения положения или размера DOM-узла можно использовать [колбэк-реф](/docs/refs-and-the-dom.html#callback-refs). React будет вызывать этот колбэк всякий раз, когда реф привязывается к другому узлу. Вот [небольшая демонстрация](https://codesandbox.io/s/l7m0v5x4v9):
+Один из элементарных способов определения положения или размера DOM-узла это использование [колбэк-реф](/docs/refs-and-the-dom.html#callback-refs). React будет вызывать этот колбэк всякий раз, когда реф привязывается к другому узлу. Вот [небольшая демонстрация](https://codesandbox.io/s/l7m0v5x4v9):
 
 ```js{4-8,12}
 function MeasureExample() {
@@ -493,7 +493,9 @@ function MeasureExample() {
 
 Обратите внимание, что мы передаём `[]` как массив зависимостей в `useCallback`. Это гарантирует, что наш колбэк-реф не изменится между повторными рендерами, а значит React не будет вызывать его без необходимости.
 
-При желании вы можете [извлечь эту логику](https://codesandbox.io/s/m5o42082xy) в повторно используемый хук:
+В данном примере колбэк-реф будет вызван только при монтировании и размонтировании компонента, хотя отрендеренный компонент `<h1>` остаётся на месте при последующих повторных рендерах. Если необходимо отследить изменение размера компонента, воспользуйтесь [`ResizeObserver`](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver) или сторонним хуком, использующий этот API.
+
+При желании вы можете [извлечь эту логику](https://codesandbox.io/s/m5o42082xy) в хук для повторного использования:
 
 ```js{2}
 function MeasureExample() {
@@ -718,7 +720,7 @@ function Counter() {
 ```js{2-6,10-11,16}
 function Example(props) {
   // Сохраняем свежайшие значения пропсов в ref
-  let latestProps = useRef(props);
+  const latestProps = useRef(props);
   useEffect(() => {
     latestProps.current = props;
   });
