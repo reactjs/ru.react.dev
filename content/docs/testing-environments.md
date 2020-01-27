@@ -53,6 +53,10 @@ prev: testing-recipes.html
 
 ### «Сквозные» тесты {#end-to-end-tests-aka-e2e-tests}
 
+<<<<<<< HEAD
 «Сквозные» тесты полезны при тестировании длинных последовательностей действий, особенно тех, что важны для бизнеса (таких как платежи или регистрация пользователей). Для таких тестов, вы скорее всего, хотите протестировать рендеринг всего приложения в настоящем браузере, получение данных из настоящих API, использование сессий и кук, переходы по ссылкам. Ещё вы, возможно, захотите проверить вероятный результат не только состояния DOM, но и сохранения данных (например, проверить были ли изменения сохранены в базе данных).
+=======
+End-to-end tests are useful for testing longer workflows, especially when they're critical to your business (such as payments or signups). For these tests, you'd probably want to test how a real browser renders the whole app, fetches data from the real API endpoints, uses sessions and cookies, navigates between different links. You might also likely want to make assertions not just on the DOM state, but on the backing data as well (e.g. to verify whether the updates have been persisted to the database).
+>>>>>>> 335d64336234bcb7ba527ff94919a07da27f8549
 
 В этом случае вам стоит использовать фреймворк [Cypress](https://www.cypress.io/) или библиотеку [puppeteer](https://github.com/GoogleChrome/puppeteer) так вы сможете перемещаться между несколькими маршрутами и проверять вероятные побочные эффекты не только в браузере, но и, возможно, на бэкенде.

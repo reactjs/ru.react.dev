@@ -103,9 +103,16 @@ React использует [семантическое версионирова�
 
 ### Что нужно для разработки? {#contribution-prerequisites}
 
+<<<<<<< HEAD
 * У вас на компьютере должны быть установлены [Node.js](https://nodejs.org) версии 8.0.0 или выше и [Yarn](https://yarnpkg.com/en/) 1.2.0 или выше.
 * Некоторые зависимости React нужно компилировать. Для этого вам необходимо установить `gcc`. Если у вас OS X, то Xcode Command Line Tools справятся с этой задачей. В Ubuntu команда `apt-get install build-essential` установит все необходимые пакеты. В других Linux-дистрибутивах установка выполняется с помощью аналогичных команд. Для Windows последовательность действий описана в [инструкции по установке `node-gyp`](https://github.com/nodejs/node-gyp#installation).
 * Знание git.
+=======
+* You have [Node](https://nodejs.org) installed at v8.0.0+ and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
+* You have [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) installed.
+* You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
+* You are familiar with Git.
+>>>>>>> 335d64336234bcb7ba527ff94919a07da27f8549
 
 ### Порядок сборки и тестирования React {#development-workflow}
 
@@ -156,6 +163,7 @@ yarn link react react-dom
 
 Линтер не может выловить все проблемы в оформлении кода. Если вы в чём-то сомневаетесь, поищите ответ в [Airbnb's Style Guide](https://github.com/airbnb/javascript).
 
+<<<<<<< HEAD
 ### Видео о процессе разработки React {#introductory-video}
 
 Посмотрите [этот небольшой видеоролик](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26 минут), в котором показан весь процесс разработки React.
@@ -170,6 +178,9 @@ yarn link react react-dom
 Вот ещё одно видео с [выступлением на митапе ReactNYC](https://www.youtube.com/watch?v=GWCcZ6fnpn4). В нём Шон Вонг (Shawn Wang) рассказывает о своём опыте работы над React.
 
 ### Рабочее предложение (Request for Comments, RFC) {#request-for-comments-rfc}
+=======
+### Request for Comments (RFC) {#request-for-comments-rfc}
+>>>>>>> 335d64336234bcb7ba527ff94919a07da27f8549
 
 Большинство изменений, включая исправления багов и улучшение документации, обычно предлагаются и реализуются с помощью простых пулреквестов на GitHub.
 
