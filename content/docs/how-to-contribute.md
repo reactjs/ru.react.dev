@@ -157,24 +157,7 @@ yarn link react react-dom
 
 Линтер не может выловить все проблемы в оформлении кода. Если вы в чём-то сомневаетесь, поищите ответ в [Airbnb's Style Guide](https://github.com/airbnb/javascript).
 
-<<<<<<< HEAD
-### Видео о процессе разработки React {#introductory-video}
-
-Посмотрите [этот небольшой видеоролик](https://www.youtube.com/watch?v=wUpPsEcGsg8) (26 минут), в котором показан весь процесс разработки React.
-
-#### Главные темы: {#video-highlights}
-- [4:12](https://youtu.be/wUpPsEcGsg8?t=4m12s) — сборка и тестирование React
-- [6:07](https://youtu.be/wUpPsEcGsg8?t=6m7s) — создание и отправка пулреквестов
-- [8:25](https://youtu.be/wUpPsEcGsg8?t=8m25s) — структура проекта
-- [14:43](https://youtu.be/wUpPsEcGsg8?t=14m43s) — работа с npm-зависимостями React
-- [19:15](https://youtu.be/wUpPsEcGsg8?t=19m15s) — добавление новой функциональности
-
-Вот ещё одно видео с [выступлением на митапе ReactNYC](https://www.youtube.com/watch?v=GWCcZ6fnpn4). В нём Шон Вонг (Shawn Wang) рассказывает о своём опыте работы над React.
-
 ### Рабочее предложение (Request for Comments, RFC) {#request-for-comments-rfc}
-=======
-### Request for Comments (RFC) {#request-for-comments-rfc}
->>>>>>> 335d64336234bcb7ba527ff94919a07da27f8549
 
 Большинство изменений, включая исправления багов и улучшение документации, обычно предлагаются и реализуются с помощью простых пулреквестов на GitHub.
 
