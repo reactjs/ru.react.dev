@@ -43,7 +43,7 @@ prev: concurrent-mode-adoption.html
 ReactDOM.createRoot(rootNode).render(<App />);
 ```
 
-Чтобы включить конкурентный режим, замените `ReactDOM.render(<App />, rootNode)` приведённым выше кодом.
+Заменяет `ReactDOM.render(<App />, rootNode)` и включает конкурентный режим.
 
 Дополнительную информацию можно узнать в [документации конкурентного режима](/docs/concurrent-mode-intro.html).
 
