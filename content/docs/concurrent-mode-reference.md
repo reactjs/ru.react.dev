@@ -127,7 +127,7 @@ const [startTransition, isPending] = useTransition(SUSPENSE_CONFIG);
 **Если обновление состояния компонента является причиной задержки, то его нужно обернуть по паттерну перехода.**
 
 ```js
-const SUSPENSE_CONFIG = {timeoutMs: 2000 };
+const SUSPENSE_CONFIG = { timeoutMs: 2000 };
 
 function App() {
   const [resource, setResource] = useState(initialResource);
@@ -185,7 +185,7 @@ const deferredValue = useDeferredValue(value, { timeoutMs: 2000 });
 ```js
 function App() {
   const [text, setText] = useState("hello");
-  const deferredText = useDeferredValue(text, {timeoutMs: 2000 });
+  const deferredText = useDeferredValue(text, { timeoutMs: 2000 });
 
   return (
     <div className="App">

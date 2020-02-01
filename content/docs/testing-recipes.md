@@ -221,7 +221,7 @@ it("renders user data", async () => {
   expect(container.querySelector("strong").textContent).toBe(fakeUser.age);
   expect(container.textContent).toContain(fakeUser.address);
 
-  // выключаем фиктивный fetch, чтобы убедится, что тесты полностью изолированы
+  // выключаем фиктивный fetch, чтобы убедиться, что тесты полностью изолированы
   global.fetch.mockRestore();
 });
 ```
@@ -396,14 +396,14 @@ it("changes value when clicked", () => {
 
   // получаем элемент button и кликаем на него несколько раз
   const button = document.querySelector("[data-testid=toggle]");
-  expect(button.innerHTML).toBe("Turn off");
+  expect(button.innerHTML).toBe("Turn on");
 
   act(() => {
     button.dispatchEvent(new MouseEvent("click", { bubbles: true }));
   });
 
   expect(onChange).toHaveBeenCalledTimes(1);
-  expect(button.innerHTML).toBe("Turn on");
+  expect(button.innerHTML).toBe("Turn off");
 
   act(() => {
     for (let i = 0; i < 5; i++) {
@@ -529,7 +529,7 @@ it("should accept selections", () => {
 
   act(() => {
     container
-      .querySelector("[data-testid=2]")
+      .querySelector("[data-testid='2']")
       .dispatchEvent(new MouseEvent("click", { bubbles: true }));
   });
 
