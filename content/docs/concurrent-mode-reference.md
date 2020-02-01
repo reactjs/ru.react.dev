@@ -53,7 +53,7 @@ ReactDOM.createRoot(rootNode).render(<App />);
 ReactDOM.createBlockingRoot(rootNode).render(<App />)
 ```
 
-Чтобы включить [блокирующий режим](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode), замените `ReactDOM.render(<App />, rootNode)` приведённым выше кодом.
+Заменяет `ReactDOM.render(<App />, rootNode)` и включает [блокирующий режим](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode).
 
 Для реализации конкурентного режима решено сделать семантические изменения в работе React. Это значит, что вы не сможете использовать конкурентный режим лишь для некоторых компонентов проекта. И как следствие, не все приложения можно будет напрямую перевести на конкурентный режим.
 
