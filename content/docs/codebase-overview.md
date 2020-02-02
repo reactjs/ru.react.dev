@@ -13,17 +13,17 @@ redirect_from:
 
 Если вы хотите [внести свой вклад в React](/docs/how-to-contribute.html), то мы надеемся, что эта глава вам поможет.
 
-Мы считаем, что вам не обязательно следовать этим соглашениям в ваших React приложениях. Многие из этих соглашений существуют по историческим причинам и могут быть изменены со временем.
+Мы считаем, что вам не обязательно следовать этим соглашениям в ваших React-приложениях. Многие из этих соглашений существуют по историческим причинам и могут быть изменены со временем.
 
 ### Внешние зависимости {#external-dependencies}
 
 У React практически нет внешних зависимостей. Обычно `require()` указывает на файл из собственной кодовой базы React. Однако есть несколько исключений.
 
-[Репозиторий fbjs](https://github.com/facebook/fbjs) существует, потому что React использует общий код с библиотеками такими как [Relay](https://github.com/facebook/relay). React не имеет зависимостей от модулей из экосистемы Node, для того, чтобы разработчики Facebook могли вносить изменения тогда, когда они им необходимы. fbjs не имеет внешнего API, а все его внутренние модули используются только проектами Facebook, например React.
+[Репозиторий fbjs](https://github.com/facebook/fbjs) существует, потому что React использует общий код с такими библиотеками как [Relay](https://github.com/facebook/relay). React не имеет зависимостей от модулей из экосистемы Node, для того, чтобы разработчики Facebook могли вносить изменения тогда, когда они им необходимы. fbjs не имеет внешнего API, а все его внутренние модули используются только проектами Facebook, например React.
 
 ### Папки верхнего уровня {#top-level-folders}
 
-После клонирования [репозитория React](https://github.com/facebook/react), вы увидите папки верхнего уровня:
+После клонирования [репозитория React](https://github.com/facebook/react) вы увидите папки верхнего уровня:
 
 * [`packages`](https://github.com/facebook/react/tree/master/packages) содержит метаданные (такие как `package.json`) и исходный код (подпапка `src`) для каждого пакета из репозитория React. **Большая часть работы с кодом происходит в подпапках `src` внутри каждого пакета.**
 * [`fixtures`](https://github.com/facebook/react/tree/master/fixtures) содержит несколько небольших React-приложений для контрибьютеров.
@@ -84,17 +84,17 @@ invariant(
 
 **Если условие внутри `invariant` равно `false`, тогда выбрасывается исключение.**
 
-"Инварианты" -- это всего лишь способ сказать: "Условие всегда истинно". Вы можете думать о них как об assertion.
+"Инварианты" -- это всего лишь способ сказать: "Условие всегда истинно". Вы можете думать о них как об утверждениях (assertion).
 
 Важно чтобы режимы разработки и продакшена имели похожее поведение, поэтому исключения выбрасываются в обоих режимах. Сообщения об ошибках в продакшене автоматически заменяются кодами ошибок, для того, чтобы избежать разрастания бандла.
 
 ### Режимы разработки и продакшена {#development-and-production}
 
-Вы можете использовать псевдо-глобальную переменную `__DEV__`, чтобы блок кода присутствовал только в режиме разработки.
+Вы можете использовать псевдоглобальную переменную `__DEV__`, чтобы блок кода присутствовал только в режиме разработки.
 
-На этапе компиляции добавится проверка `process.env.NODE_ENV !== 'production'`, определяющая, должен ли данный блок кода присутствовать в CommonJS билде.
+На этапе компиляции добавится проверка `process.env.NODE_ENV !== 'production'`, определяющая, должен ли данный блок кода присутствовать в сборке CommonJS.
 
-Выражение будет равно `true` в неминифицированном билде, а в минифицированном будет вырезан весь блок вместе с `if`.
+Выражение будет равно `true` в неминифицированной сборке, а в минифицированном будет вырезан весь блок вместе с `if`.
 
 ```js
 if (__DEV__) {
@@ -148,7 +148,7 @@ var ReactHostComponent = {
 module.exports = ReactHostComponent;
 ```
 
-Поле `injection` нигде не используется. Но по соглашению, это означает, что модуль хочет иметь зависимости (предположительно, платформо-зависимые), которые будут инжектится во время выполнения.
+Поле `injection` нигде не используется. Но по соглашению оно означает, что модуль может иметь зависимости (предположительно, платформо-зависимые), которые будут подключаться во время выполнения.
 
 В репозитории существует много мест с использованием инъекций. В будущем мы хотим избавиться от механизма динамических инъекций и соединять все фрагменты статически во время сборки.
 
@@ -166,7 +166,7 @@ React является [монолитным репозиторием](https://d
 
 **Ядро включает в себя только API необходимый для объявления компонентов.** Оно не включает [алгоритм согласования](/docs/reconciliation.html) или какой-либо платформо-специфический код. Этот код находится в компонентах React DOM и React Native.
 
-Код ядра расположен в папке [`packages/react`](https://github.com/facebook/react/tree/master/packages/react). Он доступен в npm репозитории как пакет [`react`](https://www.npmjs.com/package/react). Соответствующий билд для браузера экспортирует глобальную переменную `React` и называется `react.js`.
+Код ядра расположен в папке [`packages/react`](https://github.com/facebook/react/tree/master/packages/react). Он доступен в npm в виде пакета [`react`](https://www.npmjs.com/package/react). Соответствующая сборка для браузера экспортирует глобальную переменную `React` и называется `react.js`.
 
 ### Рендереры {#renderers}
 
@@ -176,15 +176,15 @@ React является [монолитным репозиторием](https://d
 
 Они расположены в каталоге [`packages/`](https://github.com/facebook/react/tree/master/packages/):
 
-* [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom) рендерит React компоненты в DOM. Он реализует [`ReactDOM` APIs](/docs/react-dom.html) и доступен как пакет [`react-dom`](https://www.npmjs.com/package/react-dom) из npm репозитория. Можно подключать как отдельный бандл `react-dom.js`, экспортирующий глобальную переменную `ReactDOM`.
-* [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer) рендерит React компоненты в нативные view. Используется внутри React Native.
-* [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer) рендерит React компоненты в JSON дерево. Используется [снэпшотами](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) из фреймворка [Jest](https://facebook.github.io/jest) и доступен как пакет [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) из npm репозитория.
+* [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom) рендерит React-компоненты в DOM. Он реализует [`ReactDOM` API](/docs/react-dom.html) и доступен как пакет [`react-dom`](https://www.npmjs.com/package/react-dom) из npm репозитория. Можно подключать как отдельный бандл `react-dom.js`, экспортирующий глобальную переменную `ReactDOM`.
+* [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer) рендерит React компоненты в нативные представления. Используется внутри React Native.
+* [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer) рендерит React компоненты в JSON-дерево. Используется при [тестировании снимками](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) через фреймворк [Jest](https://facebook.github.io/jest) и доступен как пакет [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) в npm.
 
-Мы начали поддерживать единственный неофициальный рендерер [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art), который раньше находился в отдельном [Github репозитории](https://github.com/reactjs/react-art).
+Мы начали поддерживать единственный неофициальный рендерер [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art), который раньше находился в отдельном [GitHub-репозитории](https://github.com/reactjs/react-art).
 
 >**Примечание:**
 >
->Технически [`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) -- это очень тонкий слой, который учит React взаимодействовать с React Native. Платформо-специфический код, управляющий нативными view, расположен в [репозитории React Native](https://github.com/facebook/react-native) вместе с его компонентами.
+>Технически [`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) -- это очень тонкий слой, который учит React взаимодействовать с React Native. Платформо-специфический код, управляющий нативными представлениями, расположен в [репозитории React Native](https://github.com/facebook/react-native) вместе с его компонентами.
 
 ### Согласователи {#reconcilers}
 
@@ -192,15 +192,15 @@ React является [монолитным репозиторием](https://d
 
 В качестве решения, различные рендереры имеют между собой общий код. В React мы называем эту часть «согласователь». Когда запланировано такое обновление, как `setState()`, согласователь вызывает `render()` в дереве компонентов и монтирует, обновляет либо размонтирует их.
 
-Согласователи не являются отдельнымы пакетами, потому что не имеют открытого API. Вместо этого, они используются исключительно такими рендерерами как React DOM и React Native.
+Согласователи не являются отдельнымы пакетами, потому что не имеют открытого API. Вместо этого они используются исключительно такими рендерерами как React DOM и React Native.
 
 ### Согласователь Stack {#stack-reconciler}
 
-Cогласователь «Stack» -- это реализация, которая использовалась в React 15 и более ранних версиях. Мы перестали её использовать, но задокументировали в [следующией главе](/docs/implementation-notes.html).
+Cогласователь «Stack» -- это реализация, которая использовалась в React 15 и более ранних версиях. Мы перестали его использовать, но задокументировали в [следующией главе](/docs/implementation-notes.html).
 
 ### Cоглаcователь Fiber {#fiber-reconciler}
 
-В согласователе «Fiber» мы пытаемся исправить давно существующие ошибки и решить проблемы, появившиеся в соглаователе Stack.
+В согласователе «Fiber» мы пытаемся исправить давно существующие ошибки и решить проблемы, появившиеся в согласователе Stack.
 
 Его основными целями являются:
 
