@@ -25,7 +25,7 @@ Stack reconciler использовался в React 15 и более ранни
 
 ### Введение {#overview}
 
-Reconciler не имеет открытого API. [Рендереры](/docs/codebase-overview.html#stack-renderers), такие как React DOM и React Native, используются, чтобы эффективно обновлять пользовательские UI компоненты.
+Reconciler не имеет открытого API. [Рендереры](/docs/codebase-overview.html#renderers), такие как React DOM и React Native, используются, чтобы эффективно обновлять пользовательские UI компоненты.
 
 ### Монтирование как рекурсивный процесс {#mounting-as-a-recursive-process}
 

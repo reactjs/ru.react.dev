@@ -87,9 +87,9 @@ React работает в два этапа:
 
 Этап рендеринга включает в себя следующие методы жизненного цикла:
 * `constructor`
-* `componentWillMount`
-* `componentWillReceiveProps`
-* `componentWillUpdate`
+* `componentWillMount` (или `UNSAFE_componentWillMount`)
+* `componentWillReceiveProps` (или `UNSAFE_componentWillReceiveProps`)
+* `componentWillUpdate` (или `UNSAFE_componentWillUpdate`)
 * `getDerivedStateFromProps`
 * `shouldComponentUpdate`
 * `render`

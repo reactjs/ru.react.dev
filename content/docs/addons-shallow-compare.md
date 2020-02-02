@@ -19,7 +19,7 @@ var shallowCompare = require('react-addons-shallow-compare'); // ES5 with npm
 
 ## Обзор {#overview}
 
-Перед появленияем [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) `shallowCompare` использовался для того же, что и [`PureRenderMixin`](pure-render-mixin.html) при использовании ES6-классов с React.
+Перед появлением [`React.PureComponent`](/docs/react-api.html#reactpurecomponent) `shallowCompare` использовался для того же, что и [`PureRenderMixin`](pure-render-mixin.html) при использовании ES6-классов с React.
 
 Если функция рендера React-компонента является «чистой» (возвращается тот же результат при таких же пропсах и состоянии), вы можете в некоторых случаях использовать эту функцию для повышения производительности.
 

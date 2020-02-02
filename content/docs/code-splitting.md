@@ -86,12 +86,6 @@ import("./math").then(math => {
 });
 ```
 
-> Примечание:
-> 
-> Синтаксис динамического импорта `import()` -- это ECMAScript (JavaScript)
-> [предложение](https://github.com/tc39/proposal-dynamic-import),
-> которое в данный момент не входит в стандарт языка. Ожидается, что он будет принят в ближайшем будущем.
-
 Когда Webpack сталкивается с таким синтаксисом, он автоматически начинает разделять код вашего приложения.
 Если вы используете Create React App, то всё уже настроено и
 вы можете сразу [начать использовать](https://facebook.github.io/create-react-app/docs/code-splitting) синтаксис динамического импорта.
@@ -108,7 +102,7 @@ import("./math").then(math => {
 
 > Примечание:
 >
-> Возможности `React.lazy` и задержки (suspense) пока недоступны для рендеринга на стороне сервера. Если вам нужно разделение кода в серверном приложении, мы рекомендуем [Loadable Components](https://github.com/smooth-code/loadable-components). У них есть хорошее [руководство по разделению бандла](https://www.smooth-code.com/open-source/loadable-components/docs/server-side-rendering/) с серверным рендерингом.
+> Возможности `React.lazy` и задержки (suspense) пока недоступны для рендеринга на стороне сервера. Если вам нужно разделение кода в серверном приложении, мы рекомендуем [Loadable Components](https://github.com/gregberge/loadable-components). У них есть хорошее [руководство по разделению бандла](https://loadable-components.com/docs/server-side-rendering/) с серверным рендерингом.
 
 Функция `React.lazy` позволяет рендерить динамический импорт как обычный компонент.
 
