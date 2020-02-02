@@ -8,6 +8,9 @@ permalink: community/meetups.html
 
 Do you have a local React.js meetup? Add it here! (Please keep the list alphabetical)
 
+## Argentina {#argentina}
+* [Rosario](https://www.meetup.com/es/reactrosario)
+
 ## Australia {#australia}
 * [Brisbane](https://www.meetup.com/reactbris/)
 * [Melbourne](https://www.meetup.com/React-Melbourne/)
@@ -22,8 +25,14 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 ## Brazil {#brazil}
 * [Belo Horizonte](https://www.meetup.com/reactbh/)
 * [Curitiba](https://www.meetup.com/pt-br/ReactJS-CWB/)
+* [Florianópolis](https://www.meetup.com/pt-br/ReactJS-Floripa/)
+* [Goiânia](https://www.meetup.com/pt-br/React-Goiania/)
 * [Joinville](https://www.meetup.com/pt-BR/React-Joinville/)
+* [Juiz de Fora](https://www.meetup.com/pt-br/React-Juiz-de-Fora/)
+* [Maringá](https://www.meetup.com/pt-BR/React-Maringa/)
+* [Porto Alegre](https://www.meetup.com/pt-BR/React-Porto-Alegre/)
 * [Rio de Janeiro](https://www.meetup.com/pt-BR/React-Rio-de-Janeiro/)
+* [Salvador](https://www.meetup.com/pt-BR/ReactSSA)
 * [São Paulo](https://www.meetup.com/pt-BR/ReactJS-SP/)
 * [Vila Velha](https://www.meetup.com/pt-BR/React-ES/)
 
@@ -55,6 +64,7 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 * [Paris](https://www.meetup.com/ReactJS-Paris/)
 
 ## Germany {#germany}
+* [Cologne](https://www.meetup.com/React-Cologne/)
 * [Düsseldorf](https://www.meetup.com/de-DE/ReactJS-Meetup-Dusseldorf/)
 * [Hamburg](https://www.meetup.com/Hamburg-React-js-Meetup/)
 * [Karlsruhe](https://www.meetup.com/react_ka/)
@@ -75,6 +85,9 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 * [Delhi NCR](https://www.meetup.com/React-Delhi-NCR/)
 * [Jaipur](https://www.meetup.com/JaipurJS-Developer-Meetup/)
 
+## Indonesia {#indonesia}
+* [Indonesia](https://www.meetup.com/reactindonesia/)
+
 ## Ireland {#ireland}
 * [Dublin](https://www.meetup.com/ReactJS-Dublin/)
 
@@ -82,6 +95,7 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 * [Tel Aviv](https://www.meetup.com/ReactJS-Israel/)
 
 ## Malaysia {#malaysia}
+* [Kuala Lumpur](https://www.kl-react.com/)
 * [Penang](https://www.facebook.com/groups/reactpenang/)
 
 ## Netherlands {#netherlands}
@@ -124,6 +138,9 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 ## Sweden {#sweden}
 * [Goteborg](https://www.meetup.com/ReactJS-Goteborg/)
 
+## Switzerland {#switzerland}
+* [Zurich](https://www.meetup.com/Zurich-ReactJS-Meetup/)
+
 ## Ukraine {#ukraine}
 * [Kyiv](https://www.meetup.com/Kyiv-ReactJS-Meetup)
 
@@ -135,8 +152,10 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 * [Charlotte, NC - ReactJS](https://www.meetup.com/ReactJS-Charlotte/)
 * [Charlotte, NC - React Native](https://www.meetup.com/cltreactnative/)
 * [Chicago, IL - ReactJS](https://www.meetup.com/React-Chicago/)
+* [Cleveland, OH - ReactJS](https://www.meetup.com/Cleveland-React/)
 * [Columbus, OH - ReactJS](https://www.meetup.com/ReactJS-Columbus-meetup/)
 * [Dallas, TX - ReactJS](https://www.meetup.com/ReactDallas/)
+* [Detroit, MI - Detroit React User Group](https://www.meetup.com/Detroit-React-User-Group/)
 * [Irvine, CA - ReactJS](https://www.meetup.com/ReactJS-OC/)
 * [Kansas City, MO - ReactJS](https://www.meetup.com/Kansas-City-React-Meetup/)
 * [Las Vegas, NV - ReactJS](https://www.meetup.com/ReactVegas/)
@@ -156,6 +175,7 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 * [Portland, OR - ReactJS](https://www.meetup.com/Portland-ReactJS/)
 * [Provo, UT - ReactJS](https://www.meetup.com/ReactJS-Utah/)
 * [Sacramento, CA - ReactJS](https://www.meetup.com/Sacramento-ReactJS-Meetup/)
+* [San Diego, CA - San Diego JS](https://www.meetup.com/sandiegojs/)
 * [San Francisco - Real World React](https://www.meetup.com/Real-World-React)
 * [San Francisco - ReactJS](https://www.meetup.com/ReactJS-San-Francisco/)
 * [San Francisco, CA - React Native](https://www.meetup.com/React-Native-San-Francisco/)
