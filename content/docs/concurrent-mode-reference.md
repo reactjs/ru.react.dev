@@ -64,7 +64,7 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 ### `Suspense` {#suspensecomponent}
 
 ```js
-<Suspense fallback={<h1>Loading...</h1>}>
+<Suspense fallback={<h1>Загрузка...</h1>}>
   <ProfilePhoto />
   <ProfileDetails />
 </Suspense>
@@ -82,13 +82,13 @@ ReactDOM.createBlockingRoot(rootNode).render(<App />)
 
 ```js
 <SuspenseList revealOrder="forwards">
-  <Suspense fallback={'Loading...'}>
+  <Suspense fallback={'Загрузка...'}>
     <ProfilePicture id={1} />
   </Suspense>
-  <Suspense fallback={'Loading...'}>
+  <Suspense fallback={'Загрузка...'}>
     <ProfilePicture id={2} />
   </Suspense>
-  <Suspense fallback={'Loading...'}>
+  <Suspense fallback={'Загрузка...'}>
     <ProfilePicture id={3} />
   </Suspense>
   ...
@@ -145,7 +145,7 @@ function App() {
       >
         Next
       </button>
-      {isPending ? " Loading..." : null}
+      {isPending ? " Загрузка..." : null}
       <Suspense fallback={<Spinner />}>
         <ProfilePage resource={resource} />
       </Suspense>
