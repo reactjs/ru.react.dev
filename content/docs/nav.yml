@@ -135,11 +135,11 @@
       title: Рецепты тестирования
     - id: testing-environments
       title: Среды тестирования
-- title: Concurrent Mode (Experimental)
+- title: Конкурентный режим (экспериментально)
   isOrdered: true
   items:
     - id: concurrent-mode-intro
-      title: Introducing Concurrent Mode
+      title: Введение в конкурентный режим
     - id: concurrent-mode-suspense
       title: Suspense for Data Fetching
     - id: concurrent-mode-patterns
