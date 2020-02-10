@@ -6,15 +6,27 @@ category: Reference
 permalink: docs/profiler.html
 ---
 
+<<<<<<< HEAD
 `Profiler` измеряет то, как часто рендерится React-приложение и какова «стоимость» этого.
 Его задача — помочь найти медленные части приложения, которые можно оптимизировать (например, через [мемоизацию](https://ru.reactjs.org/docs/hooks-faq.html#how-to-memoize-calculations)).
+=======
+The `Profiler` measures how often a React application renders and what the "cost" of rendering is.
+Its purpose is to help identify parts of an application that are slow and may benefit from [optimizations such as memoization](/docs/hooks-faq.html#how-to-memoize-calculations).
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 > Примечание:
 >
+<<<<<<< HEAD
 > Профилирование добавляет накладные расходы, поэтому **оно отключено в [продакшен-режиме](https://ru.reactjs.org/docs/optimizing-performance.html#use-the-production-build)**.
 > 
 > Для отладки на продакшене, React предоставляет специальную продакшен-сборку с включенным профилированием.
 > Подробнее об использовании данной сборки можно узнать на [fb.me/react-profiling](https://fb.me/react-profiling).
+=======
+> Profiling adds some additional overhead, so **it is disabled in [the production build](/docs/optimizing-performance.html#use-the-production-build)**.
+>
+> To opt into production profiling, React provides a special production build with profiling enabled.
+> Read more about how to use this build at [fb.me/react-profiling](https://fb.me/react-profiling)
+>>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 ## Использование {#usage}
 
