@@ -7,11 +7,11 @@ permalink: docs/profiler.html
 ---
 
 `Profiler` измеряет то, как часто рендерится React-приложение и какова «стоимость» этого.
-Его задача — помочь найти медленные части приложения, которые можно оптимизировать (например, через [мемоизацию](https://ru.reactjs.org/docs/hooks-faq.html#how-to-memoize-calculations)).
+Его задача — помочь найти медленные части приложения, которые можно оптимизировать (например, через [мемоизацию](/docs/hooks-faq.html#how-to-memoize-calculations)).
 
 > Примечание:
 >
-> Профилирование добавляет накладные расходы, поэтому **оно отключено в [продакшен-режиме](https://ru.reactjs.org/docs/optimizing-performance.html#use-the-production-build)**.
+> Профилирование добавляет накладные расходы, поэтому **оно отключено в [продакшен-режиме](/docs/optimizing-performance.html#use-the-production-build)**.
 > 
 > Для отладки на продакшене, React предоставляет специальную продакшен-сборку с включенным профилированием.
 > Подробнее об использовании данной сборки можно узнать на [fb.me/react-profiling](https://fb.me/react-profiling).
