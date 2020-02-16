@@ -80,11 +80,7 @@ ReactDOM.createRoot(
 >
 >Функции API конкурентного режима доступны только в экспериментальных сборках React.
 
-<<<<<<< HEAD
-В конкурентном режиме методы жизненного цикла, [ранее помеченные](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html) как "небезопасные", *становятся* действительно небезопасными и приводят к ошибкам гораздо чаще, чем в текущих релизах React. Мы не рекомендуем использовать конкурентный режим, пока ваше приложение не будет поддерживать [строгий режим](https://reactjs.org/docs/strict-mode.html)
-=======
-In Concurrent Mode, the lifecycle methods [previously marked](/blog/2018/03/27/update-on-async-rendering.html) as "unsafe" actually *are* unsafe, and lead to bugs even more than in today's React. We don't recommend trying Concurrent Mode until your app is [Strict Mode](/docs/strict-mode.html)-compatible.
->>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
+В конкурентном режиме методы жизненного цикла, [ранее помеченные](/blog/2018/03/27/update-on-async-rendering.html) как "небезопасные", *становятся* действительно небезопасными и приводят к ошибкам гораздо чаще, чем в текущих релизах React. Мы не рекомендуем использовать конкурентный режим, пока ваше приложение не будет поддерживать [строгий режим](/docs/strict-mode.html).
 
 ## К чему готовиться? {#what-to-expect}
 

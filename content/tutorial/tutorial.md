@@ -36,11 +36,7 @@ redirect_from:
 
 В этом введении мы покажем как создать интерактивную игру крестики-нолики на React.
 
-<<<<<<< HEAD
 Результат вы можете посмотреть здесь — **[готовая игра](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**. Если вы не очень хорошо понимаете код, или вы не знакомы с синтаксисом, не беспокойтесь. Цель этого введения — помочь разобраться с React и его синтаксисом.
-=======
-We recommend that you check out the tic-tac-toe game before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and it is updated as the game progresses.
->>>>>>> 4367566bddd06ed9dfbd6b1c3f45f9925e60b2c3
 
 Мы советуем вам поиграть в крестики-нолики, прежде чем продолжите чтение. Одна из особенностей, которую вы можете заметить – это нумерованный список справа от игрового поля. Этот список отображает историю всех игровых ходов и обновляется по мере игры.
 
