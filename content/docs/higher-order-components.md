@@ -290,7 +290,7 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 (Поэтому мы можем использовать `connect` и другие расширяющие функциональность HOC в качестве экспериментальных JavaScript декораторов.)
 
-Вы можете найти вспомогательную функцию `compose` во многих сторонних библиотеках, включая lodash (под названием [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](https://redux.js.org/docs/api/compose.html), и [Ramda](https://ramdajs.com/docs/#compose).
+Вы можете найти вспомогательную функцию `compose` во многих сторонних библиотеках, включая lodash (под названием [`lodash.flowRight`](https://lodash.com/docs/#flowRight)), [Redux](https://redux.js.org/api/compose/), и [Ramda](https://ramdajs.com/docs/#compose).
 
 ## Соглашение: добавьте отображаемое имя для лёгкой отладки {#convention-wrap-the-display-name-for-easy-debugging}
 
