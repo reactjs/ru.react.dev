@@ -32,7 +32,11 @@ permalink: docs/strict-mode.html
 
 ![](../images/blog/strict-mode-unsafe-lifecycles-warning.png)
 
+<<<<<<< HEAD
 Если избавиться от проблем, выявленных в строгом режиме, _уже сегодня_, то это позволит получить все преимущества асинхронного рендеринга в будущих релизах React.
+=======
+Addressing the issues identified by strict mode _now_ will make it easier for you to take advantage of concurrent rendering in future releases of React.
+>>>>>>> 821e20726266bc8113353d0c2b6d885f82e584a8
 
 ### Предупреждение об использовании устаревшего API строковых реф {#warning-about-legacy-string-ref-api-usage}
 
@@ -83,7 +87,11 @@ React работает в два этапа:
 * **Этап рендеринга (render phase)** определяет, какие изменения необходимо произвести, например, в DOM. В течение этого этапа React вызывает `render`, а затем сравнивает полученный результат с результатом предыдущего рендера.
 * **Этап фиксации (commit phase)** – в нём React применяет любые изменения. В случае React DOM – это этап, когда React вставляет, обновляет и удаляет DOM-узлы. В течение этого этапа React вызывает методы жизненного цикла `componentDidMount` и `componentDidUpdate`.
 
+<<<<<<< HEAD
 Этап фиксации обычно не занимает много времени, что нельзя сказать про этап рендеринга. По этой причине, готовящийся асинхронный режим (который по умолчанию ещё не включён) делит работу на части, периодически останавливает и возобновляет работу, чтобы избежать блокировки браузера. Это означает, что на этапе рендеринга React может вызвать методы жизненного цикла более чем один раз перед фиксацией, либо вызвать их без фиксации (из-за возникновения ошибки или прерывания с большим приоритетом).
+=======
+The commit phase is usually very fast, but rendering can be slow. For this reason, the upcoming concurrent mode (which is not enabled by default yet) breaks the rendering work into pieces, pausing and resuming the work to avoid blocking the browser. This means that React may invoke render phase lifecycles more than once before committing, or it may invoke them without committing at all (because of an error or a higher priority interruption).
+>>>>>>> 821e20726266bc8113353d0c2b6d885f82e584a8
 
 Этап рендеринга включает в себя следующие методы жизненного цикла:
 * `constructor`
