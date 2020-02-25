@@ -23,11 +23,12 @@ next: concurrent-mode-adoption.html
 
 </div>
 
-Usually, when we update the state, we expect to see changes on the screen immediately. This makes sense because we want to keep our app responsive to user input. However, there are cases where we might prefer to **defer an update from appearing on the screen**.
+Обновляя состояние, мы обычно ожидаем сразу же увидеть изменения на экране. В этом есть смысл, ведь мы хотим, чтобы наше приложение было отзывчивым к действиям пользователя. Тем не менее, существуют сценарии, при которых предпочтительно **отложить появление обновления на экране**.
 
-For example, if we switch from one page to another, and none of the code or data for the next screen has loaded yet, it might be frustrating to immediately see a blank page with a loading indicator. We might prefer to stay longer on the previous screen. Implementing this pattern has historically been difficult in React. Concurrent Mode offers a new set of tools to do that.
+Например, если мы переходим с одной страницы на другую, и часть кода или данных для следующего экрана ещё не загружена, может быть странным сразу увидеть пустую страницу с индикатором загрузки.
+Скорее всего мы захотим задержаться на предыдущем экране. Реализация такого паттерна всегда была достаточно сложной в React. Конкурентный режим предоставляет новый набор интсрументов для решения таких задач.
 
-- [Transitions](#transitions)
+- [Переходы](#transitions)
   - [Wrapping setState in a Transition](#wrapping-setstate-in-a-transition)
   - [Adding a Pending Indicator](#adding-a-pending-indicator)
   - [Reviewing the Changes](#reviewing-the-changes)
@@ -47,31 +48,31 @@ For example, if we switch from one page to another, and none of the code or data
   - [SuspenseList](#suspenselist)
 - [Next Steps](#next-steps)
 
-## Transitions {#transitions}
+## Переходы {#transitions}
 
-Let's revisit [this demo](https://codesandbox.io/s/infallible-feather-xjtbu) from the previous page about [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html).
+Давайте вернёмся к [примеру](https://codesandbox.io/s/infallible-feather-xjtbu) с предыдущей страницы про [Suspense for Data Fetching](/docs/concurrent-mode-suspense.html).
 
-When we click the "Next" button to switch the active profile, the existing page data immediately disappears, and we see the loading indicator for the whole page again. We can call this an "undesirable" loading state. **It would be nice if we could "skip" it and wait for some content to load before transitioning to the new screen.**
+Когда мы нажимаем на кнопку "Next", чтобы переключить активный профиль, данные текущей страницы моментально пропадают и мы видим индикатор загрузки для всей страницы снова. Мы можем сказать, что это "нежелательное" состояние загрузки. **Было бы хорошо, если бы мы могли "пропустить" его и подождать пока загрузится конент перед переходом на новый экран**
 
-React offers a new built-in `useTransition()` Hook to help with this.
+React предлагает новый встроенный хук `useTransition()`, чтобы решить эту задачу.
 
-We can use it in three steps.
+Чтобы его использовать, нам нужно выполнить три шага.
 
-First, we'll make sure that we're actually using Concurrent Mode. We'll talk more about [adopting Concurrent Mode](/docs/concurrent-mode-adoption.html) later, but for now it's sufficient to know that we need to use `ReactDOM.createRoot()` rather than `ReactDOM.render()` for this feature to work:
+Во-первых, мы убедимся, что мы включили конкурентный режим. Мы поговорим подбробнее о [внедрении конекурентного режима](/docs/concurrent-mode-adoption.html) позже, но пока отметим, что необходимо использовать `ReactDOM.createRoot()` вместо `ReactDOM.render()` для того, чтобы воспользоваться этим решением:
 
 ```js
 const rootElement = document.getElementById("root");
-// Opt into Concurrent Mode
+// Включаем конкурентный режим
 ReactDOM.createRoot(rootElement).render(<App />);
 ```
 
-Next, we'll add an import for the `useTransition` Hook from React:
+Далее, добавим импорт хука `useTransition` из React:
 
 ```js
 import React, { useState, useTransition, Suspense } from "react";
 ```
 
-Finally, we'll use it inside the `App` component:
+Наконец, используем этот хук в компоненте `App`:
 
 ```js{3-5}
 function App() {
@@ -82,18 +83,20 @@ function App() {
   // ...
 ```
 
+**Сам по себе, этот код пока ничего не делает.** Для того чтобы настроить переходы состояния, нам нужно использовать возращаемое значение данного хука. Результатом вызова `useTransition` будут два значения:
+
+* `startTransition` является функцией. Мы будем использовать её для того чтобы сказать React *какое* обновление состояения мы хотим отложить.
+* `isPending` представляет собой булево значение. Через него React сообщает нам происходит переход в данный момент или нет.
+
 **By itself, this code doesn't do anything yet.** We will need to use this Hook's return values to set up our state transition. There are two values returned from `useTransition`:
 
-* `startTransition` is a function. We'll use it to tell React *which* state update we want to defer.
-* `isPending` is a boolean. It's React telling us whether that transition is ongoing at the moment.
+Мы будем использовать их в примере ниже.
 
-We will use them right below.
+Заметьте, мы передали в `useTransition` объект с конфигурацией. Это свойство `timeoutMs`, которое определяет **как долго мы готовы подождить пока переход закончится**. Передавая `{timeoutMs: 3000}`, мы говорим "Если следующий профиль будет загружаться более 3 секунд, покажи большой спиннер -- но до истечения этого таймаута можно показывать предыдущий экран".
 
-Note we passed a configuration object to `useTransition`. Its `timeoutMs` property specifies **how long we're willing to wait for the transition to finish**. By passing `{timeoutMs: 3000}`, we say "If the next profile takes more than 3 seconds to load, show the big spinner -- but before that timeout it's okay to keep showing the previous screen".
+### Оборачивание setState в Переход {#wrapping-setstate-in-a-transition}
 
-### Wrapping setState in a Transition {#wrapping-setstate-in-a-transition}
-
-Our "Next" button click handler sets the state that switches the current profile in the state:
+Обработчик кнопки "Next" обновляет состояние, что ведёт к переключению текущего профиля в состоянии:
 
 ```js{4}
 <button
@@ -104,7 +107,7 @@ Our "Next" button click handler sets the state that switches the current profile
 >
 ```
 
- We'll wrap that state update into `startTransition`. That's how we tell React **we don't mind React delaying that state update** if it leads to an undesirable loading state:
+ Мы обернём обновление состояния в метод `startTransition`. Таким образом, React поймёт, что **мы не против того, чтобы React отложил это обновление состояния** если оно приведёт к нежелательному состояинию ожидания загрузки:
 
 ```js{3,6}
 <button
@@ -117,23 +120,23 @@ Our "Next" button click handler sets the state that switches the current profile
 >
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/musing-driscoll-6nkie)**
+**[Пример на CodeSandbox](https://codesandbox.io/s/musing-driscoll-6nkie)**
 
-Press "Next" a few times. Notice it already feels very different. **Instead of immediately seeing an empty screen on click, we now keep seeing the previous page for a while.** When the data has loaded, React transitions us to the new screen.
+Нажмите на "Next" несколько раз. Заметьте, что уже сейчас поведение отличается. **Вместо того, чтобы перейти на пустой экран после клика, теперь мы ненадолго остаёмся на предыдущем экране.** Когда данные загрузились, React переводит нас на новый экран.
 
-If we make our API responses take 5 seconds, [we can confirm](https://codesandbox.io/s/relaxed-greider-suewh) that now React "gives up" and transitions anyway to the next screen after 3 seconds. This is because we passed `{timeoutMs: 3000}` to `useTransition()`. For example, if we passed `{timeoutMs: 60000}` instead, it would wait a whole minute.
+Если мы сделаем так, чтобы наши API ответы приходили через 5 секунд, [можно убедиться](https://codesandbox.io/s/relaxed-greider-suewh), что теперь React "сдаётся" и переходит на новый экран через 3 секунды. Это связано с тем, что мы передали `{timeoutMs: 3000}` в `useTransition()`. К слову, если бы мы передали `{timeoutMs: 60000}`, то React ожидал бы до конца.
 
-### Adding a Pending Indicator {#adding-a-pending-indicator}
+### Добавление индикатора ожидания {#adding-a-pending-indicator}
 
-There's still something that feels broken about [our last example](https://codesandbox.io/s/musing-driscoll-6nkie). Sure, it's nice not to see a "bad" loading state. **But having no indication of progress at all feels even worse!** When we click "Next", nothing happens and it feels like the app is broken.
+Остался один момент, который портит [наш прошлый пример](https://codesandbox.io/s/musing-driscoll-6nkie). Разумеется, хорошо, что мы избавились от "плохого" состояния загрузки. **Но ведь с полным отсутствием индикатора прогресса стало ещё хуже!** Когда мы нажимаем "Next", ничего не происходит и можно подумать, что приложение сломано.
 
-Our `useTransition()` call returns two values: `startTransition` and `isPending`.
+Вызов `useTransition()` возвращает два значения: `startTransition` and `isPending`.
 
 ```js
   const [startTransition, isPending] = useTransition({ timeoutMs: 3000 });
 ```
 
-We've already used `startTransition` to wrap the state update. Now we're going to use `isPending` too. React gives this boolean to us so we can tell whether **we're currently waiting for this transition to finish**. We'll use it to indicate that something is happening:
+Мы уже использовали `startTransition`, чтобы обернуть обновление состояния. Теперь мы начнём также использовать `isPending`. React передаёт нам это булево значение, чтобы мы могли понять, **ожидаем ли мы в текущий момент завершение этого перехода**. Мы будем использовать, чтобы определить, что переход запущен:
 
 ```js{4,14}
 return (
@@ -155,13 +158,13 @@ return (
 );
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/jovial-lalande-26yep)**
+**[Пример на CodeSandbox](https://codesandbox.io/s/jovial-lalande-26yep)**
 
-Now, this feels a lot better! When we click Next, it gets disabled because clicking it multiple times doesn't make sense. And the new "Loading..." tells the user that the app didn't freeze.
+Теперь стало намного лучше! Когда мы нажимаем на Next, кнопка становится неактивной, потому что нет смысла кликать по ней несколько раз. И текст "Loading..." сообщает пользователю, что приложение не зависло.
 
-### Reviewing the Changes {#reviewing-the-changes}
+### Просмотр изменений {#reviewing-the-changes}
 
-Let's take another look at all the changes we've made since the [original example](https://codesandbox.io/s/infallible-feather-xjtbu):
+Давайте ещё раз посмотрим на изменения, которые сделали по сравнение с [первоначальным примером](https://codesandbox.io/s/infallible-feather-xjtbu):
 
 ```js{3-5,9,11,14,19}
 function App() {
@@ -189,40 +192,40 @@ function App() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/jovial-lalande-26yep)**
+**[Пример на CodeSandbox](https://codesandbox.io/s/jovial-lalande-26yep)**
 
-It took us only seven lines of code to add this transition:
+Понадобилось всего лишь семь строчек кода, чтобы добавить переход:
 
-* We've imported the `useTransition` Hook and used it the component that updates the state.
-* We've passed `{timeoutMs: 3000}` to stay on the previous screen for at most 3 seconds.
-* We've wrapped our state update into `startTransition` to tell React it's okay to delay it.
-* We're using `isPending` to communicate the state transition progress to the user and to disable the button.
+* Мы импортировали `useTransition` хук и использовали в компоненте, в котором происходит обновление состояния.
+* Мы передали значение `{timeoutMs: 3000}`, чтобы оставаться на предыдущем экране максимум 3 секунды.
+* Мы обернули обновление состояния в `startTransition`, чтобы React знал, что его можно отложить.
+* Мы используем `isPending`, чтобы сообщить пользователю статус перехода и отключить кнопку.
 
-As a result, clicking "Next" doesn't perform an immediate state transition to an "undesirable" loading state, but instead stays on the previous screen and communicates progress there.
+В результате, нажатие на "Next" не приводит к немедленному переходу на нежелательный экран загрузки, а оставляет нас на предыдущем экране с возможностью отоброжать прогресс по загрузке.
 
-### Where Does the Update Happen? {#where-does-the-update-happen}
+### Где происходит обновление? {#where-does-the-update-happen}
 
-This wasn't very difficult to implement. However, if you start thinking about how this could possibly work, it might become a little mindbending. If we set the state, how come we don't see the result right away? *Where* is the next `<ProfilePage>` rendering?
+Имплементация была не очень сложной. Однако, если начать размышлять о том, как бы это могло бы быть реализовано, всё может показаться гараздо более запутанным. Если мы обновляем состояние, почему мы не показываем результат сразу же? *Где* рендерится следующая версия `<ProfilePage>`?
 
-Clearly, both "versions" of `<ProfilePage>` exist at the same time. We know the old one exists because we see it on the screen and even display a progress indicator on it. And we know the new version also exists *somewhere*, because it's the one that we're waiting for!
+Очевидно, обе "версии" `<ProfilePage>` существуют одновременно. Мы знаем, что старая версия существует, потому что видим её на экране и даже показывает идикатор прогресса. Также мы знаем, что и новая версия *где-то* существует, потому что как раз её мы и ожидаем!
 
-**But how can two versions of the same component exist at the same time?**
+**Но как две верси одного компонента могут существовать одновременно?**
 
-This gets at the root of what Concurrent Mode is. We've [previously said](/docs/concurrent-mode-intro.html#intentional-loading-sequences) it's a bit like React working on state update on a "branch". Another way we can conceptualize is that wrapping a state update in `startTransition` begins rendering it *"in a different universe"*, much like in science fiction movies. We don't "see" that universe directly -- but we can get a signal from it that tells us something is happening (`isPending`). When the update is ready, our "universes" merge back together, and we see the result on the screen!
+Таким образом мы подходим к основной сути Конкурентного Режима. [Ранее мы говорили](/docs/concurrent-mode-intro.html#intentional-loading-sequences), что можно представить как будто React работает над новым состоянием в "отдельной ветке". Другой подход, представить что оборачивая обновление состояния в `startTransition` мы начинем рендерить его *"в параллельной вселенной"*, почти как в фантастическом фильме. Мы не "видим" это вселенную явно -- но мы можем получить сигнал от неё, который говорит нам о том, что какой-то процес запущен (`isPending`). Когда обновление будет готово, наши "вселенные" объединятся в одну, и мы увидим результат на экране!
 
-Play a bit more with the [demo](https://codesandbox.io/s/jovial-lalande-26yep), and try to imagine it happening.
+Поиграйте с [примером](https://codesandbox.io/s/jovial-lalande-26yep), и представьте, что так и происходит.
 
-Of course, two versions of the tree rendering *at the same time* is an illusion, just like the idea that all programs run on your computer at the same time is an illusion. An operating system switches between different applications very fast. Similarly, React can switch between the version of the tree you see on the screen and the version that it's "preparing" to show next.
+Конечно, рендеринг двух версий *в одно и то же время* - это илюзия, ровно как и идея о том, что все программы на вашем компьютере исполняются в один и тот же момент. Операционная система перекулючается между приложениями очень быстро. Аналогично, React может переключаться между версией, которую мы видим на экране и версией "готовящейся" к показу.
 
-An API like `useTransition` lets you focus on the desired user experience, and not think about the mechanics of how it's implemented. Still, it can be a helpful metaphor to imagine that updates wrapped in `startTransition` happen "on a branch" or "in a different world".
+Использование API `useTransition` позволяет сфокусироваться на желаемом результате и не думать о тонкостях имплементации. Тем не менее, полезно представлять, что обновления обёрнутые в `startTransition` происходят "в ветке" или "в другом мире".
 
-### Transitions Are Everywhere {#transitions-are-everywhere}
+### Переходы повсюду {#transitions-are-everywhere}
 
-As we learned from the [Suspense walkthrough](/docs/concurrent-mode-suspense.html), any component can "suspend" any time if some data it needs is not ready yet. We can strategically place `<Suspense>` boundaries in different parts of the tree to handle this, but it won't always be enough.
+Как мы поняли из [разобра Задержки](/docs/concurrent-mode-suspense.html), любой компонент может "задерживатсья" на любое время, если данные, которые ему необходимы ещё не готовы. Мы можем подумать над стратегий расположения границ `<Suspense>` в разных частях дерева, но не всегда этого будет достаточно.
 
-Let's get back to our [first Suspense demo](https://codesandbox.io/s/frosty-hermann-bztrp) where there was just one profile. Currently, it fetches the data only once. We'll add a "Refresh" button to check for server updates.
+Давайте вернёмся к нашему [первому примеру Задержки](https://codesandbox.io/s/frosty-hermann-bztrp), когда у нас был только один профиль. Сейчас занные запрашиваются только однажды. Добавим кнопку "Refresh", чтобы проверять обновления с сервера.
 
-Our first attempt might look like this:
+Наша попытка может выглядеть следующим образом:
 
 ```js{6-8,13-15}
 const initialResource = fetchUserAndPosts();
@@ -235,12 +238,12 @@ function ProfilePage() {
   }
 
   return (
-    <Suspense fallback={<h1>Loading profile...</h1>}>
+    <Suspense fallback={<h1>Загружаем профиль...</h1>}>
       <ProfileDetails resource={resource} />
       <button onClick={handleRefreshClick}>
         Refresh
       </button>
-      <Suspense fallback={<h1>Loading posts...</h1>}>
+      <Suspense fallback={<h1>Загружаем посты...</h1>}>
         <ProfileTimeline resource={resource} />
       </Suspense>
     </Suspense>
@@ -248,7 +251,7 @@ function ProfilePage() {
 }
 ```
 
-**[Try it on CodeSandbox](https://codesandbox.io/s/boring-shadow-100tf)**
+**[Пример на CodeSandbox](https://codesandbox.io/s/boring-shadow-100tf)**
 
 In this example, we start data fetching at the load *and* every time you press "Refresh". We put the result of calling `fetchUserAndPosts()` into state so that components below can start reading the new data from the request we just kicked off.
 
