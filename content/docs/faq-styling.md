@@ -32,7 +32,7 @@ render() {
 >
 >Если вы часто пишете похожий код, то пакет [classnames](https://www.npmjs.com/package/classnames#usage-with-reactjs) поможет упростить его.
 
-### Как можно использовать встроенные стили? {#can-i-use-inline-styles}
+### Можно ли использовать встроенные стили? {#can-i-use-inline-styles}
 
 Конечно, прочитайте [документацию об элементах DOM](/docs/dom-elements.html#style).
 
