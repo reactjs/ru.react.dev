@@ -99,9 +99,13 @@
     - id: events
       title: SyntheticEvent
     - id: test-utils
+<<<<<<< HEAD
       title: ReactTestUtils
     - id: shallow-renderer
       title: Поверхностный рендерер
+=======
+      title: Test Utilities
+>>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
     - id: test-renderer
       title: Тестовый рендерер
     - id: javascript-environment-requirements
@@ -175,4 +179,8 @@
     - id: faq-versioning
       title: Политика версионирования
     - id: faq-internals
+<<<<<<< HEAD
       title: Виртуальный DOM и детали его реализации в React
+=======
+      title: Virtual DOM and Internals
+>>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
