@@ -31,13 +31,13 @@ permalink: warnings/invalid-hook-call-warning.html
 
 ```js{2-3,8-9}
 function Counter() {
-  // ✅ Хорошо: хук на вернём уровне функционального компонента
+  // ✅ Хорошо: хук на верхнем уровне функционального компонента
   const [count, setCount] = useState(0);
   // ...
 }
 
 function useWindowWidth() {
-  // ✅ Хорошо: хук на вернём уровне пользовательского хука
+  // ✅ Хорошо: хук на верхнем уровне пользовательского хука
   const [width, setWidth] = useState(window.innerWidth);
   // ...
 }
