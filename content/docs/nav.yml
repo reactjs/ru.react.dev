@@ -173,8 +173,4 @@
     - id: faq-versioning
       title: Политика версионирования
     - id: faq-internals
-<<<<<<< HEAD
       title: Виртуальный DOM и детали его реализации в React
-=======
-      title: Virtual DOM and Internals
->>>>>>> 2ab1ca5007a37ca509863a212293f1c6b26d0afc
