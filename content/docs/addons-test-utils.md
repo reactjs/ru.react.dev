@@ -1,6 +1,6 @@
 ---
 id: test-utils
-title: ReactTestUtils
+title: Утилиты для тестирования
 permalink: docs/test-utils.html
 layout: docs
 category: Reference
