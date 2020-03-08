@@ -148,7 +148,7 @@ class MyComponent extends React.Component {
       return <h1>Отловил ошибку.</h1>
     }
 
-    return <button onClick={this.handleClick}>Нажми на меня</div>
+    return <button onClick={this.handleClick}>Нажми на меня</button>
   }
 }
 ```
