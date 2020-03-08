@@ -99,9 +99,7 @@
     - id: events
       title: SyntheticEvent
     - id: test-utils
-      title: ReactTestUtils
-    - id: shallow-renderer
-      title: Поверхностный рендерер
+      title: Утилиты для тестирования
     - id: test-renderer
       title: Тестовый рендерер
     - id: javascript-environment-requirements
