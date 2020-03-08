@@ -147,7 +147,6 @@ class MyComponent extends React.Component {
     if (this.state.error) {
       return <h1>Отловил ошибку.</h1>
     }
-
     return <button onClick={this.handleClick}>Нажми на меня</button>
   }
 }
