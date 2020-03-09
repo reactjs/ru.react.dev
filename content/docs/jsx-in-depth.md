@@ -229,7 +229,7 @@ function NumberDescriber(props) {
 <MyTextBox autocomplete={true} />
 ```
 
-В основном, мы не рекомендуем так делать, потому что это может быть воспринято как [сокращение имён свойств из ES6](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Object_initializer#%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BD%D0%BE%D1%82%D0%B0%D1%86%D0%B8%D1%8F_%D0%B2_ECMAScript_2015). Тогда, например, `{foo}` это короткая запись `{foo: foo}`, но никак не `{foo: true}`. Такое поведение существует для того, чтобы соответствовать поведению HTML.
+В основном, мы не рекомендуем *не* передавать значение для пропа, потому что это может быть воспринято как [сокращение имён свойств из ES6](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Object_initializer#%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BD%D0%BE%D1%82%D0%B0%D1%86%D0%B8%D1%8F_%D0%B2_ECMAScript_2015). Тогда, например, `{foo}` это короткая запись `{foo: foo}`, но никак не `{foo: true}`. Такое поведение существует для того, чтобы соответствовать поведению HTML.
 
 ### Атрибуты расширения {#spread-attributes}
 
