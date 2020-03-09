@@ -74,7 +74,7 @@ function FriendListItem(props) {
 **Пользовательский хук -- это JavaScript-функция, имя которой начинается с «use», и которая может вызывать другие хуки.** Например, функция `useFriendStatus` ниже -- это наш первый пользовательский хук:
 
 ```js{3}
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 function useFriendStatus(friendID) {
   const [isOnline, setIsOnline] = useState(null);

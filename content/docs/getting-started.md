@@ -36,7 +36,11 @@ React изначально был спроектирован так, чтобы 
 
 ### Онлайн-песочницы {#online-playgrounds}
 
+<<<<<<< HEAD
 Если вы просто хотите немного поиграть с React, попробуйте онлайн-песочницу. Например, вот простейший шаблон на [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new) или [Glitch](https://glitch.com/edit/#!/remix/starter-react-template).
+=======
+If you're interested in playing around with React, you can use an online code playground. Try a Hello World template on [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), [Glitch](https://glitch.com/edit/#!/remix/starter-react-template), or [Stackblitz](https://stackblitz.com/fork/react).
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 Если вы предпочитаете работать в своём редакторе, [скачайте тестовый HTML-файл](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), добавьте в него код и запустите на своём компьютере. При открытии тестового файла браузер преобразует JSX в обычный код на JavaScript. Такое преобразование достаточно медленно, поэтому мы рекомендуем использовать этот файл только для простых демонстрационных примеров. 
 
@@ -83,7 +87,11 @@ React сначала может показаться сложным, но при
 
 ### Введение {#practical-tutorial}
 
+<<<<<<< HEAD
 Если вы предпочитаете **изучать технологии на практике**, воспользуйтесь [введением](/tutorial/tutorial.html). В нём описан процесс разработки игры в крестики-нолики. Даже если вы не планируете программировать игры, всё равно уделите внимание этому разделу документации. Приёмы, которые вы освоите — фундамент для разработки *любых* приложений на React. [Введение](/tutorial/tutorial.html) даст вам более глубокое понимание React. 
+=======
+If you prefer to **learn by doing,** check out our [practical tutorial](/tutorial/tutorial.html). In this tutorial, we build a tic-tac-toe game in React. You might be tempted to skip it because you're not into building games -- but give it a chance. The techniques you'll learn in the tutorial are fundamental to building *any* React apps, and mastering it will give you a much deeper understanding.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 ### Пошаговое описание React {#step-by-step-guide}
 

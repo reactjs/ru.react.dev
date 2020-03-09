@@ -91,11 +91,19 @@ prev: hooks-reference.html
 
 Мы рекомендуем начать с использования хуков в новых компонентах, когда вы будете готовы. Убедитесь, что каждый человек в вашей команде поддерживает вас и знаком с документацией. Мы не рекомендуем переписывать все существующие классы на хуки, пока нет необходимости возвращаться к определённому компоненту (например, чтобы исправить баг).
 
+<<<<<<< HEAD
 Вы не можете использовать хуки *внутри* классового компонента, но вы можете комбинировать классы и функциональные компоненты с хуками в одном дереве. Является ли компонент классовым или функциональным с использованием хуков -- неважно, это всего лишь особенность реализации. Мы ожидаем, что в будущем хуки станут главным способом написания React-компонентов.
+=======
+You can't use Hooks *inside* a class component, but you can definitely mix classes and function components with Hooks in a single tree. Whether a component is a class or a function that uses Hooks is an implementation detail of that component. In the longer term, we expect Hooks to be the primary way people write React components.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 ### Дают ли хуки все возможности классов? {#do-hooks-cover-all-use-cases-for-classes}
 
+<<<<<<< HEAD
 Наша главная задача, чтобы хуки покрывали всю функциональность классов в ближайшем будущем. Пока не существует хуков, реализующих методы жизненного цикла  `getSnapshotBeforeUpdate` и `componentDidCatch`, но мы планируем скоро их добавить.
+=======
+Our goal is for Hooks to cover all use cases for classes as soon as possible. There are no Hook equivalents to the uncommon `getSnapshotBeforeUpdate`, `getDerivedStateFromError` and `componentDidCatch` lifecycles yet, but we plan to add them soon.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 Хуки появились совсем недавно, и некоторые сторонние библиотеки могут быть ещё не совместимы с ними.
 
@@ -217,7 +225,11 @@ it('can render and update a counter', () => {
 
 * `render`: Это тело функционального компонента.
 
+<<<<<<< HEAD
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: [Хук `useEffect`](/docs/hooks-reference.html#useeffect) заменяет все их комбинации (включая [более](#can-i-skip-an-effect-on-updates) [редкие](#can-i-run-an-effect-only-on-updates) случаи).
+=======
+* `getSnapshotBeforeUpdate`, `componentDidCatch` and `getDerivedStateFromError`: There are no Hook equivalents for these methods yet, but they will be added soon.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 * `componentDidCatch` и `getDerivedStateFromError`: В данный момент не существует хуков-аналогов для этих методов, но они будут скоро добавлены.
 
@@ -291,7 +303,11 @@ function Box() {
 
 Код написан так, потому что мы обновляем переменную состояния, *заменяя* её значение. Данное поведение отличается от `this.setState`, ведь этот классовый метод *объединяет* изменённые поля с текущим объектом состояния.
 
+<<<<<<< HEAD
 Если вам не хватает автоматического объединения состояния, вы можете написать свой хук `useLegacyState`, который объединяет обновления состояния объекта. Однако, вместо этого **мы рекомендуем разделять состояние на несколько переменных, учитывая, какие свойства логически относятся друг к другу и будут изменяться вместе.**
+=======
+If you miss automatic merging, you could write a custom `useLegacyState` Hook that merges object state updates. However, **we recommend to split state into multiple state variables based on which values tend to change together.**
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 Например, мы можем разделить состояние нашего компонента на объекты `position` и `size`, что поможет всегда изменять только `position`, без необходимости волноваться об объединении:
 
@@ -583,7 +599,11 @@ useEffect(() => {
 
 Давайте разберёмся, почему это важно.
 
+<<<<<<< HEAD
 Когда вы указываете [список зависимостей](/docs/hooks-reference.html#conditionally-firing-an-effect) через последний аргумент хуков `useEffect`, `useMemo`, `useCallback` или `useImperativeHandle`, в него должны войти все использованные значения, которые задействованы в потоке данных React, включая пропсы, состояние и их производные.
+=======
+If you specify a [list of dependencies](/docs/hooks-reference.html#conditionally-firing-an-effect) as the last argument to `useEffect`, `useMemo`, `useCallback`, or `useImperativeHandle`, it must include all values that are used inside the callback and participate in the React data flow. That includes props, state, and anything derived from them.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 Безопасно опускать в списке **только** те функции, которые не используют ни сами, ни через функции, которые они вызывают, пропсы, состояние или их производные. Так, в следующем примере показан баг:
 

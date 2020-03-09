@@ -176,7 +176,11 @@ const element = {
 
 Эти объекты называются React-элементами. Можно сказать, что они описывают результат, который мы хотим увидеть на экране. React читает эти объекты и использует их, чтобы конструировать и поддерживать DOM. 
 
+<<<<<<< HEAD
 В следующей главе мы углубимся в то, как React элементы рендерятся в DOM.
+=======
+We will explore rendering React elements to the DOM in the [next section](/docs/rendering-elements.html).
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 >**Совет:**
 >

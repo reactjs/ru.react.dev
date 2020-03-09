@@ -54,7 +54,11 @@ npm install react@experimental react-dom@experimental
 
 ### Включение конкурентного режима {#enabling-concurrent-mode}
 
+<<<<<<< HEAD
 Обычно, когда мы добавляем новые возможности в React, вы можете сразу же использовать их. Например, фрагменты, контекст и даже хуки были именно такими. Их можно использовать в новом коде не меняя уже существующий.
+=======
+Normally, when we add features to React, you can start using them immediately. Fragments, Context, and even Hooks are examples of such features. You can use them in new code without making any changes to the existing code.
+>>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 С конкурентным режимом другая история. В нём изменена сама суть работы React. В противном случае использование [новых возможностей](/docs/concurrent-mode-patterns.html) *было бы невозможно*. Именно поэтому они объединены в новый "режим", а не выпускаются по-отдельности.
 
