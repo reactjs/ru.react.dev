@@ -591,7 +591,7 @@ function ProductPage({ productId }) {
   const [product, setProduct] = useState(null);
 
   async function fetchProduct() {
-    const response = await fetch('http://myapi/product' + productId); // Использует проп productId
+    const response = await fetch('http://myapi/product/' + productId); // Использует проп productId
     const json = await response.json();
     setProduct(json);
   }
@@ -612,7 +612,7 @@ function ProductPage({ productId }) {
   useEffect(() => {
     // Переместив эту функцию внутрь эффекта, мы ясно видим, какие значения она использует.
     async function fetchProduct() {
-      const response = await fetch('http://myapi/product' + productId);
+      const response = await fetch('http://myapi/product/' + productId);
       const json = await response.json();
       setProduct(json);
     }
