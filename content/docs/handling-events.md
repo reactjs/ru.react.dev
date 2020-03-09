@@ -130,7 +130,7 @@ class LoggingButton extends React.Component {
   render() {
     // Такой синтаксис гарантирует, что `this` привязан к handleClick.
     return (
-      <button onClick={(e) => this.handleClick(e)}>
+      <button onClick={() => this.handleClick()}>
         Нажми на меня
       </button>
     );
