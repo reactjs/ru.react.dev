@@ -41,7 +41,7 @@ class MouseTracker extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
         <h1>Перемещайте курсор мыши!</h1>
         <p>Текущее положение курсора мыши: ({this.state.x}, {this.state.y})</p>
       </div>
@@ -74,7 +74,7 @@ class Mouse extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/* ...но как можно отрендерить что-то, кроме <p>? */}
         <p>Текущее положение курсора мыши: ({this.state.x}, {this.state.y})</p>
@@ -127,7 +127,7 @@ class MouseWithCat extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
           Мы могли бы просто поменять <p> на <Cat>... но тогда
@@ -183,7 +183,7 @@ class Mouse extends React.Component {
 
   render() {
     return (
-      <div style={{ height: '100%' }} onMouseMove={this.handleMouseMove}>
+      <div style={{ height: '100vh' }} onMouseMove={this.handleMouseMove}>
 
         {/*
           Вместо статического представления того, что рендерит <Mouse>,
