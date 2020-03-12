@@ -95,7 +95,7 @@ MyComponent.propTypes = {
     quantity: PropTypes.number
   }),   
 
-  // Можно добавить`isRequired` к любому из приведённому выше типу,
+  // Можно добавить`isRequired` к любому приведённому выше типу,
   // чтобы показывать предупреждение,
   // если проп не передан
   requiredFunc: PropTypes.func.isRequired,
