@@ -177,15 +177,9 @@ function withSubscription(WrappedComponent, selectData) {
 
 ```js
 function logProps(InputComponent) {
-<<<<<<< HEAD
-  InputComponent.prototype.componentWillReceiveProps = function(nextProps) {
-    console.log('Текущие пропсы: ', this.props);
-    console.log('Следующие пропсы: ', nextProps);
-=======
   InputComponent.prototype.componentDidUpdate = function(prevProps) {
-    console.log('Current props: ', this.props);
-    console.log('Previous props: ', prevProps);
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+    console.log('Текущие пропсы: ', this.props);
+    console.log('Предыдущие пропсы: ', prevProps);
   };
   // Если мы возвращаем оборачиваемый компонент, значит, наверняка мы его изменили
   return InputComponent;
@@ -195,11 +189,7 @@ function logProps(InputComponent) {
 const EnhancedComponent = logProps(InputComponent);
 ```
 
-<<<<<<< HEAD
-В приведённом выше примере мы не можем повторно использовать `InputComponent` отдельно от `EnhancedComponent`. Важнее то, что если мы захотим обернуть `EnhancedComponent` в другой HOC, который *тоже* меняет `componentWillReceiveProps`, то мы сотрём функциональность заданную первым HOC! Более того, `EnhancedComponent` не работает с функциональными компонентами, потому что у них отсутствуют методы жизненного цикла.
-=======
-There are a few problems with this. One is that the input component cannot be reused separately from the enhanced component. More crucially, if you apply another HOC to `EnhancedComponent` that *also* mutates `componentDidUpdate`, the first HOC's functionality will be overridden! This HOC also won't work with function components, which do not have lifecycle methods.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+В приведённом выше примере мы не можем повторно использовать `InputComponent` отдельно от `EnhancedComponent`. Важнее то, что если мы захотим обернуть `EnhancedComponent` в другой HOC, который *тоже* меняет `componentDidUpdate`, то мы сотрём функциональность заданную первым HOC! Более того, `EnhancedComponent` не работает с функциональными компонентами, потому что у них отсутствуют методы жизненного цикла.
 
 Мутирующие HOC являются хрупкой абстракцией, они конфликтуют с другими HOC, мы не сможем просто применять их без того, чтобы знать что именно они меняют.
 
@@ -208,15 +198,9 @@ There are a few problems with this. One is that the input component cannot be re
 ```js
 function logProps(WrappedComponent) {
   return class extends React.Component {
-<<<<<<< HEAD
-    componentWillReceiveProps(nextProps) {
-      console.log('Текущие пропсы: ', this.props);
-      console.log('Следующие пропсы: ', nextProps);
-=======
     componentDidUpdate(prevProps) {
-      console.log('Current props: ', this.props);
-      console.log('Previous props: ', prevProps);
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+      console.log('Текущие пропсы: ', this.props);
+      console.log('Предыдущие пропсы: ', prevProps);
     }
     render() {
       // Оборачиваем компонент в контейнер без мутаций. Супер!

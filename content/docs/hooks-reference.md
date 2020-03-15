@@ -69,11 +69,7 @@ function Counter({initialCount}) {
 
 Кнопки «+» и «-» используют функциональную форму, потому что обновлённое значение основано на предыдущем значении. Но кнопка «Сбросить» использует обычную форму, потому что она всегда устанавливает счётчик обратно в 0.
 
-<<<<<<< HEAD
-Если функция обновления возвращает абсолютно такой же результат, то последующие повторные рендеры будут полностью пропущены.
-=======
-If your update function returns the exact same value as the current state, the subsequent rerender will be skipped completely.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+Если функция обновления возвращает абсолютно такой же результат как и текущее состояние, то последующие повторные рендеры будут полностью пропущены.
 
 > Примечание
 >
@@ -439,11 +435,7 @@ function TextInputWithFocusButton() {
 useImperativeHandle(ref, createHandle, [deps])
 ```
 
-<<<<<<< HEAD
-`useImperativeHandle` настраивает значение экземпляра, которое предоставляется родительским компонентам при использовании `ref`. Как всегда, в большинстве случаев следует избегать императивного кода, использующего ссылки. `useImperativeHandle` должен использоваться с `forwardRef`:
-=======
-`useImperativeHandle` customizes the instance value that is exposed to parent components when using `ref`. As always, imperative code using refs should be avoided in most cases. `useImperativeHandle` should be used with [`forwardRef`](/docs/react-api.html#reactforwardref):
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+`useImperativeHandle` настраивает значение экземпляра, которое предоставляется родительским компонентам при использовании `ref`. Как всегда, в большинстве случаев следует избегать императивного кода, использующего ссылки. `useImperativeHandle` должен использоваться с [`forwardRef`](/docs/react-api.html#reactforwardref):
 
 ```js
 function FancyInput(props, ref) {

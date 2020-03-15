@@ -199,11 +199,7 @@ function App() {
  }
 ```
 
-<<<<<<< HEAD
 Такой подход позволяет немедленно показывать новый текст для `input`, чтобы улучшить отзывчивость UI. В тоже время, если рендер `MySlowList` "отстает" на 2 секунды, установленные в `timeoutMs`, то в фоновом режиме отображается отложенное значение.
-=======
-This allows us to start showing the new text for the `input` immediately, which allows the webpage to feel responsive. Meanwhile, `MySlowList` "lags behind" for up to 2 seconds according to the `timeoutMs` before updating, allowing it to render with the current text in the background.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 **Паттерн ожидания значений более подробно рассматривается в разделе [Паттерны конкурентного UI](/docs/concurrent-mode-patterns.html#deferring-a-value).**
 

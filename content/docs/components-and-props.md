@@ -44,11 +44,7 @@ class Welcome extends React.Component {
 
 С точки зрения React, эти два компонента эквивалентны.
 
-<<<<<<< HEAD
-Классам доступны дополнительные возможности, о которых мы поговорим в [следующих главах](/docs/state-and-lifecycle.html). Но пока что мы предпочтём функции за их краткость.
-=======
-Function and Class components both have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html).
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+Функциональным и классовым компонентам доступны дополнительные возможности, о которых мы поговорим в [следующих главах](/docs/state-and-lifecycle.html).
 
 ## Как отрендерить компонент {#rendering-a-component}
 
@@ -64,11 +60,7 @@ const element = <div />;
 const element = <Welcome name="Алиса" />;
 ```
 
-<<<<<<< HEAD
-Когда React встречает подобный элемент, он собирает все JSX-атрибуты в один объект и передаёт их нашему компоненту. Этот объект называется «пропсы» (props).
-=======
-When React sees an element representing a user-defined component, it passes JSX attributes and children to this component as a single object. We call this object "props".
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+Когда React встречает подобный элемент, он собирает все JSX-атрибуты и дочерние элементы в один объект и передаёт их нашему компоненту. Этот объект называется «пропсы» (props).
 
 Например, этот компонент выведет «Привет, Алиса» на страницу:
 

@@ -99,18 +99,11 @@ React работает в два этапа:
 
 Строгий режим не способен автоматически обнаруживать побочные эффекты, но помогает их отследить, сделав более детерминированными. Такое поведение достигается путём двойного вызова следующих методов:
 
-<<<<<<< HEAD
 * Метод `constructor` классового компонента
 * Метод `render`
 * Функции обновления`setState` (первый аргумент)
 * Статически метод `getDerivedStateFromProps`
-=======
-* Class component `constructor` method
-* The `render` method
-* `setState` updater functions (the first argument)
-* The static `getDerivedStateFromProps` lifecycle
-* The `shouldComponentUpdate` method
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
+* Метод `shouldComponentUpdate`
 
 > Примечание:
 >

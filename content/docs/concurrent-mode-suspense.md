@@ -113,21 +113,13 @@ function ProfileTimeline() {
 
 ### Что позволяет делать задержка {#what-suspense-lets-you-do}
 
-<<<<<<< HEAD
 Итак, в чём идея задержки? Есть несколько вариантов ответа на этот вопрос:
-=======
-So what's the point of Suspense? There are a few ways we can answer this:
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 * **Она позволит глубже интегрировать React в библиотеки получения данных.** Если библиотека получения данных реализует поддержку задержки, её использование из React компонентов будет выглядеть естественно.
 
 * **Она позволит вам управлять намеренно спроектированными состояниями загрузки.** Она не говорит _как_ данные получены, но позволит вам лучше контролировать визуальную последовательность загрузки вашего приложения.
 
-<<<<<<< HEAD
 * **Она позволит избежать состояние гонки.** Даже с `await` асинхронный код часто подвержен ошибкам. Задержка дает ощущение *синхронного* чтения данных, как если бы они уже были загружены.
-=======
-* **It helps you avoid race conditions.** Even with `await`, asynchronous code is often error-prone. Suspense feels more like reading data *synchronously* — as if it were already loaded.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 ## Использование задержки на практике {#using-suspense-in-practice}
 
@@ -239,11 +231,7 @@ function ProfileTimeline() {
 
 Если получение информации о пользователе занимает три секунды, мы *начнём* получать сообщения пользователя только через три секунды! Это «водопад»: непреднамеренная *последовательность*, которая должна выполняться параллельно.
 
-<<<<<<< HEAD
 Водопады  распространены в коде который получает данные после рендера. Их можно устранить, но по мере роста продукта, многие люди предпочитают использовать решение, которое защищает от этой проблемы.
-=======
-Waterfalls are common in code that fetches data on render. They're possible to solve, but as the product grows, many people prefer to use a solution that guards against this problem.
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 ### Подход 2: «Получаем потом рендерим»‎ (задержка не используется) {#approach-2-fetch-then-render-not-using-suspense}
 
@@ -262,11 +250,7 @@ function fetchProfileData() {
 }
 ```
 
-<<<<<<< HEAD
 В этом примере `<ProfilePage>` ждёт окончания обоих запросов, но запускает их параллельно:
-=======
-In this example, `<ProfilePage>` waits for both requests but starts them in parallel:
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 ```js{1,2,8-13}
 // Запускаем получение данных как можно раньше
