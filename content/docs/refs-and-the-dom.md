@@ -169,7 +169,7 @@ class Parent extends React.Component {
 function CustomTextInput(props) {
   // переменная textInput должна быть объявлена на верхнем уровне, 
   // чтобы реф мог иметь к ней доступ
-  let textInput = useRef();
+  let textInput = useRef(null);
 
   function handleClick() {
     textInput.current.focus();

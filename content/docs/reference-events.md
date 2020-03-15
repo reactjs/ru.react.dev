@@ -195,7 +195,6 @@ onError onLoad
 * * *
 
 ### События мыши {#mouse-events}
->>>>>>> fb382ccb13e30e0d186b88ec357bb51e91de6504
 
 Названия событий:
 
