@@ -496,7 +496,7 @@ UNSAFE_componentWillUpdate(nextProps, nextState)
 ### `setState()` {#setstate}
 
 ```javascript
-setState(updater[, callback])
+setState(updater, [callback])
 ```
 
 `setState()` добавляет в очередь изменения в состоянии компонента. Также он указывает React, что компонент и его дочерние элементы должны быть повторно отрендерены с обновлённым состоянием. Этот метод используется для обновления интерфейса в ответ на обработчики событий и ответы сервера.

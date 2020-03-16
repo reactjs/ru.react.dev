@@ -26,6 +26,7 @@ void preventDefault()
 boolean isDefaultPrevented()
 void stopPropagation()
 boolean isPropagationStopped()
+void persist()
 DOMEventTarget target
 number timeStamp
 string type
@@ -75,6 +76,7 @@ React нормализует события так, чтобы они содер
 - [События клавиатуры](#keyboard-events)
 - [События фокуса](#focus-events)
 - [События формы](#form-events)
+- [Общие события](#generic-events)
 - [События мыши](#mouse-events)
 - [События курсора](#pointer-events)
 - [События выбора](#selection-events)
@@ -175,10 +177,20 @@ DOMEventTarget relatedTarget
 Названия событий:
 
 ```
-onChange onInput onInvalid onSubmit
+onChange onInput onInvalid onReset onSubmit
 ```
 
 Больше информации о событии onChange тут — [Формы](/docs/forms.html).
+
+* * *
+
+### Общие события {#generic-events}
+
+Названия событий:
+
+```
+onError onLoad
+```
 
 * * *
 

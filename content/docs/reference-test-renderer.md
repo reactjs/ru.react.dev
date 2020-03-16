@@ -128,7 +128,7 @@ expect(root.toJSON()).toMatchSnapshot();
 
 // обновление с некоторыми отличающимися пропсами
 act(() => {
-  root = root.update(<App value={2}/>);
+  root.update(<App value={2}/>);
 })
 
 // проверка утверждений

@@ -177,9 +177,9 @@ function withSubscription(WrappedComponent, selectData) {
 
 ```js
 function logProps(InputComponent) {
-  InputComponent.prototype.componentWillReceiveProps = function(nextProps) {
+  InputComponent.prototype.componentDidUpdate = function(prevProps) {
     console.log('Текущие пропсы: ', this.props);
-    console.log('Следующие пропсы: ', nextProps);
+    console.log('Предыдущие пропсы: ', prevProps);
   };
   // Если мы возвращаем оборачиваемый компонент, значит, наверняка мы его изменили
   return InputComponent;
@@ -189,7 +189,7 @@ function logProps(InputComponent) {
 const EnhancedComponent = logProps(InputComponent);
 ```
 
-В приведённом выше примере мы не можем повторно использовать `InputComponent` отдельно от `EnhancedComponent`. Важнее то, что если мы захотим обернуть `EnhancedComponent` в другой HOC, который *тоже* меняет `componentWillReceiveProps`, то мы сотрём функциональность заданную первым HOC! Более того, `EnhancedComponent` не работает с функциональными компонентами, потому что у них отсутствуют методы жизненного цикла.
+В приведённом выше примере мы не можем повторно использовать `InputComponent` отдельно от `EnhancedComponent`. Важнее то, что если мы захотим обернуть `EnhancedComponent` в другой HOC, который *тоже* меняет `componentDidUpdate`, то мы сотрём функциональность заданную первым HOC! Более того, `EnhancedComponent` не работает с функциональными компонентами, потому что у них отсутствуют методы жизненного цикла.
 
 Мутирующие HOC являются хрупкой абстракцией, они конфликтуют с другими HOC, мы не сможем просто применять их без того, чтобы знать что именно они меняют.
 
@@ -198,9 +198,9 @@ const EnhancedComponent = logProps(InputComponent);
 ```js
 function logProps(WrappedComponent) {
   return class extends React.Component {
-    componentWillReceiveProps(nextProps) {
+    componentDidUpdate(prevProps) {
       console.log('Текущие пропсы: ', this.props);
-      console.log('Следующие пропсы: ', nextProps);
+      console.log('Предыдущие пропсы: ', prevProps);
     }
     render() {
       // Оборачиваем компонент в контейнер без мутаций. Супер!

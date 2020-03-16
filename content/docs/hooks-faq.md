@@ -95,7 +95,7 @@ prev: hooks-reference.html
 
 ### Дают ли хуки все возможности классов? {#do-hooks-cover-all-use-cases-for-classes}
 
-Наша главная задача, чтобы хуки покрывали всю функциональность классов в ближайшем будущем. Пока не существует хуков, реализующих методы жизненного цикла  `getSnapshotBeforeUpdate` и `componentDidCatch`, но мы планируем скоро их добавить.
+Наша главная задача, чтобы хуки покрывали всю функциональность классов в ближайшем будущем. Пока не существует хуков, реализующих методы жизненного цикла  `getSnapshotBeforeUpdate`, `getDerivedStateFromError` и `componentDidCatch`, но мы планируем скоро их добавить.
 
 Хуки появились совсем недавно, и некоторые сторонние библиотеки могут быть ещё не совместимы с ними.
 
@@ -219,7 +219,7 @@ it('can render and update a counter', () => {
 
 * `componentDidMount`, `componentDidUpdate`, `componentWillUnmount`: [Хук `useEffect`](/docs/hooks-reference.html#useeffect) заменяет все их комбинации (включая [более](#can-i-skip-an-effect-on-updates) [редкие](#can-i-run-an-effect-only-on-updates) случаи).
 
-* `componentDidCatch` и `getDerivedStateFromError`: В данный момент не существует хуков-аналогов для этих методов, но они будут скоро добавлены.
+* `getSnapshotBeforeUpdate`, `componentDidCatch` и `getDerivedStateFromError`: В данный момент не существует хуков-аналогов для этих методов, но они будут скоро добавлены.
 
 ### Как осуществлять запросы за данными с помощью хуков? {#how-can-i-do-data-fetching-with-hooks}
 
@@ -584,7 +584,6 @@ useEffect(() => {
 Давайте разберёмся, почему это важно.
 
 Когда вы указываете [список зависимостей](/docs/hooks-reference.html#conditionally-firing-an-effect) через последний аргумент хуков `useEffect`, `useMemo`, `useCallback` или `useImperativeHandle`, в него должны войти все использованные значения, которые задействованы в потоке данных React, включая пропсы, состояние и их производные.
-
 Безопасно опускать в списке **только** те функции, которые не используют ни сами, ни через функции, которые они вызывают, пропсы, состояние или их производные. Так, в следующем примере показан баг:
 
 ```js{5,12}

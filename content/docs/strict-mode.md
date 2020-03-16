@@ -103,6 +103,7 @@ React работает в два этапа:
 * Метод `render`
 * Функции обновления`setState` (первый аргумент)
 * Статически метод `getDerivedStateFromProps`
+* Метод `shouldComponentUpdate`
 
 > Примечание:
 >
