@@ -127,7 +127,11 @@ React не является универсальной библиотекой о
 
 ### За пределами DOM {#beyond-the-dom}
 
+<<<<<<< HEAD
 Мы видим ценность React в том, что он позволяет писать компоненты, в которых меньше ошибок и которые хорошо сочетаются друг с другом. Исходной целью рендеринга для React является DOM, но [React Native](https://facebook.github.io/react-native/) не менее важен, как для Facebook, так и для сообщества.
+=======
+We see the value of React in the way it allows us to write components that have fewer bugs and compose together well. DOM is the original rendering target for React but [React Native](https://reactnative.dev/) is just as important both to Facebook and the community.
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 Быть независимым от визуализации — важное ограничение в дизайне React. Это создаёт некоторые накладные расходы во внутренних представлениях. С другой стороны, любые улучшения ядра переносятся между платформами.
 

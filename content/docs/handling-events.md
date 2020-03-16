@@ -8,7 +8,11 @@ redirect_from:
   - "docs/events-ko-KR.html"
 ---
 
+<<<<<<< HEAD
 Обработка событий в React-элементах очень похожа на обработку событий в DOM-элементах. Но есть несколько синтаксических отличий:
+=======
+Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
 
 * События в React именуются в стиле camelCase вместо нижнего регистра.
 * С JSX вы передаёте функцию как обработчик события вместо строки.
@@ -130,8 +134,13 @@ class LoggingButton extends React.Component {
   render() {
     // Такой синтаксис гарантирует, что `this` привязан к handleClick.
     return (
+<<<<<<< HEAD
       <button onClick={(e) => this.handleClick(e)}>
         Нажми на меня
+=======
+      <button onClick={() => this.handleClick()}>
+        Click me
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
       </button>
     );
   }

@@ -21,9 +21,15 @@ class App extends React.Component {
 }
 
 // highlight-range{1,2}
+<<<<<<< HEAD
 // Компонент, который находится в середине,
 // теперь не должен явно передавать UI-тему вниз.
 function Toolbar(props) {
+=======
+// A component in the middle doesn't have to
+// pass the theme down explicitly anymore.
+function Toolbar() {
+>>>>>>> 2ef0ee1e4fc4ce620dce1f3e0530471195dc64d1
   return (
     <div>
       <ThemedButton />
