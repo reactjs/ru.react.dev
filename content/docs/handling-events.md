@@ -146,7 +146,7 @@ class LoggingButton extends React.Component {
 
 ```js
 <button onClick={(e) => this.deleteRow(id, e)}>Удалить строку</button>
-<button onClick={this.deleteRow.bind(this, id)}>Удалить строку</button>
+<button onClick={this.deleteRow.bind(id, e)}>Удалить строку</button>
 ```
 
 Две строки выше — эквивалентны, и используют [стрелочные функции](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions) и [`Function.prototype.bind`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/bind) соответственно.
