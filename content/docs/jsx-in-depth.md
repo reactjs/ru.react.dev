@@ -229,7 +229,11 @@ function NumberDescriber(props) {
 <MyTextBox autocomplete={true} />
 ```
 
+<<<<<<< HEAD
 В основном, мы не рекомендуем так делать, потому что это может быть воспринято как [сокращение имён свойств из ES6](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Object_initializer#%D0%9D%D0%BE%D0%B2%D0%B0%D1%8F_%D0%BD%D0%BE%D1%82%D0%B0%D1%86%D0%B8%D1%8F_%D0%B2_ECMAScript_2015). Тогда, например, `{foo}` это короткая запись `{foo: foo}`, но никак не `{foo: true}`. Такое поведение существует для того, чтобы соответствовать поведению HTML.
+=======
+In general, we don't recommend *not* passing a value for a prop, because it can be confused with the [ES6 object shorthand](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Operators/Object_initializer#New_notations_in_ECMAScript_2015) `{foo}` which is short for `{foo: foo}` rather than `{foo: true}`. This behavior is just there so that it matches the behavior of HTML.
+>>>>>>> 9e5a358cb24a665fc48615ae224f26a4f2191b32
 
 ### Атрибуты расширения {#spread-attributes}
 
