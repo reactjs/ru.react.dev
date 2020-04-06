@@ -68,6 +68,7 @@ class NameForm extends React.Component {
 
 Мы установили атрибут `value` для поля ввода, и теперь в нём всегда будет отображаться значение `this.state.value`. Состояние React-компонента стало «источником истины». А так как каждое нажатие клавиши вызывает `handleChange`, который обновляет состояние React-компонента, значение в поле будет обновляться по мере того, как пользователь печатает.
 
+<<<<<<< HEAD
 В управляемом компоненте с каждой мутацией состояния связана функция-обработчик. Благодаря этому валидация или изменение введённого значения становится простой задачей. Например, если мы хотим, чтобы имя обязательно было набрано заглавными буквами, можно написать такой `handleChange`:
 
 ```javascript{2}
@@ -75,6 +76,9 @@ handleChange(event) {
   this.setState({value: event.target.value.toUpperCase()});
 }
 ```
+=======
+With a controlled component, the input's value is always driven by the React state. While this means you have to type a bit more code, you can now pass the value to other UI elements too, or reset it from other event handlers.
+>>>>>>> fa5e6e7a988b4cb465601e4c3beece321edeb812
 
 ## Тег textarea {#the-textarea-tag}
 

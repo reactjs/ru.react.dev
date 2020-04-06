@@ -97,6 +97,7 @@ React работает в два этапа:
 
 Поскольку вышеупомянутые методы могут быть вызваны более одного раза, важно, чтобы они не приводили к каким-либо побочным эффектам. Игнорирование этого правила может привести к множеству проблем, включая утечки памяти и недопустимое состояние приложения. К сожалению, такие проблемы тяжело обнаружить из-за их [недетерминированности](https://ru.wikipedia.org/wiki/%D0%94%D0%B5%D1%82%D0%B5%D1%80%D0%BC%D0%B8%D0%BD%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%BD%D1%8B%D0%B9_%D0%B0%D0%BB%D0%B3%D0%BE%D1%80%D0%B8%D1%82%D0%BC).
 
+<<<<<<< HEAD
 Строгий режим не способен автоматически обнаруживать побочные эффекты, но помогает их отследить, сделав более детерминированными. Такое поведение достигается путём двойного вызова следующих методов:
 
 * Метод `constructor` классового компонента
@@ -104,6 +105,15 @@ React работает в два этапа:
 * Функции обновления`setState` (первый аргумент)
 * Статически метод `getDerivedStateFromProps`
 * Метод `shouldComponentUpdate`
+=======
+Strict mode can't automatically detect side effects for you, but it can help you spot them by making them a little more deterministic. This is done by intentionally double-invoking the following functions:
+
+* Class component `constructor`, `render`, and `shouldComponentUpdate` methods
+* Class component static `getDerivedStateFromProps` method
+* Function component bodies
+* State updater functions (the first argument to `setState`)
+* Functions passed to `useState`, `useMemo`, or `useReducer`
+>>>>>>> fa5e6e7a988b4cb465601e4c3beece321edeb812
 
 > Примечание:
 >

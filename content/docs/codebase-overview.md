@@ -15,6 +15,7 @@ redirect_from:
 
 Мы считаем, что вам не обязательно следовать этим соглашениям в ваших React-приложениях. Многие из этих соглашений существуют по историческим причинам и могут быть изменены со временем.
 
+<<<<<<< HEAD
 ### Внешние зависимости {#external-dependencies}
 
 У React практически нет внешних зависимостей. Обычно `require()` указывает на файл из собственной кодовой базы React. Однако есть несколько исключений.
@@ -22,6 +23,9 @@ redirect_from:
 [Репозиторий fbjs](https://github.com/facebook/fbjs) существует, потому что React использует общий код с такими библиотеками как [Relay](https://github.com/facebook/relay). React не имеет зависимостей от модулей из экосистемы Node, для того, чтобы разработчики Facebook могли вносить изменения тогда, когда они им необходимы. fbjs не имеет внешнего API, а все его внутренние модули используются только проектами Facebook, например React.
 
 ### Папки верхнего уровня {#top-level-folders}
+=======
+### Top-Level Folders {#top-level-folders}
+>>>>>>> fa5e6e7a988b4cb465601e4c3beece321edeb812
 
 После клонирования [репозитория React](https://github.com/facebook/react) вы увидите папки верхнего уровня:
 
@@ -170,7 +174,11 @@ React является [монолитным репозиторием](https://d
 
 ### Рендереры {#renderers}
 
+<<<<<<< HEAD
 Изначально React создавался для DOM, но позже был адаптирован к другим платформам, таким как [React Native](https://facebook.github.io/react-native/). В этом разделе мы расскажем об используемых рендерерах.
+=======
+React was originally created for the DOM but it was later adapted to also support native platforms with [React Native](https://reactnative.dev/). This introduced the concept of "renderers" to React internals.
+>>>>>>> fa5e6e7a988b4cb465601e4c3beece321edeb812
 
 **Рендереры превращают React дерево в платформо-специфический код.**
 

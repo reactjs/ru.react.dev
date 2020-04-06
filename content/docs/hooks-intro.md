@@ -31,8 +31,13 @@ function Example() {
 
 >Примечание
 >
+<<<<<<< HEAD
 >React 16.8.0 это первый релиз, поддерживающий хуки. При обновлении версии, не забудьте обновить и все зависимости, включая React DOM. React Native будет поддерживать хуки в следующем стабильном релизе.
 >Поддержка хуков в React Native появилась в [версии 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059).
+=======
+>React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
+>React Native supports Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+>>>>>>> fa5e6e7a988b4cb465601e4c3beece321edeb812
 
 ## Видео-представление {#video-introduction}
 
