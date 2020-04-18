@@ -202,7 +202,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | escape hatch | лазейка (*напр., императивные лазейки*) |
 | fallback | запасной |
 | feature | возможность (*менее предпочтительный синоним: функциональность*) |
-| folder | папка |
+| folder | директория |
 | framework | фреймворк |
 | function component | функциональный компонент |
 | helper | вспомогательный(ая); *напр., helper function — вспомогательная функция* |

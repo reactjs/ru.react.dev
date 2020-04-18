@@ -21,11 +21,11 @@ redirect_from:
 
 [Репозиторий fbjs](https://github.com/facebook/fbjs) существует, потому что React использует общий код с такими библиотеками как [Relay](https://github.com/facebook/relay). React не имеет зависимостей от модулей из экосистемы Node, для того, чтобы разработчики Facebook могли вносить изменения тогда, когда они им необходимы. fbjs не имеет внешнего API, а все его внутренние модули используются только проектами Facebook, например React.
 
-### Папки верхнего уровня {#top-level-folders}
+### Директории верхнего уровня {#top-level-folders}
 
-После клонирования [репозитория React](https://github.com/facebook/react) вы увидите папки верхнего уровня:
+После клонирования [репозитория React](https://github.com/facebook/react) вы увидите директории верхнего уровня:
 
-* [`packages`](https://github.com/facebook/react/tree/master/packages) содержит метаданные (такие как `package.json`) и исходный код (подпапка `src`) для каждого пакета из репозитория React. **Большая часть работы с кодом происходит в подпапках `src` внутри каждого пакета.**
+* [`packages`](https://github.com/facebook/react/tree/master/packages) содержит метаданные (такие как `package.json`) и исходный код (вложенная директория `src`) для каждого пакета из репозитория React. **Большая часть работы с кодом происходит  во вложенных директориях `src` внутри каждого пакета.**
 * [`fixtures`](https://github.com/facebook/react/tree/master/fixtures) содержит несколько небольших React-приложений для контрибьютеров.
 * `build` содержит скомпилированную версию React. Этого каталога нет в репозитории, но он появится после того, как вы [соберёте проект](/docs/how-to-contribute.html#development-workflow) в первый раз.
 
@@ -35,7 +35,7 @@ redirect_from:
 
 ### Тесты {#colocated-tests}
 
-У нас нет отдельной верхнеуровневой папки с юнит тестами. Вместо этого, мы помещаем их в папку `__tests__`, расположенную рядом с тестируемыми файлами.
+У нас нет отдельной верхнеуровневой директории с юнит тестами. Вместо этого, мы помещаем их в директорию `__tests__`, расположенную рядом с тестируемыми файлами.
 
 Например, тесты для [`setInnerHTML.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/setInnerHTML.js) расположены в [`__tests__/setInnerHTML-test.js`](https://github.com/facebook/react/blob/87724bd87506325fcaf2648c70fc1f43411a87be/src/renderers/dom/client/utils/__tests__/setInnerHTML-test.js).
 
@@ -166,7 +166,7 @@ React является [монолитным репозиторием](https://d
 
 **Ядро включает в себя только API необходимый для объявления компонентов.** Оно не включает [алгоритм согласования](/docs/reconciliation.html) или какой-либо платформо-специфический код. Этот код находится в компонентах React DOM и React Native.
 
-Код ядра расположен в папке [`packages/react`](https://github.com/facebook/react/tree/master/packages/react). Он доступен в npm в виде пакета [`react`](https://www.npmjs.com/package/react). Соответствующая сборка для браузера экспортирует глобальную переменную `React` и называется `react.js`.
+Код ядра расположен в директории [`packages/react`](https://github.com/facebook/react/tree/master/packages/react). Он доступен в npm в виде пакета [`react`](https://www.npmjs.com/package/react). Соответствующая сборка для браузера экспортирует глобальную переменную `React` и называется `react.js`.
 
 ### Рендереры {#renderers}
 
@@ -212,7 +212,7 @@ Cогласователь «Stack» -- это реализация, котора
 
 Вы можете узнать больше об архитектуре React Fiber [здесь](https://github.com/acdlite/react-fiber-architecture) и [здесь](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react). Несмотря на то, что он включён в React 16, асинхронная функциональность по умолчанию не включена.
 
-Исходный код расположен в папке [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
+Исходный код расположен в директории [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
 
 ### Система событий {#event-system}
 
