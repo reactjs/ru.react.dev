@@ -71,7 +71,7 @@ prev: hooks-reference.html
 
 Обратите внимание, что **хуки будут доступны, только если все React-пакеты версии 16.8.0 или выше**. Хуки не будут работать, если вы, например, забыли обновить React DOM.
 
-Поддержка хуков в React Native появилась в [версии 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059).
+React Native [версии 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) и выше поддерживает хуки.
 
 ### Надо ли переписать все мои классовые компоненты? {#do-i-need-to-rewrite-all-my-class-components}
 
@@ -591,7 +591,7 @@ function ProductPage({ productId }) {
   const [product, setProduct] = useState(null);
 
   async function fetchProduct() {
-    const response = await fetch('http://myapi/product' + productId); // Использует проп productId
+    const response = await fetch('http://myapi/product/' + productId); // Использует проп productId
     const json = await response.json();
     setProduct(json);
   }
@@ -612,7 +612,7 @@ function ProductPage({ productId }) {
   useEffect(() => {
     // Переместив эту функцию внутрь эффекта, мы ясно видим, какие значения она использует.
     async function fetchProduct() {
-      const response = await fetch('http://myapi/product' + productId);
+      const response = await fetch('http://myapi/product/' + productId);
       const json = await response.json();
       setProduct(json);
     }
