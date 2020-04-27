@@ -71,7 +71,7 @@ prev: hooks-reference.html
 
 Обратите внимание, что **хуки будут доступны, только если все React-пакеты версии 16.8.0 или выше**. Хуки не будут работать, если вы, например, забыли обновить React DOM.
 
-React Native [версии 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) и выше поддерживает хуки.
+[React Native 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059) и выше поддерживает хуки.
 
 ### Надо ли переписать все мои классовые компоненты? {#do-i-need-to-rewrite-all-my-class-components}
 
