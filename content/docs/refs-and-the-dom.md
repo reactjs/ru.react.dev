@@ -167,8 +167,7 @@ class Parent extends React.Component {
 
 ```javascript{2,3,6,13}
 function CustomTextInput(props) {
-  // textInput должна быть объявлена здесь, 
-  // чтобы реф мог иметь к ней доступ
+  // textInput должна быть объявлена здесь, чтобы реф мог иметь к ней доступ
   const textInput = useRef(null);
 
   function handleClick() {

@@ -13129,9 +13129,9 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 typograf@^6.8.0:
-  version "6.8.0"
-  resolved "https://registry.yarnpkg.com/typograf/-/typograf-6.8.0.tgz#103447a52c23bd19cfe65b81f4e95d36b71879a3"
-  integrity sha512-TsAXy+fDS0g9H6W9CBhnFlvBsRp7Hq5K/fuuBn5X0P86Me9V/YiSTzuXR6TN83AZ0QXyui9o4LLxQFOPmSyxMA==
+  version "6.11.0"
+  resolved "https://registry.yarnpkg.com/typograf/-/typograf-6.11.0.tgz#fc6ae5715a170b382e01bb593dc4b5a06ef55b8e"
+  integrity sha512-7PcX6gyocBoNoCnLNmgqzd7ohp7SrW44U6YIqk91+7x4ivVlzpRltN4JK7mtBov9CVPsfX6W8yXTnoUxImSzwQ==
 
 ua-parser-js@^0.7.18:
   version "0.7.21"
