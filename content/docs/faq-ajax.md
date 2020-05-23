@@ -98,15 +98,15 @@ function MyComponent() {
       .then(res => res.json())
       .then(
         (result) => {
-          setIsLoaded(true);
           setItems(result.items);
+          setIsLoaded(true);
         },
         // Примечание: Обрабатывать ошибки необходимо именно здесь
         // вместо блока catch(), чтобы не пропустить
         // исключения из реальных ошибок в компонентах.
         (error) => {
-          setIsLoaded(true);
           setError(error);
+          setIsLoaded(true);
         }
       )
   }, [])
