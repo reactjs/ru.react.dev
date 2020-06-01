@@ -419,12 +419,15 @@ this.setState(function(state, props) {
 Компонент может передать своё состояние вниз по дереву в виде пропсов дочерних компонентов:
 
 ```js
+<<<<<<< HEAD
 <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
 ```
 
 Своё состояние можно передать и другому пользовательскому компоненту:
 
 ```js
+=======
+>>>>>>> b4b59062e59d56da37274c6de1fa4a134d2d8f49
 <FormattedDate date={this.state.date} />
 ```
 
