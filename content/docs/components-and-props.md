@@ -233,7 +233,11 @@ function Comment(props) {
 
 [](codepen://components-and-props/extracting-components-continued)
 
+<<<<<<< HEAD
 Извлечение компонентов может сначала показаться неблагодарной работой. Тем не менее, в больших приложениях очень полезно иметь палитру компонентов, которые можно многократно использовать. Если вы не уверены, извлекать компонент или нет, вот простое правило. Если какая-то часть интерфейса многократно в нём повторяется (`Button`, `Panel`, `Avatar`) или сама по себе достаточно сложная (`App`, `FeedStory`, `Comment`), имеет смысл её вынести в независимый компонент.
+=======
+Extracting components might seem like grunt work at first, but having a palette of reusable components pays off in larger apps. A good rule of thumb is that if a part of your UI is used several times (`Button`, `Panel`, `Avatar`), or is complex enough on its own (`App`, `FeedStory`, `Comment`), it is a good candidate to be extracted to a separate component.
+>>>>>>> c9b990070fc35d31b56957263e1ea9fe2fe67b40
 
 ## Пропсы можно только читать {#props-are-read-only}
 

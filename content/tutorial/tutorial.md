@@ -1209,7 +1209,11 @@ class Game extends React.Component {
 * Хранит историю игры,
 * Позволяет игрокам просматривать историю игры и видеть прошлые состояния игрового поля.
 
+<<<<<<< HEAD
 Хорошая работа! Мы надеемся, вы чувствуете уверенность в своих знаниях о том, как работает React.
+=======
+Nice work! We hope you now feel like you have a decent grasp of how React works.
+>>>>>>> c9b990070fc35d31b56957263e1ea9fe2fe67b40
 
 Посмотреть готовую игру вы можете здесь: **[Готовый результат](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**.
 
