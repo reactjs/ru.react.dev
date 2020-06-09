@@ -185,8 +185,7 @@ function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
     // Правильно! Ключ нужно определять внутри массива:
-    <ListItem key={number.toString()}
-              value={number} />
+    <ListItem key={number.toString()} value={number} />
   );
   return (
     <ul>
