@@ -75,18 +75,13 @@ Create React App не обрабатывает бэкенд логику или 
 
 - **[Neutrino](https://neutrinojs.org/)** сочетает в себе возможности [webpack](https://webpack.js.org/) и простоту пресетов. Инструмент включает в себя пресеты для [React-приложений](https://neutrinojs.org/packages/react/) и [React-компонентов](https://neutrinojs.org/packages/react-components/).
 
+- **[Nx](https://nx.dev/react)** – набор инструментов фулстэк разработки   монорепозитории с встроенной поддержкой React, Next.js, [Express](https://expressjs.com/) и других.
+
 - **[Parcel](https://parceljs.org/)** – быстрый упаковщик веб-приложений с нулевой конфигурацией, [который работает с React](https://parceljs.org/recipes.html#react).
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)** – это фреймворк для серверного рендеринга, более гибкий чем Next.js, но не требующий обязательной настройки.
 
-
-<<<<<<< HEAD
 ## Создание набора инструментов с нуля {#creating-a-toolchain-from-scratch}
-=======
-- **[Nx](https://nx.dev/react)** is a toolkit for full-stack monorepo development, with built-in support for React, Next.js, [Express](https://expressjs.com/), and more.
-
-- **[Parcel](https://parceljs.org/)** is a fast, zero configuration web application bundler that [works with React](https://parceljs.org/recipes.html#react).
->>>>>>> c9b990070fc35d31b56957263e1ea9fe2fe67b40
 
 В набор инструментов для сборки JavaScript обычно входят:
 
