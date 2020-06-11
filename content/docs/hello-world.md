@@ -35,7 +35,7 @@ ReactDOM.render(
 
 ## Необходимый уровень знаний {#knowledge-level-assumptions}
 
-React — это библиотека JavaScript, поэтому мы предполагаем, что у вас есть базовое понимание языка JavaScript. **Если вы чувствуете себя неуверенно, мы рекомендуем [прочесть введение в JavaScript](https://developer.mozilla.org/ru/docs/Web/JavaScript/A_re-introduction_to_JavaScript) для проверки своих знаний**; оно облегчит чтение руководства по React. Это займёт от 30 минут до часа, но в результате у вас не будет ощущения, что вы одновременно изучаете и React, и JavaScript.
+React — это библиотека JavaScript, поэтому мы предполагаем, что у вас есть базовое понимание языка JavaScript. **Если вы чувствуете себя неуверенно, мы рекомендуем [прочесть введение в JavaScript](https://developer.mozilla.org/ru/docs/Web/JavaScript/A_re-introduction_to_JavaScript) для проверки своих знаний**; оно облегчит чтение руководства по React. Это займёт от 30 минут до часа, но в результате у вас не будут ощущения, что вы одновременно изучаете и React, и JavaScript.
 
 >Примечание
 >
