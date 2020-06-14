@@ -197,7 +197,7 @@ const value = useContext(MyContext);
 >
 >`useContext(MyContext)` позволяет только *читать* контекст и подписываться на его изменения. Вам всё ещё нужен `<MyContext.Provider>` выше в дереве, чтобы *предоставить* значение для этого контекста.
 
-**Соеденим все вместе с Context.Provider**
+**Соединим все вместе с Context.Provider**
 ```js{31-36}
 const themes = {
   light: {
