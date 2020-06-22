@@ -184,9 +184,14 @@ function ListItem(props) {
 function NumberList(props) {
   const numbers = props.numbers;
   const listItems = numbers.map((number) =>
+<<<<<<< HEAD
     // Правильно! Ключ нужно определять внутри массива:
     <ListItem key={number.toString()}
               value={number} />
+=======
+    // Correct! Key should be specified inside the array.
+    <ListItem key={number.toString()} value={number} />
+>>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
   );
   return (
     <ul>
