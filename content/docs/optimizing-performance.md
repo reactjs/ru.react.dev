@@ -371,13 +371,15 @@ function updateColorMap(colormap) {
 
 Функция `updateColorMap` теперь возвращает новый объект, вместо того, чтобы мутировать исходный. Метод `Object.assign` входит в ES6 и требует полифила.
 
-JavaScript рассматривает предложение добавить [синтаксис расширения свойств объекта](https://github.com/sebmarkbage/ecmascript-rest-spread) для добавления свойств объекта, чтобы упростить его обновление без мутаций:
+[Синтаксис расширения свойств объекта](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Spread_syntax) упрощает обновление объектов без мутаций:
 
 ```js
 function updateColorMap(colormap) {
   return {...colormap, right: 'blue'};
 }
 ```
+
+Этот синтаксис был добавлен в JavaScript в ES2018. 
 
 Если вы используете Create React App, то `Object.assign` и синтаксис расширения объектов доступны вам по умолчанию.
 
