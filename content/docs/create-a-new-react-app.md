@@ -75,7 +75,7 @@ Create React App не обрабатывает бэкенд логику или 
 
 - **[Neutrino](https://neutrinojs.org/)** сочетает в себе возможности [webpack](https://webpack.js.org/) и простоту пресетов. Инструмент включает в себя пресеты для [React-приложений](https://neutrinojs.org/packages/react/) и [React-компонентов](https://neutrinojs.org/packages/react-components/).
 
-- **[Nx](https://nx.dev/react)** – набор инструментов фулстэк разработки   монорепозитории с встроенной поддержкой React, Next.js, [Express](https://expressjs.com/) и других.
+- **[Nx](https://nx.dev/react)** – набор инструментов для ведения фулстэк разработки в монорепозиториях, который обладает встроенной поддержкой React, Next.js, [Express](https://expressjs.com/) и так далее.
 
 - **[Parcel](https://parceljs.org/)** – быстрый упаковщик веб-приложений с нулевой конфигурацией, [который работает с React](https://parceljs.org/recipes.html#react).
 
