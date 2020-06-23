@@ -371,11 +371,7 @@ function updateColorMap(colormap) {
 
 Функция `updateColorMap` теперь возвращает новый объект, вместо того, чтобы мутировать исходный. Метод `Object.assign` входит в ES6 и требует полифила.
 
-<<<<<<< HEAD
-JavaScript рассматривает предложение добавить [синтаксис расширения свойств объекта](https://github.com/sebmarkbage/ecmascript-rest-spread) для добавления свойств объекта, чтобы упростить его обновление без мутаций:
-=======
-[Object spread syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) makes it easier to update objects without mutation as well:
->>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
+[Синтаксис расширения свойств объекта](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Spread_syntax) упрощает обновление объектов без мутаций:
 
 ```js
 function updateColorMap(colormap) {
@@ -383,12 +379,8 @@ function updateColorMap(colormap) {
 }
 ```
 
-<<<<<<< HEAD
-Если вы используете Create React App, то `Object.assign` и синтаксис расширения объектов доступны вам по умолчанию.
-=======
-This feature was added to JavaScript in ES2018. 
+Этот синтаксис был добавлен в JavaScript в ES2018. 
 
-If you're using Create React App, both `Object.assign` and the object spread syntax are available by default.
->>>>>>> e548bd7e65086a8206fee46bd9e24b18b68bf045
+Если вы используете Create React App, то `Object.assign` и синтаксис расширения объектов доступны вам по умолчанию.
 
 При работе с глубоко вложенными объектами, постоянное их обновление может запутать. Если вы столкнулись с такой проблемой, обратите внимание на [Immer](https://github.com/mweststrate/immer) или [immutability-helper](https://github.com/kolodny/immutability-helper). Эти библиотеки позволяют писать хорошо читаемый код, не теряя преимуществ иммутабельности.
