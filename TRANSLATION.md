@@ -185,6 +185,7 @@ React elements are [immutable](https://en.wikipedia.org/wiki/Immutable_object).
 | code splitting | разделение кода |
 | codemod | codemod-скрипт |
 | commit | фиксация |
+| concurrent mode | конкурентный режим |
 | context | контекст |
 | (un)controlled component | (не)управляемый компонент |
 | cross-cutting concerns | cквозная функциональность |
