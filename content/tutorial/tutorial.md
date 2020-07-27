@@ -568,7 +568,11 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### Как React понимает, когда нужно перерендерить {#determining-when-to-re-render-in-react}
 
+<<<<<<< HEAD
 Основным преимуществом иммутабельности является то, что он помогает создавать в React _чистые компоненты_. Неизменяемые данные позволяют легко определить наличие изменений и момент, когда компонент нужно перерендерить.
+=======
+The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made, which helps to determine when a component requires re-rendering.
+>>>>>>> 63332462bb5afa18ac7a716975b679f4c23cc8a1
 
 Вы можете узнать больше о `shouldComponentUpdate()` и как создавать *чистые компоненты* в статье про [оптимизацию производительности](/docs/optimizing-performance.html#examples).
 
