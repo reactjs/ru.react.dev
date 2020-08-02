@@ -226,7 +226,7 @@ class Reservation extends React.Component {
     return (
       <form>
         <label>
-          Пойду:
+          Пойдут:
           <input
             name="isGoing"
             type="checkbox"
