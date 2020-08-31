@@ -583,8 +583,14 @@ useEffect(() => {
 
 Давайте разберёмся, почему это важно.
 
+<<<<<<< HEAD
 Когда вы указываете [список зависимостей](/docs/hooks-reference.html#conditionally-firing-an-effect) через последний аргумент хуков `useEffect`, `useMemo`, `useCallback` или `useImperativeHandle`, в него должны войти все использованные значения, которые задействованы в потоке данных React, включая пропсы, состояние и их производные.
 Безопасно опускать в списке **только** те функции, которые не используют ни сами, ни через функции, которые они вызывают, пропсы, состояние или их производные. Так, в следующем примере показан баг:
+=======
+If you specify a [list of dependencies](/docs/hooks-reference.html#conditionally-firing-an-effect) as the last argument to `useEffect`, `useLayoutEffect`, `useMemo`, `useCallback`, or `useImperativeHandle`, it must include all values that are used inside the callback and participate in the React data flow. That includes props, state, and anything derived from them.
+
+It is **only** safe to omit a function from the dependency list if nothing in it (or the functions called by it) references props, state, or values derived from them. This example has a bug:
+>>>>>>> 25cc703d1f23f1782ff96c5c7882a806f8741ec4
 
 ```js{5,12}
 function ProductPage({ productId }) {

@@ -2,6 +2,8 @@
 id: context
 title: Контекст
 permalink: docs/context.html
+prev: reconciliation.html
+next: fragments.html
 ---
 
 Контекст позволяет передавать данные через дерево компонентов без необходимости передавать пропсы на промежуточных уровнях.

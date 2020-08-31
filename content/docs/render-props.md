@@ -2,6 +2,8 @@
 id: render-props
 title: Рендер-пропсы
 permalink: docs/render-props.html
+prev: higher-order-components.html
+next: integrating-with-other-libraries.html
 ---
 
 Термин [«рендер-проп»](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce) относится к возможности компонентов React разделять код между собой с помощью пропа, значение которого является функцией.

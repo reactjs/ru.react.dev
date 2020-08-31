@@ -2,6 +2,8 @@
 id: uncontrolled-components
 title: Неуправляемые компоненты
 permalink: docs/uncontrolled-components.html
+prev: refs-and-the-dom.html
+next: optimizing-performance.html
 ---
 
 В большинстве случаев при работе с формами мы рекомендуем использовать [управляемые компоненты](/docs/forms.html#controlled-components). В управляемом компоненте, данные формы обрабатываются React-компонентом. В качестве альтернативы можно использовать неуправляемые компоненты. Они хранят данные формы прямо в DOM.
