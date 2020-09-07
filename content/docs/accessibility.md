@@ -2,6 +2,8 @@
 id: accessibility
 title: Доступность контента
 permalink: docs/accessibility.html
+prev: integrating-with-other-libraries.html
+next: code-splitting.html
 ---
 
 ## Что такое доступность контента? {#why-accessibility}

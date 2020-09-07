@@ -2,6 +2,8 @@
 id: higher-order-components
 title: Компоненты высшего порядка
 permalink: docs/higher-order-components.html
+prev: web-components.html
+next: render-props.html
 ---
 
 Компонент высшего порядка (Higher-Order Component, HOC) -- это один из продвинутых способов для повторного использования логики. HOC не являются частью API React, но часто применяются из-за композиционной природы компонентов.

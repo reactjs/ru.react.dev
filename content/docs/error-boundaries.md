@@ -2,6 +2,8 @@
 id: error-boundaries
 title: Предохранители
 permalink: docs/error-boundaries.html
+prev: portals.html
+next: web-components.html
 ---
 
 Ранее ошибки JavaScript внутри компонентов портили внутреннее состояние React и заставляли его [выдавать](https://github.com/facebook/react/issues/4026) [таинственные](https://github.com/facebook/react/issues/6895) [сообщения об ошибках](https://github.com/facebook/react/issues/8579) во время следующего рендера. Эти сообщения всегда вызывались ошибками, расположенными где-то выше в коде приложения, но React не предоставлял способа адекватно обрабатывать их в компонентах и не мог обработать их самостоятельно.
@@ -95,7 +97,13 @@ class ErrorBoundary extends React.Component {
 
 Если вы не пользуетесь Create React App, вы можете вручную добавить к вашей конфигурации Babel [вот этот плагин](https://www.npmjs.com/package/babel-plugin-transform-react-jsx-source). Обратите внимание, что он предназначен исключительно для режима разработки и **должен быть отключён в продакшен**.
 
+<<<<<<< HEAD
 > Примечание
+=======
+If you don’t use Create React App, you can add [this plugin](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-source) manually to your Babel configuration. Note that it’s intended only for development and **must be disabled in production**.
+
+> Note
+>>>>>>> 657658aa1f19c65e35055ddca4452c98d569552f
 >
 > Имена компонентов, выводимые в их стеке вызовов, определяются свойством [`Function.name`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/name). Если ваше приложение поддерживает более старые браузеры и устройства, которые могут ещё не предоставлять его нативно (например, IE 11), рассмотрите возможность включения полифилла `Function.name` в бандл вашего приложения, например [`function.name-polyfill`](https://github.com/JamesMGreene/Function.name). В качестве альтернативы, вы можете явным образом задать проп [`displayName`](/docs/react-component.html#displayname) в каждом из ваших компонентов.
 

@@ -2,6 +2,8 @@
 id: portals
 title: Порталы
 permalink: docs/portals.html
+prev: fragments.html
+next: error-boundaries.html
 ---
 
 Порталы позволяют рендерить дочерние элементы в DOM-узел, который находится вне DOM-иерархии родительского компонента.

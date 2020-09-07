@@ -2,6 +2,7 @@
 id: code-splitting
 title: Разделение кода
 permalink: docs/code-splitting.html
+prev: accessibility.html
 ---
 
 ## Бандлинг {#bundling}
@@ -43,7 +44,12 @@ console.log(add(16, 26)); // 42
 >
 > Ваши бандлы будут выглядеть не так, как мы только что показали.
 
+<<<<<<< HEAD
 Если вы используете [Create React App](https://github.com/facebookincubator/create-react-app), [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/) или похожие инструменты, то у вас уже будет настроенный Webpack для бандлинга приложения.
+=======
+If you're using [Create React App](https://create-react-app.dev/), [Next.js](https://nextjs.org/), [Gatsby](https://www.gatsbyjs.org/), or a similar tool, you will have a Webpack setup out of the box to bundle your
+app.
+>>>>>>> 657658aa1f19c65e35055ddca4452c98d569552f
 
 Иначе, вам нужно будет настроить webpack самостоятельно.
 Для этого ознакомьтесь со страницами
