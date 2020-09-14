@@ -169,7 +169,11 @@ return React.createElement('div', {className: 'shopping-list'},
 
 JSX обладает всей мощью JavaScript. В JSX вы можете использовать *любые* JavaScript-выражения внутри фигурных скобок. Каждый React-элемент является JavaScript-объектом, который можно сохранить в переменную или использовать внутри программы.
 
+<<<<<<< HEAD
 Приведённый выше компонент `ShoppingList` рендерит только встроенные DOM-компоненты вроде `<div />` или `<li />`. Но вы также можете создавать и рендерить собственные компоненты. Например, теперь вы можете ссылаться на весь компонент со списком покупок, написав `<ShoppingList />`. Каждый React-компонент инкапсулирован и может использоваться независимо. Это позволяет создавать сложный UI из простых компонентов.
+=======
+### Inspecting the Starter Code {#inspecting-the-starter-code}
+>>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
 
 ## Разберёмся со стартовым кодом {#inspecting-the-starter-code}
 
@@ -568,7 +572,11 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### Как React понимает, когда нужно перерендерить {#determining-when-to-re-render-in-react}
 
+<<<<<<< HEAD
 Основным преимуществом иммутабельности является то, что он помогает создавать в React _чистые компоненты_. Неизменяемые данные позволяют легко определить наличие изменений и момент, когда компонент нужно перерендерить.
+=======
+The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made, which helps to determine when a component requires re-rendering.
+>>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
 
 Вы можете узнать больше о `shouldComponentUpdate()` и как создавать *чистые компоненты* в статье про [оптимизацию производительности](/docs/optimizing-performance.html#examples).
 

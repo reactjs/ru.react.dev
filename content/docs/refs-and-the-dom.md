@@ -1,6 +1,12 @@
 ---
 id: refs-and-the-dom
+<<<<<<< HEAD
 title: Рефы и DOM
+=======
+title: Refs and the DOM
+prev: static-type-checking.html
+next: uncontrolled-components.html
+>>>>>>> 954a16f1d358009505ae881afaefe463dc6388a5
 redirect_from:
   - "docs/working-with-the-browser.html"
   - "docs/more-about-refs.html"
