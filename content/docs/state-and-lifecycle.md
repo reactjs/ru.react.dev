@@ -156,7 +156,7 @@ class Clock extends React.Component {
 
 Классовые компоненты всегда должны вызывать базовый конструктор с аргументом `props`.
 
-3) Удалим проп `date` из элемента `<Clock />`:
+3) Удалим пропс `date` из элемента `<Clock />`:
 
 ```js{2}
 ReactDOM.render(
