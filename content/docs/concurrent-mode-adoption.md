@@ -71,7 +71,7 @@ import ReactDOM from 'react-dom';
 //
 // Теперь для перехода в конкурентный режим нужно написать:
 
-ReactDOM.createRoot(
+ReactDOM.unstable_createRoot(
   document.getElementById('root')
 ).render(<App />);
 ```

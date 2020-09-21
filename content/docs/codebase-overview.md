@@ -35,6 +35,7 @@ redirect_from:
 
 ### Предупреждения и инварианты {#warnings-and-invariants}
 
+<<<<<<< HEAD
 Для работы с предупреждениями в React используется модуль `warning`.
 
 ```js
@@ -62,6 +63,13 @@ if (!didWarnAboutMath) {
     'Математика сегодня не работает.'
   );
   didWarnAboutMath = true;
+=======
+The React codebase uses `console.error` to display warnings:
+
+```js
+if (__DEV__) {
+  console.error('Something is wrong.');
+>>>>>>> 1becaff62ae228d909b83ef6d08f48c01660300f
 }
 ```
 
@@ -113,6 +121,7 @@ ReactRef.detachRefs = function(
 
 Новый код, если это возможно, должен использовать Flow. Вы можете выполнить `yarn`&nbsp`flow`, чтобы произвести проверку типов.
 
+<<<<<<< HEAD
 ### Динамические инъекции {#dynamic-injection}
 
 React использует динамические инъекции в некоторых модулях. Несмотря на то, что они явные, это всё ещё неудачное решение, потому что затрудняет понимание кода. Причина их существования в том, что изначально React поддерживал только DOM. React Native появился как форк React. Мы должны добавлять динамические инъекции, чтобы позволить React Native переопределять некоторое поведение.
@@ -147,6 +156,9 @@ module.exports = ReactHostComponent;
 В репозитории существует много мест с использованием инъекций. В будущем мы хотим избавиться от механизма динамических инъекций и соединять все фрагменты статически во время сборки.
 
 ### Множество пакетов {#multiple-packages}
+=======
+### Multiple Packages {#multiple-packages}
+>>>>>>> 1becaff62ae228d909b83ef6d08f48c01660300f
 
 React является [монолитным репозиторием](https://danluu.com/monorepo/). Он содержит множество отдельных пакетов, чтобы изменения были согласованными, а проблемы решались в одном месте.
 
@@ -210,9 +222,13 @@ Cогласователь «Stack» -- это реализация, котора
 
 ### Система событий {#event-system}
 
+<<<<<<< HEAD
 В React реализована система синтетических событий, которая не зависит от используемого рендерера, и работает одинаково как в React DOM, так и в React Native. Исходный код расположен в каталоге [`packages/react-events`](https://github.com/facebook/react/tree/master/packages/react-events).
 
 Больше подробностей вы можете узнать из [видео](https://www.youtube.com/watch?v=dRo_egw7tBc) (66 mins).
+=======
+React implements a layer over native events to smooth out cross-browser differences. Its source code is located in [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/master/packages/react-dom/src/events).
+>>>>>>> 1becaff62ae228d909b83ef6d08f48c01660300f
 
 ### Что дальше? {#what-next}
 
