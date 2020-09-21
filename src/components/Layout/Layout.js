@@ -48,13 +48,6 @@ class Template extends Component<Props> {
           valign="stretch"
           css={{
             flex: '1 0 auto',
-            marginTop: 60,
-            [media.between('medium', 'large')]: {
-              marginTop: 50,
-            },
-            [media.lessThan('medium')]: {
-              marginTop: 40,
-            },
           }}>
           {children}
         </Flex>
