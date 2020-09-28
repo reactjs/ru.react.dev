@@ -5,6 +5,7 @@
  * @flow
  */
 
+import Banner from 'components/Banner';
 import Container from 'components/Container';
 import HeaderLink from './HeaderLink';
 import {Link} from 'gatsby';
@@ -36,6 +37,7 @@ const Header = ({location}: {location: Location}) => (
     <Container>
       <div
         css={{
+<<<<<<< HEAD
           height: 60,
           fontSize: 20,
           padding: 20,
@@ -64,6 +66,8 @@ const Header = ({location}: {location: Location}) => (
     <Container>
       <div
         css={{
+=======
+>>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',
@@ -269,6 +273,9 @@ const Header = ({location}: {location: Location}) => (
           </a>
         </div>
       </div>
+    </Container>
+    <Container>
+      <Banner />
     </Container>
   </header>
 );
