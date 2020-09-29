@@ -39,8 +39,7 @@ redirect_from:
 
 ```js
 if (__DEV__) {
-  console.error('Something is wrong.');
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
+  console.error('Что-то не так.');
 }
 ```
 
