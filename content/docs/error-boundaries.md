@@ -93,15 +93,9 @@ class ErrorBoundary extends React.Component {
 
 <img src="../images/docs/error-boundaries-stack-trace-line-numbers.png" style="max-width:100%" alt="Ошибка, отловленная предохранителем c номерами строк">
 
-Если вы не пользуетесь Create React App, вы можете вручную добавить к вашей конфигурации Babel [вот этот плагин](https://www.npmjs.com/package/babel-plugin-transform-react-jsx-source). Обратите внимание, что он предназначен исключительно для режима разработки и **должен быть отключён в продакшен**.
+Если вы не пользуетесь Create React App, вы можете вручную добавить к вашей конфигурации Babel [вот этот плагин](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-source). Обратите внимание, что он предназначен исключительно для режима разработки и **должен быть отключён в продакшене**.
 
-<<<<<<< HEAD
 > Примечание
-=======
-If you don’t use Create React App, you can add [this plugin](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-source) manually to your Babel configuration. Note that it’s intended only for development and **must be disabled in production**.
-
-> Note
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 >
 > Имена компонентов, выводимые в их стеке вызовов, определяются свойством [`Function.name`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function/name). Если ваше приложение поддерживает более старые браузеры и устройства, которые могут ещё не предоставлять его нативно (например, IE 11), рассмотрите возможность включения полифилла `Function.name` в бандл вашего приложения, например [`function.name-polyfill`](https://github.com/JamesMGreene/Function.name). В качестве альтернативы, вы можете явным образом задать проп [`displayName`](/docs/react-component.html#displayname) в каждом из ваших компонентов.
 

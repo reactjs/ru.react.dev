@@ -169,13 +169,9 @@ return React.createElement('div', {className: 'shopping-list'},
 
 JSX обладает всей мощью JavaScript. В JSX вы можете использовать *любые* JavaScript-выражения внутри фигурных скобок. Каждый React-элемент является JavaScript-объектом, который можно сохранить в переменную или использовать внутри программы.
 
-<<<<<<< HEAD
 Приведённый выше компонент `ShoppingList` рендерит только встроенные DOM-компоненты вроде `<div />` или `<li />`. Но вы также можете создавать и рендерить собственные компоненты. Например, теперь вы можете ссылаться на весь компонент со списком покупок, написав `<ShoppingList />`. Каждый React-компонент инкапсулирован и может использоваться независимо. Это позволяет создавать сложный UI из простых компонентов.
-=======
-### Inspecting the Starter Code {#inspecting-the-starter-code}
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
-## Разберёмся со стартовым кодом {#inspecting-the-starter-code}
+### Разберёмся со стартовым кодом {#inspecting-the-starter-code}
 
 Если вы собираетесь работать над практической частью **в вашем браузере**, откройте этот код в новой вкладке **[начальный код](https://codepen.io/gaearon/pen/oWWQNa?editors=0010)**. Если вы собираетесь работать над практикумом **локально**, откройте `src/index.js` в папке вашего проекта (вы уже использовали этот файл в разделе [настройки](#setup-option-2-local-development-environment)).
 
@@ -572,11 +568,7 @@ var newPlayer = Object.assign({}, player, {score: 2});
 
 #### Как React понимает, когда нужно перерендерить {#determining-when-to-re-render-in-react}
 
-<<<<<<< HEAD
 Основным преимуществом иммутабельности является то, что он помогает создавать в React _чистые компоненты_. Неизменяемые данные позволяют легко определить наличие изменений и момент, когда компонент нужно перерендерить.
-=======
-The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made, which helps to determine when a component requires re-rendering.
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 Вы можете узнать больше о `shouldComponentUpdate()` и как создавать *чистые компоненты* в статье про [оптимизацию производительности](/docs/optimizing-performance.html#examples).
 

@@ -37,37 +37,6 @@ const Header = ({location}: {location: Location}) => (
     <Container>
       <div
         css={{
-<<<<<<< HEAD
-          height: 60,
-          fontSize: 20,
-          padding: 20,
-          textAlign: 'center',
-          [media.between('small', 'large')]: {
-            fontSize: 22,
-            height: 60,
-          },
-          [media.lessThan('small')]: {
-            height: 80,
-          },
-          [media.greaterThan('medium')]: {
-            fontSize: 25,
-          },
-        }}>
-        Black Lives Matter.{' '}
-        <a
-          style={{color: colors.brand}}
-          target="_blank"
-          rel="noopener"
-          href="https://support.eji.org/give/153413/#!/donation/checkout">
-          Поддержать&nbsp;Equal&nbsp;Justice&nbsp;Initiative.
-        </a>
-      </div>
-    </Container>
-    <Container>
-      <div
-        css={{
-=======
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
           display: 'flex',
           flexDirection: 'row',
           alignItems: 'center',

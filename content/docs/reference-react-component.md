@@ -273,13 +273,9 @@ shouldComponentUpdate(nextProps, nextState)
 static getDerivedStateFromProps(props, state)
 ```
 
-<<<<<<< HEAD
-`getDerivedStateFromProps` вызывается непосредственно перед вызовом метода `render`, как при начальном монтировании, так и при последующих обновлениях. Он должен вернуть объект для обновления состояния или null, чтобы ничего не обновлять.
+`getDerivedStateFromProps` вызывается непосредственно перед вызовом метода `render`, как при начальном монтировании, так и при последующих обновлениях. Он должен вернуть объект для обновления состояния или `null`, чтобы ничего не обновлять.
 
 Этот метод существует для [редких случаев](/blog/2018/06/07/you-probably-dont-need-derived-state.html#when-to-use-derived-state), когда состояние зависит от изменений в пропсах. Например, это подойдёт для реализации компонента `<Transition>`, который сравнивает свои предыдущие и следующие дочерние компоненты, чтобы решить, какой из них нужно анимировать.
-=======
-`getDerivedStateFromProps` is invoked right before calling the render method, both on the initial mount and on subsequent updates. It should return an object to update the state, or `null` to update nothing.
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 Производное состояние приводит к сложному коду и делает ваши компоненты сложными для понимания. Убедитесь, что вы знакомы с [простыми альтернативами:](/blog/2018/06/07/you-probably-dont-need-derived-state.html)
 
@@ -586,11 +582,7 @@ component.forceUpdate(callback)
 
 ### `defaultProps` {#defaultprops}
 
-<<<<<<< HEAD
 `defaultProps` можно определить как свойство самого класса компонента, которое позволяет установить пропсы класса по умолчанию. Это используется для неопределённых (`undefined`) пропсов, но не для пропсов со значением `null`. Например:
-=======
-`defaultProps` can be defined as a property on the component class itself, to set the default props for the class. This is used for `undefined` props, but not for `null` props. For example:
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 ```js
 class CustomButton extends React.Component {
@@ -610,11 +602,7 @@ CustomButton.defaultProps = {
   }
 ```
 
-<<<<<<< HEAD
 Если `props.color` имеет значение `null`, оно останется `null`:
-=======
-If `props.color` is set to `null`, it will remain `null`:
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
 
 ```js
   render() {

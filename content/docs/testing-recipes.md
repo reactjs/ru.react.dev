@@ -57,11 +57,7 @@ afterEach(() => {
 
 ### `act()` {#act}
 
-<<<<<<< HEAD
-При написании UI-тестов, задачи рендеринга, пользовательских событий или получения данных могут расцениваться, как «блоки» интеграции с пользовательским интерфейсом. React предоставляет вспомогательную функцию `act()`, которая проверяет, что все обновления, связанные с этими «блоками», выполнены и применены к DOM до проверки предполагаемого вывода:
-=======
-When writing UI tests, tasks like rendering, user events, or data fetching can be considered as "units" of interaction with a user interface. `react-dom/test-utils` provides a helper called [`act()`](/docs/test-utils.html#act) that makes sure all updates related to these "units" have been processed and applied to the DOM before you make any assertions:
->>>>>>> 32e3c7a6f92cb6580eb38c047960805d5998c2ec
+При написании UI-тестов, задачи рендеринга, пользовательских событий или получения данных могут расцениваться, как «блоки» интеграции с пользовательским интерфейсом. В пакет `react-dom/test-utils` есть вспомогательная функция [`act()`](/docs/test-utils.html#act), которая проверяет, что все обновления, связанные с этими «блоками», выполнены и применены к DOM до проверки предполагаемого вывода:
 
 ```js
 act(() => {
