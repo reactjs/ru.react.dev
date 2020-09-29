@@ -1,6 +1,7 @@
 ---
 id: refs-and-the-dom
 title: Рефы и DOM
+permalink: docs/refs-and-the-dom.html
 redirect_from:
   - "docs/working-with-the-browser.html"
   - "docs/more-about-refs.html"
@@ -8,7 +9,6 @@ redirect_from:
   - "docs/more-about-refs-zh-CN.html"
   - "tips/expose-component-functions.html"
   - "tips/children-undefined.html"
-permalink: docs/refs-and-the-dom.html
 ---
 
 Рефы дают возможность получить доступ к DOM-узлам или React-элементам, созданным в рендер-методе.

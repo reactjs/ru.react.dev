@@ -93,7 +93,7 @@ class ErrorBoundary extends React.Component {
 
 <img src="../images/docs/error-boundaries-stack-trace-line-numbers.png" style="max-width:100%" alt="Ошибка, отловленная предохранителем c номерами строк">
 
-Если вы не пользуетесь Create React App, вы можете вручную добавить к вашей конфигурации Babel [вот этот плагин](https://www.npmjs.com/package/babel-plugin-transform-react-jsx-source). Обратите внимание, что он предназначен исключительно для режима разработки и **должен быть отключён в продакшен**.
+Если вы не пользуетесь Create React App, вы можете вручную добавить к вашей конфигурации Babel [вот этот плагин](https://www.npmjs.com/package/@babel/plugin-transform-react-jsx-source). Обратите внимание, что он предназначен исключительно для режима разработки и **должен быть отключён в продакшене**.
 
 > Примечание
 >

@@ -5,6 +5,7 @@
  * @flow
  */
 
+import Banner from 'components/Banner';
 import Container from 'components/Container';
 import HeaderLink from './HeaderLink';
 import {Link} from 'gatsby';
@@ -33,34 +34,6 @@ const Header = ({location}: {location: Location}) => (
         display: 'none',
       },
     }}>
-    <Container>
-      <div
-        css={{
-          height: 60,
-          fontSize: 20,
-          padding: 20,
-          textAlign: 'center',
-          [media.between('small', 'large')]: {
-            fontSize: 22,
-            height: 60,
-          },
-          [media.lessThan('small')]: {
-            height: 80,
-          },
-          [media.greaterThan('medium')]: {
-            fontSize: 25,
-          },
-        }}>
-        Black Lives Matter.{' '}
-        <a
-          style={{color: colors.brand}}
-          target="_blank"
-          rel="noopener"
-          href="https://support.eji.org/give/153413/#!/donation/checkout">
-          Поддержать&nbsp;Equal&nbsp;Justice&nbsp;Initiative.
-        </a>
-      </div>
-    </Container>
     <Container>
       <div
         css={{
@@ -269,6 +242,9 @@ const Header = ({location}: {location: Location}) => (
           </a>
         </div>
       </div>
+    </Container>
+    <Container>
+      <Banner />
     </Container>
   </header>
 );

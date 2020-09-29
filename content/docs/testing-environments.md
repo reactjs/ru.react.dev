@@ -29,7 +29,7 @@ prev: testing-recipes.html
 
 Если вы пишете библиотеку, которая в основном тестирует поведение специфичное для браузера, например, работа с разметкой страницы или настоящие элементы `input`, используйте фреймворк, такой как [mocha.](https://mochajs.org/)
 
-В среде, где вы _не можете_ имитировать DOM (например, тестирование компонентов React Native в Node.js), используйте [вспомогательные функции имитации события](/docs/test-utils.html#simulate), чтобы имитировать взаимодействие с элементами. В качестве альтернативы можно использовать вспомогательную функцию `fireEvent` из [`@testing-library/react-native`](https://testing-library.com/docs/native-testing-library).
+В среде, где вы _не можете_ имитировать DOM (например, тестирование компонентов React Native в Node.js), используйте [вспомогательные функции имитации события](/docs/test-utils.html#simulate), чтобы имитировать взаимодействие с элементами. В качестве альтернативы можно использовать вспомогательную функцию `fireEvent` из [`@testing-library/react-native`](https://testing-library.com/docs/react-native-testing-library/intro).
 
 Фреймворки, такие как [Cypress](https://www.cypress.io/), [puppeteer](https://github.com/GoogleChrome/puppeteer) и [webdriver](https://www.seleniumhq.org/projects/webdriver/) полезны для запуска [«сквозных» тестов](#end-to-end-tests-aka-e2e-tests).
 

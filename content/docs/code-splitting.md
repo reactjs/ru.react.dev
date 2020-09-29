@@ -43,7 +43,7 @@ console.log(add(16, 26)); // 42
 >
 > Ваши бандлы будут выглядеть не так, как мы только что показали.
 
-Если вы используете [Create React App](https://github.com/facebookincubator/create-react-app), [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/) или похожие инструменты, то у вас уже будет настроенный Webpack для бандлинга приложения.
+Если вы используете [Create React App](https://create-react-app.dev/), [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/) или похожие инструменты, то у вас уже будет настроенный Webpack для бандлинга приложения.
 
 Иначе, вам нужно будет настроить webpack самостоятельно.
 Для этого ознакомьтесь со страницами
