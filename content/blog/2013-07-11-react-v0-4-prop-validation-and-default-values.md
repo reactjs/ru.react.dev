@@ -1,27 +1,37 @@
 ---
-title: "New in React v0.4: Prop Validation and Default Values"
+title: "Новое в React v0.4: Валидацяи пропсов и значения по умолчанию"
 author: [zpao]
 ---
 
-Many of the questions we got following the public launch of React revolved around `props`, specifically that people wanted to do validation and to make sure their components had sensible defaults.
+Многие из вопросов, которые мы получили после публичного запуска React, 
+касались пропсов, в частности, того, что люди хотели провести валидацию 
+и убедиться в том, что их компоненты имеют верные значения по умолчанию.
 
 
-## Validation {#validation}
+## Валидация {#валидация}
 
 Oftentimes you want to validate your `props` before you use them. Perhaps you want to ensure they are a specific type. Or maybe you want to restrict your prop to specific values. Or maybe you want to make a specific prop required. This was always possible — you could have written validations in your `render` or `componentWillReceiveProps` functions, but that gets clunky fast.
 
-React v0.4 will provide a nice easy way for you to use built-in validators, or to even write your own.
+Часто вы хотите проверить ваши пропсы перед тем, как использовать их. 
+Возможно, вы хотите удостовериться, что они относятся к определенному типу. 
+Или, может быть, вы хотите ограничить ваш пропсы конкретными значениями. 
+Или, может быть, вы хотите сделать требуемый пропс. Это всегда было 
+возможно - вы могли написать валидацию в `render` или функции 
+`componentWillReceiveProps`, но это быстро становится неудобным.
+
+React v0.4 предоставит вам хороший простой способ использовать встроенные 
+валидаторы или даже написать свои собственные.
 
 ```js
 React.createClass({
   propTypes: {
-    // An optional string prop named "description".
+    // Опциональная строковая пропса с именем "description".
     description: React.PropTypes.string,
 
-    // A required enum prop named "category".
+    // Требуемая перечисляемая пропса с именем "category".
     category: React.PropTypes.oneOf(['News','Photos']).isRequired,
 
-    // A prop named "dialog" that requires an instance of Dialog.
+    // Пропса с именем "dialog" которая должна соответстовать типу Dialog.
     dialog: React.PropTypes.instanceOf(Dialog).isRequired
   },
   ...
@@ -29,9 +39,10 @@ React.createClass({
 ```
 
 
-## Default Values {#default-values}
+## Значения по умолчанию {#значения-по-умолчанию}
 
-One common pattern we've seen with our React code is to do something like this:
+Один общий шаблон, который мы видели с нашим React кодом, это сделать 
+что-то вроде этого:
 
 ```js
 React.createClass({
@@ -42,7 +53,9 @@ React.createClass({
 });
 ```
 
-Do this for a few `props` across a few components and now you have a lot of redundant code. Starting with React v0.4, you can provide default values in a declarative way:
+Сделайте это для нескольких пропсов в некоторых компонентам и теперь у 
+вас будет много избыточного кода. Начиная с React v0.4, вы можете 
+предоставлять значения по умолчанию декларативным способом:
 
 ```js
 React.createClass({
@@ -55,8 +68,12 @@ React.createClass({
 });
 ```
 
-We will use the cached result of this function before each `render`. We also perform all validations before each `render` to ensure that you have all of the data you need in the right form before you try to use it.
+Мы будем использовать кэшированный результат этой функции перед каждым `render`.
+Мы также выполняем все проверки перед каждым `render`, чтобы удостовериться,
+что у вас есть все необходимые данные в правильной форме, прежде чем вы попытаетесь их использовать.
 
 - - -
 
-Both of these features are entirely optional. We've found them to be increasingly valuable at Facebook as our applications grow and evolve, and we hope others find them useful as well.
+Обе эти функции являются полностью опциональными. Мы обнаружили, что 
+они становятся все более ценными на Facebook по мере роста и развития 
+наших приложений, и надеемся, что другие тоже найдут их полезными.
