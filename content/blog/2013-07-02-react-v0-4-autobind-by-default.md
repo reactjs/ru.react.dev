@@ -1,20 +1,29 @@
 ---
-title: "New in React v0.4: Autobind by Default"
+title: Новое в React v0.4: автопривязка по умолчанию"
 author: [zpao]
 ---
 
-React v0.4 is very close to completion. As we finish it off, we'd like to share with you some of the major changes we've made since v0.3. This is the first of several posts we'll be making over the next week.
+React v0.4 очень близок к завершению. По мере того, как мы заканчиваем, 
+мы хотели бы поделиться с вами некоторыми из основных изменений, 
+которые мы внесли после v0.3. Это первый из нескольких постов, которые 
+мы сделаем на следующей неделе.
 
+## Что такое React.autoBind? {#что-такое-reactautobind}
 
-## What is React.autoBind? {#what-is-reactautobind}
+Если вы посмотрите на большинство наших текущих примеров, то увидите, 
+что мы используем `React.autoBind` для обработчиков событий. 
+Он используется вместо `Function.prototype.bind`. Помните, что в JS,
+[вызовы функций задерживаются](https://bonsaiden.github.io/JavaScript-Garden/#function.this).
+Это означает, что если вы просто передадите функцию, то используемый 
+внутри `this` не обязательно будет такой, какой вы ожидаете.
+`Function.prototype.bind` создает новую, правильно связанную функцию,
+так что при вызове, это именно то, что вы ожидаете.
 
-If you take a look at most of our current examples, you'll see us using `React.autoBind` for event handlers. This is used in place of `Function.prototype.bind`. Remember that in JS, [function calls are late-bound](https://bonsaiden.github.io/JavaScript-Garden/#function.this). That means that if you simply pass a function around, the `this` used inside won't necessarily be the `this` you expect. `Function.prototype.bind` creates a new, properly bound, function so that when called, `this` is exactly what you expect it to be.
-
-Before we launched React, we would write this:
+Перед запуском React, мы бы написали это:
 
 ```js{4}
 React.createClass({
-  onClick: function(event) {/* do something with this */},
+  onClick: function(event) {/* делаете что-то с этим */},
   render: function() {
     return <button onClick={this.onClick.bind(this)} />;
   }
@@ -23,29 +32,41 @@ React.createClass({
 
 We wrote `React.autoBind` as a way to cache the function creation and save on memory usage. Since `render` can get called multiple times, if you used `this.onClick.bind(this)` you would actually create a new function on each pass. With React v0.3 you were able to write this instead:
 
+Мы написали `React.autoBind` как способ кэшировать создание функции 
+и экономить на использовании памяти. Так как `render` может вызываться 
+несколько раз, если бы вы использовали `this.onClick.bind(this)`, 
+то вы бы на самом деле создавали новую функцию на каждом проходе.
+С помощью React v0.3 вы можете написать так:
+
 ```js{2,4}
 React.createClass({
-  onClick: React.autoBind(function(event) {/* do something with this */}),
+  onClick: React.autoBind(function(event) {/* делаете что-то с этим */}),
   render: function() {
     return <button onClick={this.onClick} />;
   }
 });
 ```
 
+## Что меняется в v0.4? {#что-меняется-в-v04}
 
-## What's Changing in v0.4? {#whats-changing-in-v04}
+После использования `React.autoBind` в течение нескольких недель,
+мы поняли, что очень мало раз мы не хотели такого поведения. 
+Поэтому мы сделали это по умолчанию! Теперь все методы, определенные 
+в `React.createClass`, уже будут привязаны к правильному экземпляру.
 
-After using `React.autoBind` for a few weeks, we realized that there were very few times that we didn't want that behavior. So we made it the default! Now all methods defined within `React.createClass` will already be bound to the correct instance.
-
-Starting with v0.4 you can just write this:
+Начиная с v0.4 вы можете писать так:
 
 ```js{2,4}
 React.createClass({
-  onClick: function(event) {/* do something with this */},
+  onClick: function(event) {/* делаете что-то с этим */},
   render: function() {
     return <button onClick={this.onClick} />;
   }
 });
 ```
 
-For v0.4 we will simply be making `React.autoBind` a no-op — it will just return the function you pass to it. Most likely you won't have to change your code to account for this change, though we encourage you to update. We'll publish a migration guide documenting this and other changes that come along with React v0.4.
+Для версии 0.4 мы просто сделаем `React.autoBind` не исполняемым - она 
+просто вернет переданную ей функцию. Скорее всего, вам не придется 
+менять код, чтобы учесть это изменение, хотя мы рекомендуем вам 
+обновиться. Мы опубликуем руководство по миграции, документирующее 
+это и другие изменения, сопровождающие React v0.4.
