@@ -152,7 +152,24 @@ ReactDOM.render(
 
 То есть, если условие истинно (`true`), то элемент, идущий непосредственно за `&&`, будет передан на вывод. Если же оно ложно (`false`), то React проигнорирует и пропустит его.
 
+<<<<<<< HEAD
 ### Встроенные условия if-else с тернарным оператором {#inline-if-else-with-conditional-operator}
+=======
+Note that returning a falsy expression will still cause the element after `&&` to be skipped but will return the falsy expression. In the example below, `<div>0</div>` will be returned by the render method.
+
+```javascript{2,5}
+render() {
+  const count = 0;
+  return (
+    <div>
+      { count && <h1>Messages: {count}</h1>}
+    </div>
+  );
+}
+```
+
+### Inline If-Else with Conditional Operator {#inline-if-else-with-conditional-operator}
+>>>>>>> bd0c9d8c5f5e78e0bd1066b46024ba98f4daac84
 
 Есть ещё один способ писать условия прямо в JSX. Вы можете воспользоваться тернарным оператором [`condition ? true : false`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/%D0%A3%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B9_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80).
 
