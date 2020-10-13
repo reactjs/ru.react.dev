@@ -30,11 +30,7 @@ Greeting.propTypes = {
 };
 ```
 
-<<<<<<< HEAD
 В данном примере проверка типа показан на классовом компоненте, но она же может быть применена и к функциональным компонентам, или к компонентам, созданным с помощью [`React.memo`](/docs/react-api.html#reactmemo) или [`React.forwardRef`](/docs/react-api.html#reactforwardref).
-=======
-In this example, we are using a class component, but the same functionality could also be applied to function components, or components created by [`React.memo`](/docs/react-api.html#reactmemo) or [`React.forwardRef`](/docs/react-api.html#reactforwardref).
->>>>>>> bd0c9d8c5f5e78e0bd1066b46024ba98f4daac84
 
 `PropTypes` предоставляет ряд валидаторов, которые могут использоваться для проверки, что получаемые данные корректны. В примере мы использовали `PropTypes.string`. Когда какой-то проп имеет некорректное значение, в консоли будет выведено предупреждение. По соображениям производительности `propTypes` проверяются только в режиме разработки.
 
