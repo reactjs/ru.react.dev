@@ -120,7 +120,7 @@ export default function Banner() {
             css={{
               marginRight: '0.5rem',
             }}>
-            We want to hear from you!
+            Мы хотим узнать ваше мнение!
           </span>
 
           <a
