@@ -49,7 +49,7 @@ render(
 ```
 
 Также `Profiler` может быть вложенным с целью замера разных компонентов внутри поддерева:
-```js{2,6,8}
+```js{3,5,8}
 render(
   <App>
     <Profiler id="Panel" onRender={callback}>

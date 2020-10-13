@@ -87,14 +87,13 @@ import("./math").then(math => {
 ```
 
 Когда Webpack сталкивается с таким синтаксисом, он автоматически начинает разделять код вашего приложения. Если вы используете Create React App, то всё уже настроено и
-вы можете сразу [начать использовать](https://facebook.github.io/create-react-app/docs/code-splitting) синтаксис динамического импорта. Он также поддерживается «из коробки» в [Next.js](https://github.com/zeit/next.js/#dynamic-import).
+вы можете сразу [начать использовать](https://create-react-app.dev/docs/code-splitting/) синтаксис динамического импорта. Он также поддерживается «из коробки» в [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import).
 
 Если вы настраиваете Webpack самостоятельно, то, вероятно, захотите прочитать [руководство Webpack по разделению кода](https://webpack.js.org/guides/code-splitting/).
 Файл конфигурации Webpack должен выглядеть [примерно так](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
 
 Если вы используете [Babel](https://babeljs.io/), вам необходимо убедиться, что он понимает синтаксис динамического импорта.
-Для этого вам необходимо установить плагин [@babel/plugin-syntax-dynamic-import](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import).
-
+Для этого вам необходимо установить пакет [@babel/plugin-syntax-dynamic-import](https://classic.yarnpkg.com/en/package/@babel/plugin-syntax-dynamic-import).
 
 ## `React.lazy` {#reactlazy}
 
