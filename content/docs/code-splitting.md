@@ -73,7 +73,6 @@ import("./math").then(math => {
 });
 ```
 
-<<<<<<< HEAD
 Когда Webpack сталкивается с таким синтаксисом, он автоматически начинает разделять код вашего приложения. Если вы используете Create React App, то всё уже настроено и вы можете сразу [начать использовать](https://create-react-app.dev/docs/code-splitting/) синтаксис динамического импорта. Он также поддерживается «из коробки» в [Next.js](https://nextjs.org/docs/advanced-features/dynamic-import).
 
 Если вы настраиваете Webpack самостоятельно, то, вероятно, захотите прочитать [руководство Webpack по разделению кода](https://webpack.js.org/guides/code-splitting/). Файл конфигурации Webpack должен выглядеть [примерно так](https://gist.github.com/gaearon/ca6e803f5c604d37468b0091d9959269).
