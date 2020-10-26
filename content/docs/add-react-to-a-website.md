@@ -52,10 +52,17 @@ next: create-a-new-react-app.html
 ```html{5,6,9}
   <!-- ... остальной HTML ... -->
 
+<<<<<<< HEAD
   <!-- Загрузим React. -->
   <!-- Примечание: для деплоя на продакшен замените окончание «development.js» на «production.min.js». -->
   <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
   <!-- Загрузим наш React-компонент. -->
   <script src="like_button.js"></script>
@@ -84,7 +91,11 @@ const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
 ```
 
+<<<<<<< HEAD
 Этот код ищет контейнер `<div>`, который мы добавили на первом шаге, а затем отображает наш React-компонент с кнопкой "Нравится" внутри него.
+=======
+These two lines of code find the `<div>` we added to our HTML in the first step, and then display our "Like" button React component inside of it.
+>>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 ### Готово! {#thats-it}
 
@@ -115,8 +126,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 Если вы уже минифицируете свои скрипты, то не забудьте подготовить к продакшену сам React. Для этого поменяйте окончания ссылок на React на `production.min.js`:
 
 ```js
-<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 Если же вы не настроили минификацию для ваших скриптов, то [вот один из вариантов, как это сделать](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
@@ -184,7 +195,7 @@ JSX можно добавить в существующий проект и бе
 Создайте директорию с названием `src` и наберите в терминале следующую команду:
 
 ```
-npx babel --watch src --out-dir . --presets react-app/prod 
+npx babel --watch src --out-dir . --presets react-app/prod
 ```
 
 >Примечание
