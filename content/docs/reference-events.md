@@ -34,40 +34,10 @@ string type
 
 > Примечание:
 >
-<<<<<<< HEAD
-> Начиная с версии 0.14, возврат `false` из обработчика событий больше не останавливает всплытие. Вместо этого нужно вручную вызывать `e.stopPropagation()` или `e.preventDefault()`.
-
-### Пул событий {#event-pooling}
-
-События `SyntheticEvent` содержатся в пуле. Это означает, что объект `SyntheticEvent` будет повторно использован, а все его свойства будут очищены после вызова обработчика события.
-Это необходимо из соображений производительности.
-Именно поэтому нельзя использовать синтетические события асинхронно.
-
-```javascript
-function onClick(event) {
-  console.log(event); // => null-объект.
-  console.log(event.type); // => "click"
-  const eventType = event.type; // => "click"
-
-  setTimeout(function() {
-    console.log(event.type); // => null
-    console.log(eventType); // => "click"
-  }, 0);
-
-  // Не сработает, поскольку this.state.clickEvent будет содержать только null-значения.
-  this.setState({clickEvent: event});
-
-  // По-прежнему можно экспортировать свойства события.
-  this.setState({eventType: event.type});
-}
-```
-=======
-> As of v17, `e.persist()` doesn't do anything because the `SyntheticEvent` is no longer [pooled](/docs/legacy-event-pooling.html).
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+> Начиная с 17 версии, вызов `e.persist()` не имеет смысла, потому что объекты событий `SyntheticEvent` больше не [добавляются в пул](/docs/legacy-event-пулинг.html).
 
 > Примечание:
 >
-<<<<<<< HEAD
 > Если вы всё же хотите обратиться к полям события асинхронно, вам нужно вызвать `event.persist()` на событии. Тогда оно будет извлечено из пула, что позволит вашему коду удерживать ссылки на это событие.
 
 ## Поддерживаемые события {#supported-events}
@@ -93,7 +63,6 @@ React нормализует события так, чтобы они содер
 - [События анимаций](#animation-events)
 - [События переходов](#transition-events)
 - [Другие события](#other-events)
-=======
 > As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
 
 ## Supported Events {#supported-events}
@@ -119,7 +88,6 @@ The event handlers below are triggered by an event in the bubbling phase. To reg
 - [Animation Events](#animation-events)
 - [Transition Events](#transition-events)
 - [Other Events](#other-events)
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 * * *
 
@@ -204,16 +172,16 @@ DOMEventTarget relatedTarget
 
 #### onFocus
 
-The `onFocus` event is called when the element (or some element inside of it) receives focus. For example, it's called when the user clicks on a text input.
+Событие `onFocus` вызывается при перемещении фокуса на элемент (включая дочерние элементы внутри него). Например, это событие запустится, если пользователь кликнет на текстовое поле ввода.
 
 ```javascript
 function Example() {
   return (
     <input
       onFocus={(e) => {
-        console.log('Focused on input');
+        console.log('Получен фокус на поле ввода');
       }}
-      placeholder="onFocus is triggered when you click this input."
+      placeholder="onFocus выполнится при нажатии на это поле ввода."
     />
   )
 }
@@ -221,24 +189,24 @@ function Example() {
 
 #### onBlur
 
-The `onBlur` event handler is called when focus has left the element (or left some element inside of it). For example, it's called when the user clicks outside of a focused text input.
+Событие `onFocus` вызывается при пропадании фокуса с элемента (включая дочерние элементы внутри него). Например, это событие запустится, если пользователь кликнет за пределы текстового поля ввода, находящегося в фокусе.
 
 ```javascript
 function Example() {
   return (
     <input
       onBlur={(e) => {
-        console.log('Triggered because this input lost focus');
+        console.log('Пропал фокус с поля ввода');
       }}
-      placeholder="onBlur is triggered when you click this input and then you click outside of it."
+      placeholder="onBlur выполнится в случае изменения фокуса с этого поля ввода на любой другой элемент."
     />
   )
 }
 ```
 
-#### Detecting Focus Entering and Leaving
+#### Отслеживание получения и перемещения фокуса
 
-You can use the `currentTarget` and `relatedTarget` to differentiate if the focusing or blurring events originated from _outside_ of the parent element. Here is a demo you can copy and paste that shows how to detect focusing a child, focusing the element itself, and focus entering or leaving the whole subtree.
+Можно использовать свойства `currentTarget` и `relatedTarget`, чтобы определить, когда наступили события появления или исчезновения фокуса за _пределами_ родительского элемента. Ниже приводится пример для выполнения в песочнице, который показывает, как можно поймать состояние фокуса на родительском и дочернем элементах, а также отследить фокус на всём поддереве элементов.
 
 ```javascript
 function Example() {
@@ -247,24 +215,24 @@ function Example() {
       tabIndex={1}
       onFocus={(e) => {
         if (e.currentTarget === e.target) {
-          console.log('focused self');
+          console.log('фокус на родительском элементе установлен');
         } else {
-          console.log('focused child', e.target);
+          console.log('фокус на дочернем элементе установлен', e.target);
         }
         if (!e.currentTarget.contains(e.relatedTarget)) {
-          // Not triggered when swapping focus between children
-          console.log('focus entered self');
+          // Не срабатывает при перемещении фокуса между дочерними элементами
+          console.log('фокус находится внутри родительского элемента');
         }
       }}
       onBlur={(e) => {
         if (e.currentTarget === e.target) {
-          console.log('unfocused self');
+          console.log('фокус на родительском элементе снят');
         } else {
-          console.log('unfocused child', e.target);
+          console.log('фокус на дочернем элементе снят', e.target);
         }
         if (!e.currentTarget.contains(e.relatedTarget)) {
-          // Not triggered when swapping focus between children
-          console.log('focus left self');
+          // Не срабатывает при перемещении фокуса между дочерними элементами
+          console.log('фокус потерян изнутри родительского элемента');
         }
       }}
     >
@@ -410,15 +378,11 @@ DOMTouchList touches
 onScroll
 ```
 
-<<<<<<< HEAD
-Свойства:
-=======
->Note
+>Примечание
 >
->Starting with React 17, the `onScroll` event **does not bubble** in React. This matches the browser behavior and prevents the confusion when a nested scrollable element fires events on a distant parent.
+>Начиная с React 17, событие `onScroll` **не всплывает** в React. Это согласуется с работой браузера и предотвращает путаницу, когда вложенный прокручиваемый элемент запускает события на родительском элементе.
 
 Properties:
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
 
 ```javascript
 number detail

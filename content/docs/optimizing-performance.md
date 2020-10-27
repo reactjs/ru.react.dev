@@ -74,17 +74,10 @@ brunch build -p
 Для наиболее эффективной продакшен-сборки с Browserify, установите несколько плагинов:
 
 ```
-<<<<<<< HEAD
 # В случае использования npm
-npm install --save-dev envify terser uglifyify 
-
-# В случае использования Yarn
-=======
-# If you use npm
 npm install --save-dev envify terser uglifyify
 
-# If you use Yarn
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+# В случае использования Yarn
 yarn add --dev envify terser uglifyify
 ```
 
@@ -386,11 +379,7 @@ function updateColorMap(colormap) {
 }
 ```
 
-<<<<<<< HEAD
-Этот синтаксис был добавлен в JavaScript в ES2018. 
-=======
-This feature was added to JavaScript in ES2018.
->>>>>>> 6682068641c16df6547b3fcdb7877e71bb0bebf9
+Этот синтаксис был добавлен в JavaScript в ES2018.
 
 Если вы используете Create React App, то `Object.assign` и синтаксис расширения объектов доступны вам по умолчанию.
 
