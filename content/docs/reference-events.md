@@ -38,13 +38,13 @@ string type
 
 > Примечание:
 >
-> Если вы всё же хотите обратиться к полям события асинхронно, вам нужно вызвать `event.persist()` на событии. Тогда оно будет извлечено из пула, что позволит вашему коду удерживать ссылки на это событие.
+> Начиная с версии v0.14, возврат `false` из обработчика события больше не приведёт к прекращению всплытия события. Вместо этого, следует вручную вызывать `e.stopPropagation()` или `e.preventDefault()`, если это требуется.
 
 ## Поддерживаемые события {#supported-events}
 
 React нормализует события так, чтобы они содержали одинаковые свойства во всех браузерах.
 
-Обработчики ниже вызываются на фазе всплытия (bubbling). А чтобы зарегистрировать событие на фазе перехвата (capture), просто добавьте `Capture` к имени события; например, вместо использования `onClick` используйте `onClickCapture`, чтобы обработать событие на фазе перехвата.
+Обработчики ниже вызываются на фазе всплытия (bubbling). А чтобы зарегистрировать событие на фазе перехвата (capture), просто добавьте `Capture` к имени события; например, вместо `onClick` используйте `onClickCapture`, чтобы обработать событие на фазе перехвата.
 
 - [События буфера обмена](#clipboard-events)
 - [Композиционные события](#composition-events)
@@ -63,31 +63,6 @@ React нормализует события так, чтобы они содер
 - [События анимаций](#animation-events)
 - [События переходов](#transition-events)
 - [Другие события](#other-events)
-> As of v0.14, returning `false` from an event handler will no longer stop event propagation. Instead, `e.stopPropagation()` or `e.preventDefault()` should be triggered manually, as appropriate.
-
-## Supported Events {#supported-events}
-
-React normalizes events so that they have consistent properties across different browsers.
-
-The event handlers below are triggered by an event in the bubbling phase. To register an event handler for the capture phase, append `Capture` to the event name; for example, instead of using `onClick`, you would use `onClickCapture` to handle the click event in the capture phase.
-
-- [Clipboard Events](#clipboard-events)
-- [Composition Events](#composition-events)
-- [Keyboard Events](#keyboard-events)
-- [Focus Events](#focus-events)
-- [Form Events](#form-events)
-- [Generic Events](#generic-events)
-- [Mouse Events](#mouse-events)
-- [Pointer Events](#pointer-events)
-- [Selection Events](#selection-events)
-- [Touch Events](#touch-events)
-- [UI Events](#ui-events)
-- [Wheel Events](#wheel-events)
-- [Media Events](#media-events)
-- [Image Events](#image-events)
-- [Animation Events](#animation-events)
-- [Transition Events](#transition-events)
-- [Other Events](#other-events)
 
 * * *
 
