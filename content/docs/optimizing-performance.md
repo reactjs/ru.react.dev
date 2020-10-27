@@ -43,8 +43,8 @@ npm run build
 Мы предлагаем готовые для продакшена версии React и React DOM в виде отдельных файлов:
 
 ```html
-<script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 ```
 
 Помните, что для продакшена подходят только те файлы, которые заканчиваются на `.production.min.js`.
@@ -75,7 +75,7 @@ brunch build -p
 
 ```
 # В случае использования npm
-npm install --save-dev envify terser uglifyify 
+npm install --save-dev envify terser uglifyify
 
 # В случае использования Yarn
 yarn add --dev envify terser uglifyify
@@ -379,7 +379,7 @@ function updateColorMap(colormap) {
 }
 ```
 
-Этот синтаксис был добавлен в JavaScript в ES2018. 
+Этот синтаксис был добавлен в JavaScript в ES2018.
 
 Если вы используете Create React App, то `Object.assign` и синтаксис расширения объектов доступны вам по умолчанию.
 

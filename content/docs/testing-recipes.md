@@ -377,7 +377,6 @@ let container = null;
 beforeEach(() => {
   // подготавливаем DOM-элемент, куда будем рендерить
   container = document.createElement("div");
-  // container *обязан* быть прикреплен к document, чтобы события работали правильно.
   document.body.appendChild(container);
 });
 
@@ -416,7 +415,7 @@ it("changes value when clicked", () => {
 });
 ```
 
-Разные DOM-события и их свойства описаны на [MDN](https://developer.mozilla.org/ru/docs/Web/API/MouseEvent). Обратите внимание, нужно передавать `{ bubbles: true }` в каждое событие, которое вы создаёте, чтобы обработчик событий React его увидел и автоматически передал в `document`.
+Разные DOM-события и их свойства описаны на [MDN](https://developer.mozilla.org/ru/docs/Web/API/MouseEvent). Обратите внимание, нужно передавать `{ bubbles: true }` в каждое событие, которое вы создаёте, чтобы обработчик событий React его увидел и автоматически передал в корень документа.
 
 > Примечание:
 >

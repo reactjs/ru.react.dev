@@ -53,9 +53,9 @@ next: create-a-new-react-app.html
   <!-- ... остальной HTML ... -->
 
   <!-- Загрузим React. -->
-  <!-- Примечание: для деплоя на продакшен замените окончание «development.js» на «production.min.js». -->
-  <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+  <!-- Примечание: при деплое на продакшен замените «development.js» на «production.min.js». -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
 
   <!-- Загрузим наш React-компонент. -->
   <script src="like_button.js"></script>
@@ -84,7 +84,7 @@ const domContainer = document.querySelector('#like_button_container');
 ReactDOM.render(e(LikeButton), domContainer);
 ```
 
-Этот код ищет контейнер `<div>`, который мы добавили на первом шаге, а затем отображает наш React-компонент с кнопкой "Нравится" внутри него.
+Эти две строки кода ищут элемент `<div>`, который мы добавили на первом шаге, а затем отображают React-компонент с кнопкой "Нравится" внутри него.
 
 ### Готово! {#thats-it}
 
@@ -115,8 +115,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 Если вы уже минифицируете свои скрипты, то не забудьте подготовить к продакшену сам React. Для этого поменяйте окончания ссылок на React на `production.min.js`:
 
 ```js
-<script src="https://unpkg.com/react@16/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 Если же вы не настроили минификацию для ваших скриптов, то [вот один из вариантов, как это сделать](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
@@ -184,7 +184,7 @@ JSX можно добавить в существующий проект и бе
 Создайте директорию с названием `src` и наберите в терминале следующую команду:
 
 ```
-npx babel --watch src --out-dir . --presets react-app/prod 
+npx babel --watch src --out-dir . --presets react-app/prod
 ```
 
 >Примечание

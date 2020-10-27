@@ -289,9 +289,6 @@ class Searchbox extends React.Component {
   }
 
   handleChange(e) {
-    // React помещает события в пул, поэтому значение считывается перед debounce.
-    // В качестве альтернативы мы могли бы вызвать `event.persist()` и передать событие целиком.
-    // Более подробно тема рассматривается здесь: reactjs.org/docs/events.html#event-pooling
     this.emitChangeDebounced(e.target.value);
   }
 
