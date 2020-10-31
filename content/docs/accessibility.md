@@ -335,8 +335,8 @@ class BlurExample extends React.Component {
   }
 
   render() {
-    // React assists us by bubbling the blur and
-    // focus events to the parent.
+    // React помогает нам благодаря всплытию потери фокуса и
+    // фокусировке событий на родителе.
     return (
       <div onBlur={this.onBlurHandler}
            onFocus={this.onFocusHandler}>
