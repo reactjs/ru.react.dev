@@ -128,11 +128,7 @@ const MyContext = React.createContext(defaultValue);
 
 Каждый объект `Context` используется вместе с `Provider` компонентом, который позволяет дочерним компонентам, использующим этот контекст, подписаться на его изменения.
 
-<<<<<<< HEAD
-Принимает проп `value`, который будет передан во все компоненты, использующие этот контекст и являющиеся потомками этого компонента `Provider`. Один `Provider` может быть связан с несколькими компонентами, потребляющими контекст. Так же компоненты `Provider` могут быть вложены друг в друга, переопределяя значение контекста глубже в дереве.
-=======
-The Provider component accepts a `value` prop to be passed to consuming components that are descendants of this Provider. One Provider can be connected to many consumers. Providers can be nested to override values deeper within the tree.
->>>>>>> 30baecf59de28a8cd3c91a2cd878e3822f864061
+Компонент `Provider` принимает проп `value`, который будет передан во все компоненты, использующие этот контекст и являющиеся потомками этого компонента `Provider`. Один `Provider` может быть связан с несколькими компонентами, потребляющими контекст. Так же компоненты `Provider` могут быть вложены друг в друга, переопределяя значение контекста глубже в дереве.
 
 Все потребители, которые являются потомками Provider, будут повторно рендериться, как только проп `value` у Provider изменится. Потребитель (включая [`.contextType`](#classcontexttype) и [`useContext`](/docs/hooks-reference.html#usecontext)) перерендерится при изменении контекста, даже если его родитель, не использующий данный контекст, блокирует повторные рендеры с помощью `shouldComponentUpdate`.
 
