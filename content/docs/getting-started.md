@@ -36,7 +36,7 @@ React изначально был спроектирован так, чтобы 
 
 ### Онлайн-песочницы {#online-playgrounds}
 
-Если вы просто хотите немного поиграть с React, попробуйте онлайн-песочницу. Например, вот простейший шаблон на [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new), [Glitch](https://glitch.com/edit/#!/remix/starter-react-template) или [Stackblitz](https://stackblitz.com/fork/react).
+Если вы просто хотите немного поиграть с React, попробуйте онлайн-песочницу. Например, вот простейший шаблон на [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new) или [Stackblitz](https://stackblitz.com/fork/react).
 
 Если вы предпочитаете работать в своём редакторе, [скачайте тестовый HTML-файл](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), добавьте в него код и запустите на своём компьютере. При открытии тестового файла браузер преобразует JSX в обычный код на JavaScript. Такое преобразование достаточно медленно, поэтому мы рекомендуем использовать этот файл только для простых демонстрационных примеров. 
 
