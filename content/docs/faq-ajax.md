@@ -71,7 +71,7 @@ class MyComponent extends React.Component {
       return (
         <ul>
           {items.map(item => (
-            <li key={item.name}>
+            <li key={item.id}>
               {item.name} {item.price}
             </li>
           ))}
@@ -118,7 +118,7 @@ function MyComponent() {
     return (
       <ul>
         {items.map(item => (
-          <li key={item.name}>
+          <li key={item.id}>
             {item.name} {item.price}
           </li>
         ))}
