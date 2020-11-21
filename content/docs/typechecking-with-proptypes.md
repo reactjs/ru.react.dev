@@ -102,7 +102,7 @@ MyComponent.propTypes = {
   // если проп не передан
   requiredFunc: PropTypes.func.isRequired,
 
-  // Значение любого типа
+  // Обязательное значение любого типа
   requiredAny: PropTypes.any.isRequired,
 
   // Можно добавить собственный валидатор.
