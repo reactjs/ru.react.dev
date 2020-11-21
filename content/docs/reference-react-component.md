@@ -408,17 +408,13 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
+Обработка ошибок в методе `componentDidCatch()` отличается между React-сборкам для продакшена и разработки. 
+
+В процессе разработки ошибки будут подниматься (всплывать) наверх до объекта `window`, поэтому любой вызов `window.onerror` или `window.addEventListener('error', callback)` перехватит ошибки, которые были обработаны `componentDidCatch()`.
+
+На продакшене, напротив, ошибки не всплывают, поэтому родительский обработчик ошибок перехватит только те ошибки, которые не были обработаны `componentDidCatch()`.
+
 > Примечание:
-=======
-Production and development builds of React slightly differ in the way `componentDidCatch()` handles errors.
-
-On development, the errors will bubble up to `window`, this means that any `window.onerror` or `window.addEventListener('error', callback)` will intercept the errors that have been caught by `componentDidCatch()`.
-
-On production, instead, the errors will not bubble up, which means any ancestor error handler will only receive errors not explictly caught by `componentDidCatch()`.
-
-> Note
->>>>>>> 957276e1e92bb48e5bb6b1c17fd0e7a559de0748
 >
 >В случае ошибки вы можете рендерить запасной интерфейс с помощью `componentDidCatch()`, вызвав `setState`. Однако, этот способ скоро будет считаться устаревшим.
 > Используйте `static getDerivedStateFromError()` для рендера резервного интерфейса.

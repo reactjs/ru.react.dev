@@ -316,11 +316,7 @@ function getDisplayName(WrappedComponent) {
 
 ### Не используйте HOC внутри рендер-метода {#dont-use-hocs-inside-the-render-method}
 
-<<<<<<< HEAD
-Алгоритм сравнения React (известный как согласование или reconciliation) использует тождественность компонентов чтобы определить нужно ли обновить существующее поддерево, или убрать и монтировать вместо него новое. Если компонент, полученный из `render`, идентичен (`===`) компоненту из предыдущего рендера, то React рекурсивно продолжит сравнивать поддерево. Если компоненты не равны, React полностью удалит и заменит старое поддерево.
-=======
-React's diffing algorithm (called [Reconciliation](/docs/reconciliation.html)) uses component identity to determine whether it should update the existing subtree or throw it away and mount a new one. If the component returned from `render` is identical (`===`) to the component from the previous render, React recursively updates the subtree by diffing it with the new one. If they're not equal, the previous subtree is unmounted completely.
->>>>>>> 957276e1e92bb48e5bb6b1c17fd0e7a559de0748
+Алгоритм сравнения React (известный как [согласование или reconciliation](/docs/reconciliation.html)) использует тождественность компонентов чтобы определить нужно ли обновить существующее поддерево, или убрать и монтировать вместо него новое. Если компонент, полученный из `render`, идентичен (`===`) компоненту из предыдущего рендера, то React рекурсивно продолжит сравнивать поддерево. Если компоненты не равны, React полностью удалит и заменит старое поддерево.
 
 Обычно нас это не беспокоит. Однако, важно учитывать что мы не можем применять компоненты высшего порядка внутри рендер-метода компонента:
 

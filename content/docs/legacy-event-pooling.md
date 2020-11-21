@@ -12,12 +12,8 @@ permalink: docs/legacy-event-pooling.html
 >
 >[Подробнее в посте блога](/blog/2020/08/10/react-v17-rc.html#no-event-pooling) about this change in React 17.
 
-<<<<<<< HEAD
 События [`SyntheticEvent`](/docs/events.html) содержатся в пуле. Это означает, что объект `SyntheticEvent` будет повторно использован, а все его свойства будут очищены после вызова обработчика события.
 Например, следующий код не сработает, как ожидается:
-=======
-The [`SyntheticEvent`](/docs/events.html) objects are pooled. This means that the `SyntheticEvent` object will be reused and all properties will be nullified after the event handler has been called. For example, this won't work:
->>>>>>> 957276e1e92bb48e5bb6b1c17fd0e7a559de0748
 
 ```javascript
 function handleChange(e) {
