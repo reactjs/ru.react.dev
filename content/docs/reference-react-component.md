@@ -412,7 +412,11 @@ class ErrorBoundary extends React.Component {
 
 В процессе разработки ошибки будут подниматься (всплывать) наверх до объекта `window`, поэтому любой вызов `window.onerror` или `window.addEventListener('error', callback)` перехватит ошибки, которые были обработаны `componentDidCatch()`.
 
+<<<<<<< HEAD
 На продакшене, напротив, ошибки не всплывают, поэтому родительский обработчик ошибок перехватит только те ошибки, которые не были обработаны `componentDidCatch()`.
+=======
+On production, instead, the errors will not bubble up, which means any ancestor error handler will only receive errors not explicitly caught by `componentDidCatch()`.
+>>>>>>> 8f9ef00db1b36ee3e5a0e6072eb601257a6f8ccb
 
 > Примечание:
 >
