@@ -116,7 +116,15 @@ React работает в два этапа:
 
 Двойной вызов таких методов, как конструктор компонента, позволяет строгому режиму легко обнаружить подобные проблемы.
 
+<<<<<<< HEAD
 ### Обнаружение устаревшего API контекста {#detecting-legacy-context-api}
+=======
+> Note:
+>
+> Starting with React 17, React automatically modifies the console methods like `console.log()` to silence the logs in the second call to lifecycle functions. However, it may cause undesired behavior in certain cases where [a workaround can be used](https://github.com/facebook/react/issues/20090#issuecomment-715927125).
+
+### Detecting legacy context API {#detecting-legacy-context-api}
+>>>>>>> 4fc709d0576d0f0f1f8ea8b6bb341a12944b5510
 
 Использование устаревшего API контекста очень часто приводило к ошибкам и поэтому он будет удалён в будущей мажорной версии. Пока что этот API доступен во всех релизах 16.x, но в строгом режиме будет выведено следующее предупреждение:
 
