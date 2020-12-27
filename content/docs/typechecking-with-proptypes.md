@@ -91,7 +91,6 @@ MyComponent.propTypes = {
   }),
   
   // При наличии необъявленных свойств в объекте будут вызваны предупреждения
->>>>>>> 923629258fce174a89231c88c90805d9e5b0278d
   optionalObjectWithStrictShape: PropTypes.exact({
     name: PropTypes.string,
     quantity: PropTypes.number
