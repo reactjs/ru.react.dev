@@ -408,7 +408,7 @@ class ErrorBoundary extends React.Component {
 }
 ```
 
-Обработка ошибок в методе `componentDidCatch()` отличается между React-сборкам для продакшена и разработки. 
+Обработка ошибок в методе `componentDidCatch()` отличается между React-сборками для продакшена и разработки. 
 
 В процессе разработки ошибки будут подниматься (всплывать) наверх до объекта `window`, поэтому любой вызов `window.onerror` или `window.addEventListener('error', callback)` перехватит ошибки, которые были обработаны `componentDidCatch()`.
 
