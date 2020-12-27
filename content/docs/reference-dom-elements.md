@@ -130,15 +130,9 @@ React автоматически добавит суффикс «px» к сво�
 React всегда предоставлял JavaScript-ориентированный API для DOM. Поскольку компоненты React часто принимают как пользовательские, так и связанные с DOM пропсы, React использует стиль `camelCase` так же, как DOM API:
 
 ```js
-<<<<<<< HEAD
-<div tabIndex="-1" />      // То же, что и node.tabIndex DOM API
+<div tabIndex={-1} />      // То же, что и node.tabIndex DOM API
 <div className="Button" /> // То же, что и node.className DOM API
 <input readOnly={true} />  // То же, что и node.readOnly DOM API
-=======
-<div tabIndex={-1} />      // Just like node.tabIndex DOM API
-<div className="Button" /> // Just like node.className DOM API
-<input readOnly={true} />  // Just like node.readOnly DOM API
->>>>>>> 923629258fce174a89231c88c90805d9e5b0278d
 ```
 
 Эти пропсы работают аналогично соответствующим атрибутам HTML, за исключением особых случаев, описанных выше.
