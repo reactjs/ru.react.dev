@@ -64,7 +64,7 @@ MyComponent.propTypes = {
   optionalElementType: PropTypes.elementType,
   
   // Можно указать, что проп должен быть экземпляром класса
-  // Для этого используется оператор `instanceof`.
+  // Для этого используется JS-оператор instanceof.
   optionalMessage: PropTypes.instanceOf(Message),
 
   // Вы можете задать ограничение конкретными значениями
@@ -90,8 +90,7 @@ MyComponent.propTypes = {
     fontSize: PropTypes.number
   }),
   
-  // Объект со строгой структурой,
-  // при наличии необъявленных свойств будут сформированы предупреждения
+  // При наличии необъявленных свойств в объекте будут вызваны предупреждения
   optionalObjectWithStrictShape: PropTypes.exact({
     name: PropTypes.string,
     quantity: PropTypes.number
@@ -202,3 +201,48 @@ class Greeting extends React.Component {
 ```
 
 Определение `defaultProps` гарантирует, что `this.props.name` будет иметь значение, даже если оно не было указано родительским компонентом. Сначала применяются значения по умолчанию, заданные в `defaultProps`. После запускается проверка типов с помощью `propTypes`. Так что проверка типов распространяется и на значения по умолчанию.
+
+
+### Функциональные компоненты {#function-components}
+
+К функциональным компонентам можно также применять PropTypes.
+
+Допустим, есть такой компонент:
+
+```javascript
+export default function HelloWorldComponent({ name }) {
+  return (
+    <div>Hello, {name}</div>
+  )
+}
+```
+
+Для добавления PropTypes нужно объявить компонент в отдельной функции, которую затем экспортировать:
+
+```javascript
+function HelloWorldComponent({ name }) {
+  return (
+    <div>Hello, {name}</div>
+  )
+}
+
+export default HelloWorldComponent
+```
+
+А затем добавить PropTypes напрямую к компоненту `HelloWorldComponent`:
+
+```javascript
+import PropTypes from 'prop-types'
+
+function HelloWorldComponent({ name }) {
+  return (
+    <div>Hello, {name}</div>
+  )
+}
+
+HelloWorldComponent.propTypes = {
+  name: PropTypes.string
+}
+
+export default HelloWorldComponent
+```
