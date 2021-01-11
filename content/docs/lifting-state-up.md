@@ -186,7 +186,7 @@ class TemperatureInput extends React.Component {
     // ...
 ```
 
-Мы знаем, что [пропсы доступны только для чтения](/docs/components-and-props.html#props-are-read-only). Когда `temperature` находилась во внутреннем состоянии, `TemperatureInput` мог просто вызвать `this.setState()` для изменения его значения. Однако теперь, когда `temperature` находится в родительском компоненте в качестве пропа, `TemperatureInput` не может контролировать его.
+Мы знаем, что [пропсы доступны только для чтения](/docs/components-and-props.html#props-are-read-only). Когда `temperature` находилась во внутреннем состоянии, `TemperatureInput` мог просто вызвать `this.setState()` для изменения его значения. Однако теперь, когда `temperature` приходит из родительского компонента в качестве пропа, `TemperatureInput` не может контролировать его.
 
 В React это обычно решается путём создания «управляемого» компонента. Точно так же, как DOM-элемент `<input>` принимает атрибуты `value` и `onChange`, так и пользовательский `TemperatureInput` принимает оба пропса `temperature` и `onTemperatureChange` от своего родителя `Calculator`.
 
