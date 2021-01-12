@@ -27,11 +27,7 @@ React предоставляет декларативный API, который 
 
 Всякий раз, когда корневые элементы имеют различные типы, React уничтожает старое дерево и строит новое с нуля. Переходы от `<a>` к `<img>`, или от `<Article>` к `<Comment>`, или от `<Button>` к `<div>` приведут к полному перестроению.
 
-<<<<<<< HEAD
-При уничтожении дерева старые DOM-узлы удаляются. Экземпляры компонента получают `componentWillUnmount()`. При построении нового дерева, новые DOM-узлы вставляются в DOM. Экземпляры компонента получают `componentWillMount()`, а затем `componentDidMount()`. Любое состояние, связанное со старым деревом, теряется.
-=======
-When tearing down a tree, old DOM nodes are destroyed. Component instances receive `componentWillUnmount()`. When building up a new tree, new DOM nodes are inserted into the DOM. Component instances receive `UNSAFE_componentWillMount()` and then `componentDidMount()`. Any state associated with the old tree is lost.
->>>>>>> 82b8c9f2ab094eb7b0268029ab72fc99ffcadaf6
+При уничтожении дерева старые DOM-узлы удаляются. Экземпляры компонента получают `componentWillUnmount()`. При построении нового дерева, новые DOM-узлы вставляются в DOM. Экземпляры компонента получают `UNSAFE_componentWillMount()`, а затем `componentDidMount()`. Любое состояние, связанное со старым деревом, теряется.
 
 Любые компоненты, лежащие ниже корневого, также размонтируются, а их состояние уничтожится. Например, это произойдёт при таком сравнении: 
 
@@ -47,17 +43,13 @@ When tearing down a tree, old DOM nodes are destroyed. Component instances recei
 
 При этом старый `Counter` уничтожится, а новый — смонтируется.
 
-<<<<<<< HEAD
-### DOM-элементы одного типа {#dom-elements-of-the-same-type}
-=======
->Note:
+>Примечание:
 >
->These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>Следующие методы объявлены устаревшими, поэтому в новом коде их [не стоит](/blog/2018/03/27/updateon-async-rendering.html) использовать:
 >
 >- `UNSAFE_componentWillMount()`
 
-### DOM Elements Of The Same Type {#dom-elements-of-the-same-type}
->>>>>>> 82b8c9f2ab094eb7b0268029ab72fc99ffcadaf6
+### DOM-элементы одного типа {#dom-elements-of-the-same-type}
 
 При сравнении двух React DOM-элементов одного типа, React смотрит на атрибуты обоих, сохраняет лежащий в основе этих элементов DOM-узел и обновляет только изменённые атрибуты. Например:
 
@@ -83,26 +75,18 @@ When tearing down a tree, old DOM nodes are destroyed. Component instances recei
 
 ### Компоненты одного типа {#component-elements-of-the-same-type}
 
-<<<<<<< HEAD
-Когда компонент обновляется, его экземпляр остаётся прежним, поэтому его состояние сохраняется между рендерами. React обновляет пропсы базового экземпляра компонента для соответствия новому элементу и вызывает `componentWillReceiveProps()` и `componentWillUpdate()` на базовом экземпляре.
-=======
-When a component updates, the instance stays the same, so that state is maintained across renders. React updates the props of the underlying component instance to match the new element, and calls `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate()` and `componentDidUpdate()` on the underlying instance.
->>>>>>> 82b8c9f2ab094eb7b0268029ab72fc99ffcadaf6
+Когда компонент обновляется, его экземпляр остаётся прежним, поэтому его состояние сохраняется между рендерами. React обновляет пропсы базового экземпляра компонента для соответствия новому элементу и вызывает `UNSAFE_componentWillReceiveProps()`, `UNSAFE_componentWillUpdate` и `componentDidUpdate()` на базовом экземпляре.
 
 Далее вызывается метод `render()` и алгоритм сравнения рекурсивно обходит предыдущий и новый результаты.
 
-<<<<<<< HEAD
-### Рекурсия по дочерним элементам {#recursing-on-children}
-=======
->Note:
+>Примечание:
 >
->These methods are considered legacy and you should [avoid them](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>Следующие методы объявлены устаревшими, поэтому в новом коде их [не стоит](/blog/2018/03/27/updateon-async-rendering.html) использовать:
 >
 >- `UNSAFE_componentWillUpdate()`
 >- `UNSAFE_componentWillReceiveProps()`
 
-### Recursing On Children {#recursing-on-children}
->>>>>>> 82b8c9f2ab094eb7b0268029ab72fc99ffcadaf6
+### Рекурсия по дочерним элементам {#recursing-on-children}
 
 По умолчанию при рекурсивном обходе дочерних элементов DOM-узла React проходит по обоим спискам потомков одновременно и создаёт мутацию, когда находит отличие.
 
