@@ -6,7 +6,11 @@ permalink: docs/context.html
 
 Контекст позволяет передавать данные через дерево компонентов без необходимости передавать пропсы на промежуточных уровнях.
 
+<<<<<<< HEAD
 В типичном React-приложении данные передаются сверху вниз (от родителя к дочернему компоненту) с помощью пропсов. Однако, этот способ может быть чересчур громоздким для некоторых типов пропсов (например, выбранный язык, UI-тема), которые необходимо передавать во многие компоненты в приложении. Контекст предоставляет способ делиться такими данными между компонентами без необходимости явно передавать пропсы через каждый уровень дерева.
+=======
+In a typical React application, data is passed top-down (parent to child) via props, but such usage can be cumbersome for certain types of props (e.g. locale preference, UI theme) that are required by many components within an application. Context provides a way to share values like these between components without having to explicitly pass a prop through every level of the tree.
+>>>>>>> 9df266413be637705d78688ffdd3697e89b102d1
 
 - [Когда использовать контекст](#when-to-use-context)
 - [Перед тем, как вы начнёте использовать контекст](#before-you-use-context)
@@ -80,7 +84,11 @@ function Page(props) {
 
 С этими изменениями, только корневой компонент `Page` знает о том, что компоненты `Link` и `Avatar` используют `user` и `avatarSize`.
 
+<<<<<<< HEAD
 Этот способ может сделать ваш код чище во многих случаях, уменьшая количество пропсов, которые вы должны передавать через ваше приложение, и давая больше контроля корневым компонентам. Однако, это решение не является верным в каждом случае. Перемещая больше сложной логики вверх по дереву, вы перегружаете вышестоящие компоненты.
+=======
+This *inversion of control* can make your code cleaner in many cases by reducing the amount of props you need to pass through your application and giving more control to the root components. Such inversion, however, isn't the right choice in every case; moving more complexity higher in the tree makes those higher-level components more complicated and forces the lower-level components to be more flexible than you may want.
+>>>>>>> 9df266413be637705d78688ffdd3697e89b102d1
 
 Вы не ограничены в передаче строго одного компонента. Вы можете передать несколько дочерних компонентов или, даже, создать для них разные «слоты», [как показано здесь](/docs/composition-vs-inheritance.html#containment):
 
@@ -118,7 +126,11 @@ const MyContext = React.createContext(defaultValue);
 
 Создаёт объект `Context`. Когда React рендерит компонент, который подписан на этот объект, React получит текущее значение контекста из ближайшего подходящего `Provider` выше в дереве компонентов.
 
+<<<<<<< HEAD
 Аргумент `defaultValue` используется **только** в том случае, если для компонента нет подходящего `Provider` выше в дереве. Это может быть полезно для тестирования компонентов в изоляции без необходимости оборачивать их. Обратите внимание: если передать `undefined` как значение `Provider`, компоненты, использующие этот контекст, не будут использовать `defaultValue`.
+=======
+The `defaultValue` argument is **only** used when a component does not have a matching Provider above it in the tree. This default value can be helpful for testing components in isolation without wrapping them. Note: passing `undefined` as a Provider value does not cause consuming components to use `defaultValue`.
+>>>>>>> 9df266413be637705d78688ffdd3697e89b102d1
 
 ### `Context.Provider` {#contextprovider}
 
@@ -163,7 +175,11 @@ class MyClass extends React.Component {
 MyClass.contextType = MyContext;
 ```
 
+<<<<<<< HEAD
 В свойство класса `contextType` может быть назначен объект контекста, созданный с помощью [`React.createContext()`](#reactcreatecontext). Это позволяет вам использовать ближайшее и актуальное значение указанного контекста при помощи `this.context`. В этом случае вы получаете доступ к контексту, как во всех методах жизненного цикла, так и в рендер методе.
+=======
+The `contextType` property on a class can be assigned a Context object created by [`React.createContext()`](#reactcreatecontext). Using this property lets you consume the nearest current value of that Context type using `this.context`. You can reference this in any of the lifecycle methods including the render function.
+>>>>>>> 9df266413be637705d78688ffdd3697e89b102d1
 
 > Примечание
 >
@@ -190,7 +206,11 @@ class MyClass extends React.Component {
 </MyContext.Consumer>
 ```
 
+<<<<<<< HEAD
 `Consumer` — это React-компонент, который подписывается на изменения контекста. В свою очередь, это позволяет вам подписаться на контекст в [функциональном компоненте](/docs/components-and-props.html#function-and-class-components).
+=======
+A React component that subscribes to context changes. Using this component lets you subscribe to a context within a [function component](/docs/components-and-props.html#function-and-class-components).
+>>>>>>> 9df266413be637705d78688ffdd3697e89b102d1
 
 `Consumer` принимает [функцию в качестве дочернего компонента](/docs/render-props.html#using-props-other-than-render). Эта функция принимает текущее значение контекста и возвращает React-компонент. Передаваемый аргумент `value` будет равен ближайшему (вверх по дереву) значению этого контекста, а именно пропу `value` компонента `Provider`. Если такого компонента `Provider` не существует, аргумент `value` будет равен значению `defaultValue`, которое было передано в `createContext()`.
 

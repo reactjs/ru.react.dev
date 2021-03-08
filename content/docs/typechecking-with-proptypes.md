@@ -205,7 +205,11 @@ class Greeting extends React.Component {
 
 ### Функциональные компоненты {#function-components}
 
+<<<<<<< HEAD
 К функциональным компонентам можно также применять PropTypes.
+=======
+If you are using function components in your regular development, you may want to make some small changes to allow PropTypes to be properly applied.
+>>>>>>> 9df266413be637705d78688ffdd3697e89b102d1
 
 Допустим, есть такой компонент:
 
