@@ -70,7 +70,11 @@ React использует [семантическое версионирова�
 
 ### Ваш первый пулреквест {#your-first-pull-request}
 
+<<<<<<< HEAD
 Уже приступили к работе над вашим первым пулреквестом? Посмотрите несколько видеороликов о том, [как нужно работать с проектом на GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
+=======
+**[How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github)**
+>>>>>>> 54a331d7eff285b87b6865b3ad65a5fea1a86547
 
 Чтобы облегчить вам первые шаги в освоении процесса разработки React, мы завели специальный тег **[good first issues](https://github.com/facebook/react/issues?q=is:open+is:issue+label:"good+first+issue")**, по которому можно получить список не очень сложных багов. Будет хорошо, если вы начнёте работу именно с этого списка.
 
@@ -84,6 +88,7 @@ React использует [семантическое версионирова�
 
 **Перед тем как отправлять пулреквест,** нужно выполнить следующие действия:
 
+<<<<<<< HEAD
 1. Форкнуть [репозиторий React](https://github.com/facebook/react) и создать собственную ветку от главной ветки `master`.
 2. Запустить команду `yarn` в корне репозитория.
 3. Если вы исправляете баг и добавляете код, который должен быть обязательно протестирован, не забудьте запустить тесты!
@@ -94,6 +99,18 @@ React использует [семантическое версионирова�
 8. Запустить линтер (`yarn lint`). Совет: команда `yarn linc` анализирует только изменённые файлы.
 9. Выполнить проверку типов с помощью [Flow](https://flowtype.org/) (`yarn flow`).
 10. Подписать соглашение добровольного разработчика (Contributor License Agreement).
+=======
+1. Fork [the repository](https://github.com/facebook/react) and create your branch from `master`.
+2. Run `yarn` in the repository root.
+3. If you've fixed a bug or added code that should be tested, add tests!
+4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
+5. Run `yarn test --prod` to test in the production environment.
+6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
+7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
+8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
+9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
+10. If you haven't already, complete the CLA.
+>>>>>>> 54a331d7eff285b87b6865b3ad65a5fea1a86547
 
 ### Соглашение добровольного разработчика (Contributor License Agreement, CLA) {#contributor-license-agreement-cla}
 
@@ -113,6 +130,7 @@ React использует [семантическое версионирова�
 После клонирования репозитория React, запустите `yarn`, чтобы загрузить все необходимые зависимости.
 Теперь можно использовать следующие команды:
 
+<<<<<<< HEAD
 * `yarn lint` для проверки кода.
 * `yarn linc` аналогична `yarn lint`, но работает быстрее, так как проверяет только изменённые файлы в вашей текущей ветке.
 * `yarn test` запускает тесты.
@@ -123,6 +141,18 @@ React использует [семантическое версионирова�
 * `yarn flow` запускает [Flow](https://flowtype.org/) для проверки типов.
 * `yarn build` создаёт папку `build`, в которую помещает готовые пакеты.
 * `yarn build react/index,react-dom/index --type=UMD` создаёт UMD-сборки для React и ReactDOM.
+=======
+* `yarn lint` checks the code style.
+* `yarn linc` is like `yarn lint` but faster because it only checks files that differ in your branch.
+* `yarn test` runs the complete test suite.
+* `yarn test --watch` runs an interactive test watcher.
+* `yarn test --prod` runs tests in the production environment.
+* `yarn test <pattern>` runs tests with matching filenames.
+* `yarn debug-test` is just like `yarn test` but with a debugger. Open `chrome://inspect` and press "Inspect".
+* `yarn flow` runs the [Flow](https://flowtype.org/) typechecks.
+* `yarn build` creates a `build` folder with all the packages.
+* `yarn build react/index,react-dom/index --type=UMD` creates UMD builds of just React and ReactDOM.
+>>>>>>> 54a331d7eff285b87b6865b3ad65a5fea1a86547
 
 Мы рекомендуем выполнять тестирование ваших изменений с помощью команды `yarn test` или её аналогов для того, чтобы убедиться, что они ничего не сломали. Тем не менее, было бы здорово проверить React-сборку с вашими изменениями на реальном проекте.
 
@@ -130,14 +160,18 @@ React использует [семантическое версионирова�
 
 Для этого, прежде всего, нужно запустить команду `yarn build`. Эта команда компилирует и выгружает в папку `build` готовую сборку, а также создаёт в папке `build/packages` npm-пакеты.
 
+<<<<<<< HEAD
 Если вы хотите попробовать свои изменения в существующем проекте на React, вы можете скопировать `build/dist/react.development.js`, `build/dist/react-dom.development.js`, или любые другие продукты сборки в вашем приложении и использовать их вместо стабильной версии.
 
 Если ваш проект использует React из npm, вы можете удалить `react` и `react-dom` в этой зависимости и использовать `yarn lint`, чтобы направить их на локальную папку `build`. Обратите внимание, что **вместо `--type=UMD` вы можете передать `--type=NODE` при сборке**. Вам также будет нужно собрать пакет `scheduler`:
+=======
+If you want to try your changes in your existing React project, you may copy `build/node_modules/react/umd/react.development.js`, `build/node_modules/react-dom/umd/react-dom.development.js`, or any other build products into your app and use them instead of the stable version. 
+>>>>>>> 54a331d7eff285b87b6865b3ad65a5fea1a86547
 
 
 ```sh
 cd ~/path_to_your_react_clone/
-yarn build react/index,react-dom/index,scheduler --type=NODE
+yarn build react/index,react/jsx,react-dom/index,scheduler --type=NODE
 
 cd build/node_modules/react
 yarn link

@@ -129,7 +129,13 @@ const MyComponent = React.memo(function MyComponent(props) {
 
 `React.memo` затрагивает только изменения пропсов. Если функциональный компонент обёрнут в `React.memo` и использует [`useState`](/docs/hooks-state.html) или [`useContext`](/docs/hooks-reference.html#usecontext), он будет повторно рендериться при изменении состояния или контекста.
 
+<<<<<<< HEAD
 По умолчанию он поверхностно сравнивает вложенные объекты в объекте `props`. Если вы хотите контролировать сравнение, вы можете передать свою функцию сравнения в качестве второго аргумента.
+=======
+`React.memo` only checks for prop changes. If your function component wrapped in `React.memo` has a [`useState`](/docs/hooks-state.html), [`useReducer`](/docs/hooks-reference.html#usereducer) or [`useContext`](/docs/hooks-reference.html#usecontext) Hook in its implementation, it will still rerender when state or context change.
+
+By default it will only shallowly compare complex objects in the props object. If you want control over the comparison, you can also provide a custom comparison function as the second argument.
+>>>>>>> 54a331d7eff285b87b6865b3ad65a5fea1a86547
 
 ```javascript
 function MyComponent(props) {
