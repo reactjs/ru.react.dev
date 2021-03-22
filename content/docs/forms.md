@@ -31,7 +31,7 @@ redirect_from:
 
 Допустим, мы хотим, чтобы предыдущий пример выводил на экран имя, когда мы отправляем форму. Тогда можно написать форму в виде управляемого компонента:
 
-```javascript{4,10-12,24}
+```javascript{4,10-12,21,24}
 class NameForm extends React.Component {
   constructor(props) {
     super(props);

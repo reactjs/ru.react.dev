@@ -67,7 +67,11 @@ class ErrorBoundary extends React.Component {
 
 Посмотрите [пример объявления и использования предохранителя](https://codepen.io/gaearon/pen/wqvxGa?editors=0010) в [React 16](/blog/2017/09/26/react-v16.0.html).
 
+<<<<<<< HEAD
 ## Где размещать предохранители {#where-to-place-error-boundaries}
+=======
+The granularity of error boundaries is up to you. You may wrap top-level route components to display a “Something went wrong” message to the user, just like how server-side frameworks often handle crashes. You may also wrap individual widgets in an error boundary to protect them from crashing the rest of the application.
+>>>>>>> df2fbde3b52336229eee550debd692184c427691
 
 Степень охвата кода предохранителями остаётся на ваше усмотрение. Например, вы можете защитить им навигационные (route) компоненты верхнего уровня, чтобы выводить пользователю сообщение «Что-то пошло не так», как это часто делают при обработке ошибок серверные фреймворки. Или вы можете охватить индивидуальными предохранителями отдельные виджеты, чтобы помешать им уронить всё приложение.
 
@@ -125,7 +129,11 @@ try {
 
 React не нуждается в предохранителях, чтобы корректно обработать ошибки в обработчиках событий. В отличие от метода `render` и методов жизненного цикла, обработчики событий не выполняются во время рендеринга. Таким образом, даже если они сгенерируют ошибку, React всё равно знает, что нужно выводить на экран.
 
+<<<<<<< HEAD
 Чтобы отловить ошибку в обработчике событий, пользуйтесь обычной JavaScript-конструкцией `try` / `catch`:
+=======
+If you need to catch an error inside an event handler, use the regular JavaScript `try` / `catch` statement:
+>>>>>>> df2fbde3b52336229eee550debd692184c427691
 
 ```js{9-13,17-20}
 class MyComponent extends React.Component {
