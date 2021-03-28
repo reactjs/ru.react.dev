@@ -12,11 +12,7 @@ prev: hooks-effect.html
 
 ### Используйте хуки только на верхнем уровне {#only-call-hooks-at-the-top-level}
 
-<<<<<<< HEAD
-**Не используйте хуки внутри циклов, условных операторов или вложенных функций.** Вместо этого всегда используйте хуки только на верхнем уровне React-функций. Исполнение этого правила гарантирует, что хуки вызываются в одинаковой последовательности при каждом рендере компонента. Это позволит React правильно сохранять состояние хуков между множественными вызовами `useState` и `useEffect`. (Если вам интересно, подробное объяснение [ниже](#explanation).)
-=======
-**Don't call Hooks inside loops, conditions, or nested functions.** Instead, always use Hooks at the top level of your React function, before any early returns. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That's what allows React to correctly preserve the state of Hooks between multiple `useState` and `useEffect` calls. (If you're curious, we'll explain this in depth [below](#explanation).)
->>>>>>> df2fbde3b52336229eee550debd692184c427691
+**Не вызывайте хуки внутри циклов, условных операторов или вложенных функций.** Вместо этого всегда используйте хуки только внутри React-функций, до возврата какого-либо значения из них. Исполнение этого правила гарантирует, что хуки вызываются в одинаковой последовательности при каждом рендере компонента. Это позволит React правильно сохранять состояние хуков между множественными вызовами `useState` и `useEffect`. (Если вам интересно, подробное объяснение [ниже](#explanation).)
 
 ### Вызывайте хуки только из React-функций {#only-call-hooks-from-react-functions}
 
