@@ -14,7 +14,11 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 Если обычный компонент преобразует пропсы в UI, то компонент высшего порядка преобразует компонент в другой компонент.
 
+<<<<<<< HEAD
 HOC часто встречаются в сторонних библиотеках, например [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) в Redux и [`createFragmentContainer`](https://facebook.github.io/relay/docs/en/fragment-container.html) в Relay.
+=======
+HOCs are common in third-party React libraries, such as Redux's [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) and Relay's [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer).
+>>>>>>> c970f75a0ac3513f50e7a4989757c50cde0b7396
 
 В этой главе мы обсудим чем полезны компоненты высшего порядка и как их создавать.
 
