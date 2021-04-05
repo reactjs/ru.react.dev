@@ -55,7 +55,11 @@ permalink: docs/strict-mode.html
 
 Ранее React использовал `findDOMNode` для поиска DOM-узла в дереве по указанному экземпляру класса. В большинстве случаев этот метод не используется, поскольку можно [привязать реф непосредственно к DOM-узлу](/docs/refs-and-the-dom.html#creating-refs).
 
+<<<<<<< HEAD
 `findDOMNode` может использоваться для классовых компонентов, однако это нарушает уровни абстракции, позволяя родительскому компоненту требовать, чтобы происходил рендер определённого дочернего элемента. Это приводит к проблемам при рефакторинге, когда не удаётся изменить детали реализации компонента, так как родитель может использовать DOM-узел этого компонента. `findDOMNode` возвращает только первый дочерний элемент, но с использованием фрагментов компонент может рендерить несколько DOM-узлов. `findDOMNode` выполняет поиск только один раз. Затем метод возвращает ранее полученный результат при вызове. Если дочерний компонент рендерит другой узел, то это изменение никак не отследить. Поэтому `findDOMNode` работает, только когда компоненты возвращают единственный и неизменяемый DOM-узел.
+=======
+`findDOMNode` can also be used on class components but this was breaking abstraction levels by allowing a parent to demand that certain children were rendered. It creates a refactoring hazard where you can't change the implementation details of a component because a parent might be reaching into its DOM node. `findDOMNode` only returns the first child, but with the use of Fragments, it is possible for a component to render multiple DOM nodes. `findDOMNode` is a one time read API. It only gave you an answer when you asked for it. If a child component renders a different node, there is no way to handle this change. Therefore `findDOMNode` only worked if components always return a single DOM node that never changes.
+>>>>>>> 49fd7d5f115378e3663b049f108a2d29b31290c8
 
 Вместо этого, можно передать реф в компонент и передать его далее в DOM используя [перенаправление рефов](/docs/forwarding-refs.html#forwarding-refs-to-dom-components).
 
