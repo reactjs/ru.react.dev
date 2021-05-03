@@ -19,7 +19,16 @@ next: concurrent-mode-reference.html
 >
 >На странице описаны **экспериментальные функции, которых еще нет в стабильной версии**. Не используйте экспериментальные сборки React в продакшен-приложениях. Эти функции могут значительно измениться без предупреждения перед тем, как попасть в React.
 >
+<<<<<<< HEAD
 >Эта документация предназначена для ранних пользователей и интересующихся. Если вы новичок в React, не беспокойтесь об этих возможностях -- вам не нужно изучать их прямо сейчас.
+=======
+>This documentation is aimed at early adopters and people who are curious. **If you're new to React, don't worry about these features** -- you don't need to learn them right now.
+
+>Caution:
+>
+>All references below to "blocking mode" and `createBlockingRoot` are outdated and should be ignored.
+
+>>>>>>> c3c93e2a7ff1b1f7b8735a3a87d4b10937eaaf91
 </div>
 
 - [Установка](#installation)

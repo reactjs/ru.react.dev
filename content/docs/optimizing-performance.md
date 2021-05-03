@@ -156,6 +156,7 @@ module.exports = {
 
 Помните, что это нужно делать только для продакшен-сборки. Вам не стоит использовать `TerserPlugin` в процессе разработки, потому что тогда скроются вспомогательные предупреждения React и замедлится процесс сборки.
 
+<<<<<<< HEAD
 ## Анализ производительности компонентов с помощью вкладки Chrome «Performance» {#profiling-components-with-the-chrome-performance-tab}
 
 В режиме **разработки** вы можете видеть как компоненты монтируются, обновляются и размонтируются с помощью инструментов производительности в браузерах, которые их поддерживают. Например:
@@ -183,6 +184,9 @@ module.exports = {
 В настоящее время Chrome, Edge и IE единственные браузеры, которые поддерживают данную возможность, но мы используем стандарт [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API), поэтому ожидайте, что больше браузеров добавят его поддержку.
 
 ## Анализ производительности компонентов с помощью инструмента разработки «Profiler» {#profiling-components-with-the-devtools-profiler}
+=======
+## Profiling Components with the DevTools Profiler {#profiling-components-with-the-devtools-profiler}
+>>>>>>> c3c93e2a7ff1b1f7b8735a3a87d4b10937eaaf91
 
 Пакеты `react-dom` версии 16.5+ и `react-native` версии 0.57+ предоставляют расширенные возможности анализа производительности в режиме разработки с помощью инструментов разработчика React Profiler.
 Обзор профайлера можно найти в посте блога ["Введение в React Profiler"](/blog/2018/09/10/introducing-the-react-profiler.html).
@@ -199,7 +203,16 @@ module.exports = {
 > Профилирование продакшен-пакета для `react-dom` также доступно как `react-dom/profiling`.
 > Подробнее о том, как использовать этот пакет, читайте на [fb.me/react-profiling](https://fb.me/react-profiling)
 
+<<<<<<< HEAD
 ## Виртуализация длинных списков {#virtualize-long-lists}
+=======
+> Note
+>
+> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab. 
+> For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
+
+## Virtualize Long Lists {#virtualize-long-lists}
+>>>>>>> c3c93e2a7ff1b1f7b8735a3a87d4b10937eaaf91
 
 Если ваше приложение рендерит длинные списки данных (сотни или тысячи строк), мы рекомендуем использовать метод известный как "оконный доступ". Этот метод рендерит только небольшое подмножество строк в данный момент времени и может значительно сократить время, необходимое для повторного рендера компонентов, а также количество создаваемых DOM-узлов.
 
