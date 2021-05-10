@@ -42,7 +42,11 @@ console.log(add(16, 26)); // 42
 
 Если вы используете [Create React App](https://create-react-app.dev/), [Next.js](https://github.com/zeit/next.js/), [Gatsby](https://www.gatsbyjs.org/) или похожие инструменты, то у вас уже будет настроенный Webpack для бандлинга приложения.
 
+<<<<<<< HEAD
 Иначе, вам нужно будет настроить webpack самостоятельно. Для этого ознакомьтесь со страницами [Установка](https://webpack.js.org/guides/installation/) и [Начало работы](https://webpack.js.org/guides/getting-started/) в документации по Webpack.  
+=======
+If you aren't, you'll need to set up bundling yourself. For example, see the [Installation](https://webpack.js.org/guides/installation/) and [Getting Started](https://webpack.js.org/guides/getting-started/) guides on the Webpack docs.
+>>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
 
 ## Разделение кода {#code-splitting}
 
