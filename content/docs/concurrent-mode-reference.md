@@ -28,12 +28,7 @@ prev: concurrent-mode-adoption.html
 
 - [Включение конкурентного режима](#concurrent-mode)
     - [`createRoot`](#createroot)
-<<<<<<< HEAD
-    - [`createBlockingRoot`](#createblockingroot)
 - [API задержек](#suspense)
-=======
-- [Suspense](#suspense)
->>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
     - [`Suspense`](#suspensecomponent)
     - [`SuspenseList`](#suspenselist)
     - [`useTransition`](#usetransition)
@@ -51,23 +46,7 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 Дополнительную информацию можно узнать в [документации конкурентного режима](/docs/concurrent-mode-intro.html).
 
-<<<<<<< HEAD
-### `createBlockingRoot` {#createblockingroot}
-
-```js
-ReactDOM.createBlockingRoot(rootNode).render(<App />)
-```
-
-Заменяет `ReactDOM.render(<App />, rootNode)` и включает [блокирующий режим](/docs/concurrent-mode-adoption.html#migration-step-blocking-mode).
-
-Для реализации конкурентного режима решено сделать семантические изменения в работе React. Это значит, что вы не сможете использовать конкурентный режим лишь для некоторых компонентов проекта. И как следствие, не все приложения можно будет напрямую перевести на конкурентный режим.
-
-Блокирующий режим содержит небольшую часть возможностей конкурентного режима. Он предназначен в качестве промежуточного этапа для приложений, которые нельзя мигрировать напрямую.
-
 ## API задержек {#suspense}
-=======
-## Suspense API {#suspense}
->>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
 
 ### `Suspense` {#suspensecomponent}
 

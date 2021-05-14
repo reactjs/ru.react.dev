@@ -156,37 +156,7 @@ module.exports = {
 
 Помните, что это нужно делать только для продакшен-сборки. Вам не стоит использовать `TerserPlugin` в процессе разработки, потому что тогда скроются вспомогательные предупреждения React и замедлится процесс сборки.
 
-<<<<<<< HEAD
-## Анализ производительности компонентов с помощью вкладки Chrome «Performance» {#profiling-components-with-the-chrome-performance-tab}
-
-В режиме **разработки** вы можете видеть как компоненты монтируются, обновляются и размонтируются с помощью инструментов производительности в браузерах, которые их поддерживают. Например:
-
-<center><img src="../images/blog/react-perf-chrome-timeline.png" style="max-width:100%" alt="Компоненты React в графике времени Chrome" /></center>
-
-Для того, чтобы сделать это в Chrome:
-
-1. Временно **отключите все расширения Chrome, особенно React DevTools**. Они могут существенно исказить результаты!
-
-2. Убедитесь, что вы запускаете приложение в режиме разработки.
-
-3. Откройте в инструментах разработчика Chrome вкладку **[Performance](https://developers.google.com/web/tools/chrome-devtools/evaluate-performance/timeline-tool)** и нажмите **Record**.
-
-4. Выполните действия, которые вы хотите проанализировать на производительность. Не записывайте более 20 секунд, иначе Chrome может зависнуть.
-
-5. Остановите запись.
-
-6. События React будут сгруппированы под меткой **User Timing**.
-
-Для более детального ознакомления, посмотрите [эту статью от Бена Шварца (Ben Schwarz)](https://calibreapp.com/blog/react-performance-profiling-optimization).
-
-Обратите внимание, что **результаты являются относительными и в продакшене рендеринг компонентов будет быстрее**. Всё же это должно помочь вам понять, когда какой-то пользовательский компонент обновляется по ошибке, а также как глубоко и часто обновляется пользовательский интерфейс.
-
-В настоящее время Chrome, Edge и IE единственные браузеры, которые поддерживают данную возможность, но мы используем стандарт [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API), поэтому ожидайте, что больше браузеров добавят его поддержку.
-
 ## Анализ производительности компонентов с помощью инструмента разработки «Profiler» {#profiling-components-with-the-devtools-profiler}
-=======
-## Profiling Components with the DevTools Profiler {#profiling-components-with-the-devtools-profiler}
->>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
 
 Пакеты `react-dom` версии 16.5+ и `react-native` версии 0.57+ предоставляют расширенные возможности анализа производительности в режиме разработки с помощью инструментов разработчика React Profiler.
 Обзор профайлера можно найти в посте блога ["Введение в React Profiler"](/blog/2018/09/10/introducing-the-react-profiler.html).
@@ -203,16 +173,12 @@ module.exports = {
 > Профилирование продакшен-пакета для `react-dom` также доступно как `react-dom/profiling`.
 > Подробнее о том, как использовать этот пакет, читайте на [fb.me/react-profiling](https://fb.me/react-profiling)
 
-<<<<<<< HEAD
-## Виртуализация длинных списков {#virtualize-long-lists}
-=======
-> Note
+> Примечание
 >
-> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab. 
-> For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
+> До React 17 мы использовали стандартный [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) для профилирования компонентов с помощью вкладки Performance браузера Chrome. 
+> Более подробнее об этом способе можно узнать в [статье Бена Шварца (Ben Schwarz)](https://calibreapp.com/blog/react-performance-profiling-optimization).
 
-## Virtualize Long Lists {#virtualize-long-lists}
->>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
+## Виртуализация длинных списков {#virtualize-long-lists}
 
 Если ваше приложение рендерит длинные списки данных (сотни или тысячи строк), мы рекомендуем использовать метод известный как "оконный доступ". Этот метод рендерит только небольшое подмножество строк в данный момент времени и может значительно сократить время, необходимое для повторного рендера компонентов, а также количество создаваемых DOM-узлов.
 

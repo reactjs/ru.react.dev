@@ -299,11 +299,7 @@ static getDerivedStateFromProps(props, state)
 getSnapshotBeforeUpdate(prevProps, prevState)
 ```
 
-<<<<<<< HEAD
 `getSnapshotBeforeUpdate()` вызывается прямо перед этапом «фиксирования» (например, перед добавлением в DOM). Он позволяет вашему компоненту брать некоторую информацию из DOM (например, положение прокрутки) перед её возможным изменением. Любое значение, возвращаемое этим методом жизненного цикла, будет передано как параметр `componentDidUpdate()`.
-=======
-`getSnapshotBeforeUpdate()` is invoked right before the most recently rendered output is committed to e.g. the DOM. It enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed. Any value returned by this lifecycle method will be passed as a parameter to `componentDidUpdate()`.
->>>>>>> 16158f195a86fc2dbb59b3ea5a5c32ce161dccb9
 
 Это применяется редко, но может быть полезно в таких интерфейсах, как цепочка сообщений в чатах, в которых позиция прокрутки обрабатывается особым образом.
 
