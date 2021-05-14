@@ -76,6 +76,7 @@ function Counter({initialCount}) {
 > В отличие от метода `setState`, который вы можете найти в классовых компонентах, `useState` не объединяет объекты обновления автоматически. Вы можете повторить это поведение, комбинируя форму функции обновления с синтаксисом расширения объекта:
 >
 > ```js
+> const [state, setState] = useState({});
 > setState(prevState => {
 >   // Object.assign также будет работать
 >   return {...prevState, ...updatedValues};
