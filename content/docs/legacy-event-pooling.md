@@ -8,7 +8,7 @@ permalink: docs/legacy-event-pooling.html
 >
 >Информация на этой странице актуальна для React версии 16 и ниже, а также для React Native.
 >
->Веб-версия React 17 **нет** не использует пул событий.
+>Веб-версия React 17 **не** использует пул событий.
 >
 >[Подробнее в посте блога](/blog/2020/08/10/react-v17-rc.html#no-event-pooling) about this change in React 17.
 
