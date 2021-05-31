@@ -393,7 +393,11 @@ it("changes value when clicked", () => {
     render(<Toggle onChange={onChange} />, container);
   });
 
+<<<<<<< HEAD
   // получаем элемент button и кликаем на него несколько раз
+=======
+  // get a hold of the button element, and trigger some clicks on it
+>>>>>>> ec2d0adcb44d6394f4e6282d8bf52f0e25dbfec3
   const button = document.querySelector("[data-testid=toggle]");
   expect(button.innerHTML).toBe("Turn on");
 
