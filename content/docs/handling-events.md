@@ -29,20 +29,30 @@ redirect_from:
 </button>
 ```
 
+<<<<<<< HEAD
 Ещё одно отличие — в React нельзя предотвратить обработчик события по умолчанию, вернув `false`. Нужно явно вызвать `preventDefault`. Например, в обычном HTML, чтобы отменить выполнение встроенного обработчика события у ссылки, которое открывает новую страницу, можно написать:
 
 ```html
 <a href="#" onclick="console.log('По ссылке кликнули.'); return false">
   Нажми на меня
 </a>
+=======
+Another difference is that you cannot return `false` to prevent default behavior in React. You must call `preventDefault` explicitly. For example, with plain HTML, to prevent the default form behavior of submitting, you can write:
+
+```html
+<form onsubmit="console.log('You clicked submit.'); return false">
+  <button type="submit">Submit</button>
+</form>
+>>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 ```
 
 В React это будет выглядеть так:
 
-```js{2-5,8}
-function ActionLink() {
-  function handleClick(e) {
+```js{3}
+function Form() {
+  function handleSubmit(e) {
     e.preventDefault();
+<<<<<<< HEAD
     console.log('По ссылке кликнули.');
   }
 
@@ -50,6 +60,15 @@ function ActionLink() {
     <a href="#" onClick={handleClick}>
       Нажми на меня
     </a>
+=======
+    console.log('You clicked submit.');
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Submit</button>
+    </form>
+>>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
   );
 }
 ```
@@ -71,8 +90,8 @@ class Toggle extends React.Component {
   }
 
   handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
     }));
   }
 

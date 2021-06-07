@@ -59,7 +59,11 @@ ReactDOM.createRoot(rootNode).render(<App />);
 
 `Suspense` позволяет вашим компонентам "ждать", отображая запасной интерфейс, прежде чем они будут отрендерены.
 
+<<<<<<< HEAD
 В примере компонент `ProfileDetails` получает данные с помощью асинхронного вызова. Во время ожидания загрузки `ProfileDetails` и `ProfilePhoto`, отображается запасной заголовок `Загрузка...`. Следует отметить, что до тех пор, пока все дочерние компоненты `<Suspense>` не отрендерены, мы увидим запасной интерфейс.
+=======
+In this example, `ProfileDetails` is waiting for an asynchronous API call to fetch some data. While we wait for `ProfileDetails` and `ProfilePhoto`, we will show the `Loading...` fallback instead. It is important to note that until all children inside `<Suspense>` have loaded, we will continue to show the fallback.
+>>>>>>> 68e4efcf93b6e589355f6aa3cbc3f3c811c0ad37
 
 `Suspense` принимает два пропса:
 * **fallback** принимает индикатор загрузки. Запасной интерфейс отображается до тех пор, пока не завершится рендер всех дочерних компонентов `Suspense`.
