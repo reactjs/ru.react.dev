@@ -207,7 +207,11 @@ ReactDOM.render(
 
 ### Ключи должны быть уникальными среди соседних элементов {#keys-must-only-be-unique-among-siblings}
 
+<<<<<<< HEAD
 Ключи внутри массива должны быть уникальными только среди своих соседних элементов. Им не нужно быть уникальными глобально. Можно использовать один и тот же ключ в двух разных массивах.
+=======
+Keys used within arrays should be unique among their siblings. However, they don't need to be globally unique. We can use the same keys when we produce two different arrays:
+>>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 ```js{2,5,11,12,19,21}
 function Blog(props) {
