@@ -294,11 +294,7 @@ const EnhancedComponent = enhance(WrappedComponent)
 
 ## Соглашение: добавьте отображаемое имя для лёгкой отладки {#convention-wrap-the-display-name-for-easy-debugging}
 
-<<<<<<< HEAD
-Созданные HOC компоненты-контейнеры отображаются в консоли [инструментов разработки React](https://github.com/facebook/react-devtools) наряду с другими компонентами. Для более лёгкой отладки вы можете задать имя, которое подскажет, что определённый компонент был создан с помощью HOC.
-=======
-The container components created by HOCs show up in the [React Developer Tools](https://github.com/facebook/react/tree/master/packages/react-devtools) like any other component. To ease debugging, choose a display name that communicates that it's the result of a HOC.
->>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
+Созданные HOC компоненты-контейнеры отображаются в консоли [инструментов разработки React](https://github.com/facebook/react/tree/master/packages/react-devtools) наряду с другими компонентами. Для более лёгкой отладки вы можете задать имя, которое подскажет, что определённый компонент был создан с помощью HOC.
 
 Самый распространённый способ -- это обернуть имя оборачиваемого компонента. Например, если вы назвали компонент высшего порядка `withSubscription`, а имя оборачиваемого компонента было `CommentList`, то отображаемое имя будет `WithSubscription(CommentList)`:
 

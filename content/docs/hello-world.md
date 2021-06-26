@@ -39,16 +39,7 @@ React — это библиотека JavaScript, поэтому мы предп
 
 >Примечание
 >
-<<<<<<< HEAD
 >В примерах руководства иногда используется новый синтаксис JavaScript. Если вы не работали с JavaScript в последние несколько лет, [эти три пункта](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) должны помочь вам.
-=======
->This guide occasionally uses some newer JavaScript syntax in the examples. If you haven't worked with JavaScript in the last few years, [these three points](https://gist.github.com/gaearon/683e676101005de0add59e8bb345340c) should get you most of the way.
-
-
-## Let's Get Started! {#lets-get-started}
-
-Keep scrolling down, and you'll find the link to the [next chapter of this guide](/docs/introducing-jsx.html) right before the website footer.
->>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
 
 ## Начинаем! {#lets-get-started}
 

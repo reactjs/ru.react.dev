@@ -9,11 +9,7 @@ redirect_from:
   - "docs/forms-zh-CN.html"
 ---
 
-<<<<<<< HEAD
-В React HTML-элементы формы ведут себя несколько отлично от остальных DOM-элементов, так как у элементов формы изначально есть внутреннее состояние. К примеру, в эту HTML-форму можно ввести имя:
-=======
-HTML form elements work a bit differently from other DOM elements in React, because form elements naturally keep some internal state. For example, this form in plain HTML accepts a single name:
->>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
+В React HTML-элементы формы ведут себя немного иначе по сравнению с DOM-элементами, так как у элементов формы изначально есть внутреннее состояние. К примеру, в эту HTML-форму можно ввести имя:
 
 ```html
 <form>

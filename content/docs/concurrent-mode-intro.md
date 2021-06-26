@@ -16,18 +16,11 @@ next: concurrent-mode-suspense.html
 
 >Внимание:
 >
-<<<<<<< HEAD
->На странице описаны **экспериментальные функции, которых еще нет в стабильной версии**. Не используйте экспериментальные сборки React в продакшен-приложениях. Эти функции могут значительно измениться без предупреждения перед тем, как попасть в React.
+>Эта страница посвящена **экспериментальным возможностям, которых еще нет в стабильной версии**. Информация предназначена для ранних пользователей и просто интересующихся.
 >
->Эта документация предназначена для ранних пользователей и интересующихся. **Если вы новичок в React, не беспокойтесь об этих возможностях** -- вам не нужно изучать их прямо сейчас.
-=======
->This page was about experimental features that aren't yet available in a stable release. It was aimed at early adopters and people who are curious.
+>Большая часть информации на данной странице уже не актуальна и оставлена для истории. **Актуальная информация приведена в посте блога [React 18 Alpha announcement](/blog/2021/06/08/the-plan-for-react-18.html).**
 >
->Much of the information on this page is now outdated and exists only for archival purposes. **Please refer to the [React 18 Alpha announcement post](/blog/2021/06/08/the-plan-for-react-18.html
-) for the up-to-date information.**
->
->Before React 18 is released, we will replace this page with stable documentation.
->>>>>>> f3baa6d075c8de475b688abf035d7054bc8a9606
+>Перед выходом React 18 информация на этой странице будет обновлена.
 
 </div>
 
