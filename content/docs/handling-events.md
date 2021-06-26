@@ -29,27 +29,27 @@ redirect_from:
 </button>
 ```
 
-Ещё одно отличие — в React нельзя предотвратить обработчик события по умолчанию, вернув `false`. Нужно явно вызвать `preventDefault`. Например, в обычном HTML, чтобы отменить выполнение встроенного обработчика события у ссылки, которое открывает новую страницу, можно написать:
+Ещё одно отличие — в React нельзя предотвратить обработчик события по умолчанию, вернув `false`. Нужно явно вызвать `preventDefault`. Например, в обычном HTML для отмены отправки формы (действие по умолчанию) можно написать:
 
 ```html
-<a href="#" onclick="console.log('По ссылке кликнули.'); return false">
-  Нажми на меня
-</a>
+<form onsubmit="console.log('Отправлена форма.'); return false">
+  <button type="submit">Отправить</button>
+</form>
 ```
 
 В React это будет выглядеть так:
 
-```js{2-5,8}
-function ActionLink() {
-  function handleClick(e) {
+```js{3}
+function Form() {
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log('По ссылке кликнули.');
+    console.log('Отправлена форма.');
   }
 
   return (
-    <a href="#" onClick={handleClick}>
-      Нажми на меня
-    </a>
+    <form onSubmit={handleSubmit}>
+      <button type="submit">Отправить</button>
+    </form>
   );
 }
 ```
@@ -71,8 +71,8 @@ class Toggle extends React.Component {
   }
 
   handleClick() {
-    this.setState(state => ({
-      isToggleOn: !state.isToggleOn
+    this.setState(prevState => ({
+      isToggleOn: !prevState.isToggleOn
     }));
   }
 
