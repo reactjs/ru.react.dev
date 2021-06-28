@@ -180,7 +180,11 @@ module.exports = {
 
 ## Виртуализация длинных списков {#virtualize-long-lists}
 
+<<<<<<< HEAD
 Если ваше приложение рендерит длинные списки данных (сотни или тысячи строк), мы рекомендуем использовать метод известный как "оконный доступ". Этот метод рендерит только небольшое подмножество строк в данный момент времени и может значительно сократить время, необходимое для повторного рендера компонентов, а также количество создаваемых DOM-узлов.
+=======
+If your application renders long lists of data (hundreds or thousands of rows), we recommend using a technique known as "windowing". This technique only renders a small subset of your rows at any given time, and can dramatically reduce the time it takes to re-render the components as well as the number of DOM nodes created.
+>>>>>>> 25f756d8e3800afb032cb31ce3626d6134e31e38
 
 [react-window](https://react-window.now.sh/) и [react-virtualized](https://bvaughn.github.io/react-virtualized/) -- это популярные библиотеки для оконного доступа. Они предоставляют несколько повторно используемых компонентов для отображения списков, сеток и табличных данных. Если вы хотите использовать что-то более специфическое для вашего конкретного случая, то вы можете создать собственный компонент с оконным доступом, как это сделано в [Twitter](https://medium.com/@paularmstrong/twitter-lite-and-high-performance-react-progressive-web-apps-at-scale-d28a00e780a3).
 
