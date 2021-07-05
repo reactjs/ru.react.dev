@@ -22,7 +22,11 @@ redirect_from:
 
 Например, должна быть возможность вводить некое внутреннее состояние в компонент без изменения зависящих от него компонентов. Также должна быть возможность добавлять при необходимости код инициализации и разрушения в любой компонент.
 
+<<<<<<< HEAD
 Нет ничего «плохого» в использовании состояния или методов жизненного цикла в компонентах. Как и любую мощную возможность, их стоит использовать в меру, но мы не собираемся их удалять. Напротив, мы считаем, что они являются неотъемлемой частью того, что делает React полезным. Возможно, мы добавим [больше паттернов функционального программирования](https://github.com/reactjs/react-future/tree/master/07%20-%20Returning%20State) в будущем, но как внутреннее состояние, так и методы жизненного цикла будут частью этой модели.
+=======
+There is nothing "bad" about using state or lifecycle methods in components. Like any powerful feature, they should be used in moderation, but we have no intention to remove them. On the contrary, we think they are integral parts of what makes React useful. We might enable [more functional patterns](https://github.com/reactjs/react-future/tree/main/07%20-%20Returning%20State) in the future, but both local state and lifecycle methods will be a part of that model.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 Компоненты часто описываются как «просто функции», но, по нашему мнению, они должны быть чем-то большим, чтобы быть полезными. Компоненты в React описывают поведение, которое можно композировать. Эта идея распространяется в том числе на рендеринг, жизненный цикл и состояние. Некоторые сторонние библиотеки, вроде [Relay](https://facebook.github.io/relay/), дополняют компоненты другими возможностями, например, описанием зависимостей данных. Вполне возможно, что эти идеи могут попасть в React в той или иной форме.
 
@@ -93,7 +97,11 @@ React не является универсальной библиотекой о
 
 Нам важно сделать процесс разработки комфортным.
 
+<<<<<<< HEAD
 Например, мы поддерживаем расширение браузера [React DevTools](https://github.com/facebook/react/tree/master/packages/react-devtools), при помощи которого можно просматривать дерево React-компонентов в Chrome и Firefox. Мы часто слышим, что это повышает производительность как инженеров Facebook, так и остального сообщества.
+=======
+For example, we maintain [React DevTools](https://github.com/facebook/react/tree/main/packages/react-devtools) which let you inspect the React component tree in Chrome and Firefox. We have heard that it brings a big productivity boost both to the Facebook engineers and to the community.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 Мы также стараемся сделать всё возможное, чтобы предоставить полезные предупреждения для разработчиков. Например, во время разработки React предупреждает вас, если теги вложены непонятным для браузера образом, или если в API сделана опечатка. Предупреждения и связанные с ними проверки являются основной причиной, почему версия React для разработчиков медленнее, чем продакшен-версия.
 

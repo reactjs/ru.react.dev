@@ -39,11 +39,19 @@ author: [tesseralis]
 * Активные участники каждого репозитория получали стимул следить за качеством.
 * Сообщество уже привыкло к GitHub, и его участники мотивированы вносить вклад напрямую в организацию React.
 
+<<<<<<< HEAD
 Мы начали с пробного периода для трех языков: испанского, японского и с упрощенного китайского. Таким образом мы выработали методику и приняли меры, чтобы с будущими переводами не возникало проблем. Я хотела, чтобы команды по переводам имели свободу выбора удобных им инструментов. Единственным требованием был [чек-лист](https://github.com/reactjs/reactjs.org-translation/blob/master/PROGRESS.template.md), описывающий порядок перевода страниц.
 
 После пробного периода мы были готовы принимать другие переводы. Я создала [скрипт](https://github.com/reactjs/reactjs.org-translation/blob/master/scripts/create.js), чтобы автоматизировать создание репозиториев для новых языков, а также сайт [Is React Translated Yet?](https://isreacttranslatedyet.com) (А React уже переведён?), чтобы отслеживать прогресс тех или иных переводов. Уже в первый день мы начали целых *10* переводов!
 
 Благодаря этой автоматизации, последующая поддержка проекта по большей части шла гладко. Позже мы создали [Slack-канал](https://rt-slack-invite.herokuapp.com), чтобы переводчики могли удобно общаться между собой; также я выпустила руководство, которое закрепило [обязанности мейнтейнеров сообщества](https://github.com/reactjs/reactjs.org-translation/blob/master/maintainer-guide.md). Платформа для общения между переводчиками себя показала отлично -- к примеру, переводчики арабского, персидского и иврита смогли вместе добиться отображения [текста справа налево](https://en.wikipedia.org/wiki/Right-to-left)!
+=======
+We started off with an initial trial period of three languages: Spanish, Japanese, and Simplified Chinese. This allowed us to work out any kinks in our process and make sure future translations are set up for success. I wanted to give the translation teams freedom to choose whatever tools they felt comfortable with. The only requirement is a [checklist](https://github.com/reactjs/reactjs.org-translation/blob/main/PROGRESS.template.md) that outlines the order of importance for translating pages. 
+
+After the trial period, we were ready to accept more languages. I created [a script](https://github.com/reactjs/reactjs.org-translation/blob/main/scripts/create.js) to automate the creation of the new language repo, and a site, [Is React Translated Yet?](https://isreacttranslatedyet.com), to track progress on the different translations. We started *10* new translations on our first day alone!
+
+Because of the automation, the rest of the maintenance went mostly smoothly. We eventually created a [Slack channel](https://rt-slack-invite.herokuapp.com) to make it easier for translators to share information, and I released a guide solidifying the [responsibilities of maintainers](https://github.com/reactjs/reactjs.org-translation/blob/main/maintainer-guide.md). Allowing translators to talk with each other was a great boon -- for example, the Arabic, Persian, and Hebrew translations were able to talk to each other in order to get [right-to-left text](https://en.wikipedia.org/wiki/Right-to-left) working!
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 ## Бот {#the-bot}
 
@@ -51,7 +59,11 @@ author: [tesseralis]
 
 В итоге мы решили, что вместо выборочного применения каждого коммита целесообразнее будет сливать все новые коммиты в один пулреквест где-то по разу в день. Конфликты сливаются как есть и перечисляются в [пулреквесте](https://github.com/reactjs/pt-BR.reactjs.org/pull/114) в виде чек-листа.
 
+<<<<<<< HEAD
 Создать [скрипт синхронизации](https://github.com/reactjs/reactjs.org-translation/blob/master/scripts/sync.js) было довольно просто: скачать переведённый репозиторий, добавить в его удалённые репозитории оригинальный, стянуть его изменения и создать пулреквест.
+=======
+Creating the [sync script](https://github.com/reactjs/reactjs.org-translation/blob/main/scripts/sync.js) was easy enough: it downloads the translated repo, adds the original as a remote, pulls from it, merges the conflicts, and creates a pull request.
+>>>>>>> 0bb0303fb704147452a568472e968993f0729c28
 
 Проблемой стал поиск места для запуска бота. Я фронтенд-разработчица и, возможно, поэтому такие сервисы как Heroku мне чужды. К слову, ещё до прошлого вторника я запускала скрипт на своём ПК вручную!
 
