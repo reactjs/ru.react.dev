@@ -81,7 +81,7 @@ React предоставляет декларативный API, который 
 
 >Примечание:
 >
->Следующие методы объявлены устаревшими, поэтому в новом коде их [не стоит](/blog/2018/03/27/updateon-async-rendering.html) использовать:
+>Следующие методы объявлены устаревшими, поэтому в новом коде их [не стоит](/blog/2018/03/27/update-on-async-rendering.html) использовать:
 >
 >- `UNSAFE_componentWillUpdate()`
 >- `UNSAFE_componentWillReceiveProps()`
