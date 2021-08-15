@@ -123,7 +123,11 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 ## Необязательно: Используем React с JSX {#optional-try-react-with-jsx}
 
+<<<<<<< HEAD
 В предыдущих примерах мы не выходили за рамки обычных браузерных возможностей. В частности, мы указываем, что React должен выводить на экран, просто вызывая JavaScript-функцию:
+=======
+In the examples above, we only relied on features that are natively supported by browsers. This is why we used a JavaScript function call to tell React what to display:
+>>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
 
 ```js
 const e = React.createElement;
@@ -159,7 +163,11 @@ return (
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
+<<<<<<< HEAD
 Теперь синтаксис JSX доступен внутри каждого `<script>`-тега, у которого есть атрибут `type="text/babel"`. Скачайте [пример HTML-кода с JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), чтобы поэкспериментировать.
+=======
+Now you can use JSX in any `<script>` tag by adding `type="text/babel"` attribute to it. Here is [an example HTML file with JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html) that you can download and play with.
+>>>>>>> 95e15d063b205007a92c52efb5311f76ad5a0b6c
 
 Такой подход удобен для обучения или создания быстрых демо, но следует помнить, что работа сайта при этом сильно замедляется. Поэтому для продакшена JSX лучше добавить по-другому. Если вам интересно попробовать, удалите добавленный ранее `<script>`-тег и все атрибуты `type="text/babel"`. Вместо них мы будем пользоваться препроцессором JSX, который автоматически трансформирует весь код внутри `<script>`-тегов.
 
