@@ -235,7 +235,11 @@ class Square extends React.Component {
 class Square extends React.Component {
   render() {
     return (
+<<<<<<< HEAD
       <button className="square" onClick={function() { alert('клик'); }}>
+=======
+      <button className="square" onClick={function() { console.log('click'); }}>
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
         {this.props.value}
       </button>
     );
@@ -243,7 +247,11 @@ class Square extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 Теперь, если вы кликнете по `Square`, то увидите в браузере сообщение.
+=======
+If you click on a Square now, you should see 'click' in your browser's devtools console.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 >Примечание
 >
@@ -253,7 +261,11 @@ class Square extends React.Component {
 >class Square extends React.Component {
 >  render() {
 >    return (
+<<<<<<< HEAD
 >      <button className="square" onClick={() => alert('клик')}>
+=======
+>      <button className="square" onClick={() => console.log('click')}>
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 >        {this.props.value}
 >      </button>
 >    );
@@ -261,6 +273,10 @@ class Square extends React.Component {
 >}
 >```
 >
+<<<<<<< HEAD
+=======
+>Notice how with `onClick={() => console.log('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={console.log('click')}` is a common mistake, and would fire every time the component re-renders.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 >Обратите внимание что в `onClick={() => alert('клик')}`, мы передаём *функцию* в качестве значения пропа `onClick`. React вызовет эту функцию при клике. Пропуск `() =>` и запись `onClick={alert('клик')}`довольно распространённая ошибка. Такой код будет выдавать сообщение при каждом перерендере.
 
@@ -282,7 +298,11 @@ class Square extends React.Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <button className="square" onClick={() => alert('клик')}>
+=======
+      <button className="square" onClick={() => console.log('click')}>
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
         {this.props.value}
       </button>
     );

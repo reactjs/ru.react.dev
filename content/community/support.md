@@ -12,12 +12,16 @@ React имеет сообщество из миллионов разработч
 
 На этой странице мы перечислили несколько сообществ, связанных с React, к которым вы можете присоединиться. На других страницах этого раздела можно найти дополнительные материалы для обучения.
 
+<<<<<<< HEAD
 ## Telegram {#telegram}
 
 * [react_js](https://telegram.me/react_js) - самое крупное русскоговорящее сообщество по React
 * [react_ru](http://t.me/react_ru) - независимое сообщество React-разработчиков на русском языке
 
 Прежде чем вступить в React сообщество, пожалуйста, [прочтите правила поведения](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md). Также мы приняли [соглашение участника](https://www.contributor-covenant.org/) и ожидаем, что все участники сообщества будут его придерживаться.
+=======
+Before participating in React's communities, [please read our Code of Conduct](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md). We have adopted the [Contributor Covenant](https://www.contributor-covenant.org/) and we expect that all community members adhere to the guidelines within.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 ## Stack Overflow {#stack-overflow}
 

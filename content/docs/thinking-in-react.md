@@ -39,9 +39,13 @@ prev: composition-vs-inheritance.html
 
 Многие интерфейсы работают с моделью данных JSON. Поэтому хорошо построенная модель, как правило, уже отражает пользовательский интерфейс (а значит, и структуру компонентов). Интерфейс и модели данных часто имеют похожую *информационную архитектуру*, так что разделить интерфейс на части не составляет труда. Разбейте его на компоненты, каждый из которых отображает часть модели данных.
 
-![Component diagram](../images/blog/thinking-in-react-components.png)
+![Diagram showing nesting of components](../images/blog/thinking-in-react-components.png)
 
+<<<<<<< HEAD
 Здесь мы видим, что наше приложение состоит из пяти различных компонентов. Курсивом выделены данные, которые эти компоненты представляют.
+=======
+You'll see here that we have five components in our app. We've italicized the data each component represents. The numbers in the image correspond to the numbers below.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
   1. **`FilterableProductTable` (оранжевый):** контейнер, содержащий пример целиком
   2. **`SearchBar` (синий):** поле *пользовательского ввода*

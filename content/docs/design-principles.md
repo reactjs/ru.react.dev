@@ -93,7 +93,11 @@ React не является универсальной библиотекой о
 
 Нам важно сделать процесс разработки комфортным.
 
+<<<<<<< HEAD
 Например, мы поддерживаем расширение браузера [React DevTools](https://github.com/facebook/react/tree/master/packages/react-devtools), при помощи которого можно просматривать дерево React-компонентов в Chrome и Firefox. Мы часто слышим, что это повышает производительность как инженеров Facebook, так и остального сообщества.
+=======
+For example, we maintain [React DevTools](https://github.com/facebook/react/tree/main/packages/react-devtools) which let you inspect the React component tree in Chrome and Firefox. We have heard that it brings a big productivity boost both to the Facebook engineers and to the community.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 Мы также стараемся сделать всё возможное, чтобы предоставить полезные предупреждения для разработчиков. Например, во время разработки React предупреждает вас, если теги вложены непонятным для браузера образом, или если в API сделана опечатка. Предупреждения и связанные с ними проверки являются основной причиной, почему версия React для разработчиков медленнее, чем продакшен-версия.
 

@@ -11,9 +11,15 @@ redirect_from:
 
 React -- это один из первых проектов c открытым исходным кодом в компании Facebook, который очень активно развивается и в то же время используется для разработки [facebook.com](https://www.facebook.com). Мы стараемся сделать процесс открытой разработки как можно более простым и прозрачным, но нам ещё есть над чем поработать. Надеемся, что этот раздел прояснит многие вопросы, касающиеся участия в разработке React.
 
+<<<<<<< HEAD
 ### [Правила поведения](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md) {#code-of-conduct}
 
 Компания Facebook приняла [соглашение участника](https://www.contributor-covenant.org/) в качестве своего кодекса поведения, поэтому мы ожидаем, что участники проекта будут его придерживаться. Пожалуйста, прочитайте [полный текст](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md), чтобы понимать, как правильно себя вести, а как поступать недопустимо. 
+=======
+### [Code of Conduct](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) {#code-of-conduct}
+
+Facebook has adopted the [Contributor Covenant](https://www.contributor-covenant.org/) as its Code of Conduct, and we expect project participants to adhere to it. Please read [the full text](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 ### Открытая разработка {#open-development}
 
@@ -22,19 +28,35 @@ React -- это один из первых проектов c открытым �
 
 ### Семантическое версионирование {#semantic-versioning}
 
+<<<<<<< HEAD
 React использует [семантическое версионирование](https://semver.org/lang/ru/). Мы выпускаем патчи в случае исправления критических багов, минорные версии с новыми возможностями или несущественными изменениями, а также мажорные версии, которые содержат изменения, ломающие обратную совместимость. При обратно несовместимых изменениях, мы отмечаем нерекомендуемую к использованию функциональность в минорной версии, чтобы пользователи могли заранее подготовиться к изменениям и правильно выполнить миграцию своих проектов. Подробнее узнать о нашем ответственном отношении к стабильности и инкрементальной миграции можно в [нашем версионном соглашении](/docs/faq-versioning.html).
+=======
+Every significant change is documented in the [changelog file](https://github.com/facebook/react/blob/main/CHANGELOG.md).
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 Все важные изменения заносятся в файл [CHANGELOG.md](https://github.com/facebook/react/blob/master/CHANGELOG.md).
 
+<<<<<<< HEAD
 ### Модель ветвления {#branch-organization}
 
 Отправляйте все изменения прямиком в [ветку `master`](https://github.com/facebook/react/tree/master). Мы не используем раздельные ветки для разработки и предстоящих релизов. Мы стараемся сохранять ветку `master` в хорошем состоянии, где успешно проходят все тесты.
+=======
+Submit all changes directly to the [`main branch`](https://github.com/facebook/react/tree/main). We don't use separate branches for development or for upcoming releases. We do our best to keep `main` in good shape, with all tests passing.
+
+Code that lands in `main` must be compatible with the latest stable release. It may contain additional features, but no breaking changes. We should be able to release a new minor version from the tip of `main` at any time.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 Код в ветке `master` должен быть совместим с последней стабильной версией. Такой код может содержать дополнительную функциональность, которая не ломает обратную совместимость. Поэтому в любой момент мы можем выпустить новую минорную версию из ветки `master`.
 
+<<<<<<< HEAD
 ### Флаги возможностей {#feature-flags}
 
 Для того, чтобы выпускать релизы из ветки `master`, изменения, ломающие обратную совместимость, и экспериментальные возможности могут быть применены в зависимости от значений флагов возможностей.
+=======
+To keep the `main` branch in a releasable state, breaking changes and experimental features must be gated behind a feature flag.
+
+Feature flags are defined in [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/main/packages/shared/ReactFeatureFlags.js). Some builds of React may enable different sets of feature flags; for example, the React Native build may be configured differently than React DOM. These flags are found in [`packages/shared/forks`](https://github.com/facebook/react/tree/main/packages/shared/forks). Feature flags are statically typed by Flow, so you can run `yarn flow` to confirm that you've updated all the necessary files.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 Флаги возможностей объявлены в [`packages/shared/ReactFeatureFlags.js`](https://github.com/facebook/react/blob/master/packages/shared/ReactFeatureFlags.js). Разные сборки React могут включать различные наборы флагов возможностей; например, сборка React Native может быть конфигурироваться иначе, чем сборка React DOM. Такие флаги находятся в [`packages/shared/forks`](https://github.com/facebook/react/tree/master/packages/shared/forks). Флаги возможностей имеют статическую типизацию, заданную с помощью Flow, поэтому запустив `yarn flow`, можно убедиться, что все необходимые файлы были обновлены.
 
@@ -84,6 +106,7 @@ React использует [семантическое версионирова�
 
 **Перед тем как отправлять пулреквест,** нужно выполнить следующие действия:
 
+<<<<<<< HEAD
 1. Форкнуть [репозиторий React](https://github.com/facebook/react) и создать собственную ветку от главной ветки `master`.
 2. Запустить команду `yarn` в корне репозитория.
 3. Если вы исправляете баг и добавляете код, который должен быть обязательно протестирован, не забудьте запустить тесты!
@@ -94,6 +117,18 @@ React использует [семантическое версионирова�
 8. Запустить линтер (`yarn lint`). Совет: команда `yarn linc` анализирует только изменённые файлы.
 9. Выполнить проверку типов с помощью [Flow](https://flowtype.org/) (`yarn flow`).
 10. Подписать соглашение добровольного разработчика (Contributor License Agreement).
+=======
+1. Fork [the repository](https://github.com/facebook/react) and create your branch from `main`.
+2. Run `yarn` in the repository root.
+3. If you've fixed a bug or added code that should be tested, add tests!
+4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
+5. Run `yarn test --prod` to test in the production environment.
+6. If you need a debugger, run `yarn debug-test --watch TestName`, open `chrome://inspect`, and press "Inspect".
+7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
+8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
+9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
+10. If you haven't already, complete the CLA.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 ### Соглашение добровольного разработчика (Contributor License Agreement, CLA) {#contributor-license-agreement-cla}
 

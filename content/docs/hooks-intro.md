@@ -98,7 +98,11 @@ function Example() {
 
 Мы также понимаем, что планка для добавления новых примитивов в React очень высока. Поэтому для любопытных читателей мы подготовили [подробный RFC](https://github.com/reactjs/rfcs/pull/68), в котором можно найти больше информации о технических аспектах выбранного дизайна.
 
+<<<<<<< HEAD
 **Важно понимать, что хуки работают рядом с существующим кодом, поэтому вы можете внедрять их постепенно.** Нет спешки переходить на хуки. Мы рекомендуем избегать любых «больших переписываний», особенно для существующих, сложных классовых компонентов. Вам потребуется немного изменить мировоззрение, чтобы начать «мыслить хуками». По нашему опыту, лучше всего сначала попрактиковаться использовать хуки в новых и некритичных компонентах и убедиться, что все в вашей команде чувствуют себя комфортно с ними. После того, как вы попробуете, не стесняйтесь [отправить нам свой отзыв](https://github.com/facebook/react/issues/new), позитивный или негативный.
+=======
+**Crucially, Hooks work side-by-side with existing code so you can adopt them gradually.** There is no rush to migrate to Hooks. We recommend avoiding any "big rewrites", especially for existing, complex class components. It takes a bit of a mind shift to start "thinking in Hooks". In our experience, it's best to practice using Hooks in new and non-critical components first, and ensure that everybody on your team feels comfortable with them. After you give Hooks a try, please feel free to [send us feedback](https://github.com/facebook/react/issues/new), positive or negative.
+>>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 Мы намерены охватить все возможные варианты использования классов в хуках, но **мы всё ещё будем поддерживать классовые компоненты в обозримом будущем.** В Facebook десятки тысяч компонентов, написанных в виде классов, и у нас нет абсолютно никаких планов их переписывать. Вместо этого мы начинаем использовать хуки в новом коде параллельно с классами.
 
