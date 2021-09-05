@@ -235,11 +235,7 @@ class Square extends React.Component {
 class Square extends React.Component {
   render() {
     return (
-<<<<<<< HEAD
-      <button className="square" onClick={function() { alert('клик'); }}>
-=======
-      <button className="square" onClick={function() { console.log('click'); }}>
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
+      <button className="square" onClick={function() { console.log('клик'); }}>
         {this.props.value}
       </button>
     );
@@ -247,11 +243,7 @@ class Square extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-Теперь, если вы кликнете по `Square`, то увидите в браузере сообщение.
-=======
-If you click on a Square now, you should see 'click' in your browser's devtools console.
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
+Теперь, если вы кликнете по `Square`, то увидите "клик" в консоли инструментах разработки браузера.
 
 >Примечание
 >
@@ -261,11 +253,7 @@ If you click on a Square now, you should see 'click' in your browser's devtools 
 >class Square extends React.Component {
 >  render() {
 >    return (
-<<<<<<< HEAD
->      <button className="square" onClick={() => alert('клик')}>
-=======
->      <button className="square" onClick={() => console.log('click')}>
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
+>      <button className="square" onClick={() => console.log('клик')}>
 >        {this.props.value}
 >      </button>
 >    );
@@ -273,12 +261,8 @@ If you click on a Square now, you should see 'click' in your browser's devtools 
 >}
 >```
 >
-<<<<<<< HEAD
-=======
->Notice how with `onClick={() => console.log('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={console.log('click')}` is a common mistake, and would fire every time the component re-renders.
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
->Обратите внимание что в `onClick={() => alert('клик')}`, мы передаём *функцию* в качестве значения пропа `onClick`. React вызовет эту функцию при клике. Пропуск `() =>` и запись `onClick={alert('клик')}`довольно распространённая ошибка. Такой код будет выдавать сообщение при каждом перерендере.
+>Обратите внимание что в `onClick={() => console.log('клик')}`, мы передаём *функцию* в качестве значения пропа `onClick`. React вызовет эту функцию при клике. Пропуск `() =>` и запись `onClick={console.log('клик')}`довольно распространённая ошибка. Такой код будет выдавать сообщение при каждом перерендере.
 
 Следующим шагом мы хотим, чтобы компонент Square «запоминал», что по нему кликнули и поставили «X».
 Для «запоминания» компоненты используют **состояние**.
@@ -298,11 +282,7 @@ class Square extends React.Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <button className="square" onClick={() => alert('клик')}>
-=======
-      <button className="square" onClick={() => console.log('click')}>
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
+      <button className="square" onClick={() => console.log('клик')}>
         {this.props.value}
       </button>
     );

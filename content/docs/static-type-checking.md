@@ -251,7 +251,7 @@ npx tsc --init
 }
 ```
 
-Отлично! Теперь, если мы запустим скрипт сборки проекта, компилятор сохранит готовый JavaScript в директорию `build`. В [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) уже есть готовый `tsconfig.json` с неплохим набором параметров для дальнейшей тонкой настройки под себя.
+Отлично! Теперь, если мы запустим скрипт сборки проекта, компилятор сохранит готовый JavaScript в директорию `build`. В [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/main/tsconfig.json) уже есть готовый `tsconfig.json` с неплохим набором параметров для дальнейшей тонкой настройки под себя.
 
 Как правило, скомпилированный JavaScript-бандл не следует хранить в системе контроля версий, так что не забудьте добавить папку `build` в файл `.gitignore`.
 
@@ -314,15 +314,9 @@ declare module 'querystring' {
 
 ## ReScript {#rescript}
 
-<<<<<<< HEAD
 [Reason](https://reasonml.github.io/) — это не новый язык, а новый синтаксис и набор инструментов для проверенного временем языка [OCaml](https://ocaml.org/). Reason предоставляет синтаксис, ориентированный на JavaScript-программистов, и использует уже известный всем способ распространения через NPM/Yarn.
 
 Reason был разработан в Facebook и используется в некоторых продуктах этой компании — например, в Messenger. Reason всё ещё считается довольно экспериментальным инструментом, но уже имеет [библиотеку привязок для React](https://reasonml.github.io/reason-react/), поддерживаемую Facebook, а также [отзывчивое сообщество](https://reasonml.github.io/docs/en/community.html).
-=======
-[ReScript](https://rescript-lang.org/) is a typed language that compiles to JavaScript. Some of its core features are  guaranteed 100% type coverage, first-class JSX support and [dedicated React bindings](https://rescript-lang.org/docs/react/latest/introduction) to allow integration in existing JS / TS React codebases.
-
-You can find more infos on integrating ReScript in your existing JS / React codebase [here](https://rescript-lang.org/docs/manual/latest/installation#integrate-into-an-existing-js-project).
->>>>>>> a11c2534062bd79cc1e6e34db0e149f928df35bb
 
 ## Kotlin {#kotlin}
 
