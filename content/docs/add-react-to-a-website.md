@@ -159,7 +159,7 @@ return (
 <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 ```
 
-Теперь синтаксис JSX доступен внутри каждого `<script>`-тега, у которого есть атрибут `type="text/babel"`. Скачайте [пример HTML-кода с JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), чтобы поэкспериментировать.
+Теперь синтаксис JSX доступен внутри каждого `<script>`-тега, у которого есть атрибут `type="text/babel"`. Скачайте [пример HTML-кода с JSX](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html), чтобы поэкспериментировать.
 
 Такой подход удобен для обучения или создания быстрых демо, но следует помнить, что работа сайта при этом сильно замедляется. Поэтому для продакшена JSX лучше добавить по-другому. Если вам интересно попробовать, удалите добавленный ранее `<script>`-тег и все атрибуты `type="text/babel"`. Вместо них мы будем пользоваться препроцессором JSX, который автоматически трансформирует весь код внутри `<script>`-тегов.
 

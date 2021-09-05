@@ -184,7 +184,7 @@ ReactDOM.render(
 );
 ```
 
-Если вы используете один из Babel-плагинов по преобразованию кода, вроде [transform-class-properties](https://babeljs.io/docs/plugins/transform-class-properties/), то можете объявить `defaultProps` как статическое свойство класса (для компонента-наследника от `React.Component`). Этот синтаксис ещё не утверждён, так что для его работы в браузере нужна компиляция. Подробнее смотрите в [предложении о полях класса](https://github.com/tc39/proposal-class-fields).
+Если вы используете один из Babel-плагинов по преобразованию кода, вроде [plugin-proposal-class-properties](https://babeljs.io/docs/en/babel-plugin-proposal-class-properties/) (прежнее название — _plugin-transform-class-properties_), то можете объявить `defaultProps` как статическое свойство класса (для компонента-наследника от `React.Component`). Этот синтаксис ещё не утверждён, так что для его работы в браузере нужна компиляция. Подробнее смотрите в [предложении о полях класса](https://github.com/tc39/proposal-class-fields).
 
 ```javascript
 class Greeting extends React.Component {

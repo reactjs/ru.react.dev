@@ -38,7 +38,7 @@ React изначально был спроектирован так, чтобы 
 
 Если вы просто хотите немного поиграть с React, попробуйте онлайн-песочницу. Например, вот простейший шаблон на [CodePen](codepen://hello-world), [CodeSandbox](https://codesandbox.io/s/new) или [Stackblitz](https://stackblitz.com/fork/react).
 
-Если вы предпочитаете работать в своём редакторе, [скачайте тестовый HTML-файл](https://raw.githubusercontent.com/reactjs/reactjs.org/master/static/html/single-file-example.html), добавьте в него код и запустите на своём компьютере. При открытии тестового файла браузер преобразует JSX в обычный код на JavaScript. Такое преобразование достаточно медленно, поэтому мы рекомендуем использовать этот файл только для простых демонстрационных примеров. 
+Если вы предпочитаете работать в своём редакторе, [скачайте тестовый HTML-файл](https://raw.githubusercontent.com/reactjs/reactjs.org/main/static/html/single-file-example.html), добавьте в него код и запустите на своём компьютере. При открытии тестового файла браузер преобразует JSX в обычный код на JavaScript. Такое преобразование достаточно медленно, поэтому мы рекомендуем использовать этот файл только для простых демонстрационных примеров. 
 
 ### Добавляем React на сайт {#add-react-to-a-website}
 
@@ -115,7 +115,7 @@ React сначала может показаться сложным, но при
 
 Также вы можете подписаться на наш аккаунт [@reactjs](https://twitter.com/reactjs) в Twitter. Однако вы не пропустите ничего важного, если будете следить только за блогом.
 
-В блоге мы пишем не о всех релизах React, но всегда есть возможность посмотреть полный список изменений [в файле `CHANGELOG.md` в репозитории React](https://github.com/facebook/react/blob/master/CHANGELOG.md), а также на странице [Релизы](https://github.com/facebook/react/releases).
+В блоге мы пишем не о всех релизах React, но всегда есть возможность посмотреть полный список изменений [в файле `CHANGELOG.md` в репозитории React](https://github.com/facebook/react/blob/main/CHANGELOG.md), а также на странице [Релизы](https://github.com/facebook/react/releases).
 
 ## Документация на старые версии React {#versioned-documentation}
 

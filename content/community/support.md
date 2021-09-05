@@ -17,7 +17,7 @@ React имеет сообщество из миллионов разработч
 * [react_js](https://telegram.me/react_js) - самое крупное русскоговорящее сообщество по React
 * [react_ru](http://t.me/react_ru) - независимое сообщество React-разработчиков на русском языке
 
-Прежде чем вступить в React сообщество, пожалуйста, [прочтите правила поведения](https://github.com/facebook/react/blob/master/CODE_OF_CONDUCT.md). Также мы приняли [соглашение участника](https://www.contributor-covenant.org/) и ожидаем, что все участники сообщества будут его придерживаться.
+Прежде чем вступить в React сообщество, пожалуйста, [прочтите правила поведения](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md). Также мы приняли [соглашение участника](https://www.contributor-covenant.org/) и ожидаем, что все участники сообщества будут его придерживаться.
 
 ## Stack Overflow {#stack-overflow}
 

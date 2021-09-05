@@ -235,7 +235,7 @@ class Square extends React.Component {
 class Square extends React.Component {
   render() {
     return (
-      <button className="square" onClick={function() { alert('клик'); }}>
+      <button className="square" onClick={function() { console.log('клик'); }}>
         {this.props.value}
       </button>
     );
@@ -243,7 +243,7 @@ class Square extends React.Component {
 }
 ```
 
-Теперь, если вы кликнете по `Square`, то увидите в браузере сообщение.
+Теперь, если вы кликнете по `Square`, то увидите "клик" в консоли инструментах разработки браузера.
 
 >Примечание
 >
@@ -253,7 +253,7 @@ class Square extends React.Component {
 >class Square extends React.Component {
 >  render() {
 >    return (
->      <button className="square" onClick={() => alert('клик')}>
+>      <button className="square" onClick={() => console.log('клик')}>
 >        {this.props.value}
 >      </button>
 >    );
@@ -262,7 +262,7 @@ class Square extends React.Component {
 >```
 >
 
->Обратите внимание что в `onClick={() => alert('клик')}`, мы передаём *функцию* в качестве значения пропа `onClick`. React вызовет эту функцию при клике. Пропуск `() =>` и запись `onClick={alert('клик')}`довольно распространённая ошибка. Такой код будет выдавать сообщение при каждом перерендере.
+>Обратите внимание что в `onClick={() => console.log('клик')}`, мы передаём *функцию* в качестве значения пропа `onClick`. React вызовет эту функцию при клике. Пропуск `() =>` и запись `onClick={console.log('клик')}`довольно распространённая ошибка. Такой код будет выдавать сообщение при каждом перерендере.
 
 Следующим шагом мы хотим, чтобы компонент Square «запоминал», что по нему кликнули и поставили «X».
 Для «запоминания» компоненты используют **состояние**.
@@ -282,7 +282,7 @@ class Square extends React.Component {
 
   render() {
     return (
-      <button className="square" onClick={() => alert('клик')}>
+      <button className="square" onClick={() => console.log('клик')}>
         {this.props.value}
       </button>
     );

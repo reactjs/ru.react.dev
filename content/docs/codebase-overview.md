@@ -19,8 +19,8 @@ redirect_from:
 
 После клонирования [репозитория React](https://github.com/facebook/react) вы увидите папки верхнего уровня:
 
-* [`packages`](https://github.com/facebook/react/tree/master/packages) содержит метаданные (такие как `package.json`) и исходный код (подпапка `src`) для каждого пакета из репозитория React. **Большая часть работы с кодом происходит в подпапках `src` внутри каждого пакета.**
-* [`fixtures`](https://github.com/facebook/react/tree/master/fixtures) содержит несколько небольших React-приложений для контрибьютеров.
+* [`packages`](https://github.com/facebook/react/tree/main/packages) содержит метаданные (такие как `package.json`) и исходный код (подпапка `src`) для каждого пакета из репозитория React. **Большая часть работы с кодом происходит в подпапках `src` внутри каждого пакета.**
+* [`fixtures`](https://github.com/facebook/react/tree/main/fixtures) содержит несколько небольших React-приложений для контрибьютеров.
 * `build` содержит скомпилированную версию React. Этого каталога нет в репозитории, но он появится после того, как вы [соберёте проект](/docs/how-to-contribute.html#development-workflow) в первый раз.
 
 Документация расположена в [отдельном репозитории](https://github.com/reactjs/reactjs.org).
@@ -105,7 +105,7 @@ React является [монолитным репозиторием](https://d
 
 **Ядро включает в себя только API необходимый для объявления компонентов.** Оно не включает [алгоритм согласования](/docs/reconciliation.html) или какой-либо платформо-специфический код. Этот код находится в компонентах React DOM и React Native.
 
-Код ядра расположен в папке [`packages/react`](https://github.com/facebook/react/tree/master/packages/react). Он доступен в npm в виде пакета [`react`](https://www.npmjs.com/package/react). Соответствующая сборка для браузера экспортирует глобальную переменную `React` и называется `react.js`.
+Код ядра расположен в папке [`packages/react`](https://github.com/facebook/react/tree/main/packages/react). Он доступен в npm в виде пакета [`react`](https://www.npmjs.com/package/react). Соответствующая сборка для браузера экспортирует глобальную переменную `React` и называется `react.js`.
 
 ### Рендереры {#renderers}
 
@@ -113,17 +113,17 @@ React является [монолитным репозиторием](https://d
 
 **Рендереры превращают React дерево в платформо-специфический код.**
 
-Они расположены в каталоге [`packages/`](https://github.com/facebook/react/tree/master/packages/):
+Они расположены в каталоге [`packages/`](https://github.com/facebook/react/tree/main/packages/):
 
-* [React DOM Renderer](https://github.com/facebook/react/tree/master/packages/react-dom) рендерит React-компоненты в DOM. Он реализует [`ReactDOM` API](/docs/react-dom.html) и доступен как пакет [`react-dom`](https://www.npmjs.com/package/react-dom) из npm репозитория. Можно подключать как отдельный бандл `react-dom.js`, экспортирующий глобальную переменную `ReactDOM`.
-* [React Native Renderer](https://github.com/facebook/react/tree/master/packages/react-native-renderer) рендерит React компоненты в нативные представления. Используется внутри React Native.
-* [React Test Renderer](https://github.com/facebook/react/tree/master/packages/react-test-renderer) рендерит React компоненты в JSON-дерево. Используется при [тестировании снимками](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) через фреймворк [Jest](https://facebook.github.io/jest) и доступен как пакет [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) в npm.
+* [React DOM Renderer](https://github.com/facebook/react/tree/main/packages/react-dom) рендерит React-компоненты в DOM. Он реализует [`ReactDOM` API](/docs/react-dom.html) и доступен как пакет [`react-dom`](https://www.npmjs.com/package/react-dom) из npm репозитория. Можно подключать как отдельный бандл `react-dom.js`, экспортирующий глобальную переменную `ReactDOM`.
+* [React Native Renderer](https://github.com/facebook/react/tree/main/packages/react-native-renderer) рендерит React компоненты в нативные представления. Используется внутри React Native.
+* [React Test Renderer](https://github.com/facebook/react/tree/main/packages/react-test-renderer) рендерит React компоненты в JSON-дерево. Используется при [тестировании снимками](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) через фреймворк [Jest](https://facebook.github.io/jest) и доступен как пакет [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) в npm.
 
-Мы начали поддерживать единственный неофициальный рендерер [`react-art`](https://github.com/facebook/react/tree/master/packages/react-art), который раньше находился в отдельном [GitHub-репозитории](https://github.com/reactjs/react-art).
+Мы начали поддерживать единственный неофициальный рендерер [`react-art`](https://github.com/facebook/react/tree/main/packages/react-art), который раньше находился в отдельном [GitHub-репозитории](https://github.com/reactjs/react-art).
 
 >**Примечание:**
 >
->Технически [`react-native-renderer`](https://github.com/facebook/react/tree/master/packages/react-native-renderer) -- это очень тонкий слой, который учит React взаимодействовать с React Native. Платформо-специфический код, управляющий нативными представлениями, расположен в [репозитории React Native](https://github.com/facebook/react-native) вместе с его компонентами.
+>Технически [`react-native-renderer`](https://github.com/facebook/react/tree/main/packages/react-native-renderer) -- это очень тонкий слой, который учит React взаимодействовать с React Native. Платформо-специфический код, управляющий нативными представлениями, расположен в [репозитории React Native](https://github.com/facebook/react-native) вместе с его компонентами.
 
 ### Согласователи {#reconcilers}
 
@@ -151,11 +151,11 @@ Cогласователь «Stack» -- это реализация, котора
 
 Вы можете узнать больше об архитектуре React Fiber [здесь](https://github.com/acdlite/react-fiber-architecture) и [здесь](https://blog.ag-grid.com/inside-fiber-an-in-depth-overview-of-the-new-reconciliation-algorithm-in-react). Несмотря на то, что он включён в React 16, асинхронная функциональность по умолчанию не включена.
 
-Исходный код расположен в папке [`packages/react-reconciler`](https://github.com/facebook/react/tree/master/packages/react-reconciler).
+Исходный код расположен в папке [`packages/react-reconciler`](https://github.com/facebook/react/tree/main/packages/react-reconciler).
 
 ### Система событий {#event-system}
 
-Для большей кроссбраузерной совместимости в React реализован слой, инкапсулирующий работу с нативными событиями. Его исходный код расположен в каталоге [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/master/packages/react-dom/src/events).
+Для большей кроссбраузерной совместимости в React реализован слой, инкапсулирующий работу с нативными событиями. Его исходный код расположен в каталоге [`packages/react-dom/src/events`](https://github.com/facebook/react/tree/main/packages/react-dom/src/events).
 
 ### Что дальше? {#what-next}
 
