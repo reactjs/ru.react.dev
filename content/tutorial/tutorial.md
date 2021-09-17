@@ -530,7 +530,11 @@ class Board extends React.Component {
 
 ### Почему иммутабельность так важна? {#why-immutability-is-important}
 
+<<<<<<< HEAD
 В последнем примере мы советовали использовать метод `.slice()` для создания и последующего копирования копии массива `squares` вместо изменения существующего. Теперь мы обсудим иммутабельность и почему её так важно изучить.
+=======
+In the previous code example, we suggested that you create a copy of the `squares` array using the `slice()` method instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 
 В целом есть два подхода к изменению данных. Первый подход – *мутировать*(изменять) данные, напрямую устанавливая новые значения. Второй подход – заменять данные новой копией, которая содержит изменения.
 

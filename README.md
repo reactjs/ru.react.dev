@@ -55,7 +55,11 @@
 
 ## Перевод
 
+<<<<<<< HEAD
 Если вы заинтересованы в переводе `reactjs.org`, ознакомьтесь с текущим прогрессом перевода на [isreacttranslatedyet.com](https://www.isreacttranslatedyet.com/).
+=======
+If you are interested in translating `reactjs.org`, please see the current translation efforts at [translations.reactjs.org](https://translations.reactjs.org/).
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 
 ## Решение проблем
 

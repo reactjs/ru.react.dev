@@ -99,7 +99,11 @@ function ProfileTimeline() {
 
 Это раннее демо. Не переживайте, если оно кажется бессмысленным. Мы поговорим о том, как оно работает ниже. Имейте в виду, что задержка – это больше *механизм*, и определенные API, такие как `fetchProfileData()` или `resource.posts.read()` в примере выше не очень важны. Если интересно, вы можете найти их определения прямо в [демо песочнице](https://codesandbox.io/s/frosty-hermann-bztrp).
 
+<<<<<<< HEAD
 Задержка – это не библиотека для получения данных. Это **механизм для библиотек получения данных**, который сообщает React, что *данные, которые читает компонент, ещё не готовы*. React в этом случае может подождать, пока они будут готовы и обновить пользовательский интерфейс. В Facebook, мы используем Relay с [интеграцией новой задержки](https://relay.dev/docs/en/experimental/a-guided-tour-of-relay#loading-states-with-suspense). Мы ожидаем, что другие библиотеки, такие как Apollo смогут предоставить подобную интеграцию.
+=======
+Suspense is not a data fetching library. It's a **mechanism for data fetching libraries** to communicate to React that *the data a component is reading is not ready yet*. React can then wait for it to be ready and update the UI. At Facebook, we use Relay and its [new Suspense integration](docs/getting-started/step-by-step-guide/). We expect that other libraries like Apollo can provide similar integrations.
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 
 В долгосрочной перспективе мы собираемся сделать задержку основным способом чтения асинхронных данных из компонентов, независимо от того, откуда эти данные пришли.
 
@@ -109,7 +113,11 @@ function ProfileTimeline() {
 
  * **Это не реализация получения данных.** Задержка не предполагает, что вы используете GraphQL, REST или какой-то другой определённый формат данных, библиотеку, транспорт или протокол.
 
+<<<<<<< HEAD
  * **Это не готовый к использованию клиент.** Вы не сможете заменить `fetch` или Relay задержкой. Но вы можете использовать библиотеку, в которую интегрирована задержка (например [новый API у Relay](https://relay.dev/docs/en/experimental/api-reference)).
+=======
+ * **It is not a ready-to-use client.** You can't "replace" `fetch` or Relay with Suspense. But you can use a library that's integrated with Suspense (for example, [new Relay APIs](https://relay.dev/docs/api-reference/relay-environment-provider/)).
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 
  * **Задержка не привязывает получение данных к слою представления.** Она помогает управлять отображением состояния загрузки в пользовательском интерфейсе, но она не связывает вашу сетевую логику с React-компонентами.
 
@@ -125,7 +133,11 @@ function ProfileTimeline() {
 
 ## Использование задержки на практике {#using-suspense-in-practice}
 
+<<<<<<< HEAD
 До настоящего времени в Facebook мы использовали в продакшн только Relay с интегрированной задержкой. **Если вы ищете практическое руководство как начать сегодня, [посмотрите руководство Relay](https://relay.dev/docs/en/experimental/step-by-step)!** Там рассмотрены подходы, которые уже хорошо работают у нас в продакшн.
+=======
+At Facebook, so far we have only used the Relay integration with Suspense in production. **If you're looking for a practical guide to get started today, [check out the Relay Guide](https://relay.dev/docs/getting-started/step-by-step-guide/)!** It demonstrates patterns that have already worked well for us in production.
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 
 **Код примеров на этой странице использует «фальшивую» реализацию API, а не Relay.** Это позволяет легче их понимать, если вы не знакомы с GraphQL, но они не расскажут вам о «правильном способе» как построить приложение с использованием задержки. Эта страница скорее о концептуальных принципах и нацелена помочь вам понять *почему* задержка работает определенным образом и какие проблемы она решает.
 
@@ -143,7 +155,11 @@ function ProfileTimeline() {
 
 Несмотря на то, что это технически выполнимо, задержка сейчас **не** предназначена для получения данных во время рендера компонента. Скорее она позволяет компонентам показать, что они «ждут» данные, которые *уже были получены*. **[Построение хорошего опыта взаимодействия пользователя с интерфейсами в Конкурентном режиме с задержкой](/blog/2019/11/06/building-great-user-experiences-with-concurrent-mode-and-suspense.html) описывает почему это важно и как реализовать этот подход на практике.**
 
+<<<<<<< HEAD
 Если у вас нет решения, которое помогает предотвращать водопады, мы предлагаем использовать API, которые поддерживают или обеспечивают получение данных до рендера. В качестве конкретного примера, посмотрите как в [Relay Suspense API](https://relay.dev/docs/en/experimental/api-reference#usepreloadedquery) организована предзагрузка. Наша информация про это была не очень последовательной. Задержка для получения данных все ещё в экспериментальном режиме, наши рекомендации могут измениться со временем, так как мы учимся новому во время использования технологии в продакшн и лучше понимаем предметную область.
+=======
+Unless you have a solution that helps prevent waterfalls, we suggest to prefer APIs that favor or enforce fetching before render. For a concrete example, you can look at how [Relay Suspense API](https://relay.dev/docs/api-reference/use-preloaded-query/) enforces preloading. Our messaging about this hasn't been very consistent in the past. Suspense for Data Fetching is still experimental, so you can expect our recommendations to change over time as we learn more from production usage and understand the problem space better.
+>>>>>>> a88b1e1331126287ccf03f2f4ec25ec38513b911
 
 ## Классические подходы против задержки {#traditional-approaches-vs-suspense}
 
