@@ -48,9 +48,15 @@ ReactDOM.render(element, container[, callback])
 >
 > `ReactDOM.render()` не изменяет узел контейнера (изменяет только дочерние элементы контейнера). Если нужно, можно вставить компонент в существующий узел DOM без перезаписи существующих дочерних элементов.
 >
+<<<<<<< HEAD
 > `ReactDOM.render()` в настоящее время возвращает ссылку на корневой экземпляр `ReactComponent`. Однако использование этого возвращаемого значения является устаревшим
 > и этого следует избегать, потому что в будущих версиях React компоненты могут отображаться асинхронно в некоторых случаях. Если вам нужна ссылка на корневой экземпляр `ReactComponent`, предпочтительным решением является прикрепить
 > [реф (ref) на колбэк](/docs/more-about-refs.html#the-ref-callback-attribute) к корневому элементу.
+=======
+> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy
+> and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a
+> [callback ref](/docs/refs-and-the-dom.html#callback-refs) to the root element.
+>>>>>>> 23d03a854ba21aeea0a03a0bd5185e0def9237d6
 >
 > Использование `ReactDOM.render()` для гидратации контейнера, отрендеренного на сервере, объявлено устаревшим и будет удалено в React 17. Вместо этого используйте метод [`hydrate()`](#hydrate).
 

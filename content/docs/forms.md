@@ -270,7 +270,11 @@ this.setState(partialState);
 
 ## Значение null управляемого компонента {#controlled-input-null-value}
 
+<<<<<<< HEAD
 Если установить [управляемому компоненту](/docs/forms.html#controlled-components) проп `value`, то пользователь не сможет изменить его значение без вашего желания. Если вы установили `value`, а поле ввода по-прежнему можно редактировать, то, возможно, вы случайно задали `value`, равный `undefined` или `null`.
+=======
+Specifying the `value` prop on a [controlled component](/docs/forms.html#controlled-components) prevents the user from changing the input unless you desire so. If you've specified a `value` but the input is still editable, you may have accidentally set `value` to `undefined` or `null`.
+>>>>>>> 23d03a854ba21aeea0a03a0bd5185e0def9237d6
 
 Код ниже это демонстрирует. (Изначально заблокированный `input` становится редактируемым после небольшой задержки.)
 
