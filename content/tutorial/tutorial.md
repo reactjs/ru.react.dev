@@ -456,11 +456,19 @@ class Square extends React.Component {
 
 При клике на Square вызывается функция `onClick`, которая была передана из Board. Вот как это происходит:
 
+<<<<<<< HEAD
 1. Проп `onClick` на встроенном DOM-компоненте `<button>` указывает React установить обработчик события.
 2. При клике по кнопке, React вызовет обработчик `onClick`, который определён в методе `render()` Square.
 3. Этот обработчик вызовет `this.props.onClick()`. Проп `onClick` определён для Square внутри Board.
 4. Т.к. Board передаёт в Square `onClick={() => this.handleClick(i)}`, Square при клике вызывает `this.handleClick(i)`.
 5. Мы пока не определили метод `handleClick()`, поэтому наш код сломается. Если вы сейчас кликните на клетку, вы увидите красный экран с ошибкой вроде `this.handleClick is not a function`.
+=======
+1. The `onClick` prop on the built-in DOM `<button>` component tells React to set up a click event listener.
+2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
+3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
+4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls the Board's `handleClick(i)` when clicked.
+5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 >Примечание
 >
@@ -530,7 +538,11 @@ class Board extends React.Component {
 
 ### Почему иммутабельность так важна? {#why-immutability-is-important}
 
+<<<<<<< HEAD
 В последнем примере мы советовали использовать метод `.slice()` для создания и последующего копирования копии массива `squares` вместо изменения существующего. Теперь мы обсудим иммутабельность и почему её так важно изучить.
+=======
+In the previous code example, we suggested that you create a copy of the `squares` array using the `slice()` method instead of modifying the existing array. We'll now discuss immutability and why immutability is important to learn.
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 В целом есть два подхода к изменению данных. Первый подход – *мутировать*(изменять) данные, напрямую устанавливая новые значения. Второй подход – заменять данные новой копией, которая содержит изменения.
 
@@ -1054,7 +1066,13 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
+<<<<<<< HEAD
 Для каждого хода в истории игры мы создаём элемент списка `<li>`, который содержит кнопку `<button>`. У кнопки есть обработчик `onClick`, который вызывает метод `this.jumpTo()`. Мы ещё не реализовали этот `jumpTo()` метод. Пока что мы должны видеть только список ходов, которые были сделаны в игре и вот такое предупреждение в инструментах разработчика:
+=======
+As we iterate through `history` array, `step` variable refers to the current `history` element value, and `move` refers to the current `history` element index. We only interested in `move` here, hence `step` is not getting assigned to anything.
+
+For each move in the tic-tac-toe game's history, we create a list item `<li>` which contains a button `<button>`. The button has a `onClick` handler which calls a method called `this.jumpTo()`. We haven't implemented the `jumpTo()` method yet. For now, we should see a list of the moves that have occurred in the game and a warning in the developer tools console that says:
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 >  Warning:
 >  Each child in an array or iterator should have a unique «key» prop. Check the render method of «Game».

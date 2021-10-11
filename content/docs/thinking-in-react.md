@@ -138,7 +138,11 @@ prev: composition-vs-inheritance.html
 
 Поток данных в React — однонаправленный. Это помогает понять, как работает приложение, но нам потребуется немного больше кода, чем с традиционной двусторонней привязкой данных.
 
+<<<<<<< HEAD
 Если вы попытаетесь ввести текст в поле поиска или установить флажок в чекбоксе данного примера, то увидите, что React игнорирует любой ввод. Это закономерно, так как ранее мы приравняли значение пропа `value` в `input` к `state` в `FilterableProductTable`.
+=======
+If you try to type or check the box in the previous version of the example (step 4), you'll see that React ignores your input. This is intentional, as we've set the `value` prop of the `input` to always be equal to the `state` passed in from `FilterableProductTable`.
+>>>>>>> 9b3c3f4e613440baf2e2f1775be65dac8c08ab5f
 
 Давайте подумаем, как мы хотим изменить поведение. Нам нужно, чтобы при изменениях поисковой формы менялось состояние ввода. Так как компоненты должны обновлять только относящееся к ним состояние, `FilterableProductTable` передаст колбэк в `SearchBar`. В свою очередь, `SearchBar` будет вызывать этот колбэк каждый раз, когда надо обновить состояние. Чтобы получать уведомления об изменениях элементов формы, мы можем использовать событие `onChange`. Колбэки, переданные из компонента `FilterableProductTable`, вызовут `setState()`, и приложение обновится.
 
