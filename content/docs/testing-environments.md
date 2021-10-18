@@ -55,4 +55,8 @@ prev: testing-recipes.html
 
 «Сквозные» тесты полезны при тестировании длинных последовательностей действий, особенно тех, что важны для бизнеса (таких как платежи или регистрация пользователей). Для таких тестов, вы скорее всего, хотите протестировать рендеринг всего приложения в настоящем браузере, получение данных из настоящих API, использование сессий и кук, переходы по ссылкам. Ещё вы, возможно, захотите проверить вероятный результат не только состояния DOM, но и сохранения данных (например, проверить были ли изменения сохранены в базе данных).
 
+<<<<<<< HEAD
 В этом случае вам стоит использовать фреймворк [Cypress](https://www.cypress.io/) или библиотеку [puppeteer](https://github.com/GoogleChrome/puppeteer) так вы сможете перемещаться между несколькими маршрутами и проверять вероятные побочные эффекты не только в браузере, но и, возможно, на бэкенде.
+=======
+In this scenario, you would use a framework like [Cypress](https://www.cypress.io/), [Playwright](https://playwright.dev) or a library like [Puppeteer](https://pptr.dev/) so you can navigate between multiple routes and assert on side effects not just in the browser, but potentially on the backend as well.
+>>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403

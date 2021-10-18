@@ -59,7 +59,15 @@ class ErrorBoundary extends React.Component {
 </ErrorBoundary>
 ```
 
+<<<<<<< HEAD
 Предохранители работают как JavaScript-блоки `catch {}`, но только для компонентов. Только классовые компоненты могут выступать в роли предохранителей. На практике чаще всего целесообразным будет один раз описать предохранитель и дальше использовать его по всему приложению.
+=======
+Error boundaries work like a JavaScript `catch {}` block, but for components. Only class components can be error boundaries. In practice, most of the time you’ll want to declare an error boundary component once and use it throughout your application.
+
+Note that **error boundaries only catch errors in the components below them in the tree**. An error boundary can’t catch an error within itself. If an error boundary fails trying to render the error message, the error will propagate to the closest error boundary above it. This, too, is similar to how the `catch {}` block works in JavaScript.
+
+## Live Demo {#live-demo}
+>>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403
 
 Обратите внимание, что **предохранители отлавливают ошибки исключительно в своих дочерних компонентах**. Предохранитель не сможет отловить ошибку внутри самого себя. Если предохранителю не удаётся отрендерить сообщение об ошибке, то ошибка всплывает до ближайшего предохранителя, расположенного над ним в дереве компонентов. Этот аспект их поведения тоже напоминает работу блоков `catch {}` в JavaScript.
 
