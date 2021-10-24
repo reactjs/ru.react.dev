@@ -97,7 +97,7 @@ React является [монолитным репозиторием](https://d
 
 ### Ядро React {#react-core}
 
-Ядро включает в себя весь [верхнеуровневый API](/docs/top-level-api.html#react), например:
+Ядро включает в себя весь [верхнеуровневый API `React`](/docs/top-level-api.html#react), например:
 
 * `React.createElement()`
 * `React.Component`
