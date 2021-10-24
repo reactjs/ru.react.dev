@@ -224,11 +224,7 @@ class Parent extends React.Component {
 this.inputElement.current.focus();
 ```
 
-<<<<<<< HEAD
-Если для расширения функциональности компонент оборачивается компонентом высшего порядка, то рекомендуется [перенаправлять рефы](/docs/forwarding-refs.html) обёрнутого компонента с помощью React-функции `forwardRef`. В случае, когда сторонний HOC не поддерживает перенаправление рефов, описанный выше подход всё равно можно использовать в качестве запасного варианта.
-=======
-When using a [HOC](/docs/higher-order-components.html) to extend components, it is recommended to [forward the ref](/docs/forwarding-refs.html) to the wrapped component using the `forwardRef` function of React. If a third party HOC does not implement ref forwarding, the above pattern can still be used as a fallback.
->>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403
+Если для расширения функциональности компонент оборачивается [компонентом высшего порядка](/docs/higher-order-components.html), то рекомендуется [перенаправлять рефы](/docs/forwarding-refs.html) обёрнутого компонента с помощью React-функции `forwardRef`. В случае, когда сторонний HOC не поддерживает перенаправление рефов, описанный выше подход всё равно можно использовать в качестве запасного варианта.
 
 Отличный пример управления фокусом показан в проекте [react-aria-modal](https://github.com/davidtheclark/react-aria-modal). Этот достаточно редкий случай реализации модального окна с полностью доступным контентом. В нём, кроме установки фокуса на кнопку отмены и перемещения фокуса внутри модальной формы, сделан возврат на элемент, инициировавший вызов модального окна. Нужно отметить, что первоначальная установка фокуса на кнопку отмены в модальном окне предотвращает случайное нажатие на клавиатуре кнопки подтверждения запрашиваемого действия.
 
@@ -454,11 +450,7 @@ class BlurExample extends React.Component {
 
 На основе `aXe-core` разработан продукт компании Deque Systems под названием [The Accessibility Engine](https://www.deque.com/products/axe/) или aXe. Это расширение для браузеров, предназначенное для комплексного тестирования доступности контента сайтов.
 
-<<<<<<< HEAD
-Также вы можете использовать модуль [react-axe](https://github.com/dylanb/react-axe) для вывода сообщений от aXe в консоль в процессе программирования или отладки.
-=======
-You can also use the [@axe-core/react](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/react) module to report these accessibility findings directly to the console while developing and debugging.
->>>>>>> 4133943e718a77f11627888db2f59f6cb7a73403
+Также вы можете использовать модуль [@axe-core/react](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/react) для вывода сообщений от aXe в консоль в процессе программирования или отладки.
 
 #### WebAIM WAVE {#webaim-wave}
 
