@@ -99,7 +99,11 @@ function ProfileTimeline() {
 
 Это раннее демо. Не переживайте, если оно кажется бессмысленным. Мы поговорим о том, как оно работает ниже. Имейте в виду, что задержка – это больше *механизм*, и определенные API, такие как `fetchProfileData()` или `resource.posts.read()` в примере выше не очень важны. Если интересно, вы можете найти их определения прямо в [демо песочнице](https://codesandbox.io/s/frosty-hermann-bztrp).
 
+<<<<<<< HEAD
 Задержка – это не библиотека для получения данных. Это **механизм для библиотек получения данных**, который сообщает React, что *данные, которые читает компонент, ещё не готовы*. React в этом случае может подождать, пока они будут готовы и обновить пользовательский интерфейс. В Facebook, мы используем Relay с [интеграцией новой задержки](https://relay.dev/docs/getting-started/step-by-step-guide). Мы ожидаем, что другие библиотеки, такие как Apollo смогут предоставить подобную интеграцию.
+=======
+Suspense is not a data fetching library. It's a **mechanism for data fetching libraries** to communicate to React that *the data a component is reading is not ready yet*. React can then wait for it to be ready and update the UI. At Facebook, we use Relay and its [new Suspense integration](https://relay.dev/docs/getting-started/step-by-step-guide/). We expect that other libraries like Apollo can provide similar integrations.
+>>>>>>> f2158e36715acc001c8317e20dc4f45f9e2089f3
 
 В долгосрочной перспективе мы собираемся сделать задержку основным способом чтения асинхронных данных из компонентов, независимо от того, откуда эти данные пришли.
 
