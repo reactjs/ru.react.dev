@@ -134,17 +134,16 @@ MyComponent.propTypes = {
 };
 ```
 
-### Ограничение на один дочерний компонент {#requiring-single-child}
+### Требование одного дочернего элемента {#requiring-single-child}
 
-С помощью `PropTypes.element` вы можете указать, что в качестве дочернего может быть передан только один элемент.
+С помощью `PropTypes.element` вы можете указать, что только один дочерний элемент может быть передан компоненту в качестве потомка.
 
 ```javascript
 import PropTypes from 'prop-types';
 
 class MyComponent extends React.Component {
   render() {
-    // Это должен быть ровно один элемент.
-    // Иначе вы увидите предупреждение
+    // Это должен быть ровно один элемент, иначе вы увидите предупреждение.
     const children = this.props.children;
     return (
       <div>
