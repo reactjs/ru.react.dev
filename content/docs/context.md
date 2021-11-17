@@ -216,7 +216,7 @@ MyContext.displayName = 'MyDisplayName';
 
 ### Динамический контекст {#dynamic-context}
 
-Более сложный пример динамических значений для UI темы:
+Более сложный пример динамических значений для UI-темы:
 
 **theme-context.js**
 `embed:context/theme-detailed-theme-context.js`
