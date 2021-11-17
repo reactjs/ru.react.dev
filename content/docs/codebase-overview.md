@@ -111,13 +111,13 @@ React является [монолитным репозиторием](https://d
 
 Изначально React создавался для DOM, но позже был адаптирован к другим платформам, таким как [React Native](https://reactnative.dev/). В этом разделе мы расскажем об используемых рендерерах.
 
-**Рендереры превращают React дерево в платформо-специфический код.**
+**Рендереры превращают React-дерево в платформо-специфический код.**
 
 Они расположены в каталоге [`packages/`](https://github.com/facebook/react/tree/main/packages/):
 
 * [React DOM Renderer](https://github.com/facebook/react/tree/main/packages/react-dom) рендерит React-компоненты в DOM. Он реализует [`ReactDOM` API](/docs/react-dom.html) и доступен как пакет [`react-dom`](https://www.npmjs.com/package/react-dom) из npm репозитория. Можно подключать как отдельный бандл `react-dom.js`, экспортирующий глобальную переменную `ReactDOM`.
-* [React Native Renderer](https://github.com/facebook/react/tree/main/packages/react-native-renderer) рендерит React компоненты в нативные представления. Используется внутри React Native.
-* [React Test Renderer](https://github.com/facebook/react/tree/main/packages/react-test-renderer) рендерит React компоненты в JSON-дерево. Используется при [тестировании снимками](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) через фреймворк [Jest](https://facebook.github.io/jest) и доступен как пакет [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) в npm.
+* [React Native Renderer](https://github.com/facebook/react/tree/main/packages/react-native-renderer) рендерит React-компоненты в нативные представления. Используется внутри React Native.
+* [React Test Renderer](https://github.com/facebook/react/tree/main/packages/react-test-renderer) рендерит React-компоненты в JSON-дерево. Используется при [тестировании снимками](https://facebook.github.io/jest/blog/2016/07/27/jest-14.html) через фреймворк [Jest](https://facebook.github.io/jest) и доступен как пакет [react-test-renderer](https://www.npmjs.com/package/react-test-renderer) в npm.
 
 Мы начали поддерживать единственный неофициальный рендерер [`react-art`](https://github.com/facebook/react/tree/main/packages/react-art), который раньше находился в отдельном [GitHub-репозитории](https://github.com/reactjs/react-art).
 

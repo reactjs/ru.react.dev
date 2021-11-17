@@ -204,7 +204,7 @@ shouldComponentUpdate(nextProps, nextState) {
 
 ## shouldComponentUpdate в действии {#shouldcomponentupdate-in-action}
 
-Вот поддерево компонентов. Для каждого из них `SCU` указывает что возвратил `shouldComponentUpdate`, а `vDOMEq` указывает эквивалентны ли отрендеренные React элементы. Наконец, цвет круга указывает требуется ли согласовать компонент или нет.
+Вот поддерево компонентов. Для каждого из них `SCU` указывает что возвратил `shouldComponentUpdate`, а `vDOMEq` указывает эквивалентны ли отрендеренные React-элементы. Наконец, цвет круга указывает требуется ли согласовать компонент или нет.
 
 <figure><img src="../images/docs/should-component-update.png" alt="Дерево компонентов" style="max-width:100%" /></figure>
 
