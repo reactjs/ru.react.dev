@@ -251,7 +251,7 @@ npx tsc --init
 }
 ```
 
-Отлично! Теперь, если мы запустим скрипт сборки проекта, компилятор сохранит готовый JavaScript в директорию `build`. В [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/main/tsconfig.json) уже есть готовый `tsconfig.json` с неплохим набором параметров для дальнейшей тонкой настройки под себя.
+Отлично! Теперь, если мы запустим скрипт сборки проекта, компилятор сохранит готовый JavaScript в директорию `build`. В [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter/blob/master/tsconfig.json) уже есть готовый `tsconfig.json` с неплохим набором параметров для дальнейшей тонкой настройки под себя.
 
 Как правило, скомпилированный JavaScript-бандл не следует хранить в системе контроля версий, так что не забудьте добавить папку `build` в файл `.gitignore`.
 
