@@ -298,7 +298,7 @@ findRenderedComponentWithType(
 renderIntoDocument(element)
 ```
 
-Отображает React элемент в отдельно взятом DOM-узле документа. **Этой функции нужен DOM.** Это фактически эквивалентно:
+Отображает React-элемент в отдельно взятом DOM-узле документа. **Этой функции нужен DOM.** Это фактически эквивалентно:
 
 ```js
 const domContainer = document.createElement('div');

@@ -148,7 +148,7 @@ ReactDOM.render(
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
 
-Приведённый выше вариант работает корректно, потому что в JavaScript выражение `true && expression` всегда вычисляется как `expression`, а выражение `false && expression` — как `false`.
+Приведённый выше вариант работает корректно, потому что в JavaScript-выражение `true && expression` всегда вычисляется как `expression`, а выражение `false && expression` — как `false`.
 
 То есть, если условие истинно (`true`), то элемент, идущий непосредственно за `&&`, будет передан на вывод. Если же оно ложно (`false`), то React проигнорирует и пропустит его.
 
