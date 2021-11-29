@@ -460,7 +460,7 @@ class Square extends React.Component {
 2. При клике по кнопке, React вызовет обработчик `onClick`, который определён в методе `render()` Square.
 3. Этот обработчик вызовет `this.props.onClick()`. Проп `onClick` определён для Square внутри Board.
 4. Т.к. Board передаёт в Square `onClick={() => this.handleClick(i)}`, Square при клике вызывает `handleClick(i)` у Board.
-5. Мы пока не определили метод `handleClick()`, поэтому наш код сломается. Если вы сейчас кликните на клетку, вы увидите красный экран с ошибкой вроде `this.handleClick is not a function`.
+5. Мы пока не определили метод `handleClick()`, поэтому наш код сломается. Если вы сейчас кликнете на клетку, вы увидите красный экран с ошибкой вроде `this.handleClick is not a function`.
 
 >Примечание
 >
