@@ -8,7 +8,7 @@ prev: cdn-links.html
 next: hello-world.html
 ---
 
-React relies on a thriving open source community to file bug reports, open pull requests, and [submit RFCs](https://github.com/reactjs/rfcs). To encourage feedback we sometimes share special builds of React that include unreleased features.
+React полагается на растущее сообщество и на открытый исходный код для отправки отчетов об ошибках, открытия запросов на пул реквесты и [отправки запросов на комментарии](https://github.com/reactjs/rfcs). Чтобы стимулировать обратную связь, мы иногда публикуем специальные сборки React, которые включают невыпущенные функции.
 
 > This document will be most relevant to developers who work on frameworks, libraries, or developer tooling. Developers who use React primarily to build user-facing applications should not need to worry about our prerelease channels.
 
