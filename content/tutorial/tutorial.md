@@ -1054,7 +1054,11 @@ const doubled = numbers.map(x => x * 2); // [2, 4, 6]
 
 **[Посмотреть полный код этого шага](https://codepen.io/gaearon/pen/EmmGEa?editors=0010)**
 
+<<<<<<< HEAD
 При итерации по массиву `history`, переменная `step` содержит текущее значение элемента `history`, а `move` — текущий индекс элемента `history`. Поскольку нам нужен только `move`, то `step` не используется.
+=======
+As we iterate through `history` array, `step` variable refers to the current `history` element value, and `move` refers to the current `history` element index. We are only interested in `move` here, hence `step` is not getting assigned to anything.
+>>>>>>> 569949e266f5724a04821d6c4f211286238616dc
 
 Для каждого хода в истории игры мы создаём элемент списка `<li>`, который содержит кнопку `<button>`. У кнопки есть обработчик `onClick`, который вызывает метод `this.jumpTo()`. Мы ещё не реализовали этот `jumpTo()` метод. Пока что мы должны видеть только список ходов, которые были сделаны в игре и вот такое предупреждение в инструментах разработчика:
 
@@ -1161,6 +1165,11 @@ class Game extends React.Component {
     // Этот метод не изменялся
   }
 ```
+<<<<<<< HEAD
+=======
+
+Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as that is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
+>>>>>>> 569949e266f5724a04821d6c4f211286238616dc
 
 Обратите внимание, что в методе `jumpTo` мы не обновили свойство `history` состояния. Это потому, что обновления состояния объединяются или, проще говоря, React обновит только те свойства, которые были указаны в методе `setState` без изменения остальных свойств. Подробнее об этом читайте в **[документации](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
 
