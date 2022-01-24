@@ -77,7 +77,11 @@ Create React App не обрабатывает бэкенд логику или 
 
 - **[Nx](https://nx.dev/react)** – набор инструментов для ведения фулстэк разработки в монорепозиториях, который обладает встроенной поддержкой React, Next.js, [Express](https://expressjs.com/) и так далее.
 
+<<<<<<< HEAD
 - **[Parcel](https://parceljs.org/)** – быстрый упаковщик веб-приложений с нулевой конфигурацией, [который работает с React](https://parceljs.org/recipes.html#react).
+=======
+- **[Parcel](https://parceljs.org/)** is a fast, zero configuration web application bundler that [works with React](https://parceljs.org/recipes/react/).
+>>>>>>> 69bd27a3d558d6633e4f0adc61ecb8bb3d5f2edf
 
 - **[Razzle](https://github.com/jaredpalmer/razzle)** – это фреймворк для серверного рендеринга, более гибкий чем Next.js, но не требующий обязательной настройки.
 
