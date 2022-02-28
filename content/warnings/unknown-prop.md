@@ -34,7 +34,11 @@ function MyDiv(props) {
 }
 ```
 
+<<<<<<< HEAD
 **Хорошо:** Оператор расширения (`...`) помогает извлечь часть пропсов (например, `layout`) каждый в отдельную переменную, а оставшиеся — поместить в общую переменную (скажем, `rest`).
+=======
+**Good:** The spread syntax can be used to pull variables off props, and put the remaining props into a variable.
+>>>>>>> 6bd09fe682e18ccd7747fcd7798fa8fb4d3edc42
 
 ```js
 function MyDiv(props) {

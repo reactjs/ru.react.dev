@@ -48,4 +48,8 @@ _Обратите внимание, что данная функциональн
 
 ### Можно создавать анимации в React? {#can-i-do-animations-in-react}
 
+<<<<<<< HEAD
 React может использоваться для создания крутых анимаций! В качестве примера посмотрите библиотеки [React Transition Group](https://reactcommunity.org/react-transition-group/), [React Motion](https://github.com/chenglou/react-motion) или [React Spring](https://github.com/react-spring/react-spring).
+=======
+React can be used to power animations. See [React Transition Group](https://reactcommunity.org/react-transition-group/), [React Motion](https://github.com/chenglou/react-motion), [React Spring](https://github.com/react-spring/react-spring), or [Framer Motion](https://framer.com/motion), for example.
+>>>>>>> 6bd09fe682e18ccd7747fcd7798fa8fb4d3edc42
