@@ -41,7 +41,11 @@ author: [tesseralis]
 
 Мы начали с пробного периода для трех языков: испанского, японского и с упрощенного китайского. Таким образом мы выработали методику и приняли меры, чтобы с будущими переводами не возникало проблем. Я хотела, чтобы команды по переводам имели свободу выбора удобных им инструментов. Единственным требованием был [чек-лист](https://github.com/reactjs/reactjs.org-translation/blob/master/PROGRESS.template.md), описывающий порядок перевода страниц.
 
+<<<<<<< HEAD
 После пробного периода мы были готовы принимать другие переводы. Я создала [скрипт](https://github.com/reactjs/reactjs.org-translation/blob/master/scripts/create.js), чтобы автоматизировать создание репозиториев для новых языков, а также сайт [Is React Translated Yet?](https://isreacttranslatedyet.com) (А React уже переведён?), чтобы отслеживать прогресс тех или иных переводов. Уже в первый день мы начали целых *10* переводов!
+=======
+After the trial period, we were ready to accept more languages. I created [a script](https://github.com/reactjs/reactjs.org-translation/blob/master/scripts/create.js) to automate the creation of the new language repo, and a site, [Is React Translated Yet?](https://translations.reactjs.org), to track progress on the different translations. We started *10* new translations on our first day alone!
+>>>>>>> a08e1fd4b574a4d2d55e292af9eb01d55a526303
 
 Благодаря этой автоматизации, последующая поддержка проекта по большей части шла гладко. Позже мы создали [Slack-канал](https://rt-slack-invite.herokuapp.com), чтобы переводчики могли удобно общаться между собой; также я выпустила руководство, которое закрепило [обязанности мейнтейнеров сообщества](https://github.com/reactjs/reactjs.org-translation/blob/master/maintainer-guide.md). Платформа для общения между переводчиками себя показала отлично -- к примеру, переводчики арабского, персидского и иврита смогли вместе добиться отображения [текста справа налево](https://en.wikipedia.org/wiki/Right-to-left)!
 
