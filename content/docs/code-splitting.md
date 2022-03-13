@@ -178,11 +178,7 @@ const MyComponent = () => (
 
 Часто таким удобным местом оказываются маршруты. Большинство интернет-пользователей привыкли к задержкам во время переходов между страницами. Поэтому и вам может быть выгодно повторно отрендерить всю страницу целиком. Это не позволит пользователям взаимодействовать с другими элементами на странице, пока происходит обновление.
 
-<<<<<<< HEAD
-Вот пример того, как организовать разделение кода на основе маршрутов с помощью `React.lazy` и таких библиотек как [React Router](https://reacttraining.com/react-router/).
-=======
-Here's an example of how to setup route-based code splitting into your app using libraries like [React Router](https://reactrouter.com/) with `React.lazy`.
->>>>>>> a08e1fd4b574a4d2d55e292af9eb01d55a526303
+Вот пример того, как организовать разделение кода на основе маршрутов с помощью `React.lazy` и таких библиотек как [React Router](https://reactrouter.com/).
 
 ```js
 import React, { Suspense, lazy } from 'react';
@@ -193,19 +189,11 @@ const About = lazy(() => import('./routes/About'));
 
 const App = () => (
   <Router>
-<<<<<<< HEAD
-    <Suspense fallback={<div>Загрузка...</div>}>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-      </Switch>
-=======
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
       </Routes>
->>>>>>> a08e1fd4b574a4d2d55e292af9eb01d55a526303
     </Suspense>
   </Router>
 );

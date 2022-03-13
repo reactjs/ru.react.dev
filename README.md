@@ -49,17 +49,11 @@
 
 ### Отправка изменений
 
-<<<<<<< HEAD
+1. `git add -A && git commit -m "Сообщение"` (вместо `Сообщение` напишите осмысленное название изменения, например `Исправление логотипа на Android`), чтобы добавить и зафиксировать изменение
+1. `git push my-fork-name the-name-of-my-branch`
 1. Перейдите на [страницу репозитория ru.reactjs.org](https://github.com/reactjs/ru.reactjs.org) и вы увидите уведомление с вашей веткой.
 1. Следуйте инструкциям на GitHub.
 1. По возможности добавьте скриншот с сделанными изменениями. Как только вы сделаете PR, автоматически будет создана версия сайта с вашими изменениями на [Netlify](https://www.netlify.com/).
-=======
-1. `git add -A && git commit -m "My message"` (replacing `My message` with a commit message, such as `Fix header logo on Android`) to stage and commit your changes
-1. `git push my-fork-name the-name-of-my-branch`
-1. Go to the [reactjs.org repo](https://github.com/reactjs/reactjs.org) and you should see recently pushed branches.
-1. Follow GitHub's instructions.
-1. If possible, include screenshots of visual changes. A preview build is triggered after your changes are pushed to GitHub.
->>>>>>> a08e1fd4b574a4d2d55e292af9eb01d55a526303
 
 ## Перевод
 

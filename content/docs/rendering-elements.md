@@ -66,11 +66,7 @@ const element = <h1>Hello, world</h1>;
 
 React DOM сравнивает элемент и его дочернее дерево с предыдущей версией и вносит в DOM только минимально необходимые изменения.
 
-<<<<<<< HEAD
-Вы можете убедиться в этом на [последнем примере](codepen://rendering-elements/update-rendered-element) с помощью инструментов разработки в браузере:
-=======
-You can verify by inspecting the [last example](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) with the browser tools:
->>>>>>> a08e1fd4b574a4d2d55e292af9eb01d55a526303
+Вы можете убедиться в этом на [последнем примере](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) с помощью инструментов разработки в браузере:
 
 ![В DOM видно частичное обновление](../images/docs/granular-dom-updates.gif)
 
