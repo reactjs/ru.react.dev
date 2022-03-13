@@ -38,7 +38,7 @@ const element = <h1>Hello, world</h1>;
 
 `embed:rendering-elements/render-an-element.js`
 
-[](codepen://rendering-elements/render-an-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/ZpvBNJ?editors=1010)**
 
 На странице будет написано "Hello, world".
 
@@ -52,7 +52,7 @@ const element = <h1>Hello, world</h1>;
 
 `embed:rendering-elements/update-rendered-element.js`
 
-[](codepen://rendering-elements/update-rendered-element)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
 В этом примере [`ReactDOM.render()`](/docs/react-dom.html#render) вызывается каждую секунду с помощью колбэка [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval).
 
@@ -66,7 +66,7 @@ const element = <h1>Hello, world</h1>;
 
 React DOM сравнивает элемент и его дочернее дерево с предыдущей версией и вносит в DOM только минимально необходимые изменения.
 
-Вы можете убедиться в этом на [последнем примере](codepen://rendering-elements/update-rendered-element) с помощью инструментов разработки в браузере:
+Вы можете убедиться в этом на [последнем примере](https://codepen.io/gaearon/pen/gwoJZk?editors=1010) с помощью инструментов разработки в браузере:
 
 ![В DOM видно частичное обновление](../images/docs/granular-dom-updates.gif)
 

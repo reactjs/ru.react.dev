@@ -68,7 +68,7 @@ ReactDOM.render(
 );
 ```
 
-[](codepen://introducing-jsx)
+**[Try it on CodePen](https://codepen.io/gaearon/pen/PGEjdG?editors=1010)**
 
 Чтобы улучшить читаемость, мы разбили JSX на несколько строк. В таких случаях, хотя это и не обязательно, мы советуем заключать всё выражение целиком в круглые скобки, чтобы избежать проблем, связанных с [автоматической вставкой точек с запятой](https://stackoverflow.com/q/2846283).
 
@@ -92,7 +92,7 @@ function getGreeting(user) {
 Чтобы использовать строковый литерал в качестве значения атрибута, используются кавычки:
 
 ```js
-const element = <div tabIndex="0"></div>;
+const element = <a href="https://www.reactjs.org"> link </a>;
 ```
 
 Если же в значении атрибута требуется указать JavaScript-выражение, то на помощь приходят фигурные скобки:

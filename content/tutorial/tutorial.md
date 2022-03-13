@@ -1162,6 +1162,8 @@ class Game extends React.Component {
   }
 ```
 
+Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as that is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
+
 Обратите внимание, что в методе `jumpTo` мы не обновили свойство `history` состояния. Это потому, что обновления состояния объединяются или, проще говоря, React обновит только те свойства, которые были указаны в методе `setState` без изменения остальных свойств. Подробнее об этом читайте в **[документации](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
 
 Мы сделаем ещё несколько изменений в методе Game `handleClick`, который выполняется когда вы кликаете на клетки.
