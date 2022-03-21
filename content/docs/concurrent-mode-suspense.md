@@ -220,7 +220,11 @@ function ProfileTimeline() {
 }
 ```
 
+<<<<<<< HEAD
 **[Посмотреть пример на CodeSandbox](https://codesandbox.io/s/fragrant-glade-8huj6)**
+=======
+**[Try it on CodeSandbox](https://codesandbox.io/s/fast-glade-rqnhtt)**
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 Если вы запустите этот код в логах консоли вы увидите следующую последовательность:
 
@@ -295,7 +299,11 @@ function ProfileTimeline({ posts }) {
 }
 ```
 
+<<<<<<< HEAD
 **[Посмотреть пример на CodeSandbox](https://codesandbox.io/s/wandering-morning-ev6r0)**
+=======
+**[Try it on CodeSandbox](https://codesandbox.io/s/hopeful-lake-loddz9)**
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 Последовательность событий теперь выглядит так:
 
@@ -421,7 +429,11 @@ function App() {
 }
 ```
 
+<<<<<<< HEAD
 **[Посмотреть пример на CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
+=======
+**[Try it on CodeSandbox](https://codesandbox.io/s/sparkling-field-41z4r3)**
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 С таким подходом мы можем **получать код и данные параллельно**. Когда мы перемещаемся между страницами, нам не нужно ждать загрузки кода страницы, чтобы начать получать данные для этой страницы. Мы можем начать получать и данные и код одновременно (во время клика по ссылке), улучшив опыт взаимодействия пользователя с интерфейсом.
 
@@ -508,7 +520,11 @@ function ProfileTimeline({ id }) {
 }
 ```
 
+<<<<<<< HEAD
 **[Посмотреть пример на CodeSandbox](https://codesandbox.io/s/nervous-glade-b5sel)**
+=======
+**[Try it on CodeSandbox](https://codesandbox.io/s/beautiful-mendeleev-qwyxzg)**
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 Обратите внимание, как мы изменили зависимости эффекта с `[]` на `[id]` – потому что мы хотим перезапускать эффект, когда меняется `id`. В противном случае мы не будем получать новые данные.
 
@@ -586,7 +602,11 @@ class ProfileTimeline extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 **[Посмотреть пример на CodeSandbox](https://codesandbox.io/s/trusting-clarke-8twuq)**
+=======
+**[Try it on CodeSandbox](https://codesandbox.io/s/async-wind-9o4ojn)**
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 Этот код обманчиво легко читаем.
 
@@ -646,7 +666,11 @@ function ProfileTimeline({ resource }) {
 }
 ```
 
+<<<<<<< HEAD
 **[Посмотреть пример на CodeSandbox](https://codesandbox.io/s/infallible-feather-xjtbu)**
+=======
+**[Try it on CodeSandbox](https://codesandbox.io/s/sparkling-field-41z4r3)**
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 В предыдущем примере с задержкой у нас был только один `resource`, поэтому мы запишем его в переменную на верхнем уровне. Сейчас у нас несколько ресурсов, мы переместили их в состояние компонента `<App>`:
 
@@ -719,7 +743,11 @@ function ProfilePage() {
 }
 ```
 
+<<<<<<< HEAD
 **[Посмотреть пример на CodeSandbox](https://codesandbox.io/s/adoring-goodall-8wbn7)**
+=======
+**[Try it on CodeSandbox](https://codesandbox.io/s/sparkling-rgb-r5vfhs)**
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 Он будет ловить ошибки рендера *и* ошибки получения данных в задержке. У нас может быть столько предохранителей, сколько мы захотим, но лучше расставлять их [избирательно](https://aweary.dev/fault-tolerance-react/).
 
@@ -729,10 +757,18 @@ function ProfilePage() {
 
 Задержка отвечает на некоторые вопросы, но и поднимает свои собственные:
 
+<<<<<<< HEAD
 * Если какой-то компонент «задерживается», то приложением зависает? Как этого избежать?
 * Что, если мы хотим показать спиннер в другой части дерева, а не «над» компонентом?
 * Если мы намеренно *хотим* недолго показывать неполный пользовательский интерфейс, можем ли мы это сделать?
 * Можем ли мы показывать визуальный эффект затенения текущего экрана вместо спиннера?
 * Почему [последний пример с задержкой](https://codesandbox.io/s/infallible-feather-xjtbu) выводит в лог предупреждение, когда мы кликаем по кнопке «Next»?
+=======
+* If some component "suspends", does the app freeze? How to avoid this?
+* What if we want to show a spinner in a different place than "above" the component in a tree?
+* If we intentionally *want* to show an inconsistent UI for a small period of time, can we do that?
+* Instead of showing a spinner, can we add a visual effect like "greying out" the current screen?
+* Why does our [last Suspense example](https://codesandbox.io/s/sparkling-field-41z4r3) log a warning when clicking the "Next" button?
+>>>>>>> 1e3b023d3192c36a2da7b72389debee2f0e0e8b0
 
 Чтобы ответить на эти вопросы, мы ссылаемся на следующий раздел о [Паттернах Конкурентных Пользовательских Интерфейсов](/docs/concurrent-mode-patterns.html).
