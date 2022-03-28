@@ -1162,13 +1162,21 @@ class Game extends React.Component {
   }
 ```
 
+<<<<<<< HEAD
 Обратите внимание, что в методе `jumpTo` мы не обновили свойство `history` состояния. Это потому, что обновления состояния объединяются или, проще говоря, React обновит только те свойства, которые были указаны в методе `setState` без изменения остальных свойств. Подробнее об этом читайте в **[документации](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
+=======
+Notice in `jumpTo` method, we haven't updated `history` property of the state. That is because state updates are merged or in more simple words React will update only the properties mentioned in `setState` method leaving the remaining state as is. For more info **[see the documentation](/docs/state-and-lifecycle.html#state-updates-are-merged)**.
+>>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 Мы сделаем ещё несколько изменений в методе Game `handleClick`, который выполняется когда вы кликаете на клетки.
 
 Добавленный нами `stepNumber` указывает номер хода, отображающегося пользователю. Когда мы делаем очередной ход, нам нужно обновить `stepNumber` используя `stepNumber: history.length` как часть аргумента для `this.setState`. Это гарантирует, что мы не застрянем, показывая одно и то же после того, как был сделан новый ход.
 
+<<<<<<< HEAD
 Мы также заменим чтение `this.state.history` на `this.state.history.slice(0, this.state.stepNumber + 1)`. Это гарантирует, что если мы «вернёмся назад», а затем сделаем новый шаг из этой точки, мы удалим всю «будущую» историю, которая перестала быть актуальной.
+=======
+We will also replace reading `this.state.history` with `this.state.history.slice(0, this.state.stepNumber + 1)`. This ensures that if we "go back in time" and then make a new move from that point, we throw away all the "future" history that would now be incorrect.
+>>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
 
 ```javascript{2,13}
   handleClick(i) {

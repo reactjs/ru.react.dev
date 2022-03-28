@@ -159,7 +159,11 @@ render() {
   const count = 0;
   return (
     <div>
+<<<<<<< HEAD
       { count && <h1>Количество сообщений: {count}</h1>}
+=======
+      {count && <h1>Messages: {count}</h1>}
+>>>>>>> 5e9d673c6bc1530c901548c0b51af3ad3f91d594
     </div>
   );
 }
