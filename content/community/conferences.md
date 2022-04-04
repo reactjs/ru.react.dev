@@ -36,6 +36,11 @@ June 1 - 4, 2022. Atlanta, GA, USA
 
 [Website](https://renderatl.com) - [Discord](https://www.renderatl.com/discord) - [Twitter](https://twitter.com/renderATL) - [Instagram](https://www.instagram.com/renderatl/) - [Facebook](https://www.facebook.com/renderatl/) - [LinkedIn](https://www.linkedin.com/company/renderatl) - [Podcast](https://www.renderatl.com/culture-and-code#/)
 
+### React Day Bangalore 2022 {#reactday-bangalore-2022}
+June 8 - 9, 2022.  Remote
+
+[Website](https://reactday.in/) - [Twitter](https://twitter.com/ReactDayIn) - [Linkedin](https://www.linkedin.com/company/react-day/) - [YouTube](https://www.youtube.com/reactify_in)
+
 ### App.js Conf 2022 {#appjs-conf-2022}
 June 8 - 10, 2022. In-person in Kraków, Poland + remote
 
@@ -46,7 +51,7 @@ June 17 & 21, 2022. In-person in Amsterdam, Netherlands + remote first interacti
 
 [Website](https://reactsummit.com) - [Twitter](https://twitter.com/reactsummit) - [Facebook](https://www.facebook.com/reactamsterdam) - [Videos](https://youtube.com/c/ReactConferences)
 
-### React Native EU 2022: Powered by {callstack}
+### React Native EU 2022: Powered by {callstack} {#react-native-eu-2022-powered-by-callstack}
 September 1-2, 2022 - Remote event
 
 [Website](https://www.react-native.eu/?utm_campaign=React_Native_EU&utm_source=referral&utm_content=reactjs_community_conferences) -
@@ -96,7 +101,7 @@ November 12-13, 2021 - remote event
 ### < React Global > by Geekle {#react-global-2021}
 November 3-4, 2021 - remote event
 
-[Website](https://geekle.us/react) - [LinkedIn](https://www.linkedin.com/events/javascriptglobalsummit6721691514176720896/) 
+[Website](https://geekle.us/react) - [LinkedIn](https://www.linkedin.com/events/javascriptglobalsummit6721691514176720896/) - [YouTube](https://www.youtube.com/watch?v=0HhWIvPhbu0)
 
 ### React Advanced 2021 {#react-advanced-2021}
 October 22-23, 2021. In-person in London, UK + remote (hybrid event)
