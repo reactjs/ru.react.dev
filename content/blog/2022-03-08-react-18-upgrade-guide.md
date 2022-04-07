@@ -9,7 +9,7 @@ If you'd like to help us test React 18, follow the steps in this upgrade guide a
 
 *Note for React Native users: React 18 will ship in React Native with the New React Native Architecture. For more information, see the [React Conf keynote here](https://www.youtube.com/watch?v=FZ0cG47msEk&t=1530s).*
 
-## Installing
+## Installing {#installing}
 
 To install the latest React 18 RC, use the `@rc` tag:
 
@@ -23,7 +23,7 @@ Or if you’re using yarn:
 yarn add react@rc react-dom@rc
 ```
 
-## Updates to Client Rendering APIs
+## Updates to Client Rendering APIs {#updates-to-client-rendering-apis}
 
 When you first install React 18, you will see a warning in the console:
 
@@ -97,7 +97,7 @@ const root = hydrateRoot(container, <App tab="home" />);
 
 For more information, see the [working group discussion here](https://github.com/reactwg/react-18/discussions/5).
 
-## Updates to Server Rendering APIs
+## Updates to Server Rendering APIs {#updates-to-server-rendering-apis}
 
 In this release, we’re revamping our `react-dom/server` APIs to fully support Suspense on the server and Streaming SSR. As part of these changes, we're deprecating the old Node streaming API, which does not support incremental Suspense streaming on the server.
 
@@ -120,7 +120,7 @@ Finally, this API will continue to work for rendering e-mails:
 
 For more information on the changes to server rendering APIs, see the working group post on [Upgrading to React 18 on the server](https://github.com/reactwg/react-18/discussions/22), a [deep dive on the new Suspense SSR Architecture](https://github.com/reactwg/react-18/discussions/37), and [Shaundai Person’s](https://twitter.com/shaundai) talk on [Streaming Server Rendering with Suspense](https://www.youtube.com/watch?v=pj5N-Khihgc) at React Conf 2021.
 
-## Automatic Batching
+## Automatic Batching {#automatic-batching}
 
 React 18 adds out-of-the-box performance improvements by doing more batching by default. Batching is when React groups multiple state updates into a single re-render for better performance. Before React 18, we only batched updates inside React event handlers. Updates inside of promises, setTimeout, native event handlers, or any other event were not batched in React by default:
 
@@ -179,7 +179,7 @@ function handleClick() {
 
 For more information, see the [Automatic batching deep dive](https://github.com/reactwg/react-18/discussions/21).
 
-## New APIs for Libraries
+## New APIs for Libraries {#new-apis-for-libraries}
 
 In the React 18 Working Group we worked with library maintainers to create new APIs needed to support concurrent rendering for use cases specific to their use case in areas like styles, external stores, and accessibility. To support React 18, some libraries may need to switch to one of the following APIs:
 
@@ -189,7 +189,7 @@ In the React 18 Working Group we worked with library maintainers to create new A
 
 React 18 also introduces new APIs for concurrent rendering such as `startTransition` and `useDeferredValue`, which we will share more about in the upcoming stable release post.
 
-## Updates to Strict Mode
+## Updates to Strict Mode {#updates-to-strict-mode}
 
 In the future, we'd like to add a feature that allows React to add and remove sections of the UI while preserving state. For example, when a user tabs away from a screen and back, React should be able to immediately show the previous screen. To do this, React would unmount and remount trees using the same component state as before.
 
@@ -221,7 +221,7 @@ With Strict Mode in React 18, React will simulate unmounting and remounting the 
 
 For more information, see the Working Group posts for [Adding Strict Effects to Strict Mode](https://github.com/reactwg/react-18/discussions/19) and [How to Support Strict Effects](https://github.com/reactwg/react-18/discussions/18).
 
-## Configuring Your Testing Environment
+## Configuring Your Testing Environment {#configuring-your-testing-environment}
 
 When you first update your tests to use `createRoot`, you may see this warning in your test console:
 
@@ -242,13 +242,13 @@ Eventually, we expect testing libraries will configure this for you automaticall
 
 [More background on the the `act` testing API and related changes](https://github.com/reactwg/react-18/discussions/102) is available in the working group.
 
-## Dropping Support for Internet Explorer
+## Dropping Support for Internet Explorer {#dropping-support-for-internet-explorer}
 
 In this release, React is dropping support for Internet Explorer, which is [going out of support on June 15, 2022](https://blogs.windows.com/windowsexperience/2021/05/19/the-future-of-internet-explorer-on-windows-10-is-in-microsoft-edge). We’re making this change now because new features introduced in React 18 are built using modern browser features such as microtasks which cannot be adequately polyfilled in IE.
 
 If you need to support Internet Explorer we recommend you stay with React 17.
 
-## Other Changes
+## Other Changes {#other-changes}
 
 * [Update to remove the "setState on unmounted component" warning](https://github.com/reactwg/react-18/discussions/82)
 * [Suspense no longer requires a `fallback` prop to capture](https://github.com/reactwg/react-18/discussions/72)
