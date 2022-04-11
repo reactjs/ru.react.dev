@@ -33,6 +33,7 @@ React [можно использовать и без JSX](/docs/react-without-js
 В следующем примере мы объявляем переменную `name` и затем используем её внутри JSX, обрамляя фигурными скобками:
 
 ```js{1,2}
+<<<<<<< HEAD
 const name = 'Иван-Царевич';
 const element = <h1>Здравствуй, {name}!</h1>;
 
@@ -40,6 +41,10 @@ ReactDOM.render(
   element,
   document.getElementById('root')
 );
+=======
+const name = 'Josh Perez';
+const element = <h1>Hello, {name}</h1>;
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 ```
 
 JSX допускает использование любых корректных [JavaScript-выражений](https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Expressions_and_Operators) внутри фигурных скобок. Например,  `2 + 2`, `user.firstName` и `formatName(user)` являются допустимыми выражениями.
@@ -60,11 +65,6 @@ const element = (
   <h1>
     Здравствуй, {formatName(user)}!
   </h1>
-);
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
 );
 ```
 

@@ -65,7 +65,18 @@ React-компоненты также могут быть объявлены к�
 - [`React.lazy`](#reactlazy)
 - [`React.Suspense`](#reactsuspense)
 
+<<<<<<< HEAD
 ### Хуки {#hooks}
+=======
+### Transitions {#transitions}
+
+*Transitions* are a new concurrent feature introduced in React 18. They allow you to mark updates as transitions, which tells React that they can be interrupted and avoid going back to Suspense fallbacks for already visible content.
+
+- [`React.startTransition`](#starttransition)
+- [`React.useTransition`](/docs/hooks-reference.html#usetransition)
+
+### Hooks {#hooks}
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 *Хуки* — это новое дополнение в React 16.8. Они позволяют вам использовать состояние и другие функции React без написания класса. У хуков есть [свой раздел документации](/docs/hooks-intro.html) и отдельный API-справочник:
 
@@ -81,6 +92,12 @@ React-компоненты также могут быть объявлены к�
   - [`useImperativeHandle`](/docs/hooks-reference.html#useimperativehandle)
   - [`useLayoutEffect`](/docs/hooks-reference.html#uselayouteffect)
   - [`useDebugValue`](/docs/hooks-reference.html#usedebugvalue)
+  - [`useDeferredValue`](/docs/hooks-reference.html#usedeferredvalue)
+  - [`useTransition`](/docs/hooks-reference.html#usetransition)
+  - [`useId`](/docs/hooks-reference.html#useid)
+- [Library Hooks](/docs/hooks-reference.html#library-hooks)
+  - [`useSyncExternalStore`](/docs/hooks-reference.html#usesyncexternalstore)
+  - [`useInsertionEffect`](/docs/hooks-reference.html#useinsertioneffect)
 
 * * *
 
@@ -329,6 +346,7 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 
 Обратите внимание, для рендера `lazy` компонентов требуется чтобы выше в дереве находился компонент `<React.Suspense>`. Это позволит вам отображать индикатор загрузки.
 
+<<<<<<< HEAD
 > **Примечание**
 >
 > Использование `React.lazy` с динамическим импортом требует доступности Promises в среде JS. Для IE11 и ниже необходим полифил.
@@ -336,6 +354,13 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 ### `React.Suspense` {#reactsuspense}
 
 `React.Suspense` позволяет показать индикатор загрузки в случае, если некоторые компоненты в дереве под ним ещё не готовы к рендеру. Сегодня ленивая загрузка компонентов — это **единственный** вариант использования, поддерживаемый `<React.Suspense>`:
+=======
+### `React.Suspense` {#reactsuspense}
+
+`React.Suspense` lets you specify the loading indicator in case some components in the tree below it are not yet ready to render. In the future we plan to let `Suspense` handle more scenarios such as data fetching. You can read about this in [our roadmap](/blog/2018/11/27/react-16-roadmap.html).
+
+Today, lazy loading components is the **only** use case supported by `<React.Suspense>`:
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
 
 ```js
 // Этот компонент загружается динамически
@@ -355,8 +380,37 @@ function MyComponent() {
 
 Это задокументировано в нашем руководстве по [разделению кода](/docs/code-splitting.html#reactlazy). Обратите внимание, что `lazy` компоненты могут быть глубоко внутри дерева `Suspense` -- не нужно оборачивать каждый из них. Считается хорошей практикой использовать `<Suspense>` для индикации загрузки, а `lazy()` -- для разделения кода. 
 
+<<<<<<< HEAD
 Хотя это не поддерживается сегодня, в будущем мы планируем позволить `Suspense` обрабатывать больше сценариев, таких как получение данных от API. Вы можете прочитать об этом в [нашей дорожной карте](/blog/2018/11/27/react-16-roadmap.html).
 
 >Примечание:
 >
 > `React.lazy()` и `<React.Suspense>` ещё не поддерживаются `ReactDOMServer`. Это известное ограничение, которое будет устранено в будущем.
+=======
+> Note
+> 
+> For content that is already shown to the user, switching back to a loading indicator can be disorienting. It is sometimes better to show the "old" UI while the new UI is being prepared. To do this, you can use the new transition APIs [`startTransition`](#starttransition) and [`useTransition`](/docs/hooks-reference.html#usetransition) to mark updates as transitions and avoid unexpected fallbacks.
+
+#### `React.Suspense` in Server Side Rendering {#reactsuspense-in-server-side-rendering}
+During server side rendering Suspense Boundaries allow you to flush your application in smaller chunks by suspending.
+When a component suspends we schedule a low priority task to render the closest Suspense boundary's fallback. If the component unsuspends before we flush the fallback then we send down the actual content and throw away the fallback.
+
+#### `React.Suspense` during hydration {#reactsuspense-during-hydration}
+Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before its hydrated will cause the boundary to hydrate at 
+a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
+
+### `React.startTransition` {#starttransition}
+
+```js
+React.startTransition(callback)
+```
+`React.startTransition` lets you mark updates inside the provided callback as transitions. This method is designed to be used when [`React.useTransition`](/docs/hooks-reference.html#usetransition) is not available.
+
+> Note:
+>
+> Updates in a transition yield to more urgent updates such as clicks.
+>
+> Updates in a transitions will not show a fallback for re-suspended content, allowing the user to continue interacting while rendering the update.
+>
+> `React.startTransition` does not provide an `isPending` flag. To track the pending status of a transition see [`React.useTransition`](/docs/hooks-reference.html#usetransition).
+>>>>>>> 84ad3308338e2bb819f4f24fa8e9dfeeffaa970b
