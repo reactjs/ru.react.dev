@@ -52,10 +52,17 @@ next: create-a-new-react-app.html
 ```html{5,6,9}
   <!-- ... остальной HTML ... -->
 
+<<<<<<< HEAD
   <!-- Загрузим React. -->
   <!-- Примечание: при деплое на продакшен замените «development.js» на «production.min.js». -->
   <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+=======
+  <!-- Load React. -->
+  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
   <!-- Загрузим наш React-компонент. -->
   <script src="like_button.js"></script>
@@ -77,14 +84,24 @@ next: create-a-new-react-app.html
 
 Добавьте ещё 2 строки в конец файла `like_button.js`, после **[стартового кода](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**:
 
+<<<<<<< HEAD
 ```js{3,4}
 // ... стартовый код ...
+=======
+```js{3,4,5}
+// ... the starter code you pasted ...
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+const root = ReactDOM.createRoot(domContainer);
+root.render(e(LikeButton));
 ```
 
+<<<<<<< HEAD
 Эти две строки кода ищут элемент `<div>`, который мы добавили на первом шаге, а затем отображают React-компонент с кнопкой "Нравится" внутри него.
+=======
+These three lines of code find the `<div>` we added to our HTML in the first step, create a React app with it, and then display our "Like" button React component inside of it.
+>>>>>>> 07dbd86ca421c262157af673a2584a40fd3b2450
 
 ### Готово! {#thats-it}
 
@@ -115,8 +132,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 Если вы уже минифицируете свои скрипты, то не забудьте подготовить к продакшену сам React. Для этого поменяйте окончания ссылок на React на `production.min.js`:
 
 ```js
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 Если же вы не настроили минификацию для ваших скриптов, то [вот один из вариантов, как это сделать](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
