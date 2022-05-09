@@ -8,11 +8,17 @@ next: introducing-jsx.html
 
 Самый маленький пример на React выглядит так:
 
+<<<<<<< HEAD
 ```js
 ReactDOM.render(
   <h1>Привет, мир!</h1>,
   document.getElementById('root')
 );
+=======
+```jsx
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<h1>Hello, world!</h1>);
+>>>>>>> 26a870e1c6e232062b760d37620d85802750e985
 ```
 
 На странице появится заголовок «Привет, мир!».
