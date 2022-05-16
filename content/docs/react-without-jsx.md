@@ -18,10 +18,15 @@ class Hello extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 ReactDOM.render(
   <Hello toWhat="мир" />,
   document.getElementById('root')
 );
+=======
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Hello toWhat="World" />);
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 ```
 
 Он может быть превращён в код без JSX:
@@ -33,10 +38,15 @@ class Hello extends React.Component {
   }
 }
 
+<<<<<<< HEAD
 ReactDOM.render(
   React.createElement(Hello, {toWhat: 'мир'}, null),
   document.getElementById('root')
 );
+=======
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(React.createElement(Hello, {toWhat: 'World'}, null));
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 ```
 
 Если вас интересуют другие примеры того, как JSX превращается в JavaScript, вы можете попробовать [онлайн-компилятор Babel](babel://jsx-simple-example).
@@ -48,10 +58,15 @@ ReactDOM.render(
 ```js
 const e = React.createElement;
 
+<<<<<<< HEAD
 ReactDOM.render(
   e('div', null, 'Привет, мир!'),
   document.getElementById('root')
 );
+=======
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(e('div', null, 'Hello World'));
+>>>>>>> 951fae39f0e12dc061f1564d02b2f4707c0541c4
 ```
 
 Если вы примените эту сокращённую форму для `React.createElement`, то использование React без JSX станет почти таким же удобным, как вы привыкли.
