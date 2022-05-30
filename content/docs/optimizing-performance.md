@@ -43,8 +43,8 @@ npm run build
 Мы предлагаем готовые для продакшена версии React и React DOM в виде отдельных файлов:
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
 Помните, что для продакшена подходят только те файлы, которые заканчиваются на `.production.min.js`.
@@ -175,8 +175,13 @@ module.exports = {
 
 > Примечание
 >
+<<<<<<< HEAD
 > До React 17 мы использовали стандартный [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) для профилирования компонентов с помощью вкладки Performance браузера Chrome. 
 > Более подробнее об этом способе можно узнать в [статье Бена Шварца (Ben Schwarz)](https://calibreapp.com/blog/react-performance-profiling-optimization).
+=======
+> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab.
+> For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 ## Виртуализация длинных списков {#virtualize-long-lists}
 

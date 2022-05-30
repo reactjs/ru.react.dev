@@ -103,10 +103,17 @@ React использует [семантическое версионирова�
 
 ### Что нужно для разработки? {#contribution-prerequisites}
 
+<<<<<<< HEAD
 * У вас на компьютере должны быть установлены [Node.js](https://nodejs.org) версии 8.0.0 или выше и [Yarn](https://yarnpkg.com/en/) 1.2.0 или выше.
 * У вас установлен [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 * Некоторые зависимости React нужно компилировать. Для этого вам необходимо установить `gcc`. Если у вас OS X, то Xcode Command Line Tools справятся с этой задачей. В Ubuntu команда `apt-get install build-essential` установит все необходимые пакеты. В других Linux-дистрибутивах установка выполняется с помощью аналогичных команд. Для Windows последовательность действий описана в [инструкции по установке `node-gyp`](https://github.com/nodejs/node-gyp#installation).
 * Знание git.
+=======
+* You have [Node](https://nodejs.org) installed at LTS and [Yarn](https://yarnpkg.com/en/) at v1.2.0+.
+* You have [JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) installed.
+* You have `gcc` installed or are comfortable installing a compiler if needed. Some of our dependencies may require a compilation step. On OS X, the Xcode Command Line Tools will cover this. On Ubuntu, `apt-get install build-essential` will install the required packages. Similar commands should work on other Linux distros. Windows will require some additional steps, see the [`node-gyp` installation instructions](https://github.com/nodejs/node-gyp#installation) for details.
+* You are familiar with Git.
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 ### Порядок сборки и тестирования React {#development-workflow}
 

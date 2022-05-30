@@ -190,9 +190,15 @@ class Chosen extends React.Component {
 
 ## Интеграция с другими визуальными библиотеками {#integrating-with-other-view-libraries}
 
+<<<<<<< HEAD
 Благодаря гибкости [`ReactDOM.render()`](/docs/react-dom.html#render) React может встраиваться в другие приложения.
 
 Хотя обычно React используют для загрузки в DOM одного корневого компонента, `ReactDOM.render()` может быть вызван несколько раз для независимых частей UI. Это могут быть как отдельные кнопки, так и большие приложения.
+=======
+React can be embedded into other applications thanks to the flexibility of [`createRoot()`](/docs/react-dom-client.html#createRoot).
+
+Although React is commonly used at startup to load a single root React component into the DOM, `createRoot()` can also be called multiple times for independent parts of the UI which can be as small as a button, or as large as an app.
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 На самом деле, именно так React используется в Facebook. Это позволяет писать приложения на React по частям и объединять их с существующими генерируемыми сервером шаблонами и другим клиентским кодом.
 
@@ -216,6 +222,7 @@ function Button() {
   return <button id="btn">Сказать «Привет»</button>;
 }
 
+<<<<<<< HEAD
 ReactDOM.render(
   <Button />,
   document.getElementById('container'),
@@ -225,6 +232,11 @@ ReactDOM.render(
     });
   }
 );
+=======
+$('#btn').click(function() {
+  alert('Hello!');
+});
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 ```
 
 А дальше вы можете начать переносить логику внутрь компонента и использовать остальные React-подходы. Например, в компонентах лучше не полагаться на идентификаторы, потому что один и тот же компонент может быть отрендерен несколько раз. Вместо этого мы используем [событийную систему React](/docs/handling-events.html) и зарегистрируем обработчик непосредственно на React-элементе `<button>`:
@@ -240,36 +252,42 @@ function HelloButton() {
   }
   return <Button onClick={handleClick} />;
 }
-
-ReactDOM.render(
-  <HelloButton />,
-  document.getElementById('container')
-);
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/RVKbvW?editors=1010)
 
+<<<<<<< HEAD
 Вы можете завести столько изолированных компонентов, сколько вам захочется. И использовать `ReactDOM.render()` для рендеринга в разные DOM-контейнеры. Постепенно, по мере перевода вашего приложения на React, вы сможете комбинировать их в большие компоненты и переносить вызов `ReactDOM.render()` вверх по структуре.
+=======
+You can have as many such isolated components as you like, and use `ReactDOM.createRoot()` to render them to different DOM containers. Gradually, as you convert more of your app to React, you will be able to combine them into larger components, and move some of the `ReactDOM.createRoot()` calls up the hierarchy.
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 ### Встраиваем React в представления Backbone {#embedding-react-in-a-backbone-view}
 
 Представления в [Backbone](https://backbonejs.org/) обычно используют HTML-строки или функции, создающие строковые шаблоны для создания DOM-элементов. Этот механизм также может быть заменён рендерингом React-компонентов.
 
+<<<<<<< HEAD
 Ниже мы создадим Backbone-представление `ParagraphView`. Оно переопределит метод `render()` (из `Backbone.View`) для рендеринга React-компонента `<Paragraph>` в DOM-элемент, предоставляемый Backbone (`this.el`). Также мы воспользуемся [`ReactDOM.render()`](/docs/react-dom.html#render):
+=======
+Below, we will create a Backbone view called `ParagraphView`. It will override Backbone's `render()` function to render a React `<Paragraph>` component into the DOM element provided by Backbone (`this.el`). Here, too, we are using [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot):
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
-```js{1,5,8,12}
+```js{7,11,15}
 function Paragraph(props) {
   return <p>{props.text}</p>;
 }
 
 const ParagraphView = Backbone.View.extend({
+  initialize(options) {
+    this.reactRoot = ReactDOM.createRoot(this.el);
+  },
   render() {
     const text = this.model.get('text');
-    ReactDOM.render(<Paragraph text={text} />, this.el);
+    this.reactRoot.render(<Paragraph text={text} />);
     return this;
   },
   remove() {
-    ReactDOM.unmountComponentAtNode(this.el);
+    this.reactRoot.unmount();
     Backbone.View.prototype.remove.call(this);
   }
 });
@@ -277,7 +295,11 @@ const ParagraphView = Backbone.View.extend({
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/gWgOYL?editors=0010)
 
+<<<<<<< HEAD
 Стоит отметить вызов `ReactDOM.unmountComponentAtNode()` в методе `remove`. Он нужен для того, чтобы React отключил обработчики событий и другие ресурсы, связанные с деревом компонентов при удалении.
+=======
+It is important that we also call `root.unmount()` in the `remove` method so that React unregisters event handlers and other resources associated with the component tree when it is detached.
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 Когда компонент удаляется из дерева React *изнутри*, очистка производится автоматически, но поскольку мы удаляем сущность из дерева вручную, то обязаны вызвать этот метод.
 
@@ -427,11 +449,17 @@ function Example(props) {
   );
 }
 
+<<<<<<< HEAD
 const model = new Backbone.Model({ firstName: 'Фродо' });
 ReactDOM.render(
   <Example model={model} />,
   document.getElementById('root')
 );
+=======
+const model = new Backbone.Model({ firstName: 'Frodo' });
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Example model={model} />);
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/PmWwwa?editors=0010)

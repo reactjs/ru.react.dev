@@ -275,10 +275,14 @@ this.setState(partialState);
 Код ниже это демонстрирует. (Изначально заблокированный `input` становится редактируемым после небольшой задержки.)
 
 ```javascript
+<<<<<<< HEAD
 ReactDOM.render(<input value="Привет" />, mountNode);
+=======
+ReactDOM.createRoot(mountNode).render(<input value="hi" />);
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 setTimeout(function() {
-  ReactDOM.render(<input value={null} />, mountNode);
+  ReactDOM.createRoot(mountNode).render(<input value={null} />);
 }, 1000);
 ```
 

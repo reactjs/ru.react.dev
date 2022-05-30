@@ -507,7 +507,11 @@ setState(updater, [callback])
 
 `setState()` добавляет в очередь изменения в состоянии компонента. Также он указывает React, что компонент и его дочерние элементы должны быть повторно отрендерены с обновлённым состоянием. Этот метод используется для обновления интерфейса в ответ на обработчики событий и ответы сервера.
 
+<<<<<<< HEAD
 Думайте о `setState()`, как о *запросе*, а не как о команде немедленного обновления компонента. Для увеличения производительности React может задержать его выполнение, а затем обновить несколько компонентов за один проход. React не гарантирует моментальное применение изменений в состоянии.
+=======
+Think of `setState()` as a *request* rather than an immediate command to update the component. For better perceived performance, React may delay it, and then update several components in a single pass. In the rare case that you need to force the DOM update to be applied synchronously, you may wrap it in [`flushSync`](/docs/react-dom.html#flushsync), but this may hurt performance.
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 Метод `setState()` не всегда обновляет компонент сразу. Он может группировать или откладывать обновление до следующего раза. Это делает чтение `this.state` сразу после вызова `setState()` потенциальной ловушкой. Вместо этого используйте `componentDidUpdate()` или колбэк `setState()` (`setState(updater, callback)`), каждый из которых гарантированно вызывается после того как было применено обновление. Если вам нужно обновить состояние на основе предыдущего, используйте аргумент `updater`, описанный ниже.
 

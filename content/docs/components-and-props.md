@@ -64,26 +64,39 @@ const element = <Welcome name="Алиса" />;
 
 Например, этот компонент выведет «Привет, Алиса» на страницу:
 
-```js{1,5}
+```js{1,6}
 function Welcome(props) {
   return <h1>Привет, {props.name}</h1>;
 }
 
+<<<<<<< HEAD
 const element = <Welcome name="Алиса" />;
 ReactDOM.render(
   element,
   document.getElementById('root')
 );
+=======
+const root = ReactDOM.createRoot(document.getElementById('root'));
+const element = <Welcome name="Sara" />;
+root.render(element);
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 ```
 
 **[Try it on CodePen](https://codepen.io/gaearon/pen/YGYmEG?editors=1010)**
 
 Давайте разберём, что именно здесь происходит:
 
+<<<<<<< HEAD
 1. Мы передаём React-элемент `<Welcome name="Алиса" />` в `ReactDOM.render()`.
 2. React вызывает наш компонент `Welcome` с пропсами `{name: 'Алиса'}`.
 3. Наш компонент `Welcome` возвращает элемент `<h1>Привет, Алиса</h1>` в качестве результата.
 4. React DOM делает минимальные изменения в DOM, чтобы получилось `<h1>Привет, Алиса</h1>`.
+=======
+1. We call `root.render()` with the `<Welcome name="Sara" />` element.
+2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
+3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
+4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+>>>>>>> d522a5f4a9faaf6fd314f4d15f1be65ca997760f
 
 >**Примечание:** Всегда называйте компоненты с заглавной буквы.
 >
@@ -111,11 +124,6 @@ function App() {
     </div>
   );
 }
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
 ```
 
 **[Try it on CodePen](https://codepen.io/gaearon/pen/KgQKPr?editors=1010)**
