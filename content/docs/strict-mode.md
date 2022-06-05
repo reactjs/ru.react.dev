@@ -21,7 +21,7 @@ permalink: docs/strict-mode.html
 * [Предупреждении об использовании устаревшего метода findDOMNode](#warning-about-deprecated-finddomnode-usage)
 * [Обнаружении неожиданных побочных эффектов](#detecting-unexpected-side-effects)
 * [Обнаружении устаревшего API контекста](#detecting-legacy-context-api)
-* [Ensuring reusable state](#ensuring-reusable-state)
+* [Обеспечение переиспользованного состояния](#ensuring-reusable-state)
 
 Дополнительные проверки будут включены в будущих релизах React.
 
@@ -131,47 +131,47 @@ React работает в два этапа:
 
 Ознакомьтесь с [документацией нового API контекста](/docs/context.html), чтобы упростить переход на новую версию.
 
-### Ensuring reusable state {#ensuring-reusable-state}
+### Обеспечение переиспользованного состояния {#ensuring-reusable-state}
 
-In the future, we’d like to add a feature that allows React to add and remove sections of the UI while preserving state. For example, when a user tabs away from a screen and back, React should be able to immediately show the previous screen. To do this, React support remounting trees using the same component state used before unmounting.
+В будущем мы хотели бы добавить функцию, которая позволяет React добавлять и удалять разделы пользовательского интерфейса с сохранением состояния. Например, когда пользователь переходит от экрана к экрану и обратно, React должен иметь возможность немедленно отображать предыдущий экран. Для этого React поддерживает повторное монтирование деревьев с использованием того же состояния компонента, которое использовалось до размонтирования.
 
-This feature will give React better performance out-of-the-box, but requires components to be resilient to effects being mounted and destroyed multiple times. Most effects will work without any changes, but some effects do not properly clean up subscriptions in the destroy callback, or implicitly assume they are only mounted or destroyed once.
+Эта функция позволит React повысить производительность "из коробки” (изначально готовому к использованию), но требует, чтобы компоненты были устойчивы к многократному монтированию и уничтожению эффектов. Большинство эффектов будут работать без каких-либо изменений, но некоторые эффекты неправильно очищают подписки в функции обратного вызова или подразумевают, что они монтируются или уничтожаются только один раз.
 
-To help surface these issues, React 18 introduces a new development-only check to Strict Mode. This new check will automatically unmount and remount every component, whenever a component mounts for the first time, restoring the previous state on the second mount.
+Чтобы помочь устранить эти проблемы, React 18 представляет новую проверку только в режиме разработки в строгом режиме. Эта новая проверка автоматически размонтирует и перемонтирует каждый компонент всякий раз, когда компонент монтируется в первый раз, восстанавливая предыдущее состояние при втором монтировании.
 
-To demonstrate the development behavior you'll see in Strict Mode with this feature, consider what happens when React mounts a new component. Without this change, when a component mounts, React creates the effects:
-
-```
-* React mounts the component.
-  * Layout effects are created.
-  * Effects are created.
-```
-
-With Strict Mode starting in React 18, whenever a component mounts in development, React will simulate immediately unmounting and remounting the component:
+Чтобы продемонстрировать поведение разработки, которое вы увидите в строгом режиме с помощью этой функции, рассмотрим, что происходит, когда React монтирует новый компонент. Без строго режима, когда компонент монтируется, React создает эффекты:
 
 ```
-* React mounts the component.
-    * Layout effects are created.
-    * Effect effects are created.
-* React simulates effects being destroyed on a mounted component.
-    * Layout effects are destroyed.
-    * Effects are destroyed.
-* React simulates effects being re-created on a mounted component.
-    * Layout effects are created
-    * Effect setup code runs
+* React монтирует компонент.
+  * Создаются эффекты макета.
+  * Создаются эффекты.
 ```
 
-On the second mount, React will restore the state from the first mount. This feature simulates user behavior such as a user tabbing away from a screen and back, ensuring that code will properly handle state restoration.
-
-When the component unmounts, effects are destroyed as normal:
+В строгом режиме, начинающегося с React 18, всякий раз, когда компонент монтируется в процессе разработки, React будет имитировать немедленное размонтирование и повторное монтирование компонента:
 
 ```
-* React unmounts the component.
-  * Layout effects are destroyed.
-  * Effect effects are destroyed.
+* React монтирует компонент.
+  * Создаются эффекты макета.
+  * Создаются эффекты.
+* React имитирует разрушение эффектов на смонтированном компоненте.
+  * Эффекты макета уничтожаются.
+  * Эффекты уничтожаются.
+* React имитирует пересоздание эффектов на смонтированном компоненте.
+  * Создаются эффекты макета.
+  * Установка эффектов.
 ```
 
-Unmounting and remounting includes:
+При втором монтировании React восстановит состояние с первого монтирования. Эта функция имитирует поведение пользователя, например, переход пользователя с экрана на вкладку и обратно, гарантируя, что код будет правильно обрабатывать восстановление состояния.
+
+Когда компонент размонтируется, эффекты уничтожаются в обычном режиме:
+
+```
+* React размонтирует компонент.
+  * Уничтожаются эффекты макета.
+  * Уничтожаются эффекты эффектов.
+```
+
+Размонтирование и повторное монтирование включает в себя:
 
 - `componentDidMount`
 - `componentWillUnmount`
@@ -179,9 +179,9 @@ Unmounting and remounting includes:
 - `useLayoutEffect`
 - `useInsertionEffect`
 
-> Note:
+> Примечание:
 >
-> This only applies to development mode, _production behavior is unchanged_.
+> Это относится только к режиму разработки, _для продакшена поведение остаётся неизменным_.
 
-For help supporting common issues, see:
-  - [How to support Reusable State in Effects](https://github.com/reactwg/react-18/discussions/18)
+Для получения помощи в решении распространённых проблем см.:
+  - [Как поддерживать повторно используемое состояние в эффектах](https://github.com/reactwg/react-18/discussions/18)
