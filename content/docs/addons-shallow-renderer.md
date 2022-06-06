@@ -59,7 +59,11 @@ expect(result.props.children).toEqual([
 
 Вы можете думать о shallowRenderer как о «месте» в которое рендерится тестируемый компонент, и из которого вы можете извлечь результат вывода этого компонента.
 
+<<<<<<< HEAD
 `shallowRenderer.render()` схож с [`ReactDOM.render()`](/docs/react-dom.html#render), но не требует DOM и рендерит всего один уровень глубины. Это означает что вы можете тестировать компоненты независимо от того, как реализованы их дочерние компоненты.
+=======
+`shallowRenderer.render()` is similar to [`root.render()`](/docs/react-dom-client.html#createroot) but it doesn't require DOM and only renders a single level deep. This means you can test components isolated from how their children are implemented.
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 ### `shallowRenderer.getRenderOutput()` {#shallowrenderergetrenderoutput}
 

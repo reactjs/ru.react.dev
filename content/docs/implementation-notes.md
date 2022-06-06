@@ -32,10 +32,15 @@ redirect_from:
 Давайте рассмотрим, как компонент монтируется в первый раз.
 
 ```js
-ReactDOM.render(<App />, rootEl);
+const root = ReactDOM.createRoot(rootEl);
+root.render(<App />);
 ```
 
+<<<<<<< HEAD
 React DOM передаст `<App />` в согласователь. Запомните, что `<App />` -- это React-элемент, т.е. описание того, что нужно отрендерить. Вы можете представлять его как просто объект.
+=======
+`root.render` will pass `<App />` along to the reconciler. Remember that `<App />` is a React element, that is, a description of *what* to render. You can think about it as a plain object:
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 ```js
 console.log(<App />);
@@ -236,9 +241,15 @@ rootEl.appendChild(node);
 Ключевая особенность React -- ререндеринг всего без пересоздания DOM или сброса состояния:
 
 ```js
+<<<<<<< HEAD
 ReactDOM.render(<App />, rootEl);
 // Использовать уже существующий DOM:
 ReactDOM.render(<App />, rootEl);
+=======
+root.render(<App />);
+// Should reuse the existing DOM:
+root.render(<App />);
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 ```
 
 Однако, наша реализация знает только как монтировать начальное дерево. Она не может обновлять его, потому что не содержит необходимой информации, например, экземпляры `publicInstance`, или какой DOM-узел (`node`) соответствует компоненту.
@@ -413,7 +424,11 @@ class DOMComponent {
 
  <img src="../images/docs/implementation-notes-tree.png" width="500" style="max-width: 100%" alt="React DevTools tree" />
 
+<<<<<<< HEAD
 В завершении, создадим функцию, которая монтирует полученное дерево в узел-контейнер аналогично `ReactDOM.render()`. Также как и `ReactDOM.render()`, она вернёт внешний экземпляр:
+=======
+To complete this refactoring, we will introduce a function that mounts a complete tree into a container node and a public instance:
+>>>>>>> 9a5bf3e1f1c151720b3ce383fdd9743d4038b71e
 
 ```js
 function mountTree(element, containerNode) {
