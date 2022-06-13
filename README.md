@@ -7,10 +7,17 @@
 ### Предварительные требования
 
 1. Git
+<<<<<<< HEAD
 1. Node: любая версия 12.x, начиная с 12.0.0 или выше
 1. Yarn: Посмотрите [сайт Yarn с инструкциями по установке](https://yarnpkg.com/lang/en/docs/install/)
 1. Сделать форк этого репозитория (для предложения изменений)
 1. Копия [репозитория ru.reactjs.org](https://github.com/reactjs/ru.reactjs.org) на вашем компьютере
+=======
+1. Node: any 12.x version starting with v12.0.0 or greater
+1. Yarn v1: See [Yarn website for installation instructions](https://yarnpkg.com/lang/en/docs/install/)
+1. A fork of the repo (for any contributions)
+1. A clone of the [reactjs.org repo](https://github.com/reactjs/reactjs.org) on your local machine
+>>>>>>> 6d965422a4056bac5f93f92735364cb08bcffc6b
 
 ### Установка
 

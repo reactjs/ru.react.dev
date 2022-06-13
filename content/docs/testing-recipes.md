@@ -605,7 +605,11 @@ it("should render a greeting", () => {
 
 ### Несколько рендереров {#multiple-renderers}
 
+<<<<<<< HEAD
 В редких случаях вы можете запустить тест компонента, который использует несколько рендереров. Например, можно запускать тесты снимками для компонента с помощью `react-test-renderer`, который использует `ReactDOM.render` внутри дочернего компонента для рендера некоторого содержимого. В этом случае можно обернуть обновления функциями `act()` в соответствии с их рендерами.
+=======
+In rare cases, you may be running a test on a component that uses multiple renderers. For example, you may be running snapshot tests on a component with `react-test-renderer`, that internally uses `render` from `react-dom` inside a child component to render some content. In this scenario, you can wrap updates with `act()`s corresponding to their renderers.
+>>>>>>> 6d965422a4056bac5f93f92735364cb08bcffc6b
 
 ```jsx
 import { act as domAct } from "react-dom/test-utils";
