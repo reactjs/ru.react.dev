@@ -108,13 +108,13 @@ const [state, setState] = useState(() => {
 
 Обратите внимание, что для React всё ещё может быть необходим повторный рендер этого компонента. Это не должно быть проблемой, потому что React не будет сильно «углубляться» в дерево. Если вы делаете дорогостоящие вычисления во время рендеринга, вы можете оптимизировать их с помощью `useMemo`.
 
-#### Batching of state updates {#batching-of-state-updates}
+#### Группировка обновлений состояния {#batching-of-state-updates}
 
-React may group several state updates into a single re-render to improve performance. Normally, this improves performance and shouldn't affect your application's behavior.
+React может группировать несколько обновлений состояния в один повторный рендер для улучшения производительности. Обычно это улучшает производительность и не должно влиять на поведение вашего приложения.
 
-Before React 18, only updates inside React event handlers were batched. Starting with React 18, [batching is enabled for all updates by default](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching). Note that React makes sure that updates from several *different* user-initiated events -- for example, clicking a button twice -- are always processed separately and do not get batched. This prevents logical mistakes.
+До 18 версии React группировал только обновления внутри обработчиков событий. Начиная с 18 версии, [группировка включена по умолчанию для всех обновлений](/blog/2022/03/08/react-18-upgrade-guide.html#automatic-batching). Обратите внимание, что если обновления вызваны несколькими *различными* действиями пользователя -- например, пользователь дважды кликнул на кнопку -- то они обрабатываются раздельно и не будут сгруппированы. Это позволяет избежать логических ошибок.
 
-In the rare case that you need to force the DOM update to be applied synchronously, you may wrap it in [`flushSync`](/docs/react-dom.html#flushsync). However, this can hurt performance so do this only where needed.
+В редких случаях, когда вам нужно вызвать принудительное синхронное обновление DOM, вы можете обернуть его в [`flushSync`](/docs/react-dom.html#flushsync). Однако это может вызвать ухудшение производительности, используйте это только в тех случаях, где это действительно нужно.
 
 ### `useEffect` {#useeffect}
 
@@ -152,11 +152,11 @@ useEffect(() => {
 
 Однако не все эффекты могут быть отложены. Например, изменение DOM, которое видно пользователю, должно запускаться синхронно до следующей отрисовки, чтобы пользователь не замечал визуального несоответствия. (Различие концептуально схоже с пассивным и активным слушателями событий.) Для этих типов эффектов React предоставляет один дополнительный хук, называемый [`useLayoutEffect`](#uselayouteffect). Он имеет ту же сигнатуру, что и `useEffect`, и отличается только в его запуске.
 
-Additionally, starting in React 18, the function passed to `useEffect` will fire synchronously **before** layout and paint when it's the result of a discrete user input such as a click, or when it's the result of an update wrapped in [`flushSync`](/docs/react-dom.html#flushsync). This behavior allows the result of the effect to be observed by the event system, or by the caller of [`flushSync`](/docs/react-dom.html#flushsync).
+Также с 18 версии React, функция, переданная в `useEffect`, будет вызвана синхронно **перед** разметкой и отрисовкой, если эффект был вызван действием пользователя или результат обновления был обернут в [`flushSync`](/docs/react-dom.html#flushsync). Такое поведение позволяет системе событий или функции, вызвавшей [`flushSync`](/docs/react-dom.html#flushsync) следить за результатом эффекта.
 
 > Примечание
-> 
-> This only affects the timing of when the function passed to `useEffect` is called - updates scheduled inside these effects are still deferred. This is different than [`useLayoutEffect`](#uselayouteffect), which fires the function and processes the updates inside of it immediately.
+>
+> Это влияет только на время, когда функция, переданная в `useEffect`, будет вызвана - обновления, которые запланированы внутри эффектов останутся отложенными. Это поведение отлично от [`useLayoutEffect`](#uselayouteffect), который вызывает функцию и обрабатывает обновления внутри него мнгновенно.
 
 Хотя `useEffect` откладывается до тех пор, пока браузер не выполнит отрисовку, он гарантированно срабатывает перед любыми новыми рендерами. React всегда полностью применяет эффекты предыдущего рендера перед началом нового обновления.
 
