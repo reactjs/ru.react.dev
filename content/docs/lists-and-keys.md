@@ -33,13 +33,14 @@ const listItems = numbers.map((number) =>
 );
 ```
 
+<<<<<<< HEAD
 Теперь мы включим массив `listItems` внутрь элемента `<ul>` и [отрендерим его в DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
+=======
+Then, we can include the entire `listItems` array inside a `<ul>` element:
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 ```javascript{2}
-ReactDOM.render(
-  <ul>{listItems}</ul>,
-  document.getElementById('root')
-);
+<ul>{listItems}</ul>
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/GjPyQr?editors=0011)
@@ -64,10 +65,8 @@ function NumberList(props) {
 }
 
 const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<NumberList numbers={numbers} />);
 ```
 
 Когда вы запустите данный код, то увидите предупреждение о том, что у каждого элемента массива должен быть ключ (key). «Ключ» – это специальный строковый атрибут, который нужно указывать при создании списка элементов. Мы обсудим, почему это важно, ниже на странице.
@@ -86,12 +85,6 @@ function NumberList(props) {
     <ul>{listItems}</ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/jrXYRR?editors=0011)
@@ -165,12 +158,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 **Пример правильного использования ключей**
@@ -193,12 +180,6 @@ function NumberList(props) {
     </ul>
   );
 }
-
-const numbers = [1, 2, 3, 4, 5];
-ReactDOM.render(
-  <NumberList numbers={numbers} />,
-  document.getElementById('root')
-);
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/ZXeOGM?editors=0010)
@@ -239,10 +220,9 @@ const posts = [
   {id: 1, title: 'Привет, мир', content: 'Добро пожаловать в документацию React!'},
   {id: 2, title: 'Установка', content: 'React можно установить из npm.'}
 ];
-ReactDOM.render(
-  <Blog posts={posts} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Blog posts={posts} />);
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/NRZYGN?editors=0010)

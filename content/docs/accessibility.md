@@ -401,7 +401,11 @@ class BlurExample extends React.Component {
 - [всё о цветовой контрастности и о том, почему вы должны переосмыслить подход к ней](https://www.smashingmagazine.com/2014/10/color-contrast-tips-and-tools-for-accessibility/)
 - [статья о цветовой контрастности на сайте A11y Project](https://a11yproject.com/posts/what-is-color-contrast/)
 
+<<<<<<< HEAD
 Ручной расчёт правильных цветовых комбинаций для всех вариантов сайта может быть очень утомительным. Вместо этого вы можете рассчитать все необходимые палитры [с помощью Colorable](https://jxnblk.com/colorable/).
+=======
+It can be tedious to manually calculate the proper color combinations for all cases in your website so instead, you can [calculate an entire accessible color palette with Colorable](https://colorable.jxnblk.com/).
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 Оба инструмента, aXe и WAVE, о которых будет рассказано ниже, включают тесты контрастности. Они помогут выявить ошибки в подборе цветов.
 

@@ -31,8 +31,13 @@ function Example() {
 
 >Примечание
 >
+<<<<<<< HEAD
 >React 16.8.0 это первый релиз, поддерживающий хуки. При обновлении версии, не забудьте обновить и все зависимости, включая React DOM.
 >Поддержка хуков в React Native появилась в [версии 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059).
+=======
+>React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
+>React Native has supported Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 ## Видео-представление {#video-introduction}
 
@@ -96,7 +101,11 @@ function Example() {
 
 Мы знаем, что React-разработчики сфокусированы на поставке продукта и у них нет времени изучать новый API каждого релиза. Хуки это что-то новое, и возможно, лучше подождать больше примеров и уроков, прежде чем начинать их изучение.
 
+<<<<<<< HEAD
 Мы также понимаем, что планка для добавления новых примитивов в React очень высока. Поэтому для любопытных читателей мы подготовили [подробный RFC](https://github.com/reactjs/rfcs/pull/68), в котором можно найти больше информации о технических аспектах выбранного дизайна.
+=======
+We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into the motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
+>>>>>>> df2673d1b6ec0cc6657fd58690bbf30fa1e6e0e6
 
 **Важно понимать, что хуки работают рядом с существующим кодом, поэтому вы можете внедрять их постепенно.** Нет спешки переходить на хуки. Мы рекомендуем избегать любых «больших переписываний», особенно для существующих, сложных классовых компонентов. Вам потребуется немного изменить мировоззрение, чтобы начать «мыслить хуками». По нашему опыту, лучше всего сначала попрактиковаться использовать хуки в новых и некритичных компонентах и убедиться, что все в вашей команде чувствуют себя комфортно с ними. После того, как вы попробуете, не стесняйтесь [отправить нам свой отзыв](https://github.com/facebook/react/issues/new), позитивный или негативный.
 
