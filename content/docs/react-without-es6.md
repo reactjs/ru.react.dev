@@ -131,7 +131,13 @@ var SayHello = createReactClass({
 });
 ```
 
+<<<<<<< HEAD
 Это означает, что ES6-классы пишутся с чуть большим количеством однообразного кода для обработчиков событий, зато производительность громоздких приложений немного возрастает.
+=======
+This means writing ES6 classes comes with a little more boilerplate code for event handlers, but the upside is slightly better performance in large applications.
+
+If the boilerplate code is too unattractive to you, you may use [ES2022 Class Properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) syntax:
+>>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 Если универсальный код для вас слишком неприглядный, вы можете включить **экспериментальный** синтаксис [свойств класса](https://babeljs.io/docs/plugins/transform-class-properties/) с помощью Babel:
 
@@ -141,11 +147,16 @@ class SayHello extends React.Component {
     super(props);
     this.state = {message: 'Привет!'};
   }
+<<<<<<< HEAD
   // ВНИМАНИЕ! Этот синтаксис экспериментальный!
   // Здесь стрелочная функция выполняет привязку:
+=======
+  
+  // Using an arrow here binds the method:
+>>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
   handleClick = () => {
     alert(this.state.message);
-  }
+  };
 
   render() {
     return (
@@ -157,9 +168,13 @@ class SayHello extends React.Component {
 }
 ```
 
+<<<<<<< HEAD
 Обратите внимание, что приведённый выше синтаксис является **экспериментальным** и может измениться. Возможно, предложенный синтаксис не войдёт в стандарт.
 
 Существует несколько безопасных вариантов:
+=======
+You also have a few other options:
+>>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 * привязывайте методы в конструкторе.
 * используйте стрелочные функции, например, `onClick={(e) => this.handleClick(e)}`.
@@ -214,10 +229,8 @@ var TickTock = createReactClass({
   }
 });
 
-ReactDOM.render(
-  <TickTock />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example'));
+root.render(<TickTock />);
 ```
 
 Если компонент использует несколько примесей и они определяют один и тот же метод жизненного цикла (т.е. хотят выполнить некоторую очистку при уничтожении компонента), все методы жизненного цикла гарантированно будут вызваны. Методы, определённые на примесях, запускаются в том порядке, в котором они перечислены, а затем вызывается метод самого компонента.

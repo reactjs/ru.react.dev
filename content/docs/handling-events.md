@@ -84,11 +84,6 @@ class Toggle extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <Toggle />,
-  document.getElementById('root')
-);
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
@@ -97,6 +92,7 @@ ReactDOM.render(
 
 Дело не в работе React, это часть того, [как работают функции в JavaScript](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/). Обычно, если ссылаться на метод без `()` после него, например, `onClick={this.handleClick}`, этот метод нужно привязать.
 
+<<<<<<< HEAD
 Если вам не по душе `bind`, существует два других способа. Если вы пользуетесь экспериментальным [синтаксисом общедоступных полей классов](https://babeljs.io/docs/plugins/transform-class-properties/), вы можете использовать его, чтобы правильно привязать колбэки:
 
 ```js{2-6}
@@ -106,6 +102,16 @@ class LoggingButton extends React.Component {
   handleClick = () => {
     console.log('значение this:', this);
   }
+=======
+If calling `bind` annoys you, there are two ways you can get around this. You can use [public class fields syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) to correctly bind callbacks:
+
+```js{2-6}
+class LoggingButton extends React.Component {
+  // This syntax ensures `this` is bound within handleClick.
+  handleClick = () => {
+    console.log('this is:', this);
+  };
+>>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
   render() {
     return (

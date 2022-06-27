@@ -71,7 +71,11 @@ prev: composition-vs-inheritance.html
 
 Написание кода можно начать как сверху вниз (с большого `FilterableProductTable`), так и снизу вверх (с маленького `ProductRow`). Более простые приложения удобнее начать с компонентов, находящихся выше по иерархии. В более сложных приложениях удобнее в первую очередь создавать и тестировать подкомпоненты.
 
+<<<<<<< HEAD
 В конце этого шага у вас на руках появится библиотека повторно используемых компонентов, отображающих вашу модель данных. Так как это статическое приложение, компоненты будут иметь только методы `render()`. Компонент выше по иерархии (`FilterableProductTable`) будет передавать модель данных через пропсы. Если вы внесёте изменения в базовую модель данных и снова вызовете `ReactDOM.render()`, то пользовательский интерфейс отразит эти изменения. Вы можете увидеть, как обновляется интерфейс и где следует сделать очередные изменения. Благодаря **одностороннему потоку данных** (или *односторонней привязке*), код работает быстро, но остаётся понятным. 
+=======
+At the end of this step, you'll have a library of reusable components that render your data model. The components will only have `render()` methods since this is a static version of your app. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. If you make a change to your underlying data model and call `root.render()` again, the UI will be updated. You can see how your UI is updated and where to make changes. React's **one-way data flow** (also called *one-way binding*) keeps everything modular and fast.
+>>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 Если у вас остались вопросы по выполнению данного шага, обратитесь к [документации React](/docs/getting-started.html).
 

@@ -108,7 +108,7 @@ cd ..
 
 ```js
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 ```
 
@@ -550,7 +550,11 @@ var player = {score: 1, name: 'Джефф'};
 var newPlayer = Object.assign({}, player, {score: 2});
 // Здесь `player` не изменился, а в `newPlayer` находится {score: 2, name: 'Джефф'}
 
+<<<<<<< HEAD
 // Или, если вы пользуетесь синтаксисом расширения объектов, вы можете написать:
+=======
+// Or if you are using object spread syntax, you can write:
+>>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 // var newPlayer = {...player, score: 2};
 ```
 

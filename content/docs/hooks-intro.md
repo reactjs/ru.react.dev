@@ -31,8 +31,13 @@ function Example() {
 
 >Примечание
 >
+<<<<<<< HEAD
 >React 16.8.0 это первый релиз, поддерживающий хуки. При обновлении версии, не забудьте обновить и все зависимости, включая React DOM.
 >Поддержка хуков в React Native появилась в [версии 0.59](https://facebook.github.io/react-native/blog/2019/03/12/releasing-react-native-059).
+=======
+>React 16.8.0 is the first release to support Hooks. When upgrading, don't forget to update all packages, including React DOM.
+>React Native has supported Hooks since [the 0.59 release of React Native](https://reactnative.dev/blog/2019/03/12/releasing-react-native-059).
+>>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 ## Видео-представление {#video-introduction}
 
@@ -80,7 +85,11 @@ function Example() {
 
 ### Классы путают как людей, так и машины {#classes-confuse-both-people-and-machines}
 
+<<<<<<< HEAD
 Вдобавок к усложнению организации кода и его повторного использования, классы создают существенный барьер в изучении React. Нужно понимать, как работает `this` в JavaScript, поведение которого отличается от большинства языков. Приходится помнить про привязку контекста для обработчиков событий. Без использования нестабильных [синтаксических предложений](https://babeljs.io/docs/en/babel-plugin-transform-class-properties/), код становится многословным. Люди могут прекрасно понимать пропсы, состояние и однонаправленный поток данных, но всё равно путаться с классами. Различия между функциональными и классовыми компонентами в React и тем, когда их использовать, приводят к разногласиям даже между опытными React-разработчиками.
+=======
+In addition to making code reuse and code organization more difficult, we've found that classes can be a large barrier to learning React. You have to understand how `this` works in JavaScript, which is very different from how it works in most languages. You have to remember to bind the event handlers. Without [ES2022 public class fields](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields), the code is very verbose. People can understand props, state, and top-down data flow perfectly well but still struggle with classes. The distinction between function and class components in React and when to use each one leads to disagreements even between experienced React developers.
+>>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 Вдобавок, React существует уже около пяти лет и мы хотим убедиться, что он останется актуальным в течение следующих пяти лет. Как показывают [Svelte](https://svelte.dev/), [Angular](https://angular.io/), [Glimmer](https://glimmerjs.com/) и другие технологии, [компиляция компонентов перед их исполнением](https://ru.wikipedia.org/wiki/AOT-%D0%BA%D0%BE%D0%BC%D0%BF%D0%B8%D0%BB%D1%8F%D1%86%D0%B8%D1%8F) имеет огромный потенциал в будущем. Особенно, если шаблоны не накладывают ограничений. Недавно мы экспериментировали со [свёртыванием компонентов](https://github.com/facebook/react/issues/7323) с использованием [Prepack](https://prepack.io/) и увидели первые многообещающие результаты. Однако мы заметили, что классовые компоненты могут приводить к ненамеренным паттернам, сводящим оптимизации на нет. Классы создают сложности для инструментов и сегодня. Например, классы плохо минифицируются, а горячая перезагрузка (hot reloading) ненадёжна и часто ломает их. Наша цель — предоставить API, который повысит вероятность того, что код можно будет оптимизировать.
 
@@ -96,7 +105,11 @@ function Example() {
 
 Мы знаем, что React-разработчики сфокусированы на поставке продукта и у них нет времени изучать новый API каждого релиза. Хуки это что-то новое, и возможно, лучше подождать больше примеров и уроков, прежде чем начинать их изучение.
 
+<<<<<<< HEAD
 Мы также понимаем, что планка для добавления новых примитивов в React очень высока. Поэтому для любопытных читателей мы подготовили [подробный RFC](https://github.com/reactjs/rfcs/pull/68), в котором можно найти больше информации о технических аспектах выбранного дизайна.
+=======
+We also understand that the bar for adding a new primitive to React is extremely high. For curious readers, we have prepared a [detailed RFC](https://github.com/reactjs/rfcs/pull/68) that dives into the motivation with more details, and provides extra perspective on the specific design decisions and related prior art.
+>>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 **Важно понимать, что хуки работают рядом с существующим кодом, поэтому вы можете внедрять их постепенно.** Нет спешки переходить на хуки. Мы рекомендуем избегать любых «больших переписываний», особенно для существующих, сложных классовых компонентов. Вам потребуется немного изменить мировоззрение, чтобы начать «мыслить хуками». По нашему опыту, лучше всего сначала попрактиковаться использовать хуки в новых и некритичных компонентах и убедиться, что все в вашей команде чувствуют себя комфортно с ними. После того, как вы попробуете, не стесняйтесь [отправить нам свой отзыв](https://github.com/facebook/react/issues/new), позитивный или негативный.
 
