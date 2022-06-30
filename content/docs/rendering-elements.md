@@ -34,11 +34,7 @@ const element = <h1>Hello, world</h1>;
 
 Обычно в приложениях, написанных полностью на React, есть только один корневой элемент. При встраивании React в существующее приложение вы можете рендерить во столько независимых корневых элементов, во сколько посчитаете нужным.
 
-<<<<<<< HEAD
-Для рендеринга React-элемента в корневой узел DOM вызовите [`ReactDOM.render()`](/docs/react-dom.html#render) с React-элементом и корневым DOM-узлом в качестве аргументов:
-=======
-To render a React element, first pass the DOM element to [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot), then pass the React element to `root.render()`:
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+Для рендеринга React-элемента, сперва передайте DOM-элемент в [`ReactDOM.createRoot()`](/docs/react-dom-client.html#createroot), далее передайте с React-элементом в `root.render()`:
 
 `embed:rendering-elements/render-an-element.js`
 
@@ -50,11 +46,7 @@ To render a React element, first pass the DOM element to [`ReactDOM.createRoot()
 
 Элементы React [иммутабельны](https://ru.wikipedia.org/wiki/%D0%9D%D0%B5%D0%B8%D0%B7%D0%BC%D0%B5%D0%BD%D1%8F%D0%B5%D0%BC%D1%8B%D0%B9_%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82). После создания элемента нельзя изменить его потомков или атрибуты. Элемент похож на кадр в фильме: он отражает состояние интерфейса в конкретный момент времени.
 
-<<<<<<< HEAD
-Пока что, мы знаем только один способ обновить интерфейс — это создать новый элемент и передать его в [`ReactDOM.render()`](/docs/react-dom.html#render).
-=======
-With our knowledge so far, the only way to update the UI is to create a new element, and pass it to `root.render()`.
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+Пока что, мы знаем только один способ обновить интерфейс — это создать новый элемент и передать его в `root.render()`.
 
 Рассмотрим пример с часами:
 
@@ -62,19 +54,11 @@ With our knowledge so far, the only way to update the UI is to create a new elem
 
 **[Try it on CodePen](https://codepen.io/gaearon/pen/gwoJZk?editors=1010)**
 
-<<<<<<< HEAD
-В этом примере [`ReactDOM.render()`](/docs/react-dom.html#render) вызывается каждую секунду с помощью колбэка [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval).
-=======
-It calls [`root.render()`](/docs/react-dom.html#render) every second from a [`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval) callback.
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+В этом примере [`root.render()`](/docs/react-dom.html#render) вызывается каждую секунду с помощью колбэка [`setInterval()`](https://developer.mozilla.org/ru/docs/Web/API/setInterval).
 
 >**Примечание:**
 >
-<<<<<<< HEAD
->На практике большинство React-приложений вызывают [`ReactDOM.render()`](/docs/react-dom.html#render) только один раз. В следующем разделе вы узнаете, как можно обновлять интерфейс при помощи [компонента с состоянием](/docs/state-and-lifecycle.html).
-=======
->In practice, most React apps only call `root.render()` once. In the next sections we will learn how such code gets encapsulated into [stateful components](/docs/state-and-lifecycle.html).
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+>На практике большинство React-приложений вызывают `root.render()` только один раз. В следующем разделе вы узнаете, как можно обновлять интерфейс при помощи [компонента с состоянием](/docs/state-and-lifecycle.html).
 >
 >Мы рекомендуем не пропускать главы, поскольку каждая следующая глава опирается на знания из предыдущей.
 

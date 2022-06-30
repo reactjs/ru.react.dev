@@ -82,15 +82,7 @@ import("./math").then(math => {
 
 ## `React.lazy` {#reactlazy}
 
-<<<<<<< HEAD
-> Примечание:
->
-> Возможности `React.lazy` и задержки (suspense) пока недоступны для рендеринга на стороне сервера. Если вам нужно разделение кода в серверном приложении, мы рекомендуем [Loadable Components](https://github.com/gregberge/loadable-components). У них есть хорошее [руководство по разделению бандла](https://loadable-components.com/docs/server-side-rendering/) с серверным рендерингом.
-
 Функция `React.lazy` позволяет рендерить динамический импорт как обычный компонент.
-=======
-The `React.lazy` function lets you render a dynamic import as a regular component.
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 **До:**
 
@@ -150,9 +142,6 @@ function MyComponent() {
 }
 ```
 
-<<<<<<< HEAD
-### Предохранители {#error-boundaries}
-=======
 ### Avoiding fallbacks {#avoiding-fallbacks}
 Any component may suspend as a result of rendering, even components that were already shown to the user. In order for screen content to always be consistent, if an already shown component suspends, React has to hide its tree up to the closest `<Suspense>` boundary. However, from the user's perspective, this can be disorienting.
 
@@ -199,9 +188,7 @@ function handleTabSelect(tab) {
 
 Here, you tell React that setting tab to `'comments'` is not an urgent update, but is a [transition](/docs/react-api.html#transitions) that may take some time. React will then keep the old UI in place and interactive, and will switch to showing `<Comments />` when it is ready. See [Transitions](/docs/react-api.html#transitions) for more info.
 
-### Error boundaries {#error-boundaries}
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
-
+### Предохранители {#error-boundaries}
 
 Если какой-то модуль не загружается (например, из-за сбоя сети), это вызовет ошибку. Вы можете обрабатывать эти ошибки для улучшения пользовательского опыта с помощью [Предохранителей](/docs/error-boundaries.html). После создания предохранителя, его можно использовать в любом месте над ленивыми компонентами для отображения состояния ошибки.
 

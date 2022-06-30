@@ -175,13 +175,8 @@ module.exports = {
 
 > Примечание
 >
-<<<<<<< HEAD
 > До React 17 мы использовали стандартный [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) для профилирования компонентов с помощью вкладки Performance браузера Chrome. 
 > Более подробнее об этом способе можно узнать в [статье Бена Шварца (Ben Schwarz)](https://calibreapp.com/blog/react-performance-profiling-optimization).
-=======
-> Before React 17, we use the standard [User Timing API](https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API) to profile components with the chrome performance tab.
-> For a more detailed walkthrough, check out [this article by Ben Schwarz](https://calibreapp.com/blog/react-performance-profiling-optimization).
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 ## Виртуализация длинных списков {#virtualize-long-lists}
 

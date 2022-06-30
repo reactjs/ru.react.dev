@@ -25,11 +25,7 @@ next: create-a-new-react-app.html
 
 Мы не будем пользоваться сложными инструментами сборки или что-то устанавливать. **Всё, что вам нужно -- это доступ к Интернету и минута свободного времени**.
 
-<<<<<<< HEAD
-Необязательно: [скачать готовый пример (архив 2 Кбайт)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
-=======
-Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+Необязательно: [скачать готовый пример (архив 2 Кбайт)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)
 
 ### Шаг 1: Добавляем DOM-контейнер в HTML {#step-1-add-a-dom-container-to-the-html}
 
@@ -56,17 +52,10 @@ Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaear
 ```html{5,6,9}
   <!-- ... остальной HTML ... -->
 
-<<<<<<< HEAD
   <!-- Загрузим React. -->
   <!-- Примечание: при деплое на продакшен замените «development.js» на «production.min.js». -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-=======
-  <!-- Load React. -->
-  <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
   <!-- Загрузим наш React-компонент. -->
   <script src="like_button.js"></script>
@@ -86,28 +75,17 @@ Optional: [Download the full example (2KB zipped)](https://gist.github.com/gaear
 >
 >В данном коде создаётся React-компонент с именем `LikeButton`. Не беспокойтесь, если что-то кажется вам непонятным -- мы подробно разберём принципы разработки на React позже, в нашем [практическом руководстве](/tutorial/tutorial.html) и во [введении в основные понятия](/docs/hello-world.html). Пока же мы просто посмотрим, как это выглядит на экране.
 
-<<<<<<< HEAD
-Добавьте ещё 2 строки в конец файла `like_button.js`, после **[стартового кода](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**:
-
-```js{3,4}
-// ... стартовый код ...
-=======
-After **[the starter code](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**, add three lines to the bottom of `like_button.js`:
+Добавьте ещё 3 строки в конец файла `like_button.js`, после **[стартового кода](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**:
 
 ```js{3,4,5}
-// ... the starter code you pasted ...
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+// ... стартовый код ...
 
 const domContainer = document.querySelector('#like_button_container');
 const root = ReactDOM.createRoot(domContainer);
 root.render(e(LikeButton));
 ```
 
-<<<<<<< HEAD
-Эти две строки кода ищут элемент `<div>`, который мы добавили на первом шаге, а затем отображают React-компонент с кнопкой "Нравится" внутри него.
-=======
-These three lines of code find the `<div>` we added to our HTML in the first step, create a React app with it, and then display our "Like" button React component inside of it.
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+Эти три строки кода ищут элемент `<div>`, который мы добавили в HTML на первом шаге, а затем отображают React-компонент с кнопкой "Нравится" внутри него.
 
 ### Готово! {#thats-it}
 
@@ -117,11 +95,7 @@ These three lines of code find the `<div>` we added to our HTML in the first ste
 
 **[Посмотреть финальный код примера](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
 
-<<<<<<< HEAD
-**[Скачать код примера (архив 2 Кбайт)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
-=======
-**[Download the full example (2KB zipped)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)**
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+**[Скачать код примера (архив 2 Кбайт)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)**
 
 ### Совет: Повторное использование компонентов {#tip-reuse-a-component}
 
@@ -129,11 +103,7 @@ These three lines of code find the `<div>` we added to our HTML in the first ste
 
 [Посмотреть исходный код примера](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
-<<<<<<< HEAD
-[Скачать код примера (архив 2 Кбайт)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
-=======
-[Download the full example (2KB zipped)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/279839cb9891bd41802ebebc5365e9dec08eeb9f.zip)
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+[Скачать код примера (архив 2 Кбайт)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/279839cb9891bd41802ebebc5365e9dec08eeb9f.zip)
 
 >Примечание
 >

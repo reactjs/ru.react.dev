@@ -92,26 +92,14 @@ class Toggle extends React.Component {
 
 Дело не в работе React, это часть того, [как работают функции в JavaScript](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/). Обычно, если ссылаться на метод без `()` после него, например, `onClick={this.handleClick}`, этот метод нужно привязать.
 
-<<<<<<< HEAD
-Если вам не по душе `bind`, существует два других способа. Если вы пользуетесь экспериментальным [синтаксисом общедоступных полей классов](https://babeljs.io/docs/plugins/transform-class-properties/), вы можете использовать его, чтобы правильно привязать колбэки:
 
+Если вам не по душе `bind`, существует два других способа. Вы можете использовать [синтаксис публичных полей класса](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes/Public_class_fields#%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D0%B5_%D0%BF%D0%BE%D0%BB%D1%8F_%D1%8D%D0%BA%D0%B7%D0%B5%D0%BC%D0%BF%D0%BB%D1%8F%D1%80%D0%B0) чтобы правильно привязать колбэки:
 ```js{2-6}
 class LoggingButton extends React.Component {
-  // Такой синтаксис гарантирует, что `this` привязан к handleClick.
-  // Предупреждение: это экспериментальный синтаксис
+   // Такой синтаксис гарантирует, что `this` привязан к handleClick.
   handleClick = () => {
     console.log('значение this:', this);
-  }
-=======
-If calling `bind` annoys you, there are two ways you can get around this. You can use [public class fields syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) to correctly bind callbacks:
-
-```js{2-6}
-class LoggingButton extends React.Component {
-  // This syntax ensures `this` is bound within handleClick.
-  handleClick = () => {
-    console.log('this is:', this);
   };
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
   render() {
     return (

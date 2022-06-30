@@ -18,15 +18,8 @@ class Hello extends React.Component {
   }
 }
 
-<<<<<<< HEAD
-ReactDOM.render(
-  <Hello toWhat="мир" />,
-  document.getElementById('root')
-);
-=======
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Hello toWhat="World" />);
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+root.render(<Hello toWhat="Мир" />);
 ```
 
 Он может быть превращён в код без JSX:
@@ -38,15 +31,8 @@ class Hello extends React.Component {
   }
 }
 
-<<<<<<< HEAD
-ReactDOM.render(
-  React.createElement(Hello, {toWhat: 'мир'}, null),
-  document.getElementById('root')
-);
-=======
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(React.createElement(Hello, {toWhat: 'World'}, null));
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+root.render(React.createElement(Hello, {toWhat: 'Мир'}, null));
 ```
 
 Если вас интересуют другие примеры того, как JSX превращается в JavaScript, вы можете попробовать [онлайн-компилятор Babel](babel://jsx-simple-example).
@@ -58,15 +44,8 @@ root.render(React.createElement(Hello, {toWhat: 'World'}, null));
 ```js
 const e = React.createElement;
 
-<<<<<<< HEAD
-ReactDOM.render(
-  e('div', null, 'Привет, мир!'),
-  document.getElementById('root')
-);
-=======
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(e('div', null, 'Hello World'));
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+root.render(e('div', null, 'Привет, мир!'));
 ```
 
 Если вы примените эту сокращённую форму для `React.createElement`, то использование React без JSX станет почти таким же удобным, как вы привыкли.

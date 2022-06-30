@@ -131,15 +131,9 @@ var SayHello = createReactClass({
 });
 ```
 
-<<<<<<< HEAD
 Это означает, что ES6-классы пишутся с чуть большим количеством однообразного кода для обработчиков событий, зато производительность громоздких приложений немного возрастает.
-=======
-This means writing ES6 classes comes with a little more boilerplate code for event handlers, but the upside is slightly better performance in large applications.
 
-If the boilerplate code is too unattractive to you, you may use [ES2022 Class Properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Public_class_fields#public_instance_fields) syntax:
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
-
-Если универсальный код для вас слишком неприглядный, вы можете включить **экспериментальный** синтаксис [свойств класса](https://babeljs.io/docs/plugins/transform-class-properties/) с помощью Babel:
+Если универсальный код для вас слишком неприглядный, вы можете использовать [свойства классов из ES2022](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes/Public_class_fields#%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D0%B5_%D0%BF%D0%BE%D0%BB%D1%8F_%D1%8D%D0%BA%D0%B7%D0%B5%D0%BC%D0%BF%D0%BB%D1%8F%D1%80%D0%B0) syntax:
 
 ```javascript
 class SayHello extends React.Component {
@@ -147,13 +141,7 @@ class SayHello extends React.Component {
     super(props);
     this.state = {message: 'Привет!'};
   }
-<<<<<<< HEAD
-  // ВНИМАНИЕ! Этот синтаксис экспериментальный!
   // Здесь стрелочная функция выполняет привязку:
-=======
-  
-  // Using an arrow here binds the method:
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
   handleClick = () => {
     alert(this.state.message);
   };
@@ -168,13 +156,7 @@ class SayHello extends React.Component {
 }
 ```
 
-<<<<<<< HEAD
-Обратите внимание, что приведённый выше синтаксис является **экспериментальным** и может измениться. Возможно, предложенный синтаксис не войдёт в стандарт.
-
-Существует несколько безопасных вариантов:
-=======
-You also have a few other options:
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+Существует несколько других вариантов:
 
 * привязывайте методы в конструкторе.
 * используйте стрелочные функции, например, `onClick={(e) => this.handleClick(e)}`.

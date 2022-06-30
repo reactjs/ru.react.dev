@@ -33,11 +33,7 @@ const listItems = numbers.map((number) =>
 );
 ```
 
-<<<<<<< HEAD
-Теперь мы включим массив `listItems` внутрь элемента `<ul>` и [отрендерим его в DOM](/docs/rendering-elements.html#rendering-an-element-into-the-dom):
-=======
-Then, we can include the entire `listItems` array inside a `<ul>` element:
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
+Теперь мы включим массив `listItems` внутрь элемента `<ul>`:
 
 ```javascript{2}
 <ul>{listItems}</ul>

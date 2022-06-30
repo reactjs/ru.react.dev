@@ -15,22 +15,13 @@ permalink: docs/strict-mode.html
 
 В примере выше проверки строгого режима *не* будут выполняться для компонентов `Header` и `Footer`. Однако будут выполнены для `ComponentOne` и `ComponentTwo`, а также для всех их потомков.
 
-<<<<<<< HEAD
 На данный момент `StrictMode` помогает в:
 * [Обнаружении небезопасных методов жизненного цикла](#identifying-unsafe-lifecycles)
 * [Предупреждении об использовании устаревшего API строковых реф](#warning-about-legacy-string-ref-api-usage)
 * [Предупреждении об использовании устаревшего метода findDOMNode](#warning-about-deprecated-finddomnode-usage)
 * [Обнаружении неожиданных побочных эффектов](#detecting-unexpected-side-effects)
 * [Обнаружении устаревшего API контекста](#detecting-legacy-context-api)
-=======
-`StrictMode` currently helps with:
-* [Identifying components with unsafe lifecycles](#identifying-unsafe-lifecycles)
-* [Warning about legacy string ref API usage](#warning-about-legacy-string-ref-api-usage)
-* [Warning about deprecated findDOMNode usage](#warning-about-deprecated-finddomnode-usage)
-* [Detecting unexpected side effects](#detecting-unexpected-side-effects)
-* [Detecting legacy context API](#detecting-legacy-context-api)
 * [Ensuring reusable state](#ensuring-reusable-state)
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 Дополнительные проверки будут включены в будущих релизах React.
 
@@ -128,13 +119,9 @@ React работает в два этапа:
 
 > Примечание:
 >
-<<<<<<< HEAD
 > Начиная с 17 версии, React автоматически модифицирует методы для работы с консолью (например, `console.log()`), чтобы предотвратить запись в консоль при втором вызове функций жизненного цикла. Однако в некоторых ситуациях это может привести к нежелательному поведению, в таких случаях можно воспользоваться [обходным решением](https://github.com/facebook/react/issues/20090#issuecomment-715927125).
-=======
-> In React 17, React automatically modifies the console methods like `console.log()` to silence the logs in the second call to lifecycle functions. However, it may cause undesired behavior in certain cases where [a workaround can be used](https://github.com/facebook/react/issues/20090#issuecomment-715927125).
->
+> 
 > Starting from React 18, React does not suppress any logs. However, if you have React DevTools installed, the logs from the second call will appear slightly dimmed. React DevTools also offers a setting (off by default) to suppress them completely.
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 ### Обнаружение устаревшего API контекста {#detecting-legacy-context-api}
 
@@ -142,11 +129,7 @@ React работает в два этапа:
 
 ![](../images/blog/warn-legacy-context-in-strict-mode.png)
 
-<<<<<<< HEAD
 Ознакомьтесь с [документацией нового API контекста](/docs/context.html), чтобы упростить переход на новую версию.
-=======
-Read the [new context API documentation](/docs/context.html) to help migrate to the new version.
-
 
 ### Ensuring reusable state {#ensuring-reusable-state}
 
@@ -202,4 +185,3 @@ Unmounting and remounting includes:
 
 For help supporting common issues, see:
   - [How to support Reusable State in Effects](https://github.com/reactwg/react-18/discussions/18)
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
