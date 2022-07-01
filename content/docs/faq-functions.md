@@ -37,14 +37,13 @@ class Foo extends Component {
 }
 ```
 
-#### Привязка в свойствах класса (предложение-кандидат) {#class-properties-stage-3-proposal}
+#### Свойства класса (ES2022) {#class-properties-es2022}
 
 ```jsx
 class Foo extends Component {
-  // Примечание: данный синтаксис находится на стадии разработки и ещё не стандартизирован.
   handleClick = () => {
     console.log('По кнопке кликнули');
-  }
+  };
   render() {
     return <button onClick={this.handleClick}>Нажми на меня</button>;
   }

@@ -43,8 +43,8 @@ npm run build
 Мы предлагаем готовые для продакшена версии React и React DOM в виде отдельных файлов:
 
 ```html
-<script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 ```
 
 Помните, что для продакшена подходят только те файлы, которые заканчиваются на `.production.min.js`.

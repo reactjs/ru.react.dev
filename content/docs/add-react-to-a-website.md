@@ -25,7 +25,7 @@ next: create-a-new-react-app.html
 
 Мы не будем пользоваться сложными инструментами сборки или что-то устанавливать. **Всё, что вам нужно -- это доступ к Интернету и минута свободного времени**.
 
-Необязательно: [скачать готовый пример (архив 2 Кбайт)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)
+Необязательно: [скачать готовый пример (архив 2 Кбайт)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)
 
 ### Шаг 1: Добавляем DOM-контейнер в HTML {#step-1-add-a-dom-container-to-the-html}
 
@@ -54,8 +54,8 @@ next: create-a-new-react-app.html
 
   <!-- Загрузим React. -->
   <!-- Примечание: при деплое на продакшен замените «development.js» на «production.min.js». -->
-  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
   <!-- Загрузим наш React-компонент. -->
   <script src="like_button.js"></script>
@@ -75,16 +75,17 @@ next: create-a-new-react-app.html
 >
 >В данном коде создаётся React-компонент с именем `LikeButton`. Не беспокойтесь, если что-то кажется вам непонятным -- мы подробно разберём принципы разработки на React позже, в нашем [практическом руководстве](/tutorial/tutorial.html) и во [введении в основные понятия](/docs/hello-world.html). Пока же мы просто посмотрим, как это выглядит на экране.
 
-Добавьте ещё 2 строки в конец файла `like_button.js`, после **[стартового кода](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**:
+Добавьте ещё 3 строки в конец файла `like_button.js`, после **[стартового кода](https://gist.github.com/gaearon/0b180827c190fe4fd98b4c7f570ea4a8/raw/b9157ce933c79a4559d2aa9ff3372668cce48de7/LikeButton.js)**:
 
-```js{3,4}
+```js{3,4,5}
 // ... стартовый код ...
 
 const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+const root = ReactDOM.createRoot(domContainer);
+root.render(e(LikeButton));
 ```
 
-Эти две строки кода ищут элемент `<div>`, который мы добавили на первом шаге, а затем отображают React-компонент с кнопкой "Нравится" внутри него.
+Эти три строки кода ищут элемент `<div>`, который мы добавили в HTML на первом шаге, а затем отображают React-компонент с кнопкой "Нравится" внутри него.
 
 ### Готово! {#thats-it}
 
@@ -94,7 +95,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 **[Посмотреть финальный код примера](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605)**
 
-**[Скачать код примера (архив 2 Кбайт)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/f6c882b6ae18bde42dcf6fdb751aae93495a2275.zip)**
+**[Скачать код примера (архив 2 Кбайт)](https://gist.github.com/gaearon/6668a1f6986742109c00a581ce704605/archive/87f0b6f34238595b44308acfb86df6ea43669c08.zip)**
 
 ### Совет: Повторное использование компонентов {#tip-reuse-a-component}
 
@@ -102,7 +103,7 @@ ReactDOM.render(e(LikeButton), domContainer);
 
 [Посмотреть исходный код примера](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda)
 
-[Скачать код примера (архив 2 Кбайт)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/9d0dd0ee941fea05fd1357502e5aa348abb84c12.zip)
+[Скачать код примера (архив 2 Кбайт)](https://gist.github.com/gaearon/faa67b76a6c47adbab04f739cba7ceda/archive/279839cb9891bd41802ebebc5365e9dec08eeb9f.zip)
 
 >Примечание
 >
@@ -115,8 +116,8 @@ ReactDOM.render(e(LikeButton), domContainer);
 Если вы уже минифицируете свои скрипты, то не забудьте подготовить к продакшену сам React. Для этого поменяйте окончания ссылок на React на `production.min.js`:
 
 ```js
-<script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
 ```
 
 Если же вы не настроили минификацию для ваших скриптов, то [вот один из вариантов, как это сделать](https://gist.github.com/gaearon/42a2ffa41b8319948f9be4076286e1f3).
@@ -183,7 +184,7 @@ JSX можно добавить в существующий проект и бе
 
 Создайте директорию с названием `src` и наберите в терминале следующую команду:
 
-```
+```console
 npx babel --watch src --out-dir . --presets react-app/prod
 ```
 

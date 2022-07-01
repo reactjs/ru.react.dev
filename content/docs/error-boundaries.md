@@ -65,7 +65,7 @@ class ErrorBoundary extends React.Component {
 
 ## Живой пример {#live-demo}
 
-Посмотрите [пример объявления и использования предохранителя](https://codepen.io/gaearon/pen/wqvxGa?editors=0010) в [React 16](/blog/2017/09/26/react-v16.0.html).
+Посмотрите [пример объявления и использования предохранителя](https://codepen.io/gaearon/pen/wqvxGa?editors=0010).
 
 ## Где размещать предохранители {#where-to-place-error-boundaries}
 

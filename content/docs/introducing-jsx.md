@@ -35,11 +35,6 @@ React [можно использовать и без JSX](/docs/react-without-js
 ```js{1,2}
 const name = 'Иван-Царевич';
 const element = <h1>Здравствуй, {name}!</h1>;
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
-);
 ```
 
 JSX допускает использование любых корректных [JavaScript-выражений](https://developer.mozilla.org/ru/docs/Web/JavaScript/Guide/Expressions_and_Operators) внутри фигурных скобок. Например,  `2 + 2`, `user.firstName` и `formatName(user)` являются допустимыми выражениями.
@@ -60,11 +55,6 @@ const element = (
   <h1>
     Здравствуй, {formatName(user)}!
   </h1>
-);
-
-ReactDOM.render(
-  element,
-  document.getElementById('root')
 );
 ```
 

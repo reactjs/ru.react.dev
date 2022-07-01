@@ -42,6 +42,14 @@ const Versions = ({location}: Props) => (
               .<br />
               Документация к последним версиям может быть также найдена ниже.
             </p>
+            <blockquote>
+              <p>Примечание</p>
+              <p>
+                Данная документация предназначениа для React 18. Документация
+                для React 17 находится по адресу{' '}
+                <a href="https://17.reactjs.org">https://17.reactjs.org.</a>
+              </p>
+            </blockquote>
             <p>
               Секция FAQ содержит информацию о{' '}
               <a href="/docs/faq-versioning.html">

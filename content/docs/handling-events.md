@@ -84,11 +84,6 @@ class Toggle extends React.Component {
     );
   }
 }
-
-ReactDOM.render(
-  <Toggle />,
-  document.getElementById('root')
-);
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/xEmzGg?editors=0010)
@@ -97,15 +92,14 @@ ReactDOM.render(
 
 Дело не в работе React, это часть того, [как работают функции в JavaScript](https://www.smashingmagazine.com/2014/01/understanding-javascript-function-prototype-bind/). Обычно, если ссылаться на метод без `()` после него, например, `onClick={this.handleClick}`, этот метод нужно привязать.
 
-Если вам не по душе `bind`, существует два других способа. Если вы пользуетесь экспериментальным [синтаксисом общедоступных полей классов](https://babeljs.io/docs/plugins/transform-class-properties/), вы можете использовать его, чтобы правильно привязать колбэки:
 
+Если вам не по душе `bind`, существует два других способа. Вы можете использовать [синтаксис публичных полей класса](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes/Public_class_fields#%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D0%B5_%D0%BF%D0%BE%D0%BB%D1%8F_%D1%8D%D0%BA%D0%B7%D0%B5%D0%BC%D0%BF%D0%BB%D1%8F%D1%80%D0%B0) чтобы правильно привязать колбэки:
 ```js{2-6}
 class LoggingButton extends React.Component {
-  // Такой синтаксис гарантирует, что `this` привязан к handleClick.
-  // Предупреждение: это экспериментальный синтаксис
+   // Такой синтаксис гарантирует, что `this` привязан к handleClick.
   handleClick = () => {
     console.log('значение this:', this);
-  }
+  };
 
   render() {
     return (

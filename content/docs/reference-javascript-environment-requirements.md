@@ -6,25 +6,13 @@ category: Reference
 permalink: docs/javascript-environment-requirements.html
 ---
 
-React 16 полагается на типы коллекций [Map](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Map) и [Set](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Set). Во многих старых устройствах и браузерах (например, IE < 11) эти типы коллекций отсутствуют. В других же они имеют несоответствующую реализацию (скажем, IE 11). Если вы поддерживаете эти браузеры, то можете включить глобальный полифил в ваше приложение, такой как [core-js](https://github.com/zloirock/core-js).
-Окружение для React 16, использующее core-js для поддержки старых браузеров, может выглядеть следующим образом:
+React 18 поддерживает все современные браузеры (Edge, Firefox, Chrome, Safari и тд.).
 
-```js
-import 'core-js/es/map';
-import 'core-js/es/set';
+Если вы поддерживаете старые устройства и браузеры, например Internet Explorer, которые не поддерживают современные возможности нативно или имеют несоответствующую реализацию, то можете включить глобальный полифил в бандл с вашим приложением.
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+React 18 использует следующие современные возможности:
+- [`Promise`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [`Symbol`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
+- [`Object.assign`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
 
-ReactDOM.render(
-  <h1>Привет, мир!</h1>,
-  document.getElementById('root')
-);
-```
-
-React также полагается на `requestAnimationFrame` (даже в тестовом окружении).
-Вы можете использовать пакет [raf](https://www.npmjs.com/package/raf) для создания шима `requestAnimationFrame`:
-
-```js
-import 'raf/polyfill';
-```
+Подходящий полифил для этих возможностей зависит от вашего окружения. В большинстве случаев будет достаточно настроить параметры вашего [Browserlist](https://github.com/browserslist/browserslist). В противном случае потребуется непосредственно импортировать полифилы, к примеру, [`core-js`](https://github.com/zloirock/core-js).

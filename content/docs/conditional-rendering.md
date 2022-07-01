@@ -35,11 +35,9 @@ function Greeting(props) {
   return <GuestGreeting />;
 }
 
-ReactDOM.render(
-  // Попробуйте заменить на isLoggedIn={true} и посмотрите на эффект.
-  <Greeting isLoggedIn={false} />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+// Попробуйте заменить на isLoggedIn={true}:
+root.render(<Greeting isLoggedIn={false} />);
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/ZpVxNq?editors=0011)
@@ -110,10 +108,8 @@ class LoginControl extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <LoginControl />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<LoginControl />);
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/QKzAgB?editors=0010)
@@ -140,10 +136,9 @@ function Mailbox(props) {
 }
 
 const messages = ['React', 'Re: React', 'Re:Re: React'];
-ReactDOM.render(
-  <Mailbox unreadMessages={messages} />,
-  document.getElementById('root')
-);
+
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Mailbox unreadMessages={messages} />);
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/ozJddz?editors=0010)
@@ -244,10 +239,8 @@ class Page extends React.Component {
   }
 }
 
-ReactDOM.render(
-  <Page />,
-  document.getElementById('root')
-);
+const root = ReactDOM.createRoot(document.getElementById('root')); 
+root.render(<Page />);
 ```
 
 [**Посмотреть на CodePen**](https://codepen.io/gaearon/pen/Xjoqwm?editors=0010)

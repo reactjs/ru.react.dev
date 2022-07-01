@@ -133,7 +133,7 @@ var SayHello = createReactClass({
 
 Это означает, что ES6-классы пишутся с чуть большим количеством однообразного кода для обработчиков событий, зато производительность громоздких приложений немного возрастает.
 
-Если универсальный код для вас слишком неприглядный, вы можете включить **экспериментальный** синтаксис [свойств класса](https://babeljs.io/docs/plugins/transform-class-properties/) с помощью Babel:
+Если универсальный код для вас слишком неприглядный, вы можете использовать [свойства классов из ES2022](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes/Public_class_fields#%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D1%87%D0%BD%D1%8B%D0%B5_%D0%BF%D0%BE%D0%BB%D1%8F_%D1%8D%D0%BA%D0%B7%D0%B5%D0%BC%D0%BF%D0%BB%D1%8F%D1%80%D0%B0) syntax:
 
 ```javascript
 class SayHello extends React.Component {
@@ -141,11 +141,10 @@ class SayHello extends React.Component {
     super(props);
     this.state = {message: 'Привет!'};
   }
-  // ВНИМАНИЕ! Этот синтаксис экспериментальный!
   // Здесь стрелочная функция выполняет привязку:
   handleClick = () => {
     alert(this.state.message);
-  }
+  };
 
   render() {
     return (
@@ -157,9 +156,7 @@ class SayHello extends React.Component {
 }
 ```
 
-Обратите внимание, что приведённый выше синтаксис является **экспериментальным** и может измениться. Возможно, предложенный синтаксис не войдёт в стандарт.
-
-Существует несколько безопасных вариантов:
+Существует несколько других вариантов:
 
 * привязывайте методы в конструкторе.
 * используйте стрелочные функции, например, `onClick={(e) => this.handleClick(e)}`.
@@ -214,10 +211,8 @@ var TickTock = createReactClass({
   }
 });
 
-ReactDOM.render(
-  <TickTock />,
-  document.getElementById('example')
-);
+const root = ReactDOM.createRoot(document.getElementById('example'));
+root.render(<TickTock />);
 ```
 
 Если компонент использует несколько примесей и они определяют один и тот же метод жизненного цикла (т.е. хотят выполнить некоторую очистку при уничтожении компонента), все методы жизненного цикла гарантированно будут вызваны. Методы, определённые на примесях, запускаются в том порядке, в котором они перечислены, а затем вызывается метод самого компонента.
