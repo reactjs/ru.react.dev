@@ -333,12 +333,15 @@ function useWindowPosition() {
 
 ### Как получить предыдущие пропсы или состояние? {#how-to-get-the-previous-props-or-state}
 
+<<<<<<< HEAD
 Сейчас, вы можете сделать это вручную, [используя реф](#is-there-something-like-instance-variables):
+=======
+There are two cases in which you might want to get previous props or state.
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
 
-```js{6,8}
-function Counter() {
-  const [count, setCount] = useState(0);
+Sometimes, you need previous props to **clean up an effect.** For example, you might have an effect that subscribes to a socket based on the `userId` prop. If the `userId` prop changes, you want to unsubscribe from the _previous_ `userId` and subscribe to the _next_ one. You don't need to do anything special for this to work:
 
+<<<<<<< HEAD
   const prevCountRef = useRef();
   useEffect(() => {
     prevCountRef.current = count;
@@ -381,6 +384,20 @@ function Counter() {
 Возможно, в будущем API React введёт хук `usePrevious`, так как он требуется довольно часто.
 
 Также смотрите [рекомендованный паттерн для производного состояния](#how-do-i-implement-getderivedstatefromprops).
+=======
+```js
+useEffect(() => {
+  ChatAPI.subscribeToSocket(props.userId);
+  return () => ChatAPI.unsubscribeFromSocket(props.userId);
+}, [props.userId]);
+```
+
+In the above example, if `userId` changes from `3` to `4`, `ChatAPI.unsubscribeFromSocket(3)` will run first, and then `ChatAPI.subscribeToSocket(4)` will run. There is no need to get "previous" `userId` because the cleanup function will capture it in a closure.
+
+Other times, you might need to **adjust state based on a change in props or other state**. This is rarely needed and is usually a sign you have some duplicate or redundant state. However, in the rare case that you need this pattern, you can [store previous state or props in state and update them during rendering](#how-do-i-implement-getderivedstatefromprops).
+
+We have previously suggested a custom Hook called `usePrevious` to hold the previous value. However, we've found that most use cases fall into the two patterns described above. If your use case is different, you can [hold a value in a ref](#is-there-something-like-instance-variables) and manually update it when needed. Avoid reading and updating refs during rendering because this makes your component's behavior difficult to predict and understand.
+>>>>>>> ee7705675d2304c53c174b9fb316e2fbde1e9fb3
 
 ### Почему я вижу устаревшие пропсы или состояние в моей функции? {#why-am-i-seeing-stale-props-or-state-inside-my-function}
 
