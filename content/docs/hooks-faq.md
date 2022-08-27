@@ -1,8 +1,9 @@
- ---
+---
 id: hooks-faq
 title: "Хуки: ответы на вопросы"
 permalink: docs/hooks-faq.html
 prev: hooks-reference.html
+next: testing.html
 ---
 
 *Хуки* — нововведение в React 16.8, которое позволяет использовать состояние и другие возможности React без написания классов.
