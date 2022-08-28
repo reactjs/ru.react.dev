@@ -1,4 +1,4 @@
- ---
+---
 id: hooks-faq
 title: "Хуки: ответы на вопросы"
 permalink: docs/hooks-faq.html
