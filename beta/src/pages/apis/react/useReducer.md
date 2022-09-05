@@ -98,7 +98,7 @@ button { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-`useReducer` is very similar to [`useState`](/apis/usestate), but it lets you move the state update logic from event handlers into a single function outside of your component. Read more about [choosing between `useState` and `useReducer`](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer).
+`useReducer` is very similar to [`useState`](/apis/react/useState), but it lets you move the state update logic from event handlers into a single function outside of your component. Read more about [choosing between `useState` and `useReducer`](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer).
 
 ---
 
@@ -191,7 +191,7 @@ Read [updating objects in state](/learn/updating-objects-in-state) and [updating
 
 <Recipes titleText="Basic useReducer examples" titleId="examples-basic">
 
-### Form (object) {/*form-object*/}
+#### Form (object) {/*form-object*/}
 
 In this example, the reducer manages a state object with two fields: `name` and `age`.
 
@@ -257,7 +257,7 @@ button { display: block; margin-top: 10px; }
 
 <Solution />
 
-### Todo list (array) {/*todo-list-array*/}
+#### Todo list (array) {/*todo-list-array*/}
 
 In this example, the reducer manages an array of tasks. The array needs to be updated [without mutation](/learn/updating-arrays-in-state).
 
@@ -450,7 +450,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution />
 
-### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
+#### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
 
 If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer#useimmerreducer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
 
@@ -698,7 +698,7 @@ In the above example, `createInitialState` takes a `username` argument. If your 
 
 <Recipes titleText="The difference between passing an initializer and passing the initial state directly" titleId="examples-initializer">
 
-### Passing the initializer function {/*passing-the-initializer-function*/}
+#### Passing the initializer function {/*passing-the-initializer-function*/}
 
 This example passes the initializer function, so the `createInitialState` function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
 
@@ -786,7 +786,7 @@ export default function TodoList({ username }) {
 
 <Solution />
 
-### Passing the initial state directly {/*passing-the-initial-state-directly*/}
+#### Passing the initial state directly {/*passing-the-initial-state-directly*/}
 
 This example **does not** pass the initializer function, so the `createInitialState` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
 
@@ -945,7 +945,7 @@ React will set the next state to the result of calling the `reducer` function yo
 
 * If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. React may still need to call your component before ignoring the result, but it shouldn't affect your code.
 
-* React [batches state updates](/learn/queueing-a-series-of-state-updates). It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`](/apis/flushsync).
+* React [batches state updates](/learn/queueing-a-series-of-state-updates). It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`](/apis/react-dom/flushsync).
 
 ---
 
@@ -1094,7 +1094,7 @@ If you can't find the cause of this error, click on the arrow next to the error 
 
 ### My reducer or initializer function runs twice {/*my-reducer-or-initializer-function-runs-twice*/}
 
-In [Strict Mode](/apis/strictmode), React will call your reducer and initializer functions twice. This shouldn't break your code.
+In [Strict Mode](/apis/react/strictmode), React will call your reducer and initializer functions twice. This shouldn't break your code.
 
 This **development-only** behavior helps you [keep components pure](/learn/keeping-components-pure). React uses the result of one of the calls, and ignores the result of the other call. As long as your component, initializer, and reducer functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice the mistakes and fix it.
 
