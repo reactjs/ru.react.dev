@@ -45,7 +45,11 @@ React предоставляет декларативный API, который 
 
 >Примечание:
 >
+<<<<<<< HEAD
 >Следующие методы объявлены устаревшими, поэтому в новом коде их [не стоит](/blog/2018/03/27/update-on-async-rendering.html) использовать:
+=======
+>This method is considered legacy and you should [avoid it](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>>>>>>> d07016aea812d26c60252a952bff7ae3e70bde27
 >
 >- `UNSAFE_componentWillMount()`
 
