@@ -87,7 +87,6 @@ See the [full list of options](https://github.com/facebook/react/blob/14c2be8dac
 >
 > This is a Node.js-specific API. Environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), like Deno and modern edge runtimes, should use [`renderToReadableStream`](#rendertoreadablestream) instead.
 >
->>>>>>> 26caa649827e8f8cadd24dfc420ea802dcbee246
 
 * * *
 
