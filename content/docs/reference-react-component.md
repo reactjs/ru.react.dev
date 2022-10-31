@@ -52,7 +52,11 @@ class Welcome extends React.Component {
 
 > Примечание:
 >
+<<<<<<< HEAD
 > Этот метод устарел. [Не используйте его](/blog/2018/03/27/update-on-async-rendering.html) в новом коде.
+=======
+>This method is considered legacy and you should [avoid it](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>>>>>>> e21b37c8cc8b4e308015ea87659f13aa26bd6356
 >
 >- [`UNSAFE_componentWillMount()`](#unsafe_componentwillmount)
 

@@ -123,7 +123,11 @@ class Greeting extends React.Component {
 
 > Примечание
 >
+<<<<<<< HEAD
 > Метод `shouldComponentUpdate()` базового класса `React.PureComponent` делает только поверхностное сравнение объектов. Если они содержат сложные структуры данных, это может привести к неправильной работе для более глубоких различий (то есть, различий, не выраженных на поверхности структуры). Наследуйте класс `PureComponent` только тогда, когда вы ожидаете использовать простые пропсы и состояние, или используйте [`forceUpdate()`](/docs/react-component.html#forceupdate), когда знаете, что вложенные структуры данных изменились. Также подумайте об использовании [иммутабельных объектов](https://facebook.github.io/immutable-js/), чтобы упростить процесс сравнения вложенных данных.
+=======
+> `React.PureComponent`'s `shouldComponentUpdate()` only shallowly compares the objects. If these contain complex data structures, it may produce false-negatives for deeper differences. Only extend `PureComponent` when you expect to have simple props and state, or use [`forceUpdate()`](/docs/react-component.html#forceupdate) when you know deep data structures have changed. Or, consider using [immutable objects](https://immutable-js.com/) to facilitate fast comparisons of nested data.
+>>>>>>> e21b37c8cc8b4e308015ea87659f13aa26bd6356
 >
 > Кроме того, метод `shouldComponentUpdate()` базового класса `React.PureComponent` пропускает обновление пропсов для всего поддерева компонентов. Убедитесь, что все дочерние компоненты также являются «чистыми».
 
