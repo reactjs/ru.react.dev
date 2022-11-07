@@ -144,4 +144,8 @@ prev: composition-vs-inheritance.html
 
 ## Вот и всё {#and-thats-it}
 
+<<<<<<< HEAD
 Надеемся, что этот пример поможет вам получить представление о том, как подойти к созданию компонентов и приложений в React. Хотя этот процесс и использует немного больше кода, помните, что код читают чаще, чем пишут. А модульный и прямолинейный код читается значительно легче. Когда вы начнёте создавать большие библиотеки компонентов, вы сможете по-настоящему оценить прямолинейность и связанность React, а повторно используемые компоненты сделают ваш код намного меньше. :)
+=======
+Hopefully, this gives you an idea of how to think about building components and applications with React. While it may be a little more typing than you're used to, remember that code is read far more often than it's written, and it's less difficult to read this modular, explicit code. As you start to build large libraries of components, you'll appreciate this explicitness and modularity, and with code reuse, your lines of code will start to shrink. :)
+>>>>>>> 822330c3dfa686dbb3424886abce116f20ed20e6
