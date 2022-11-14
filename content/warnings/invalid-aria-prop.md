@@ -8,4 +8,10 @@ permalink: warnings/invalid-aria-prop.html
 
 1. Если вам кажется, что используется корректный проп, внимательно проверьте правильность его написания. Часто бывают написаны с ошибками `aria-labelledby` и `aria-activedescendant`.
 
+<<<<<<< HEAD
 2. React пока не распознаёт определённый вами атрибут. Скорее всего эта проблема будет решена в будущей версии React.
+=======
+2. If you wrote `aria-role`, you may have meant `role`.
+
+3. Otherwise, if you're on the latest version of React DOM and verified that you're using a valid property name listed in the ARIA specification, please [report a bug](https://github.com/facebook/react/issues/new/choose).
+>>>>>>> 3bba430b5959c2263c73f0d05d46e2c99c972b1c
