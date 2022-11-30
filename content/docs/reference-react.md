@@ -368,7 +368,7 @@ function MyComponent() {
 
 > Примечание
 >
-> For content that is already shown to the user, switching back to a loading indicator can be disorienting. It is sometimes better to show the "old" UI while the new UI is being prepared. To do this, you can use the new transition APIs [`startTransition`](#starttransition) and [`useTransition`](/docs/hooks-reference.html#usetransition) to mark updates as transitions and avoid unexpected fallbacks.
+> Если контент уже доступен пользователю, переключение обратно на индикатор загрузки может его дезориентировать. Иногда лучше показать "старый" интерфейс, пока происходит ленивая загрузка нового компонента. Для этого можно использовать новое API для работы с состоянием переходов [`startTransition`](#starttransition) и [`useTransition`](/docs/hooks-reference.html#usetransition), чтобы пометить обновления состояния как переходы (transitions), делая их обработку несрочной.
 
 #### `React.Suspense` in Server Side Rendering {#reactsuspense-in-server-side-rendering}
 During server side rendering Suspense Boundaries allow you to flush your application in smaller chunks by suspending.
