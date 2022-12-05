@@ -47,7 +47,11 @@ prev: testing-recipes.html
 
 ### Фиктивные таймеры {#mocking-timers}
 
+<<<<<<< HEAD
 Компоненты могут использовать функции, связанные с временем, такие как `setTimeout`, `setInterval` или `Date.now`. В средах тестирования может быть полезно подменить такие функции на фиктивные, что позволит «двигаться» во времени. Это отличный способ ускорить выполнение тестов! Тесты с таймерами будут по-прежнему выполнятся по порядку, только быстрее. [<small>(пример)</small>](/docs/testing-recipes.html#timers). Большинство фреймворков, включая [Jest](https://jestjs.io/docs/en/timer-mocks), [sinon](https://sinonjs.org/releases/v7.3.2/fake-timers/) и [lolex](https://github.com/sinonjs/lolex), позволяют подменять таймеры в тестах.
+=======
+Components might be using time-based functions like `setTimeout`, `setInterval`, or `Date.now`. In testing environments, it can be helpful to mock these functions out with replacements that let you manually "advance" time. This is great for making sure your tests run fast! Tests that are dependent on timers would still resolve in order, but quicker [<small>(example)</small>](/docs/testing-recipes.html#timers). Most frameworks, including [Jest](https://jestjs.io/docs/en/timer-mocks), [sinon](https://sinonjs.org/releases/latest/fake-timers) and [lolex](https://github.com/sinonjs/lolex), let you mock timers in your tests.
+>>>>>>> cb9854a54984ef1288a8a2b8754897b15e75f433
 
 Иногда фиктивные таймеры не нужны. Например, при тестировании анимации или взаимодействии с удалённым API, который чувствителен к времени (имеет ограничение по частоте доступа). Библиотеки с фиктивными таймерами позволяют включать и выключать их для одного теста или набора в целом, так что вы можете явно указать как эти тесты будут исполняться.
 
