@@ -52,7 +52,11 @@ class Welcome extends React.Component {
 
 > Примечание:
 >
+<<<<<<< HEAD
 > Этот метод устарел. [Не используйте его](/blog/2018/03/27/update-on-async-rendering.html) в новом коде.
+=======
+>This method is considered legacy and you should [avoid it](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>>>>>>> 868d525a74b717a10e0f61bb576213e133aa8d07
 >
 >- [`UNSAFE_componentWillMount()`](#unsafe_componentwillmount)
 
@@ -121,11 +125,19 @@ render()
 
 При вызове он проверяет `this.props` и `this.state` и возвращает один из следующих вариантов:
 
+<<<<<<< HEAD
 - **Элемент React.** Обычно создаётся с помощью [JSX](/docs/introducing-jsx.html). Указывает React, что рендерить: DOM-узел или пользовательский компонент. Например, `<div />` или `<MyComponent />`.
 - **Массивы и фрагменты.** Возвращает несколько элементов из `render()`. Подробнее про [фрагменты](/docs/fragments.html).
 - **Порталы**. Рендерит несколько дочерних элементов в другое поддерево DOM. Подробнее про [порталы](/docs/portals.html).
 - **Строки и числа.** Рендерит текстовые DOM-узлы.
 - **Booleans или `null`**. Ничего не рендерит. (Обычно необходим для поддержки паттерна `return test && <Child />`, где `test` – логическое значение.)
+=======
+- **React elements.** Typically created via [JSX](/docs/introducing-jsx.html). For example, `<div />` and `<MyComponent />` are React elements that instruct React to render a DOM node, or another user-defined component, respectively.
+- **Arrays and fragments.** Let you return multiple elements from render. See the documentation on [fragments](/docs/fragments.html) for more details.
+- **Portals**. Let you render children into a different DOM subtree. See the documentation on [portals](/docs/portals.html) for more details.
+- **String and numbers.** These are rendered as text nodes in the DOM.
+- **Booleans or `null` or `undefined`**. Render nothing. (Mostly exists to support `return test && <Child />` pattern, where `test` is boolean).
+>>>>>>> 868d525a74b717a10e0f61bb576213e133aa8d07
 
 Функция `render()` должна быть *чистой*. Это означает, что она не изменяет состояние компонента, всегда возвращает один и тот же результат, не взаимодействует напрямую с браузером.
 
