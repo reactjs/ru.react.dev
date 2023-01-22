@@ -368,7 +368,7 @@ function MyComponent() {
 
 > Примечание
 >
-> Если контент уже доступен пользователю, переключение обратно на индикатор загрузки может его дезориентировать. Иногда лучше показать "старый" интерфейс, пока происходит ленивая загрузка нового компонента. Для этого можно использовать новое API для работы с состоянием переходов [`startTransition`](#starttransition) и [`useTransition`](/docs/hooks-reference.html#usetransition), чтобы пометить обновления состояния как переходы (transitions), делая их обработку несрочной.
+> Если контент уже доступен пользователю, переключение обратно на индикатор загрузки может его дезориентировать. Иногда лучше показать "старый" интерфейс, пока происходит подготовка нового UI. Для этого можно использовать новое API [`startTransition`](#starttransition) и [`useTransition`](/docs/hooks-reference.html#usetransition) для работы с переходами, чтобы пометить обновления как переходы и избежать незапланированных откатов. 
 
 #### `React.Suspense` in Server Side Rendering {#reactsuspense-in-server-side-rendering}
 During server side rendering Suspense Boundaries allow you to flush your application in smaller chunks by suspending.
