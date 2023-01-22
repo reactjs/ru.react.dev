@@ -12,31 +12,31 @@ permalink: docs/react-dom.html
 import * as ReactDOM from 'react-dom';
 ```
 
-If you use ES5 with npm, you can write:
+Если вы используете ES5 с npm, можете написать:
 
 ```js
 var ReactDOM = require('react-dom');
 ```
 
-The `react-dom` package also provides modules specific to client and server apps:
-- [`react-dom/client`](/docs/react-dom-client.html)
+Также `react-dom` предоставляет отдельные модули для клиентских и серверных приложений:
+- [`react-dom/client`](https://reactjs.org/docs/react-dom-client.html)
 - [`react-dom/server`](/docs/react-dom-server.html)
 
 ## Обзор {#overview}
 
-The `react-dom` package exports these methods:
+Пакет `react-dom` экспортирует следующие методы:
 - [`createPortal()`](#createportal)
 - [`flushSync()`](#flushsync)
 
-These `react-dom` methods are also exported, but are considered legacy:
+Следующие методы `react-dom` все еще экспортируются, но считаются устаревшими:
 - [`render()`](#render)
 - [`hydrate()`](#hydrate)
 - [`findDOMNode()`](#finddomnode)
 - [`unmountComponentAtNode()`](#unmountcomponentatnode)
 
-> Примечание: 
-> 
-> Both `render` and `hydrate` have been replaced with new [client methods](/docs/react-dom-client.html) in React 18. These methods will warn that your app will behave as if it's running React 17 (learn more [here](https://reactjs.org/link/switch-to-createroot)).
+> Примечание:
+>
+> Методы `render` и `hydrate` были заменены на новые [client методы](https://reactjs.org/docs/react-dom-client.html) в React 18. Эти методы будут предупреждать, что ваше приложение будет работать, словно используется версия React 17  (узнайте больше [здесь](https://reactjs.org/link/switch-to-createroot)).
 
 ### Поддержка браузерами {#browser-support}
 
@@ -54,7 +54,7 @@ React поддерживает все современные браузеры, �
 createPortal(child, container)
 ```
 
-Creates a portal. Portals provide a way to [render children into a DOM node that exists outside the hierarchy of the DOM component](/docs/portals.html).
+Создаёт портал. Порталы предоставляют способ [отрендерить дочерние элементы в узле DOM, который существует вне иерархии DOM-компонента](/docs/portals.html).
 
 ### `flushSync()` {#flushsync}
 
@@ -62,27 +62,27 @@ Creates a portal. Portals provide a way to [render children into a DOM node that
 flushSync(callback)
 ```
 
-Force React to flush any updates inside the provided callback synchronously. This ensures that the DOM is updated immediately.
+Заставляет React произвести любые обновления внутри колбэка синхронно. При этом DOM обновляется сразу.
 
 ```javascript
-// Force this state update to be synchronous.
+// Принудительно укажем, что данное обновление состояния должно быть синхронным.
 flushSync(() => {
   setCount(count + 1);
 });
-// By this point, DOM is updated.
+// К этому моменту DOM уже обновлен.
 ```
 
 > Примечание:
-> 
-> `flushSync` can significantly hurt performance. Use sparingly.
-> 
-> `flushSync` may force pending Suspense boundaries to show their `fallback` state.
-> 
-> `flushSync` may also run pending effects and synchronously apply any updates they contain before returning.
-> 
-> `flushSync` may also flush updates outside the callback when necessary to flush the updates inside the callback. For example, if there are pending updates from a click, React may flush those before flushing the updates inside the callback.
+>
+> `flushSync` может сильно влиять на производительность. Используйте в редких случаях.
+>
+> `flushSync` может заставить Suspense, которые ожидают содержимое, показывать их `fallback` состояние.
+>
+> `flushSync` может вызывать ожидающие эффекты и синхронно применять любые их обновления перед возвратом.
+>
+> `flushSync` может вызывать обновления вне колбэка, если это нужно для выполнения обновлений внутри колбэка. Например, если есть ожидающие обновления от клика, React может применить их до того, как применит обновления внутри колбэка.
 
-## Legacy Reference {#legacy-reference}
+## Устаревшие методы {#legacy-reference}
 ### `render()` {#render}
 ```javascript
 render(element, container[, callback])
@@ -90,7 +90,7 @@ render(element, container[, callback])
 
 > Примечание:
 >
-> `render` has been replaced with `createRoot` in React 18. See [createRoot](/docs/react-dom-client.html#createroot) for more info.
+> `render` был заменен на `createRoot` в React 18. Подробнее о [createRoot](https://reactjs.org/docs/react-dom-client.html#createroot).
 
 Рендерит React-элемент в DOM-элемент, переданный в аргумент `container` и возвращает [ссылку](/docs/more-about-refs.html) на компонент (или возвращает `null` для [компонентов без состояния](/docs/components-and-props.html#function-and-class-components)).
 
