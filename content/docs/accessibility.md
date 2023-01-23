@@ -373,9 +373,15 @@ class BlurExample extends React.Component {
 
 Каждый тип компонентов имеет специфическую архитектуру и предполагает определённую функциональность, как для пользователей, так и для браузеров:
 
+<<<<<<< HEAD
 - [практические рекомендации WAI-ARIA по архитектуре и компонентам](https://www.w3.org/TR/wai-aria-practices/#aria_ex)
 - [примеры из блога Хейдона Пикеринга (Heydon Pickering)](https://heydonworks.com/article/practical-aria-examples/)
 - [инклюзивные компоненты](https://inclusive-components.design/)
+=======
+- [ARIA Authoring Practices Guide (APG) - Design Patterns and Examples](https://www.w3.org/WAI/ARIA/apg/patterns/)
+- [Heydon Pickering - ARIA Examples](https://heydonworks.com/article/practical-aria-examples/)
+- [Inclusive Components](https://inclusive-components.design/)
+>>>>>>> 38bf76a4a7bec6072d086ce8efdeef9ebb7af227
 
 ## На что ещё нужно обратить внимание {#other-points-for-consideration}
 
