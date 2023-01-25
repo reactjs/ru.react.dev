@@ -587,7 +587,7 @@ startTransition(() => {
 function App() {
   const [isPending, startTransition] = useTransition();
   const [count, setCount] = useState(0);
-  
+
   function handleClick() {
     startTransition(() => {
       setCount(c => c + 1);
@@ -614,39 +614,37 @@ function App() {
 ```js
 const id = useId();
 ```
+`useId` генерирует уникальные идентификаторы, которые стабильны на сервере и на клиенте, и не вызывают несовпадений гидратации.
 
-`useId` is a hook for generating unique IDs that are stable across the server and client, while avoiding hydration mismatches.
-
-> Note
+> Примечание
 >
-> `useId` is **not** for generating [keys in a list](/docs/lists-and-keys.html#keys). Keys should be generated from your data.
+> **Не используйте** `useId` для генерации [ключей в списках](/docs/lists-and-keys.html#keys). Ключи должны быть сгенерированы из ваших данных.
 
-For a basic example, pass the `id` directly to the elements that need it:
+Например, `id` можно напрямую передавать элементам, которым он нужен:
 
 ```js
 function Checkbox() {
   const id = useId();
   return (
     <>
-      <label htmlFor={id}>Do you like React?</label>
+      <label htmlFor={id}>Вам нравится React?</label>
       <input id={id} type="checkbox" name="react"/>
     </>
   );
 };
 ```
-
-For multiple IDs in the same component, append a suffix using the same `id`:
+Чтобы использовать несколько идентификаторов в одном компоненте, добавьте разные суффиксы к одному и тому же `id`:
 
 ```js
 function NameFields() {
   const id = useId();
   return (
     <div>
-      <label htmlFor={id + '-firstName'}>First Name</label>
+      <label htmlFor={id + '-firstName'}>Имя</label>
       <div>
         <input id={id + '-firstName'} type="text" />
       </div>
-      <label htmlFor={id + '-lastName'}>Last Name</label>
+      <label htmlFor={id + '-lastName'}>Фамилия</label>
       <div>
         <input id={id + '-lastName'} type="text" />
       </div>
@@ -655,11 +653,11 @@ function NameFields() {
 }
 ```
 
-> Note:
-> 
-> `useId` generates a string that includes the `:` token. This helps ensure that the token is unique, but is not supported in CSS selectors or APIs like `querySelectorAll`.
-> 
-> `useId` supports an `identifierPrefix` to prevent collisions in multi-root apps. To configure, see the options for [`hydrateRoot`](/docs/react-dom-client.html#hydrateroot) and [`ReactDOMServer`](/docs/react-dom-server.html).
+> Примечание:
+>
+> `useId` генерирует строку, содержащую символ `:`. Это помогает обеспечить уникальность, при этом полученная строка не будет поддерживаться в CSS селекторах или API, таких как `querySelectorAll`.
+>
+> `useId` поддерживается в `identifierPrefix`, чтобы избежать коллизий в приложениях с несколькими корневыми элементами. Для настройки смотрите параметры для методов [`hydrateRoot`](/docs/react-dom-client.html#hydrateroot) и [`ReactDOMServer`](/docs/react-dom-server.html).
 
 ## Library Hooks {#library-hooks}
 
@@ -706,9 +704,9 @@ const selectedField = useSyncExternalStore(
 > Note:
 >
 > `getSnapshot` must return a cached value. If getSnapshot is called multiple times in a row, it must return the same exact value unless there was a store update in between.
-> 
+>
 > A shim is provided for supporting multiple React versions published as `use-sync-external-store/shim`. This shim will prefer `useSyncExternalStore` when available, and fallback to a user-space implementation when it's not.
-> 
+>
 > As a convenience, we also provide a version of the API with automatic support for memoizing the result of getSnapshot published as `use-sync-external-store/with-selector`.
 
 ### `useInsertionEffect` {#useinsertioneffect}
