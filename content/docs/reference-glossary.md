@@ -126,7 +126,7 @@ class Welcome extends React.Component {
 
 Методы жизненного цикла — это настраиваемые функции, которые выполняются на различных этапах жизни компонента. Существуют специальные методы для первоначального рендеринга компонента в DOM ([монтирование](/docs/react-component.html#mounting)), его обновления, размонтирования и удаления.
 
-## [Управляемые](/docs/forms.html#controlled-components) и [неуправляемые компоненты](/docs/uncontrolled-components.html)
+## [Управляемые](/docs/forms.html#controlled-components) и [неуправляемые компоненты](/docs/uncontrolled-components.html) {#управляемые-и-неуправляемые-компонентыdocsuncontrolled-componentshtml}
 
 В React существует два различных подхода для управления формами.
 
