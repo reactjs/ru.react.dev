@@ -35,6 +35,10 @@ next: hooks-faq.html
 
 ### `useState` {#usestate}
 
+> Try the new React documentation for [`useState`](https://beta.reactjs.org/reference/react/useState).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```js
 const [state, setState] = useState(initialState);
 ```
@@ -118,6 +122,10 @@ React может группировать несколько обновлени�
 
 ### `useEffect` {#useeffect}
 
+> Try the new React documentation for [`useEffect`](https://beta.reactjs.org/reference/react/useEffect).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```js
 useEffect(didUpdate);
 ```
@@ -196,6 +204,11 @@ useEffect(
 
 ### `useContext` {#usecontext}
 
+> Try the new React documentation for [`useContext`](https://beta.reactjs.org/reference/react/useContext).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 const value = useContext(MyContext);
 ```
@@ -267,6 +280,11 @@ function ThemedButton() {
 Следующие хуки являются вариантами базовых из предыдущего раздела или необходимы только для конкретных крайних случаев. Их не требуется основательно изучать заранее.
 
 ### `useReducer` {#usereducer}
+
+> Try the new React documentation for [`useReducer`](https://beta.reactjs.org/reference/react/useReducer).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init);
@@ -371,6 +389,10 @@ function Counter({initialCount}) {
 
 ### `useCallback` {#usecallback}
 
+> Try the new React documentation for [`useCallback`](https://beta.reactjs.org/reference/react/useCallback).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```js
 const memoizedCallback = useCallback(
   () => {
@@ -394,6 +416,11 @@ const memoizedCallback = useCallback(
 
 ### `useMemo` {#usememo}
 
+> Try the new React documentation for [`useMemo`](https://beta.reactjs.org/reference/react/useMemo).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
@@ -415,6 +442,11 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 > Мы рекомендуем использовать правило [`exhaustive-deps`](https://github.com/facebook/react/issues/14920), входящее в наш пакет правил линтера [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). Оно предупреждает, когда зависимости указаны неправильно и предлагает исправление.
 
 ### `useRef` {#useref}
+
+> Try the new React documentation for [`useRef`](https://beta.reactjs.org/reference/react/useRef).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 
 ```js
 const refContainer = useRef(initialValue);
@@ -452,6 +484,11 @@ function TextInputWithFocusButton() {
 
 ### `useImperativeHandle` {#useimperativehandle}
 
+> Try the new React documentation for [`useImperativeHandle`](https://beta.reactjs.org/reference/react/useImperativeHandle).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 useImperativeHandle(ref, createHandle, [deps])
 ```
@@ -475,7 +512,16 @@ FancyInput = forwardRef(FancyInput);
 
 ### `useLayoutEffect` {#uselayouteffect}
 
+<<<<<<< HEAD
 Сигнатура идентична `useEffect`, но этот хук запускается синхронно после всех изменений DOM. Используйте его для чтения макета из DOM и синхронного повторного рендеринга. Обновления, запланированные внутри `useLayoutEffect`, будут полностью применены синхронно перед тем, как браузер получит шанс осуществить отрисовку.
+=======
+> Try the new React documentation for [`useLayoutEffect`](https://beta.reactjs.org/reference/react/useLayoutEffect).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
+The signature is identical to `useEffect`, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside `useLayoutEffect` will be flushed synchronously, before the browser has a chance to paint.
+>>>>>>> 5647a9485db3426d62b5a8203f4499c01bcd789b
 
 Предпочитайте стандартный `useEffect`, когда это возможно, чтобы избежать блокировки визуальных обновлений.
 
@@ -488,6 +534,11 @@ FancyInput = forwardRef(FancyInput);
 >Чтобы исключить компонент, который нуждается в эффектах макета из HTML-кода, полученного в результате серверного рендеринга, выполните его рендер по условию `showChild && <Child />` и отложите отображение с помощью `useEffect(() => { setShowChild(true); }, [])`. Таким образом, пользовательский интерфейс не будет выглядеть некорректно перед гидратацией.
 
 ### `useDebugValue` {#usedebugvalue}
+
+> Try the new React documentation for [`useDebugValue`](https://beta.reactjs.org/reference/react/useDebugValue).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 
 ```js
 useDebugValue(value)
@@ -529,6 +580,11 @@ useDebugValue(date, date => date.toDateString());
 
 ### `useDeferredValue` {#usedeferredvalue}
 
+> Try the new React documentation for [`useDeferredValue`](https://beta.reactjs.org/reference/react/useDeferredValue).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 const deferredValue = useDeferredValue(value);
 ```
@@ -567,6 +623,11 @@ Memoizing the children tells React that it only needs to re-render them when `de
 
 ### `useTransition` {#usetransition}
 
+> Try the new React documentation for [`useTransition`](https://beta.reactjs.org/reference/react/useTransition).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 const [isPending, startTransition] = useTransition();
 ```
@@ -578,7 +639,7 @@ Returns a stateful value for the pending state of the transition, and a function
 ```js
 startTransition(() => {
   setCount(count + 1);
-})
+});
 ```
 
 `isPending` indicates when a transition is active to show a pending state:
@@ -591,7 +652,7 @@ function App() {
   function handleClick() {
     startTransition(() => {
       setCount(c => c + 1);
-    })
+    });
   }
 
   return (
@@ -607,9 +668,14 @@ function App() {
 >
 > Updates in a transition yield to more urgent updates such as clicks.
 >
-> Updates in a transitions will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
+> Updates in a transition will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
 
 ### `useId` {#useid}
+
+> Try the new React documentation for [`useId`](https://beta.reactjs.org/reference/react/useId).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 
 ```js
 const id = useId();
@@ -667,6 +733,11 @@ The following Hooks are provided for library authors to integrate libraries deep
 
 ### `useSyncExternalStore` {#usesyncexternalstore}
 
+> Try the new React documentation for [`useSyncExternalStore`](https://beta.reactjs.org/reference/react/useSyncExternalStore).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
 ```js
 const state = useSyncExternalStore(subscribe, getSnapshot[, getServerSnapshot]);
 ```
@@ -712,6 +783,10 @@ const selectedField = useSyncExternalStore(
 > As a convenience, we also provide a version of the API with automatic support for memoizing the result of getSnapshot published as `use-sync-external-store/with-selector`.
 
 ### `useInsertionEffect` {#useinsertioneffect}
+
+> Try the new React documentation for [`useInsertionEffect`](https://beta.reactjs.org/reference/react/useInsertionEffect).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```js
 useInsertionEffect(didUpdate);
