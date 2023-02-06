@@ -15,7 +15,15 @@ redirect_from:
   - "tips/use-react-with-other-libraries.html"
 ---
 
+<<<<<<< HEAD
 Эта страница содержит подробный справочник API для определения классового компонента React. Предполагается, что вы знакомы с такими концепциями React, как [компоненты и пропсы](/docs/components-and-props.html), а также [состояние и жизненный цикл](/docs/state-and-lifecycle.html). Прочитайте про них, если вы этого не сделали.
+=======
+> Try the new React documentation for [`Component`](https://beta.reactjs.org/reference/react/Component).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+This page contains a detailed API reference for the React component class definition. It assumes you're familiar with fundamental React concepts, such as [Components and Props](/docs/components-and-props.html), as well as [State and Lifecycle](/docs/state-and-lifecycle.html). If you're not, read them first.
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 ## Обзор {#overview}
 
@@ -52,7 +60,11 @@ class Welcome extends React.Component {
 
 > Примечание:
 >
+<<<<<<< HEAD
 > Этот метод устарел. [Не используйте его](/blog/2018/03/27/update-on-async-rendering.html) в новом коде.
+=======
+>This method is considered legacy and you should [avoid it](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 >
 >- [`UNSAFE_componentWillMount()`](#unsafe_componentwillmount)
 
@@ -121,11 +133,19 @@ render()
 
 При вызове он проверяет `this.props` и `this.state` и возвращает один из следующих вариантов:
 
+<<<<<<< HEAD
 - **Элемент React.** Обычно создаётся с помощью [JSX](/docs/introducing-jsx.html). Указывает React, что рендерить: DOM-узел или пользовательский компонент. Например, `<div />` или `<MyComponent />`.
 - **Массивы и фрагменты.** Возвращает несколько элементов из `render()`. Подробнее про [фрагменты](/docs/fragments.html).
 - **Порталы**. Рендерит несколько дочерних элементов в другое поддерево DOM. Подробнее про [порталы](/docs/portals.html).
 - **Строки и числа.** Рендерит текстовые DOM-узлы.
 - **Booleans или `null`**. Ничего не рендерит. (Обычно необходим для поддержки паттерна `return test && <Child />`, где `test` – логическое значение.)
+=======
+- **React elements.** Typically created via [JSX](/docs/introducing-jsx.html). For example, `<div />` and `<MyComponent />` are React elements that instruct React to render a DOM node, or another user-defined component, respectively.
+- **Arrays and fragments.** Let you return multiple elements from render. See the documentation on [fragments](/docs/fragments.html) for more details.
+- **Portals**. Let you render children into a different DOM subtree. See the documentation on [portals](/docs/portals.html) for more details.
+- **String and numbers.** These are rendered as text nodes in the DOM.
+- **Booleans or `null` or `undefined`**. Render nothing. (Mostly exists to support `return test && <Child />` pattern, where `test` is boolean).
+>>>>>>> d4e42ab21f0cc7d8b79d1a619654e27c79e10af6
 
 Функция `render()` должна быть *чистой*. Это означает, что она не изменяет состояние компонента, всегда возвращает один и тот же результат, не взаимодействует напрямую с браузером.
 
