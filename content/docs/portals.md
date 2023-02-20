@@ -4,7 +4,19 @@ title: Порталы
 permalink: docs/portals.html
 ---
 
+<<<<<<< HEAD
 Порталы позволяют рендерить дочерние элементы в DOM-узел, который находится вне DOM-иерархии родительского компонента.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`createPortal`](https://beta.reactjs.org/reference/react-dom/createPortal)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 
 ```js
 ReactDOM.createPortal(child, container)
@@ -46,7 +58,11 @@ render() {
 >
 > При работе с порталами, помните, что нужно уделить внимание [управлению фокусом при помощи клавиатуры](/docs/accessibility.html#programmatically-managing-focus).
 >
+<<<<<<< HEAD
 > Для модальных диалогов, убедитесь, что любой пользователь будет способен взаимодействовать с ними, следуя [практикам разработки модальных окон WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal).
+=======
+> For modal dialogs, ensure that everyone can interact with them by following the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/).
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 
 [**Попробовать на CodePen**](https://codepen.io/gaearon/pen/yzMaBd)
 

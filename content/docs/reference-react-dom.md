@@ -50,6 +50,10 @@ React поддерживает все современные браузеры, �
 
 ### `createPortal()` {#createportal}
 
+> Try the new React documentation for [`createPortal`](https://beta.reactjs.org/reference/react-dom/createPortal).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 createPortal(child, container)
 ```
@@ -57,6 +61,10 @@ createPortal(child, container)
 Создаёт портал. Порталы предоставляют способ [отрендерить дочерние элементы в узле DOM, который существует вне иерархии DOM-компонента](/docs/portals.html).
 
 ### `flushSync()` {#flushsync}
+
+> Try the new React documentation for [`flushSync`](https://beta.reactjs.org/reference/react-dom/flushSync).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
 
 ```javascript
 flushSync(callback)
@@ -84,6 +92,11 @@ flushSync(() => {
 
 ## Устаревшие методы {#legacy-reference}
 ### `render()` {#render}
+
+> Try the new React documentation for [`render`](https://beta.reactjs.org/reference/react-dom/render).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 render(element, container[, callback])
 ```
@@ -114,6 +127,10 @@ render(element, container[, callback])
 
 ### `hydrate()` {#hydrate}
 
+> Try the new React documentation for [`hydrate`](https://beta.reactjs.org/reference/react-dom/hydrate).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 hydrate(element, container[, callback])
 ```
@@ -136,6 +153,10 @@ React ожидает, что отрендеренное содержимое и�
 
 ### `unmountComponentAtNode()` {#unmountcomponentatnode}
 
+> Try the new React documentation for [`unmountComponentAtNode`](https://beta.reactjs.org/reference/react-dom/unmountComponentAtNode).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
 ```javascript
 unmountComponentAtNode(container)
 ```
@@ -150,7 +171,15 @@ unmountComponentAtNode(container)
 
 ### `findDOMNode()` {#finddomnode}
 
+<<<<<<< HEAD
 > Примечание:
+=======
+> Try the new React documentation for [`findDOMNode`](https://beta.reactjs.org/reference/react-dom/findDOMNode).
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+> Note:
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 >
 > `findDOMNode` — это лазейка, используемая для доступа к базовому узлу DOM. В большинстве случаев использование этого метода не рекомендуется, поскольку он нарушает абстракцию компонента. [Метод устарел в `StrictMode`.](/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
 

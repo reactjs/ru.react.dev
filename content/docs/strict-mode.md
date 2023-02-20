@@ -4,7 +4,20 @@ title: Строгий режим
 permalink: docs/strict-mode.html
 ---
 
+<<<<<<< HEAD
 `StrictMode` – инструмент для обнаружения потенциальных проблем в приложении. Также как и `Fragment`, `StrictMode` не рендерит видимого UI. Строгий режим активирует дополнительные проверки и предупреждения для своих потомков.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`StrictMode`](https://beta.reactjs.org/reference/react/StrictMode)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
+`StrictMode` is a tool for highlighting potential problems in an application. Like `Fragment`, `StrictMode` does not render any visible UI. It activates additional checks and warnings for its descendants.
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 
 > Примечание:
 >
@@ -135,7 +148,11 @@ React работает в два этапа:
 
 В будущем мы хотели бы добавить функцию, которая позволяет React добавлять и удалять разделы пользовательского интерфейса с сохранением состояния. Например, когда пользователь переходит от экрана к экрану и обратно, React должен иметь возможность немедленно отображать предыдущий экран. Для этого React поддерживает повторное монтирование деревьев с использованием того же состояния компонента, которое использовалось до размонтирования.
 
+<<<<<<< HEAD
 Эта функция позволит React повысить производительность "из коробки” (изначально готовому к использованию), но требует, чтобы компоненты были устойчивы к многократному монтированию и уничтожению эффектов. Большинство эффектов будут работать без каких-либо изменений, но некоторые эффекты неправильно очищают подписки в функции обратного вызова или подразумевают, что они монтируются или уничтожаются только один раз.
+=======
+In the future, we’d like to add a feature that allows React to add and remove sections of the UI while preserving state. For example, when a user tabs away from a screen and back, React should be able to immediately show the previous screen. To do this, React will support remounting trees using the same component state used before unmounting.
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 
 Чтобы помочь устранить эти проблемы, React 18 представляет новую проверку только в режиме разработки в строгом режиме. Эта новая проверка автоматически размонтирует и перемонтирует каждый компонент всякий раз, когда компонент монтируется в первый раз, восстанавливая предыдущее состояние при втором монтировании.
 
@@ -150,6 +167,7 @@ React работает в два этапа:
 В строгом режиме, начинающегося с React 18, всякий раз, когда компонент монтируется в процессе разработки, React будет имитировать немедленное размонтирование и повторное монтирование компонента:
 
 ```
+<<<<<<< HEAD
 * React монтирует компонент.
   * Создаются эффекты макета.
   * Создаются эффекты.
@@ -159,6 +177,17 @@ React работает в два этапа:
 * React имитирует пересоздание эффектов на смонтированном компоненте.
   * Создаются эффекты макета.
   * Установка эффектов.
+=======
+* React mounts the component.
+    * Layout effects are created.
+    * Effects are created.
+* React simulates effects being destroyed on a mounted component.
+    * Layout effects are destroyed.
+    * Effects are destroyed.
+* React simulates effects being re-created on a mounted component.
+    * Layout effects are created
+    * Effect setup code runs
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 ```
 
 При втором монтировании React восстановит состояние с первого монтирования. Эта функция имитирует поведение пользователя, например, переход пользователя с экрана на вкладку и обратно, гарантируя, что код будет правильно обрабатывать восстановление состояния.
@@ -166,9 +195,15 @@ React работает в два этапа:
 Когда компонент размонтируется, эффекты уничтожаются в обычном режиме:
 
 ```
+<<<<<<< HEAD
 * React размонтирует компонент.
   * Уничтожаются эффекты макета.
   * Уничтожаются эффекты эффектов.
+=======
+* React unmounts the component.
+  * Layout effects are destroyed.
+  * Effects are destroyed.
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 ```
 
 Размонтирование и повторное монтирование включает в себя:

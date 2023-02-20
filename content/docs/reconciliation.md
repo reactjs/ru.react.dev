@@ -4,7 +4,19 @@ title: Согласование
 permalink: docs/reconciliation.html
 ---
 
+<<<<<<< HEAD
 React предоставляет декларативный API, который позволяет не беспокоиться о том, что именно изменяется при каждом обновлении. Благодаря этому, писать приложения становится намного проще, но может быть неочевидно как именно это реализовано внутри React. В этой статье объясняются решения, принятые нами для алгоритма сравнения в React, которые делают обновления компонента предсказуемыми, и в то же время достаточно быстрыми для высокопроизводительных приложений.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Preserving and Resetting State](https://beta.reactjs.org/learn/preserving-and-resetting-state)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+React provides a declarative API so that you don't have to worry about exactly what changes on every update. This makes writing applications a lot easier, but it might not be obvious how this is implemented within React. This article explains the choices we made in React's "diffing" algorithm so that component updates are predictable while being fast enough for high-performance apps.
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 
 ## Мотивация {#motivation}
 
@@ -45,7 +57,11 @@ React сравнивает деревья начиная с их корневы�
 
 >Примечание:
 >
+<<<<<<< HEAD
 >Следующие методы объявлены устаревшими, поэтому в новом коде их [не стоит](/blog/2018/03/27/update-on-async-rendering.html) использовать:
+=======
+>This method is considered legacy and you should [avoid it](/blog/2018/03/27/update-on-async-rendering.html) in new code:
+>>>>>>> 63c77695a95902595b6c2cc084a5c3650b15210a
 >
 >- `UNSAFE_componentWillMount()`
 
