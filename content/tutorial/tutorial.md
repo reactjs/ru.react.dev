@@ -194,7 +194,7 @@ JSX обладает всей мощью JavaScript. В JSX вы можете и
 ```js{3}
 class Board extends React.Component {
   renderSquare(i) {
-    return <Square value={i} />;
+    return <Square />; //изменяя значение в этой строке выдается ошибка при последующей работе. В дальнейшем эта строка изменяется в разделе 'Создание игры' - 'Подъем // состояния'
   }
 }
 ```
