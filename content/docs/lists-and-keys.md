@@ -6,7 +6,20 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
+<<<<<<< HEAD
 Сначала давайте вспомним, как работать со списками в JavaScript.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Rendering Lists](https://beta.reactjs.org/learn/rendering-lists)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+
+First, let's review how you transform lists in JavaScript.
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 В коде ниже мы используем функцию [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), чтобы удвоить значения в массиве `numbers`. Мы присваиваем массив, возвращаемый из `map()`, переменной `doubled`, и выводим её в консоль:
 
@@ -119,7 +132,11 @@ const todoItems = todos.map((todo, index) =>
 );
 ```
 
+<<<<<<< HEAD
 Мы не рекомендуем использовать индексы как ключи, если порядок элементов может поменяться. Это негативно скажется на производительности и может вызвать проблемы с состоянием компонента. Почитайте статью Робина Покорни (Robin Pokorny), [которая объясняет, почему индексы-ключи приводят к проблемам](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318). Если вы опустите ключ для элемента в списке, то React по умолчанию будет использовать индексы как ключи.
+=======
+We don't recommend using indexes for keys if the order of items may change. This can negatively impact performance and may cause issues with component state. Check out Robin Pokorny's article for an [in-depth explanation on the negative impacts of using an index as a key](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/). If you choose not to assign an explicit key to list items then React will default to using indexes as keys.
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 Вот [подробное объяснение о том, почему ключи необходимы](/docs/reconciliation.html#recursing-on-children).
 

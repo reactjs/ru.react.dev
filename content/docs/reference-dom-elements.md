@@ -14,7 +14,24 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
+<<<<<<< HEAD
 React реализует независимую от браузера систему DOM для повышения производительности и кроссбраузерной совместимости. Это позволило избавиться от некоторых шероховатостей в браузерных реализациях DOM.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://beta.reactjs.org/reference/react-dom/components/common)
+> - [`<input>`](https://beta.reactjs.org/reference/react-dom/components/input)
+> - [`<option>`](https://beta.reactjs.org/reference/react-dom/components/option)
+> - [`<progress>`](https://beta.reactjs.org/reference/react-dom/components/progress)
+> - [`<select>`](https://beta.reactjs.org/reference/react-dom/components/select)
+> - [`<textarea>`](https://beta.reactjs.org/reference/react-dom/components/textarea)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+React implements a browser-independent DOM system for performance and cross-browser compatibility. We took the opportunity to clean up a few rough edges in browser DOM implementations.
+>>>>>>> b0ccb47f33e52315b0ec65edb9a49dc4910dd99c
 
 В React все свойства и атрибуты DOM (включая обработчики событий) должны быть в стиле camelCase. Например, HTML-атрибут `tabindex` соответствует атрибуту `tabIndex` в React. Исключение составляют атрибуты `aria-*` и `data-*`, которые следует писать в нижнем регистре. В частности, вы можете оставить `aria-label` как `aria-label`.
 
