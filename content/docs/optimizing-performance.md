@@ -348,7 +348,7 @@ function updateColorMap(colormap) {
 }
 ```
 
-Функция `updateColorMap` теперь возвращает новый объект, вместо того, чтобы мутировать исходный. Метод `Object.assign` входит в ES6 и требует полифила.
+Функция `updateColorMap` теперь возвращает новый объект, вместо того, чтобы мутировать исходный. Метод `Object.assign` входит в ES6 и не требует полифила.
 
 [Синтаксис расширения свойств объекта](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Spread_syntax) упрощает обновление объектов без мутаций:
 
