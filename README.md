@@ -65,4 +65,11 @@
 
 ## Лицензия
 
+<<<<<<< HEAD
 Контент на [ru.reactjs.org](https://ru.reactjs.org/) распространяется по лицензии CC-BY-4.0, как указано в файле [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md).
+=======
+- `yarn reset` to clear the local cache
+
+## License
+Content submitted to [reactjs.org](https://reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](LICENSE-DOCS.md) file.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210

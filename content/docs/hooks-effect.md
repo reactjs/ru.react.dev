@@ -6,7 +6,21 @@ next: hooks-rules.html
 prev: hooks-state.html
 ---
 
+<<<<<<< HEAD
 *Хуки* — нововведение в React 16.8, которое позволяет использовать состояние и другие возможности React без написания классов.
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Synchronizing with Effects](https://beta.reactjs.org/learn/synchronizing-with-effects)
+> - [You Might Not Need an Effect](https://beta.reactjs.org/learn/you-might-not-need-an-effect)
+> - [`useEffect`](https://beta.reactjs.org/reference/react/useEffect)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+*Hooks* are a new addition in React 16.8. They let you use state and other React features without writing a class.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 *Хук эффекта* даёт вам возможность выполнять побочные эффекты в функциональном компоненте:
 

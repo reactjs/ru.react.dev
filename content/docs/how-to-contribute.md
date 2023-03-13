@@ -84,6 +84,7 @@ React использует [семантическое версионирова�
 
 **Перед тем как отправлять пулреквест,** нужно выполнить следующие действия:
 
+<<<<<<< HEAD
 1. Форкнуть [репозиторий React](https://github.com/facebook/react) и создать собственную ветку от главной ветки `main`.
 2. Запустить команду `yarn` в корне репозитория.
 3. Если вы исправляете баг и добавляете код, который должен быть обязательно протестирован, не забудьте запустить тесты!
@@ -94,6 +95,18 @@ React использует [семантическое версионирова�
 8. Запустить линтер (`yarn lint`). Совет: команда `yarn linc` анализирует только изменённые файлы.
 9. Выполнить проверку типов с помощью [Flow](https://flowtype.org/) (`yarn flow`).
 10. Подписать соглашение добровольного разработчика (Contributor License Agreement).
+=======
+1. Fork [the repository](https://github.com/facebook/react) and create your branch from `main`.
+2. Run `yarn` in the repository root.
+3. If you've fixed a bug or added code that should be tested, add tests!
+4. Ensure the test suite passes (`yarn test`). Tip: `yarn test --watch TestName` is helpful in development.
+5. Run `yarn test --prod` to test in the production environment.
+6. If you need a debugger, run `yarn test --debug --watch TestName`, open `chrome://inspect`, and press "Inspect".
+7. Format your code with [prettier](https://github.com/prettier/prettier) (`yarn prettier`).
+8. Make sure your code lints (`yarn lint`). Tip: `yarn linc` to only check changed files.
+9. Run the [Flow](https://flowtype.org/) typechecks (`yarn flow`).
+10. If you haven't already, complete the CLA.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 ### Соглашение добровольного разработчика (Contributor License Agreement, CLA) {#contributor-license-agreement-cla}
 

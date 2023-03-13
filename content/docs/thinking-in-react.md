@@ -8,7 +8,17 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
+<<<<<<< HEAD
 Нам кажется, React — это отличный способ писать большие и быстрые JavaScript-приложения. Мы в Facebook и Instagram убедились в его хорошей масштабируемости.
+=======
+> Try the new React documentation.
+> 
+> The updated [Thinking in React](https://beta.reactjs.org/learn/thinking-in-react) guide teaches modern React and includes live examples.
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+React is, in our opinion, the premier way to build big, fast Web apps with JavaScript. It has scaled very well for us at Facebook and Instagram.
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 Одна из особенностей React — это предлагаемый им процесс мышления при создании приложений. В этом руководстве мы разберём пример создания таблицы продуктов с поиском на React.
 
@@ -144,4 +154,8 @@ prev: composition-vs-inheritance.html
 
 ## Вот и всё {#and-thats-it}
 
+<<<<<<< HEAD
 Надеемся, что этот пример поможет вам получить представление о том, как подойти к созданию компонентов и приложений в React. Хотя этот процесс и использует немного больше кода, помните, что код читают чаще, чем пишут. А модульный и прямолинейный код читается значительно легче. Когда вы начнёте создавать большие библиотеки компонентов, вы сможете по-настоящему оценить прямолинейность и связанность React, а повторно используемые компоненты сделают ваш код намного меньше. :)
+=======
+Hopefully, this gives you an idea of how to think about building components and applications with React. While it may be a little more typing than you're used to, remember that code is read far more often than it's written, and it's less difficult to read this modular, explicit code. As you start to build large libraries of components, you'll appreciate this explicitness and modularity, and with code reuse, your lines of code will start to shrink. :)
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210

@@ -6,7 +6,20 @@ prev: hello-world.html
 next: rendering-elements.html
 ---
 
+<<<<<<< HEAD
 Рассмотрим объявление переменной:
+=======
+> Try the new React documentation.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Writing Markup with JSX](https://beta.reactjs.org/learn/writing-markup-with-jsx)
+> - [JavaScript in JSX with Curly Braces](https://beta.reactjs.org/learn/javascript-in-jsx-with-curly-braces)
+>
+> The new docs will soon replace this site, which will be archived. [Provide feedback.](https://github.com/reactjs/reactjs.org/issues/3308)
+
+Consider this variable declaration:
+>>>>>>> 19aa5b4852c3905757edb16dd62f7e7506231210
 
 ```js
 const element = <h1>Привет, мир!</h1>;
