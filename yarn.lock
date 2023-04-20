@@ -15043,6 +15043,11 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
+typograf@^6.8.0:
+  version "6.15.1"
+  resolved "https://registry.yarnpkg.com/typograf/-/typograf-6.15.1.tgz#592ac2998fb46a06acdddcd8dbd461082589a254"
+  integrity sha512-G1IIJlh4ycW+rvTspdgZKQoj/fKpmwif6MUhrmn3LY50W8njRnBqdFIJcfDqbmDg+RmmP51R9jdjjMwBYA5P0Q==
+
 ua-parser-js@^0.7.30:
   version "0.7.34"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.34.tgz#afb439e2e3e394bdc90080acb661a39c685b67d7"
