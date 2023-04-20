@@ -1,68 +1,20 @@
-# ru.reactjs.org
+# ru.legacy.reactjs.org
 
-Этот репозиторий содержит исходный код и содержимое сайта [ru.reactjs.org](https://ru.reactjs.org/).
+This repo contains the source code and documentation powering [ru.legacy.reactjs.org](https://ru.legacy.reactjs.org/).
 
-## Начало
+## Not actively maintained
 
-### Предварительные требования
+This site is archived and not maintained. For new React docs, go to [ru.react.dev](https://ru.react.dev) ([repository](https://github.com/reactjs/react.dev)).
 
-1. Git
-1. Node: любая версия 12.x, начиная с 12.0.0 или выше
-1. Yarn v1: Посмотрите [сайт Yarn с инструкциями по установке](https://yarnpkg.com/lang/en/docs/install/)
-1. Сделать форк этого репозитория (для предложения изменений)
-1. Копия [репозитория ru.reactjs.org](https://github.com/reactjs/ru.reactjs.org) на вашем компьютере
+## Installation
 
-### Установка
+1. `cd legacy.reactjs.org` to go into the project root
+1. `yarn` to install the website's npm dependencies
 
-1. `cd ru.reactjs.org` для перехода в директорию проекта
-1. `yarn` для установки npm-зависимостей проекта
+## Running locally
 
-### Запуск проекта локально
+1. `yarn dev` to start the development server (powered by [Gatsby](https://www.gatsbyjs.org))
+1. `open http://localhost:8000` to open the site in your favorite browser
 
-1. `yarn dev` для старта сервера в режиме разработки с поддержкой перезагрузки на лету (на основе [Gatsby](https://www.gatsbyjs.org))
-1. `open http://localhost:8000` откроет сайт в вашем браузере по умолчанию
-
-## Помощь проекту
-
-### Рекомендации
-
-Документация разделена на несколько частей, с разными характером и целями. Если вы планируете написать больше, чем несколько фраз, вам может быть полезно ознакомиться с [рекомендациями для участия](https://github.com/reactjs/ru.reactjs.org/blob/main/CONTRIBUTING.md#guidelines-for-text) и его конкретными разделами.
-
-### Создание ветки
-
-1. `git checkout main` из любой папки в вашей локальной копии репозитория `ru.reactjs.org`
-1. `git pull origin main`, чтобы убедиться, что у вас самая последняя версия кода
-1. `git checkout -b the-name-of-my-branch` (замените `the-name-of-my-branch` на подходящее имя) для создания ветки
-
-### Внесение изменений
-
-1. Следуйте инструкциям из раздела [«Запуск проекта локально»](#running-locally)
-1. Сохраните файлы и проверьте в вашем браузере
-  1. Изменения в React-компонентах внутри `src` применяются на лету
-  1. Изменения в markdown-файлах внутри `content` применяются на лету
-  1. При работе с плагинами может понадобится удаление папки `.cache` и перезапуск сервера
-
-### Проверка изменений
-
-1. По возможности проверьте визуальные изменения во всех последних версиях распространённых браузеров: и настольных, и мобильных.
-1. Запустите `yarn check-all` из корня проекта. (Это запустит Prettier, ESLint и Flow.)
-
-### Отправка изменений
-
-1. `git add -A && git commit -m "Сообщение"` (вместо `Сообщение` напишите осмысленное название изменения, например `Исправление логотипа на Android`), чтобы добавить и зафиксировать изменение
-1. `git push my-fork-name the-name-of-my-branch`
-1. Перейдите на [страницу репозитория ru.reactjs.org](https://github.com/reactjs/ru.reactjs.org) и вы увидите уведомление с вашей веткой.
-1. Следуйте инструкциям на GitHub.
-1. По возможности добавьте скриншот с сделанными изменениями. Как только вы сделаете PR, автоматически будет создана версия сайта с вашими изменениями на [Netlify](https://www.netlify.com/).
-
-## Перевод
-
-Если вы заинтересованы в переводе `reactjs.org`, ознакомьтесь с текущим прогрессом перевода на [translations.reactjs.org](https://translations.reactjs.org/).
-
-## Решение проблем
-
-- `yarn reset` для очистки локального кеша
-
-## Лицензия
-
-Контент на [ru.reactjs.org](https://ru.reactjs.org/) распространяется по лицензии CC-BY-4.0, как указано в файле [LICENSE-DOCS.md](https://github.com/open-source-explorer/reactjs.org/blob/master/LICENSE-DOCS.md).
+## License
+Content at [legacy.reactjs.org](https://legacy.reactjs.org/) is CC-BY-4.0 licensed, as found in the [LICENSE-DOCS.md](LICENSE-DOCS.md) file.

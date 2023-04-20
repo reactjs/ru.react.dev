@@ -8,6 +8,14 @@ redirect_from:
 prev: composition-vs-inheritance.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> The updated [Thinking in React](https://react.dev/learn/thinking-in-react) guide teaches modern React and includes live examples.
+
+</div>
+
 Нам кажется, React — это отличный способ писать большие и быстрые JavaScript-приложения. Мы в Facebook и Instagram убедились в его хорошей масштабируемости.
 
 Одна из особенностей React — это предлагаемый им процесс мышления при создании приложений. В этом руководстве мы разберём пример создания таблицы продуктов с поиском на React.

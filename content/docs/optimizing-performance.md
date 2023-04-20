@@ -6,6 +6,17 @@ redirect_from:
   - "docs/advanced-performance.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`memo`: Skipping re-rendering when props are unchanged
+](https://react.dev/reference/react/memo#skipping-re-rendering-when-props-are-unchanged)
+
+</div>
+
 React использует несколько умных подходов для минимизации количества дорогостоящих DOM-операций, необходимых для обновления пользовательского интерфейса. Для многих приложений, использование React приведёт к быстрому пользовательскому интерфейсу без особых усилий по оптимизации производительности. Тем не менее, существует несколько способов ускорить React-приложение.
 
 ## Использование продакшен-сборки {#use-the-production-build}

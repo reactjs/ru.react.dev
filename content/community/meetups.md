@@ -6,6 +6,14 @@ sectionid: community
 permalink: community/meetups.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> See the [Meetups](https://react.dev/community/meetups) page on the new site.
+>
+</div>
+
 Do you have a local React.js meetup? Add it here! (Please keep the list alphabetical)
 
 ## Albania {#albania}
@@ -64,6 +72,9 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 ## Denmark {#denmark}
 * [Aalborg](https://www.meetup.com/Aalborg-React-React-Native-Meetup/)
 * [Aarhus](https://www.meetup.com/Aarhus-ReactJS-Meetup/)
+
+## Egypt {#egypt}
+* [Cairo](https://www.meetup.com/react-cairo/)
 
 ## England (UK) {#england-uk}
 * [Manchester](https://www.meetup.com/Manchester-React-User-Group/)
@@ -152,9 +163,6 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 
 ## Scotland (UK) {#scotland-uk}
 * [Edinburgh](https://www.meetup.com/React-Scotland/)
-
-## Singapore {#singapore}
-* [Singapore - React Knowledgeable](https://reactknowledgeable.org/)
 
 ## Spain {#spain}
 * [Barcelona](https://www.meetup.com/ReactJS-Barcelona/)

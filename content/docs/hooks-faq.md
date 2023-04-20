@@ -5,6 +5,14 @@ permalink: docs/hooks-faq.html
 prev: hooks-reference.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> The new documentation pages teaches React with Hooks.
+
+</div>
+
 *Хуки* — нововведение в React 16.8, которое позволяет использовать состояние и другие возможности React без написания классов.
 
 На этой странице вы найдёте ответы на популярные вопросы о [хуках](/docs/hooks-overview.html).

@@ -6,6 +6,18 @@ next: hooks-rules.html
 prev: hooks-state.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Synchronizing with Effects](https://react.dev/learn/synchronizing-with-effects)
+> - [You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect)
+> - [`useEffect`](https://react.dev/reference/react/useEffect)
+
+</div>
+
 *Хуки* — нововведение в React 16.8, которое позволяет использовать состояние и другие возможности React без написания классов.
 
 *Хук эффекта* даёт вам возможность выполнять побочные эффекты в функциональном компоненте:

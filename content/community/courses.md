@@ -6,6 +6,13 @@ sectionid: community
 permalink: community/courses.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+
+</div>
+
 ## Free Courses {#free-courses}
 
 - [Glitch: React Starter Kit](https://glitch.com/glimmer/post/react-starter-kit) - A free, 5-part video course with interactive code examples that will help you learn React.
@@ -28,6 +35,8 @@ permalink: community/courses.html
 
 
 ## Paid Courses {#paid-courses}
+
+- [Meta Front-End Developer Professional Certificate](https://www.coursera.org/professional-certificates/meta-front-end-developer) - Launch your career as a front-end developer. Build job-ready skills for an in-demand career and earn a credential from Meta. No degree or prior experience required to get started.
 
 - [Egghead.io](https://egghead.io/browse/frameworks/react) - Short instructional videos on React and many other topics.
 

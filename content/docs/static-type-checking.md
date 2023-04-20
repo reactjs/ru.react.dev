@@ -4,6 +4,14 @@ title: Статическая типизация
 permalink: docs/static-type-checking.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> Check out [React TypeScript cheatsheet](https://react-typescript-cheatsheet.netlify.app/) for how to use React with TypeScript.
+
+</div>
+
 Инструменты для статической типизации, такие как [Flow](https://flow.org/) или [TypeScript](https://www.typescriptlang.org/), позволяют отлавливать большую часть ошибок ещё до исполнения кода. Кроме того, они существенно улучшают процессы разработки, добавляя автодополнение и другие возможности. Для приложений с большой кодовой базой мы рекомендуем использовать Flow или TypeScript вместо `PropTypes`.
 
 ## Flow {#flow}

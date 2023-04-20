@@ -6,6 +6,17 @@ prev: conditional-rendering.html
 next: forms.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Rendering Lists](https://react.dev/learn/rendering-lists)
+
+</div>
+
+
 Сначала давайте вспомним, как работать со списками в JavaScript.
 
 В коде ниже мы используем функцию [`map()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map), чтобы удвоить значения в массиве `numbers`. Мы присваиваем массив, возвращаемый из `map()`, переменной `doubled`, и выводим её в консоль:
@@ -119,7 +130,7 @@ const todoItems = todos.map((todo, index) =>
 );
 ```
 
-Мы не рекомендуем использовать индексы как ключи, если порядок элементов может поменяться. Это негативно скажется на производительности и может вызвать проблемы с состоянием компонента. Почитайте статью Робина Покорни (Robin Pokorny), [которая объясняет, почему индексы-ключи приводят к проблемам](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318). Если вы опустите ключ для элемента в списке, то React по умолчанию будет использовать индексы как ключи.
+Мы не рекомендуем использовать индексы как ключи, если порядок элементов может поменяться. Это негативно скажется на производительности и может вызвать проблемы с состоянием компонента. Почитайте статью Робина Покорни (Robin Pokorny), [которая объясняет, почему индексы-ключи приводят к проблемам](https://robinpokorny.com/blog/index-as-a-key-is-an-anti-pattern/). Если вы опустите ключ для элемента в списке, то React по умолчанию будет использовать индексы как ключи.
 
 Вот [подробное объяснение о том, почему ключи необходимы](/docs/reconciliation.html#recursing-on-children).
 

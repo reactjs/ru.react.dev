@@ -6,6 +6,17 @@ next: hooks-effect.html
 prev: hooks-overview.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
+> - [`useState`](https://react.dev/reference/react/useState)
+
+</div>
+
 *Хуки* — нововведение в React 16.8, которое позволяет использовать состояние и другие возможности React без написания классов.
 
 На [странице введения в хуки](/docs/hooks-intro.html) мы познакомились с ними на этом примере:

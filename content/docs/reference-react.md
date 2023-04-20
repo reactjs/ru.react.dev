@@ -13,6 +13,19 @@ redirect_from:
   - "docs/top-level-api-zh-CN.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react`: Components](https://react.dev/reference/react/components)
+> - [`react`: Hooks](https://react.dev/reference/react/)
+> - [`react`: APIs](https://react.dev/reference/react/apis)
+> - [`react`: Legacy APIs](https://react.dev/reference/react/legacy)
+
+</div>
+
 `React` — это точка входа в библиотеку React. Если вы подключаете React при помощи тега `<script>`, API верхнего уровня доступны в глобальном объекте `React`. Если вы используете ES6 и npm, вы можете написать `import React from 'react'`. Если вы используете ES5 и npm, вы можете написать `var React = require('react')`.
 
 ## Обзор {#overview}
@@ -101,6 +114,14 @@ React-компоненты также могут быть объявлены к�
 
 ### `React.Component` {#reactcomponent}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Component`](https://react.dev/reference/react/Component).
+
+</div>
+
 `React.Component` — это базовый класс для компонентов React, объявленных как [ES6-классы](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes):
 
 ```javascript
@@ -117,19 +138,35 @@ class Greeting extends React.Component {
 
 ### `React.PureComponent` {#reactpurecomponent}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`PureComponent`](https://react.dev/reference/react/PureComponent).
+
+</div>
+
 `React.PureComponent` похож на [`React.Component`](#reactcomponent). Отличие заключается в том, что [`React.Component`](#reactcomponent) не реализует [`shouldComponentUpdate()`](/docs/react-component.html#shouldcomponentupdate), а `React.PureComponent` реализует его поверхностным сравнением пропсов и состояния.
 
 Если метод `render()` вашего React-компонента всегда рендерит одинаковый результат при одних и тех же пропсах и состояниях, для повышения производительности в некоторых случаях вы можете использовать `React.PureComponent`.
 
 > Примечание
 >
-> Метод `shouldComponentUpdate()` базового класса `React.PureComponent` делает только поверхностное сравнение объектов. Если они содержат сложные структуры данных, это может привести к неправильной работе для более глубоких различий (то есть, различий, не выраженных на поверхности структуры). Наследуйте класс `PureComponent` только тогда, когда вы ожидаете использовать простые пропсы и состояние, или используйте [`forceUpdate()`](/docs/react-component.html#forceupdate), когда знаете, что вложенные структуры данных изменились. Также подумайте об использовании [иммутабельных объектов](https://facebook.github.io/immutable-js/), чтобы упростить процесс сравнения вложенных данных.
+> Метод `shouldComponentUpdate()` базового класса `React.PureComponent` делает только поверхностное сравнение объектов. Если они содержат сложные структуры данных, это может привести к неправильной работе для более глубоких различий (то есть, различий, не выраженных на поверхности структуры). Наследуйте класс `PureComponent` только тогда, когда вы ожидаете использовать простые пропсы и состояние, или используйте [`forceUpdate()`](/docs/react-component.html#forceupdate), когда знаете, что вложенные структуры данных изменились. Также подумайте об использовании [иммутабельных объектов](https://immutable-js.com/), чтобы упростить процесс сравнения вложенных данных.
 >
 > Кроме того, метод `shouldComponentUpdate()` базового класса `React.PureComponent` пропускает обновление пропсов для всего поддерева компонентов. Убедитесь, что все дочерние компоненты также являются «чистыми».
 
 * * *
 
 ### `React.memo` {#reactmemo}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`memo`](https://react.dev/reference/react/memo).
+
+</div>
 
 ```javascript
 const MyComponent = React.memo(function MyComponent(props) {
@@ -169,6 +206,14 @@ export default React.memo(MyComponent, areEqual);
 
 ### `createElement()` {#createelement}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`createElement`](https://react.dev/reference/react/createElement).
+
+</div>
+
 ```javascript
 React.createElement(
   type,
@@ -184,6 +229,14 @@ React.createElement(
 * * *
 
 ### `cloneElement()` {#cloneelement}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`cloneElement`](https://react.dev/reference/react/cloneElement).
+
+</div>
 
 ```js
 React.cloneElement(
@@ -209,6 +262,14 @@ React.cloneElement(
 
 ### `createFactory()` {#createfactory}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`createFactory`](https://react.dev/reference/react/createFactory).
+
+</div>
+
 ```javascript
 React.createFactory(type)
 ```
@@ -223,6 +284,14 @@ React.createFactory(type)
 
 ### `isValidElement()` {#isvalidelement}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`isValidElement`](https://react.dev/reference/react/isValidElement).
+
+</div>
+
 ```javascript
 React.isValidElement(object)
 ```
@@ -232,6 +301,14 @@ React.isValidElement(object)
 * * *
 
 ### `React.Children` {#reactchildren}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Children`](https://react.dev/reference/react/Children).
+
+</div>
 
 `React.Children` предоставляет функции для работы с непрозрачной структурой данных `this.props.children`.
 
@@ -291,6 +368,14 @@ React.Children.toArray(children)
 
 ### `React.Fragment` {#reactfragment}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Fragment`](https://react.dev/reference/react/Fragment).
+
+</div>
+
 Компонент `React.Fragment` позволяет возвращать несколько элементов в методе `render()` без создания дополнительного элемента DOM:
 
 ```javascript
@@ -308,10 +393,26 @@ render() {
 
 ### `React.createRef` {#reactcreateref}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`createRef`](https://react.dev/reference/react/createRef).
+
+</div>
+
 `React.createRef` создаёт [реф](/docs/refs-and-the-dom.html), который можно прикрепить к React-элементам через атрибут ref.
 `embed:16-3-release-blog-post/create-ref-example.js`
 
 ### `React.forwardRef` {#reactforwardref}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`forwardRef`](https://react.dev/reference/react/forwardRef).
+
+</div>
 
 `React.forwardRef` создаёт React-компонент, который перенаправляет атрибут [ref](/docs/refs-and-the-dom.html), что он получает, другому компоненту ниже в дереве.
 Этот метод не очень распространён, но особенно полезен в двух сценариях:
@@ -331,6 +432,14 @@ render() {
 
 ### `React.lazy` {#reactlazy}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`lazy`](https://react.dev/reference/react/lazy).
+
+</div>
+
 `React.lazy()` позволяет вам определять компонент, который загружается динамически. Это помогает уменьшить размер сборки, откладывая загрузку компонентов, которые не используются во время первоначального рендера.
 
 Вы можете узнать, как этим пользоваться из нашей [документации по разделению кода](/docs/code-splitting.html#reactlazy). Вы также можете посмотреть [эту статью](https://medium.com/@pomber/lazy-loading-and-preloading-components-in-react-16-6-804de091c82d) с объяснением, как использовать этот метод более подробно.
@@ -343,6 +452,14 @@ const SomeComponent = React.lazy(() => import('./SomeComponent'));
 Обратите внимание, для рендера `lazy` компонентов требуется чтобы выше в дереве находился компонент `<React.Suspense>`. Это позволит вам отображать индикатор загрузки.
 
 ### `React.Suspense` {#reactsuspense}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`Suspense`](https://react.dev/reference/react/Suspense).
+
+</div>
 
 `React.Suspense` позволяет показать индикатор загрузки в случае, если некоторые компоненты в дереве под ним ещё не готовы к рендеру. В будущем мы планируем позволить `Suspense` обрабатывать больше сценариев, таких как получение данных от API. Вы можете прочитать об этом в [нашей дорожной карте](/blog/2018/11/27/react-16-roadmap.html).
 
@@ -375,10 +492,17 @@ During server side rendering Suspense Boundaries allow you to flush your applica
 When a component suspends we schedule a low priority task to render the closest Suspense boundary's fallback. If the component unsuspends before we flush the fallback then we send down the actual content and throw away the fallback.
 
 #### `React.Suspense` during hydration {#reactsuspense-during-hydration}
-Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before its hydrated will cause the boundary to hydrate at
-a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
+Suspense boundaries depend on their parent boundaries being hydrated before they can hydrate, but they can hydrate independently from sibling boundaries. Events on a boundary before it is hydrated will cause the boundary to hydrate at a higher priority than neighboring boundaries. [Read more](https://github.com/reactwg/react-18/discussions/130)
 
 ### `React.startTransition` {#starttransition}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`startTransition`](https://react.dev/reference/react/startTransition).
+
+</div>
 
 ```js
 React.startTransition(callback)

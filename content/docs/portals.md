@@ -4,6 +4,16 @@ title: Порталы
 permalink: docs/portals.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`createPortal`](https://react.dev/reference/react-dom/createPortal)
+
+</div>
+
 Порталы позволяют рендерить дочерние элементы в DOM-узел, который находится вне DOM-иерархии родительского компонента.
 
 ```js
@@ -46,7 +56,7 @@ render() {
 >
 > При работе с порталами, помните, что нужно уделить внимание [управлению фокусом при помощи клавиатуры](/docs/accessibility.html#programmatically-managing-focus).
 >
-> Для модальных диалогов, убедитесь, что любой пользователь будет способен взаимодействовать с ними, следуя [практикам разработки модальных окон WAI-ARIA](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal).
+> Для модальных диалогов, убедитесь, что любой пользователь будет способен взаимодействовать с ними, следуя [практикам разработки модальных окон WAI-ARIA](https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/).
 
 [**Попробовать на CodePen**](https://codepen.io/gaearon/pen/yzMaBd)
 

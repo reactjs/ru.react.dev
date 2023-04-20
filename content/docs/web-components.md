@@ -6,6 +6,14 @@ redirect_from:
   - "docs/webcomponents.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> See [Custom HTML elements](https://react.dev/reference/react-dom/components#custom-html-elements) in the new docs.
+>
+</div>
+
 React и [веб-компоненты](https://developer.mozilla.org/ru/docs/Web/Web_Components) созданы для решения самых разных задач. Веб-компоненты обеспечивают надёжную инкапсуляцию для повторно используемых компонентов, в то время как React предоставляет декларативную библиотеку для синхронизации данных c DOM. Две цели дополняют друг друга. Как разработчик, вы можете использовать React в своих веб-компонентах, или использовать веб-компоненты в React, или и то, и другое.
 
 Большинство разработчиков React обходятся без веб-компонентов, но у вас может появиться желание попробовать их. Например, если ваш проект использует сторонние компоненты пользовательского интерфейса, написанные с помощью веб-компонентов.

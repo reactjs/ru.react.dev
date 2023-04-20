@@ -14,6 +14,21 @@ redirect_from:
   - "tips/dangerously-set-inner-html.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Common components (e.g. `<div>`)](https://react.dev/reference/react-dom/components/common)
+> - [`<input>`](https://react.dev/reference/react-dom/components/input)
+> - [`<option>`](https://react.dev/reference/react-dom/components/option)
+> - [`<progress>`](https://react.dev/reference/react-dom/components/progress)
+> - [`<select>`](https://react.dev/reference/react-dom/components/select)
+> - [`<textarea>`](https://react.dev/reference/react-dom/components/textarea)
+
+</div>
+
 React реализует независимую от браузера систему DOM для повышения производительности и кроссбраузерной совместимости. Это позволило избавиться от некоторых шероховатостей в браузерных реализациях DOM.
 
 В React все свойства и атрибуты DOM (включая обработчики событий) должны быть в стиле camelCase. Например, HTML-атрибут `tabindex` соответствует атрибуту `tabIndex` в React. Исключение составляют атрибуты `aria-*` и `data-*`, которые следует писать в нижнем регистре. В частности, вы можете оставить `aria-label` как `aria-label`.

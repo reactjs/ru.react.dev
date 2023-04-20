@@ -4,6 +4,14 @@ title: Компоненты высшего порядка
 permalink: docs/higher-order-components.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> Higher-order components are not commonly used in modern React code.
+
+</div>
+
 Компонент высшего порядка (Higher-Order Component, HOC) -- это один из продвинутых способов для повторного использования логики. HOC не являются частью API React, но часто применяются из-за композиционной природы компонентов.
 
 Говоря просто, **компонент высшего порядка -- это функция, которая принимает компонент и возвращает новый компонент.**
@@ -14,7 +22,7 @@ const EnhancedComponent = higherOrderComponent(WrappedComponent);
 
 Если обычный компонент преобразует пропсы в UI, то компонент высшего порядка преобразует компонент в другой компонент.
 
-HOC часто встречаются в сторонних библиотеках, например [`connect`](https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect) в Redux и [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer) в Relay.
+HOC часто встречаются в сторонних библиотеках, например [`connect`](https://react-redux.js.org/api/connect) в Redux и [`createFragmentContainer`](https://relay.dev/docs/v10.1.3/fragment-container/#createfragmentcontainer) в Relay.
 
 В этой главе мы обсудим чем полезны компоненты высшего порядка и как их создавать.
 

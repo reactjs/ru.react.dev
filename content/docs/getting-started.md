@@ -18,6 +18,15 @@ redirect_from:
   - "docs/environments.html"
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> The new [Quick Start](https://react.dev/learn) teaches modern React and includes live examples.
+
+</div>
+
 На этой странице мы сделаем небольшой обзор документации и других ресурсов, которые могут пригодиться при первом использовании React.
 
 **React** — это JavaScript-библиотека для разработки пользовательского интерфейса. Чтобы составить первое впечатление о React, зайдите на [главную страницу](/) или во [введение](/tutorial/tutorial.html).

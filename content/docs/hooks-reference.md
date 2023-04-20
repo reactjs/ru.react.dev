@@ -6,6 +6,16 @@ prev: hooks-custom.html
 next: hooks-faq.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React:
+>
+> - [`react`: Hooks](https://react.dev/reference/react)
+
+</div>
+
 *Хуки* — нововведение в React 16.8, которое позволяет использовать состояние и другие возможности React без написания классов.
 
 На этой странице описан API, относящийся к встроенным хукам React.
@@ -34,6 +44,14 @@ next: hooks-faq.html
 ## Основные хуки {#basic-hooks}
 
 ### `useState` {#usestate}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useState`](https://react.dev/reference/react/useState).
+
+</div>
 
 ```js
 const [state, setState] = useState(initialState);
@@ -118,6 +136,14 @@ React может группировать несколько обновлени�
 
 ### `useEffect` {#useeffect}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useEffect`](https://react.dev/reference/react/useEffect).
+
+</div>
+
 ```js
 useEffect(didUpdate);
 ```
@@ -196,6 +222,15 @@ useEffect(
 
 ### `useContext` {#usecontext}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useContext`](https://react.dev/reference/react/useContext).
+
+</div>
+
+
 ```js
 const value = useContext(MyContext);
 ```
@@ -267,6 +302,15 @@ function ThemedButton() {
 Следующие хуки являются вариантами базовых из предыдущего раздела или необходимы только для конкретных крайних случаев. Их не требуется основательно изучать заранее.
 
 ### `useReducer` {#usereducer}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useReducer`](https://react.dev/reference/react/useReducer).
+
+</div>
+
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init);
@@ -371,6 +415,14 @@ function Counter({initialCount}) {
 
 ### `useCallback` {#usecallback}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useCallback`](https://react.dev/reference/react/useCallback).
+
+</div>
+
 ```js
 const memoizedCallback = useCallback(
   () => {
@@ -394,6 +446,15 @@ const memoizedCallback = useCallback(
 
 ### `useMemo` {#usememo}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useMemo`](https://react.dev/reference/react/useMemo).
+
+</div>
+
+
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 ```
@@ -415,6 +476,15 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 > Мы рекомендуем использовать правило [`exhaustive-deps`](https://github.com/facebook/react/issues/14920), входящее в наш пакет правил линтера [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks#installation). Оно предупреждает, когда зависимости указаны неправильно и предлагает исправление.
 
 ### `useRef` {#useref}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useRef`](https://react.dev/reference/react/useRef).
+
+</div>
+
 
 ```js
 const refContainer = useRef(initialValue);
@@ -452,6 +522,15 @@ function TextInputWithFocusButton() {
 
 ### `useImperativeHandle` {#useimperativehandle}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useImperativeHandle`](https://react.dev/reference/react/useImperativeHandle).
+
+</div>
+
+
 ```js
 useImperativeHandle(ref, createHandle, [deps])
 ```
@@ -475,6 +554,15 @@ FancyInput = forwardRef(FancyInput);
 
 ### `useLayoutEffect` {#uselayouteffect}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useLayoutEffect`](https://react.dev/reference/react/useLayoutEffect).
+
+</div>
+
+
 Сигнатура идентична `useEffect`, но этот хук запускается синхронно после всех изменений DOM. Используйте его для чтения макета из DOM и синхронного повторного рендеринга. Обновления, запланированные внутри `useLayoutEffect`, будут полностью применены синхронно перед тем, как браузер получит шанс осуществить отрисовку.
 
 Предпочитайте стандартный `useEffect`, когда это возможно, чтобы избежать блокировки визуальных обновлений.
@@ -488,6 +576,15 @@ FancyInput = forwardRef(FancyInput);
 >Чтобы исключить компонент, который нуждается в эффектах макета из HTML-кода, полученного в результате серверного рендеринга, выполните его рендер по условию `showChild && <Child />` и отложите отображение с помощью `useEffect(() => { setShowChild(true); }, [])`. Таким образом, пользовательский интерфейс не будет выглядеть некорректно перед гидратацией.
 
 ### `useDebugValue` {#usedebugvalue}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useDebugValue`](https://react.dev/reference/react/useDebugValue).
+
+</div>
+
 
 ```js
 useDebugValue(value)
@@ -529,6 +626,15 @@ useDebugValue(date, date => date.toDateString());
 
 ### `useDeferredValue` {#usedeferredvalue}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useDeferredValue`](https://react.dev/reference/react/useDeferredValue).
+
+</div>
+
+
 ```js
 const deferredValue = useDeferredValue(value);
 ```
@@ -567,6 +673,15 @@ Memoizing the children tells React that it only needs to re-render them when `de
 
 ### `useTransition` {#usetransition}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useTransition`](https://react.dev/reference/react/useTransition).
+
+</div>
+
+
 ```js
 const [isPending, startTransition] = useTransition();
 ```
@@ -578,7 +693,7 @@ Returns a stateful value for the pending state of the transition, and a function
 ```js
 startTransition(() => {
   setCount(count + 1);
-})
+});
 ```
 
 `isPending` indicates when a transition is active to show a pending state:
@@ -591,7 +706,7 @@ function App() {
   function handleClick() {
     startTransition(() => {
       setCount(c => c + 1);
-    })
+    });
   }
 
   return (
@@ -607,9 +722,18 @@ function App() {
 >
 > Updates in a transition yield to more urgent updates such as clicks.
 >
-> Updates in a transitions will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
+> Updates in a transition will not show a fallback for re-suspended content. This allows the user to continue interacting with the current content while rendering the update.
 
 ### `useId` {#useid}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useId`](https://react.dev/reference/react/useId).
+
+</div>
+
 
 ```js
 const id = useId();
@@ -667,6 +791,15 @@ The following Hooks are provided for library authors to integrate libraries deep
 
 ### `useSyncExternalStore` {#usesyncexternalstore}
 
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useSyncExternalStore`](https://react.dev/reference/react/useSyncExternalStore).
+
+</div>
+
+
 ```js
 const state = useSyncExternalStore(subscribe, getSnapshot[, getServerSnapshot]);
 ```
@@ -712,6 +845,14 @@ const selectedField = useSyncExternalStore(
 > As a convenience, we also provide a version of the API with automatic support for memoizing the result of getSnapshot published as `use-sync-external-store/with-selector`.
 
 ### `useInsertionEffect` {#useinsertioneffect}
+
+<div class="scary">
+
+> This content is out of date.
+>
+> Read the new React documentation for [`useInsertionEffect`](https://react.dev/reference/react/useInsertionEffect).
+
+</div>
 
 ```js
 useInsertionEffect(didUpdate);

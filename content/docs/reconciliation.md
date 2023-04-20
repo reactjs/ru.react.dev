@@ -4,6 +4,16 @@ title: Согласование
 permalink: docs/reconciliation.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Preserving and Resetting State](https://react.dev/learn/preserving-and-resetting-state)
+
+</div>
+
 React предоставляет декларативный API, который позволяет не беспокоиться о том, что именно изменяется при каждом обновлении. Благодаря этому, писать приложения становится намного проще, но может быть неочевидно как именно это реализовано внутри React. В этой статье объясняются решения, принятые нами для алгоритма сравнения в React, которые делают обновления компонента предсказуемыми, и в то же время достаточно быстрыми для высокопроизводительных приложений.
 
 ## Мотивация {#motivation}

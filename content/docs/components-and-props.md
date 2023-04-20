@@ -16,6 +16,18 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Your First Component](https://react.dev/learn/your-first-component)
+> - [Passing Props to a Component](https://react.dev/learn/passing-props-to-a-component)
+
+</div>
+
 Компоненты позволяют разбить интерфейс на независимые части, про которые легко думать в отдельности. Их можно складывать вместе и использовать несколько раз. На этой странице мы ознакомимся с самой идеей компонентов — [детальное описание API находится здесь](/docs/react-component.html).
 
 Во многом компоненты ведут себя как обычные функции JavaScript. Они принимают произвольные входные данные (так называемые «пропсы») и возвращают React-элементы, описывающие, что мы хотим увидеть на экране.
