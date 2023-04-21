@@ -21,4 +21,4 @@ title: "Встроенные реакт-компоненты"
 
 ## Ваши компоненты {/*your-own-components*/}
 
-Вы тоже можете [создавать свои компоненты](/learn/your-first-component), используя JavaScript функции.
+Вы также можете [создавать свои компоненты](/learn/your-first-component), используя JavaScript функции.
