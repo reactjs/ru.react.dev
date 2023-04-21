@@ -4,6 +4,17 @@ title: Разделение кода
 permalink: docs/code-splitting.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`lazy`](https://react.dev/reference/react/lazy)
+> - [`<Suspense>`](https://react.dev/reference/react/Suspense)
+
+</div>
+
 ## Бандлинг {#bundling}
 
 Большинство React-приложений «собирают» свои файлы такими инструментами, как [Webpack](https://webpack.js.org/), [Rollup](https://rollupjs.org/) или [Browserify](http://browserify.org/). Сборка (или «бандлинг») — это процесс выявления импортированных файлов и объединения их в один «собранный» файл (часто называемый «bundle» или «бандл»). Этот бандл после подключения на веб-страницу загружает всё приложение за один раз.

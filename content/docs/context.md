@@ -4,6 +4,17 @@ title: Контекст
 permalink: docs/context.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Passing Data Deeply with Context](https://react.dev/learn/passing-data-deeply-with-context)
+> - [`useContext`](https://react.dev/reference/react/useContext)
+
+</div>
+
 Контекст позволяет передавать данные через дерево компонентов без необходимости передавать пропсы на промежуточных уровнях.
 
 В типичном React-приложении данные передаются сверху вниз (от родителя к дочернему компоненту) с помощью пропсов. Однако, подобный способ использования может быть чересчур громоздким для некоторых типов пропсов (например, выбранный язык, UI-тема), которые необходимо передавать во многие компоненты в приложении. Контекст предоставляет способ делиться такими данными между компонентами без необходимости явно передавать пропсы через каждый уровень дерева.

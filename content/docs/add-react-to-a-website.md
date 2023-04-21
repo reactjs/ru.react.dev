@@ -8,6 +8,15 @@ prev: getting-started.html
 next: create-a-new-react-app.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> See [Add React to an Existing Project](https://react.dev/learn/add-react-to-an-existing-project) for the recommended ways to add React.
+
+</div>
+
 Используйте React в том объёме, в котором вам хочется.
 
 Для внедрения React не надо ничего переписывать. **Его можно использовать как для маленькой кнопки, так и для целого приложения.** Возможно, вы захотите немного «оживить» вашу страницу. React-компоненты подходят для этого как нельзя лучше.

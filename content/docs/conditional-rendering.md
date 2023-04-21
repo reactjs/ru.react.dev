@@ -8,6 +8,17 @@ redirect_from:
   - "tips/false-in-jsx.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Conditional Rendering](https://react.dev/learn/conditional-rendering)
+
+</div>
+
+
 React позволяет разделить логику на независимые компоненты. Эти компоненты можно показывать или прятать в зависимости от текущего состояния.
 
 Условный рендеринг в React работает так же, как условные выражения работают в JavaScript. Бывает нужно объяснить React, как состояние влияет на то, какие компоненты требуется скрыть, а какие — отрендерить, и как именно. В таких ситуациях используйте [условный оператор](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/%D0%A3%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B9_%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80) JavaScript или выражения подобные [`if`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/if...else).

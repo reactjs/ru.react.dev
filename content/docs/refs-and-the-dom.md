@@ -11,6 +11,19 @@ redirect_from:
   - "tips/children-undefined.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Referencing Values with Refs](https://react.dev/learn/referencing-values-with-refs)
+> - [Manipulating the DOM with Refs](https://react.dev/learn/manipulating-the-dom-with-refs)
+> - [`useRef`](https://react.dev/reference/react/useRef)
+> - [`forwardRef`](https://react.dev/reference/react/forwardRef)
+
+</div>
+
 Рефы дают возможность получить доступ к DOM-узлам или React-элементам, созданным в рендер-методе.
 
 В обычном потоке данных React родительские компоненты могут взаимодействовать с дочерними только через [пропсы](/docs/components-and-props.html). Чтобы модифицировать потомка, вы должны заново отрендерить его с новыми пропсами. Тем не менее, могут возникать ситуации, когда вам требуется императивно изменить дочерний элемент, обойдя обычный поток данных. Подлежащий изменениям дочерний элемент может быть как React-компонентом, так и DOM-элементом. React предоставляет лазейку для обоих случаев.

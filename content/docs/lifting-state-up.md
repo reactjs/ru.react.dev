@@ -9,6 +9,16 @@ redirect_from:
   - "docs/flux-todo-list.html"
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Sharing State Between Components](https://react.dev/learn/sharing-state-between-components)
+
+</div>
+
 Часто несколько компонентов должны отражать одни и те же изменяющиеся данные. Мы рекомендуем поднимать общее состояние до ближайшего общего предка. Давайте посмотрим, как это работает.
 
 В этом разделе мы создадим калькулятор температуры, вычисляющий вскипит ли вода при заданной температуре.

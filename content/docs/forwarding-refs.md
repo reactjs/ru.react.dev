@@ -4,6 +4,17 @@ title: Перенаправление рефов
 permalink: docs/forwarding-refs.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [Manipulating the DOM with Refs](https://react.dev/learn/manipulating-the-dom-with-refs)
+> - [`forwardRef`](https://react.dev/reference/react/forwardRef)
+
+</div>
+
 Перенаправление рефов позволяет автоматически передавать [реф](/docs/refs-and-the-dom.html) компонента одному из его дочерних элементов. Большинству компонентов перенаправление рефов не нужно, но оно может быть полезно, например, если вы пишете библиотеку. Рассмотрим наиболее частые сценарии.
 
 ## Перенаправление рефов в DOM-компоненты {#forwarding-refs-to-dom-components}

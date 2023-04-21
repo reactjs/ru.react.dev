@@ -4,6 +4,18 @@ title: Неуправляемые компоненты
 permalink: docs/uncontrolled-components.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`<input>`](https://react.dev/reference/react-dom/components/input)
+> - [`<select>`](https://react.dev/reference/react-dom/components/select)
+> - [`<textarea>`](https://react.dev/reference/react-dom/components/textarea)
+
+</div>
+
 В большинстве случаев при работе с формами мы рекомендуем использовать [управляемые компоненты](/docs/forms.html#controlled-components). В управляемом компоненте, данные формы обрабатываются React-компонентом. В качестве альтернативы можно использовать неуправляемые компоненты. Они хранят данные формы прямо в DOM.
 
 Вместо того, чтобы писать обработчик события для каждого обновления состояния, вы можете использовать неуправляемый компонент и читать значения из DOM через [реф](/docs/refs-and-the-dom.html).

@@ -4,6 +4,16 @@ title: Предохранители
 permalink: docs/error-boundaries.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`React.Component`: Catching rendering errors with an error boundary](https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary)
+
+</div>
+
 Ранее ошибки JavaScript внутри компонентов портили внутреннее состояние React и заставляли его [выдавать](https://github.com/facebook/react/issues/4026) [таинственные](https://github.com/facebook/react/issues/6895) [сообщения об ошибках](https://github.com/facebook/react/issues/8579) во время следующего рендера. Эти сообщения всегда вызывались ошибками, расположенными где-то выше в коде приложения, но React не предоставлял способа адекватно обрабатывать их в компонентах и не мог обработать их самостоятельно.
 
 ## Представляем предохранители (компоненты Error Boundary) {#introducing-error-boundaries}

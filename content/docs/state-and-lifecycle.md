@@ -8,6 +8,18 @@ prev: components-and-props.html
 next: handling-events.html
 ---
 
+<div class="scary">
+
+>
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+>
+> These new documentation pages teach modern React and include live examples:
+>
+> - [State: A Component's Memory](https://react.dev/learn/state-a-components-memory)
+> - [Synchronizing with Effects](https://react.dev/learn/synchronizing-with-effects)
+
+</div>
+
 На этой странице представлены понятия «состояние» (state) и «жизненный цикл» (lifecycle) React-компонентов. Подробный [справочник API компонентов находится по этой ссылке](/docs/react-component.html).
 
 В качестве примера рассмотрим идущие часы из [предыдущего раздела](/docs/rendering-elements.html#updating-the-rendered-element). В главе [Рендеринг элементов](/docs/rendering-elements.html#rendering-an-element-into-the-dom) мы научились обновлять UI только одним способом — вызовом `root.render()`:

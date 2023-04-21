@@ -4,6 +4,17 @@ title: Строгий режим
 permalink: docs/strict-mode.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React and include live examples:
+>
+> - [`StrictMode`](https://react.dev/reference/react/StrictMode)
+
+</div>
+
+
 `StrictMode` – инструмент для обнаружения потенциальных проблем в приложении. Также как и `Fragment`, `StrictMode` не рендерит видимого UI. Строгий режим активирует дополнительные проверки и предупреждения для своих потомков.
 
 > Примечание:

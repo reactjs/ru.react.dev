@@ -6,6 +6,16 @@ category: Reference
 permalink: docs/profiler.html
 ---
 
+<div class="scary">
+
+> These docs are old and won't be updated. Go to [react.dev](https://react.dev/) for the new React docs.
+> 
+> These new documentation pages teach modern React:
+>
+> - [`<Profiler>`](https://react.dev/reference/react/Profiler)
+
+</div>
+
 `Profiler` измеряет то, как часто рендерится React-приложение и какова «стоимость» этого.
 Его задача — помочь найти медленные части приложения, которые можно оптимизировать (например, через [мемоизацию](/docs/hooks-faq.html#how-to-memoize-calculations)).
 
