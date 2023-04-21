@@ -1,24 +1,24 @@
 ---
-title: "Built-in React Components"
+title: "Встроенные реакт-компоненты"
 ---
 
 <Intro>
 
-React exposes a few built-in components that you can use in your JSX.
+Реакт из коробки предоставляет несколько компонентов.
 
 </Intro>
 
 ---
 
-## Built-in components {/*built-in-components*/}
+## Встроенные компоненты {/*built-in-components*/}
 
-* [`<Fragment>`](/reference/react/Fragment), alternatively written as `<>...</>`, lets you group multiple JSX nodes together.
-* [`<Profiler>`](/reference/react/Profiler) lets you measure rendering performance of a React tree programmatically.
-* [`<Suspense>`](/reference/react/Suspense) lets you display a fallback while the child components are loading.
-* [`<StrictMode>`](/reference/react/StrictMode) enables extra development-only checks that help you find bugs early.
+* [`<Fragment>`](/reference/react/Fragment), или `<>...</>`, объединяет несколько JSX узлов вместе.
+* [`<Profiler>`](/reference/react/Profiler) измеряет производительность рендера компонентов.
+* [`<Suspense>`](/reference/react/Suspense) отображает заглушку, пока загружаются дочерние компоненты.
+* [`<StrictMode>`](/reference/react/StrictMode) включает дополнительные проверки в режиме разработки, они помогают находить баги раньше.
 
 ---
 
-## Your own components {/*your-own-components*/}
+## Ваши компоненты {/*your-own-components*/}
 
-You can also [define your own components](/learn/your-first-component) as JavaScript functions.
+Вы тоже можете [создавать свои компоненты](/learn/your-first-component), используя JavaScript функции.
