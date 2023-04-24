@@ -20,7 +20,7 @@ React изначально был спроектирован так, чтобы 
 
 ## Пробуем React {/*try-react*/}
 
-Чтобы попробовать React даже устанавливать ничего не нужно. Редактируйте прямо в песочнице!
+Чтобы попробовать React, даже устанавливать ничего не нужно. Редактируйте прямо в песочнице!
 
 <Sandpack>
 
@@ -38,7 +38,7 @@ export default function App() {
 
 Вы можете редактировать прямо здесь или же открыть код в новой вкладке, нажав на кнопку "Форкнуть" в правом верхнем углу.
 
-Такие песочницы есть на большинстве страниц React документации. За пределами React документации тоже есть большое количество песочниц, поддерживающих React. Например: [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react) или [CodePen.](https://codepen.io/pen?&editors=0010&layout=left&prefill_data_id=3f4569d1-1b11-4bce-bd46-89090eed5ddb)
+Такие песочницы есть на большинстве страниц React документации. За пределами React документации также есть большое количество песочниц, поддерживающих React. Например: [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react) или [CodePen.](https://codepen.io/pen?&editors=0010&layout=left&prefill_data_id=3f4569d1-1b11-4bce-bd46-89090eed5ddb)
 
 ### Поиграть с React локально {/*try-react-locally*/}
 
