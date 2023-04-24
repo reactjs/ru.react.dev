@@ -98,9 +98,9 @@ ${css}
     <button
       className="text-sm text-primary dark:text-primary-dark inline-flex items-center hover:text-link duration-100 ease-in transition mx-1"
       onClick={downloadHTML}
-      title="Download Sandbox"
+      title="Скачать Sandbox"
       type="button">
-      <IconDownload className="inline mr-1" /> Download
+      <IconDownload className="inline mr-1" /> Скачать
     </button>
   );
 }
