@@ -567,15 +567,15 @@ export default function PackingList() {
       <h1>Список вещей Салли Райд</h1>
       <ul>
         <Item 
-          isPacked={true} 
+          importance={9} 
           name="Космический скафандр" 
         />
         <Item 
-          isPacked={true} 
+          importance={0} 
           name="Шлем с золотым листом" 
         />
         <Item 
-          isPacked={false} 
+          importance={6} 
           name="Фотография Тэма" 
         />
       </ul>
