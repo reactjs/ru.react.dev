@@ -4,7 +4,6 @@ title: Условный рендеринг
 
 <Intro>
 Твоим компонентам нужно будет часто отображать различные вещи в зависимости от различных условий. В React ты можешь реденрить JSX в зависимости от его условий, используя JavaScript операторы. Такие, как `if`, `&&` и `? :`
-Your components will often need to display different things depending on different conditions. In React, you can conditionally render JSX using JavaScript syntax like `if` statements, `&&`, and `? :` operators.
 
 </Intro>
 
