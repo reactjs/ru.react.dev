@@ -4,7 +4,7 @@ title: <Fragment> (<>...</>)
 
 <Intro>
 
-`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node.
+`<Fragment>`, часто используемый с помощью синтаксиса `<>...</>`, позволяет группировать элементы без создания оберточного узла.
 
 ```js
 <>
@@ -19,29 +19,29 @@ title: <Fragment> (<>...</>)
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `<Fragment>` {/*fragment*/}
 
-Wrap elements in `<Fragment>` to group them together in situations where you need a single element. Grouping elements in `Fragment` has no effect on the resulting DOM; it is the same as if the elements were not grouped. The empty JSX tag `<></>` is shorthand for `<Fragment></Fragment>` in most cases.
+Оберните элементы в `<Fragment>`, чтобы сгруппировать их вместе в тех случаях, когда вам необходим единственный элемент. Группировка элементов с помощью `Fragment` не влияет на конечный DOM; он остается таким же, как если бы элементы не были сгруппированы. Пустой JSX тег `<></>` в большинстве случаев является сокращением для `<Fragment></Fragment>`.
 
-#### Props {/*props*/}
+#### Пропсы {/*props*/}
 
-- **optional** `key`: Fragments declared with the explicit `<Fragment>` syntax may have [keys.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
+- **необязательный** `key`: Фрагменты объявленные с помощью явного синтаксиса `<Fragment>` могут иметь [ключи.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
 
-#### Caveats {/*caveats*/}
+#### Предостережения {/*caveats*/}
 
-- If you want to pass `key` to a Fragment, you can't use the `<>...</>` syntax. You have to explicitly import `Fragment` from `'react'` and render `<Fragment key={yourKey}>...</Fragment>`.
+- Если вам необходимо передать `key` фрагменту, вы не можете использовать краткий синтаксис `<>...</>`. Вы должны явно импортировать `Fragment` из `'react'` и рендерить `<Fragment key={yourKey}>...</Fragment>`.
 
-- React does not [reset state](/learn/preserving-and-resetting-state) when you go from rendering `<><Child /></>` to `[<Child />]` or back, or when you go from rendering `<><Child /></>` to `<Child />` and back. This only works a single level deep: for example, going from `<><><Child /></></>` to `<Child />` resets the state. See the precise semantics [here.](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)
+- React не [сбрасывает состояние](/learn/preserving-and-resetting-state) когда вы переключаетесь между рендерингом `<><Child /></>` к `[<Child />]` или обратно, или между `<><Child /></>` и `<Child />`. Однако, это работает только на одном уровне вложенности. Например, когда вы переключаетесь от `<><><Child /></></>` к `<Child />`, то состояние будет сброшено. Точную семантику можно посмотреть [здесь.](https://gist.github.com/clemmy/b3ef00f9507909429d8aa0d3ee4f986b)
 
 ---
 
-## Usage {/*usage*/}
+## Применение {/*usage*/}
 
-### Returning multiple elements {/*returning-multiple-elements*/}
+### Возвращение нескольких элементов {/*returning-multiple-elements*/}
 
-Use `Fragment`, or the equivalent `<>...</>` syntax, to group multiple elements together. You can use it to put multiple elements in any place where a single element can go. For example, a component can only return one element, but by using a Fragment you can group multiple elements together and then return them as a group:
+Используйте `Fragment` или аналогичный синтаксис `<>...</>`, чтобы сгруппировать несколько элементов. Вы можете использовать его для размещения нескольких элементов в любом месте, где может находиться один элемент. Например, компонент может возвращать только один элемент, но используя Fragment, вы можете сгруппировать несколько элементов вместе и затем вернуть их как группу:
 
 ```js {3,6}
 function Post() {
@@ -54,7 +54,7 @@ function Post() {
 }
 ```
 
-Fragments are useful because grouping elements with a Fragment has no effect on layout or styles, unlike if you wrapped the elements in another container like a DOM element. If you inspect this example with the browser tools, you'll see that all `<h1>` and `<p>` DOM nodes appear as siblings without wrappers around them:
+Фрагменты полезны тем, что группировка элементов с их помощью не влияет на отображение элементов на странице или стили, в отличие от случая, когда вы оборачиваете элементы в другой контейнер, например, в DOM элемент. Если вы осмотрите этот пример с помощью инструментов браузера, то увидите, что все DOM узлы `<h1>` и `<p>` отображаются как соседи без оберток вокруг них:
 
 <Sandpack>
 
@@ -62,8 +62,8 @@ Fragments are useful because grouping elements with a Fragment has no effect on 
 export default function Blog() {
   return (
     <>
-      <Post title="An update" body="It's been a while since I posted..." />
-      <Post title="My new blog" body="I am starting a new blog!" />
+      <Post title="Обновление" body="Давненько я не писал..." />
+      <Post title="Мой новый блог" body="Я начинаю новый блог!" />
     </>
   )
 }
@@ -94,9 +94,9 @@ function PostBody({ body }) {
 
 <DeepDive>
 
-#### How to write a Fragment without the special syntax? {/*how-to-write-a-fragment-without-the-special-syntax*/}
+#### Как написать фрагмент без использования особого синтаксиса? {/*how-to-write-a-fragment-without-the-special-syntax*/}
 
-The example above is equivalent to importing `Fragment` from React:
+Приведенный выше пример эквивалентен импорту `Fragment` из React:
 
 ```js {1,5,8}
 import { Fragment } from 'react';
@@ -111,15 +111,15 @@ function Post() {
 }
 ```
 
-Usually you won't need this unless you need to [pass a `key` to your `Fragment`.](#rendering-a-list-of-fragments)
+В большинстве случаев это не нужно, за исключением ситуаций, когда необходимо [передать `key` фрагменту.](#rendering-a-list-of-fragments)
 
 </DeepDive>
 
 ---
 
-### Assigning multiple elements to a variable {/*assigning-multiple-elements-to-a-variable*/}
+### Присвоение переменной нескольких элементов {/*assigning-multiple-elements-to-a-variable*/}
 
-Like any other element, you can assign Fragment elements to variables, pass them as props, and so on:
+Как и любой другой элемент, вы можете присваивать элементы `Fragment` переменным, передавать их в качестве пропсов и так далее:
 
 ```js
 function CloseDialog() {
@@ -131,7 +131,7 @@ function CloseDialog() {
   );
   return (
     <AlertDialog buttons={buttons}>
-      Are you sure you want to leave this page?
+      Вы уверены, что хотите покинуть эту страницу?
     </AlertDialog>
   );
 }
@@ -139,17 +139,17 @@ function CloseDialog() {
 
 ---
 
-### Grouping elements with text {/*grouping-elements-with-text*/}
+### Группировка элементов с текстом {/*grouping-elements-with-text*/}
 
-You can use `Fragment` to group text together with components:
+Вы можете использовать `Fragment` чтобы сгруппировать текст вместе с компонентами:
 
 ```js
 function DateRangePicker({ start, end }) {
   return (
     <>
-      From
+      С
       <DatePicker date={start} />
-      to
+      до
       <DatePicker date={end} />
     </>
   );
@@ -158,9 +158,9 @@ function DateRangePicker({ start, end }) {
 
 ---
 
-### Rendering a list of Fragments {/*rendering-a-list-of-fragments*/}
+### Рендеринг списка фрагментов {/*rendering-a-list-of-fragments*/}
 
-Here's a situation where you need to write `Fragment` explicitly instead of using the `<></>` syntax. When you [render multiple elements in a loop](/learn/rendering-lists), you need to assign a `key` to each element. If the elements within the loop are Fragments, you need to use the normal JSX element syntax in order to provide the `key` attribute:
+Рассмотрим ситуацию, когда вам нужно явно написать `Fragment`, вместо использования синтаксиса `<></>`. Это может понадобиться, когда вы [рендерите несколько элементов в цикле](/learn/rendering-lists) и каждому элементу нужно присвоить `key`. Если элементы в цикле являются фрагментами, то вам необходимо использовать стандартный синтаксис JSX элементов, чтобы предоставить атрибут `key`:
 
 ```js {3,6}
 function Blog() {
@@ -173,7 +173,7 @@ function Blog() {
 }
 ```
 
-You can inspect the DOM to verify that there are no wrapper elements around the Fragment children:
+Вы можете осмотреть DOM, чтобы убедиться, что вокруг дочерних элементов фрагмента нет оберток:
 
 <Sandpack>
 
@@ -181,8 +181,8 @@ You can inspect the DOM to verify that there are no wrapper elements around the 
 import { Fragment } from 'react';
 
 const posts = [
-  { id: 1, title: 'An update', body: "It's been a while since I posted..." },
-  { id: 2, title: 'My new blog', body: 'I am starting a new blog!' }
+  { id: 1, title: 'Обновление', body: "Давненько я не писал..." },
+  { id: 2, title: 'Мой новый блог', body: 'Я начинаю новый блог!' }
 ];
 
 export default function Blog() {
