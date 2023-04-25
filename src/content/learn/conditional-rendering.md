@@ -63,7 +63,7 @@ if (isPacked) {
 return <li className="item">{name}</li>;
 ```
 
-Если `isPacked` проп - это `true`, то этот код **вернёт другое JSX дерево.** Вместе с этим изменением, некоторые вещи получат галочку в конце:
+Если `isPacked` проп — это `true`, то этот код **вернёт другое JSX дерево.** Вместе с этим изменением, некоторые вещи получат галочку в конце:
 
 <Sandpack>
 
@@ -181,7 +181,7 @@ return <li className="item">{name}</li>;
 
 ### Условный (тернанрый) оператор (`? :`) {/_conditional-ternary-operator--_/}
 
-В JavaScript есть компактный синтаксис для написания условного выражения - [условный оператор](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) или "тернарный оператор".
+В JavaScript есть компактный синтаксис для написания условного выражения — [условный оператор](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) или "тернарный оператор".
 
 Вместо этого:
 
