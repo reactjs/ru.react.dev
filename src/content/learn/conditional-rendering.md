@@ -311,8 +311,10 @@ export default function PackingList() {
 </Sandpack>
 
 [JavaScript && выражение](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Logical_AND) возвращает значение его правой стороны (в нашем случае это галочка) на левой стороне (наше условие) это `true`. Но если наше условие - `false`, тогда всё выражение становится `false`. React думает о `false` как о "дыре" внутри JSX дерева, прямо как о `null` или `undefined`, и React не рендерит ничего на этом месте.
+  
 
-<Pitfall>
+
+  <Pitfall>
 
 **Не ставь числа по левую сторону `&&`.**
 
@@ -342,10 +344,11 @@ if (isPacked) {
 
 [Фигурные скобки открывают "окно в мир JavaScript".](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) Вставьте переменную с фигурными скобками в возвращаемое дерево JSX, вложив ранее вычисленное выражение внутрь JSX:
 
-
+```js
 <li className="item">
   {itemContent}
 </li>
+```
 
 Этот стиль самый многословный, но и самый гибкий. Вот он в действии:
 
