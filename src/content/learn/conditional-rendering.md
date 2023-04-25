@@ -51,6 +51,7 @@ export default function PackingList() {
 
 </Sandpack>
                   
+
 Заметь, что некоторые `Item` компоненты имеют свой `isPacked` проп, который `true` вместо `false`. Ты хочешь добавить галочку (✔) к упакованным вещам, если if `isPacked={true}`.
 
 Ты можешь писать это как [`if`/`else` условие](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/if...) таким образом:
@@ -194,7 +195,11 @@ return <li className="item">{name}</li>;
 Вы можете написать это:
 
 ```js
-return <li className="item">{isPacked ? name + " ✔" : name}</li>;
+return (
+  <li className="item">
+    {isPacked ? name + ' ✔' : name}
+  </li>
+);
 ```
 
 Вы можете читать это как _"if `isPacked` это true, тогда (`?`) рендерим `name + ' ✔'`, в противном случае (`:`) рендерю `name`"_.
@@ -213,7 +218,17 @@ return <li className="item">{isPacked ? name + " ✔" : name}</li>;
 
 ```js
 function Item({ name, isPacked }) {
-  return <li className="item">{isPacked ? <del>{name + " ✔"}</del> : name}</li>;
+  return (
+    <li className="item">
+      {isPacked ? (
+        <del>
+          {name + ' ✔'}
+        </del>
+      ) : (
+        name
+      )}
+    </li>
+  );
 }
 
 export default function PackingList() {
@@ -327,9 +342,10 @@ if (isPacked) {
 
 [Фигурные скобки открывают "окно в мир JavaScript".](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) Вставьте переменную с фигурными скобками в возвращаемое дерево JSX, вложив ранее вычисленное выражение внутрь JSX:
 
-```js
-<li className="item">{itemContent}</li>
-```
+
+<li className="item">
+  {itemContent}
+</li>
 
 Этот стиль самый многословный, но и самый гибкий. Вот он в действии:
 
@@ -341,7 +357,11 @@ function Item({ name, isPacked }) {
   if (isPacked) {
     itemContent = name + " ✔";
   }
-  return <li className="item">{itemContent}</li>;
+  return (
+    <li className="item">
+      {itemContent}
+    </li>
+  );
 }
 
 export default function PackingList() {
@@ -377,9 +397,17 @@ export default function PackingList() {
 function Item({ name, isPacked }) {
   let itemContent = name;
   if (isPacked) {
-    itemContent = <del>{name + " ✔"}</del>;
+     itemContent = (
+      <del>
+        {name + " ✔"}
+      </del>
+    );
   }
-  return <li className="item">{itemContent}</li>;
+   return (
+    <li className="item">
+      {itemContent}
+    </li>
+  );
 }
 
 export default function PackingList() {
