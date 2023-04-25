@@ -450,7 +450,7 @@ export default function PackingList() {
 
 </Recap>
 
-  
+
 
 <Challenges>
 
