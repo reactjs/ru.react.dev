@@ -450,6 +450,8 @@ export default function PackingList() {
 
 </Recap>
 
+  
+
 <Challenges>
 
 #### Покажи иконку для неупакованных вещей `? :` {/_show-an-icon-for-incomplete-items-with--_/}
@@ -590,7 +592,7 @@ function Item({ name, importance }) {
     <li className="item">
       {name}
       {importance > 0 && ' '}
-       {importance > 0 &&
+      {importance > 0 &&
         <i>(Importance: {importance})</i>
       }
     </li>
