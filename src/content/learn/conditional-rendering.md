@@ -310,7 +310,7 @@ export default function PackingList() {
 
 </Sandpack>
 
-[JavaScript && выражение](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Logical_AND) возвращает значение его правой стороны (в нашем случае это галочка) на левой стороне (наше условие) это `true`. Но если наше условие - `false`, тогда всё выражение становится `false`. React думает о `false` как о "дыре" внутри JSX дерева, прямо как о `null` или `undefined`, и React не рендерит ничего на этом месте.
+[JavaScript && выражение](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Logical_AND) возвращает значение его правой стороны (в нашем случае это галочка) на левой стороне (наше условие) это `true`. Но если наше условие — `false`, тогда всё выражение становится `false`. React думает о `false` как о "дыре" внутри JSX дерева, прямо как о `null` или `undefined`, и React не рендерит ничего на этом месте.
 
 
 <Pitfall>
