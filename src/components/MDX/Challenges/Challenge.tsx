@@ -63,14 +63,14 @@ export function Challenge({
           <div>
             <Button className="mr-2" onClick={toggleHint} active={showHint}>
               <IconHint className="mr-1.5" />{' '}
-              {showHint ? 'Hide hint' : 'Show hint'}
+              {showHint ? 'Скрыть подсказку' : 'Показать подсказку'}
             </Button>
             <Button
               className="mr-2"
               onClick={toggleSolution}
               active={showSolution}>
               <IconSolution className="mr-1.5" />{' '}
-              {showSolution ? 'Hide solution' : 'Show solution'}
+              {showSolution ? 'Скрыть решение' : 'Показать решение'}
             </Button>
           </div>
         ) : (
@@ -80,7 +80,7 @@ export function Challenge({
               onClick={toggleSolution}
               active={showSolution}>
               <IconSolution className="mr-1.5" />{' '}
-              {showSolution ? 'Hide solution' : 'Show solution'}
+              {showSolution ? 'Скрыть решение' : 'Показать решение'}
             </Button>
           )
         )}
@@ -109,7 +109,7 @@ export function Challenge({
           {currentChallenge.solution}
           <div className="flex justify-between items-center mt-4">
             <Button onClick={() => setShowSolution(false)}>
-              Close solution
+              Закрыть решение
             </Button>
             {hasNextChallenge && (
               <Button
