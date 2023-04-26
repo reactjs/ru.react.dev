@@ -54,7 +54,7 @@ export default function PackingList() {
 
 Обратите внимание, что некоторые компоненты `Item` имеют свойство `isPacked`, со значением `true` вместо `false`. Допустим, вы хотите добавить (✔) к упакованным вещам, если if `isPacked={true}`.
 
-Вы можете писать это как [`if`/`else` условие](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/if...) таким образом:
+Можно реализовать это с помощью [управляющей конструкции `if`/`else`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/if...) таким образом:
 
 ```js
 if (isPacked) {
