@@ -1,62 +1,62 @@
 ---
-title: Editor Setup
+title: Настройка редактора
 ---
 
 <Intro>
 
-A properly configured editor can make code clearer to read and faster to write. It can even help you catch bugs as you write them! If this is your first time setting up an editor or you're looking to tune up your current editor, we have a few recommendations.
+Правильно настроенный редактор упрощает чтение и ускоряет написание кода. Он также помогает находить баги прямо во время работы с кодом. Если вы настраиваете редактор впервые или хотите улучшить текущее поведение редактора, у нас есть несколько рекомендаций.
 
 </Intro>
 
 <YouWillLearn>
 
-* What the most popular editors are
-* How to format your code automatically
+* Какие редакторы являются наиболее популярными
+* Как автоматически форматировать код
 
 </YouWillLearn>
 
-## Your editor {/*your-editor*/}
+## Ваш редактор {/*your-editor*/}
 
-[VS Code](https://code.visualstudio.com/) is one of the most popular editors in use today. It has a large marketplace of extensions and integrates well with popular services like GitHub. Most of the features listed below can be added to VS Code as extensions as well, making it highly configurable!
+[VS Code](https://code.visualstudio.com/) — один из наиболее популярных редакторов. Он имеет огромный набор расширений и отлично интегрирует популярные сервисы, такие как GitHub. Большинство из перечисленных ниже инструментов можно добавить в VS Code как расширения.
 
-Other popular text editors used in the React community include:
+Другие популярные текстовые редакторы, используемые React разработчиками:
 
-* [WebStorm](https://www.jetbrains.com/webstorm/) is an integrated development environment designed specifically for JavaScript.
-* [Sublime Text](https://www.sublimetext.com/) has support for JSX and TypeScript, [syntax highlighting](https://stackoverflow.com/a/70960574/458193) and autocomplete built in.
-* [Vim](https://www.vim.org/) is a highly configurable text editor built to make creating and changing any kind of text very efficient. It is included as "vi" with most UNIX systems and with Apple OS X.
+* [WebStorm](https://www.jetbrains.com/webstorm/) — интегрированная среда разработки, спроектированная специально для JavaScript.
+* [Sublime Text](https://www.sublimetext.com/) — редактор с поддержкой JSX и TypeScript, [подсветкой синтаксиса](https://stackoverflow.com/a/70960574/458193) и встроенным автозаполнением.
+* [Vim](https://www.vim.org/) — текстовый редактор с возможностью глубокой настройки инструментов, позволяет работать с любым форматом текста быстро и эффективно. Он встроен в большинство UNIX систем и Apple OS X как "vi". 
 
-## Recommended text editor features {/*recommended-text-editor-features*/}
+## Рекомендуемые инструменты текстового редактора {/*recommended-text-editor-features*/}
 
-Some editors come with these features built in, but others might require adding an extension. Check to see what support your editor of choice provides to be sure!
+Некоторые из инструментов уже встроены в редакторы, другие устанавливаются дополнительно как плагины или расширения.
 
-### Linting {/*linting*/}
+### Отладчик {/*linting*/}
+ 
+Отладчики находят проблемы во время написания кода, что позволяет исправлять их сразу же. [ESLint](https://eslint.org/) — популярный отладчик для JavaScript с открытым исходным кодом.
 
-Code linters find problems in your code as you write, helping you fix them early. [ESLint](https://eslint.org/) is a popular, open source linter for JavaScript. 
+* [Установка ESLint с рекомендуемыми настройками для React](https://www.npmjs.com/package/eslint-config-react-app) (убедитесь в том, что у вас [установлен Node!](https://nodejs.org/en/download/current/))
+* [Интеграция ESLint в VS Code при помощи официального расширения](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-* [Install ESLint with the recommended configuration for React](https://www.npmjs.com/package/eslint-config-react-app) (be sure you have [Node installed!](https://nodejs.org/en/download/current/))
-* [Integrate ESLint in VSCode with the official extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+**Убедитесь в том, что все правила [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) включены для вашего проекта.** Это базовые правила, позволяющие обнаружить большинство распространенных багов на ранней стадии. Рекомендованный пресет [`eslint-config-react-app`](https://www.npmjs.com/package/eslint-config-react-app) уже включает эти правила.
 
-**Make sure that you've enabled all the [`eslint-plugin-react-hooks`](https://www.npmjs.com/package/eslint-plugin-react-hooks) rules for your project.** They are essential and catch the most severe bugs early. The recommended [`eslint-config-react-app`](https://www.npmjs.com/package/eslint-config-react-app) preset already includes them.
+### Форматирование {/*formatting*/}
 
-### Formatting {/*formatting*/}
+При работе в команде никому не хочется вести диалоги на тему ["пробелы vs табы"](https://www.google.com/search?q=tabs+vs+spaces). К счастью, [Prettier](https://prettier.io/) позволяет автоматически форматировать код на основе заданных параметров. Запустите Prettier и ваш код будет отформатирован, включая отступы и кавычки. В идеале Prettier будет запускаться во время сохранения файла, быстро применяя все необходимые изменения.
 
-The last thing you want to do when sharing your code with another contributor is get into an discussion about [tabs vs spaces](https://www.google.com/search?q=tabs+vs+spaces)! Fortunately, [Prettier](https://prettier.io/) will clean up your code by reformatting it to conform to preset, configurable rules. Run Prettier, and all your tabs will be converted to spaces—and your indentation, quotes, etc will also all be changed to conform to the configuration. In the ideal setup, Prettier will run when you save your file, quickly making these edits for you.
+Вы можете установить [расширение Prettier в VS Code](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) следуя простой инструкции:
 
-You can install the [Prettier extension in VSCode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) by following these steps:
+1. Запустите VS Code
+2. Откройте функцию "Перейти к файлу" (нажмите Ctrl/Cmd+P)
+3. Вставьте команду `ext install esbenp.prettier-vscode`
+4. Нажмите Enter
 
-1. Launch VS Code
-2. Use Quick Open (press Ctrl/Cmd+P)
-3. Paste in `ext install esbenp.prettier-vscode`
-4. Press Enter
+#### Форматирование при сохранении {/*formatting-on-save*/}
 
-#### Formatting on save {/*formatting-on-save*/}
+В идеале следует форматировать код при каждом сохранении. В VS Code для этого есть своя настройка!
 
-Ideally, you should format your code on every save. VS Code has settings for this!
+1. В VS Code нажмите `CTRL/CMD + SHIFT + P`.
+2. Введите "settings"
+3. Нажмите Enter
+4. В поиске введите "format on save"
+5. Убедитесь, что настройка "format on save" включена!
 
-1. In VS Code, press `CTRL/CMD + SHIFT + P`.
-2. Type "settings"
-3. Hit Enter
-4. In the search bar, type "format on save"
-5. Be sure the "format on save" option is ticked!
-
-> If your ESLint preset has formatting rules, they may conflict with Prettier. We recommend disabling all formatting rules in your ESLint preset using [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) so that ESLint is *only* used for catching logical mistakes. If you want to enforce that files are formatted before a pull request is merged, use [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) for your continuous integration.
+> Если в пресете ESLint есть правила форматирования, они могут конфликтовать с Prettier. Мы рекомендуем отключить все правила форматирования в ESLint пресете используя [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier). Так ESLint будет использоваться *только* для отслеживания логических ошибок. Если вы хотите, чтобы файлы форматировались до того, как запрос на слияние будет выполнен, используйте [`prettier --check`](https://prettier.io/docs/en/cli.html#--check) для вашей непрерывной интеграции.
