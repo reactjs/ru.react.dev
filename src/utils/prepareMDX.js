@@ -65,7 +65,7 @@ function getTableOfContents(children, depth) {
   if (anchors.length > 0) {
     anchors.unshift({
       url: '#',
-      text: 'Overview',
+      text: 'Обзор',
       depth: 2,
     });
   }
@@ -88,13 +88,13 @@ function extractHeaders(children, depth, out) {
         header = {
           url: '#challenges',
           depth: 2,
-          text: 'Challenges',
+          text: 'Испытания',
         };
       } else if (child.type === 'Recap') {
         header = {
           url: '#recap',
           depth: 2,
-          text: 'Recap',
+          text: 'Подведение итогов',
         };
       } else if (child.type === 'TeamMember') {
         header = {
