@@ -4,7 +4,7 @@ title: useId
 
 <Intro>
 
-`useId` is a React Hook for generating unique IDs that can be passed to accessibility attributes.
+`useId` -- хук для генерации уникальных идентификаторов, которые можно использовать, например, в атрибутах доступности.
 
 ```js
 const id = useId()
@@ -16,11 +16,11 @@ const id = useId()
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `useId()` {/*useid*/}
 
-Call `useId` at the top level of your component to generate a unique ID:
+Чтобы создать уникальный идентификатор, вызовите `useId` на верхнем уровне своего компонента:
 
 ```js
 import { useId } from 'react';
@@ -30,35 +30,35 @@ function PasswordField() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[См. другие примеры ниже.](#usage)
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-`useId` does not take any parameters.
+`useId` не принимает параметров.
 
-#### Returns {/*returns*/}
+#### Возвращаемое значение {/*returns*/}
 
-`useId` returns a unique ID string associated with this particular `useId` call in this particular component.
+`useId` возвращает уникальный идентификатор, привязанный к данному конкретному вызову `useId` в данном конкретном компоненте.
 
-#### Caveats {/*caveats*/}
+#### Замечания {/*caveats*/}
 
-* `useId` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
+* `useId` -- это хук. Поэтому его можно вызывать только **на верхнем уровне кода вашего компонента** или хука. Его нельзя вызывать внутри циклов и условий. Если это всё же для чего-то нужно, выделите этот вызов в отдельный компонент, который затем можно рендерить по условию или в цикле.
 
-* `useId` **should not be used to generate keys** in a list. [Keys should be generated from your data.](/learn/rendering-lists#where-to-get-your-key)
+* `useId` **не должен использоваться для создания ключей** в списках. [Ключи должны выбираться на основе данных.](/learn/rendering-lists#where-to-get-your-key)
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
 <Pitfall>
 
-**Do not call `useId` to generate keys in a list.** [Keys should be generated from your data.](/learn/rendering-lists#where-to-get-your-key)
+**Не используйте `useId` для создания ключей** в списках. [Ключи должны выбираться на основе данных.](/learn/rendering-lists#where-to-get-your-key)
 
 </Pitfall>
 
-### Generating unique IDs for accessibility attributes {/*generating-unique-ids-for-accessibility-attributes*/}
+### Создание уникальных идентификаторов для атрибутов доступности {/*generating-unique-ids-for-accessibility-attributes*/}
 
-Call `useId` at the top level of your component to generate a unique ID:
+Чтобы получить уникальный идентификатор, вызовите `useId` на верхнем уровне своего компонента:
 
 ```js [[1, 4, "passwordHintId"]]
 import { useId } from 'react';
@@ -68,7 +68,7 @@ function PasswordField() {
   // ...
 ```
 
-You can then pass the <CodeStep step={1}>generated ID</CodeStep> to different attributes:
+После чего вы можете указывать этот <CodeStep step={1}>сгенерированный идентификатор</CodeStep> в различных атрибутах:
 
 ```js [[1, 2, "passwordHintId"], [1, 3, "passwordHintId"]]
 <>
@@ -77,26 +77,26 @@ You can then pass the <CodeStep step={1}>generated ID</CodeStep> to different at
 </>
 ```
 
-**Let's walk through an example to see when this is useful.**
+**Разберем на примере, когда это может быть полезно.**
 
-[HTML accessibility attributes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) like [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby) let you specify that two tags are related to each other. For example, you can specify that an element (like an input) is described by another element (like a paragraph).
+[HTML-атрибуты доступности](https://developer.mozilla.org/ru/docs/Web/Accessibility/ARIA), такие как [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby), позволяют обозначать смысловую связь между тегами. Например, можно указать, что некоторый элемент разметки (параграф) содержит краткое описание другого элемента (поля ввода).
 
-In regular HTML, you would write it like this:
+В обычном HTML вы могли бы описать это так:
 
 ```html {5,8}
 <label>
-  Password:
+  Пароль:
   <input
     type="password"
     aria-describedby="password-hint"
   />
 </label>
 <p id="password-hint">
-  The password should contain at least 18 characters
+  Пароль должен содержать не менее 18 символов
 </p>
 ```
 
-However, hardcoding IDs like this is not a good practice in React. A component may be rendered more than once on the page--but IDs have to be unique! Instead of hardcoding an ID, generate a unique ID with `useId`:
+Однако в React подобным образом фиксировать идентификаторы в коде -- не лучшая практика. Один и тот же компонент может использоваться в нескольких разных местах -- но ведь в каждом случае идентификаторы должны быть уникальны! Поэтому вместо фиксированного идентификатора лучше сгенерировать уникальный с помощью `useId`:
 
 ```js {4,11,14}
 import { useId } from 'react';
@@ -106,21 +106,21 @@ function PasswordField() {
   return (
     <>
       <label>
-        Password:
+        Пароль:
         <input
           type="password"
           aria-describedby={passwordHintId}
         />
       </label>
       <p id={passwordHintId}>
-        The password should contain at least 18 characters
+        Пароль должен содержать не менее 18 символов
       </p>
     </>
   );
 }
 ```
 
-Now, even if `PasswordField` appears multiple times on the screen, the generated IDs won't clash.
+В итоге, сгенерированные идентификаторы не будут конфликтовать, даже если использовать `PasswordField` на экране в нескольких местах.
 
 <Sandpack>
 
@@ -132,14 +132,14 @@ function PasswordField() {
   return (
     <>
       <label>
-        Password:
+        Пароль:
         <input
           type="password"
           aria-describedby={passwordHintId}
         />
       </label>
       <p id={passwordHintId}>
-        The password should contain at least 18 characters
+        Пароль должен содержать не менее 18 символов
       </p>
     </>
   );
@@ -148,9 +148,9 @@ function PasswordField() {
 export default function App() {
   return (
     <>
-      <h2>Choose password</h2>
+      <h2>Выберите пароль</h2>
       <PasswordField />
-      <h2>Confirm password</h2>
+      <h2>Подтвердите пароль</h2>
       <PasswordField />
     </>
   );
@@ -163,33 +163,33 @@ input { margin: 5px; }
 
 </Sandpack>
 
-[Watch this video](https://www.youtube.com/watch?v=0dNzNcuEuOo) to see the difference in the user experience with assistive technologies.
+[Посмотрите видео-демонстрацию](https://www.youtube.com/watch?v=0dNzNcuEuOo) о том, как всё это влияет на опыт использования вспомогательных технологий.
 
 <Pitfall>
 
-With [server rendering](/reference/react-dom/server), **`useId` requires an identical component tree on the server and the client**. If the trees you render on the server and the client don't match exactly, the generated IDs won't match.
+При использовании вместе с [серверным рендерингом](/reference/react-dom/server) **`useId` требует, чтобы деревья компонентов на сервере и на клиенте получались идентичными**. Если отрендеренные на сервере и на клиенте деревья не совпадут, то сгенерироованные на сервере идентификаторы не совпадут со сгенерированными на клиенте.
 
 </Pitfall>
 
 <DeepDive>
 
-#### Why is useId better than an incrementing counter? {/*why-is-useid-better-than-an-incrementing-counter*/}
+#### Чем `useId` лучше обычного инкрементируемого счётчика? {/*why-is-useid-better-than-an-incrementing-counter*/}
 
-You might be wondering why `useId` is better than incrementing a global variable like `nextId++`.
+Возможно вы задаётесь вопросом, почему лучше использовать `useId`, а не просто постоянно увеличивать некий глобальный счётчик -- наподобие `nextId++`.
 
-The primary benefit of `useId` is that React ensures that it works with [server rendering.](/reference/react-dom/server) During server rendering, your components generate HTML output. Later, on the client, [hydration](/reference/react-dom/client/hydrateRoot) attaches your event handlers to the generated HTML. For hydration to work, the client output must match the server HTML.
+Главное преимущество `useId` в том, что React гарантирует его корректную работу с [серверным рендерингом](/reference/react-dom/server). В процессе серверного рендеринга ваши компоненты рендерятся в обычный HTML, к которому затем на клиенте при [гидратации](/reference/react-dom/client/hydrateRoot) подключаются ваши обработчики событий. Чтобы гидратация сработала правильно, результат рендеринга на клиенте должен совпадать с полученным от сервера HTML.
 
-This is very difficult to guarantee with an incrementing counter because the order in which the client components are hydrated may not match the order in which the server HTML was emitted. By calling `useId`, you ensure that hydration will work, and the output will match between the server and the client.
+Но этого совпадения очень сложно добиться, если пользоваться обычным инкрементируемым счётчиком, потому что порядок гидратации компонентов на клиенте может не совпадать с порядком, в котором HTML рендерился на сервере. А используя `useId`, вы гарантируете, что созданные идентификаторы на сервере и на клиенте будут совпадать, и гидратация выполнится правильно.
 
-Inside React, `useId` is generated from the "parent path" of the calling component. This is why, if the client and the server tree are the same, the "parent path" will match up regardless of rendering order.
+Внутри React `useId` вычисляется на основе "пути из цепочки родителей" того компонента, который вызывает `useId`. А если отрендеренные на сервере и на клиенте деревья компонентов совпадают, то и полный "путь из цепочки родителей" для каждого компонента будет совпадать, в каком бы порядке они не рендерились.
 
 </DeepDive>
 
 ---
 
-### Generating IDs for several related elements {/*generating-ids-for-several-related-elements*/}
+### Создание идентификаторов для нескольких элементов {/*generating-ids-for-several-related-elements*/}
 
-If you need to give IDs to multiple related elements, you can call `useId` to generate a shared prefix for them: 
+Если вам нужны разные идентификаторы для нескольких элементов, и эти элементы как-то связаны по смыслу, то с помощью `useId` вы можете создать один общий для всех префикс:
 
 <Sandpack>
 
@@ -200,10 +200,10 @@ export default function Form() {
   const id = useId();
   return (
     <form>
-      <label htmlFor={id + '-firstName'}>First Name:</label>
+      <label htmlFor={id + '-firstName'}>Имя:</label>
       <input id={id + '-firstName'} type="text" />
       <hr />
-      <label htmlFor={id + '-lastName'}>Last Name:</label>
+      <label htmlFor={id + '-lastName'}>Фамилия:</label>
       <input id={id + '-lastName'} type="text" />
     </form>
   );
@@ -216,20 +216,20 @@ input { margin: 5px; }
 
 </Sandpack>
 
-This lets you avoid calling `useId` for every single element that needs a unique ID.
+Так можно обойтись без лишних вызовов `useId` на каждый элемент, которому понадобился идентификатор.
 
 ---
 
-### Specifying a shared prefix for all generated IDs {/*specifying-a-shared-prefix-for-all-generated-ids*/}
+### Задание общего префикса для всех идентификаторов вообще {/*specifying-a-shared-prefix-for-all-generated-ids*/}
 
-If you render multiple independent React applications on a single page, pass `identifierPrefix` as an option to your [`createRoot`](/reference/react-dom/client/createRoot#parameters) or [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) calls. This ensures that the IDs generated by the two different apps never clash because every identifier generated with `useId` will start with the distinct prefix you've specified.
+Если вы отображаете несколько независимых React-приложений на одной странице, то в вызовах [`createRoot`](/reference/react-dom/client/createRoot#parameters) и [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) вы можете указать опцию `identifierPrefix`. Поскольку каждый результат вызова `useId` будет иметь указанный в опции префикс, то так можно гарантировать, что идентификаторы, сгенерированные этими двумя приложениями, никогда не будут пересекаться.
 
 <Sandpack>
 
 ```html index.html
 <!DOCTYPE html>
 <html>
-  <head><title>My app</title></head>
+  <head><title>Мое приложение</title></head>
   <body>
     <div id="root1"></div>
     <div id="root2"></div>
@@ -246,14 +246,14 @@ function PasswordField() {
   return (
     <>
       <label>
-        Password:
+        Пароль:
         <input
           type="password"
           aria-describedby={passwordHintId}
         />
       </label>
       <p id={passwordHintId}>
-        The password should contain at least 18 characters
+        Пароль должен содержать не менее 18 символов
       </p>
     </>
   );
@@ -262,7 +262,7 @@ function PasswordField() {
 export default function App() {
   return (
     <>
-      <h2>Choose password</h2>
+      <h2>Выберите пароль</h2>
       <PasswordField />
     </>
   );
