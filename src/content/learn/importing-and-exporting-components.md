@@ -18,7 +18,7 @@ title: Импорт и экспорт компонентов
 
 </YouWillLearn>
 
-## Корневой компоненты {/*the-root-component-file*/}
+## Файл корневого компонента {/*the-root-component-file*/}
 
 В разделе [Ваш первый компонент](/learn/your-first-component) вы создали компонент `Profile` и компонент `Gallery`, который рендерит его:
 
