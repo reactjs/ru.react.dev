@@ -58,7 +58,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 Что, если в будущем вы захотите изменить страницу и отобразить на ней список научных книг? Или расположить профили ученых в другом месте? Кажется разумным извлечь компоненты `Gallery` и `Profile` из файла корневого компонента. Это сделает их более модульными и позволит повторно использовать их в других файлах. Переместить компонент можно в три шага:
 
-1. **Создайте** новый файл JS, куда вы поместите компонент.
+1. **Создайте** новый JS файл для компонентов.
 2. **Экспортируйте** функциональный компонент из этого файла (используя или  [экспорт по умолчанию](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_the_default_export) или [именованный](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/export#using_named_exports) экспорт).
 3. **Импортируйте** компонент в файл, где вы будете его использовать (используя соответствующую технику для импорта значения [по умолчанию](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#importing_defaults) или [именованного](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/import#import_a_single_export_from_a_module) экспорта).
 
