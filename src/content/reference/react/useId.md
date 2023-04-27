@@ -77,7 +77,7 @@ function PasswordField() {
 </>
 ```
 
-**Разберем на примере, когда это может быть полезно.**
+**Разберём на примере, когда это может быть полезно.**
 
 [HTML-атрибуты доступности](https://developer.mozilla.org/ru/docs/Web/Accessibility/ARIA), такие как [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-describedby), позволяют обозначать смысловую связь между тегами. Например, можно указать, что некоторый элемент разметки (абзац) содержит краткое описание другого элемента (поля ввода).
 
@@ -229,7 +229,7 @@ input { margin: 5px; }
 ```html index.html
 <!DOCTYPE html>
 <html>
-  <head><title>Мое приложение</title></head>
+  <head><title>Моё приложение</title></head>
   <body>
     <div id="root1"></div>
     <div id="root2"></div>
