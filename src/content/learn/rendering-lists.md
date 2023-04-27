@@ -144,7 +144,7 @@ const listItems = chemists.map(person =>
      />
      <p>
        <b>{person.name}:</b>
-       {' ' + person.profession + ' '}. 
+       {' ' + person.profession}. 
        Достижение: {person.accomplishment}
      </p>
   </li>
@@ -175,7 +175,7 @@ export default function List() {
       />
       <p>
         <b>{person.name}:</b>
-        {' ' + person.profession + ' '}. 
+        {' ' + person.profession}. 
         Достижение:  {person.accomplishment}
       </p>
     </li>
@@ -306,7 +306,7 @@ export default function List() {
       />
       <p>
         <b>{person.name}</b>
-          {' ' + person.profession + ' '}. 
+          {' ' + person.profession}. 
           Достижение: {person.accomplishment}
       </p>
     </li>
@@ -463,7 +463,7 @@ export default function List() {
       />
       <p>
         <b>{person.name}:</b>
-        {' ' + person.profession + ' '}
+        {' ' + person.profession}.
         Достижение: {person.accomplishment}
       </p>
     </li>
@@ -565,7 +565,7 @@ export default function List() {
             />
             <p>
               <b>{person.name}:</b>
-              {' ' + person.profession + ' '}. 
+              {' ' + person.profession}. 
               Достижение: {person.accomplishment}
             </p>
           </li>
@@ -581,7 +581,7 @@ export default function List() {
             />
             <p>
               <b>{person.name}:</b>
-              {' ' + person.profession + ' '}. 
+              {' ' + person.profession}. 
               Достижение: {person.accomplishment}
             </p>
           </li>
@@ -673,7 +673,7 @@ function ListSection({ title, people }) {
             />
             <p>
               <b>{person.name}:</b>
-              {' ' + person.profession + ' '}.
+              {' ' + person.profession}.
               Достижение: {person.accomplishment}
             </p>
           </li>
@@ -797,7 +797,7 @@ function ListSection({ title, people }) {
             />
             <p>
               <b>{person.name}:</b>
-              {' ' + person.profession + ' '}. 
+              {' ' + person.profession}. 
               Достижение: {person.accomplishment}
             </p>
           </li>
@@ -902,7 +902,7 @@ import { recipes } from './data.js';
 export default function RecipeList() {
   return (
     <div>
-      <h1>Recipes</h1>
+      <h1>Рецепты</h1>
     </div>
   );
 }
