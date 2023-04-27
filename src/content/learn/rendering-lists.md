@@ -4,7 +4,7 @@ title: Рендер списков
 
 <Intro>
 
-Часто нам нужно отобразить несколько похожих компонентов из коллекции данных. Вы можете использовать [методы массивов JavaScript](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array) для манипулирования массивом данных. На этой странице вы будете использовать [`filter()`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) и [`map()`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/map) с React для фильтрации и преобразования массива данных в массив компонентов.
+Часто возникает необходимость отображения ряда схожих компонентов на основе набора данных. Для этого можно воспользоваться [методами массивов JavaScript](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array) для манипулирования массивом данных. На этой странице вы будете использовать [`filter()`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) и [`map()`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/map) с React для фильтрации и преобразования массива данных в массив компонентов.
 
 </Intro>
 
@@ -12,7 +12,7 @@ title: Рендер списков
 
 * Как рендерить компоненты из массива, используя `map()`
 * Как рендерить только определенные компоненты, используя `filter()`
-* Когда и почему использовать React ключи
+* Когда и зачем использовать React ключи
 
 </YouWillLearn>
 
