@@ -4,7 +4,7 @@ title: Обработка событий
 
 <Intro>
 
-React позволяет добавлять *обработчики событий* в JSX. Обработчики событий - это функции, которые вызываются в ответ на такие события, как клик на элемент, наведение курсора, фокус поля формы и так далее.
+В React можно добавлять  позволяет добавлять *обработчики событий* в JSX. Обработчики событий - это функции, которые вызываются в ответ на событие, например, клик на элемент, наведение курсора, фокус поля формы и так далее.
 
 </Intro>
 
@@ -73,7 +73,7 @@ button { margin-right: 10px; }
 
 ```jsx
 <button onClick={function handleClick() {
-  alert('You clicked me!');
+  alert('Вы нажали на меня!');
 }}>
 ```
 
@@ -81,7 +81,7 @@ button { margin-right: 10px; }
 
 ```jsx
 <button onClick={() => {
-  alert('You clicked me!');
+  alert('Вы нажали на меня!');
 }}>
 ```
 
@@ -110,13 +110,13 @@ button { margin-right: 10px; }
 
 ```jsx
 // Это сообщение появляется, когда компонент рендерится, а не при нажатии!
-<button onClick={alert('You clicked me!')}>
+<button onClick={alert('Вы нажали на меня!')}>
 ```
 
 Если вы хотите определить обработчик события инлайн, оберните его в анонимную функцию:
 
 ```jsx
-<button onClick={() => alert('You clicked me!')}>
+<button onClick={() => alert('Вы нажали на меня!')}>
 ```
 
 Это позволит не выполнять код при каждом рендере компонента.
@@ -148,11 +148,11 @@ function AlertButton({ message, children }) {
 export default function Toolbar() {
   return (
     <div>
-      <AlertButton message="Playing!">
-        Play Movie
+      <AlertButton message="Воспроизводится!">
+        Воспроизвести фильм
       </AlertButton>
-      <AlertButton message="Uploading!">
-        Upload Image
+      <AlertButton message="Загружается!">
+        Загрузить изображение
       </AlertButton>
     </div>
   );
@@ -191,15 +191,15 @@ function PlayButton({ movieName }) {
 
   return (
     <Button onClick={handlePlayClick}>
-      Play "{movieName}"
+      Воспроизвести "{movieName}"
     </Button>
   );
 }
 
 function UploadButton() {
   return (
-    <Button onClick={() => alert('Uploading!')}>
-      Upload Image
+    <Button onClick={() => alert('Загружается!')}>
+      Загрузить изображение
     </Button>
   );
 }
@@ -207,7 +207,7 @@ function UploadButton() {
 export default function Toolbar() {
   return (
     <div>
-      <PlayButton movieName="Kiki's Delivery Service" />
+      <PlayButton movieName="Ведьмина служба доставки" />
       <UploadButton />
     </div>
   );
@@ -251,11 +251,11 @@ function Button({ onSmash, children }) {
 export default function App() {
   return (
     <div>
-      <Button onSmash={() => alert('Playing!')}>
-        Play Movie
+      <Button onSmash={() => alert('Воспроизводится!')}>
+        Воспроизвести фильм
       </Button>
-      <Button onSmash={() => alert('Uploading!')}>
-        Upload Image
+      <Button onSmash={() => alert('Загружается!')}>
+        Загрузить изображение
       </Button>
     </div>
   );
@@ -278,8 +278,8 @@ button { margin-right: 10px; }
 export default function App() {
   return (
     <Toolbar
-      onPlayMovie={() => alert('Playing!')}
-      onUploadImage={() => alert('Uploading!')}
+      onPlayMovie={() => alert('Воспроизводится!')}
+      onUploadImage={() => alert('Загружается!')}
     />
   );
 }
@@ -288,10 +288,10 @@ function Toolbar({ onPlayMovie, onUploadImage }) {
   return (
     <div>
       <Button onClick={onPlayMovie}>
-        Play Movie
+        Воспроизвести фильм
       </Button>
       <Button onClick={onUploadImage}>
-        Upload Image
+        Загрузить изображение
       </Button>
     </div>
   );
@@ -328,11 +328,11 @@ export default function Toolbar() {
     <div className="Toolbar" onClick={() => {
       alert('You clicked on the toolbar!');
     }}>
-      <button onClick={() => alert('Playing!')}>
-        Play Movie
+      <button onClick={() => alert('Воспроизводится!')}>
+        Воспроизвести фильм
       </button>
-      <button onClick={() => alert('Uploading!')}>
-        Upload Image
+      <button onClick={() => alert('Загружается!')}>
+        Загрузить изображение
       </button>
     </div>
   );
@@ -382,11 +382,11 @@ export default function Toolbar() {
     <div className="Toolbar" onClick={() => {
       alert('You clicked on the toolbar!');
     }}>
-      <Button onClick={() => alert('Playing!')}>
-        Play Movie
+      <Button onClick={() => alert('Воспроизводится!')}>
+        Воспроизвести фильм
       </Button>
-      <Button onClick={() => alert('Uploading!')}>
-        Upload Image
+      <Button onClick={() => alert('Загружается!')}>
+        Загрузить изображение
       </Button>
     </div>
   );
@@ -468,9 +468,9 @@ function Button({ onClick, children }) {
 ```js
 export default function Signup() {
   return (
-    <form onSubmit={() => alert('Submitting!')}>
+    <form onSubmit={() => alert('Отправление!')}>
       <input />
-      <button>Send</button>
+      <button>Отправить</button>
     </form>
   );
 }
@@ -491,10 +491,10 @@ export default function Signup() {
   return (
     <form onSubmit={e => {
       e.preventDefault();
-      alert('Submitting!');
+      alert('Отправление!');
     }}>
       <input />
-      <button>Send</button>
+      <button>Отправить</button>
     </form>
   );
 }
@@ -554,7 +554,7 @@ export default function LightSwitch() {
 
   return (
     <button onClick={handleClick()}>
-      Toggle the lights
+      Переключить фон
     </button>
   );
 }
@@ -581,7 +581,7 @@ export default function LightSwitch() {
 
   return (
     <button onClick={handleClick}>
-      Toggle the lights
+      Переключить фон
     </button>
   );
 }
@@ -606,7 +606,7 @@ export default function LightSwitch() {
 
   return (
     <button onClick={() => handleClick()}>
-      Toggle the lights
+      Переключить фон
     </button>
   );
 }
@@ -664,7 +664,7 @@ export default function App() {
       <ColorSwitch onChangeColor={handleChangeColor} />
       <br />
       <br />
-      <h2>Clicks on the page: {clicks}</h2>
+      <h2>Нажатий на страницу: {clicks}</h2>
     </div>
   );
 }
@@ -689,7 +689,7 @@ export default function ColorSwitch({
       e.stopPropagation();
       onChangeColor();
     }}>
-      Change color
+      Изменить цвет
     </button>
   );
 }
@@ -723,7 +723,7 @@ export default function App() {
       <ColorSwitch onChangeColor={handleChangeColor} />
       <br />
       <br />
-      <h2>Clicks on the page: {clicks}</h2>
+      <h2>Нажатий на страницу: {clicks}</h2>
     </div>
   );
 }
