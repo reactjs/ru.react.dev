@@ -69,7 +69,7 @@ button { margin-right: 10px; }
 
 Обработчики событий принято называть со слова `handle`, за которым следует имя события. Вы часто будете встречать `onClick={handleClick}`, `onMouseEnter={handleMouseEnter}` и т.п.
 
-Также можно определить обработчик события внутри JSX:
+Ещё обработчик события можно определить внутри JSX:
 
 ```jsx
 <button onClick={function handleClick() {
