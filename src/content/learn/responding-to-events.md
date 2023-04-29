@@ -50,7 +50,7 @@ export default function Button() {
 
   return (
     <button onClick={handleClick}>
-      Нажми на меня
+      Нажмите на меня
     </button>
   );
 }
@@ -62,7 +62,7 @@ button { margin-right: 10px; }
 
 </Sandpack>
 
-Вы определили функцию `handleClick`, а затем [передали ее как проп](/learn/passing-props-to-a-component) в `<button>`. `handleClick` - это и есть **обработчик событий**. Обработчики событий:
+Вы определили функцию `handleClick`, а затем [передали ее пропом](/learn/passing-props-to-a-component) в `<button>`. `handleClick` - это и есть **обработчик событий**. Обработчики событий:
 
 * Обычно определены *внутри* компонентов.
 * Начинаются со слова `handle`, после которого идет название события.
@@ -326,7 +326,7 @@ button { margin-right: 10px; }
 export default function Toolbar() {
   return (
     <div className="Toolbar" onClick={() => {
-      alert('You clicked on the toolbar!');
+      alert('Вы нажали на панель инструментов!');
     }}>
       <button onClick={() => alert('Воспроизводится!')}>
         Воспроизвести фильм
@@ -421,7 +421,7 @@ button { margin: 5px; }
 В некоторых случаях вам может понадобиться перехватить все события на дочерних элементах, *даже если их распространение прекращено*. Например, вы хотите регистрировать каждый клик в аналитике, независимо от логики распространения. Это можно сделать, добавив `Capture` в конце имени события:
 
 ```js
-<div onClickCapture={() => { /* this runs first */ }}>
+<div onClickCapture={() => { /* это происходит в первую очередь */ }}>
   <button onClick={e => e.stopPropagation()} />
   <button onClick={e => e.stopPropagation()} />
 </div>
@@ -437,7 +437,7 @@ button { margin: 5px; }
 
 </DeepDive>
 
-### Passing handlers as alternative to propagation {/*passing-handlers-as-alternative-to-propagation*/}
+### Передача обработчиков как альтернатива распространению {/*passing-handlers-as-alternative-to-propagation*/}
 
 Обратите внимание, как этот обработчик клика выполняет строку кода _и затем_ вызывает проп `onClick`, переданный родителем:
 
@@ -459,7 +459,6 @@ function Button({ onClick, children }) {
 Если вы используете распространение и вам сложно отследить, какие обработчики выполняются и почему, воспользуйтесь этим подходом.
 
 ### Отмена поведения по умолчанию {/*preventing-default-behavior*/}
-
 
 Некоторые браузерные события имеют поведение по умолчанию. Например, событие отправки `<form>`, которое происходит при нажатии на кнопку внутри него, по умолчанию перезагружает всю страницу:
 
@@ -616,7 +615,7 @@ export default function LightSwitch() {
 
 </Solution>
 
-#### Wire up the events {/*wire-up-the-events*/}
+#### Привязка событий {/*wire-up-the-events*/}
 
 Компонент `ColorSwitch` рендерит кнопку. Предполагается, что она будет менять цвет страницы. Привяжите его к обработчику события `onChangeColor`, который компонент принимает от родителя, чтобы при нажатии на кнопку менялся цвет.
 
@@ -630,7 +629,7 @@ export default function ColorSwitch({
 }) {
   return (
     <button>
-      Change color
+      Изменить цвет
     </button>
   );
 }
