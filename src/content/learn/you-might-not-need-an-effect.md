@@ -19,7 +19,7 @@ title: 'Возможно, вам не нужен Эффект'
 
 </YouWillLearn>
 
-## Как удалить ненужные эффекты {/*how-to-remove-unnecessary-effects*/}
+## Как удалить лишние эффекты {/*how-to-remove-unnecessary-effects*/}
 
 Есть два распространенных случая, когда эффекты не нужны:
 
