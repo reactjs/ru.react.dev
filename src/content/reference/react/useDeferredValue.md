@@ -58,11 +58,11 @@ function SearchPage() {
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Showing stale content while fresh content is loading {/*showing-stale-content-while-fresh-content-is-loading*/}
+### Отображение старых данных, пока загружаются новые {/*showing-stale-content-while-fresh-content-is-loading*/}
 
-Call `useDeferredValue` at the top level of your component to defer updating some part of your UI.
+Чтобы отложить обновление для части UI, вызовите `useDeferredValue` на верхнем уровне своего компонента:
 
 ```js [[1, 5, "query"], [2, 5, "deferredQuery"]]
 import { useState, useDeferredValue } from 'react';
@@ -74,25 +74,25 @@ function SearchPage() {
 }
 ```
 
-During the initial render, the <CodeStep step={2}>deferred value</CodeStep> will be the same as the <CodeStep step={1}>value</CodeStep> you provided.
+При первом рендеринге <CodeStep step={2}>отложенное значение</CodeStep> будет равно <CodeStep step={1}>значению</CodeStep>, которое вы передадите.
 
-During updates, the <CodeStep step={2}>deferred value</CodeStep> will "lag behind" the latest <CodeStep step={1}>value</CodeStep>. In particular, React will first re-render *without* updating the deferred value, and then try to re-render with the newly received value in background.
+В следующих обновлениях <CodeStep step={2}>отложенное значение</CodeStep> будет как бы "отставать" от актуального <CodeStep step={1}>значения</CodeStep>. А именно: сначала React отрендерит компонент, *не обновляя* отложенное значение, а затем в фоне попытается отрендерить компонент с новым значением.
 
-**Let's walk through an example to see when this is useful.**
+**Разберём на примере, когда это может быть полезно.**
 
 <Note>
 
-This example assumes you use one of Suspense-enabled data sources:
+Предполагается, что данные в этом примере вы получаете через источники, которые поддерживают Suspense:
 
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/advanced-features/react-18)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
+- Запрашиваете данные с помощью поддерживающих Suspense фреймворков, как, например, [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) или [Next.js](https://nextjs.org/docs/advanced-features/react-18).
+- Лениво загружаете код компонентов с помощью [`lazy`](/reference/react/lazy).
 
-[Learn more about Suspense and its limitations.](/reference/react/Suspense)
+[Подробнее о Suspense и связанных с ним ограничениях.](/reference/react/Suspense)
 
 </Note>
 
 
-In this example, the `SearchResults` component [suspends](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading) while fetching the search results. Try typing `"a"`, waiting for the results, and then editing it to `"ab"`. The results for `"a"` get replaced by the loading fallback.
+В этом примере компонент `SearchResults` [задерживается](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading), т.к. отправляет поисковый запрос. Попробуйте ввести `"a"`, дождаться результатов поиска, и затем ввести `"ab"`. На месте результатов по запросу `"a"` ненадолго появится индикатор загрузки.
 
 <Sandpack>
 
@@ -120,10 +120,10 @@ export default function App() {
   return (
     <>
       <label>
-        Search albums:
+        Найти альбом:
         <input value={query} onChange={e => setQuery(e.target.value)} />
       </label>
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<h2>Загрузка...</h2>}>
         <SearchResults query={query} />
       </Suspense>
     </>
@@ -146,7 +146,7 @@ export default function SearchResults({ query }) {
   }
   const albums = use(fetchData(`/search?q=${query}`));
   if (albums.length === 0) {
-    return <p>No matches for <i>"{query}"</i></p>;
+    return <p>По запросу <i>"{query}"</i> ничего не найдено</p>;
   }
   return (
     <ul>
@@ -284,7 +284,7 @@ input { margin: 10px; }
 
 </Sandpack>
 
-A common alternative UI pattern is to *defer* updating the list of results and to keep showing the previous results until the new results are ready. Call `useDeferredValue` to pass a deferred version of the query down: 
+Однако здесь можно применить другой частый паттерн в UI: *отложить* обновление списка результатов, продолжив показывать старые результаты, пока не подготовятся новые. Чтобы передавать в результаты поиска отложенную версию запроса, можно применить `useDeferredValue`:
 
 ```js {3,11}
 export default function App() {
@@ -293,10 +293,10 @@ export default function App() {
   return (
     <>
       <label>
-        Search albums:
+        Найти альбом:
         <input value={query} onChange={e => setQuery(e.target.value)} />
       </label>
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<h2>Загрузка...</h2>}>
         <SearchResults query={deferredQuery} />
       </Suspense>
     </>
@@ -304,9 +304,9 @@ export default function App() {
 }
 ```
 
-The `query` will update immediately, so the input will display the new value. However, the `deferredQuery` will keep its previous value until the data has loaded, so `SearchResults` will show the stale results for a bit.
+Значение `query` будет всегда актуальным -- соответственно и отображаемый в поле ввода запрос. Но в `deferredQuery` будет предыдущее значение запроса, пока не загрузятся новые результаты поиска -- поэтому `SearchResults` ещё некоторое время будет показывать старые результаты.
 
-Enter `"a"` in the example below, wait for the results to load, and then edit the input to `"ab"`. Notice how instead of the Suspense fallback, you now see the stale result list until the new results have loaded:
+В изменённом примере ниже введите `"a"`, дождитесь загрузки результатов поиска, и затем измените запрос на `"ab"`. Обратите внимание, что теперь, пока загружаются новые результаты, вместо индикатора загрузки (заглушки Suspense) отображаются предыдущие результаты.
 
 <Sandpack>
 
@@ -335,10 +335,10 @@ export default function App() {
   return (
     <>
       <label>
-        Search albums:
+        Найти альбом:
         <input value={query} onChange={e => setQuery(e.target.value)} />
       </label>
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<h2>Загрузка...</h2>}>
         <SearchResults query={deferredQuery} />
       </Suspense>
     </>
@@ -361,7 +361,7 @@ export default function SearchResults({ query }) {
   }
   const albums = use(fetchData(`/search?q=${query}`));
   if (albums.length === 0) {
-    return <p>No matches for <i>"{query}"</i></p>;
+    return <p>По запросу <i>"{query}"</i> ничего не найдено</p>;
   }
   return (
     <ul>
@@ -501,17 +501,17 @@ input { margin: 10px; }
 
 <DeepDive>
 
-#### How does deferring a value work under the hood? {/*how-does-deferring-a-value-work-under-the-hood*/}
+#### Как работает отложенное обновление значения? {/*how-does-deferring-a-value-work-under-the-hood*/}
 
-You can think of it as happening in two steps:
+Для простоты удобно представлять, что обновление происходит в два этапа:
 
-1. **First, React re-renders with the new `query` (`"ab"`) but with the old `deferredQuery` (still `"a")`.** The `deferredQuery` value, which you pass to the result list, is *deferred:* it "lags behind" the `query` value.
+1. **Сначала React отрендерит компонент с новым запросом `"ab"` в `query`, но пока что с отложенным `"a"` в `deferredQuery`.** Значение в `deferredQuery`, которое вы передаёте в список результатов, является *отложенным:* оно "отстаёт" от значения `query`.
 
-2. **In background, React tries to re-render with *both* `query` and `deferredQuery` updated to `"ab"`.** If this re-render completes, React will show it on the screen. However, if it suspends (the results for `"ab"` have not loaded yet), React will abandon this rendering attempt, and retry this re-render again after the data has loaded. The user will keep seeing the stale deferred value until the data is ready.
+2. **Затем в фоне React попытается ещё раз отрендерить компонент, но уже с новым запросом `"ab"` и в `query`, и в `deferredQuery`.** Если этот рендеринг выполнится до конца, то React отобразит его результаты на экране. Но если рендеринг задержится (встанет в ожидании результатов для  `"ab"`), то React эту конкретную попытку прервёт, а когда результаты загрузятся, попробует снова. Пока данные не загрузились, пользователю будет показываться старое отложенное значение.
 
-The deferred "background" rendering is interruptible. For example, if you type into the input again, React will abandon it and restart with the new value. React will always use the latest provided value.
+Отложенный фоновый рендеринг можно прервать. Если, например, продолжить печатать запрос, React прервёт фоновый рендеринг и перезапустит его уже с новым вводом. React всегда будет ориентироваться только на самое последнее переданное ему значение.
 
-Note that there is still a network request per each keystroke. What's being deferred here is displaying results (until they're ready), not the network requests themselves. Even if the user continues typing, responses for each keystroke get cached, so pressing Backspace is instant and doesn't fetch again.
+В этом примере важно обратить внимание, что запросы в сеть всё ещё отправляются по каждому нажатию на клавиатуре. Откладывается здесь именно обновление результатов на экране, а не отправка в сеть запроса поиска. Просто запрос по каждому нажатию кэшируется -- поэтому по удалению символа результат уже без запроса мгновенно берётся из кэша.
 
 </DeepDive>
 
