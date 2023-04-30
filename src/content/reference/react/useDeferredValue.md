@@ -4,7 +4,7 @@ title: useDeferredValue
 
 <Intro>
 
-`useDeferredValue` -- хук, с которым можно отложить обновление для части UI.
+Хук `useDeferredValue` позволяет откладывать обновление для части UI.
 
 ```js
 const deferredValue = useDeferredValue(value)
