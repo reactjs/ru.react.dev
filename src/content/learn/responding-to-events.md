@@ -26,7 +26,7 @@ React позволяет добавлять *обработчики событи
 export default function Button() {
   return (
     <button>
-      У меня нет обработчика событий
+      Я ничего не делаю
     </button>
   );
 }
