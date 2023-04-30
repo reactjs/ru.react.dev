@@ -517,9 +517,9 @@ input { margin: 10px; }
 
 ---
 
-### Indicating that the content is stale {/*indicating-that-the-content-is-stale*/}
+### Подсветка неактуальных данных {/*indicating-that-the-content-is-stale*/}
 
-In the example above, there is no indication that the result list for the latest query is still loading. This can be confusing to the user if the new results take a while to load. To make it more obvious to the user that the result list does not match the latest query, you can add a visual indication when the stale result list is displayed:
+В предыдущем примере в списке последних результатов никак не обозначалось, что результаты по новому запросу всё ещё загружаются. Такой интерфейс может сбить с толку, особенно если новые результаты будут загружаться долго. Решить проблему можно, добавив визуальную индикацию для случая, когда отображаемый список результатов больше не актуален и не соответствует последнему запросу:
 
 ```js {2}
 <div style={{
@@ -529,7 +529,7 @@ In the example above, there is no indication that the result list for the latest
 </div>
 ```
 
-With this change, as soon as you start typing, the stale result list gets slightly dimmed until the new result list loads. You can also add a CSS transition to delay dimming so that it feels gradual, like in the example below:
+Благодаря этим изменениям, когда вы начнёте набирать новый запрос, список старых результатов потускнеет, пока не загрузится новый список. Вы даже можете добавить анимированный переход с задержкой, чтобы визуально "устаревание" ощущалось постепенным. Например:
 
 <Sandpack>
 
@@ -559,10 +559,10 @@ export default function App() {
   return (
     <>
       <label>
-        Search albums:
+        Найти альбом:
         <input value={query} onChange={e => setQuery(e.target.value)} />
       </label>
-      <Suspense fallback={<h2>Loading...</h2>}>
+      <Suspense fallback={<h2>Загрузка...</h2>}>
         <div style={{
           opacity: isStale ? 0.5 : 1,
           transition: isStale ? 'opacity 0.2s 0.2s linear' : 'opacity 0s 0s linear'
@@ -590,7 +590,7 @@ export default function SearchResults({ query }) {
   }
   const albums = use(fetchData(`/search?q=${query}`));
   if (albums.length === 0) {
-    return <p>No matches for <i>"{query}"</i></p>;
+    return <p>По запросу <i>"{query}"</i> ничего не найдено</p>;
   }
   return (
     <ul>
