@@ -21,7 +21,7 @@ title: Рендер и фиксация
 
 1. **Триггер** рендеринга (передача заказа гостя на кухню)
 2. **Рендеринг** компонента (подготовка заказа на кухне)
-3. **Фиксация** в DOM (размещение заказа на столе)
+3. **Фиксация** в DOM (подача блюда на стол)
 
 <IllustrationBlock sequential>
   <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
