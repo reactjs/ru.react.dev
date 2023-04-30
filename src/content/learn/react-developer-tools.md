@@ -38,7 +38,6 @@ npm install -g react-devtools
 ```
 
 Затем откройте инструменты разработчика из терминала:
-
 ```bash
 react-devtools
 ```
@@ -56,7 +55,6 @@ react-devtools
 
 ## Мобильные устройства (React Native) {/*mobile-react-native*/}
 React Developer Tools также может использоваться для отладки приложений, созданных с помощью [React Native](https://reactnative.dev/).
-
 Самый простой способ использования React Developer Tools - установить их глобально:
 
 ```bash
@@ -68,7 +66,6 @@ npm install -g react-devtools
 ```
 
 Откройте инструменты разработчика в терминале.
-
 ```bash
 react-devtools
 ```
