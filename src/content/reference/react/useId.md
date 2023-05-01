@@ -48,7 +48,7 @@ function PasswordField() {
 
 ---
 
-## Использование {/*usage*/}
+## Применение {/*usage*/}
 
 <Pitfall>
 
