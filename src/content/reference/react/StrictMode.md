@@ -5,7 +5,7 @@ title: <StrictMode>
 
 <Intro>
 
-`<StrictMode>` lets you find common bugs in your components early during development.
+`<StrictMode>` позволяет находить распространенные баги в компонентах на ранней стадии разработки.
 
 
 ```js
@@ -20,11 +20,11 @@ title: <StrictMode>
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `<StrictMode>` {/*strictmode*/}
 
-Use `StrictMode` to enable additional development behaviors and warnings for the component tree inside:
+Используйте `StrictMode`, чтобы включить дополнительные проверки и предупреждения для потомков дерева компонентов:
 
 ```js
 import { StrictMode } from 'react';
@@ -38,32 +38,32 @@ root.render(
 );
 ```
 
-[See more examples below.](#usage)
+[Больше примеров использования.](#usage)
 
-Strict Mode enables the following development-only behaviors:
+Строгий режим активирует следующее поведение в режиме разработки:
 
-- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
-- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
+- Ваши компоненты будут [рендерится повторно](#fixing-bugs-found-by-double-rendering-in-development) чтобы можно было найти баги, вызванные нечистым рендерингом.
+- Ваши компоненты будут [повторно запускать эффекты](#fixing-bugs-found-by-re-running-effects-in-development), чтобы можно было найти баги возникающие из-за отсутствия сбрасывающей функции в эффекте.
+- Ваши компоненты будут [проверяться на использование устаревших API.](#fixing-deprecation-warnings-enabled-by-strict-mode)
 
-#### Props {/*props*/}
+#### Пропсы {/*props*/}
 
-`StrictMode` accepts no props.
+`StrictMode` не принимает никаких пропсов.
 
-#### Caveats {/*caveats*/}
+#### Предостережения {/*caveats*/}
 
-* There is no way to opt out of Strict Mode inside a tree wrapped in `<StrictMode>`. This gives you confidence that all components inside `<StrictMode>` are checked. If two teams working on a product disagree whether they find the checks valuable, they need to either reach consensus or move `<StrictMode>` down in the tree.
+* Если ваше дерево обернуто в `<StrictMode>`, то сделать исключение из строгого режима невозможно. Это дает вам уверенность, что все компоненты внутри `<StrictMode>` будут проверены. Если две команды работают над одним продуктом и не могут прийти к соглашению, нужны ли им эти проверки, то нужно или достичь компромисса, или переместить `<StrictMode>` ниже по дереву. 
 
 ---
 
-## Usage {/*usage*/}
+## Применение {/*usage*/}
 
-### Enabling Strict Mode for entire app {/*enabling-strict-mode-for-entire-app*/}
+### Как включить строгий режим для всего приложения {/*enabling-strict-mode-for-entire-app*/}
 
-Strict Mode enables extra development-only checks for the entire component tree inside the `<StrictMode>` component. These checks help you find common bugs in your components early in the development process.
+Strict Mode включает дополнительные проверки для всего дерева компонентов внутри `<StrictMode>` в режиме разработки. Эти проверки позволяют находить распространенные баги в компонентах на ранней стадии разработки.
 
 
-To enable Strict Mode for your entire app, wrap your root component with `<StrictMode>` when you render it:
+Чтобы включить Strict Mode для всего приложения, оберните ваш корень вашего приложения в `<StrictMode>` при рендеринге:
 
 ```js {6,8}
 import { StrictMode } from 'react';
@@ -77,27 +77,27 @@ root.render(
 );
 ```
 
-We recommend wrapping your entire app in Strict Mode, especially for newly created apps. If you use a framework that calls [`createRoot`](/reference/react-dom/client/createRoot) for you, check its documentation for how to enable Strict Mode.
+Мы рекомендуем целиком оборачивать ваше приложение (особенно, если оно новое) в строгий режим. Если вы используете фреймворк, который вызывает за вас [`createRoot`](/reference/react-dom/client/createRoot), посмотрите как включить строгий режим в его документации.
 
-Although the Strict Mode checks **only run in development,** they help you find bugs that already exist in your code but can be tricky to reliably reproduce in production. Strict Mode lets you fix bugs before your users report them.
+Несмотря на то, что проверки строгого режима **выполняются только в режиме разработки,** они помогают вам находить ошибки, которые уже существуют в вашем коде, и их может быть сложно стабильно воспроизвести в продакшене. Строгий режим позволяет исправлять такие ошибки до того, как ваши пользователи сообщат о них.
 
 <Note>
 
-Strict Mode enables the following checks in development:
+Строгий режим включает следующие дополнительные проверки в режиме разработки:
 
-- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
-- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
+- Ваши компоненты будут [рендерится повторно](#fixing-bugs-found-by-double-rendering-in-development) чтобы можно было найти баги, вызванные нечистым рендерингом.
+- Ваши компоненты будут [повторно запускать эффекты](#fixing-bugs-found-by-re-running-effects-in-development) чтобы можно было найти баги возникающие из-за отсутствия сбрасывающей функции в эффекте.
+- Ваши компоненты будут [проверяться на использование устаревших APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
 
-**All of these checks are development-only and do not impact the production build.**
+**Все эти проверки работают только в режиме разработки и не оказывают никакого эффекта в продакшен-сборке.**
 
 </Note>
 
 ---
 
-### Enabling strict mode for a part of the app {/*enabling-strict-mode-for-a-part-of-the-app*/}
+### Как включить строгий режим для части приложения {/*enabling-strict-mode-for-a-part-of-the-app*/}
 
-You can also enable Strict Mode for any part of your application:
+Строгий режим может быть включён для любой части вашего приложения:
 
 ```js {7,12}
 import { StrictMode } from 'react';
@@ -118,25 +118,25 @@ function App() {
 }
 ```
 
-In this example, Strict Mode checks will not run against the `Header` and `Footer` components. However, they will run on `Sidebar` and `Content`, as well as all of the components inside them, no matter how deep.
+В этом примере проверки строгого режима не будут выполняться для компонентов `Header` и `Footer`. Однако, они будут выполняться для `Sidebar` и `Content`, так же как и для всех компонентов внутри них, независимо от глубины вложенности.
 
 ---
 
-### Fixing bugs found by double rendering in development {/*fixing-bugs-found-by-double-rendering-in-development*/}
+### Исправление багов, найденных повторным рендерингом в режиме разработки {/*fixing-bugs-found-by-double-rendering-in-development*/}
 
-[React assumes that every component you write is a pure function.](/learn/keeping-components-pure) This means that React components you write must always return the same JSX given the same inputs (props, state, and context).
+[React предполагает, что каждый компонент является чистой функцией.](/learn/keeping-components-pure) Это значит, что React-компоненты, которые вы пишете, должны всегда возвращать одинаковый JSX при тех же входных данных (пропсах, состоянии и контексте).
 
-Components breaking this rule behave unpredictably and cause bugs. To help you find accidentally impure code, Strict Mode calls some of your functions (only the ones that should be pure) **twice in development.** This includes:
+Компоненты, которые нарушают это правило, ведут себя непредсказуемо и вызывают ошибки. Чтобы помочь вам найти случайный нечистый код, строгий режим вызывает некоторые ваши функции (только те, которые должны быть чистыми) **дважды в режиме разработки.** Это включает:
 
-- Your component function body (only top-level logic, so this doesn't include code inside event handlers)
-- Functions that you pass to [`useState`](/reference/react/useState), [`set` functions](/reference/react/useState#setstate), [`useMemo`](/reference/react/useMemo), or [`useReducer`](/reference/react/useReducer)
-- Some class component methods like [`constructor`](/reference/react/Component#constructor), [`render`](/reference/react/Component#render), [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) ([see the whole list](https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects))
+- Тело компонента (только высокоуровневая логика, без учета кода внутри обработчиков событий)
+- Функции, которые передаются в функции или хуки [`useState`](/reference/react/useState), [`set`](/reference/react/useState#setstate), [`useMemo`](/reference/react/useMemo), или [`useReducer`](/reference/react/useReducer)
+- Некоторые методы классовых компонентов, такие как [`constructor`](/reference/react/Component#constructor), [`render`](/reference/react/Component#render), [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate) ([полный список](https://reactjs.org/docs/strict-mode.html#detecting-unexpected-side-effects))
 
-If a function is pure, running it twice does not change its behavior because a pure function produces the same result every time. However, if a function is impure (for example, it mutates the data it receives), running it twice tends to be noticeable (that's what makes it impure!) This helps you spot and fix the bug early.
+Если функция является чистой, то ее двойной вызов не будет менять ее поведение, так как чистая функция выдает один и тот же результат каждый раз. Однако, если функция не является чистой (например, мутирует получаемые данные), ее двойной вызов будет заметным (именно это и делает ее нечистой!). Это поможет вам заметить и поправить баг заранее.
 
-**Here is an example to illustrate how double rendering in Strict Mode helps you find bugs early.**
+**Вот пример, который иллюстрирует, как повторный рендеринг в строгом режиме помогает вам находить баги на ранней стадии.**
 
-This `StoryTray` component takes an array of `stories` and adds one last "Create Story" item at the end:
+Компонент `StoryTray` принимает массив `stories` и добавляет в конец этого массива один элемент "Create Story":
 
 <Sandpack>
 
@@ -212,9 +212,9 @@ li {
 
 </Sandpack>
 
-There is a mistake in the code above. However, it is easy to miss because the initial output appears correct.
+В коде выше есть ошибка. Однако ее легко пропустить, так как изначальный вывод выглядит правильным.
 
-This mistake will become more noticeable if the `StoryTray` component re-renders multiple times. For example, let's make the `StoryTray` re-render with a different background color whenever you hover over it: 
+Ошибка будет более заметна, если компонент `StoryTray` будет отрендерен несколько раз. Например, давайте сделаем повторный рендеринг компонента `StoryTray` с другим цветом фона, когда наводим мышью: 
 
 <Sandpack>
 
@@ -299,20 +299,20 @@ li {
 
 </Sandpack>
 
-Notice how every time you hover over the `StoryTray` component, "Create Story" gets added to the list again. The intention of the code was to add it once at the end. But `StoryTray` directly modifies the `stories` array from the props. Every time `StoryTray` renders, it adds "Create Story" again at the end of the same array. In other words, `StoryTray` is not a pure function--running it multiple times produces different results.
+Обратите внимание, что каждый раз, когда мы наводим мышь на компонент `StoryTray`, "Create Story" добавляется в массив еще раз. Изначально требовалось добавить его лишь один раз в конец массива, но `StoryTray` напрямую мутирует массив `stories` из пропсов. Каждый раз, когда `StoryTray` рендерится, элемент "Create Story" опять добавляется в конец того же самого массива. Другими словами, `StoryTray` не является чистой функцией--при повторном рендеринге она возвращает разные результаты.
 
-To fix this problem, you can make a copy of the array, and modify that copy instead of the original one:
+Чтобы исправить эту проблему, нужно сделать копию массива и изменять ее, а не оригинальный массив:
 
 ```js {2}
 export default function StoryTray({ stories }) {
-  const items = stories.slice(); // Clone the array
-  // ✅ Good: Pushing into a new array
+  const items = stories.slice(); // Клонируем массив
+  // ✅ Хорошо: Добавляем элемент в новый массив
   items.push({ id: 'create', label: 'Create Story' });
 ```
 
-This would [make the `StoryTray` function pure.](/learn/keeping-components-pure) Each time it is called, it would only modify a new copy of the array, and would not affect any external objects or variables. This solves the bug, but you had to make the component re-render more often before it became obvious that something is wrong with its behavior.
+Так [компонент `StoryTray` станет чистым.](/learn/keeping-components-pure) Каждый раз, когда он вызывается, он будет только изменять новую копию массива и не будет влиять на внешние объекты или переменные. Это решает проблему, но вам нужно было сделать так, чтобы компонент чаще ре-рендерился, прежде чем стало очевидно, что его поведение некорректное.
 
-**In the original example, the bug wasn't obvious. Now let's wrap the original (buggy) code in `<StrictMode>`:**
+**В оригинальном примере ошибка не была очевидной. Теперь давайте обернем исходный (с ошибкой) код в `<StrictMode>`:**
 
 <Sandpack>
 
@@ -393,7 +393,7 @@ li {
 
 </Sandpack>
 
-**Strict Mode *always* calls your rendering function twice, so you can see the mistake right away** ("Create Story" appears twice). This lets you notice such mistakes early in the process. When you fix your component to render in Strict Mode, you *also* fix many possible future production bugs like the hover functionality from before:
+**Строгий режим *всегда* вызывает рендеринг дважды, чтобы вы могли сразу увидеть ошибку** ("Create Story" появляется дважды). Это позволяет замечать такие ошибки на ранней стадии разработки. Когда вы заставляете ваш компонент рендерится в Strict Mode, вы *также* правите множество потенциальных багов продакшен-сборки, как например функциональность наведения мыши ниже:
 
 <Sandpack>
 
@@ -483,29 +483,29 @@ li {
 
 </Sandpack>
 
-Without Strict Mode, it was easy to miss the bug until you added more re-renders. Strict Mode made the same bug appear right away. Strict Mode helps you find bugs before you push them to your team and to your users.
+Без строгого режима было легко пропустить ошибку, пока вы не добавили больше ре-рендеров. Строгий режим сразу показал ошибку. Он помогает вам находить баги перед тем, как вы отправите их вашей команде или пользователям.
 
-[Read more about keeping components pure.](/learn/keeping-components-pure)
+[Как сохранять компоненты чистыми.](/learn/keeping-components-pure)
 
 <Note>
 
-If you have [React DevTools](/learn/react-developer-tools) installed, any `console.log` calls during the second render call will appear slightly dimmed. React DevTools also offers a setting (off by default) to suppress them completely.
+Если у вас установлены [React DevTools](/learn/react-developer-tools), любые вызовы `console.log` во время повторного рендеринга будут выглядеть немного приглушенными. React DevTools также имеет настройку (выключена по умолчанию) для их полного отключения.
 
 </Note>
 
 ---
 
-### Fixing bugs found by re-running Effects in development {/*fixing-bugs-found-by-re-running-effects-in-development*/}
+### Исправление багов, найденных повторным вызовом эффекта в режиме разработки {/*fixing-bugs-found-by-re-running-effects-in-development*/}
 
-Strict Mode can also help find bugs in [Effects.](/learn/synchronizing-with-effects)
+Strict Mode также может помогать находить ошибки в [эффектах.](/learn/synchronizing-with-effects)
 
-Every Effect has some setup code and may have some cleanup code. Normally, React calls setup when the component *mounts* (is added to the screen) and calls cleanup when the component *unmounts* (is removed from the screen). React then calls cleanup and setup again if its dependencies changed since the last render.
+Каждый эффект имеет код установки и может иметь код для сброса эффекта. Обычно React вызывает код установки, когда компонент *монтируется* (добавляется на экран) и вызывает код сброса, когда компонент *размонтируется* (удаляется с экрана). React затем вызывает сбрасывающую и установку заново, если зависимости эффекта были изменены с момента последнего рендера.
 
-When Strict Mode is on, React will also run **one extra setup+cleanup cycle in development for every Effect.** This may feel surprising, but it helps reveal subtle bugs that are hard to catch manually.
+Когда строгий режим включен, React также вызовет **один дополнительный цикл установки и сброса для каждого эффекта в режиме разработки.** Это может быть неожиданным, но это помогает находить ошибки, которые сложно отловить вручную.
 
-**Here is an example to illustrate how re-running Effects in Strict Mode helps you find bugs early.**
+**Вот пример, иллюстрирующий то, как повторный вызов эффектов в строгом режиме помогает вам найти ошибки на ранней стадии.**
 
-Consider this example that connects a component to a chat:
+Рассмотрим пример, который подключает компонент к чату:
 
 <Sandpack>
 
@@ -562,9 +562,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-There is an issue with this code, but it might not be immediately clear.
+В коде допущена ошибка, но это может быть неочевидно.
 
-To make the issue more obvious, let's implement a feature. In the example below, `roomId` is not hardcoded. Instead, the user can select the `roomId` that they want to connect to from a dropdown. Click "Open chat" and then select different chat rooms one by one. Keep track of the number of active connections in the console:
+Чтобы сделать проблему более явной, давайте добавим новую функциональность. В примере ниже, `roomId` не указана хардкодом. Вместо этого пользователь может выбрать `roomId`, к которому он хочет подключиться через выпадающее меню. Нажмите на "Open chat" и выберите разные чат-комнаты одну за одной. Обратите внимание на количество активных подключений в консоли:
 
 <Sandpack>
 
@@ -646,7 +646,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-You'll notice that the number of open connections always keeps growing. In a real app, this would cause performance and network problems. The issue is that [your Effect is missing a cleanup function:](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)
+Вы заметите, что число открытых подключений постоянно возрастает. В настоящем приложении это может вызывать проблемы с сетью и производительностью. Корень проблемы в том, что [в эффекте отсутствует сбрасывающая функция:](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed)
 
 ```js {4}
   useEffect(() => {
@@ -656,9 +656,9 @@ You'll notice that the number of open connections always keeps growing. In a rea
   }, [roomId]);
 ```
 
-Now that your Effect "cleans up" after itself and destroys the outdated connections, the leak is solved. However, notice that the problem did not become visible until you've added more features (the select box).
+Теперь, когда ваш эффект "очищается" и удаляет ненужные подключения, утечка устранена. Обратите внимание, что проблема не стала явной, пока вы не добавили больше функциональности (выпадающее меню).
 
-**In the original example, the bug wasn't obvious. Now let's wrap the original (buggy) code in `<StrictMode>`:**
+**В исходном примере ошибка не была очевидной. Теперь давайте обернем исходный код (с ошибкой) в `<StrictMode>`:**
 
 <Sandpack>
 
@@ -720,9 +720,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-**With Strict Mode, you immediately see that there is a problem** (the number of active connections jumps to 2). Strict Mode runs an extra setup+cleanup cycle for every Effect. This Effect has no cleanup logic, so it creates an extra connection but doesn't destroy it. This is a hint that you're missing a cleanup function.
+**Благодаря строгому режиму вы сразу видите, что есть проблема** (количество активных подключений возрастает до 2). Строгий режим вызывает дополнительный цикл установки и сброса для каждого эффекта. У этого эффекта отсутствует логика сброса, поэтому он создает дополнительное подключение и не удаляет его. Это подсказка, что в эффекте отсутствует сбрасывающая функция.
 
-Strict Mode lets you notice such mistakes early in the process. When you fix your Effect by adding a cleanup function in Strict Mode, you *also* fix many possible future production bugs like the select box from before:
+Строгий режим позволяет вам замечать подобные ошибки на ранней стадии разработки. Когда вы поправите ваш эффект, добавив сбрасывающую функцию в строгом режиме, вы *также* поправите множество потенциальных багов продакшена, например, как выпадающее меню, которое мы рассматривали ранее:
 
 <Sandpack>
 
@@ -810,21 +810,21 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice how the active connection count in the console doesn't keep growing anymore.
+Обратите внимание, как количество активных подключений в консоли больше не растет.
 
-Without Strict Mode, it was easy to miss that your Effect needed cleanup. By running *setup → cleanup → setup* instead of *setup* for your Effect in development, Strict Mode made the missing cleanup logic more noticeable.
+Без строгого режима было легко пропустить, что у вашего эффекта отсутствует сбрасывающая функция. Благодаря вызову *установки → сброса → установки* вместо *установки* для вашего эффекта в режиме разработки, строгий режим сделал отсутствие сбрасывающей функции более заметной.
 
-[Read more about implementing Effect cleanup.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+[Узнать больше о сбрасывающей функции в эффекте.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
 ---
 
-### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
+### Исправление предупреждений об устаревших методах в строгом режиме {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
 
-React warns if some component anywhere inside a `<StrictMode>` tree uses one of these deprecated APIs:
+React предупреждает, если какой-либо компонент внутри дерева `<StrictMode>` использует какое-либо из следующих устаревших API:
 
-* [`findDOMNode`](/reference/react-dom/findDOMNode). [See alternatives.](https://reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
-* `UNSAFE_` class lifecycle methods like [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [See alternatives.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles) 
-* Legacy context ([`childContextTypes`](/reference/react/Component#static-childcontexttypes), [`contextTypes`](/reference/react/Component#static-contexttypes), and [`getChildContext`](/reference/react/Component#getchildcontext)). [See alternatives.](/reference/react/createContext)
-* Legacy string refs ([`this.refs`](/reference/react/Component#refs)). [See alternatives.](https://reactjs.org/docs/strict-mode.html#warning-about-legacy-string-ref-api-usage)
+* [`findDOMNode`](/reference/react-dom/findDOMNode). [Смотреть альтернативные решения.](https://reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
+* `UNSAFE_` классовые методы жизненного цикла, такие как [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [Смотреть альтернативные решения.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles) 
+* Устаревший контекст ([`childContextTypes`](/reference/react/Component#static-childcontexttypes), [`contextTypes`](/reference/react/Component#static-contexttypes), и[`getChildContext`](/reference/react/Component#getchildcontext)). [Смотреть альтернативные решения.](/reference/react/createContext)
+* Устаревшие строковые рефы ([`this.refs`](/reference/react/Component#refs)). [Смотреть альтернативные решения.](https://reactjs.org/docs/strict-mode.html#warning-about-legacy-string-ref-api-usage)
 
-These APIs are primarily used in older [class components](/reference/react/Component) so they rarely appear in modern apps.
+Эти API в основном используются в старых [классовых компонентах](/reference/react/Component), поэтому они редко встречаются в современных приложениях.
