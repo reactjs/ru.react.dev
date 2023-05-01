@@ -940,19 +940,19 @@ export default SlowList;
 
 <DeepDive>
 
-#### How is deferring a value different from debouncing and throttling? {/*how-is-deferring-a-value-different-from-debouncing-and-throttling*/}
+#### Чем отложенное обновление отличается от дебаунсинга и тротлинга? {/*how-is-deferring-a-value-different-from-debouncing-and-throttling*/}
 
-There are two common optimization techniques you might have used before in this scenario:
+Возможно, вы в похожей ситуации применили бы один из двух распространённых приёмов:
 
-- *Debouncing* means you'd wait for the user to stop typing (e.g. for a second) before updating the list.
-- *Throttling* means you'd update the list every once in a while (e.g. at most once a second).
+- *Дебаунсинг (debouncing)*, при котором приложение сначала бы дожидалось, когда пользователь перестанет печатать (уже секунду не печатал, например), и потом обновляло список.
+- *Тротлинг (throttling)*, при котором, как бы быстро пользователь не печатал, приложение обновляло бы список не чаще  одного раза за какой-то период (раз в секунду, например).
 
-While these techniques are helpful in some cases, `useDeferredValue` is better suited to optimizing rendering because it is deeply integrated with React itself and adapts to the user's device.
+Это отличные и часто очень полезные техники. Но `useDeferredValue` лучше подходит для оптимизации рендеринга потому, что он, тесно взаимодействуя с React, может подстраиваться под возможности устройства пользователя.
 
-Unlike debouncing or throttling, it doesn't require choosing any fixed delay. If the user's device is fast (e.g. powerful laptop), the deferred re-render would happen almost immediately and wouldn't be noticeable. If the user's device is slow, the list would "lag behind" the input proportionally to how slow the device is.
+Можно не привязываться к какой-то фиксированной задержке. У пользователей с быстрым, мощным устройством фоновый рендеринг будет выполняться быстро и без заметной задержки. А у пользователей со слабым устройством список будет "отставать" ровно на столько, на сколько позволяет устройство.
 
-Also, unlike with debouncing or throttling, deferred re-renders done by `useDeferredValue` are interruptible by default. This means that if React is in the middle of re-rendering a large list, but the user makes another keystroke, React will abandon that re-render, handle the keystroke, and then start rendering in background again. By contrast, debouncing and throttling still produce a janky experience because they're *blocking:* they merely postpone the moment when rendering blocks the keystroke.
+Кроме того, в отличие от дебаунсинга и тротлинга, отложенный с помощью `useDeferredValue` рендеринг можно прервать. Это значит, что если, например, пользователь введёт очередной символ, пока в фоне рендерится большой сложный список, React прервёт этот рендеринг, обработает ввод, и затем снова запустит рендеринг в фоне. При этом с дебаунсингом или тротлингом в такой же ситуации интерфейс всё ещё будет тормозить и заедать -- ведь эти приёмы не устраняют собственно *блокировку* ввода: с ними она случается просто либо позже, либо реже.
 
-If the work you're optimizing doesn't happen during rendering, debouncing and throttling are still useful. For example, they can let you fire fewer network requests. You can also use these techniques together.
+Когда нужно оптимизировать что-то помимо рендеринга, дебаунсинг и тротлинг могут наоборот быть очень полезны. Например, они помогут уменьшить количество запросов в сеть. А ещё их можно совмещать с описанными здесь техниками.
 
 </DeepDive>
