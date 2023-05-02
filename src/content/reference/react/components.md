@@ -13,7 +13,7 @@ title: "Встроенные react-компоненты"
 ## Встроенные компоненты {/*built-in-components*/}
 
 * [`<Fragment>`](/reference/react/Fragment), или `<>...</>`, объединяет несколько JSX узлов.
-* [`<Profiler>`](/reference/react/Profiler) измеряет производительность рендера компонентов.
+* [`<Profiler>`](/reference/react/Profiler) позволяет вам измерять производительность рендеринга React-дерева программно.
 * [`<Suspense>`](/reference/react/Suspense) отображает заглушку, пока загружаются дочерние компоненты.
 * [`<StrictMode>`](/reference/react/StrictMode) включает дополнительные проверки в режиме разработки, они помогают находить баги раньше.
 
