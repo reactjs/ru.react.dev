@@ -54,7 +54,7 @@ react-devtools
 ![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
 
 ## Мобильные устройства (React Native) {/*mobile-react-native*/}
-React Developer Tools также может использоваться для отладки приложений, созданных с помощью [React Native](https://reactnative.dev/).
+React Developer Tools также можно использовать для отладки приложений, созданных с помощью [React Native](https://reactnative.dev/).
 Самый простой способ использования React Developer Tools - установить их глобально:
 
 ```bash
