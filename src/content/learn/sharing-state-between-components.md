@@ -1,31 +1,30 @@
 ---
-title: Sharing State Between Components
+title: Совместное использование состояния между компонентами
 ---
 
 <Intro>
 
-Sometimes, you want the state of two components to always change together. To do it, remove state from both of them, move it to their closest common parent, and then pass it down to them via props. This is known as *lifting state up,* and it's one of the most common things you will do writing React code.
+Иногда вам может потребоваться, чтобы состояния двух компонентов изменялись одновременно. Чтобы добиться этого, необходимо вынести состояния обоих компонентов в их ближайший общий родительский компонент, а затем передать состояние дочерним компонентам через пропсы. Это называется *подъём состояния(lifting state up),* и это одна из самых распространенных практик, которая вам понадобится, когда вы будете писать код на React.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to share state between components by lifting it up
-- What are controlled and uncontrolled components
+- Как разделить состояние между компонентами, подняв его вверх
+- Что такое управляемые и неуправляемые компоненты
 
 </YouWillLearn>
 
-## Lifting state up by example {/*lifting-state-up-by-example*/}
+## Подъём состояния на примере {/*lifting-state-up-by-example*/}
 
-In this example, a parent `Accordion` component renders two separate `Panel`s:
-
+В этом примере родительский компонент `Accordion` рендерит два отдельных компонента `Panel`:
 * `Accordion`
   - `Panel`
   - `Panel`
 
-Each `Panel` component has a boolean `isActive` state that determines whether its content is visible.
+Каждый компонент `Panel` имеет булево состояние `isActive`, которое определяет, является ли его содержимое видимым.
 
-Press the Show button for both panels:
+Нажмите кнопку Показать для обеих панелей:
 
 <Sandpack>
 
@@ -41,7 +40,7 @@ function Panel({ title, children }) {
         <p>{children}</p>
       ) : (
         <button onClick={() => setIsActive(true)}>
-          Show
+          Показать
         </button>
       )}
     </section>
@@ -51,12 +50,12 @@ function Panel({ title, children }) {
 export default function Accordion() {
   return (
     <>
-      <h2>Almaty, Kazakhstan</h2>
-      <Panel title="About">
-        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
+      <h2>Алматы, Казахстан</h2>
+      <Panel title="Подробнее">
+        Алматы с населением около 2 миллионов человек является крупнейшим городом Казахстана. С 1929 по 1997 год этот город был столицей.
       </Panel>
-      <Panel title="Etymology">
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
+      <Panel title="Этимология">
+        Название происходит от <span lang="kk-KZ">алма</span>, казахского слова, означающего "яблоко", и часто переводится как "полное яблок". На самом деле, регион, прилегающий к Алматы, считается прародиной яблони, а дикий <i lang="la">Malus sieversii</i> считается вероятным кандидатом на роль предка современного домашнего яблока.
       </Panel>
     </>
   );
@@ -73,59 +72,59 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-Notice how pressing one panel's button does not affect the other panel--they are independent.
+Обратите внимание, что нажатие на кнопку на одной панели не влияет на другую панель--они независимы.
 
 <DiagramGroup>
 
 <Diagram name="sharing_state_child" height={367} width={477} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Both Panel components contain isActive with value false.">
 
-Initially, each `Panel`'s `isActive` state is `false`, so they both appear collapsed
+Изначально, каждая `Panel` имеет состояние `isActive` в значении `false`, поэтому они обе отображаются свернутыми
 
 </Diagram>
 
 <Diagram name="sharing_state_child_clicked" height={367} width={480} alt="The same diagram as the previous, with the isActive of the first child Panel component highlighted indicating a click with the isActive value set to true. The second Panel component still contains value false." >
 
-Clicking either `Panel`'s button will only update that `Panel`'s `isActive` state alone
+Нажатие кнопки на любой из панелей обновит состояние `isActive` только выбранной панели
 
 </Diagram>
 
 </DiagramGroup>
 
-**But now let's say you want to change it so that only one panel is expanded at any given time.** With that design, expanding the second panel should collapse the first one. How would you do that?
+**А теперь предположим, что вы хотите изменить поведение так, чтобы в любой момент времени была раскрыта только одна панель.** При таком поведении, раскрытие второй панели должно привести к сворачиванию первой. Как бы вы это сделали?
 
-To coordinate these two panels, you need to "lift their state up" to a parent component in three steps:
+Чтобы согласовать поведение этих двух панелей, вам потребуется "поднять их состояние" до родительского компонента в три шага:
 
-1. **Remove** state from the child components.
-2. **Pass** hardcoded data from the common parent.
-3. **Add** state to the common parent and pass it down together with the event handlers.
+1. **Удалить** состояние из дочерних компонентов.
+2. **Передать** данные явно из общего родителя.
+3. **Добавить** состояние в общего родителя и передать его дочерним компонентам вместе с обработчиками событий.
 
-This will allow the `Accordion` component to coordinate both `Panel`s and only expand one at a time.
+Это позволит компоненту `Accordion` управлять обеими панелями и раскрывать только по одной за раз.
 
-### Step 1: Remove state from the child components {/*step-1-remove-state-from-the-child-components*/}
+### Шаг 1: Удалить состояние из дочерних компонентов {/*step-1-remove-state-from-the-child-components*/}
 
-You will give control of the `Panel`'s `isActive` to its parent component. This means that the parent component will pass `isActive` to `Panel` as a prop instead. Start by **removing this line** from the `Panel` component:
+Вам потребуется передать управление значением `isActive` родительскому компоненту `Panel`. Это означает, что родительский компонент будет передавать значение `isActive` через prop, вместо того, чтобы хранить это состояние в `Panel`. Начните с **удаления этой строки** из компонента `Panel`:
 
 ```js
 const [isActive, setIsActive] = useState(false);
 ```
 
-And instead, add `isActive` to the `Panel`'s list of props:
+И вместо нее, добавьте `isActive` в список пропсов `Panel`:
 
 ```js
 function Panel({ title, children, isActive }) {
 ```
 
-Now the `Panel`'s parent component can *control* `isActive` by [passing it down as a prop.](/learn/passing-props-to-a-component) Conversely, the `Panel` component now has *no control* over the value of `isActive`--it's now up to the parent component!
+Теперь родитель компонента `Panel`  может *управлять* `isActive` [передавая его вниз как проп.](/learn/passing-props-to-a-component) С другой стороны, компонент `Panel` теперь *не имеет контроля* над значением `isActive`--теперь оно зависит от родительского компонента!
 
-### Step 2: Pass hardcoded data from the common parent {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
+### Шаг 2: Передать данные явно из общего родителя {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
 
-To lift state up, you must locate the closest common parent component of *both* of the child components that you want to coordinate:
+Чтобы поднять состояние, вам необходимо определить ближайшего общего родителя обоих дочерних компонентов, состояние которых вы хотите согласовать:
 
-* `Accordion` *(closest common parent)*
+* `Accordion` *(ближайший общий родитель)*
   - `Panel`
   - `Panel`
 
-In this example, it's the `Accordion` component. Since it's above both panels and can control their props, it will become the "source of truth" for which panel is currently active. Make the `Accordion` component pass a hardcoded value of `isActive` (for example, `true`) to both panels:
+В данном примере это компонент `Accordion`. Поскольку он находится выше обеих панелей и может контролировать их пропсы, он станет "источником истины", чтобы определить, какая панель сейчас активна. Давайте сделаем так, чтобы `Accordion` явно передавал постоянные значения `isActive` (например, `true`) обеим панелям:
 
 <Sandpack>
 
@@ -135,12 +134,12 @@ import { useState } from 'react';
 export default function Accordion() {
   return (
     <>
-      <h2>Almaty, Kazakhstan</h2>
-      <Panel title="About" isActive={true}>
-        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
+      <h2>Алматы, Казахстан</h2>
+      <Panel title="Подробнее" isActive={true}>
+        Алматы с населением около 2 миллионов человек является крупнейшим городом Казахстана. С 1929 по 1997 год этот город был столицей.
       </Panel>
-      <Panel title="Etymology" isActive={true}>
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
+      <Panel title="Этимология" isActive={true}>
+        Название происходит от <span lang="kk-KZ">алма</span>, казахского слова, означающего "яблоко", и часто переводится как "полное яблок". На самом деле, регион, прилегающий к Алматы, считается прародиной яблони, а дикий <i lang="la">Malus sieversii</i> считается вероятным кандидатом на роль предка современного домашнего яблока.
       </Panel>
     </>
   );
@@ -154,7 +153,7 @@ function Panel({ title, children, isActive }) {
         <p>{children}</p>
       ) : (
         <button onClick={() => setIsActive(true)}>
-          Show
+          Показать
         </button>
       )}
     </section>
@@ -172,21 +171,21 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-Try editing the hardcoded `isActive` values in the `Accordion` component and see the result on the screen.
+Попробуйте изменить жестко заданные значения `isActive` в компоненте `Accordion` и обратите внимание как это повлияет на результат.
 
-### Step 3: Add state to the common parent {/*step-3-add-state-to-the-common-parent*/}
+### Шаг 3: Добавить состояние в общего родителя {/*step-3-add-state-to-the-common-parent*/}
 
-Lifting state up often changes the nature of what you're storing as state.
+Подъём состояния часто приводит к изменению сущности хранимого состояния.
 
-In this case, only one panel should be active at a time. This means that the `Accordion` common parent component needs to keep track of *which* panel is the active one. Instead of a `boolean` value, it could use a number as the index of the active `Panel` for the state variable:
+В нашем случае, одновременно должна быть активна только одна панель. Это означает, что общему родителю `Accordion` нужно следить за тем *какая* панель активна в данный момент. Вместо булева значения в состоянии можно хранить число, которое будет означать индекс активной панели:
 
 ```js
 const [activeIndex, setActiveIndex] = useState(0);
 ```
 
-When the `activeIndex` is `0`, the first panel is active, and when it's `1`, it's the second one.
+Когда `activeIndex` равен `0`, активна первая панель, а когда равен `1`, активна вторая.
 
-Clicking the "Show" button in either `Panel` needs to change the active index in `Accordion`. A `Panel` can't set the `activeIndex` state directly because it's defined inside the `Accordion`. The `Accordion` component needs to *explicitly allow* the `Panel` component to change its state by [passing an event handler down as a prop](/learn/responding-to-events#passing-event-handlers-as-props):
+Нажатие на кнопку "Показать" в любой из панелей должно изменять индекс активной панели в `Accordion`. `Panel` не может напрямую установить состояние `activeIndex`, потому что оно определено внутри `Accordion`. Компоненту `Accordion` необходимо *явно разрешить* компоненту `Panel` изменять свое состояние, [передав обработчик события как проп](/learn/responding-to-events#passing-event-handlers-as-props):
 
 ```js
 <>
@@ -205,7 +204,7 @@ Clicking the "Show" button in either `Panel` needs to change the active index in
 </>
 ```
 
-The `<button>` inside the `Panel` will now use the `onShow` prop as its click event handler:
+Элемент `<button>` внутри компонента `Panel` теперь будет использовать проп `onShow` в качестве обработчика события `click`:
 
 <Sandpack>
 
@@ -216,20 +215,20 @@ export default function Accordion() {
   const [activeIndex, setActiveIndex] = useState(0);
   return (
     <>
-      <h2>Almaty, Kazakhstan</h2>
+      <h2>Алматы, Казахстан</h2>
       <Panel
-        title="About"
+        title="Подробнее"
         isActive={activeIndex === 0}
         onShow={() => setActiveIndex(0)}
       >
-        With a population of about 2 million, Almaty is Kazakhstan's largest city. From 1929 to 1997, it was its capital city.
+        Алматы с населением около 2 миллионов человек является крупнейшим городом Казахстана. С 1929 по 1997 год этот город был столицей.
       </Panel>
       <Panel
-        title="Etymology"
+        title="Этимология"
         isActive={activeIndex === 1}
         onShow={() => setActiveIndex(1)}
       >
-        The name comes from <span lang="kk-KZ">алма</span>, the Kazakh word for "apple" and is often translated as "full of apples". In fact, the region surrounding Almaty is thought to be the ancestral home of the apple, and the wild <i lang="la">Malus sieversii</i> is considered a likely candidate for the ancestor of the modern domestic apple.
+        Название происходит от <span lang="kk-KZ">алма</span>, казахского слова, означающего "яблоко", и часто переводится как "полное яблок". На самом деле, регион, прилегающий к Алматы, считается прародиной яблони, а дикий <i lang="la">Malus sieversii</i> считается вероятным кандидатом на роль предка современного домашнего яблока.
       </Panel>
     </>
   );
@@ -248,7 +247,7 @@ function Panel({
         <p>{children}</p>
       ) : (
         <button onClick={onShow}>
-          Show
+          Показать
         </button>
       )}
     </section>
@@ -266,19 +265,19 @@ h3, p { margin: 5px 0px; }
 
 </Sandpack>
 
-This completes lifting state up! Moving state into the common parent component allowed you to coordinate the two panels. Using the active index instead of two "is shown" flags ensured that only one panel is active at a given time. And passing down the event handler to the child allowed the child to change the parent's state.
+Подъём состояния завершен! Переместив состояние в общий родительский компонент нам удалось скоординировать две панели. Использование индекса активной панели вместо двух флагов `isActive` гарантирует нам, что будет активна только одна панель в данный момент времени. А передав обработчики событий дочерним компонентам мы позволили им управлять состоянием родителя.
 
 <DiagramGroup>
 
-<Diagram name="sharing_state_parent" height={385} width={487} alt="Diagram showing a tree of three components, one parent labeled Accordion and two children labeled Panel. Accordion contains an activeIndex value of zero which turns into isActive value of true passed to the first Panel, and isActive value of false passed to the second Panel." >
+<Diagram name="sharing_state_parent" height={385} width={487} alt="На диаграмме изображено дерево компонентов, один родительский компонент с названием Accordion и два дочерних с названием Panel. Accordion содержит переменную activeIndex со значением ноль, которая преобразуется в isActive со значением true для первой Panel, и в isActive со значением false для второй Panel." >
 
-Initially, `Accordion`'s `activeIndex` is `0`, so the first `Panel` receives `isActive = true`
+В начале, `activeIndex` в компоненте `Accordion` имеет значение 0, поэтому первая панель получает `isActive = true`
 
 </Diagram>
 
-<Diagram name="sharing_state_parent_clicked" height={385} width={521} alt="The same diagram as the previous, with the activeIndex value of the parent Accordion component highlighted indicating a click with the value changed to one. The flow to both of the children Panel components is also highlighted, and the isActive value passed to each child is set to the opposite: false for the first Panel and true for the second one." >
+<Diagram name="sharing_state_parent_clicked" height={385} width={521} alt="Та же диаграмма, что и предыдущая, с выделенным значением активного индекса родительского компонента Accordion, указывающим на клик со значением, измененным на единицу. Стрелки к обоим дочерним компонентам Panel также выделены, а значение isActive, передаваемое каждому дочернему элементу, установлено в противоположное значение: false для первой панели и true для второй." >
 
-When `Accordion`'s `activeIndex` state changes to `1`, the second `Panel` receives `isActive = true` instead
+Когда состояние `activeIndex` в `Accordion` становится `1`, вторая `Panel` получает `isActive = true` вместо первой
 
 </Diagram>
 
