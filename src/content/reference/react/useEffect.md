@@ -56,27 +56,27 @@ function ChatRoom({ roomId }) {
 
 * `useEffect` -- это хук, поэтому его нужно вызывать **только на верхнем уровне ваших компонентов** или хуков. Его нельзя вызывать внутри циклов и условий. Если это всё же для чего-то нужно, выделите этот вызов в отдельный компонент, который затем можно рендерить по условию или в цикле.
 
-* Если ваша цель **не в том, чтобы синхронизировать компонент с некой сторонней системой,** то [возможно, вам и не нужен Эффект.](/learn/you-might-not-need-an-effect)
+* Если ваша цель **не в том, чтобы синхронизировать компонент с некой внешней системой,** то [возможно, вам и не нужен Эффект.](/learn/you-might-not-need-an-effect)
 
 * В Строгом режиме (Strict Mode) после первого рендеринга React **вызовет `setup` дважды**: один раз вызовет `setup` и сразу его очистку, и затем вызовет `setup` как обычно. Это будет происходить только в режиме разработки. Такой тест помогает убедиться, что очистка эффекта "обратна" его установке: она отменяет и откатывает всю ту работу, которую проделала функция `setup`. Если у вас нет функции очистки, а тест приводит к неправильной работе -- значит [вам нужна функция очистки](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development).
 
 * Если эффект зависит от объектов или функций, которые создаются в компоненте, есть риск, что **эффект будет запускаться слишком часто**. Такие лишние зависимости можно убрать, переместив создание [объекта](#removing-unnecessary-object-dependencies) или [функции](#removing-unnecessary-function-dependencies) внутрь эффекта. Кроме того можно [убрать зависимость от состояния, если эффект просто его обновляет](#updating-state-based-on-previous-state-from-an-effect). А [не реактивную логику](#reading-the-latest-props-and-state-from-an-effect) можно вынести за пределы эффекта.
 
-* Перед тем, как запустить эффект, React сначала **даст браузеру возможность отрисовать изменения на экране, а потом запустит ваш эффект.** Поэтому если ваш эффект после рендеринга делает еще какие-то визуальные изменения (например, поправляет положение отрендеренной всплывающей подсказки), то эти изменения могут появиться с задержкой (подсказка на мгновение всплывёт в неправильном месте, и сразу переместится в правильное). Если эта задержка слишком заметна, попробуйте заменить `useEffect` на [`useLayoutEffect`.](/reference/react/useLayoutEffect)
+* Перед тем, как запустить эффект, React сначала **даст браузеру возможность отрисовать изменения на экране, а потом запустит ваш эффект.** Поэтому если ваш эффект после рендеринга делает ещё какие-то визуальные изменения (например, поправляет положение отрендеренной всплывающей подсказки), то эти изменения могут появиться с задержкой (подсказка на мгновение всплывёт в неправильном месте, и сразу переместится в правильное). Если эта задержка слишком заметна, попробуйте заменить `useEffect` на [`useLayoutEffect`.](/reference/react/useLayoutEffect)
 
-* Аналогично, если ваш эффект меняет состояние в ответ на действия пользователя (например, должен сработать после клика), то нужно учитывать, что **сначала браузер обновит экран, а потом подействуют изменения состояния, которые делает эффект**. Обычно это ожидаемое поведение. Но если вам все же важно обновить состояние до отрисовки браузером, то `useEffect` нужно заменить на [`useLayoutEffect`.](/reference/react/useLayoutEffect)
+* Аналогично, если ваш эффект меняет состояние в ответ на действия пользователя (например, должен сработать после клика), то нужно учитывать, что **сначала браузер обновит экран, а потом подействуют изменения состояния, которые делает эффект**. Обычно это ожидаемое поведение. Но если вам всё же важно обновить состояние до отрисовки браузером, то `useEffect` нужно заменить на [`useLayoutEffect`.](/reference/react/useLayoutEffect)
 
 * Эффекты **запускаются только на клиенте**. Они не запускаются во время серверного рендеринга.
 
 ---
 
-## Usage {/*usage*/}
+## Применение {/*usage*/}
 
-### Connecting to an external system {/*connecting-to-an-external-system*/}
+### Подключение к внешней системе {/*connecting-to-an-external-system*/}
 
-Some components need to stay connected to the network, some browser API, or a third-party library, while they are displayed on the page. These systems aren't controlled by React, so they are called *external.*
+Иногда в компоненте нужно установить сетевое соединение, подключиться к браузерному API или сторонней библиотеке, и поддерживать подключение или подписку, пока компонент показан на странице. React не управляет этими системами, они не являются его частью -- такие системы называются *внешними.*
 
-To [connect your component to some external system,](/learn/synchronizing-with-effects) call `useEffect` at the top level of your component:
+Чтобы [подключить свой компонент к внешней системе,](/learn/synchronizing-with-effects) вызовите `useEffect` на верхнем уровне своего компонента:
 
 ```js [[1, 8, "const connection = createConnection(serverUrl, roomId);"], [1, 9, "connection.connect();"], [2, 11, "connection.disconnect();"], [3, 13, "[serverUrl, roomId]"]]
 import { useEffect } from 'react';
@@ -96,37 +96,37 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-You need to pass two arguments to `useEffect`:
+В `useEffect` нужно передать два аргумента:
 
-1. A *setup function* with <CodeStep step={1}>setup code</CodeStep> that connects to that system.
-   - It should return a *cleanup function* with <CodeStep step={2}>cleanup code</CodeStep> that disconnects from that system.
-2. A <CodeStep step={3}>list of dependencies</CodeStep> including every value from your component used inside of those functions.
+1. *Функцию установки*, которая <CodeStep step={1}>устанавливает эффект,</CodeStep> подключаясь к внешней системе.
+   - Установка должна вернуть *функцию очистки*, которая <CodeStep step={2}>очищает эффект</CodeStep>, отключаясь от внешней системы.
+2. <CodeStep step={3}>Список зависимостей</CodeStep> этих функций, где перечислены все нужные им значения в компоненте.
 
-**React calls your setup and cleanup functions whenever it's necessary, which may happen multiple times:**
+**По мере необходимости React вызовет функции установки и очистки несколько раз:**
 
-1. Your <CodeStep step={1}>setup code</CodeStep> runs when your component is added to the page *(mounts)*.
-2. After every re-render of your component where the <CodeStep step={3}>dependencies</CodeStep> have changed:
-   - First, your <CodeStep step={2}>cleanup code</CodeStep> runs with the old props and state.
-   - Then, your <CodeStep step={1}>setup code</CodeStep> runs with the new props and state.
-3. Your <CodeStep step={2}>cleanup code</CodeStep> runs one final time after your component is removed from the page *(unmounts).*
+1. Когда ваш компонент появится на странице *(монтируется)*, выполнится <CodeStep step={1}>код установки.</CodeStep>
+2. После каждого рендеринга, в котором изменились <CodeStep step={3}>зависимости:</CodeStep>
+   - Сначала запустится <CodeStep step={2}>код очистки</CodeStep> со старыми пропсами и состоянием.
+   - Затем запустится <CodeStep step={1}>код установки</CodeStep> с новыми пропсами и состоянием.
+3. В конце, когда ваш компонент будет удалён со страницы *(размонтируется)*, выполнится <CodeStep step={2}>код очистки</CodeStep>.
 
-**Let's illustrate this sequence for the example above.**  
+**Разберём эту последовательность на примере кода выше.**  
 
-When the `ChatRoom` component above gets added to the page, it will connect to the chat room with the initial `serverUrl` and `roomId`. If either `serverUrl` or `roomId` change as a result of a re-render (say, if the user picks a different chat room in a dropdown), your Effect will *disconnect from the previous room, and connect to the next one.* When the `ChatRoom` component is removed from the page, your Effect will disconnect one last time.
+Когда в примере выше компонент `ChatRoom` добавится на страницу, эффектом добавления станет подключение к чату, используя начальные значения `roomId` и `serverUrl`. Если в процессе рендеринга `serverUrl` или `roomId` изменятся (например, пользователь выберет в выпадающем меню другой чат), эффект *отключится от предыдущего чата, и подключится к новому чату.* А когда компонент будет удалён со страницы, эффект закроет последнее подключение.
 
-**To [help you find bugs,](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) in development React runs <CodeStep step={1}>setup</CodeStep> and <CodeStep step={2}>cleanup</CodeStep> one extra time before the <CodeStep step={1}>setup</CodeStep>.** This is a stress-test that verifies your Effect's logic is implemented correctly. If this causes visible issues, your cleanup function is missing some logic. The cleanup function should stop or undo whatever the setup function was doing. The rule of thumb is that the user shouldn't be able to distinguish between the setup being called once (as in production) and a *setup* → *cleanup* → *setup* sequence (as in development). [See common solutions.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+**В режиме разработки [для выявления дефектов](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) React будет запускать один предварительный цикл <CodeStep step={1}>установки</CodeStep> и <CodeStep step={2}>очистки</CodeStep> перед тем, как начинать <CodeStep step={1}>установку</CodeStep> как обычно.** Это такой стресс-тест, проверяющий, что логика вашего эффекта реализована правильно. Если вы видите, что тест создаёт проблемы -- значит у вас в логике очистки чего-то не хватает. Код очистки должен отменять и откатывать всю ту работу, которую проделал код установки. Эмпирическое правило такое: пользователь не должен замечать разницы, вызвалась установка один раз (как в продакшене) или последовательностью *установка* → *очистка* → *установка* (как в режиме разработки). [См. решения для типичных ситуаций.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
-**Try to [write every Effect as an independent process](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process) and [think about a single setup/cleanup cycle at a time.](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)** It shouldn't matter whether your component is mounting, updating, or unmounting. When your cleanup logic correctly "mirrors" the setup logic, your Effect is resilient to running setup and cleanup as often as needed.
+**Старайтесь [описывать каждый эффект, как отдельный процесс,](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process) а так же [рассматривать каждую установку вместе с её очисткой, как одно целое.](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective)** Монтируется компонент, обновляется, или размонтируется -- не должно играть роли. Если правильно реализовать очистку -- как "зеркальное отражение" установки, -- то ваш эффект сможет без последствий устанавливаться и очищаться настолько часто, насколько потребуется.
 
 <Note>
 
-An Effect lets you [keep your component synchronized](/learn/synchronizing-with-effects) with some external system (like a chat service). Here, *external system* means any piece of code that's not controlled by React, such as:
+Эффект позволяет [компоненту быть всегда синхронизированным](/learn/synchronizing-with-effects) с внешней системой (например, с сервисом чата). Под *внешней системой* здесь подразумевается в принципе любой код, которым не управляет React, как например:
 
-* A timer managed with <CodeStep step={1}>[`setInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval)</CodeStep> and <CodeStep step={2}>[`clearInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)</CodeStep>.
-* An event subscription using <CodeStep step={1}>[`window.addEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener)</CodeStep> and <CodeStep step={2}>[`window.removeEventListener()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/removeEventListener)</CodeStep>.
-* A third-party animation library with an API like <CodeStep step={1}>`animation.start()`</CodeStep> and <CodeStep step={2}>`animation.reset()`</CodeStep>.
+* Таймер, управляемый через <CodeStep step={1}>[`setInterval()`](https://developer.mozilla.org/ru/docs/Web/API/setInterval)</CodeStep> и <CodeStep step={2}>[`clearInterval()`](https://developer.mozilla.org/en-US/docs/Web/API/clearInterval)</CodeStep>.
+* Подписка на событие, контролируемая через <CodeStep step={1}>[`window.addEventListener()`](https://developer.mozilla.org/ru/docs/Web/API/EventTarget/addEventListener)</CodeStep> и <CodeStep step={2}>[`window.removeEventListener()`](https://developer.mozilla.org/ru/docs/Web/API/EventTarget/removeEventListener)</CodeStep>.
+* Стороння библиотека для анимаций с API наподобие <CodeStep step={1}>`animation.start()`</CodeStep> и <CodeStep step={2}>`animation.reset()`</CodeStep>.
 
-**If you're not connecting to any external system, [you probably don't need an Effect.](/learn/you-might-not-need-an-effect)**
+**Если вы в компоненте не подключаетесь к какой-либо внешней системе, то [скорее всего вам и не нужен эффект.](/learn/you-might-not-need-an-effect)**
 
 </Note>
 
