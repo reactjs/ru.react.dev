@@ -130,11 +130,11 @@ function ChatRoom({ roomId }) {
 
 </Note>
 
-<Recipes titleText="Examples of connecting to an external system" titleId="examples-connecting">
+<Recipes titleText="Примеры подключения к внешним системам" titleId="examples-connecting">
 
-#### Connecting to a chat server {/*connecting-to-a-chat-server*/}
+#### Подключение к чат-серверу {/*connecting-to-a-chat-server*/}
 
-In this example, the `ChatRoom` component uses an Effect to stay connected to an external system defined in `chat.js`. Press "Open chat" to make the `ChatRoom` component appear. This sandbox runs in development mode, so there is an extra connect-and-disconnect cycle, as [explained here.](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) Try changing the `roomId` and `serverUrl` using the dropdown and the input, and see how the Effect re-connects to the chat. Press "Close chat" to see the Effect disconnect one last time.
+В этом примере компонент `ChatRoom` с помощью эффекта создаёт и поддерживает подключение к внешней системе: чат-серверу, описанному в `chat.js`. Нажмите "Открыть чат" -- появится компонент `ChatRoom`. Т.к. песочница здесь работает в режиме разработки, то будет дополнительный цикл подключения и отключения -- [о чём подробнее рассказано здесь.](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) Обратите внимание, как эффект переподключается к чату, если в выпадающем списке выбрать другой `roomId` или в поле ввода изменить `serverUrl`. Нажмите "Закрыть чат" -- и эффект отключится от чата.
 
 <Sandpack>
 
@@ -156,13 +156,13 @@ function ChatRoom({ roomId }) {
   return (
     <>
       <label>
-        Server URL:{' '}
+        Адрес сервера:{' '}
         <input
           value={serverUrl}
           onChange={e => setServerUrl(e.target.value)}
         />
       </label>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>Добро пожаловать в {roomId}!</h1>
     </>
   );
 }
@@ -173,7 +173,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        Выберите чат:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -184,7 +184,7 @@ export default function App() {
         </select>
       </label>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Close chat' : 'Open chat'}
+        {show ? 'Закрыть чат' : 'Открыть чат'}
       </button>
       {show && <hr />}
       {show && <ChatRoom roomId={roomId} />}
@@ -195,13 +195,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // В реальной реализации здесь было бы настоящее подключение к серверу
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ Подключение к чату "' + roomId + '" на ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ Отключение от чата "' + roomId + '" на ' + serverUrl);
     }
   };
 }
@@ -216,9 +216,9 @@ button { margin-left: 10px; }
 
 <Solution />
 
-#### Listening to a global browser event {/*listening-to-a-global-browser-event*/}
+#### Отслеживание глобальных событий в браузере {/*listening-to-a-global-browser-event*/}
 
-In this example, the external system is the browser DOM itself. Normally, you'd specify event listeners with JSX, but you can't listen to the global [`window`](https://developer.mozilla.org/en-US/docs/Web/API/Window) object this way. An Effect lets you connect to the `window` object and listen to its events. Listening to the `pointermove` event lets you track the cursor (or finger) position and update the red dot to move with it.
+В этом примере внешней системой является браузерный DOM. Обычно, чтобы подписаться на событие, можно указать обработчик события в JSX. Но на события в глобальном объекте [`window`](https://developer.mozilla.org/ru/docs/Web/API/Window) так подписаться нельзя. В примере эффект позволяет "подключиться" к объекту `window`, чтобы слушать события в нём, и через событие `pointermove` отслеживать положение курсора, чтобы двигать за ним красный маркер.
 
 <Sandpack>
 
@@ -265,9 +265,9 @@ body {
 
 <Solution />
 
-#### Triggering an animation {/*triggering-an-animation*/}
+#### Запуск анимации {/*triggering-an-animation*/}
 
-In this example, the external system is the animation library in `animation.js`. It provides a JavaScript class called `FadeInAnimation` that takes a DOM node as an argument and exposes `start()` and `stop()` methods to control the animation. This component [uses a ref](/learn/manipulating-the-dom-with-refs) to access the underlying DOM node. The Effect reads the DOM node from the ref and automatically starts the animation for that node when the component appears.
+В этом примере внешняя система -- это библиотека анимаций, описанная в `animation.js`. Библиотека реализует класс `FadeInAnimation`, который принимает на вход DOM-узел и позволяет методами `start()` и `stop()` управлять его анимацией. Компонент `Welcome` получает доступ к нужному DOM-узлу [с помощью рефа](/learn/manipulating-the-dom-with-refs). А эффект забирает узел из рефа и запускает на нём анимацию, когда компонент добавляется на экран.
 
 <Sandpack>
 
@@ -298,7 +298,7 @@ function Welcome() {
         backgroundImage: 'radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%)'
       }}
     >
-      Welcome
+      Привет!
     </h1>
   );
 }
@@ -308,7 +308,7 @@ export default function App() {
   return (
     <>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Remove' : 'Show'}
+        {show ? 'Спрятать' : 'Показать'}
       </button>
       <hr />
       {show && <Welcome />}
@@ -325,11 +325,11 @@ export class FadeInAnimation {
   start(duration) {
     this.duration = duration;
     if (this.duration === 0) {
-      // Jump to end immediately
+      // Идём сразу в конец анимации
       this.onProgress(1);
     } else {
       this.onProgress(0);
-      // Start animating
+      // Начинаем анимацию
       this.startTime = performance.now();
       this.frameId = requestAnimationFrame(() => this.onFrame());
     }
@@ -339,7 +339,7 @@ export class FadeInAnimation {
     const progress = Math.min(timePassed / this.duration, 1);
     this.onProgress(progress);
     if (progress < 1) {
-      // We still have more frames to paint
+      // Отрисовали ещё не все фреймы
       this.frameId = requestAnimationFrame(() => this.onFrame());
     }
   }
@@ -364,9 +364,9 @@ html, body { min-height: 300px; }
 
 <Solution />
 
-#### Controlling a modal dialog {/*controlling-a-modal-dialog*/}
+#### Управление модальным диалогом {/*controlling-a-modal-dialog*/}
 
-In this example, the external system is the browser DOM. The `ModalDialog` component renders a [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element. It uses an Effect to synchronize the `isOpen` prop to the [`showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) and [`close()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close) method calls.
+В этом примере внешней системой является браузерный DOM. Компонент `ModalDialog` рендерит элемент [`<dialog>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/dialog). А с помощью эффекта и методов [`showModal()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal) и [`close()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close) синхронизирует показ диалога со значением пропа `isOpen`.
 
 <Sandpack>
 
@@ -379,14 +379,14 @@ export default function App() {
   return (
     <>
       <button onClick={() => setShow(true)}>
-        Open dialog
+        Открыть диалог
       </button>
       <ModalDialog isOpen={show}>
-        Hello there!
+        Привет!
         <br />
         <button onClick={() => {
           setShow(false);
-        }}>Close</button>
+        }}>Закрыть</button>
       </ModalDialog>
     </>
   );
@@ -424,9 +424,9 @@ body {
 
 <Solution />
 
-#### Tracking element visibility {/*tracking-element-visibility*/}
+#### Отслеживание видимости элемента {/*tracking-element-visibility*/}
 
-In this example, the external system is again the browser DOM. The `App` component displays a long list, then a `Box` component, and then another long list. Scroll the list down. Notice that when the `Box` component appears in the viewport, the background color changes to black. To implement this, the `Box` component uses an Effect to manage an [`IntersectionObserver`](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API). This browser API notifies you when the DOM element is visible in the viewport.
+В этом примере внешней системой также является браузерный DOM. Компонент `App` показывает сначала длинный список, потом компонент `Box`, и затем ещё один длинный список. Прокрутите этот список -- обратите внимание, что фон чернеет, когда компонент `Box` становится видимым. Компонент `Box` отслеживает свою видимость с помощью эффекта, который создаёт и управляет объектом [`IntersectionObserver`](https://developer.mozilla.org/ru/docs/Web/API/Intersection_Observer_API) -- браузерное API, оповещающее, когда элемент DOM появляется во вьюпорте.
 
 <Sandpack>
 
@@ -448,7 +448,7 @@ export default function App() {
 function LongSection() {
   const items = [];
   for (let i = 0; i < 50; i++) {
-    items.push(<li key={i}>Item #{i} (keep scrolling)</li>);
+    items.push(<li key={i}>Элемент #{i} (прокрутите дальше)</li>);
   }
   return <ul>{items}</ul>
 }
