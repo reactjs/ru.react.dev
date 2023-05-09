@@ -4,7 +4,7 @@ title: useContext
 
 <Intro>
 
-`useContext` - это хук, который позволяет вам считывать и подписываться на [контекст](/learn/passing-data-deeply-with-context) внутри вашего компонента.
+`useContext` -- это хук, который позволяет вам считывать и подписываться на [контекст](/learn/passing-data-deeply-with-context) внутри вашего компонента.
 
 ```js
 const value = useContext(SomeContext)
@@ -20,7 +20,7 @@ const value = useContext(SomeContext)
 
 ### `useContext(SomeContext)` {/*usecontext*/}
 
-Вызовите `useContext` на верхнем уровне вашего компонента для чтения и подписки на [контекст.](/learn/passing-data-deeply-with-context)
+Вызовите `useContext` на верхнем уровне вашего компонента, чтобы прочитать и подписаться на [контекст.](/learn/passing-data-deeply-with-context)
 
 ```js
 import { useContext } from 'react';
@@ -41,9 +41,9 @@ function MyComponent() {
 
 #### Замечания {/*caveats*/}
 
-* Вызов `useContext()` из компонента не будет затронут источниками, созданными в  *том же* компоненте. Соответствующий `<Context.Provider>` **обязан быть *выше по дереву***, чем компонент, который вызывает `useContext()`.
+* Вызов `useContext()` из компонента не будет затронут источниками, возвращенными из  *того же* компонента. Соответствующий `<Context.Provider>` **обязан быть *выше по дереву***, чем компонент, который вызывает `useContext()`.
 * React **автоматически повторно рендерит** все дочерние компоненты, использующие источник, значение `value` которого было изменено. Предшествующее и следующее значения сравниваются, используя сравнение [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is). Пропуск повторных рендеров с помощью [`memo`](/reference/react/memo) не препятствует получению дочерними компонентами актуальных значений контекста.
-* Если ваша система сборки дублирует выходящие модули (что может произойти при использовании символических ссылок), результат использования контекста может стать непредсказуемым. Передача чего-либо через контекст будет успешна только если `SomeContext`, который вы используете для  предоставления контекста, и `SomeContext`, который вы используете, чтобы его считать, ***полностью* идентичны друг другу**, аналогично оператору сравнения `===`.
+* Если ваша система сборки дублирует выходящие модули (что может произойти при использовании символических ссылок), результат использования контекста может быть непредсказуемым. Передача чего-либо через контекст будет успешна только если `SomeContext`, который вы используете для  предоставления контекста, и `SomeContext`, который вы используете, чтобы его считать, ***полностью* идентичны друг другу**, аналогично оператору сравнения `===`.
 
 ---
 
@@ -80,7 +80,7 @@ function Form() {
 }
 ```
 
-Не имеет значения, сколько слоев компонентов находится между источником контекста и  `Button`. Когда `Button` *в любом месте* внутри `Form` вызывает `useContext(ThemeContext)`, он получит значение `"dark"`.
+Не имеет значения, сколько слоев компонентов находится между источником контекста и  `Button`. Когда `Button` *в любом месте* внутри `Form` вызовет `useContext(ThemeContext)`, он получит значение `"dark"`.
 
 <Pitfall>
 
@@ -194,7 +194,7 @@ function MyPage() {
 }
 ```
 
-Теперь любой компонент `Button` внутри источника будет получать текущее значение `theme`. Если вы вызовете `setTheme`, чтобы изменить значение `theme`, которое вы передали в источник, все компоненты `Button` будут повторно отрендерены с новым зачением `'light'`.
+Теперь любой компонент `Button` внутри источника будет получать текущее значение `theme`. Если вы вызовете `setTheme`, чтобы изменить значение `theme`, которое вы передаете в источник, все компоненты `Button` будут повторно отрендерены с новым зачением `'light'`.
 
 <Recipes titleText="Примеры изменения контекста" titleId="examples-basic">
 
@@ -946,25 +946,25 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Specifying a fallback default value {/*specifying-a-fallback-default-value*/}
+### Указание стандартного запасного значения {/*specifying-a-fallback-default-value*/}
 
-If React can't find any providers of that particular <CodeStep step={1}>context</CodeStep> in the parent tree, the context value returned by `useContext()` will be equal to the <CodeStep step={3}>default value</CodeStep> that you specified when you [created that context](/reference/react/createContext):
+Если React не сможет найти ни одного источника конкретного <CodeStep step={1}>контекста</CodeStep> в дереве родительских компонентов, значение контекста возвращенное вызовом `useContext()` будет равно <CodeStep step={3}>стандартному значению</CodeStep>, которое вы указали при [создании этого контекста](/reference/react/createContext):
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "null"]]
 const ThemeContext = createContext(null);
 ```
 
-The default value **never changes**. If you want to update context, use it with state as [described above.](#updating-data-passed-via-context)
+Стандартное значения **остается неизменным**. Если вы хотите изменить контекст, используйте его вместе с состоянием, [как описано выше.](#updating-data-passed-via-context)
 
-Often, instead of `null`, there is some more meaningful value you can use as a default, for example:
+Зачастую, вместо использования `null`, можно задать более содержательное стандартное значение, например:
 
 ```js [[1, 1, "ThemeContext"], [3, 1, "light"]]
 const ThemeContext = createContext('light');
 ```
 
-This way, if you accidentally render some component without a corresponding provider, it won't break. This also helps your components work well in a test environment without setting up a lot of providers in the tests.
+В ином случае, если вы случайно отрендерите какой-то компонент без соответствующего источника контекста, что-то может пойти не так. Такой подход также поможет вашим компонентам хорошо работать в тестовом окружении, без установки множества источников в тестах.
 
-In the example below, the "Toggle theme" button is always light because it's **outside any theme context provider** and the default context theme value is `'light'`. Try editing the default theme to be `'dark'`.
+В примере выше кнопка "Toggle theme" всегда светлая, потому что она находится **снаружи какого-либо источника контекста темы**, а стандартное значение источника контекста темы -- `'light'`. Можете попробовать изменить стандартное значение темы на `'dark'`.
 
 <Sandpack>
 
@@ -983,7 +983,7 @@ export default function MyApp() {
       <Button onClick={() => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
       }}>
-        Toggle theme
+        Переключить тему
       </Button>
     </>
   )
@@ -991,9 +991,9 @@ export default function MyApp() {
 
 function Form({ children }) {
   return (
-    <Panel title="Welcome">
-      <Button>Sign up</Button>
-      <Button>Log in</Button>
+    <Panel title="Добро пожаловать">
+      <Button>Зарегистрироваться</Button>
+      <Button>Войти</Button>
     </Panel>
   );
 }
@@ -1061,9 +1061,9 @@ function Button({ children, onClick }) {
 
 ---
 
-### Overriding context for a part of the tree {/*overriding-context-for-a-part-of-the-tree*/}
+### Переопределение контекста для части дерева {/*overriding-context-for-a-part-of-the-tree*/}
 
-You can override the context for a part of the tree by wrapping that part in a provider with a different value.
+Вы можете переопределить контекст для части дерева, обернув ее в источник контекста с другими значениями.
 
 ```js {3,5}
 <ThemeContext.Provider value="dark">
@@ -1075,13 +1075,13 @@ You can override the context for a part of the tree by wrapping that part in a p
 </ThemeContext.Provider>
 ```
 
-You can nest and override providers as many times as you need.
+Вы можете вкладывать и переопределять источники сколько вам нужно.
 
-<Recipes title="Examples of overriding context">
+<Recipes title="Примеры переопределения контекста">
 
-#### Overriding a theme {/*overriding-a-theme*/}
+#### Переопределение темы {/*overriding-a-theme*/}
 
-Here, the button *inside* the `Footer` receives a different context value (`"light"`) than the buttons outside (`"dark"`).
+В данном случае, кнопка *внутри* компонента `Footer` получает значение контекста (`"light"`), в отличие от кнопок снаружи, которые получают (`"dark"`).
 
 <Sandpack>
 
@@ -1100,9 +1100,9 @@ export default function MyApp() {
 
 function Form() {
   return (
-    <Panel title="Welcome">
-      <Button>Sign up</Button>
-      <Button>Log in</Button>
+    <Panel title="Добро пожаловать">
+      <Button>Зарегистрироваться</Button>
+      <Button>Войти</Button>
       <ThemeContext.Provider value="light">
         <Footer />
       </ThemeContext.Provider>
@@ -1113,7 +1113,7 @@ function Form() {
 function Footer() {
   return (
     <footer>
-      <Button>Settings</Button>
+      <Button>Настройки</Button>
     </footer>
   );
 }
@@ -1185,11 +1185,11 @@ footer {
 
 <Solution />
 
-#### Automatically nested headings {/*automatically-nested-headings*/}
+#### Автоматическое вкладывание заголовков {/*automatically-nested-headings*/}
 
-You can "accumulate" information when you nest context providers. In this example, the `Section` component keeps track of the `LevelContext` which specifies the depth of the section nesting. It reads the `LevelContext` from the parent section, and provides the `LevelContext` number increased by one to its children. As a result, the `Heading` component can automatically decide which of the `<h1>`, `<h2>`, `<h3>`, ..., tags to use based on how many `Section` components it is nested inside of.
+Вы можете "аккумулировать" данные при вкладывании источников контекста. В данном примере, компонент `Section` следит за `LevelContext`, который определяет глубину вложенности разделов. Он получает значение `LevelContext` из родительского компонента раздела, и предоставляет число `LevelContext`, увеличенное на единицу, своим дочерним компонентам. В результате компонент `Heading` может сам решить, какой из `<h1>`, `<h2>`, `<h3>`, ..., тегов использовать, в зависимости от того, сколько компонентов `Section` находятся выше него.
 
-Read a [detailed walkthrough](/learn/passing-data-deeply-with-context) of this example.
+Смотрите [полное описание](/learn/passing-data-deeply-with-context) этого примера.
 
 <Sandpack>
 
@@ -1200,19 +1200,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading>Title</Heading>
+      <Heading>Название</Heading>
       <Section>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
+        <Heading>Заголовок</Heading>
+        <Heading>Заголовок</Heading>
+        <Heading>Заголовок</Heading>
         <Section>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
+          <Heading>Подзаголовок</Heading>
+          <Heading>Подзаголовок</Heading>
+          <Heading>Подзаголовок</Heading>
           <Section>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
+            <Heading>Подподзаголовок</Heading>
+            <Heading>Подподзаголовок</Heading>
+            <Heading>Подподзаголовок</Heading>
           </Section>
         </Section>
       </Section>
@@ -1245,7 +1245,7 @@ export default function Heading({ children }) {
   const level = useContext(LevelContext);
   switch (level) {
     case 0:
-      throw Error('Heading must be inside a Section!');
+      throw Error('Заголовок должен быть внутри раздела!');
     case 1:
       return <h1>{children}</h1>;
     case 2:
@@ -1259,7 +1259,7 @@ export default function Heading({ children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('Неизвестный уровень глубины: ' + level);
   }
 }
 ```
@@ -1287,9 +1287,9 @@ export const LevelContext = createContext(0);
 
 ---
 
-### Optimizing re-renders when passing objects and functions {/*optimizing-re-renders-when-passing-objects-and-functions*/}
+### Оптимизация повторных рендеров при передаче объектов и функций {/*optimizing-re-renders-when-passing-objects-and-functions*/}
 
-You can pass any values via context, including objects and functions.
+Вы можете передавать через контекст любые значения, включая объекты и функции.
 
 ```js [[2, 10, "{ currentUser, login }"]] 
 function MyApp() {
@@ -1308,9 +1308,9 @@ function MyApp() {
 }
 ```
 
-Here, the <CodeStep step={2}>context value</CodeStep> is a JavaScript object with two properties, one of which is a function. Whenever `MyApp` re-renders (for example, on a route update), this will be a *different* object pointing at a *different* function, so React will also have to re-render all components deep in the tree that call `useContext(AuthContext)`.
+В данном случае, <CodeStep step={2}>значение контекста</CodeStep> является JavaScript-объектом с двумя свойствами, одно из которых -- функция. Когда произойдет повторный рендер `MyApp` (например, при обновлении маршрута), это значение станет *другим* объектом, указывающим на *другую* функцию, и React придется заново рендерить все компоненты в этом дереве, вызывающие `useContext(AuthContext)`.
 
-In smaller apps, this is not a problem. However, there is no need to re-render them if the underlying data, like `currentUser`, has not changed. To help React take advantage of that fact, you may wrap the `login` function with [`useCallback`](/reference/react/useCallback) and wrap the object creation into [`useMemo`](/reference/react/useMemo). This is a performance optimization:
+В небольших приложениях это не проблема. Однако нет необходимости заново рендерить их если основные данные, как, например, `currentUser`, не изменились. Чтобы помочь React воспользоваться этим фактом, вы можете обернуть функцию `login` в [`useCallback`](/reference/react/useCallback), а создание объекта -- в [`useMemo`](/reference/react/useMemo). Это -- оптимизация производительности:
 
 ```js {6,9,11,14,17}
 import { useCallback, useMemo } from 'react';
@@ -1336,25 +1336,25 @@ function MyApp() {
 }
 ```
 
-As a result of this change, even if `MyApp` needs to re-render, the components calling `useContext(AuthContext)` won't need to re-render unless `currentUser` has changed.
+В результате этого изменения, даже если компоненту `MyApp` нужен повторный рендер, компонентам, вызывающим `useContext(AuthContext)`, также не понадобится повторный рендер, если, конечно, не изменится `currentUser`.
 
-Read more about [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) and [`useCallback`.](/reference/react/useCallback#skipping-re-rendering-of-components)
+Узнайте больше про [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) и [`useCallback`.](/reference/react/useCallback#skipping-re-rendering-of-components)
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
-### My component doesn't see the value from my provider {/*my-component-doesnt-see-the-value-from-my-provider*/}
+### Мой компонент не видит значение из источника контекста {/*my-component-doesnt-see-the-value-from-my-provider*/}
 
 There are a few common ways that this can happen:
 
-1. You're rendering `<SomeContext.Provider>` in the same component (or below) as where you're calling `useContext()`. Move `<SomeContext.Provider>` *above and outside* the component calling `useContext()`.
-2. You may have forgotten to wrap your component with `<SomeContext.Provider>`, or you might have put it in a different part of the tree than you thought. Check whether the hierarchy is right using [React DevTools.](/learn/react-developer-tools)
-3. You might be running into some build issue with your tooling that causes `SomeContext` as seen from the providing component and `SomeContext` as seen by the reading component to be two different objects. This can happen if you use symlinks, for example. You can verify this by assigning them to globals like `window.SomeContext1` and `window.SomeContext2` and then checking whether `window.SomeContext1 === window.SomeContext2` in the console. If they're not the same, fix that issue on the build tool level.
+1. Вы рендерите `<SomeContext.Provider>` в том же компоненте (или ниже по дереву), в котором вызываете `useContext()`. Сдвиньте `<SomeContext.Provider>` *выше и наружу* компонента, вызывающего `useContext()`.
+2. Может быть, вы забыли обернуть ваш компонент в `<SomeContext.Provider>`, или он попал не в ту часть дерева, в которой вы его ожидали. Проверьте вашу иерархию с помощью [React DevTools.](/learn/react-developer-tools)
+3. Вы можете иметь дело с какой-то проблемой сборки вашими инструментами приложения, из-за которой `SomeContext`, как контекст из предоставляющего его компонента, и `SomeContext`, как контекст из читающего компонента, становятся двумя разными объектами. Это может произойти, например, при использовании символических ссылок. Вы можете проверить это, если присвоите контексты глобальным переменным, например  `window.SomeContext1` и `window.SomeContext2`, а затем написать в консоли `window.SomeContext1 === window.SomeContext2`. Если они различаются, эту проблему нужно исправлять на уровне инструментов сборки.
 
-### I am always getting `undefined` from my context although the default value is different {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
+### Значение из моего контекста всегда равно `undefined`, хотя стандартное значение отличается {/*i-am-always-getting-undefined-from-my-context-although-the-default-value-is-different*/}
 
-You might have a provider without a `value` in the tree:
+Возможно, вы забыли прописать `value` вашему источнику в дереве:
 
 ```js {1,2}
 // 🚩 Doesn't work: no value prop
@@ -1363,9 +1363,9 @@ You might have a provider without a `value` in the tree:
 </ThemeContext.Provider>
 ```
 
-If you forget to specify `value`, it's like passing `value={undefined}`.
+Если же вы забыли указать `value`, это то же самое, как передать в источник `value={undefined}`.
 
-You may have also mistakingly used a different prop name by mistake:
+Также возможно, что вы по ошибке использовали другое имя пропа:
 
 ```js {1,2}
 // 🚩 Doesn't work: prop should be called "value"
@@ -1374,7 +1374,7 @@ You may have also mistakingly used a different prop name by mistake:
 </ThemeContext.Provider>
 ```
 
-In both of these cases you should see a warning from React in the console. To fix them, call the prop `value`:
+Если возникнет любая из этих проблем, вы увидите в консоли предупреждение от React. Чтобы исправить их, назовите проп `value`:
 
 ```js {1,2}
 // ✅ Passing the value prop
@@ -1383,4 +1383,4 @@ In both of these cases you should see a warning from React in the console. To fi
 </ThemeContext.Provider>
 ```
 
-Note that the [default value from your `createContext(defaultValue)` call](#specifying-a-fallback-default-value) is only used **if there is no matching provider above at all.** If there is a `<SomeContext.Provider value={undefined}>` component somewhere in the parent tree, the component calling `useContext(SomeContext)` *will* receive `undefined` as the context value.
+Заметьте, что [стандартное значение вызова `createContext(defaultValue)`](#specifying-a-fallback-default-value) используется лишь **если соответсвующего источника контекста не существует выше по дереву** Если же где-то в дереве родительских компонентов есть компонент `<SomeContext.Provider value={undefined}>`, компонент, вызывающий `useContext(SomeContext)` *получит* `undefined` как значение контекста.
