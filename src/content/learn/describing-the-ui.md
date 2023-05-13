@@ -482,7 +482,7 @@ h2 { font-size: 20px; }
 let guest = 0;
 
 function Cup() {
-  // Bad: changing a preexisting variable!
+  // Плохо: изменение созданной ранее переменной!
   guest = guest + 1;
   return <h2>Чашка чая для гостя #{guest}</h2>;
 }
