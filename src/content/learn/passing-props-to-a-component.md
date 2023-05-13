@@ -759,7 +759,7 @@ export default function Profile() {
     <Avatar
       size={40}
       person={{ 
-        name: 'Грегорио Ю. Зара', 
+        name: 'Грегорио И. Зара', 
         imageId: '7vQD0fP'
       }}
     />
@@ -815,14 +815,14 @@ export default function Profile() {
       <Avatar
         size={40}
         person={{ 
-          name: 'Грегорио Ю. Зара', 
+          name: 'Грегорио И. Зара', 
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={120}
         person={{ 
-          name: 'Грегорио Ю. Зара', 
+          name: 'Грегорио И. Зара', 
           imageId: '7vQD0fP'
         }}
       />
@@ -879,21 +879,21 @@ export default function Profile() {
       <Avatar
         size={40}
         person={{ 
-          name: 'Грегорио Ю. Зара',
+          name: 'Грегорио И. Зара',
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={70}
         person={{ 
-          name: 'Грегорио Ю. Зара',
+          name: 'Грегорио И. Зара',
           imageId: '7vQD0fP'
         }}
       />
       <Avatar
         size={120}
         person={{ 
-          name: 'Грегорио Ю. Зара', 
+          name: 'Грегорио И. Зара', 
           imageId: '7vQD0fP'
         }}
       />
