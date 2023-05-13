@@ -623,19 +623,19 @@ export default function App() {
 let connections = 0;
 
 export function createConnection(serverUrl, roomId) {
-    // Настоящий код, который действительно подключается к серверу
-    return {
-        connect() {
-            console.log('✅ Подключение к комнате "' + roomId + '" по адресу ' + serverUrl + '...');
-            connections++;
-            console.log('Активных подключений: ' + connections);
-        },
-        disconnect() {
-            console.log('❌ Отключение от комнаты "' + roomId + '" по адресу ' + serverUrl);
-            connections--;
-            console.log('Активных подключений: ' + connections);
-        }
-    };
+  // Настоящий код, который действительно подключается к серверу
+  return {
+    connect() {
+      console.log('✅ Подключение к комнате "' + roomId + '" по адресу ' + serverUrl + '...');
+      connections++;
+      console.log('Активных подключений: ' + connections);
+    },
+    disconnect() {
+      console.log('❌ Отключение от комнаты "' + roomId + '" по адресу ' + serverUrl);
+      connections--;
+      console.log('Активных подключений: ' + connections);
+    }
+  };
 }
 ```
 
@@ -697,19 +697,19 @@ export default function ChatRoom() {
 let connections = 0;
 
 export function createConnection(serverUrl, roomId) {
-    // Настоящий код, который действительно подключается к серверу
-    return {
-        connect() {
-            console.log('✅ Подключение к комнате "' + roomId + '" по адресу ' + serverUrl + '...');
-            connections++;
-            console.log('Активных подключений: ' + connections);
-        },
-        disconnect() {
-            console.log('❌ Отключение от комнаты "' + roomId + '" по адресу ' + serverUrl);
-            connections--;
-            console.log('Активных подключений: ' + connections);
-        }
-    };
+  // Настоящий код, который действительно подключается к серверу
+  return {
+    connect() {
+      console.log('✅ Подключение к комнате "' + roomId + '" по адресу ' + serverUrl + '...');
+      connections++;
+      console.log('Активных подключений: ' + connections);
+    },
+    disconnect() {
+      console.log('❌ Отключение от комнаты "' + roomId + '" по адресу ' + serverUrl);
+      connections--;
+      console.log('Активных подключений: ' + connections);
+    }
+  };
 }
 ```
 
@@ -787,19 +787,19 @@ export default function App() {
 let connections = 0;
 
 export function createConnection(serverUrl, roomId) {
-    // Настоящий код, который действительно подключается к серверу
-    return {
-        connect() {
-            console.log('✅ Подключение к комнате "' + roomId + '" по адресу ' + serverUrl + '...');
-            connections++;
-            console.log('Активных подключений: ' + connections);
-        },
-        disconnect() {
-            console.log('❌ Отключение от комнаты "' + roomId + '" по адресу ' + serverUrl);
-            connections--;
-            console.log('Активных подключений: ' + connections);
-        }
-    };
+  // Настоящий код, который действительно подключается к серверу
+  return {
+    connect() {
+      console.log('✅ Подключение к комнате "' + roomId + '" по адресу ' + serverUrl + '...');
+      connections++;
+      console.log('Активных подключений: ' + connections);
+    },
+    disconnect() {
+      console.log('❌ Отключение от комнаты "' + roomId + '" по адресу ' + serverUrl);
+      connections--;
+      console.log('Активных подключений: ' + connections);
+    }
+  };
 }
 ```
 
