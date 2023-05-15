@@ -119,7 +119,7 @@ const root = createRoot(div);
 flushSync(() => {
   root.render(<MyIcon />);
 });
-console.log(div.innerHTML); // For example, "<svg>...</svg>"
+console.log(div.innerHTML); // Например, "<svg>...</svg>"
 ```
 
 Вызов [`flushSync`](/reference/react-dom/flushSync) необходим, чтобы DOM обновлялся перед чтением его свойства [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML).
