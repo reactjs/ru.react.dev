@@ -105,7 +105,7 @@ app.use('/', (request, response) => {
 import { renderToString } from 'react-dom/server';
 
 const html = renderToString(<MyIcon />);
-console.log(html); // For example, "<svg>...</svg>"
+console.log(html); // Например, "<svg>...</svg>"
 ```
 
 Импорт `react-dom/server` **на клиенте** излишне увеличивает размер пакета, и этого следует избегать. Если вам в браузере нужно преобразовать какой-либо компонент в HTML, используйте [`createRoot`](/reference/react-dom/client/createRoot) и читайте HTML из DOM:
