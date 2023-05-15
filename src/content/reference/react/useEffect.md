@@ -500,11 +500,11 @@ export default function Box() {
 
 ---
 
-### Wrapping Effects in custom Hooks {/*wrapping-effects-in-custom-hooks*/}
+### Оборачивание эффекта в пользовательский хук {/*wrapping-effects-in-custom-hooks*/}
 
-Effects are an ["escape hatch":](/learn/escape-hatches) you use them when you need to "step outside React" and when there is no better built-in solution for your use case. If you find yourself often needing to manually write Effects, it's usually a sign that you need to extract some [custom Hooks](/learn/reusing-logic-with-custom-hooks) for common behaviors your components rely on.
+Эффекты – это ["лазейка":](/learn/escape-hatches) они нужны, чтобы "выйти за рамки React", или когда для задачи нет встроенного решения. Если вам постоянно приходится писать собственные эффекты, то возможно ваши эффекты реализуют повторяющуюся логику, которую можно вынести в отдельный [пользовательский хук](/learn/reusing-logic-with-custom-hooks).
 
-For example, this `useChatRoom` custom Hook "hides" the logic of your Effect behind a more declarative API:
+Например, вот пользовательский хук `useChatRoom`, который "скрывает" логику эффекта за декларативным API:
 
 ```js {1,11}
 function useChatRoom({ serverUrl, roomId }) {
@@ -520,7 +520,7 @@ function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-Then you can use it from any component like this:
+И вот так им можно пользоваться в разных компонентах:
 
 ```js {4-7}
 function ChatRoom({ roomId }) {
@@ -533,15 +533,15 @@ function ChatRoom({ roomId }) {
   // ...
 ````
 
-There are also many excellent custom Hooks for every purpose available in the React ecosystem.
+В экосистеме React можно найти много других замечательных примеров пользовательских хуков на все случаи жизни.
 
-[Learn more about wrapping Effects in custom Hooks.](/learn/reusing-logic-with-custom-hooks)
+[Подробнее о том, как завернуть эффект в пользовательский хук.](/learn/reusing-logic-with-custom-hooks)
 
-<Recipes titleText="Examples of wrapping Effects in custom Hooks" titleId="examples-custom-hooks">
+<Recipes titleText="Примеры оборачивания эффекта в пользовательский хук" titleId="examples-custom-hooks">
 
-#### Custom `useChatRoom` Hook {/*custom-usechatroom-hook*/}
+#### Пользовательский хук `useChatRoom` {/*custom-usechatroom-hook*/}
 
-This example is identical to one of the [earlier examples,](#examples-connecting) but the logic is extracted to a custom Hook.
+Это повторение одного из [предыдущих примеров](#examples-connecting), но логика здесь вынесена в пользовательский хук.
 
 <Sandpack>
 
@@ -560,13 +560,13 @@ function ChatRoom({ roomId }) {
   return (
     <>
       <label>
-        Server URL:{' '}
+        Адрес сервера:{' '}
         <input
           value={serverUrl}
           onChange={e => setServerUrl(e.target.value)}
         />
       </label>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>Добро пожаловать в {roomId}!</h1>
     </>
   );
 }
@@ -577,7 +577,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        Выберите чат:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -588,7 +588,7 @@ export default function App() {
         </select>
       </label>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Close chat' : 'Open chat'}
+        {show ? 'Закрыть чат' : 'Открыть чат'}
       </button>
       {show && <hr />}
       {show && <ChatRoom roomId={roomId} />}
@@ -614,13 +614,13 @@ export function useChatRoom({ serverUrl, roomId }) {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // В реальной реализации здесь было бы настоящее подключение к серверу
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ Подключение к чату "' + roomId + '" на ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ Отключение от чата "' + roomId + '" на ' + serverUrl);
     }
   };
 }
@@ -635,9 +635,9 @@ button { margin-left: 10px; }
 
 <Solution />
 
-#### Custom `useWindowListener` Hook {/*custom-usewindowlistener-hook*/}
+#### Пользовательский хук `useWindowListener` {/*custom-usewindowlistener-hook*/}
 
-This example is identical to one of the [earlier examples,](#examples-connecting) but the logic is extracted to a custom Hook.
+Это повторение одного из [предыдущих примеров](#examples-connecting), но логика здесь вынесена в пользовательский хук.
 
 <Sandpack>
 
@@ -692,9 +692,9 @@ body {
 
 <Solution />
 
-#### Custom `useIntersectionObserver` Hook {/*custom-useintersectionobserver-hook*/}
+#### Пользовательский хук `useIntersectionObserver` {/*custom-useintersectionobserver-hook*/}
 
-This example is identical to one of the [earlier examples,](#examples-connecting) but the logic is partially extracted to a custom Hook.
+Это повторение одного из [предыдущих примеров](#examples-connecting), но логика здесь частично вынесена в пользовательский хук.
 
 <Sandpack>
 
@@ -716,7 +716,7 @@ export default function App() {
 function LongSection() {
   const items = [];
   for (let i = 0; i < 50; i++) {
-    items.push(<li key={i}>Item #{i} (keep scrolling)</li>);
+    items.push(<li key={i}>Элемент #{i} (прокрутите дальше)</li>);
   }
   return <ul>{items}</ul>
 }
@@ -784,11 +784,11 @@ export function useIntersectionObserver(ref) {
 
 ---
 
-### Controlling a non-React widget {/*controlling-a-non-react-widget*/}
+### Управление виджетом, написанным не на React {/*controlling-a-non-react-widget*/}
 
-Sometimes, you want to keep an external system synchronized to some prop or state of your component.
+Иногда, когда изменяются пропсы или состояние вашего компонента, то нужно, чтобы эти изменения синхронизировались и во внешние системы.
 
-For example, if you have a third-party map widget or a video player component written without React, you can use an Effect to call methods on it that make its state match the current state of your React component. This Effect creates an instance of a `MapWidget` class defined in `map-widget.js`. When you change the `zoomLevel` prop of the `Map` component, the Effect calls the `setZoom()` on the class instance to keep it synchronized:
+Например, когда у вас есть написанный без React сторонний виджет карты или видео проигрыватель, то в эффекте можно, вызывая их методы, транслировать в них изменения состояния вашего компонента. В данном случае эффект создаёт объект класса `MapWidget`, который описан в `map-widget.js`. Когда у компонента `Map` изменяется проп `zoomLevel`, эффект вызывает у объекта `setZoom()`, чтобы соответствующим образом обновилось и состояние виджета:
 
 <Sandpack>
 
@@ -818,7 +818,7 @@ export default function App() {
   const [zoomLevel, setZoomLevel] = useState(0);
   return (
     <>
-      Zoom level: {zoomLevel}x
+      Масштаб: {zoomLevel}x
       <button onClick={() => setZoomLevel(zoomLevel + 1)}>+</button>
       <button onClick={() => setZoomLevel(zoomLevel - 1)}>-</button>
       <hr />
@@ -888,7 +888,7 @@ button { margin: 5px; }
 
 </Sandpack>
 
-In this example, a cleanup function is not needed because the `MapWidget` class manages only the DOM node that was passed to it. After the `Map` React component is removed from the tree, both the DOM node and the `MapWidget` class instance will be automatically garbage-collected by the browser JavaScript engine.
+Функция сброса эффекта в данном случае не нужна, т.к. `MapWidget` просто держит ссылку на узел в DOM и больше никак ресурсами не управляет. А значит и `MapWidget`, и DOM-узел будут просто автоматически удалены сборщиком мусора JavaScript, когда компонент `Map` будет удалён из дерева.
 
 ---
 
