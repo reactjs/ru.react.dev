@@ -122,7 +122,7 @@ flushSync(() => {
 console.log(div.innerHTML); // Например, "<svg>...</svg>"
 ```
 
-Вызов [`flushSync`](/reference/react-dom/flushSync) необходим, чтобы DOM обновлялся перед чтением его свойства [`innerHTML`](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML).
+Вызов [`flushSync`](/reference/react-dom/flushSync) необходим, чтобы DOM обновлялся перед чтением его свойства [`innerHTML`](https://developer.mozilla.org/ru/docs/Web/API/Element/innerHTML).
 
 ---
 
