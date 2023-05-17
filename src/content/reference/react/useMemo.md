@@ -4,7 +4,7 @@ title: useMemo
 
 <Intro>
 
-Хук `useMemo` позволяет кешировать результаты вычислений между ререндерами.
+`useMemo` – хук в React, позволяющий кешировать результаты вычислений между ререндерами.
 
 ```js
 const cachedValue = useMemo(calculateValue, dependencies)
