@@ -17,9 +17,9 @@ React был спроектирован с самого начала с учёт
 
 </YouWillLearn>
 
-## Пробуем React {/*try-react*/}
+## Попробовать React {/*try-react*/}
 
-Чтобы попробовать React, даже устанавливать ничего не нужно. Редактируйте прямо в песочнице!
+Чтобы попробовать React, даже устанавливать ничего не нужно. Поредактируйте код в песочнице!
 
 <Sandpack>
 
@@ -39,9 +39,9 @@ export default function App() {
 
 Такие песочницы есть на большинстве страниц React-документации. За пределами React-документации также есть большое количество песочниц, поддерживающих React. Например: [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react) или [CodePen.](https://codepen.io/pen?&editors=0010&layout=left&prefill_data_id=3f4569d1-1b11-4bce-bd46-89090eed5ddb)
 
-### Поиграть с React локально {/*try-react-locally*/}
+### Попробовать React локально {/*try-react-locally*/}
 
-Что бы поиграть с React локально на вашем компьютере, [скачайте эту HTML страницу.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) Откройте её в своем текстовом редакторе и браузере!
+Чтобы попробовать React локально на вашем компьютере, [скачайте эту HTML страницу.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) Откройте её в своем текстовом редакторе и браузере!
 
 ## Начать новый React-проект {/*start-a-new-react-project*/}
 
@@ -49,9 +49,9 @@ export default function App() {
 
 ## Добавить React в существующий проект {/*add-react-to-an-existing-project*/}
 
-Если вы хотите использовать React в существующем приложении или сайте — [добавьте React в существующий проект.](/learn/add-react-to-an-existing-project)
+Если вы хотите попробовать React в существующем приложении или сайте — [добавьте React в существующий проект.](/learn/add-react-to-an-existing-project)
 
 ## Дальнейшие шаги {/*next-steps*/}
 
-Перейдите к [Введению в React](/learn) для ознакомления с самыми важными его концепциями, с которыми вы будете сталкиваться каждый день.
+Перейдите к [Введению в React](/learn) чтобы ознакомиться с его важнейшими концепциями, которые вы будете встречать каждый день.
 
