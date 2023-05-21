@@ -81,6 +81,7 @@ img { height: 200px; }
 ### Шаг 1: Экспортировать компонент {/*step-1-export-the-component*/}
 
 Префикс `export default` —  это [стандартный синтаксис JavaScript](https://developer.mozilla.org/ru/docs/web/javascript/reference/statements/export) (не является спецификой React). Он позволяет пометить основную функцию в файле, чтобы её можно было импортировать из других файлов. (Подробнее об импорте в [Импорт и Экспорт компонентов](/learn/importing-and-exporting-components)!)
+
 ### Шаг 2: Определить функцию {/*step-2-define-the-function*/}
 
 С помощью `function Profile() { }` вы определяете JavaScript-функцию с именем `Profile`.
