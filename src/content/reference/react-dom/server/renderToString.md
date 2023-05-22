@@ -1,5 +1,5 @@
 ---
-Заголовок: renderToString
+title: renderToString
 ---
 
 <Pitfall>
