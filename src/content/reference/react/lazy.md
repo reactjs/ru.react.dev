@@ -19,7 +19,7 @@ const SomeComponent = lazy(load)
 
 ### `lazy(load)` {/*lazy*/}
 
-Чтобы объявить React компонент ленивой загрузки, вызовите `lazy` вне своих компонентов:
+Вызовите `lazy` вне ваших компонентов, чтобы объявить компонент React с ленивой загрузкой:
 
 ```js
 import { lazy } from 'react';
