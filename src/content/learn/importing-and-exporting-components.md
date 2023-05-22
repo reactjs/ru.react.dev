@@ -122,7 +122,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 import Gallery from './Gallery';
 ```
 
-Оба варианта (`'./Gallery.js'` и `'./Gallery'`) будут работать в React, хотя первый  вариант ближе к тому, как работают [нативные ES-модули](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules).
+Оба варианта (`'./Gallery.js'` и `'./Gallery'`) будут работать в React, хотя первый вариант ближе к тому, как работают [нативные ES-модули](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Modules).
 
 </Note>
 
