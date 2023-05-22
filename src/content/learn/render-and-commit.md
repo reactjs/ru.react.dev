@@ -146,7 +146,7 @@ img { margin: 0 10px 10px 0; }
 
 </DeepDive>
 
-## Step 3: React фиксирует изменения в DOM {/*step-3-react-commits-changes-to-the-dom*/}
+## Часть 3: React фиксирует изменения в DOM {/*step-3-react-commits-changes-to-the-dom*/}
 
 После рендеринга (вызова) ваших компонентов React модифицирует DOM. 
 
