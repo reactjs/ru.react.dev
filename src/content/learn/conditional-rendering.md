@@ -265,7 +265,7 @@ export default function PackingList() {
 ```js
 return (
   <li className="item">
-    {name} {isPacked && "✔"}
+    {name} {isPacked && '✔'}
   </li>
 );
 ```
@@ -280,7 +280,7 @@ return (
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && "✔"}
+      {name} {isPacked && '✔'}
     </li>
   );
 }
@@ -337,7 +337,7 @@ let itemContent = name;
 
 ```js
 if (isPacked) {
-  itemContent = name + " ✔";
+  itemContent = name + ' ✔';
 }
 ```
 
@@ -357,7 +357,7 @@ if (isPacked) {
 function Item({ name, isPacked }) {
   let itemContent = name;
   if (isPacked) {
-    itemContent = name + " ✔";
+    itemContent = name + ' ✔';
   }
   return (
     <li className="item">
@@ -464,7 +464,7 @@ export default function PackingList() {
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && "✔"}
+      {name} {isPacked && '✔'}
     </li>
   );
 }
@@ -502,7 +502,7 @@ export default function PackingList() {
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked ? "✔" : "❌"}
+      {name} {isPacked ? '✔' : '❌'}
     </li>
   );
 }
@@ -643,11 +643,11 @@ function Drink({ name }) {
       <h1>{name}</h1>
       <dl>
         <dt>Часть растения</dt>
-        <dd>{name === "tea" ? "leaf" : "bean"}</dd>
+        <dd>{name === 'tea' ? 'leaf' : 'bean'}</dd>
         <dt>Содержание кофеина</dt>
-        <dd>{name === "tea" ? "15–70 мг/чашка" : "80–185 мг/чашка"}</dd>
+        <dd>{name === 'tea' ? '15–70 мг/чашка' : '80–185 мг/чашка'}</dd>
         <dt>Возраст</dt>
-        <dd>{name === "tea" ? "4,000+ лет" : "1,000+ лет"}</dd>
+        <dd>{name === 'tea' ? '4,000+ лет' : '1,000+ лет'}</dd>
       </dl>
     </section>
   );
@@ -676,14 +676,14 @@ export default function DrinkList() {
 ```js
 function Drink({ name }) {
   let part, caffeine, age;
-  if (name === "tea") {
-    part = "leaf";
-    caffeine = "15–70 мг/чашка";
-    age = "4,000+ лет";
-  } else if (name === "coffee") {
-    part = "bean";
-    caffeine = "80–185 мг/чашка";
-    age = "1,000+ лет";
+  if (name === 'tea') {
+    part = 'leaf';
+    caffeine = '15–70 мг/чашка';
+    age = '4,000+ лет';
+  } else if (name === 'coffee') {
+    part = 'bean';
+    caffeine = '80–185 мг/чашка';
+    age = '1,000+ лет';
   }
   return (
     <section>
@@ -721,14 +721,14 @@ export default function DrinkList() {
 ```js
 const drinks = {
   tea: {
-    part: "leaf",
-    caffeine: "15–70 мг/чашка",
+    part: 'leaf',
+    caffeine: '15–70 мг/чашка',
     age: "4,000+ лет",
   },
   coffee: {
-    part: "bean",
-    caffeine: "80–185 мг/чашка",
-    age: "1,000+ лет",
+    part: 'bean',
+    caffeine: '80–185 мг/чашка',
+    age: '1,000+ лет',
   },
 };
 
