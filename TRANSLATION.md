@@ -1,6 +1,6 @@
 # Перевод на русский язык сайта reactjs.org
 
-Текущий прогресс: https://github.com/reactjs/ru.reactjs.org/issues/1
+Текущий прогресс: https://github.com/reactjs/ru.reactjs.org/issues/843
 
 Пожалуйста, используйте этот ишью, если вы хотите что-то перевести и узнать.
 
