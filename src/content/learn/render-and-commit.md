@@ -67,7 +67,7 @@ export default function Image() {
 
 ### Ре-рендер, когда стейт обновляется {/*re-renders-when-state-updates*/}
 
-После того как компонент был первоначально отрендерен, вы можете инициировать последующие рендеры, обновляя его состояние с помощью функции [`set`](/reference/react/useState#setstate) Обновление стейта компонента автоматически ставит его в очередь на рендер. (Вы можете представить это как посетителя ресторана, который после первого заказа заказывает чай, десерт и всевозможные вещи, в зависимости от состояния жажды или голода).
+После того как компонент был первоначально отрендерен, вы можете инициировать последующие рендеры, обновляя его состояние с помощью функции [`set`](/reference/react/useState#setstate) Обновление состояние компонента автоматически ставит его в очередь на рендер. (Вы можете представить это как посетитель ресторана, который после первого заказа заказывает чай, десерт и всевозможные вещи, в зависимости от состояния жажды или голода).
 
 <IllustrationBlock sequential>
   <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
