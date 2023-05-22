@@ -16,7 +16,7 @@ title: Условный рендеринг
 
 </YouWillLearn>
 
-## Условно возвращаемый JSX {/*conditionally-returning-jsx*/}
+## Условный возврат JSX {/*conditionally-returning-jsx*/}
 
 Допустим, у вас есть компонент `PackingList`, который рендерит несколько компонентов `Item`, который могут быть отмечены как упакованные или нет:
 
