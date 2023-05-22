@@ -283,7 +283,7 @@ Warning: Each child in a list should have a unique "key" prop.
 
 <Note>
 
-JSX элементы, созданные внутри `map()` всегда должны иметь ключи!
+JSX-элементы, созданные внутри `map()` всегда должны иметь ключи!
 
 </Note>
 
