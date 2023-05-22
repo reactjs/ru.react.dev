@@ -723,7 +723,7 @@ const drinks = {
   tea: {
     part: 'leaf',
     caffeine: '15–70 мг/чашка',
-    age: "4,000+ лет",
+    age: '4,000+ лет',
   },
   coffee: {
     part: 'bean',
