@@ -375,7 +375,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <DeepDive>
 
-#### Отображение нескольких DOM узлов для каждого элемента списка {/*displaying-several-dom-nodes-for-each-list-item*/}
+#### Отображение нескольких DOM-узлов для каждого элемента списка {/*displaying-several-dom-nodes-for-each-list-item*/}
 
 Как поступить, если каждый элемент должен отображать не один, а несколько DOM-узлов?
 
