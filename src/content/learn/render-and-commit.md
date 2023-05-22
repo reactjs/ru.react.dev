@@ -75,7 +75,7 @@ export default function Image() {
   <Illustration caption="...render!" alt="The Card Chef gives React the pink Card." src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>
 
-## Step 2: React рендерит ваш компонент {/*step-2-react-renders-your-components*/}
+## Часть 2: React рендерит ваш компонент {/*step-2-react-renders-your-components*/}
 
 После запуска рендера React вызывает ваши компоненты, чтобы определить, что отобразить на экране. **«Рендеринг» — это обращение React к вашим компонентам*.
 
