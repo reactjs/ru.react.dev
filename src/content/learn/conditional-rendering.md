@@ -260,7 +260,7 @@ export default function PackingList() {
 
 ### Логический оператор И(`&&`) {/*logical-and-operator-*/}
 
-Еще одно часто встречающееся сокращение [JavaScript логический И (`&&`) оператор.](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Logical_AND) Внутри React компонентов, часто случается так, что тебе нужно зарендерить JSX, когда условие true, **или не рендерить ничего.** С `&&`, вы можете исходя из условия зарендерить галочку, if `isPacked` это `true`:
+Еще одно часто встречающееся сокращение [JavaScript логический оператор И (`&&`).](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Logical_AND) Внутри React-компонентов он часто используется, когда вам нужно отрендерить JSX, когда условие true, **или не рендерить ничего.** С помощью `&&` вы можете условно рендерить галочку, если `isPacked` равно `true`:
 
 ```js
 return (
