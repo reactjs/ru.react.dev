@@ -29,7 +29,7 @@ title: Рендер и фиксация
   <Illustration caption="Commit" alt="React delivers the Card to the user at their table." src="/images/docs/illustrations/i_render-and-commit3.png" />
 </IllustrationBlock>
 
-## Step 1: Триггер рендера {/*step-1-trigger-a-render*/}
+## Часть 1: Триггер рендера {/*step-1-trigger-a-render*/}
 
 Рендер компонента происходит по двум причинам:
 
