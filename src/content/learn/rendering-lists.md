@@ -1028,7 +1028,6 @@ export const recipes = [{
 
 <Solution>
 
-
 Вы можете скопировать и вставить JSX из внешнего вызова map в новый компонент `Recipe` и вернуть этот JSX. Затем вы можете изменить `recipe.name` на `name`, `recipe.id` на `id` и т.д., и передать их в виде пропсов компоненту `Recipe`:
 
 <Sandpack>
