@@ -892,11 +892,11 @@ button { margin: 5px; }
 
 ---
 
-### Fetching data with Effects {/*fetching-data-with-effects*/}
+### Получение данных в эффекте {/*fetching-data-with-effects*/}
 
-You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/start-a-new-react-project#production-grade-react-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
+В эффекте можно запрашивать для компонента данные. [Если вы используете фреймворк,](/learn/start-a-new-react-project#production-grade-react-frameworks) то будет эффективнее воспользоваться встроенным в ваш фреймворк механизмом получения данных, чем вручную писать собственные эффекты.
 
-If you want to fetch data from an Effect manually, your code might look like this:
+Если вы всё же хотите вручную в эффекте запрашивать данные, то можно написать, например, такой код:
 
 ```js
 import { useState, useEffect } from 'react';
@@ -922,7 +922,7 @@ export default function Page() {
   // ...
 ```
 
-Note the `ignore` variable which is initialized to `false`, and is set to `true` during cleanup. This ensures [your code doesn't suffer from "race conditions":](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) network responses may arrive in a different order than you sent them.
+Обратите внимание на переменную `ignore`: она изначально содержит `false`, а при сбросе эффекта изменяется на `true`. Этим гарантируется, что [в коде не будет "гонки"](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect) из-за того, что ответы на сетевые запросы могут приходить не в том порядке, в котором были посланы запросы.
 
 <Sandpack>
 
@@ -931,7 +931,7 @@ import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
 export default function Page() {
-  const [person, setPerson] = useState('Alice');
+  const [person, setPerson] = useState('Алиса');
   const [bio, setBio] = useState(null);
   useEffect(() => {
     let ignore = false;
@@ -951,12 +951,12 @@ export default function Page() {
       <select value={person} onChange={e => {
         setPerson(e.target.value);
       }}>
-        <option value="Alice">Alice</option>
-        <option value="Bob">Bob</option>
-        <option value="Taylor">Taylor</option>
+        <option value="Алиса">Алиса</option>
+        <option value="Боб">Боб</option>
+        <option value="Тэйлор">Тэйлор</option>
       </select>
       <hr />
-      <p><i>{bio ?? 'Loading...'}</i></p>
+      <p><i>{bio ?? 'Загрузка...'}</i></p>
     </>
   );
 }
@@ -964,10 +964,10 @@ export default function Page() {
 
 ```js api.js hidden
 export async function fetchBio(person) {
-  const delay = person === 'Bob' ? 2000 : 200;
+  const delay = person === 'Боб' ? 2000 : 200;
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve('This is ' + person + '’s bio.');
+      resolve('Тут ' + person + ' рассказывает свою биографию');
     }, delay);
   })
 }
@@ -975,7 +975,7 @@ export async function fetchBio(person) {
 
 </Sandpack>
 
-You can also rewrite using the [`async` / `await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) syntax, but you still need to provide a cleanup function:
+Получение данных можно переписать на [`async` / `await`,](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/async_function) но функция сброса всё равно будет нужна:
 
 <Sandpack>
 
@@ -984,7 +984,7 @@ import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
 export default function Page() {
-  const [person, setPerson] = useState('Alice');
+  const [person, setPerson] = useState('Алиса');
   const [bio, setBio] = useState(null);
   useEffect(() => {
     async function startFetching() {
@@ -1007,12 +1007,12 @@ export default function Page() {
       <select value={person} onChange={e => {
         setPerson(e.target.value);
       }}>
-        <option value="Alice">Alice</option>
-        <option value="Bob">Bob</option>
-        <option value="Taylor">Taylor</option>
+        <option value="Алиса">Алиса</option>
+        <option value="Боб">Боб</option>
+        <option value="Тэйлор">Тэйлор</option>
       </select>
       <hr />
-      <p><i>{bio ?? 'Loading...'}</i></p>
+      <p><i>{bio ?? 'Загрузка...'}</i></p>
     </>
   );
 }
@@ -1020,10 +1020,10 @@ export default function Page() {
 
 ```js api.js hidden
 export async function fetchBio(person) {
-  const delay = person === 'Bob' ? 2000 : 200;
+  const delay = person === 'Боб' ? 2000 : 200;
   return new Promise(resolve => {
     setTimeout(() => {
-      resolve('This is ' + person + '’s bio.');
+      resolve('Тут ' + person + ' рассказывает свою биографию');
     }, delay);
   })
 }
@@ -1031,25 +1031,25 @@ export async function fetchBio(person) {
 
 </Sandpack>
 
-Writing data fetching directly in Effects gets repetitive and makes it difficult to add optimizations like caching and server rendering later. [It's easier to use a custom Hook--either your own or maintained by the community.](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)
+Чтобы регулярно делать запросы прямо в эффектах, придётся каждый раз писать много повторяющегося кода. Из-за чего в будущем будет сложнее добавить туда оптимизации вроде кэширования или серверного рендеринга. [Поэтому проще делать запросы через специальный хук -- написать собственный, либо найти готовый, поддерживаемый сообществом.](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)
 
 <DeepDive>
 
-#### What are good alternatives to data fetching in Effects? {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
+#### Какие есть альтернативы получению данных в эффекте? {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
 
-Writing `fetch` calls inside Effects is a [popular way to fetch data](https://www.robinwieruch.de/react-hooks-fetch-data/), especially in fully client-side apps. This is, however, a very manual approach and it has significant downsides:
+Вызывать `fetch` в эффекте -- это [распространенный способ получать данные](https://www.robinwieruch.de/react-hooks-fetch-data/). Особенно в полностью клиентских приложениях. Однако у этого весьма "наколеночного" подхода есть недостатки:
 
-- **Effects don't run on the server.** This means that the initial server-rendered HTML will only include a loading state with no data. The client computer will have to download all JavaScript and render your app only to discover that now it needs to load the data. This is not very efficient.
-- **Fetching directly in Effects makes it easy to create "network waterfalls".** You render the parent component, it fetches some data, renders the child components, and then they start fetching their data. If the network is not very fast, this is significantly slower than fetching all data in parallel.
-- **Fetching directly in Effects usually means you don't preload or cache data.** For example, if the component unmounts and then mounts again, it would have to fetch the data again.
-- **It's not very ergonomic.** There's quite a bit of boilerplate code involved when writing `fetch` calls in a way that doesn't suffer from bugs like [race conditions.](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect)
+- **На сервере эффекты не запускаются.** Это значит, что в полученном серверным рендерингом HTML будет только состояние загрузки без данных. Клиентское устройство скачает весь ваш JavaScript, отрендерит приложение, и обнаружит, что теперь нужно ещё и данные загрузить. Это не самый эффективный подход.
+- **Запрашивая данные прямо в эффектах, легко создать "водопад загрузки".** Сначала рендерится родительский компонент, получает данные, рендерит дочерние компоненты, которые затем начинают запрашивать свои данные. Если сетевое соединение не быстрое, то такой процесс будет сильно медленнее, чем загружать все данные параллельно.
+- **Получение данных прямо в эффекте обычно не предполагает предзагрузку или кэширование.** Если, например, компонент размонтировался и потом снова монтируется, то ему нужно будет заново загрузить данные.
+- **Это неудобно.** Если не хочется столкнуться с багами вроде [гонок](https://maxrozen.com/race-conditions-fetching-data-react-with-useeffect), то каждый раз придётся писать некоторое количество весьма шаблонного кода.
 
-This list of downsides is not specific to React. It applies to fetching data on mount with any library. Like with routing, data fetching is not trivial to do well, so we recommend the following approaches:
+Эти недостатки не являются какой-то особенностью именно React. Такие же проблемы получения данных при монтировании будут и с любой другой библиотекой. Как и маршрутизацию, нельзя просто взять и правильно реализовать получение данных -- поэтому мы рекомендуем следующие подходы:
 
-- **If you use a [framework](/learn/start-a-new-react-project#production-grade-react-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
-- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://react-query.tanstack.com/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+- **Если вы используете [фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks), то возьмите встроенный в него механизм получения данных.** В современные React-фреймворки уже встроены эффективные механизмы получения данных без перечисленных недостатков.
+- **Если нет, то попробуйте написать или использовать готовый клиентский кэш.** [React Query](https://react-query.tanstack.com/), [useSWR](https://swr.vercel.app/), и [React Router 6.4+](https://beta.reactrouter.com/en/main/start/overview) -- примеры популярных готовых решений с открытым исходным кодом. Создать собственное решение тоже можно: под капотом будут эффекты, но также и логика для дедупликации запросов, кэширования ответов и предотвращения водопадов (через предзагрузку или через перенос на уровень маршрутов требований, какие данные будут нужны).
 
-You can continue fetching data directly in Effects if neither of these approaches suit you.
+Получать данные прямо в эффекте -- всё ещё вполне приемлемый вариант, если ничто из перечисленного вам не подходит.
 
 </DeepDive>
 
