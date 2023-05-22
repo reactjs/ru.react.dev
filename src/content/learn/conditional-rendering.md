@@ -399,13 +399,13 @@ export default function PackingList() {
 function Item({ name, isPacked }) {
   let itemContent = name;
   if (isPacked) {
-     itemContent = (
+    itemContent = (
       <del>
         {name + " ✔"}
       </del>
     );
   }
-   return (
+  return (
     <li className="item">
       {itemContent}
     </li>
