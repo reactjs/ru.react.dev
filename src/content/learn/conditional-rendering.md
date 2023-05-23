@@ -341,7 +341,7 @@ if (isPacked) {
 }
 ```
 
-[Фигурные скобки открывают "окно в мир JavaScript".](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) Вставьте переменную с фигурными скобками в возвращаемое дерево JSX, вложив ранее вычисленное выражение внутрь JSX:
+[Фигурные скобки открывают "окно в мир JavaScript".](/learn/javascript-in-jsx-with-curly-braces#using-curly-braces-a-window-into-the-javascript-world) Вставьте переменную с помощью фигурных скобок в возвращаемое дерево JSX, вложив ранее вычисленное выражение внутрь JSX:
 
 ```js
 <li className="item">
