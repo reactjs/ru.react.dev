@@ -52,7 +52,7 @@ export default function PackingList() {
 </Sandpack>
                   
 
-Обратите внимание, что у некоторых компонентов `Item` установлено свойство `isPacked` в значение `true`, вместо значения `false`. Если `isPacked={true}`, вы хотите добавить галочку(✔) к упакованным вещам.
+Обратите внимание, что у некоторых компонентов `Item` проп `isPacked` имеет значение `true`, вместо значения `false`. Если `isPacked={true}`, вы хотите добавить галочку(✔) к упакованным вещам.
 
 Можно реализовать это с помощью [управляющей конструкции `if`/`else`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/if...) таким образом:
 
