@@ -1037,7 +1037,7 @@ export async function fetchBio(person) {
 
 #### Какие есть альтернативы получению данных в эффекте? {/*what-are-good-alternatives-to-data-fetching-in-effects*/}
 
-Вызывать `fetch` в эффекте -- это [распространенный способ получать данные](https://www.robinwieruch.de/react-hooks-fetch-data/). Особенно в полностью клиентских приложениях. Однако у этого весьма "наколеночного" подхода есть недостатки:
+Вызывать `fetch` в эффекте -- это [распространённый способ получать данные](https://www.robinwieruch.de/react-hooks-fetch-data/). Особенно в полностью клиентских приложениях. Однако у этого весьма "наколеночного" подхода есть недостатки:
 
 - **На сервере эффекты не запускаются.** Это значит, что в полученном серверным рендерингом HTML будет только состояние загрузки без данных. Клиентское устройство скачает весь ваш JavaScript, отрендерит приложение, и обнаружит, что теперь нужно ещё и данные загрузить. Это не самый эффективный подход.
 - **Запрашивая данные прямо в эффектах, легко создать "водопад загрузки".** Сначала рендерится родительский компонент, получает данные, рендерит дочерние компоненты, которые затем начинают запрашивать свои данные. Если сетевое соединение не быстрое, то такой процесс будет сильно медленнее, чем загружать все данные параллельно.
@@ -1055,26 +1055,26 @@ export async function fetchBio(person) {
 
 ---
 
-### Specifying reactive dependencies {/*specifying-reactive-dependencies*/}
+### Указание реактивных зависимостей {/*specifying-reactive-dependencies*/}
 
-**Notice that you can't "choose" the dependencies of your Effect.** Every <CodeStep step={2}>reactive value</CodeStep> used by your Effect's code must be declared as a dependency. Your Effect's dependency list is determined by the surrounding code:
+**Обратите внимание, что "выбрать" зависимости эффекта нельзя.** В зависимостях эффекта должно быть указано каждое <CodeStep step={2}>реактивное значение</CodeStep>, которое в нём используется. Список зависимостей эффекта можно определить по окружающему коду:
 
 ```js [[2, 1, "roomId"], [2, 2, "serverUrl"], [2, 5, "serverUrl"], [2, 5, "roomId"], [2, 8, "serverUrl"], [2, 8, "roomId"]]
-function ChatRoom({ roomId }) { // This is a reactive value
-  const [serverUrl, setServerUrl] = useState('https://localhost:1234'); // This is a reactive value too
+function ChatRoom({ roomId }) { // Это реактивное значение
+  const [serverUrl, setServerUrl] = useState('https://localhost:1234'); // И это реактивное значение
 
   useEffect(() => {
-    const connection = createConnection(serverUrl, roomId); // This Effect reads these reactive values
+    const connection = createConnection(serverUrl, roomId); // Эффект их читает
     connection.connect();
     return () => connection.disconnect();
-  }, [serverUrl, roomId]); // ✅ So you must specify them as dependencies of your Effect
+  }, [serverUrl, roomId]); // ✅ И поэтому они должны быть указаны в его зависимостях
   // ...
 }
 ```
 
-If either `serverUrl` or `roomId` change, your Effect will reconnect to the chat using the new values.
+Когда `serverUrl` или `roomId` будут изменяться, эффект будет переподключаться к чату с новыми значениями.
 
-**[Reactive values](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) include props and all variables and functions declared directly inside of your component.** Since `roomId` and `serverUrl` are reactive values, you can't remove them from the dependencies. If you try to omit them and [your linter is correctly configured for React,](/learn/editor-setup#linting) the linter will flag this as a mistake you need to fix:
+**[Реактивными значениями](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) считаются пропсы, переменные и функции, объявленные непосредственно в теле вашего компонента.** Т.к. значения `roomId` и `serverUrl` оба являются реактивными, то их нельзя опустить в списке зависимостей. Если их не указать, то [правильно настроенный под React линтер](/learn/editor-setup#linting) укажет на это, как на ошибку, которую нужно поправить:
 
 ```js {8}
 function ChatRoom({ roomId }) {
@@ -1089,68 +1089,68 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-**To remove a dependency, you need to ["prove" to the linter *doesn't need* to be a dependency.](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)** For example, you can move `serverUrl` out of your component to prove that it's not reactive and won't change on re-renders:
+**Чтобы удалить зависимость из списка, нужно ["доказать" линтеру, что она *не обязана* там быть.](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)** Например, можно вынести `serverUrl` из компонента, чтобы показать, что это значение не реактивно и не изменяется во время рендеринга:
 
 ```js {1,8}
-const serverUrl = 'https://localhost:1234'; // Not a reactive value anymore
+const serverUrl = 'https://localhost:1234'; // Значение больше не реактивное
 
 function ChatRoom({ roomId }) {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ Все зависимости указаны
   // ...
 }
 ```
 
-Now that `serverUrl` is not a reactive value (and can't change on a re-render), it doesn't need to be a dependency. **If your Effect's code doesn't use any reactive values, its dependency list should be empty (`[]`):**
+Т.к. теперь значение `serverUrl` не реактивное (и не может изменяться во время рендеринга), то его не нужно указывать как зависимость. **Если ваш эффект не пользуется никакими реактивными значениями, то его список зависимостей должен быть пустым (`[]`):**
 
 ```js {1,2,9}
-const serverUrl = 'https://localhost:1234'; // Not a reactive value anymore
-const roomId = 'music'; // Not a reactive value anymore
+const serverUrl = 'https://localhost:1234'; // Значение больше не реактивное
+const roomId = 'music'; // Значение больше не реактивное
 
 function ChatRoom() {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ Все зависимости указаны
   // ...
 }
 ```
 
-[An Effect with empty dependencies](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) doesn't re-run when any of your component's props or state change.
+Изменения пропсов или состояния компонента не будут перезапускать [эффект, у которого список зависимостей пуст.](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means)
 
 <Pitfall>
 
-If you have an existing codebase, you might have some Effects that suppress the linter like this:
+Возможно в вашей существующей кодовой базе в некоторых эффектах есть вот такое отключение линтера:
 
 ```js {3-4}
 useEffect(() => {
   // ...
-  // 🔴 Avoid suppressing the linter like this:
+  // 🔴 Не отключайте так линтер:
   // eslint-ignore-next-line react-hooks/exhaustive-deps
 }, []);
 ```
 
-**When dependencies don't match the code, there is a high risk of introducing bugs.** By suppressing the linter, you "lie" to React about the values your Effect depends on. [Instead, prove they're unnecessary.](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)
+**Когда список зависимостей не соответствует коду, велик шанс появления багов.** Отключая линтер, вы "обманываете" React о том, от каких значений зависит эффект. [Лучше покажите, что они не нужны.](/learn/removing-effect-dependencies#removing-unnecessary-dependencies)
 
 </Pitfall>
 
-<Recipes titleText="Examples of passing reactive dependencies" titleId="examples-dependencies">
+<Recipes titleText="Примеры указания реактивных зависимостей" titleId="examples-dependencies">
 
-#### Passing a dependency array {/*passing-a-dependency-array*/}
+#### Передача массива с зависимостями {/*passing-a-dependency-array*/}
 
-If you specify the dependencies, your Effect runs **after the initial render _and_ after re-renders with changed dependencies.**
+Если указать какие-то зависимости, то эффект будет запускаться **после первого рендеринга, _а также_ после каждого рендеринга, в котором зависимости изменились.**
 
 ```js {3}
 useEffect(() => {
   // ...
-}, [a, b]); // Runs again if a or b are different
+}, [a, b]); // Перезапустится, если a или b изменились
 ```
 
-In the below example, `serverUrl` and `roomId` are [reactive values,](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) so they both must be specified as dependencies. As a result, selecting a different room in the dropdown or editing the server URL input causes the chat to re-connect. However, since `message` isn't used in the Effect (and so it isn't a dependency), editing the message doesn't re-connect to the chat.
+В примере ниже значения `serverUrl` и `roomId` [реактивны,](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) и поэтому должны быть указаны в зависимостях. В результате чего, если в выпадающем меню выбрать другой чат, либо ввести другой адрес сервера, то компонент переподключится к чату. А вот сообщение `message` в эффекте не используется (и соответственно зависимостью не является), и поэтому редактирование сообщения не приводит к переподключению к чату.
 
 <Sandpack>
 
@@ -1173,15 +1173,15 @@ function ChatRoom({ roomId }) {
   return (
     <>
       <label>
-        Server URL:{' '}
+        Адрес сервера:{' '}
         <input
           value={serverUrl}
           onChange={e => setServerUrl(e.target.value)}
         />
       </label>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>Добро пожаловать в {roomId}!</h1>
       <label>
-        Your message:{' '}
+        Ваше сообщение:{' '}
         <input value={message} onChange={e => setMessage(e.target.value)} />
       </label>
     </>
@@ -1194,7 +1194,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        Выберите чат:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1204,7 +1204,7 @@ export default function App() {
           <option value="music">music</option>
         </select>
         <button onClick={() => setShow(!show)}>
-          {show ? 'Close chat' : 'Open chat'}
+          {show ? 'Закрыть чат' : 'Открыть чат'}
         </button>
       </label>
       {show && <hr />}
@@ -1216,13 +1216,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // В реальной реализации здесь было бы настоящее подключение к серверу
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ Подключение к чату "' + roomId + '" на ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ Отключение от чата "' + roomId + '" на ' + serverUrl);
     }
   };
 }
@@ -1237,20 +1237,20 @@ button { margin-left: 5px; }
 
 <Solution />
 
-#### Passing an empty dependency array {/*passing-an-empty-dependency-array*/}
+#### Передача пустого массива зависимостей {/*passing-an-empty-dependency-array*/}
 
-If your Effect truly doesn't use any reactive values, it will only run **after the initial render.**
+Если эффект действительно не пользуется никакими реактивными значениями, то он будет запускаться **только после первого рендеринга.**
 
 ```js {3}
 useEffect(() => {
   // ...
-}, []); // Does not run again (except once in development)
+}, []); // Второго запуска не будет (кроме дополнительного в режиме разработки)
 ```
 
-**Even with empty dependencies, setup and cleanup will [run one extra time in development](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development) to help you find bugs.**
+**В режиме разработки даже с пустым списком зависимостей эффект [запустится и сбросится один дополнительный раз,](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development) чтобы помочь выявить дефекты.**
 
 
-In this example, both `serverUrl` and `roomId` are hardcoded. Since they're declared outside the component, they are not reactive values, and so they aren't dependencies. The dependency list is empty, so the Effect doesn't re-run on re-renders.
+В примере ниже значения для `serverUrl` и `roomId` зафиксированы в коде. Они не считаются реактивными, т.к. объявлены снаружи компонента -- а значит не считаются и зависимостями. В итоге список зависимостей пустой, и поэтому эффект не будет перезапускаться при последующем повторном рендеринге.
 
 <Sandpack>
 
@@ -1272,9 +1272,9 @@ function ChatRoom() {
 
   return (
     <>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>Добро пожаловать в {roomId}!</h1>
       <label>
-        Your message:{' '}
+        Ваше сообщение:{' '}
         <input value={message} onChange={e => setMessage(e.target.value)} />
       </label>
     </>
@@ -1286,7 +1286,7 @@ export default function App() {
   return (
     <>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Close chat' : 'Open chat'}
+        {show ? 'Закрыть чат' : 'Открыть чат'}
       </button>
       {show && <hr />}
       {show && <ChatRoom />}
@@ -1297,13 +1297,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // В реальной реализации здесь было бы настоящее подключение к серверу
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ Подключение к чату "' + roomId + '" на ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ Отключение от чата "' + roomId + '" на ' + serverUrl);
     }
   };
 }
@@ -1314,17 +1314,17 @@ export function createConnection(serverUrl, roomId) {
 <Solution />
 
 
-#### Passing no dependency array at all {/*passing-no-dependency-array-at-all*/}
+#### Отсутствие массива зависимостей вообще {/*passing-no-dependency-array-at-all*/}
 
-If you pass no dependency array at all, your Effect runs **after every single render (and re-render)** of your component.
+Если не указать собственно сам массив зависимостей, то эффект будет срабатывать **после каждого рендеринга компонента (включая повторные).**
 
 ```js {3}
 useEffect(() => {
   // ...
-}); // Always runs again
+}); // Срабатывает каждый раз
 ```
 
-In this example, the Effect re-runs when you change `serverUrl` and `roomId`, which is sensible. However, it *also* re-runs when you change the `message`, which is probably undesirable. This is why usually you'll specify the dependency array.
+В этом примере эффект срабатывает каждый раз, когда изменяется `serverUrl` и `roomId` -- что ожидаемо. Однако он также срабатывает и когда изменяется `message` -- что уже кажется странным. Поэтому на практике вы как правило будете указывать какой-либо массив.
 
 <Sandpack>
 
@@ -1342,20 +1342,20 @@ function ChatRoom({ roomId }) {
     return () => {
       connection.disconnect();
     };
-  }); // No dependency array at all
+  }); // Никакого массива зависимостей
 
   return (
     <>
       <label>
-        Server URL:{' '}
+        Адрес сервера:{' '}
         <input
           value={serverUrl}
           onChange={e => setServerUrl(e.target.value)}
         />
       </label>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>Добро пожаловать в {roomId}!</h1>
       <label>
-        Your message:{' '}
+        Ваше сообщение:{' '}
         <input value={message} onChange={e => setMessage(e.target.value)} />
       </label>
     </>
@@ -1368,7 +1368,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        Выберите чат:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1378,7 +1378,7 @@ export default function App() {
           <option value="music">music</option>
         </select>
         <button onClick={() => setShow(!show)}>
-          {show ? 'Close chat' : 'Open chat'}
+          {show ? 'Закрыть чат' : 'Открыть чат'}
         </button>
       </label>
       {show && <hr />}
@@ -1390,13 +1390,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // В реальной реализации здесь было бы настоящее подключение к серверу
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ Подключение к чату "' + roomId + '" на ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ Отключение от чата "' + roomId + '" на ' + serverUrl);
     }
   };
 }
