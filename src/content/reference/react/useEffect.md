@@ -1475,9 +1475,9 @@ body {
 ---
 
 
-### Removing unnecessary object dependencies {/*removing-unnecessary-object-dependencies*/}
+### Устранение лишних зависимостей от объектов {/*removing-unnecessary-object-dependencies*/}
 
-If your Effect depends on an object or a function created during rendering, it might run too often. For example, this Effect re-connects after every render because the `options` object is [different for every render:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+Если ваш эффект зависит от объекта или функции, которые создаются во время рендеринга, то возможно **ваш эффект срабатывает слишком часто**. Например, вот этот эффект делает переподключение на каждый рендеринг, т.к. объект `options` [каждый раз новый:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
 
 ```js {6-9,12,15}
 const serverUrl = 'https://localhost:1234';
@@ -1485,20 +1485,20 @@ const serverUrl = 'https://localhost:1234';
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
-  const options = { // 🚩 This object is created from scratch on every re-render
+  const options = { // 🚩 Этот объект пересоздаётся при каждом рендеринге
     serverUrl: serverUrl,
     roomId: roomId
   };
 
   useEffect(() => {
-    const connection = createConnection(options); // It's used inside the Effect
+    const connection = createConnection(options); // И используется в эффекте
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // 🚩 As a result, these dependencies are always different on a re-render
+  }, [options]); // 🚩 В результате при каждом рендеринге изменяются зависимости
   // ...
 ```
 
-Avoid using an object created during rendering as a dependency. Instead, create the object inside the Effect:
+Постарайтесь не делать созданный во время рендеринга объект зависимостью. Лучше создавайте нужный объект внутри эффекта:
 
 <Sandpack>
 
@@ -1523,7 +1523,7 @@ function ChatRoom({ roomId }) {
 
   return (
     <>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>Добро пожаловать в {roomId}!</h1>
       <input value={message} onChange={e => setMessage(e.target.value)} />
     </>
   );
@@ -1534,7 +1534,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        Выберите чат:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1553,13 +1553,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // В реальной реализации здесь было бы настоящее подключение к серверу
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ Подключение к чату "' + roomId + '" на ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ Отключение от чата "' + roomId + '" на ' + serverUrl);
     }
   };
 }
@@ -1572,21 +1572,21 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Now that you create the `options` object inside the Effect, the Effect itself only depends on the `roomId` string.
+Т.к. теперь объект `options` создаётся внутри эффекта, то сам эффект теперь зависит только от строки `roomId`.
 
-With this fix, typing into the input doesn't reconnect the chat. Unlike an object which gets re-created, a string like `roomId` doesn't change unless you set it to another value. [Read more about removing dependencies.](/learn/removing-effect-dependencies)
+Благодаря этой правке, больше не происходит переподключение к чату, когда пользователь печатает в поле ввода. В отличие от пересоздаваемых объектов, строки вроде `roomId` не будут считаться изменившимися, пока не изменятся по значению. [Подробнее об устранении зависимостей.](/learn/removing-effect-dependencies)
 
 ---
 
-### Removing unnecessary function dependencies {/*removing-unnecessary-function-dependencies*/}
+### Устранение лишних зависимостей от функций {/*removing-unnecessary-function-dependencies*/}
 
-If your Effect depends on an object or a function created during rendering, it might run too often. For example, this Effect re-connects after every render because the `createOptions` function is [different for every render:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+Если ваш эффект зависит от объекта или функции, которые создаются во время рендеринга, то возможно **ваш эффект срабатывает слишком часто**. Например, вот этот эффект делает переподключение на каждый рендеринг, т.к. функция `createOptions` [каждый раз новая:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
 
 ```js {4-9,12,16}
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
-  function createOptions() { // 🚩 This function is created from scratch on every re-render
+  function createOptions() { // 🚩 Эта функция пересоздаётся при каждом рендеринге
     return {
       serverUrl: serverUrl,
       roomId: roomId
@@ -1594,17 +1594,17 @@ function ChatRoom({ roomId }) {
   }
 
   useEffect(() => {
-    const options = createOptions(); // It's used inside the Effect
+    const options = createOptions(); // И используется в эффекте
     const connection = createConnection();
     connection.connect();
     return () => connection.disconnect();
-  }, [createOptions]); // 🚩 As a result, these dependencies are always different on a re-render
+  }, [createOptions]); // 🚩 В результате при каждом рендеринге изменяются зависимости
   // ...
 ```
 
-By itself, creating a function from scratch on every re-render is not a problem. You don't need to optimize that. However, if you use it as a dependency of your Effect, it will cause your Effect to re-run after every re-render.
+В самом по себе создании функции при каждом рендеринге нет ничего плохого -- это не требует оптимизации. Однако если такая функция будет зависимостью эффекта, то эффект будет срабатывать при каждом рендеринге.
 
-Avoid using a function created during rendering as a dependency. Instead, declare it inside the Effect:
+Постарайтесь не делать созданную во время рендеринга функцию зависимостью. Лучше объявите нужную функцию внутри эффекта:
 
 <Sandpack>
 
@@ -1633,7 +1633,7 @@ function ChatRoom({ roomId }) {
 
   return (
     <>
-      <h1>Welcome to the {roomId} room!</h1>
+      <h1>Добро пожаловать в {roomId}!</h1>
       <input value={message} onChange={e => setMessage(e.target.value)} />
     </>
   );
@@ -1644,7 +1644,7 @@ export default function App() {
   return (
     <>
       <label>
-        Choose the chat room:{' '}
+        Выберите чат:{' '}
         <select
           value={roomId}
           onChange={e => setRoomId(e.target.value)}
@@ -1663,13 +1663,13 @@ export default function App() {
 
 ```js chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // В реальной реализации здесь было бы настоящее подключение к серверу
   return {
     connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
+      console.log('✅ Подключение к чату "' + roomId + '" на ' + serverUrl + '...');
     },
     disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
+      console.log('❌ Отключение от чата "' + roomId + '" на ' + serverUrl);
     }
   };
 }
@@ -1682,7 +1682,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Now that you define the `createOptions` function inside the Effect, the Effect itself only depends on the `roomId` string. With this fix, typing into the input doesn't reconnect the chat. Unlike a function which gets re-created, a string like `roomId` doesn't change unless you set it to another value. [Read more about removing dependencies.](/learn/removing-effect-dependencies)
+Т.к. теперь функция `createOptions` определена внутри эффекта, то сам эффект теперь зависит только от строки `roomId`. Благодаря этой правке, больше не происходит переподключение к чату, когда пользователь печатает в поле ввода. В отличие от пересоздаваемых функций, строки вроде `roomId` не будут считаться изменившимися, пока не изменятся по значению. [Подробнее об устранении зависимостей.](/learn/removing-effect-dependencies)
 
 ---
 
