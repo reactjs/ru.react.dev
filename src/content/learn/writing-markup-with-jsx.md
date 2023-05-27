@@ -44,7 +44,7 @@ JavaScript
 
 <Diagram name="writing_jsx_sidebar" height={330} width={325} alt="React компонент со смешанной HTML разметкой и JavaScript из предыдущих примеров. Функция Sidebar вызывает функцию isLoggedIn, подсвечено желтым. Фиолетовым цветом подсвечен дочерний p тег из предыдущего примера и тег Form, ссылающийся на компонент, показанный в следующем примере.">
 
-React компонент `Sidebar.js`
+React-компонент `Sidebar.js`
 
 </Diagram>
 
