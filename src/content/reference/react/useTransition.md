@@ -4,7 +4,7 @@ title: useTransition
 
 <Intro>
 
-`useTransition` is a React Hook that lets you update the state without blocking the UI.
+`useTransition` — это React хук, который позволяет вам обновлять состояние, не блокируя UI.
 
 ```js
 const [isPending, startTransition] = useTransition()
@@ -16,11 +16,11 @@ const [isPending, startTransition] = useTransition()
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `useTransition()` {/*usetransition*/}
 
-Call `useTransition` at the top level of your component to mark some state updates as transitions.
+Вызовите `useTransition` на верхнем уровне вашего компонента, чтобы пометить некоторые обновления состояния как переходы.
 
 ```js
 import { useTransition } from 'react';
@@ -31,24 +31,24 @@ function TabContainer() {
 }
 ```
 
-[See more examples below.](#usage)
+[Больше примеров ниже.](#usage)
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-`useTransition` does not take any parameters.
+`useTransition` не принимает никаких параметров.
 
-#### Returns {/*returns*/}
+#### Возвращаемое значение {/*returns*/}
 
-`useTransition` returns an array with exactly two items:
+`useTransition` возвращает массив ровно из двух элементов:
 
-1. The `isPending` flag that tells you whether there is a pending transition.
-2. The [`startTransition` function](#starttransition) that lets you mark a state update as a transition.
+1. Флаг `isPending`, который указывает, есть ли ожидающий переход.
+2. [Функция `startTransition`](#starttransition), которая позволяет помечать обновление состояния как переход.
 
 ---
 
-### `startTransition` function {/*starttransition*/}
+### Функция `startTransition` {/*starttransition*/}
 
-The `startTransition` function returned by `useTransition` lets you mark a state update as a transition.
+Функция `startTransition`, которую возвращает `useTransition`, позволяет помечать обновление состояния как переход.
 
 ```js {6,8}
 function TabContainer() {
@@ -64,35 +64,35 @@ function TabContainer() {
 }
 ```
 
-#### Parameters {/*starttransition-parameters*/}
+#### Параметры {/*starttransition-parameters*/}
 
-* `scope`: A function that updates some state by calling one or more [`set` functions.](/reference/react/useState#setstate) React immediately calls `scope` with no parameters and marks all state updates scheduled synchronously during the `scope` function call as transitions. They will be [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators.](#preventing-unwanted-loading-indicators)
+* `scope`: Функция, которая обновляет некоторое состояние, вызывая одну или несколько [функций `set`.](/reference/react/useState#setstate) React немедленно вызывает `scope` без параметров и помечает все обновления состояния, которые были синхронно запланированны во время вызова функции `scope`, как переходы. Они будут [неблокирующими](#marking-a-state-update-as-a-non-blocking-transition) и [не будут отображать нежелательные индикаторы загрузки.](#preventing-unwanted-loading-indicators)
 
-#### Returns {/*starttransition-returns*/}
+#### Возвращаемое значение {/*starttransition-returns*/}
 
-`startTransition` does not return anything.
+`startTransition` ничего не возвращает.
 
-#### Caveats {/*starttransition-caveats*/}
+#### Подводные камни {/*starttransition-caveats*/}
 
-* `useTransition` is a Hook, so it can only be called inside components or custom Hooks. If you need to start a transition somewhere else (for example, from a data library), call the standalone [`startTransition`](/reference/react/startTransition) instead.
+* `useTransition` — это хук, поэтому его можно вызывать только внутри компонентов или пользовательских хуков. Если вам нужно запустить переход где-то ещё (например, из библиотеки данных), вместо этого вызовите автономный [`startTransition`](/reference/react/startTransition).
 
-* You can wrap an update into a transition only if you have access to the `set` function of that state. If you want to start a transition in response to some prop or a custom Hook value, try [`useDeferredValue`](/reference/react/useDeferredValue) instead.
+* Вы можете обернуть обновление в переход, только если у вас есть доступ к функции `set` этого состояния. Если вы хотите запустить переход в ответ на какой-либо проп или значение пользовательского хука, попробуйте вместо этого [`useDeferredValue`](/reference/react/useDeferredValue).
 
-* The function you pass to `startTransition` must be synchronous. React immediately executes this function, marking all state updates that happen while it executes as transitions. If you try to perform more state updates later (for example, in a timeout), they won't be marked as transitions.
+* Функция, которую вы передаёте в `startTransition`, должна быть синхронной. React немедленно выполнит эту функцию, пометя все обновления состояния, которые происходят во время его выполнения, как переходы. Если вы позже попытаетесь выполнить больше обновлений состояния (например, по тайм-ауту), то они не будут помечены как переходы.
 
-* A state update marked as a transition will be interrupted by other state updates. For example, if you update a chart component inside a transition, but then start typing into an input while the chart is in the middle of a re-render, React will restart the rendering work on the chart component after handling the input update.
+* Обновление состояния, помеченное как переход, будет прервано другими обновлениями состояния. Например, если вы обновляете компонент диаграммы внутри перехода, но затем начинаете вводить текст в поле ввода, когда диаграмма находится в середине повторного рендера, React перезапустит работу по рендерингу компонента диаграммы после обработки обновления поля ввода.
 
-* Transition updates can't be used to control text inputs.
+* Обновления перехода не могут быть использованы для управления текстовыми полями ввода.
 
-* If there are multiple ongoing transitions, React currently batches them together. This is a limitation that will likely be removed in a future release.
+* Если существует несколько активных переходов, React, в настоящее время, группирует их вместе. Это ограничение, вероятно, будет убрано в будущих версиях.
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Marking a state update as a non-blocking transition {/*marking-a-state-update-as-a-non-blocking-transition*/}
+### Пометка обновления состояния как неблокирующего перехода {/*marking-a-state-update-as-a-non-blocking-transition*/}
 
-Call `useTransition` at the top level of your component to mark state updates as non-blocking *transitions*.
+Вызовите `useTransition` на верхнем уровне вашего компонента, чтобы пометить обновления состояния как неблокирующие *переходы*.
 
 ```js [[1, 4, "isPending"], [2, 4, "startTransition"]]
 import { useState, useTransition } from 'react';
@@ -103,12 +103,12 @@ function TabContainer() {
 }
 ```
 
-`useTransition` returns an array with exactly two items:
+`useTransition` возвращает массив ровно из двух элементов:
 
-1. The <CodeStep step={1}>`isPending` flag</CodeStep> that tells you whether there is a pending transition.
-2. The <CodeStep step={2}>`startTransition` function</CodeStep> that lets you mark a state update as a transition.
+1. <CodeStep step={1}>Флаг `isPending`</CodeStep> указывает, есть ли ожидающий переход.
+2. <CodeStep step={2}>Функция `startTransition`</CodeStep> позволяет пометить обновление состояния как переход.
 
-You can then mark a state update as a transition like this:
+Затем вы можете пометить обновление состояния как переход следующим образом:
 
 ```js {6,8}
 function TabContainer() {
@@ -124,17 +124,17 @@ function TabContainer() {
 }
 ```
 
-Transitions let you keep the user interface updates responsive even on slow devices.
+Переходы позволяют сохранять отзывчивость обновлений пользовательского интерфейса даже на медленных устройствах.
 
-With a transition, your UI stays responsive in the middle of a re-render. For example, if the user clicks a tab but then change their mind and click another tab, they can do that without waiting for the first re-render to finish.
+С использованием переходов ваш UI остаётся отзывчивым во время повторного рендеринга. Например, если пользователь нажимает на вкладку, а затем меняет своё решение и нажимает на другую вкладку, он может сделать это, не дожидаясь завершения первого повторного рендеринга.
 
-<Recipes titleText="The difference between useTransition and regular state updates" titleId="examples">
+<Recipes titleText="Разница между useTransition и обычными обновлениями состояния" titleId="examples">
 
-#### Updating the current tab in a transition {/*updating-the-current-tab-in-a-transition*/}
+#### Обновление текущей вкладки в переходе {/*updating-the-current-tab-in-a-transition*/}
 
-In this example, the "Posts" tab is **artificially slowed down** so that it takes at least a second to render.
+В этом примере вкладка "Posts" **искусственно замедлена**, чтобы ей требовалось не менее одной секунды для рендеринга.
 
-Click "Posts" and then immediately click "Contact". Notice that this interrupts the slow render of "Posts". The "Contact" tab shows immediately. Because this state update is marked as a transition, a slow re-render did not freeze the user interface.
+Нажмите на "Posts", а затем сразу нажмите на "Contact". Обратите внимание, что это прерывает медленный рендеринг "Posts". Вкладка "Contact" отображается сразу. Поскольку это обновление состояния помечено как переход, медленный повторный рендеринг не блокирует пользовательский интерфейс.
 
 <Sandpack>
 
@@ -151,7 +151,7 @@ export default function TabContainer() {
 
   function selectTab(nextTab) {
     startTransition(() => {
-      setTab(nextTab);      
+      setTab(nextTab);
     });
   }
 
@@ -214,8 +214,8 @@ export default function AboutTab() {
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
-  // Log once. The actual slowdown is inside SlowPost.
-  console.log('[ARTIFICIALLY SLOW] Rendering 500 <SlowPost />');
+  // Логировать один раз. Фактическое замедление происходит внутри SlowPost.
+  console.log('[ИСКУССТВЕННО ЗАМЕДЛЕННО] Рендеринг 500 <SlowPost />');
 
   let items = [];
   for (let i = 0; i < 500; i++) {
@@ -231,7 +231,7 @@ const PostsTab = memo(function PostsTab() {
 function SlowPost({ index }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // Do nothing for 1 ms per item to emulate extremely slow code
+    // Ничего не делать в течение 1 мс за элемент, чтобы эмулировать чрезвычайно медленный код
   }
 
   return (
@@ -269,11 +269,11 @@ b { display: inline-block; margin-right: 10px; }
 
 <Solution />
 
-#### Updating the current tab without a transition {/*updating-the-current-tab-without-a-transition*/}
+#### Обновление текущей вкладки без перехода {/*updating-the-current-tab-without-a-transition*/}
 
-In this example, the "Posts" tab is also **artificially slowed down** so that it takes at least a second to render. Unlike in the previous example, this state update is **not a transition.**
+В этом примере вкладка "Posts" также **искусственно замедлена**, так что для её рендера требуется не менее секунды. В отличие от предыдущего примера, это обновление состояния **не является переходом**.
 
-Click "Posts" and then immediately click "Contact". Notice that the app freezes while rendering the slowed down tab, and the UI becomes unresponsive. This state update is not a transition, so a slow re-render freezed the user interface.
+Нажмите на "Posts", а затем сразу нажмите на "Contact". Обратите внимание, что приложение зависает при ренднре замедленной вкладки, а UI перестаёт отвечать на запросы. Это обновление состояния не является переходом, поэтому медленный повторный рендер заморозил пользовательский интерфейс.
 
 <Sandpack>
 
@@ -350,8 +350,8 @@ export default function AboutTab() {
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
-  // Log once. The actual slowdown is inside SlowPost.
-  console.log('[ARTIFICIALLY SLOW] Rendering 500 <SlowPost />');
+  // Логировать один раз. Фактическое замедление происходит внутри SlowPost.
+  console.log('[ИСКУССТВЕННО ЗАМЕДЛЕННО] Рендеринг 500 <SlowPost />');
 
   let items = [];
   for (let i = 0; i < 500; i++) {
@@ -367,7 +367,7 @@ const PostsTab = memo(function PostsTab() {
 function SlowPost({ index }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // Do nothing for 1 ms per item to emulate extremely slow code
+    // Ничего не делать в течение 1 мс за элемент, чтобы эмулировать чрезвычайно медленный код
   }
 
   return (
@@ -411,7 +411,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ### Updating the parent component in a transition {/*updating-the-parent-component-in-a-transition*/}
 
-You can update a parent component's state from the `useTransition` call, too. For example, this `TabButton` component wraps its `onClick` logic in a transition:
+Вы также можете обновить состояние родительского компонента с помощью вызова `useTransition`. Например, этот компонент `TabButton` заключает свою логику `onClick` в переход:
 
 ```js {8-10}
 export default function TabButton({ children, isActive, onClick }) {
@@ -431,7 +431,7 @@ export default function TabButton({ children, isActive, onClick }) {
 }
 ```
 
-Because the parent component updates its state inside the `onClick` event handler, that state update gets marked as a transition. This is why, like in the earlier example, you can click on "Posts" and then immediately click "Contact". Updating the selected tab is marked as a transition, so it does not block user interactions.
+Поскольку родительский компонент обновляет своё состояние внутри обработчика события `onClick`, это обновление состояния помечается как переход. Вот поэтому, как и в предыдущем примере, вы можете нажать на "Posts", а затем сразу же нажать на "Contact". Обновление выбранной вкладки помечается как переход, поэтому взаимодействия пользователя не блокируются.
 
 <Sandpack>
 
@@ -505,8 +505,8 @@ export default function AboutTab() {
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
-  // Log once. The actual slowdown is inside SlowPost.
-  console.log('[ARTIFICIALLY SLOW] Rendering 500 <SlowPost />');
+  // Логировать один раз. Фактическое замедление происходит внутри SlowPost.
+  console.log('[ИСКУССТВЕННО ЗАМЕДЛЕННО] Рендеринг 500 <SlowPost />');
 
   let items = [];
   for (let i = 0; i < 500; i++) {
@@ -522,7 +522,7 @@ const PostsTab = memo(function PostsTab() {
 function SlowPost({ index }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // Do nothing for 1 ms per item to emulate extremely slow code
+    // Ничего не делать в течение 1 мс за элемент, чтобы эмулировать чрезвычайно медленный код
   }
 
   return (
@@ -560,9 +560,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### Displaying a pending visual state during the transition {/*displaying-a-pending-visual-state-during-the-transition*/}
+### Отображение ожидающего визуального состояния во время перехода {/*displaying-a-pending-visual-state-during-the-transition*/}
 
-You can use the `isPending` boolean value returned by `useTransition` to indicate to the user that a transition is in progress. For example, the tab button can have a special "pending" visual state:
+Вы можете использовать булево значение `isPending`, возвращаемое `useTransition`, чтобы указать пользователю, что происходит переход. Например, кнопка вкладки может иметь специальное визуальное состояние «ожидание»:
 
 ```js {4-6}
 function TabButton({ children, isActive, onClick }) {
@@ -574,7 +574,7 @@ function TabButton({ children, isActive, onClick }) {
   // ...
 ```
 
-Notice how clicking "Posts" now feels more responsive because the tab button itself updates right away:
+Обратите внимание, что нажатие на "Posts" теперь кажется более отзывчивым, потому что кнопка вкладки сразу же обновляется:
 
 <Sandpack>
 
@@ -651,8 +651,8 @@ export default function AboutTab() {
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
-  // Log once. The actual slowdown is inside SlowPost.
-  console.log('[ARTIFICIALLY SLOW] Rendering 500 <SlowPost />');
+  // Логировать один раз. Фактическое замедление происходит внутри SlowPost.
+  console.log('[ИСКУССТВЕННО ЗАМЕДЛЕННО] Рендеринг 500 <SlowPost />');
 
   let items = [];
   for (let i = 0; i < 500; i++) {
@@ -668,7 +668,7 @@ const PostsTab = memo(function PostsTab() {
 function SlowPost({ index }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // Do nothing for 1 ms per item to emulate extremely slow code
+    // Ничего не делать в течение 1 мс за элемент, чтобы эмулировать чрезвычайно медленный код
   }
 
   return (
@@ -707,9 +707,9 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### Preventing unwanted loading indicators {/*preventing-unwanted-loading-indicators*/}
+### Предотвращение нежелательных индикаторов загрузки {/*preventing-unwanted-loading-indicators*/}
 
-In this example, the `PostsTab` component fetches some data using a [Suspense-enabled](/reference/react/Suspense) data source. When you click the "Posts" tab, the `PostsTab` component *suspends*, causing the closest loading fallback to appear:
+В этом примере компонент `PostsTab` получает некоторые данные, используя источник данных поддерживающий [Задержку](/reference/react/Suspense). Когда вы нажимаете на вкладку "Posts", компонент `PostsTab` *приостанавливается*, что приводит к появлению ближайшего запасного варианта загрузки:
 
 <Sandpack>
 
@@ -777,11 +777,11 @@ export default function AboutTab() {
 ```js PostsTab.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// Примечание: этот компонент написан с использованием экспериментального API,
+// которого пока нет в стабильных версиях React.
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// Для реалистичного примера, который вы можете использовать сегодня, попробуйте фреймворк,
+// который интегрирован с Задержкой, например Relay или Next.js.
 
 function PostsTab() {
   const posts = use(fetchData('/posts'));
@@ -804,8 +804,8 @@ function Post({ title }) {
 
 export default PostsTab;
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// Это временное решение для исправления ошибки и запуска демонстрационной версии.
+// TODO: заменить на реальную реализацию, когда ошибка будет исправлена.
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -823,7 +823,7 @@ function use(promise) {
       reason => {
         promise.status = 'rejected';
         promise.reason = reason;
-      },      
+      },
     );
     throw promise;
   }
@@ -848,9 +848,9 @@ export default function ContactTab() {
 
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Примечание: способ получения данных зависит от фреймворка,
+// который вы используете вместе с Задержкой.
+// Обычно логика кэширования находится внутри фреймворка.
 
 let cache = new Map();
 
@@ -870,7 +870,7 @@ async function getData(url) {
 }
 
 async function getPosts() {
-  // Add a fake delay to make waiting noticeable.
+  // Добавьте фиктивную задержку, чтобы ожидание было заметным.
   await new Promise(resolve => {
     setTimeout(resolve, 1000);
   });
@@ -893,9 +893,9 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-Hiding the entire tab container to show a loading indicator leads to a jarring user experience. If you add `useTransition` to `TabButton`, you can instead indicate display the pending state in the tab button instead.
+Скрытие всего контейнера вкладок для отображения индикатора загрузки приводит к неприятному пользовательскому опыту. Если вы добавите `useTransition` в `TabButton`, вы можете вместо этого указать состояние ожидания в кнопке вкладки.
 
-Notice that clicking "Posts" no longer replaces the entire tab container with a spinner:
+Обратите внимание, что нажатие на "Posts" больше не заменяет весь контейнер вкладок на спиннер:
 
 <Sandpack>
 
@@ -971,11 +971,11 @@ export default function AboutTab() {
 ```js PostsTab.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// Примечание: этот компонент написан с использованием экспериментального API,
+// которого пока нет в стабильных версиях React.
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// Для реалистичного примера, который вы можете использовать сегодня, попробуйте фреймворк,
+// который интегрирован с Задержкой, например Relay или Next.js.
 
 function PostsTab() {
   const posts = use(fetchData('/posts'));
@@ -998,8 +998,8 @@ function Post({ title }) {
 
 export default PostsTab;
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// Это временное решение для исправления ошибки и запуска демонстрационной версии.
+// TODO: заменить на реальную реализацию, когда ошибка будет исправлена.
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1017,7 +1017,7 @@ function use(promise) {
       reason => {
         promise.status = 'rejected';
         promise.reason = reason;
-      },      
+      },
     );
     throw promise;
   }
@@ -1042,9 +1042,9 @@ export default function ContactTab() {
 
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Примечание: способ получения данных зависит от фреймворка,
+// который вы используете вместе с Задержкой.
+// Обычно логика кэширования находится внутри фреймворка.
 
 let cache = new Map();
 
@@ -1064,7 +1064,7 @@ async function getData(url) {
 }
 
 async function getPosts() {
-  // Add a fake delay to make waiting noticeable.
+  // Добавьте фиктивную задержку, чтобы ожидание было заметным.
   await new Promise(resolve => {
     setTimeout(resolve, 1000);
   });
@@ -1087,19 +1087,19 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-[Read more about using transitions with Suspense.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
+[Узнайте больше об использовании переходов с Задержкой.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
 
 <Note>
 
-Transitions will only "wait" long enough to avoid hiding *already revealed* content (like the tab container). If the Posts tab had a [nested `<Suspense>` boundary,](/reference/react/Suspense#revealing-nested-content-as-it-loads) the transition would not "wait" for it.
+Переходы будут «ждать» достаточно долго, чтобы не скрыть *уже показанный* контент (например, контейнер вкладок). Если бы во вкладке "Posts" присутствовала [вложенная граница `<Suspense>`](/reference/react/Suspense#revealing-nested-content-as-it-loads), переход бы её не «ждал».
 
 </Note>
 
 ---
 
-### Building a Suspense-enabled router {/*building-a-suspense-enabled-router*/}
+### Создание маршрутизатора, поддерживающего Suspense {/*building-a-suspense-enabled-router*/}
 
-If you're building a React framework or a router, we recommend marking page navigations as transitions.
+Если вы создаёте React-фреймворк или маршрутизатор, мы рекомендуем помечать навигацию между страницами как переходы.
 
 ```js {3,6,8}
 function Router() {
@@ -1114,12 +1114,12 @@ function Router() {
   // ...
 ```
 
-This is recommended for two reasons:
+Это рекомендуется по двум причинам:
 
-- [Transitions are interruptible,](#marking-a-state-update-as-a-non-blocking-transition) which lets the user click away without waiting for the re-render to complete.
-- [Transitions prevent unwanted loading indicators,](#preventing-unwanted-loading-indicators) which lets the user avoid jarring jumps on navigation.
+- [Переходы прерываемы,](#marking-a-state-update-as-a-non-blocking-transition) что позволяет пользователю кликнуть куда-то ещё, не дожидаясь завершения повторного рендера.
+- [Переходы предотвращают нежелательные индикаторы загрузки,](#preventing-unwanted-loading-indicators) что позволяет пользователю избежать резких скачков при навигации.
 
-Here is a tiny simplified router example using transitions for navigations.
+Вот небольшой упрощённый пример маршрутизатора, использующего переходы для навигации.
 
 <Sandpack>
 
@@ -1250,11 +1250,11 @@ function AlbumsGlimmer() {
 ```js Albums.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// Примечание: этот компонент написан с использованием экспериментального API,
+// которого пока нет в стабильных версиях React.
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// Для реалистичного примера, который вы можете использовать сегодня, попробуйте фреймворк,
+// который интегрирован с Задержкой, например Relay или Next.js.
 
 export default function Albums({ artistId }) {
   const albums = use(fetchData(`/${artistId}/albums`));
@@ -1269,8 +1269,8 @@ export default function Albums({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// Это временное решение для исправления ошибки и запуска демонстрационной версии.
+// TODO: заменить на реальную реализацию, когда ошибка будет исправлена.
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1288,7 +1288,7 @@ function use(promise) {
       reason => {
         promise.status = 'rejected';
         promise.reason = reason;
-      },      
+      },
     );
     throw promise;
   }
@@ -1298,11 +1298,11 @@ function use(promise) {
 ```js Biography.js hidden
 import { fetchData } from './data.js';
 
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
+// Примечание: этот компонент написан с использованием экспериментального API,
+// которого пока нет в стабильных версиях React.
 
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
+// Для реалистичного примера, который вы можете использовать сегодня, попробуйте фреймворк,
+// который интегрирован с Задержкой, например Relay или Next.js.
 
 export default function Biography({ artistId }) {
   const bio = use(fetchData(`/${artistId}/bio`));
@@ -1313,8 +1313,8 @@ export default function Biography({ artistId }) {
   );
 }
 
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
+// Это временное решение для исправления ошибки и запуска демонстрационной версии.
+// TODO: заменить на реальную реализацию, когда ошибка будет исправлена.
 function use(promise) {
   if (promise.status === 'fulfilled') {
     return promise.value;
@@ -1332,7 +1332,7 @@ function use(promise) {
       reason => {
         promise.status = 'rejected';
         promise.reason = reason;
-      },      
+      },
     );
     throw promise;
   }
@@ -1350,9 +1350,9 @@ export default function Panel({ children }) {
 ```
 
 ```js data.js hidden
-// Note: the way you would do data fetching depends on
-// the framework that you use together with Suspense.
-// Normally, the caching logic would be inside a framework.
+// Примечание: способ получения данных зависит от фреймворка,
+// который вы используете вместе с Задержкой.
+// Обычно логика кэширования находится внутри фреймворка.
 
 let cache = new Map();
 
@@ -1374,7 +1374,7 @@ async function getData(url) {
 }
 
 async function getBio() {
-  // Add a fake delay to make waiting noticeable.
+  // Добавьте фиктивную задержку, чтобы ожидание было заметным.
   await new Promise(resolve => {
     setTimeout(resolve, 500);
   });
@@ -1386,7 +1386,7 @@ async function getBio() {
 }
 
 async function getAlbums() {
-  // Add a fake delay to make waiting noticeable.
+  // Добавьте фиктивную задержку, чтобы ожидание было заметным.
   await new Promise(resolve => {
     setTimeout(resolve, 3000);
   });
@@ -1495,23 +1495,23 @@ main {
 
 <Note>
 
-[Suspense-enabled](/reference/react/Suspense) routers are expected to wrap the navigation updates into transitions by default.
+Ожидается, что маршрутизаторы, поддерживающие [Задержку](/reference/react/Suspense), по умолчанию оборачивают обновления навигации в переходы.
 
 </Note>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
-### Updating an input in a transition doesn't work {/*updating-an-input-in-a-transition-doesnt-work*/}
+### Обновление ввода во время перехода не работает {/*updating-an-input-in-a-transition-doesnt-work*/}
 
-You can't use a transition for a state variable that controls an input:
+Вы не можете использовать переход для переменной состояния, которая управляет вводом:
 
 ```js {4,10}
 const [text, setText] = useState('');
 // ...
 function handleChange(e) {
-  // ❌ Can't use transitions for controlled input state
+  // ❌ Нельзя использовать переходы для контролируемого состояния ввода
   startTransition(() => {
     setText(e.target.value);
   });
@@ -1520,79 +1520,79 @@ function handleChange(e) {
 return <input value={text} onChange={handleChange} />;
 ```
 
-This is because transitions are non-blocking, but updating an input in response to the change event should happen synchronously. If you want to run a transition in response to typing, you have two options:
+Это происходит потому, что переходы являются неблокирующими, но обновление ввода в ответ на событие изменения должно происходить синхронно. Если вы хотите запустить переход при вводе текста, у вас есть два варианта:
 
-1. You can declare two separate state variables: one for the input state (which always updates synchronously), and one that you will update in a transition. This lets you control the input using the synchronous state, and pass the transition state variable (which will "lag behind" the input) to the rest of your rendering logic.
-2. Alternatively, you can have one state variable, and add [`useDeferredValue`](/reference/react/useDeferredValue) which will "lag behind" the real value. It will trigger non-blocking re-renders to "catch up" with the new value automatically.
+1. Вы можете объявить две отдельные переменные состояния: одну для состояния ввода (которая всегда обновляется синхронно), и одну, которую вы будете обновлять во время перехода. Это позволит вам управлять вводом с использованием синхронного состояния и передавать переменную состояния перехода (которая будет «отставать» от ввода) в остальную логику рендеринга.
+2. В качестве альтернативы, вы можете использовать одну переменную состояния и добавить [`useDeferredValue`](/reference/react/useDeferredValue), которая будет «отставать» от реального значения. Она будет вызывать неблокирующие перерисовки, чтобы «догнать» новое значение автоматически.
 
 ---
 
-### React doesn't treat my state update as a transition {/*react-doesnt-treat-my-state-update-as-a-transition*/}
+### React не обрабатывает моё обновление состояния как переход {/*react-doesnt-treat-my-state-update-as-a-transition*/}
 
-When you wrap a state update in a transition, make sure that it happens *during* the `startTransition` call:
+Когда вы оборачиваете обновление состояния в переход, убедитесь, что оно происходит *во время* вызова `startTransition`.
 
 ```js
 startTransition(() => {
-  // ✅ Setting state *during* startTransition call
+  // ✅ Установка состояния *во время* вызова startTransition
   setPage('/about');
 });
 ```
 
-The function you pass to `startTransition` must be synchronous.
+Функция, которую вы передаёте `startTransition`, должна быть синхронной.
 
-You can't mark an update as a transition like this:
+Вы не можете отметить обновление как переход вот так:
 
 ```js
 startTransition(() => {
-  // ❌ Setting state *after* startTransition call
+  // ❌ Установка состояния *после* вызова startTransition
   setTimeout(() => {
     setPage('/about');
   }, 1000);
 });
 ```
 
-Instead, you could do this:
+Вместо этого вы можете сделать следующее:
 
 ```js
 setTimeout(() => {
   startTransition(() => {
-    // ✅ Setting state *during* startTransition call
+    // ✅ Установка состояния *во время* вызова startTransition
     setPage('/about');
   });
 }, 1000);
 ```
 
-Similarly, you can't mark an update as a transition like this:
+Аналогично, вы не можете отметить обновление как переход вот так:
 
 ```js
 startTransition(async () => {
   await someAsyncFunction();
-  // ❌ Setting state *after* startTransition call
+  // ❌ Установка состояния *после* вызова startTransition
   setPage('/about');
 });
 ```
 
-However, this works instead:
+Однако, это будет работать вместо этого:
 
 ```js
 await someAsyncFunction();
 startTransition(() => {
-  // ✅ Setting state *during* startTransition call
+  // ✅ Установка состояния *во время* вызова startTransition
   setPage('/about');
 });
 ```
 
 ---
 
-### I want to call `useTransition` from outside a component {/*i-want-to-call-usetransition-from-outside-a-component*/}
+### Я хочу вызвать `useTransition` вне компонента {/*i-want-to-call-usetransition-from-outside-a-component*/}
 
-You can't call `useTransition` outside a component because it's a Hook. In this case, use the standalone [`startTransition`](/reference/react/startTransition) method instead. It works the same way, but it doesn't provide the `isPending` indicator.
+Вы не можете вызывать `useTransition` вне компонента, так как это хук. В этом случае, используйте отдельный метод [`startTransition`](/reference/react/startTransition). Он работает так же, но не предоставляет индикатор `isPending`.
 
 ---
 
-### The function I pass to `startTransition` executes immediately {/*the-function-i-pass-to-starttransition-executes-immediately*/}
+### Функция, которую я передаю `startTransition`, сразу же выполняется {/*the-function-i-pass-to-starttransition-executes-immediately*/}
 
-If you run this code, it will print 1, 2, 3:
+Если вы запустите этот код, он напечатает 1, 2, 3:
 
 ```js {1,3,6}
 console.log(1);
@@ -1603,10 +1603,10 @@ startTransition(() => {
 console.log(3);
 ```
 
-**It is expected to print 1, 2, 3.** The function you pass to `startTransition` does not get delayed. Unlike with the browser `setTimeout`, it does not run the callback later. React executes your function immediately, but any state updates scheduled *while it is running* are marked as transitions. You can imagine that it works like this:
+**Ожидается, что будет напечатано 1, 2, 3.** Функция, которую вы передаёте `startTransition`, не задерживается. В отличие от `setTimeout` в браузере, она не запускает колбэк позже. React немедленно выполняет вашу функцию, но любые обновления состояния, запланированные *во время её выполнения*, помечаются как переходы. Можно представить, что это работает так:
 
 ```js
-// A simplified version of how React works
+// Упрощённая версия того, как работает React
 
 let isInsideTransition = false;
 
@@ -1618,9 +1618,9 @@ function startTransition(scope) {
 
 function setState() {
   if (isInsideTransition) {
-    // ... schedule a transition state update ...
+    // ... запланировать обновление состояния перехода ...
   } else {
-    // ... schedule an urgent state update ...
+    // ... запланировать срочное обновление состояния ...
   }
 }
 ```
