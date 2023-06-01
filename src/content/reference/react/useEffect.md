@@ -1729,11 +1729,11 @@ function Page({ url, shoppingCart }) {
 
 ---
 
-### Displaying different content on the server and the client {/*displaying-different-content-on-the-server-and-the-client*/}
+### Отображение разного содержимого на сервере и на клиенте {/*displaying-different-content-on-the-server-and-the-client*/}
 
-If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/start-a-new-react-project#production-grade-react-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
+Если в вашем приложении есть серверный рендеринг ([ручной](/reference/react-dom/server) или через [фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks)), то ваши компоненты будут рендериться в двух разных окружениях. Один рендеринг на сервере создаст первоначальный HTML, и один рендеринг на клиенте к этому HTML подключит обработчики событий. Поэтому для правильной работы [гидратации](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) первоначальный рендеринг на сервере и на клиенте должны давать одинаковый результат.
 
-In rare cases, you might need to display different content on the client. For example, if your app reads some data from [`localStorage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), it can't possibly do that on the server. Here is how you could implement this:
+При этом изредка вам может понадобиться отобразить на клиенте другое содержимое. Например, если ваше приложение читает данные из [`localStorage`](https://developer.mozilla.org/ru/docs/Web/API/Window/localStorage) -- что в принципе невозможно делать на сервере. В таком случае разное отображение можно реализовать вот так:
 
 ```js
 function MyComponent() {
@@ -1744,16 +1744,16 @@ function MyComponent() {
   }, []);
 
   if (didMount) {
-    // ... return client-only JSX ...
+    // ... возвращаем особый клиентский JSX ...
   }  else {
-    // ... return initial JSX ...
+    // ... возвращаем первоначальный JSX ...
   }
 }
 ```
 
-While the app is loading, the user will see the initial render output. Then, when it's loaded and hydrated, your Effect will run and set `didMount` to `true`, triggering a re-render. This will switch to the client-only render output. Effects don't run on the server, so this is why `didMount` was `false` during the initial server render.
+Пока приложение загружается, пользователю будут показываться результаты первоначального рендеринга. После загрузки и гидратации сработает эффект, и `didMount` выставится в `true`, из-за чего запустится повторный рендеринг. Так первоначальное содержимое сменится на особое клиентское. На сервере эффекты не срабатывают -- поэтому при первоначальном рендеринге на сервере `didMount` оставался `false`.
 
-Use this pattern sparingly. Keep in mind that users with a slow connection will see the initial content for quite a bit of time--potentially, many seconds--so you don't want to make jarring changes to your component's appearance. In many cases, you can avoid the need for this by conditionally showing different things with CSS.
+Не стоит злоупотреблять этим паттерном. Учтите, что пользователи с медленным соединением могут довольно долго наблюдать первоначальное содержимое -- может даже несколько секунд. В такой момент нежелательно делать заметные дёрганные изменения во внешнем виде компонентов. Часто избежать резких переходов можно, отдельно стилизовав первоначальное содержимое под такую ситуацию.
 
 ---
 
