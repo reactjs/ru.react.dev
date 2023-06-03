@@ -5,6 +5,7 @@ title: memo
 <Intro>
 
 `memo` позволяет вам пропустить повторный рендер, когда пропсы не изменились.
+
 ```
 const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 ```
