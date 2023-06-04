@@ -1757,31 +1757,31 @@ function MyComponent() {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
-### My Effect runs twice when the component mounts {/*my-effect-runs-twice-when-the-component-mounts*/}
+### Мой эффект запускается дважды, когда компонент монтируется {/*my-effect-runs-twice-when-the-component-mounts*/}
 
-When Strict Mode is on, in development, React runs setup and cleanup one extra time before the actual setup.
+В строгом режиме во время разработки React запускает один предварительный цикл установки и сброса перед тем, как запустить установку как обычно.
 
-This is a stress-test that verifies your Effect’s logic is implemented correctly. If this causes visible issues, your cleanup function is missing some logic. The cleanup function should stop or undo whatever the setup function was doing. The rule of thumb is that the user shouldn’t be able to distinguish between the setup being called once (as in production) and a setup → cleanup → setup sequence (as in development).
+Это такой стресс-тест, проверяющий, что логика вашего эффекта реализована правильно. Если вы видите, что тест создаёт проблемы -- значит у вас в логике сброса чего-то не хватает. Код сброса должен отменять и откатывать всю ту работу, которую проделал код установки. Эмпирическое правило такое: пользователь не должен замечать разницы, вызвалась установка один раз (как в продакшене) или последовательностью *установка* → *сброс* → *установка* (как во время разработки).
 
-Read more about [how this helps find bugs](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) and [how to fix your logic.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+Изучите подробнее, [как этот тест помогает выявлять дефекты,](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) и [как исправить логику эффекта.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
 ---
 
-### My Effect runs after every re-render {/*my-effect-runs-after-every-re-render*/}
+### Мой эффект запускается при каждом рендеринге {/*my-effect-runs-after-every-re-render*/}
 
-First, check that you haven't forgotten to specify the dependency array:
+Для начала убедитесь, что не забыли указать массив зависимостей:
 
 ```js {3}
 useEffect(() => {
   // ...
-}); // 🚩 No dependency array: re-runs after every render!
+}); // 🚩 Нет массива зависимостей: эффект срабатывает при каждом рендеринге!
 ```
 
-If you've specified the dependency array but your Effect still re-runs in a loop, it's because one of your dependencies is different on every re-render.
+Если вы указали массив зависимостей, но эффект всё равно постоянно перезапускается -- значит при каждом рендеринге изменяется какая-то из зависимостей.
 
-You can debug this problem by manually logging your dependencies to the console:
+Чтобы отладить проблему, выведите массив зависимостей в консоль:
 
 ```js {5}
   useEffect(() => {
@@ -1791,58 +1791,58 @@ You can debug this problem by manually logging your dependencies to the console:
   console.log([serverUrl, roomId]);
 ```
 
-You can then right-click on the arrays from different re-renders in the console and select "Store as a global variable" for both of them. Assuming the first one got saved as `temp1` and the second one got saved as `temp2`, you can then use the browser console to check whether each dependency in both arrays is the same:
+Затем выберите в консоли два массива из двух разных проходов рендеринга, по каждому кликните правой кнопкой мыши и выберите в меню "Сохранить как глобальную переменную" ("Store as a global variable"). Если, допустим, первый массив сохранился в переменную `temp1`, а второй -- в `temp2`, то теперь можно в консоли браузера вот так проверить на равенство каждую отдельную зависимость:
 
 ```js
-Object.is(temp1[0], temp2[0]); // Is the first dependency the same between the arrays?
-Object.is(temp1[1], temp2[1]); // Is the second dependency the same between the arrays?
-Object.is(temp1[2], temp2[2]); // ... and so on for every dependency ...
+Object.is(temp1[0], temp2[0]); // Совпадает ли в массивах первая зависимость?
+Object.is(temp1[1], temp2[1]); // Совпадает ли в массивах вторая зависимость?
+Object.is(temp1[2], temp2[2]); // ... и так для каждой зависимости ...
 ```
 
-When you find the dependency that is different on every re-render, you can usually fix it in one of these ways:
+Так вы найдёте, какая зависимость изменяется при каждом рендеринге. Поправить её обычно можно одним из следующих способов:
 
-- [Updating state based on previous state from an Effect](#updating-state-based-on-previous-state-from-an-effect)
-- [Removing unnecessary object dependencies](#removing-unnecessary-object-dependencies)
-- [Removing unnecessary function dependencies](#removing-unnecessary-function-dependencies)
-- [Reading the latest props and state from an Effect](#reading-the-latest-props-and-state-from-an-effect)
+- [Обновлять в эффекте состояние на основе предыдущего состояния.](#updating-state-based-on-previous-state-from-an-effect)
+- [Устранить лишнюю зависимость от объекта.](#removing-unnecessary-object-dependencies)
+- [Устранить лишнюю зависимость от функции.](#removing-unnecessary-function-dependencies)
+- [Читать в эффекте актуальные пропсы или состояние.](#reading-the-latest-props-and-state-from-an-effect)
 
-As a last resort (if these methods didn't help), wrap its creation with [`useMemo`](/reference/react/useMemo#memoizing-a-dependency-of-another-hook) or [`useCallback`](/reference/react/useCallback#preventing-an-effect-from-firing-too-often) (for functions).
-
----
-
-### My Effect keeps re-running in an infinite cycle {/*my-effect-keeps-re-running-in-an-infinite-cycle*/}
-
-If your Effect runs in an infinite cycle, these two things must be true:
-
-- Your Effect is updating some state.
-- That state leads to a re-render, which causes the Effect's dependencies to change.
-
-Before you start fixing the problem, ask yourself whether your Effect is connecting to some external system (like DOM, network, a third-party widget, and so on). Why does your Effect need to set state? Does it synchronize with that external system? Or are you trying to manage your application's data flow with it?
-
-If there is no external system, consider whether [removing the Effect altogether](/learn/you-might-not-need-an-effect) would simplify your logic.
-
-If you're genuinely synchronizing with some external system, think about why and under what conditions your Effect should update the state. Has something changed that affects your component's visual output? If you need to keep track of some data that isn't used by rendering, a [ref](/reference/react/useRef#referencing-a-value-with-a-ref) (which doesn't trigger re-renders) might be more appropriate. Verify your Effect doesn't update the state (and trigger re-renders) more than needed.
-
-Finally, if your Effect is updating the state at the right time, but there is still a loop, it's because that state update leads to one of the Effect's dependencies changing. [Read how to debug dependency changes.](/reference/react/useEffect#my-effect-runs-after-every-re-render)
+В крайнем случае (если ни один из способов выше не подошёл) можно обернуть вычисление зависимости в [`useMemo`](/reference/react/useMemo#memoizing-a-dependency-of-another-hook), либо в [`useCallback`](/reference/react/useCallback#preventing-an-effect-from-firing-too-often), если это функция.
 
 ---
 
-### My cleanup logic runs even though my component didn't unmount {/*my-cleanup-logic-runs-even-though-my-component-didnt-unmount*/}
+### Мой эффект без конца перезапускается {/*my-effect-keeps-re-running-in-an-infinite-cycle*/}
 
-The cleanup function runs not only during unmount, but before every re-render with changed dependencies. Additionally, in development, React [runs setup+cleanup one extra time immediately after component mounts.](#my-effect-runs-twice-when-the-component-mounts)
+Если ваш эффект перезапускается в бесконечном цикле, то скорее всего имеют место быть оба следующих факта:
 
-If you have cleanup code without corresponding setup code, it's usually a code smell:
+- Ваш эффект изменяет состояние.
+- Изменение состояния перезапускает рендеринг, и в процессе изменяются зависимости эффекта.
+
+Перед тем, как приступить к исправлению, задайтесь вопросом: подключается ли к внешней системе ваш эффект (к DOM, к сети, к стороннему виджету, и т.п.)? Зачем этому эффекту изменять состояние? Он так синхронизируется с внешней системой? Или вы так просто пытаетесь управлять потоком данных в приложении?
+
+Если подключения к внешней системе нет, то возможно вашу логику можно упростить, если [избавиться от эффекта как такового.](/learn/you-might-not-need-an-effect)
+
+Если вы действительно пытаетесь синхронизироваться с внешней системой, то подумайте, зачем и при каких именно условиях эффект должен изменять состояние. Влияют ли изменения на визуальное отображение компонента? Если нужно отслеживать какие-то данные, не участвующие в рендеринге, то возможно вам больше подойдёт [реф](/reference/react/useRef#referencing-a-value-with-a-ref) (без перезапуска рендеринга). Если нужно обновлять состояние (с перезапуском рендеринга), убедитесь, что обновление не происходит чаще, чем нужно.
+
+Наконец, если эффект обновляет состояние ровно тогда, когда это нужно, но всё равно без конца перезапускается -- значит обновление состояния приводит к изменению какой-то зависимости эффекта. [Почитайте, как можно отладить изменения в зависимостях.](/reference/react/useEffect#my-effect-runs-after-every-re-render)
+
+---
+
+### Моя логика сброса запустилась, хотя компонент не размонтируется {/*my-cleanup-logic-runs-even-though-my-component-didnt-unmount*/}
+
+Сброс эффекта происходит не только при размонтировании, но и после каждого рендеринга, в котором изменились зависимости. Кроме того, в режиме разработки React [делает при монтировании один дополнительный запуск установки и сброса.](#my-effect-runs-twice-when-the-component-mounts)
+
+Если для вашего кода сброса нет соответствующего кода установки -- обычно это признак проблем в коде:
 
 ```js {2-5}
 useEffect(() => {
-  // 🔴 Avoid: Cleanup logic without corresponding setup logic
+  // 🔴 Не делайте так: логика сброса не соответствует логике установки.
   return () => {
     doSomething();
   };
 }, []);
 ```
 
-Your cleanup logic should be "symmetrical" to the setup logic, and should stop or undo whatever setup did:
+Ваша логика сброса должна быть "симметрична" логике установки, отменяя и откатывая всю ту работу, которую проделала установка:
 
 ```js {2-3,5}
   useEffect(() => {
@@ -1854,10 +1854,10 @@ Your cleanup logic should be "symmetrical" to the setup logic, and should stop o
   }, [serverUrl, roomId]);
 ```
 
-[Learn how the Effect lifecycle is different from the component's lifecycle.](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect)
+[Изучите, в чём отличие жизненного цикла эффекта по сравнению с жизненным циклом компонента.](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect)
 
 ---
 
-### My Effect does something visual, and I see a flicker before it runs {/*my-effect-does-something-visual-and-i-see-a-flicker-before-it-runs*/}
+### Мой эффект делает визуальные изменения, но я вижу мерцание перед его срабатыванием {/*my-effect-does-something-visual-and-i-see-a-flicker-before-it-runs*/}
 
-If your Effect must block the browser from [painting the screen,](/learn/render-and-commit#epilogue-browser-paint) replace `useEffect` with [`useLayoutEffect`](/reference/react/useLayoutEffect). Note that **this shouldn't be needed for the vast majority of Effects.** You'll only need this if it's crucial to run your Effect before the browser paint: for example, to measure and position a tooltip before the user sees it.
+Если вам нужно, чтобы браузер не [отрисовывал экран,](/learn/render-and-commit#epilogue-browser-paint) пока не сработает эффект, то замените `useEffect` на [`useLayoutEffect`](/reference/react/useLayoutEffect). Однако помните, что **для подавляющего большинства эффектов такое не должно быть нужно.** Замена будет нужна только там, где критически важно, чтобы эффект сработал до отрисовки браузером: например, чтобы эффект вычислил размеры и расположение для всплывающей подсказки до того, как её увидит пользователь.
