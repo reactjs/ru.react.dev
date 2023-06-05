@@ -126,7 +126,7 @@
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "Reacting to Input with State",
+          "title": "Обработка ввода при помощи состояния",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
@@ -186,7 +186,7 @@
         },
         {
           "title": "Removing Effect Dependencies",
-          "path": "/learn/removing-effect-dependencies"              
+          "path": "/learn/removing-effect-dependencies"
         },
         {
           "title": "Reusing Logic with Custom Hooks",
