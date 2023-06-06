@@ -113,7 +113,7 @@ const [isActive, setIsActive] = useState(false);
 function Panel({ title, children, isActive }) {
 ```
 
-Теперь родитель компонента `Panel`  может *управлять* `isActive` [передавая его вниз как проп.](/learn/passing-props-to-a-component) С другой стороны, компонент `Panel` теперь *не имеет контроля* над значением `isActive`--теперь оно зависит от родительского компонента!
+Теперь родитель компонента `Panel` может *управлять* `isActive`, [передавая его вниз как проп.](/learn/passing-props-to-a-component) С другой стороны, компонент `Panel` теперь *не имеет контроля* над значением `isActive`--теперь оно зависит от родительского компонента!
 
 ### Шаг 2: Передать данные хардкодом из общего родителя {/*step-2-pass-hardcoded-data-from-the-common-parent*/}
 
