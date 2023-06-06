@@ -4,7 +4,7 @@ title: useReducer
 
 <Intro>
 
-`useReducer` это хук, который использует [редьюсер](/learn/extracting-state-logic-into-a-reducer), для управления состоянием компонента. 
+`useReducer` -- это хук, который использует [редюсер](/learn/extracting-state-logic-into-a-reducer) для управления состоянием компонента. 
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init?)
