@@ -96,7 +96,7 @@ function AboutPage() {
 
 ## Добавление стилей {/*adding-styles*/}
 
-В React CSS-классы объявляются с помощью свойства `className`. Оно работает аналогично HTML-аттрибуту [`class`](https://developer.mozilla.org/ru-RU/docs/Web/HTML/Global_attributes/class):
+В React CSS-классы объявляются с помощью свойства `className`. Оно работает аналогично HTML-атрибуту [`class`](https://developer.mozilla.org/ru-RU/docs/Web/HTML/Global_attributes/class):
 
 ```js
 <img className="avatar" />
