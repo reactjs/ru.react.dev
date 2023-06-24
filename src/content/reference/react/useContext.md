@@ -304,7 +304,7 @@ function Button({ children }) {
 
 #### Изменение объекта через контекст {/*updating-an-object-via-context*/}
 
-В данном примере есть переменная состояния `currentUser`, которая хранит объект. Вы объединяете `{ currentUser, setCurrentUser }` в один объект и передаёте его вниз через контекст, используя `value={}`. В этом случае любой компонент ниже по дереву, например `LoginButton`, считывают и `currentUser`, и `setCurrentUser`, а затем вызывают `setCurrentUser` по необходимости.
+В данном примере есть переменная состояния `currentUser`, которая хранит объект. Вы объединяете `{ currentUser, setCurrentUser }` в один объект и передаёте его вниз через контекст, используя `value={}`. В этом случае любой компонент ниже по дереву, например `LoginButton`, считывает и `currentUser`, и `setCurrentUser`, а затем вызывает `setCurrentUser` по необходимости.
 
 <Sandpack>
 
