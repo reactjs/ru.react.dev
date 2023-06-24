@@ -52,7 +52,7 @@ function MyComponent() {
 
 ### Передача данных вглубь дерева {/*passing-data-deeply-into-the-tree*/}
 
-Вызовите `useContext` на верхнем уровне вашего компонента чтобы прочитать и подписаться на [контекст.](/learn/passing-data-deeply-with-context)
+Вызовите `useContext` на верхнем уровне вашего компонента, чтобы прочитать и подписаться на [контекст.](/learn/passing-data-deeply-with-context)
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { useContext } from 'react';
