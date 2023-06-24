@@ -946,7 +946,7 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Указание стандартного запасного значения {/*specifying-a-fallback-default-value*/}
+### Указание запасного значения по умолчанию {/*specifying-a-fallback-default-value*/}
 
 Если React не сможет найти ни одного источника конкретного <CodeStep step={1}>контекста</CodeStep> в дереве родительских компонентов, значение контекста возвращённое вызовом `useContext()` будет равно <CodeStep step={3}>стандартному значению</CodeStep>, которое вы указали при [создании этого контекста](/reference/react/createContext):
 
