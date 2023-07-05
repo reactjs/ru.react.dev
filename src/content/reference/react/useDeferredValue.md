@@ -84,7 +84,7 @@ function SearchPage() {
 
 Предполагается, что данные в этом примере вы получаете через источники, которые поддерживают Suspense:
 
-- Запрашиваете данные с помощью поддерживающих Suspense фреймворков, как, например, [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) или [Next.js](https://nextjs.org/docs/advanced-features/react-18).
+- Запрашиваете данные с помощью поддерживающих Suspense фреймворков, как, например, [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) или [Next.js](https://nextjs.org/docs/getting-started/react-essentials).
 - Лениво загружаете код компонентов с помощью [`lazy`](/reference/react/lazy).
 
 [Подробнее о Suspense и связанных с ним ограничениях.](/reference/react/Suspense)
