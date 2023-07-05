@@ -94,7 +94,7 @@ function PostBody({ body }) {
 
 <DeepDive>
 
-#### Как написать фрагмент без использования особого синтаксиса? {/*how-to-write-a-fragment-without-the-special-syntax*/}
+#### Как написать фрагмент без специального синтаксиса? {/*how-to-write-a-fragment-without-the-special-syntax*/}
 
 Приведенный выше пример эквивалентен импорту `Fragment` из React:
 
