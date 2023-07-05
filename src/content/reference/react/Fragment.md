@@ -27,7 +27,7 @@ title: <Fragment> (<>...</>)
 
 #### Пропсы {/*props*/}
 
-- **необязательный** `key`: Фрагменты объявленные с помощью явного синтаксиса `<Fragment>` могут иметь [ключи.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
+- **необязательный** `key`: Фрагменты, объявленные с помощью явного синтаксиса `<Fragment>`, могут иметь [ключи.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
 
 #### Предостережения {/*caveats*/}
 
