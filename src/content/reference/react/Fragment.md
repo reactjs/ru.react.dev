@@ -141,7 +141,7 @@ function CloseDialog() {
 
 ### Группировка элементов с текстом {/*grouping-elements-with-text*/}
 
-Вы можете использовать `Fragment` чтобы сгруппировать текст вместе с компонентами:
+Вы можете использовать `Fragment` для группировки текста вместе с компонентами:
 
 ```js
 function DateRangePicker({ start, end }) {
