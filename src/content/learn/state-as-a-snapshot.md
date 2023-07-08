@@ -21,7 +21,7 @@ title: Состояние как снимок
 
 Вы можете думать, что события, которые появляются от взаимодействия пользователя с интерфейсом (например, после нажатия кнопки), должны моментально изменять UI. На самом деле, в React это работает немного по-другому. На предыдущей странице вы видели, что [изменение состояния запрашивает повторный рендер](/learn/render-and-commit#step-1-trigger-a-render). Это значит, чтобы интерфейс смог отреагировать на событие, необходимо *обновить состояние*.
 
-Рассмотрим пример кода ниже. Когда вы нажимаете на кнопку "Send", `setIsSent(true)` сообщает React о необходимости повторного рендера UI:
+Рассмотрим пример кода ниже. Когда вы нажимаете на кнопку "Отправить", `setIsSent(true)` сообщает React о необходимости повторного рендера UI:
 
 <Sandpack>
 
@@ -30,9 +30,9 @@ import { useState } from 'react';
 
 export default function Form() {
   const [isSent, setIsSent] = useState(false);
-  const [message, setMessage] = useState('Hi!');
+  const [message, setMessage] = useState('Привет!');
   if (isSent) {
-    return <h1>Your message is on its way!</h1>
+    return <h1>Ваше сообщение уже в пути!</h1>
   }
   return (
     <form onSubmit={(e) => {
@@ -45,7 +45,7 @@ export default function Form() {
         value={message}
         onChange={e => setMessage(e.target.value)}
       />
-      <button type="submit">Send</button>
+      <button type="submit">Отправить</button>
     </form>
   );
 }
@@ -256,10 +256,10 @@ setTimeout(() => {
 
 Рассмотрим пример, как это правило делает обработчики событий более устойчивыми к ошибкам синхронизации. Ниже представлена форма, которая отправляет сообщение с задержкой в 5 секунд. Представьте себе сценарий:
 
-1. Вы нажимаете на кнопку "Send", отправляя "Hello" для Alice.
-2. До того, как истечёт пятисекундный таймер, вы успеете поменять значение поля "To" на "Bob".
+1. Вы нажимаете на кнопку "Отправить", отправляя "Привет" для Элис.
+2. До того, как истечёт пятисекундный таймер, вы успеете поменять значение поля "Кому" на "Бобу".
 
-Какой результат вы ожидаете увидеть в `alert`? Будет отображено "You said Hello to Alice" или же "You said Hello to Bob"? Попробуйте предположить, опираясь на знания, которые вы получили ранее, после запустите пример и посмотрите результат:
+Какой результат вы ожидаете увидеть в `alert`? Будет отображено "Вы сказали Привет Элис" или же "Вы сказали Привет Бобу"? Попробуйте предположить, опираясь на знания, которые вы получили ранее, после запустите пример и посмотрите результат:
 
 <Sandpack>
 
@@ -267,25 +267,25 @@ setTimeout(() => {
 import { useState } from 'react';
 
 export default function Form() {
-  const [to, setTo] = useState('Alice');
-  const [message, setMessage] = useState('Hello');
+  const [to, setTo] = useState('Элис');
+  const [message, setMessage] = useState('Привет');
 
   function handleSubmit(e) {
     e.preventDefault();
     setTimeout(() => {
-      alert(`You said ${message} to ${to}`);
+      alert(`Вы сказали ${message} ${to}`);
     }, 5000);
   }
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        To:{' '}
+        Кому:{' '}
         <select
           value={to}
           onChange={e => setTo(e.target.value)}>
-          <option value="Alice">Alice</option>
-          <option value="Bob">Bob</option>
+          <option value="Элис">Элис</option>
+          <option value="Бобу">Бобу</option>
         </select>
       </label>
       <textarea
@@ -293,7 +293,7 @@ export default function Form() {
         value={message}
         onChange={e => setMessage(e.target.value)}
       />
-      <button type="submit">Send</button>
+      <button type="submit">Отправить</button>
     </form>
   );
 }
@@ -344,12 +344,12 @@ export default function TrafficLight() {
   return (
     <>
       <button onClick={handleClick}>
-        Change to {walk ? 'Stop' : 'Walk'}
+        Изменить на {walk ? 'Стоп' : 'Можно идти'}
       </button>
       <h1 style={{
         color: walk ? 'darkgreen' : 'darkred'
       }}>
-        {walk ? 'Walk' : 'Stop'}
+        {walk ? 'Можно идти' : 'Стоп'}
       </h1>
     </>
   );
@@ -362,7 +362,7 @@ h1 { margin-top: 20px; }
 
 </Sandpack>
 
-Вам необходимо добавить `alert` в обработчик кликов. Когда загорается зелёный свет и появляется текст "Walk", должно быть оповещение "Stop is next". Когда свет красный и текст "Stop", должно быть оповещение "Walk is next".
+Вам необходимо добавить `alert` в обработчик кликов. Когда загорается зелёный свет и появляется текст "Можно идти", должно быть оповещение "Дальше Стоп". Когда свет красный и текст "Стоп", должно быть оповещение "Дальше Можно идти".
 
 Имеет ли значение, помещаете ли вы `alert` до или после вызова `setWalk`?
 
@@ -380,18 +380,18 @@ export default function TrafficLight() {
 
   function handleClick() {
     setWalk(!walk);
-    alert(walk ? 'Stop is next' : 'Walk is next');
+    alert(walk ? 'Дальше Стоп' : 'Дальше Можно идти');
   }
 
   return (
     <>
       <button onClick={handleClick}>
-        Change to {walk ? 'Stop' : 'Walk'}
+        Изменить на {walk ? 'Стоп' : 'Можно идти'}
       </button>
       <h1 style={{
         color: walk ? 'darkgreen' : 'darkred'
       }}>
-        {walk ? 'Walk' : 'Stop'}
+        {walk ? 'Можно идти' : 'Стоп'}
       </h1>
     </>
   );
@@ -409,26 +409,26 @@ h1 { margin-top: 20px; }
 Эта строка может показаться на первый взгляд нелогичной:
 
 ```js
-alert(walk ? 'Stop is next' : 'Walk is next');
+alert(walk ? 'Дальше Стоп' : 'Дальше Можно идти');
 ```
 
-В ней появится смысл, если читать её так: "Если светофор показывает 'Walk now', в сообщении должно быть 'Stop is next', иначе 'Walk is next'". Значение переменной `walk` внутри вашего обработчика событий соответствует значению `walk` этого рендера и не изменяется.
+В ней появится смысл, если читать её так: "Если светофор показывает 'Можно идти', в сообщении должно быть 'Дальше Стоп', иначе 'Дальше Можно идти'". Значение переменной `walk` внутри вашего обработчика событий соответствует значению `walk` этого рендера и не изменяется.
 
 Вы можете убедиться в этом и провести подстановку необходимых значений. Когда `walk` равно `true`, вы получаете:
 
 ```js
 <button onClick={() => {
   setWalk(false);
-  alert('Stop is next');
+  alert('Дальше Стоп');
 }}>
-  Change to Stop
+  Изменить на Стоп
 </button>
 <h1 style={{color: 'darkgreen'}}>
   Walk
 </h1>
 ```
 
-Таким образом, нажатие на "Change to Stop" ставит в очередь рендер с `walk` равным `false` и оповещением "Stop is next".
+Таким образом, нажатие на "Изменить на Стоп" ставит в очередь рендер с `walk` равным `false` и оповещением "Дальше Стоп".
 
 </Solution>
 
