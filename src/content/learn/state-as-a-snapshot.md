@@ -329,6 +329,7 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 Вам представлен светофор, который включается при нажатии кнопки:
 
+
 <Sandpack>
 
 ```js
