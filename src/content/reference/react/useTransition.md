@@ -4,7 +4,7 @@ title: useTransition
 
 <Intro>
 
-`useTransition` — это React хук, который позволяет вам обновлять состояние, не блокируя UI.
+`useTransition` — это React-хук, который позволяет вам обновлять состояние, не блокируя UI.
 
 ```js
 const [isPending, startTransition] = useTransition()
@@ -205,7 +205,7 @@ export default function TabButton({ children, isActive, onClick }) {
 ```js AboutTab.js
 export default function AboutTab() {
   return (
-    <p>Welcome to my profile!</p>
+    <p>Добро пожаловать в мой профиль!</p>
   );
 }
 ```
@@ -236,7 +236,7 @@ function SlowPost({ index }) {
 
   return (
     <li className="item">
-      Post #{index + 1}
+      Пост №{index + 1}
     </li>
   );
 }
@@ -249,7 +249,7 @@ export default function ContactTab() {
   return (
     <>
       <p>
-        You can find me online here:
+        Найти меня в Интернете можно здесь:
       </p>
       <ul>
         <li>admin@mysite.com</li>
@@ -273,7 +273,7 @@ b { display: inline-block; margin-right: 10px; }
 
 В этом примере вкладка "Posts" также **искусственно замедлена**, так что для её рендера требуется не менее секунды. В отличие от предыдущего примера, это обновление состояния **не является переходом**.
 
-Нажмите на "Posts", а затем сразу нажмите на "Contact". Обратите внимание, что приложение зависает при ренднре замедленной вкладки, а UI перестаёт отвечать на запросы. Это обновление состояния не является переходом, поэтому медленный повторный рендер заморозил пользовательский интерфейс.
+Нажмите на "Posts", а затем сразу нажмите на "Contact". Обратите внимание, что приложение зависает при рендере замедленной вкладки, а UI перестаёт отвечать на запросы. Это обновление состояния не является переходом, поэтому медленный повторный рендер заморозил пользовательский интерфейс.
 
 <Sandpack>
 
@@ -341,7 +341,7 @@ export default function TabButton({ children, isActive, onClick }) {
 ```js AboutTab.js
 export default function AboutTab() {
   return (
-    <p>Welcome to my profile!</p>
+    <p>Добро пожаловать в мой профиль!</p>
   );
 }
 ```
@@ -372,7 +372,7 @@ function SlowPost({ index }) {
 
   return (
     <li className="item">
-      Post #{index + 1}
+      Пост №{index + 1}
     </li>
   );
 }
@@ -385,7 +385,7 @@ export default function ContactTab() {
   return (
     <>
       <p>
-        You can find me online here:
+        Найти меня в Интернете можно здесь:
       </p>
       <ul>
         <li>admin@mysite.com</li>
@@ -496,7 +496,7 @@ export default function TabButton({ children, isActive, onClick }) {
 ```js AboutTab.js
 export default function AboutTab() {
   return (
-    <p>Welcome to my profile!</p>
+    <p>Добро пожаловать в мой профиль!</p>
   );
 }
 ```
@@ -527,7 +527,7 @@ function SlowPost({ index }) {
 
   return (
     <li className="item">
-      Post #{index + 1}
+      Пост №{index + 1}
     </li>
   );
 }
@@ -540,7 +540,7 @@ export default function ContactTab() {
   return (
     <>
       <p>
-        You can find me online here:
+        Найти меня в Интернете можно здесь:
       </p>
       <ul>
         <li>admin@mysite.com</li>
@@ -642,7 +642,7 @@ export default function TabButton({ children, isActive, onClick }) {
 ```js AboutTab.js
 export default function AboutTab() {
   return (
-    <p>Welcome to my profile!</p>
+    <p>Добро пожаловать в мой профиль!</p>
   );
 }
 ```
@@ -673,7 +673,7 @@ function SlowPost({ index }) {
 
   return (
     <li className="item">
-      Post #{index + 1}
+      Пост №{index + 1}
     </li>
   );
 }
@@ -686,7 +686,7 @@ export default function ContactTab() {
   return (
     <>
       <p>
-        You can find me online here:
+        Найти меня в Интернете можно здесь:
       </p>
       <ul>
         <li>admin@mysite.com</li>
@@ -709,7 +709,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ### Предотвращение нежелательных индикаторов загрузки {/*preventing-unwanted-loading-indicators*/}
 
-В этом примере компонент `PostsTab` получает некоторые данные, используя источник данных поддерживающий [Задержку](/reference/react/Suspense). Когда вы нажимаете на вкладку "Posts", компонент `PostsTab` *приостанавливается*, что приводит к появлению ближайшего запасного варианта загрузки:
+В этом примере компонент `PostsTab` получает некоторые данные, используя источник данных поддерживающий [Задержку](/reference/react/Suspense). Когда вы нажимаете на вкладку "Posts", компонент `PostsTab` *задерживается*, что приводит к появлению ближайшего запасного варианта загрузки:
 
 <Sandpack>
 
@@ -723,7 +723,7 @@ import ContactTab from './ContactTab.js';
 export default function TabContainer() {
   const [tab, setTab] = useState('about');
   return (
-    <Suspense fallback={<h1>🌀 Loading...</h1>}>
+    <Suspense fallback={<h1>🌀 Загрузка...</h1>}>
       <TabButton
         isActive={tab === 'about'}
         onClick={() => setTab('about')}
@@ -769,7 +769,7 @@ export default function TabButton({ children, isActive, onClick }) {
 ```js AboutTab.js hidden
 export default function AboutTab() {
   return (
-    <p>Welcome to my profile!</p>
+    <p>Добро пожаловать в мой профиль!</p>
   );
 }
 ```
@@ -835,7 +835,7 @@ export default function ContactTab() {
   return (
     <>
       <p>
-        You can find me online here:
+        Найти меня в Интернете можно здесь:
       </p>
       <ul>
         <li>admin@mysite.com</li>
@@ -865,7 +865,7 @@ async function getData(url) {
   if (url.startsWith('/posts')) {
     return await getPosts();
   } else {
-    throw Error('Not implemented');
+    throw Error('Не реализовано');
   }
 }
 
@@ -878,7 +878,7 @@ async function getPosts() {
   for (let i = 0; i < 500; i++) {
     posts.push({
       id: i,
-      title: 'Post #' + (i + 1)
+      title: 'Пост №' + (i + 1)
     });
   }
   return posts;
@@ -909,7 +909,7 @@ import ContactTab from './ContactTab.js';
 export default function TabContainer() {
   const [tab, setTab] = useState('about');
   return (
-    <Suspense fallback={<h1>🌀 Loading...</h1>}>
+    <Suspense fallback={<h1>🌀 Загрузка...</h1>}>
       <TabButton
         isActive={tab === 'about'}
         onClick={() => setTab('about')}
@@ -963,7 +963,7 @@ export default function TabButton({ children, isActive, onClick }) {
 ```js AboutTab.js hidden
 export default function AboutTab() {
   return (
-    <p>Welcome to my profile!</p>
+    <p>Добро пожаловать в мой профиль!</p>
   );
 }
 ```
@@ -1029,7 +1029,7 @@ export default function ContactTab() {
   return (
     <>
       <p>
-        You can find me online here:
+        Найти меня в Интернете можно здесь:
       </p>
       <ul>
         <li>admin@mysite.com</li>
@@ -1059,7 +1059,7 @@ async function getData(url) {
   if (url.startsWith('/posts')) {
     return await getPosts();
   } else {
-    throw Error('Not implemented');
+    throw Error('Не реализовано');
   }
 }
 
@@ -1072,7 +1072,7 @@ async function getPosts() {
   for (let i = 0; i < 500; i++) {
     posts.push({
       id: i,
-      title: 'Post #' + (i + 1)
+      title: 'Пост №' + (i + 1)
     });
   }
   return posts;
@@ -1097,7 +1097,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### Создание маршрутизатора, поддерживающего Suspense {/*building-a-suspense-enabled-router*/}
+### Создание маршрутизатора, поддерживающего Задержку {/*building-a-suspense-enabled-router*/}
 
 Если вы создаёте React-фреймворк или маршрутизатор, мы рекомендуем помечать навигацию между страницами как переходы.
 
@@ -1185,7 +1185,7 @@ function Router() {
 }
 
 function BigSpinner() {
-  return <h2>🌀 Loading...</h2>;
+  return <h2>🌀 Загрузка...</h2>;
 }
 ```
 
@@ -1196,7 +1196,7 @@ export default function Layout({ children, isPending }) {
       <section className="header" style={{
         opacity: isPending ? 0.7 : 1
       }}>
-        Music Browser
+        Браузер музыки
       </section>
       <main>
         {children}
@@ -1210,7 +1210,7 @@ export default function Layout({ children, isPending }) {
 export default function IndexPage({ navigate }) {
   return (
     <button onClick={() => navigate('/the-beatles')}>
-      Open The Beatles artist page
+      Открыть страницу исполнителя The Beatles
     </button>
   );
 }
@@ -1369,7 +1369,7 @@ async function getData(url) {
   } else if (url === '/the-beatles/bio') {
     return await getBio();
   } else {
-    throw Error('Not implemented');
+    throw Error('Не реализовано');
   }
 }
 
@@ -1379,10 +1379,10 @@ async function getBio() {
     setTimeout(resolve, 500);
   });
 
-  return `The Beatles were an English rock band, 
-    formed in Liverpool in 1960, that comprised 
-    John Lennon, Paul McCartney, George Harrison 
-    and Ringo Starr.`;
+  return `The Beatles — английская рок-группа, 
+    сформированная в Ливерпуле в 1960 году, в состав которой входили 
+    Джон Леннон, Пол Маккартни, Джордж Харрисон 
+    и Ринго Старр.`;
 }
 
 async function getAlbums() {
@@ -1520,10 +1520,10 @@ function handleChange(e) {
 return <input value={text} onChange={handleChange} />;
 ```
 
-Это происходит потому, что переходы являются неблокирующими, но обновление ввода в ответ на событие изменения должно происходить синхронно. Если вы хотите запустить переход при вводе текста, у вас есть два варианта:
+Это происходит, потому что переходы являются неблокирующими, но обновление ввода в ответ на событие изменения должно происходить синхронно. Если вы хотите запустить переход при вводе текста, у вас есть два варианта:
 
 1. Вы можете объявить две отдельные переменные состояния: одну для состояния ввода (которая всегда обновляется синхронно), и одну, которую вы будете обновлять во время перехода. Это позволит вам управлять вводом с использованием синхронного состояния и передавать переменную состояния перехода (которая будет «отставать» от ввода) в остальную логику рендеринга.
-2. В качестве альтернативы, вы можете использовать одну переменную состояния и добавить [`useDeferredValue`](/reference/react/useDeferredValue), которая будет «отставать» от реального значения. Она будет вызывать неблокирующие перерисовки, чтобы «догнать» новое значение автоматически.
+2. В качестве альтернативы, вы можете использовать одну переменную состояния и добавить [`useDeferredValue`](/reference/react/useDeferredValue), так что она будет «отставать» от реального значения. Она будет вызывать неблокирующие перерисовки, чтобы «догнать» новое значение автоматически.
 
 ---
 
