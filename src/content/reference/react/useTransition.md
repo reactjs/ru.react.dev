@@ -132,9 +132,9 @@ function TabContainer() {
 
 #### Обновление текущей вкладки в переходе {/*updating-the-current-tab-in-a-transition*/}
 
-В этом примере вкладка "Posts" **искусственно замедлена**, чтобы ей требовалось не менее одной секунды для рендеринга.
+В этом примере вкладка «Публикации» **искусственно замедлена**, чтобы ей требовалось не менее одной секунды для рендеринга.
 
-Нажмите на "Posts", а затем сразу нажмите на "Contact". Обратите внимание, что это прерывает медленный рендеринг "Posts". Вкладка "Contact" отображается сразу. Поскольку это обновление состояния помечено как переход, медленный повторный рендеринг не блокирует пользовательский интерфейс.
+Нажмите на «Публикации», а затем сразу нажмите на «Контакты». Обратите внимание, что это прерывает медленный рендеринг «Публикации». Вкладка «Контакты» отображается сразу. Поскольку это обновление состояния помечено как переход, медленный повторный рендеринг не блокирует пользовательский интерфейс.
 
 <Sandpack>
 
@@ -161,19 +161,19 @@ export default function TabContainer() {
         isActive={tab === 'about'}
         onClick={() => selectTab('about')}
       >
-        About
+        Обо мне
       </TabButton>
       <TabButton
         isActive={tab === 'posts'}
         onClick={() => selectTab('posts')}
       >
-        Posts (slow)
+        Публикации (замедлена)
       </TabButton>
       <TabButton
         isActive={tab === 'contact'}
         onClick={() => selectTab('contact')}
       >
-        Contact
+        Контакты
       </TabButton>
       <hr />
       {tab === 'about' && <AboutTab />}
@@ -271,9 +271,9 @@ b { display: inline-block; margin-right: 10px; }
 
 #### Обновление текущей вкладки без перехода {/*updating-the-current-tab-without-a-transition*/}
 
-В этом примере вкладка "Posts" также **искусственно замедлена**, так что для её рендера требуется не менее секунды. В отличие от предыдущего примера, это обновление состояния **не является переходом**.
+В этом примере вкладка «Публикации» также **искусственно замедлена**, так что для её рендера требуется не менее секунды. В отличие от предыдущего примера, это обновление состояния **не является переходом**.
 
-Нажмите на "Posts", а затем сразу нажмите на "Contact". Обратите внимание, что приложение зависает при рендере замедленной вкладки, а UI перестаёт отвечать на запросы. Это обновление состояния не является переходом, поэтому медленный повторный рендер заморозил пользовательский интерфейс.
+Нажмите на «Публикации», а затем сразу нажмите на «Контакты». Обратите внимание, что приложение зависает при рендере замедленной вкладки, а UI перестаёт отвечать на запросы. Это обновление состояния не является переходом, поэтому медленный повторный рендер заморозил пользовательский интерфейс.
 
 <Sandpack>
 
@@ -297,19 +297,19 @@ export default function TabContainer() {
         isActive={tab === 'about'}
         onClick={() => selectTab('about')}
       >
-        About
+        Обо мне
       </TabButton>
       <TabButton
         isActive={tab === 'posts'}
         onClick={() => selectTab('posts')}
       >
-        Posts (slow)
+        Публикации (замедлена)
       </TabButton>
       <TabButton
         isActive={tab === 'contact'}
         onClick={() => selectTab('contact')}
       >
-        Contact
+        Контакты
       </TabButton>
       <hr />
       {tab === 'about' && <AboutTab />}
@@ -409,7 +409,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ---
 
-### Updating the parent component in a transition {/*updating-the-parent-component-in-a-transition*/}
+### Обновление родительского компонента при переходе {/*updating-the-parent-component-in-a-transition*/}
 
 Вы также можете обновить состояние родительского компонента с помощью вызова `useTransition`. Например, этот компонент `TabButton` заключает свою логику `onClick` в переход:
 
@@ -431,7 +431,7 @@ export default function TabButton({ children, isActive, onClick }) {
 }
 ```
 
-Поскольку родительский компонент обновляет своё состояние внутри обработчика события `onClick`, это обновление состояния помечается как переход. Вот поэтому, как и в предыдущем примере, вы можете нажать на "Posts", а затем сразу же нажать на "Contact". Обновление выбранной вкладки помечается как переход, поэтому взаимодействия пользователя не блокируются.
+Поскольку родительский компонент обновляет своё состояние внутри обработчика события `onClick`, это обновление состояния помечается как переход. Вот поэтому, как и в предыдущем примере, вы можете нажать на «Публикации», а затем сразу же нажать на «Контакты». Обновление выбранной вкладки помечается как переход, поэтому взаимодействия пользователя не блокируются.
 
 <Sandpack>
 
@@ -450,19 +450,19 @@ export default function TabContainer() {
         isActive={tab === 'about'}
         onClick={() => setTab('about')}
       >
-        About
+        Обо мне
       </TabButton>
       <TabButton
         isActive={tab === 'posts'}
         onClick={() => setTab('posts')}
       >
-        Posts (slow)
+        Публикации (замедлена)
       </TabButton>
       <TabButton
         isActive={tab === 'contact'}
         onClick={() => setTab('contact')}
       >
-        Contact
+        Контакты
       </TabButton>
       <hr />
       {tab === 'about' && <AboutTab />}
@@ -574,7 +574,7 @@ function TabButton({ children, isActive, onClick }) {
   // ...
 ```
 
-Обратите внимание, что нажатие на "Posts" теперь кажется более отзывчивым, потому что кнопка вкладки сразу же обновляется:
+Обратите внимание, что нажатие на «Публикации» теперь кажется более отзывчивым, потому что кнопка вкладки сразу же обновляется:
 
 <Sandpack>
 
@@ -593,19 +593,19 @@ export default function TabContainer() {
         isActive={tab === 'about'}
         onClick={() => setTab('about')}
       >
-        About
+        Обо мне
       </TabButton>
       <TabButton
         isActive={tab === 'posts'}
         onClick={() => setTab('posts')}
       >
-        Posts (slow)
+        Публикации (замедлена)
       </TabButton>
       <TabButton
         isActive={tab === 'contact'}
         onClick={() => setTab('contact')}
       >
-        Contact
+        Контакты
       </TabButton>
       <hr />
       {tab === 'about' && <AboutTab />}
@@ -709,7 +709,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ### Предотвращение нежелательных индикаторов загрузки {/*preventing-unwanted-loading-indicators*/}
 
-В этом примере компонент `PostsTab` получает некоторые данные, используя источник данных поддерживающий [Задержку](/reference/react/Suspense). Когда вы нажимаете на вкладку "Posts", компонент `PostsTab` *задерживается*, что приводит к появлению ближайшего запасного варианта загрузки:
+В этом примере компонент `PostsTab` получает некоторые данные, используя источник данных поддерживающий [Задержку](/reference/react/Suspense). Когда вы нажимаете на вкладку «Публикации», компонент `PostsTab` *задерживается*, что приводит к появлению ближайшего запасного варианта загрузки:
 
 <Sandpack>
 
@@ -728,19 +728,19 @@ export default function TabContainer() {
         isActive={tab === 'about'}
         onClick={() => setTab('about')}
       >
-        About
+        Обо мне
       </TabButton>
       <TabButton
         isActive={tab === 'posts'}
         onClick={() => setTab('posts')}
       >
-        Posts
+        Публикации
       </TabButton>
       <TabButton
         isActive={tab === 'contact'}
         onClick={() => setTab('contact')}
       >
-        Contact
+        Контакты
       </TabButton>
       <hr />
       {tab === 'about' && <AboutTab />}
@@ -895,7 +895,7 @@ b { display: inline-block; margin-right: 10px; }
 
 Скрытие всего контейнера вкладок для отображения индикатора загрузки приводит к неприятному пользовательскому опыту. Если вы добавите `useTransition` в `TabButton`, вы можете вместо этого указать состояние ожидания в кнопке вкладки.
 
-Обратите внимание, что нажатие на "Posts" больше не заменяет весь контейнер вкладок на спиннер:
+Обратите внимание, что нажатие на «Публикации» больше не заменяет весь контейнер вкладок на спиннер:
 
 <Sandpack>
 
@@ -914,19 +914,19 @@ export default function TabContainer() {
         isActive={tab === 'about'}
         onClick={() => setTab('about')}
       >
-        About
+        Обо мне
       </TabButton>
       <TabButton
         isActive={tab === 'posts'}
         onClick={() => setTab('posts')}
       >
-        Posts
+        Публикации
       </TabButton>
       <TabButton
         isActive={tab === 'contact'}
         onClick={() => setTab('contact')}
       >
-        Contact
+        Контакты
       </TabButton>
       <hr />
       {tab === 'about' && <AboutTab />}
@@ -1091,7 +1091,7 @@ b { display: inline-block; margin-right: 10px; }
 
 <Note>
 
-Переходы будут «ждать» достаточно долго, чтобы не скрыть *уже показанный* контент (например, контейнер вкладок). Если бы во вкладке "Posts" присутствовала [вложенная граница `<Suspense>`](/reference/react/Suspense#revealing-nested-content-as-it-loads), переход бы её не «ждал».
+Переходы будут «ждать» достаточно долго, чтобы не скрыть *уже показанный* контент (например, контейнер вкладок). Если бы во вкладке «Публикации» присутствовала [вложенная граница `<Suspense>`](/reference/react/Suspense#revealing-nested-content-as-it-loads), переход бы её не «ждал».
 
 </Note>
 
