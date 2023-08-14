@@ -52,7 +52,11 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 Эти компоненты сейчас находятся внутри **файла корневого компонента,** который в примере называется `App.js`. При использовании [Create React App](https://create-react-app.dev/) приложение находится в `src/App.js`. Однако, в зависимости от конфигурации проекта, корневой компонент может находиться в другом файле. У фреймворка с маршрутизацией на основе файлов, например Next.js, корневой компонент будет разным для каждой страницы.
+=======
+These currently live in a **root component file,** named `App.js` in this example. Depending on your setup, your root component could be in another file, though. If you use a framework with file-based routing, such as Next.js, your root component will be different for every page.
+>>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
 
 ## Экспорт и импорт компонентов {/*exporting-and-importing-a-component*/}
 
