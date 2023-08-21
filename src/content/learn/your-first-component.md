@@ -211,11 +211,7 @@ function Profile() {
 
 #### Компоненты на все случаи жизни {/*components-all-the-way-down*/}
 
-<<<<<<< HEAD
-Ваше React-приложение начинается с "корневого" компонента. Обычно он создаётся автоматически при создании нового проекта. Например, если вы используете [CodeSandbox](https://codesandbox.io/) или [Create React App](https://create-react-app.dev/), корневой компонент определён в файле `src/App.js`. Если вы используете фреймворк [Next.js](https://nextjs.org/), корневой компонент определён в файле `pages/index.js`. В этих примерах вы экспортировали корневые компоненты.
-=======
-Your React application begins at a "root" component. Usually, it is created automatically when you start a new project. For example, if you use [CodeSandbox](https://codesandbox.io/) or if you use the framework [Next.js](https://nextjs.org/), the root component is defined in `pages/index.js`. In these examples, you've been exporting root components.
->>>>>>> 819518cfe32dd2db3b765410247c30feea713c77
+Ваше React-приложение начинается с "корневого" компонента. Обычно он создаётся автоматически при создании нового проекта. Например, если вы используете [CodeSandbox](https://codesandbox.io/), корневой компонент определён в файле `src/App.js`. Если вы используете фреймворк [Next.js](https://nextjs.org/), корневой компонент определён в файле `pages/index.js`. В этих примерах вы экспортировали корневые компоненты.
 
 Большинство React-приложений используют компоненты повсюду. Это означает, что вы будете использовать компоненты не только для переиспользуемых элементов, таких как кнопки, но также для более крупных элементов: боковых панелей, списков и в конечном итоге, целых страниц! Компоненты — это удобный способ организации кода UI и разметки, даже если некоторые из них используются только один раз.
 
