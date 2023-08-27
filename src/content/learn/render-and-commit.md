@@ -1,27 +1,27 @@
 ---
-title: Render and Commit
+title: Рендер и фиксация
 ---
 
 <Intro>
 
-Before your components are displayed on screen, they must be rendered by React. Understanding the steps in this process will help you think about how your code executes and explain its behavior.
+Прежде чем ваши компоненты появятся на экране, они должны быть отрисованы React. Понимая этапы этого процесса, вам будет проще судить о том, как исполняется ваш код, и объяснить его поведение
 
 </Intro>
 
 <YouWillLearn>
 
-* What rendering means in React
-* When and why React renders a component
-* The steps involved in displaying a component on screen
-* Why rendering does not always produce a DOM update
+* Что означает рендеринг в React.
+* Когда и почему React рендерит компонент.
+* Этапы отображения компонента на экране.
+* Почему рендеринг не всегда приводит к обновлению DOM.
 
 </YouWillLearn>
 
-Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. In this scenario, React is the waiter who puts in requests from customers and brings them their orders. This process of requesting and serving UI has three steps:
+Представьте, что ваши компоненты — это повара на кухне, которые составляют вкусные блюда из ингредиентов. Тогда React — это официант, который передает запросы клиентов, а затем подает им их блюда. Этот процесс запроса и подачи пользовательского интерфейса состоит из трех этапов:
 
-1. **Triggering** a render (delivering the guest's order to the kitchen)
-2. **Rendering** the component (preparing the order in the kitchen)
-3. **Committing** to the DOM (placing the order on the table)
+1. **Триггер** рендеринга (передача заказа гостя на кухню)
+2. **Рендеринг** компонента (приготовление заказа на кухне)
+3. **Фиксация** в DOM (подача блюда на стол)
 
 <IllustrationBlock sequential>
   <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
@@ -29,16 +29,16 @@ Imagine that your components are cooks in the kitchen, assembling tasty dishes f
   <Illustration caption="Commit" alt="React delivers the Card to the user at their table." src="/images/docs/illustrations/i_render-and-commit3.png" />
 </IllustrationBlock>
 
-## Step 1: Trigger a render {/*step-1-trigger-a-render*/}
+## Часть 1: Триггер рендера {/*step-1-trigger-a-render*/}
 
-There are two reasons for a component to render:
+Рендер компонента происходит по двум причинам:
 
-1. It's the component's **initial render.**
-2. The component's (or one of its ancestors') **state has been updated.**
+1. Это его **начальный рендеринг.**
+2. Его **состояние** (или состояние его родителя) **был обновлён.**
 
-### Initial render {/*initial-render*/}
+### Начальный рендер {/*initial-render*/}
 
-When your app starts, you need to trigger the initial render. Frameworks and sandboxes sometimes hide this code, but it's done by calling [`createRoot`](/reference/react-dom/client/createRoot) with the target DOM node, and then calling its `render` method with your component:
+Когда ваше приложение запускается, вам необходимо запустить начальный рендеринг. Фреймворки и песочницы иногда скрывают этот код, но это делается вызовом функции [`createRoot`](/reference/react-dom/client/createRoot) с целевым DOM-узлом, а затем вызовом его метода `render` c вашим компонентом:
 
 <Sandpack>
 
@@ -63,11 +63,11 @@ export default function Image() {
 
 </Sandpack>
 
-Try commenting out the `root.render()` call and see the component disappear!
+Попробуйте закомментировать вызов `root.render()` и увидите, как компонент исчезнет!
 
-### Re-renders when state updates {/*re-renders-when-state-updates*/}
+### Ре-рендер, когда состояние обновляется {/*re-renders-when-state-updates*/}
 
-Once the component has been initially rendered, you can trigger further renders by updating its state with the [`set` function.](/reference/react/useState#setstate) Updating your component's state automatically queues a render. (You can imagine these as a restaurant guest ordering tea, dessert, and all sorts of things after putting in their first order, depending on the state of their thirst or hunger.)
+После того как компонент был первоначально отрендерен, вы можете инициировать последующие рендеры, обновляя его состояние с помощью функции [`set`](/reference/react/useState#setstate) Обновление состояние компонента автоматически ставит его в очередь на рендер. (Вы можете представить это как посетитель ресторана, который после первого заказа заказывает чай, десерт и всевозможные вещи, в зависимости от состояния жажды или голода).
 
 <IllustrationBlock sequential>
   <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
@@ -75,16 +75,16 @@ Once the component has been initially rendered, you can trigger further renders 
   <Illustration caption="...render!" alt="The Card Chef gives React the pink Card." src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>
 
-## Step 2: React renders your components {/*step-2-react-renders-your-components*/}
+## Часть 2: React рендерит ваш компонент {/*step-2-react-renders-your-components*/}
 
-After you trigger a render, React calls your components to figure out what to display on screen. **"Rendering" is React calling your components.**
+После запуска рендера React вызывает ваши компоненты, чтобы определить, что отобразить на экране. **«Рендеринг» — это обращение React к вашим компонентам*.
 
-* **On initial render,** React will call the root component.
-* **For subsequent renders,** React will call the function component whose state update triggered the render.
+* **На начальном рендере,** React вызовет корневой компонент.
+* **Для последующих ре-рендеров** React вызовет функцию компонента, где обновился стейт и выполнит его ре-рендер.
 
-This process is recursive: if the updated component returns some other component, React will render _that_ component next, and if that component also returns something, it will render _that_ component next, and so on. The process will continue until there are no more nested components and React knows exactly what should be displayed on screen.
+Этот процесс рекурсивен: если обновленный компонент возвращает какой-то другой компонент, React будет рендерить _этот_ компонент следующим, и если этот компонент тоже что-то возвращает, он будет рендерить _этот_ компонент следующим, и так далее. Этот процесс будет продолжаться до тех пор, пока не останется вложенных компонентов и React не будет точно знать, что должно быть отображено на экране.
 
-In the following example, React will call `Gallery()` and  `Image()` several times:
+В следующем примере React вызовет `Gallery()` и  `Image()` несколько раз:
 
 <Sandpack>
 
@@ -124,36 +124,36 @@ img { margin: 0 10px 10px 0; }
 
 </Sandpack>
 
-* **During the initial render,** React will [create the DOM nodes](https://developer.mozilla.org/docs/Web/API/Document/createElement) for `<section>`, `<h1>`, and three `<img>` tags. 
-* **During a re-render,** React will calculate which of their properties, if any, have changed since the previous render. It won't do anything with that information until the next step, the commit phase.
+* **На начальном рендере,** React [создаст DOM ноды](https://developer.mozilla.org/docs/Web/API/Document/createElement) для `<section>`, `<h1>`, и трёзх `<img>` тегов. 
+* **Во время повторного ре-рендеринга,** React вычислит, какие из их свойств, если таковые имеются, изменились с момента предыдущего рендеринга. Он ничего не будет делать с этой информацией до следующего шага, фазы фиксации.
 
 <Pitfall>
 
-Rendering must always be a [pure calculation](/learn/keeping-components-pure):
+Рендеринг всегда должен быть [чистым вычислением.](/learn/keeping-components-pure):
 
-* **Same inputs, same output.** Given the same inputs, a component should always return the same JSX. (When someone orders a salad with tomatoes, they should not receive a salad with onions!)
-* **It minds its own business.** It should not change any objects or variables that existed before rendering. (One order should not change anyone else's order.)
+* **Одни и те же входные данные, один и тот же результат.** При одинаковых входящих данных компонент всегда должен возвращать один и тот же JSX. (Когда кто-то заказывает салат с помидорами, то он не должен получить салат с луком!)
+* **Занимается только своей задачей.** Не изменять объекты или переменные, существовавшие до рендеринга. (Один заказ не должен влиять на другой заказ).
 
-Otherwise, you can encounter confusing bugs and unpredictable behavior as your codebase grows in complexity. When developing in "Strict Mode", React calls each component's function twice, which can help surface mistakes caused by impure functions.
+В противном случае вы можете столкнуться с непонятными ошибками и непредсказуемым поведением по мере роста сложности вашей кодовой базы. При разработке в "строгом режиме" React вызывает функцию каждого компонента дважды, что может помочь выявить ошибки, вызванные нечистыми функциями.
 
 </Pitfall>
 
 <DeepDive>
 
-#### Optimizing performance {/*optimizing-performance*/}
+#### Оптимизируем производительность {/*optimizing-performance*/}
 
-The default behavior of rendering all components nested within the updated component is not optimal for performance if the updated component is very high in the tree. If you run into a performance issue, there are several opt-in ways to solve it described in the [Performance](https://reactjs.org/docs/optimizing-performance.html) section. **Don't optimize prematurely!**
+Поведение по умолчанию — рендеринг всех компонентов, вложенных в обновленный компонент, — не является оптимальным с точки зрения производительности, если обновляемый компонент находится очень высоко в дереве. Если вы столкнулись с проблемой производительности, есть несколько способов ее решения, описанных в разделе [Производительность](https://reactjs.org/docs/optimizing-performance.html). **Не оптимизируйте преждевременно!**
 
 </DeepDive>
 
-## Step 3: React commits changes to the DOM {/*step-3-react-commits-changes-to-the-dom*/}
+## Часть 3: React фиксирует изменения в DOM {/*step-3-react-commits-changes-to-the-dom*/}
 
-After rendering (calling) your components, React will modify the DOM. 
+После рендеринга (вызова) ваших компонентов React модифицирует DOM. 
 
-* **For the initial render,** React will use the [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API to put all the DOM nodes it has created on screen. 
-* **For re-renders,** React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
+* **На начальном рендере,** React использует [`appendChild()`](https://developer.mozilla.org/ru/docs/Web/API/Node/appendChild) DOM API, чтобы вставить все DOM ноды, которые он создал на экране. 
+* **Для ре-рендеров,** React будет применять минимально необходимые операции (вычисляемые во время рендеринга!), чтобы DOM соответствовал последнему выводу рендеринга.
 
-**React only changes the DOM nodes if there's a difference between renders.** For example, here is a component that re-renders with different props passed from its parent every second. Notice how you can add some text into the `<input>`, updating its `value`, but the text doesn't disappear when the component re-renders:
+**React изменяет узлы DOM только если есть разница между рендерами.** Например, вот компонент, который рендерится с разными пропсами, передаваемыми от родителя каждую секунду. Обратите внимание, как вы можете добавить некоторый текст в `<input>`, обновляя его `значение`, но текст не исчезает при повторном рендеринге компонента:
 
 <Sandpack>
 
@@ -193,21 +193,21 @@ export default function App() {
 
 </Sandpack>
 
-This works because during this last step, React only updates the content of `<h1>` with the new `time`. It sees that the `<input>` appears in the JSX in the same place as last time, so React doesn't touch the `<input>`—or its `value`!
-## Epilogue: Browser paint {/*epilogue-browser-paint*/}
+Это работает, потому что в предыдущий раз React обновил значение `<h1>` с новым `time`. Он видит, что `<input>` появляется в том же месте JSX, поэтому React не трогает `<input>`— или его `value`!
+## Заключительная часть: Браузерная отрисовка {/*epilogue-browser-paint*/}
 
-After rendering is done and React updated the DOM, the browser will repaint the screen. Although this process is known as "browser rendering", we'll refer to it as "painting" to avoid confusion throughout the docs.
+После того как рендеринг завершен и React обновил DOM, браузер перерисовывает экран. Хотя этот процесс известен как «браузерный рендеринг», мы будем называть его «рисованием», чтобы избежать путаницы в документации.
 
 <Illustration alt="A browser painting 'still life with card element'." src="/images/docs/illustrations/i_browser-paint.png" />
 
 <Recap>
 
-* Any screen update in a React app happens in three steps:
-  1. Trigger
-  2. Render
-  3. Commit
-* You can use Strict Mode to find mistakes in your components
-* React does not touch the DOM if the rendering result is the same as last time
+* Любое обновление экрана в приложении React происходит в три этапа:
+  1. Триггер
+  2. Рендеринг
+  3. Фиксация
+* Вы можете использовать строгий режим для поиска ошибок в ваших компонентах.
+* React не трогает DOM, если результат рендеринга такой же, как и в прошлый раз.
 
 </Recap>
 

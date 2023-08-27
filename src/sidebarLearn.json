@@ -25,7 +25,7 @@
       "path": "/learn/installation",
       "routes": [
         {
-          "title": "Start a New React Project",
+          "title": "Начать новый React-проект",
           "path": "/learn/start-a-new-react-project"
         },
         {
@@ -35,6 +35,10 @@
         {
           "title": "Editor Setup",
           "path": "/learn/editor-setup"
+        },
+        {
+          "title": "Using TypeScript",
+          "path": "/learn/typescript"
         },
         {
           "title": "React Developer Tools",
@@ -186,7 +190,7 @@
         },
         {
           "title": "Removing Effect Dependencies",
-          "path": "/learn/removing-effect-dependencies"              
+          "path": "/learn/removing-effect-dependencies"
         },
         {
           "title": "Reusing Logic with Custom Hooks",
