@@ -61,7 +61,7 @@ JSON API возвращает данные, которые выглядят та
 
 </FullWidth>
 
-Обратите внимание, что внутри `ProductTable` (фиолетовый) заголовок таблицы ("Name" и "Price") сам по себе не является отдельным компонентом. Отделять его или нет -- вопрос личного предпочтения. В данном примере он является частью `ProductTable`, потому что находится внутри списка `ProductTable`. Тем не менее, если в будущем заголовок пополнится новыми функциями (например возможностью сортировать товар) вы можете извлечь его в самостоятельный компонент  `ProductTableHeader`.
+Обратите внимание, что внутри `ProductTable` (фиолетовый) заголовок таблицы ("Name" и "Price") сам по себе не является отдельным компонентом. Отделять его или нет -- вопрос личного предпочтения. В данном примере он является частью `ProductTable`, потому что находится внутри списка `ProductTable`. Тем не менее, если в будущем заголовок пополнится новыми функциями (например, возможностью сортировать товар), вы можете извлечь его в самостоятельный компонент  `ProductTableHeader`.
 
 Теперь, когда вы определили компоненты на макете, расположите их согласно иерархии. Компоненты, которые являются частью других компонентов, в иерархии будут дочерними:
 
@@ -73,11 +73,11 @@ JSON API возвращает данные, которые выглядят та
 
 ## Шаг 2: Создайте статическое приложение на React {/*step-2-build-a-static-version-in-react*/}
 
-Теперь, когда все компоненты расположены в иерархическом порядке, пришло время воплотить в жизнь ваше приложение. Самый лёгкий способ -- создать версию, которая рендерит UI, основанный на вашей модели данных, но не предполагает никакой интерактивности... пока что! Обычно проще всего сначала создать статическое приложение и только потом добавить интерактивность. Написание статического приложения требует много печатания и совсем немного мышления. С другой стороны, создание интерактивного приложения подразумевает более глубокий мыслительный процесс и лишь долю рутинной печати.
+Теперь, когда все компоненты расположены в иерархическом порядке, пришло время воплотить в жизнь ваше приложение. Самый лёгкий способ -- создать версию, которая рендерит UI, основанный на вашей модели данных, но не предполагает никакой интерактивности... пока что! Обычно проще всего сначала создать статическое приложение и только потом добавить интерактивность. Написание статического приложения требует много печатать и совсем немного думать. С другой стороны, создание интерактивного приложения подразумевает более глубокий мыслительный процесс и лишь долю рутинной печати.
 
 Чтобы написать статическое приложение, отображающее модель данных, нам нужно создать [компоненты,](/learn/your-first-component) которые используют другие компоненты и передают данные через [пропсы.](/learn/passing-props-to-a-component) С помощью пропсов данные передаются от родителя к потомку. (Если вы знакомы с понятием [состояния,](/learn/state-a-components-memory) то для статического приложения это как раз то, чего вам использовать не нужно. Состояние подразумевает собой данные, которые меняются со временем, интерактивность. Так как мы работаем над статическим приложением, нам этого не нужно.)
 
-Написание кода можно начать как сверху вниз с компонентов, которые находятся выше по иерархии (такие как `FilterableProductTable`), так и снизу вверх с низкоуровневых компонентов (такие как `ProductRow`). Более простые приложения удобнее начать с компонентов, находящихся выше по иерархии. В более сложных приложениях удобнее в первую очередь создавать и тестировать подкомпоненты.
+Написание кода можно начать как сверху вниз с компонентов, которые находятся выше по иерархии (таких как `FilterableProductTable`), так и снизу вверх с низкоуровневых компонентов (таких как `ProductRow`). Более простые приложения удобнее начать с компонентов, находящихся выше по иерархии. В более сложных приложениях удобнее в первую очередь создавать и тестировать подкомпоненты.
 
 <Sandpack>
 
@@ -130,8 +130,8 @@ function ProductTable({ products }) {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Price</th>
+          <th>Наименование</th>
+          <th>Цена</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -146,7 +146,7 @@ function SearchBar() {
       <label>
         <input type="checkbox" />
         {' '}
-        Only show products in stock
+        Показывать только товар в наличии
       </label>
     </form>
   );
@@ -162,12 +162,12 @@ function FilterableProductTable({ products }) {
 }
 
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  {category: "Фрукты", price: "$1", stocked: true, name: "Яблоко"},
+  {category: "Фрукты", price: "$1", stocked: true, name: "Питахайя"},
+  {category: "Фрукты", price: "$2", stocked: false, name: "Маракуйя"},
+  {category: "Овощи", price: "$2", stocked: true, name: "Шпинат"},
+  {category: "Овощи", price: "$4", stocked: false, name: "Тыква"},
+  {category: "Овощи", price: "$1", stocked: true, name: "Горох"}
 ];
 
 export default function App() {
@@ -377,8 +377,8 @@ function ProductTable({ products, filterText, inStockOnly }) {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Price</th>
+          <th>Наименование</th>
+          <th>Цена</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -398,19 +398,19 @@ function SearchBar({ filterText, inStockOnly }) {
           type="checkbox" 
           checked={inStockOnly} />
         {' '}
-        Only show products in stock
+        Показывать только товар в наличии
       </label>
     </form>
   );
 }
 
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  {category: "Фрукты", price: "$1", stocked: true, name: "Яблоко"},
+  {category: "Фрукты", price: "$1", stocked: true, name: "Питахайя"},
+  {category: "Фрукты", price: "$2", stocked: false, name: "Маракуйя"},
+  {category: "Овощи", price: "$2", stocked: true, name: "Шпинат"},
+  {category: "Овощи", price: "$4", stocked: false, name: "Тыква"},
+  {category: "Овощи", price: "$1", stocked: true, name: "Горох"}
 ];
 
 export default function App() {
@@ -576,8 +576,8 @@ function ProductTable({ products, filterText, inStockOnly }) {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Price</th>
+          <th>Наименование</th>
+          <th>Цена</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -603,19 +603,19 @@ function SearchBar({
           checked={inStockOnly} 
           onChange={(e) => onInStockOnlyChange(e.target.checked)} />
         {' '}
-        Only show products in stock
+        Показывать только товар в наличии
       </label>
     </form>
   );
 }
 
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  {category: "Фрукты", price: "$1", stocked: true, name: "Яблоко"},
+  {category: "Фрукты", price: "$1", stocked: true, name: "Питахайя"},
+  {category: "Фрукты", price: "$2", stocked: false, name: "Маракуйя"},
+  {category: "Овощи", price: "$2", stocked: true, name: "Шпинат"},
+  {category: "Овощи", price: "$4", stocked: false, name: "Тыква"},
+  {category: "Овощи", price: "$1", stocked: true, name: "Горох"}
 ];
 
 export default function App() {
@@ -646,4 +646,4 @@ td {
 
 ## Что дальше {/*where-to-go-from-here*/}
 
-Это было очень краткое введение в подход к написанию компонентов и приложений на React. Теперь вы можете [начать проект на React](/learn/installation)  прямо сейчас или [углубиться в синтаксис,](/learn/describing-the-ui) использованный в этом руководстве.
+Это было очень краткое введение в подход к написанию компонентов и приложений на React. Теперь вы можете [начать проект на React](/learn/installation) или [углубиться в синтаксис,](/learn/describing-the-ui) использованный в этом руководстве.
