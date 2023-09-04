@@ -509,7 +509,9 @@ export function HomeContent() {
               href={'/learn'}
               type="primary"
               size="lg"
-              label="Take the Tutorial"></ButtonLink>
+              label="Take the Tutorial">
+              Начать
+            </ButtonLink>
           </div>
         </Section>
       </div>
