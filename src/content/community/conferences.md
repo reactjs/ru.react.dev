@@ -15,8 +15,14 @@ August 17 & 18, 2023. Salt Lake City, UT, USA
 
 [Website](https://www.reactrally.com/) - [Twitter](https://twitter.com/ReactRally) - [Instagram](https://www.instagram.com/reactrally/)
 
+### React Native EU 2023 {/*react-native-eu-2023*/}
+September 7 & 8, 2023. Wrocław, Poland
+
+[Website](https://react-native.eu) - [Twitter](https://twitter.com/react_native_eu) - [Facebook](https://www.facebook.com/reactnativeeu)
+
+
 ### React India 2023 {/*react-india-2023*/}
-Oct 5 - 7, 2023. In-person in Goa, India (hybrid event) + Oct 3 2023 - remote day
+October 5 - 7, 2023. In-person in Goa, India (hybrid event) + Oct 3 2023 - remote day
 
 [Website](https://www.reactindia.io) - [Twitter](https://twitter.com/react_india) - [Facebook](https://www.facebook.com/ReactJSIndia) - [Youtube](https://www.youtube.com/channel/UCaFbHCBkPvVv1bWs_jwYt3w)
 
@@ -510,7 +516,7 @@ August 18 in Guangzhou, China
 
 [Website](https://react.w3ctech.com)
 
-### React Rally 2018{/*react-rally-2018*/}
+### React Rally 2018 {/*react-rally-2018*/}
 August 16-17 in Salt Lake City, Utah USA
 
 [Website](http://www.reactrally.com) - [Twitter](https://twitter.com/reactrally)
