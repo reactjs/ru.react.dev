@@ -284,7 +284,11 @@ console.log(ref.current); // 5
 
 ## Рефы и DOM {/*refs-and-the-dom*/}
 
+<<<<<<< HEAD
 Вы можете использовать реф в качестве ссылки на любое значение. Однако, на практике рефы часто используются для доступа к DOM-элементам. Например, когда нужно программно сфокусироваться на элементе `input`. Когда вы устанавливаете `ref` через атрибут, `<div ref={myRef}>`, React сохранит соответствующий DOM-элемент в качестве значения `myRef.current`. Вы можете больше прочитать об этом в [Manipulating the DOM with Refs.](/learn/manipulating-the-dom-with-refs).
+=======
+You can point a ref to any value. However, the most common use case for a ref is to access a DOM element. For example, this is handy if you want to focus an input programmatically. When you pass a ref to a `ref` attribute in JSX, like `<div ref={myRef}>`, React will put the corresponding DOM element into `myRef.current`. Once the element is removed from the DOM, React will update `myRef.current` to be `null`. You can read more about this in [Manipulating the DOM with Refs.](/learn/manipulating-the-dom-with-refs)
+>>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 <Recap>
 

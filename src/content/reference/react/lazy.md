@@ -31,7 +31,11 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 #### Параметры {/*parameters*/}
 
+<<<<<<< HEAD
 * `load`: Функция, которая возвращает [Промис](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise) или другой *thenable* (объект, в котором определен метод `then`). Вызова `load` не произойдет до тех пор, пока вы не попытаетесь отрендерить возвращённый компонент. После первого вызова `load`, React будет ждать завершения выполнения команды, а затем отрендерит разрешённое значение как React-компонент. Возвращаемый промис и разрешенное значение промиса будут кэшироваться, поэтому React не будет вызывать `load` более одного раза. Если Promise отклоняется, React укажет причину в ближайшем Error Boundary.
+=======
+* `load`: A function that returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or another *thenable* (a Promise-like object with a `then` method). React will not call `load` until the first time you attempt to render the returned component. After React first calls `load`, it will wait for it to resolve, and then render the resolved value's `.default` as a React component. Both the returned Promise and the Promise's resolved value will be cached, so React will not call `load` more than once. If the Promise rejects, React will `throw` the rejection reason for the nearest Error Boundary to handle.
+>>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 #### Возвращаемое значение {/*returns*/}
 
@@ -47,7 +51,11 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 #### Возвращаемое значение {/*load-returns*/}
 
+<<<<<<< HEAD
 Возвращает [Промис](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise) или другой *thenable* (объект, в котором определен метод `then`). В конечном итоге он вернётся к действительному React компоненту, например к функции, [`memo`](/reference/react/memo), или [`forwardRef`](/reference/react/forwardRef) компоненту.
+=======
+You need to return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or some other *thenable* (a Promise-like object with a `then` method). It needs to eventually resolve to an object whose `.default` property is a valid React component type, such as a function, [`memo`](/reference/react/memo), or a [`forwardRef`](/reference/react/forwardRef) component.
+>>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 ---
 
@@ -69,7 +77,11 @@ import { lazy } from 'react';
 const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 ```
 
+<<<<<<< HEAD
 Этот код опирается на [динамический `import()`,](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) который должен поддерживаться вашим бандлером или фреймворком.
+=======
+This code relies on [dynamic `import()`,](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) which might require support from your bundler or framework. Using this pattern requires that the lazy component you're importing was exported as the `default` export.
+>>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 Теперь, когда код вашего компонента загружается по запросу, вам также необходимо указать, что должно отображаться во время его загрузки. Это можно сделать путем оборачивания ленивого компонента или его родителя в границы [`<Suspense>`](/reference/react/Suspense):
 
