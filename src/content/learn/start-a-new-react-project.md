@@ -21,12 +21,12 @@ title: Начать новый React-проект
 **[Next.js](https://nextjs.org/) -- универсальный фулстек-фреймворк.** С его помощью вы можете создавать сайты любого размера от простого статического блога до сложного динамического приложения. Для создания нового Next.js-проекта выполните команду в терминале:
 
 <TerminalBlock>
-npx create-next-app
+npx create-next-app@latest
 </TerminalBlock>
 
 Узнайте больше о Next.js из [официальной документации.](https://nextjs.org/learn/foundations/about-nextjs)
 
-Команда [Vercel](https://vercel.com/) постоянно улучшает Next.js. Вы можете [развернуть Next.js-приложение](https://nextjs.org/docs/deployment) на облачном хостинге с Node.js или бессерверными вычислениями, а также на вашем собственном сервере. [Полностью статические Next.js-приложения](https://nextjs.org/docs/advanced-features/static-html-export) могут быть опубликованы на любом статическом хостинге.
+Команда [Vercel](https://vercel.com/) постоянно улучшает Next.js. Вы можете [развернуть Next.js-приложение](https://nextjs.org/docs/app/building-your-application/deploying) на облачном хостинге с Node.js или бессерверными вычислениями, а также на вашем собственном сервере. Next.js также поддерживает [статический экспорт](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports), который не требует сервера.
 
 ### Remix {/*remix*/}
 
@@ -89,15 +89,9 @@ npx create-expo-app
 
 ### Next.js (Маршрутизатор приложения) {/*nextjs-app-router*/}
 
-**[Маршрутизатор приложения Next.js (Next.js App Router)](https://beta.nextjs.org/docs/getting-started) -- обновлённый API Next.js, отвечающий тому, как команда React видит архитектуру фулстек-приложений сегодня.** Маршрутизатор позволяет загружать данные в асинхронных компонентах на сервере или во время сборки.
+**[Маршрутизатор приложения Next.js (Next.js App Router)](https://nextjs.org/docs/getting-started) -- обновлённый API Next.js, отвечающий тому, как команда React видит архитектуру фулстек-приложений сегодня.** Маршрутизатор позволяет загружать данные в асинхронных компонентах на сервере или во время сборки.
 
-Команда [Vercel](https://vercel.com/) постоянно улучшает Next.js. Вы можете [развернуть Next.js-приложение](https://nextjs.org/docs/deployment) на облачном хостинге с Node.js или бессерверными вычислениями, а также на вашем собственном сервере. Next.js также поддерживает [статический экспорт](https://beta.nextjs.org/docs/configuring/static-export), который не требует сервера.
-
-<Pitfall>
-
-Маршрутизатор приложения Next.js **находится в бета-разработке и не рекомендуется к использованию в продакшене** (апрель 2023). Если вы хотите поэкспериментировать с новыми возможностями в существующем проекте, [воспользуйтесь руководством по миграции](https://beta.nextjs.org/docs/upgrade-guide#migrating-from-pages-to-app).
-
-</Pitfall>
+Команда [Vercel](https://vercel.com/) постоянно улучшает Next.js. Вы можете [развернуть Next.js-приложение](https://nextjs.org/docs/app/building-your-application/deploying) на облачном хостинге с Node.js или бессерверными вычислениями, а также на вашем собственном сервере. Next.js также поддерживает [статический экспорт](https://nextjs.org/docs/app/building-your-application/deploying/static-exports), который не требует сервера.
 
 <DeepDive>
 
