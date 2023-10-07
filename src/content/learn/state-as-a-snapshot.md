@@ -77,15 +77,9 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 Когда React повторно рендерит компонент:
 
-<<<<<<< HEAD
 1. React вызывает ваш компонент как функцию.
 2. Функция возвращает новый снимок JSX.
 3. Далее React обновляет экран в соответствии с данными, которые были возвращены со снимком JSX.
-=======
-1. React calls your function again.
-2. Your function returns a new JSX snapshot.
-3. React then updates the screen to match the snapshot your function returned.
->>>>>>> 68f417a600c7d7b8c4131e39f8a843a856ae3909
 
 <IllustrationBlock sequential>
     <Illustration caption="React вызывает функцию" src="/images/docs/illustrations/i_render1.png" />
