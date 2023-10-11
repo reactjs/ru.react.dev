@@ -82,18 +82,11 @@ function SearchPage() {
 
 <Note>
 
-<<<<<<< HEAD
 Предполагается, что данные в этом примере вы получаете через источники, которые поддерживают Suspense:
 
 - Запрашиваете данные с помощью поддерживающих Suspense фреймворков, как, например, [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) или [Next.js](https://nextjs.org/docs/getting-started/react-essentials).
 - Лениво загружаете код компонентов с помощью [`lazy`](/reference/react/lazy).
-=======
-This example assumes you use a Suspense-enabled data source:
-
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/getting-started/react-essentials)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
-- Reading the value of a Promise with [`use`](/reference/react/use)
->>>>>>> 9aa84b19222838f38863ce4bd8f516dbfe193bbc
+- Читаете значение промиса с помощью [`use`](/reference/react/use).
 
 [Подробнее о Suspense и связанных с ним ограничениях.](/reference/react/Suspense)
 
