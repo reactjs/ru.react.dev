@@ -4,7 +4,7 @@ title: Обновление объектов в состоянии
 
 <Intro>
 
-Состояние может содержать в себе любые JavaScript значения, включая объекты. Значения объектов, которые находятся в состоянии, нельзя изменять напрямую. Вместо этого, если вы хотите обновить состояние, вам необходимо создать новый объект или копию текущего объекта, а затем установить состоянию этот объект.
+Состояние может содержать в себе любые JavaScript-значения, включая объекты. Значения объектов, которые находятся в состоянии, нельзя изменять напрямую. Вместо этого, если вы хотите обновить состояние, вам необходимо создать новый объект или копию текущего объекта, а затем установить состоянию этот объект.
 
 </Intro>
 
@@ -13,19 +13,19 @@ title: Обновление объектов в состоянии
 - Как правильно в React обновлять объект в состоянии
 - Как обновить вложенный объект без мутации
 - Что такое иммутабельность, как её не нарушить
-- Как сделать копирование объектов менее повторяющимся и сложным с Immer
+- Как упростить копирование объектов с Immer
 
 </YouWillLearn>
 
 ## Что такое мутация? {/*whats-a-mutation*/}
 
-Вы можете хранить любое JavaScript значение в состоянии.
+Вы можете хранить любое JavaScript-значение в состоянии.
 
 ```js
 const [x, setX] = useState(0);
 ```
 
-До сих пор вы работали с числами, строками и логическими значениями. Эти виды значений в JavaScript являются "иммутабельными" -- это значит, что они не изменяются и доступны "только для чтения". Вы можете запустить повторный рендер для _замены_ значения:
+До сих пор вы работали с числами, строками и логическими значениями. Эти виды значений в JavaScript являются "иммутабельными" (еще один вариант определения — неизменяемыми) -- это значит, что они не изменяются и доступны "только для чтения". Вы можете запустить повторный рендер для _замены_ значения:
 
 ```js
 setX(5);
@@ -39,7 +39,7 @@ setX(5);
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-Технически, возможно изменить содержимое _самого объекта_. **Это называется мутацией:**
+Технически возможно изменить содержимое _самого объекта_. **Это называется мутацией:**
 
 ```js
 position.x = 5;
@@ -105,7 +105,7 @@ onPointerMove={e => {
 
 Этот код изменяет объект `position` в [предыдущем рендере.](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) React не знает об изменении объекта, так как не применялась функция установки состояния. Следовательно, React ничего не делает в ответ. Представьте, будто вы пытаетесь изменить заказ после того, как уже поели. Конечно, в некоторых случаях такое изменение может работать, но мы не рекомендуем подобным образом обновлять состояние. Вы всегда должны рассматривать значение состояния, к которому у вас есть доступ, как доступное "только для чтения".
 
-Для того, чтобы [запустить повторный рендер](/learn/state-as-a-snapshot#setting-state-triggers-renders), **необходимо создать *новый* объект и передать его в функцию установки состояния:**
+Для того чтобы [запустить повторный рендер](/learn/state-as-a-snapshot#setting-state-triggers-renders), **необходимо создать *новый* объект и передать его в функцию установки состояния:**
 
 ```js
 onPointerMove={e => {
@@ -199,9 +199,9 @@ setPosition({
 
 </DeepDive>  
 
-## Копирование объектов с использованием спред-синтаксиса {/*copying-objects-with-the-spread-syntax*/}
+## Копирование объектов с использованием оператора расширения {/*copying-objects-with-the-spread-syntax*/}
 
-В предыдущем примере, объект `position` всегда создаётся заново, исходя из текущей позиции курсора. На практике чаще всего вы захотите включать уже *существующие* данные в новый объект, который вы создаёте. Например, вы можете захотеть обновить *только одно* поле в форме, остальные значения полей сохранить без изменений.
+В предыдущем примере объект `position` всегда создаётся заново, исходя из текущей позиции курсора. На практике чаще всего вы захотите включать уже *существующие* данные в новый объект, который вы создаёте. Например, вы можете захотеть обновить *только одно* поле в форме, остальные значения полей сохранить без изменений.
 
 Эти поля ввода не работают, потому что обработчики `onChange` изменяют состояние:
 
@@ -232,21 +232,21 @@ export default function Form() {
   return (
     <>
       <label>
-        First name:
+        Имя:
         <input
           value={person.firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:
+        Фамилия:
         <input
           value={person.lastName}
           onChange={handleLastNameChange}
         />
       </label>
       <label>
-        Email:
+        Почта:
         <input
           value={person.email}
           onChange={handleEmailChange}
@@ -285,7 +285,7 @@ setPerson({
 });
 ```
 
-Вы можете использовать `...` [спред-оператор,](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_object_literals) чтобы вам не нужно было копировать каждое свойство отдельно.
+Вы можете использовать `...` [оператор расширения,](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_%D0%B2_%D0%BB%D0%B8%D1%82%D0%B5%D1%80%D0%B0%D0%BB%D0%B0%D1%85_%D0%BE%D0%B1%D1%8A%D0%B5%D0%BA%D1%82%D0%B0) чтобы вам не нужно было копировать каждое свойство отдельно.
 
 ```js
 setPerson({
@@ -334,21 +334,21 @@ export default function Form() {
   return (
     <>
       <label>
-        First name:
+        Имя:
         <input
           value={person.firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:
+        Фамилия:
         <input
           value={person.lastName}
           onChange={handleLastNameChange}
         />
       </label>
       <label>
-        Email:
+        Почта:
         <input
           value={person.email}
           onChange={handleEmailChange}
@@ -371,7 +371,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
-Помните, что `...` спред-синтаксис является "поверхностным" -- он копирует элементы только на один уровень вглубь. Это свойство делает его быстрым, но это также означает, что если вы хотите обновить вложенное свойство, вам придётся использовать его более одного раза.
+Помните, что `...` оператор расширения является "поверхностным" -- он копирует элементы только на один уровень вглубь. Это свойство делает его быстрым, но это также означает, что если вы хотите обновить вложенное свойство, вам придётся использовать его более одного раза.
 
 <DeepDive>
 
@@ -401,7 +401,7 @@ export default function Form() {
   return (
     <>
       <label>
-        First name:
+        Имя:
         <input
           name="firstName"
           value={person.firstName}
@@ -409,7 +409,7 @@ export default function Form() {
         />
       </label>
       <label>
-        Last name:
+        Фамилия:
         <input
           name="lastName"
           value={person.lastName}
@@ -417,7 +417,7 @@ export default function Form() {
         />
       </label>
       <label>
-        Email:
+        Почта:
         <input
           name="email"
           value={person.email}
@@ -543,28 +543,28 @@ export default function Form() {
   return (
     <>
       <label>
-        Name:
+        Автор:
         <input
           value={person.name}
           onChange={handleNameChange}
         />
       </label>
       <label>
-        Title:
+        Название:
         <input
           value={person.artwork.title}
           onChange={handleTitleChange}
         />
       </label>
       <label>
-        City:
+        Город:
         <input
           value={person.artwork.city}
           onChange={handleCityChange}
         />
       </label>
       <label>
-        Image:
+        Изображение:
         <input
           value={person.artwork.image}
           onChange={handleImageChange}
@@ -652,7 +652,7 @@ let obj3 = {
 
 ### Напишем лаконичное обновление с помощью Immer {/*write-concise-update-logic-with-immer*/}
 
-Если ваш объект имеет несколько уровней вложенности, вы можете подумать об [упрощении структуры объекта.](/learn/choosing-the-state-structure#avoid-deeply-nested-state) Однако, если вы не хотите изменять структуру объекта, вы можете ссылаться на вложенные объекты. [Immer](https://github.com/immerjs/use-immer) -- это популярная библиотека, которая позволяет вам использовать удобный, но мутирующий синтаксис, кроме того, она ответственна за создание копий объекта. С Immer ваш код выглядит так, будто вы "нарушили правило" и мутировали объект:
+Если ваш объект имеет несколько уровней вложенности, вы можете подумать об [упрощении структуры объекта.](/learn/choosing-the-state-structure#avoid-deeply-nested-state) Однако, если вы не хотите изменять структуру объекта, вы можете ссылаться на вложенные объекты. [Immer](https://github.com/immerjs/use-immer) -- это популярная библиотека, которая позволяет вам использовать удобный, но мутирующий синтаксис. Кроме того, она ответственна за создание копий объекта. С Immer ваш код выглядит так, будто вы "нарушили правило" и мутировали объект:
 
 ```js
 updatePerson(draft => {
@@ -666,7 +666,7 @@ updatePerson(draft => {
 
 #### Как работает Immer? {/*how-does-immer-work*/}
 
-`draft`, предоставленный Immer, является особенным типом объекта, который называется [прокси](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), он "записывает" то, что вы с ним делаете. Вот почему вы можете мутировать его столько раз, сколько захотите! Под капотом Immer выясняет, какие части `draft` были изменены, и создаёт новый объект с наличием этих изменений.
+`Черновик`, предоставленный Immer, является особенным типом объекта, который называется [прокси](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy), он "записывает" то, что вы с ним делаете. Вот почему вы можете мутировать его столько раз, сколько захотите! Под капотом Immer выясняет, какие части `черновика` были изменены, и создаёт новый объект с наличием этих изменений.
 
 </DeepDive>
 
@@ -719,28 +719,28 @@ export default function Form() {
   return (
     <>
       <label>
-        Name:
+        Автор:
         <input
           value={person.name}
           onChange={handleNameChange}
         />
       </label>
       <label>
-        Title:
+        Название:
         <input
           value={person.artwork.title}
           onChange={handleTitleChange}
         />
       </label>
       <label>
-        City:
+        Город:
         <input
           value={person.artwork.city}
           onChange={handleCityChange}
         />
       </label>
       <label>
-        Image:
+        Изображение:
         <input
           value={person.artwork.image}
           onChange={handleImageChange}
@@ -810,9 +810,9 @@ img { width: 200px; height: 200px; }
 
 * Рассматривайте все состояния в React как иммутабельные (неизменяемые).
 * Когда вы храните объекты в состоянии, их прямое изменение не вызовет повторный рендер и изменит состояние в предыдущих "снимках" рендера.
-* Вместо этого, создайте *новую* версию объекта и активируйте повторный рендер, установив для него состояние.
-* Вы можете использовать спред-синтаксис, чтобы создать новый объект на основе копии старого. Например, `{...obj, something: 'newValue'}`.
-* Спред синтаксис "поверхностный": копирование объекта происходит только на одном уровне в глубину.
+* Вместо этого создайте *новую* версию объекта и активируйте повторный рендер, установив для него состояние.
+* Вы можете использовать оператор расширения, чтобы создать новый объект на основе копии старого. Например, `{...obj, something: 'newValue'}`.
+* Синтаксис расширения "поверхностный": копирование объекта происходит только на одном уровне в глубину.
 * Чтобы обновить вложенный объект, вам нужно создать копии на всем пути от того места, которое вы обновляете.
 * Для написания лаконичного кода копирования сложного объекта используйте Immer.
 
@@ -860,21 +860,21 @@ export default function Scoreboard() {
   return (
     <>
       <label>
-        Score: <b>{player.score}</b>
+        Счёт: <b>{player.score}</b>
         {' '}
         <button onClick={handlePlusClick}>
           +1
         </button>
       </label>
       <label>
-        First name:
+        Имя:
         <input
           value={player.firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:
+        Фамилия:
         <input
           value={player.lastName}
           onChange={handleLastNameChange}
@@ -932,21 +932,21 @@ export default function Scoreboard() {
   return (
     <>
       <label>
-        Score: <b>{player.score}</b>
+        Счёт: <b>{player.score}</b>
         {' '}
         <button onClick={handlePlusClick}>
           +1
         </button>
       </label>
       <label>
-        First name:
+        Имя:
         <input
           value={player.firstName}
           onChange={handleFirstNameChange}
         />
       </label>
       <label>
-        Last name:
+        Фамилия:
         <input
           value={player.lastName}
           onChange={handleLastNameChange}
@@ -1032,7 +1032,7 @@ export default function Canvas() {
         position={shape.position}
         onMove={handleMove}
       >
-        Drag me!
+        Перетащи!
       </Box>
     </>
   );
@@ -1132,7 +1132,7 @@ select { margin-bottom: 10px; }
 
 Проблема заключалась в мутации внутри `handleMove`. Он изменил `shape.position`, но это тот же объект, на который указывает `initialPosition`. Вот почему блок и фон двигаются. (Это мутация, поэтому изменение не отражается на экране до тех пор, пока несвязанное обновление -- изменение цвета -- не вызовет повторный рендер)
 
-Необходимо удалить мутацию из `handleMove` и использовать спред-синтаксис для копирования формы. Обратите внимание, что `+=` -- мутация, вам нужно переписать её, чтобы использовать обычную операцию `+`
+Необходимо удалить мутацию из `handleMove` и использовать оператор расширения для копирования формы. Обратите внимание, что `+=` -- мутация, вам нужно переписать её, чтобы использовать обычную операцию `+`
 
 <Sandpack>
 
@@ -1187,7 +1187,7 @@ export default function Canvas() {
         position={shape.position}
         onMove={handleMove}
       >
-        Drag me!
+        Перетащи!
       </Box>
     </>
   );
@@ -1338,7 +1338,7 @@ export default function Canvas() {
         position={shape.position}
         onMove={handleMove}
       >
-        Drag me!
+        Перетащи!
       </Box>
     </>
   );
@@ -1505,7 +1505,7 @@ export default function Canvas() {
         position={shape.position}
         onMove={handleMove}
       >
-        Drag me!
+        Перетащи!
       </Box>
     </>
   );
