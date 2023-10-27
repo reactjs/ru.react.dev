@@ -134,7 +134,7 @@
       "tags": ["intermediate"],
       "routes": [
         {
-          "title": "Reacting to Input with State",
+          "title": "Обработка ввода при помощи состояния",
           "path": "/learn/reacting-to-input-with-state"
         },
         {
