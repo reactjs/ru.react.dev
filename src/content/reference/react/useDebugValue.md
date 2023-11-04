@@ -20,7 +20,7 @@ useDebugValue(value, format?)
 
 ### `useDebugValue(value, format?)` {/*usedebugvalue*/}
 
-Вызовите `useDebugValue` на верхнем уровне [пользовательского хука](/learn/reusing-logic-with-custom-hooks) чтобы отобразить читаемое отладочное значение:
+Вызовите `useDebugValue` на верхнем уровне [пользовательского хука](/learn/reusing-logic-with-custom-hooks), чтобы отобразить читаемое отладочное значение:
 
 ```js
 import { useDebugValue } from 'react';
