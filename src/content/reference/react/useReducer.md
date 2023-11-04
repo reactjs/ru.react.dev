@@ -20,7 +20,7 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?)
 
 ### `useReducer(reducer, initialArg, init?)` {/*usereducer*/}
 
-Вызовите `useReducer` на верхнем уровне компонента чтобы управлять состоянием с помощью [редюсера.](/learn/extracting-state-logic-into-a-reducer)
+Вызовите `useReducer` на верхнем уровне компонента, чтобы управлять состоянием с помощью [редюсера.](/learn/extracting-state-logic-into-a-reducer)
 
 ```js
 import { useReducer } from 'react';
