@@ -47,7 +47,7 @@ function useOnlineStatus() {
 
 ### Добавление метки к пользовательскому хуку {/*adding-a-label-to-a-custom-hook*/}
 
-Вызовите `useDebugValue` на верхнем уровне [пользовательского хука](/learn/reusing-logic-with-custom-hooks) чтобы отобразить читаемое отладочное значение <CodeStep step={1}>debug value</CodeStep> в [React DevTools.](/learn/react-developer-tools)
+Вызовите `useDebugValue` на верхнем уровне [пользовательского хука](/learn/reusing-logic-with-custom-hooks), чтобы отобразить читаемое отладочное значение <CodeStep step={1}>debug value</CodeStep> в [React DevTools.](/learn/react-developer-tools)
 
 ```js [[1, 5, "isOnline ? 'Online' : 'Offline'"]]
 import { useDebugValue } from 'react';
