@@ -61,12 +61,13 @@ export function Challenge({
       <div className="flex justify-between items-center mt-4">
         {currentChallenge.hint ? (
           <div>
+
             <Button className="mr-2" onClick={toggleHint} active={showHint}>
               <IconHint className="mr-1.5" />{' '}
               {showHint ? 'Скрыть подсказку' : 'Показать подсказку'}
             </Button>
             <Button
-              className="mr-2"
+              className="me-2"
               onClick={toggleSolution}
               active={showSolution}>
               <IconSolution className="mr-1.5" />{' '}
@@ -76,15 +77,15 @@ export function Challenge({
         ) : (
           !isRecipes && (
             <Button
-              className="mr-2"
+              className="me-2"
               onClick={toggleSolution}
               active={showSolution}>
+
               <IconSolution className="mr-1.5" />{' '}
               {showSolution ? 'Скрыть решение' : 'Показать решение'}
             </Button>
           )
         )}
-
         {hasNextChallenge && (
           <Button
             className={cn(
@@ -101,7 +102,6 @@ export function Challenge({
         )}
       </div>
       {showHint && currentChallenge.hint}
-
       {showSolution && (
         <div className="mt-6">
           <h3 className="text-2xl font-bold text-primary dark:text-primary-dark">
@@ -121,8 +121,8 @@ export function Challenge({
                 active>
                 Следующее Испытание
                 <IconArrowSmall
-                  displayDirection="right"
-                  className="block ml-1.5"
+                  displayDirection="end"
+                  className="block ms-1.5"
                 />
               </Button>
             )}
