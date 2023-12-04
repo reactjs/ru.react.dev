@@ -95,7 +95,11 @@ root.render(
 
 ---
 
+<<<<<<< HEAD
 ### Активация строгого режима для части приложения {/*enabling-strict-mode-for-a-part-of-the-app*/}
+=======
+### Enabling Strict Mode for a part of the app {/*enabling-strict-mode-for-a-part-of-the-app*/}
+>>>>>>> 943e3ce4e52be56bcd75b679448847302f557da1
 
 Вы можете активировать строгий режим для любой части вашего приложения:
 
