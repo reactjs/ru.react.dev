@@ -24,7 +24,11 @@ title: Начать новый React-проект
 npx create-next-app@latest
 </TerminalBlock>
 
+<<<<<<< HEAD
 Узнайте больше о Next.js из [официальной документации.](https://nextjs.org/learn/foundations/about-nextjs)
+=======
+If you're new to Next.js, check out the [learn Next.js course.](https://nextjs.org/learn)
+>>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
 
 Команда [Vercel](https://vercel.com/) постоянно улучшает Next.js. Вы можете [развернуть Next.js-приложение](https://nextjs.org/docs/app/building-your-application/deploying) на облачном хостинге с Node.js или бессерверными вычислениями, а также на вашем собственном сервере. Next.js также поддерживает [статический экспорт](https://nextjs.org/docs/pages/building-your-application/deploying/static-exports), который не требует сервера.
 

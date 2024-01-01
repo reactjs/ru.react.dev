@@ -95,7 +95,11 @@ root.render(
 
 ---
 
+<<<<<<< HEAD
 ### Активация строгого режима для части приложения {/*enabling-strict-mode-for-a-part-of-the-app*/}
+=======
+### Enabling Strict Mode for a part of the app {/*enabling-strict-mode-for-a-part-of-the-app*/}
+>>>>>>> bbb08a5a04b0221137e5d60472fc979747af2954
 
 Вы можете активировать строгий режим для любой части вашего приложения:
 
@@ -140,7 +144,7 @@ function App() {
 
 <Sandpack>
 
-```js index.js
+```js src/index.js
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
@@ -150,7 +154,7 @@ const root = createRoot(document.getElementById("root"));
 root.render(<App />);
 ```
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import StoryTray from './StoryTray.js';
 
@@ -175,7 +179,7 @@ export default function App() {
 }
 ```
 
-```js StoryTray.js active
+```js src/StoryTray.js active
 export default function StoryTray({ stories }) {
   const items = stories;
   items.push({ id: 'create', label: 'Create Story' });
@@ -218,7 +222,7 @@ li {
 
 <Sandpack>
 
-```js index.js
+```js src/index.js
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
@@ -228,7 +232,7 @@ const root = createRoot(document.getElementById('root'));
 root.render(<App />);
 ```
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import StoryTray from './StoryTray.js';
 
@@ -253,7 +257,7 @@ export default function App() {
 }
 ```
 
-```js StoryTray.js active
+```js src/StoryTray.js active
 import { useState } from 'react';
 
 export default function StoryTray({ stories }) {
@@ -316,7 +320,7 @@ export default function StoryTray({ stories }) {
 
 <Sandpack>
 
-```js index.js
+```js src/index.js
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -331,7 +335,7 @@ root.render(
 );
 ```
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import StoryTray from './StoryTray.js';
 
@@ -356,7 +360,7 @@ export default function App() {
 }
 ```
 
-```js StoryTray.js active
+```js src/StoryTray.js active
 export default function StoryTray({ stories }) {
   const items = stories;
   items.push({ id: 'create', label: 'Create Story' });
@@ -397,7 +401,7 @@ li {
 
 <Sandpack>
 
-```js index.js
+```js src/index.js
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -412,7 +416,7 @@ root.render(
 );
 ```
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import StoryTray from './StoryTray.js';
 
@@ -437,7 +441,7 @@ export default function App() {
 }
 ```
 
-```js StoryTray.js active
+```js src/StoryTray.js active
 import { useState } from 'react';
 
 export default function StoryTray({ stories }) {
@@ -509,7 +513,7 @@ li {
 
 <Sandpack>
 
-```js index.js
+```js src/index.js
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
@@ -535,7 +539,7 @@ export default function ChatRoom() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 let connections = 0;
 
 export function createConnection(serverUrl, roomId) {
@@ -568,7 +572,7 @@ button { margin-left: 10px; }
 
 <Sandpack>
 
-```js index.js
+```js src/index.js
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
@@ -619,7 +623,7 @@ export default function App() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 let connections = 0;
 
 export function createConnection(serverUrl, roomId) {
@@ -662,7 +666,7 @@ button { margin-left: 10px; }
 
 <Sandpack>
 
-```js index.js
+```js src/index.js
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -693,7 +697,7 @@ export default function ChatRoom() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 let connections = 0;
 
 export function createConnection(serverUrl, roomId) {
@@ -726,7 +730,7 @@ button { margin-left: 10px; }
 
 <Sandpack>
 
-```js index.js
+```js src/index.js
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
@@ -783,7 +787,7 @@ export default function App() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 let connections = 0;
 
 export function createConnection(serverUrl, roomId) {
