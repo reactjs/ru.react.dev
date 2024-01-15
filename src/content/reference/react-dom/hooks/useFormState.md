@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-The `useFormState` Hook is currently only available in React's canary and experimental channels. Learn more about [release channels here](/community/versioning-policy#all-release-channels). In addition, you need to use a framework that supports [React Server Components](/reference/react/use-client) to get the full benefit of `useFormState`.
+The `useFormState` Hook is currently only available in React's Canary and experimental channels. Learn more about [release channels here](/community/versioning-policy#all-release-channels). In addition, you need to use a framework that supports [React Server Components](/reference/react/use-client) to get the full benefit of `useFormState`.
 
 </Canary>
 
@@ -104,7 +104,7 @@ function MyComponent() {
 
 When the form is submitted, the <CodeStep step={3}>action</CodeStep> function that you provided will be called. Its return value will become the new <CodeStep step={1}>current state</CodeStep> of the form.
 
-The <CodeStep step={3}>action</CodeStep> that you provide will also receive a new first argument, namely the <CodeStep step={1}>current state</CodeStep> of the form. The first time the form is submitted, this will be the <CodeStep step={4}>initial state</CodeStep> you provided, while with subsequent submissions, it will be the return value from the last time the action was called. The rest of the arguments are the same as if `useFormState` had not been used
+The <CodeStep step={3}>action</CodeStep> that you provide will also receive a new first argument, namely the <CodeStep step={1}>current state</CodeStep> of the form. The first time the form is submitted, this will be the <CodeStep step={4}>initial state</CodeStep> you provided, while with subsequent submissions, it will be the return value from the last time the action was called. The rest of the arguments are the same as if `useFormState` had not been used.
 
 ```js [[3, 1, "action"], [1, 1, "currentState"]]
 function action(currentState, formData) {
@@ -121,7 +121,7 @@ To display messages such as an error message or toast that's returned by a Serve
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from "react";
 import { useFormState } from "react-dom";
 import { addToCart } from "./actions.js";
@@ -148,7 +148,7 @@ export default function App() {
 }
 ```
 
-```js actions.js
+```js src/actions.js
 "use server";
 
 export async function addToCart(prevState, queryData) {
@@ -161,7 +161,7 @@ export async function addToCart(prevState, queryData) {
 }
 ```
 
-```css styles.css hidden
+```css src/styles.css hidden
 form {
   border: solid 1px black;
   margin-bottom: 24px;
@@ -194,7 +194,7 @@ The return value from a Server Action can be any serializable value. For example
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from "react";
 import { useFormState } from "react-dom";
 import { addToCart } from "./actions.js";
@@ -230,7 +230,7 @@ export default function App() {
 }
 ```
 
-```js actions.js
+```js src/actions.js
 "use server";
 
 export async function addToCart(prevState, queryData) {
@@ -249,7 +249,7 @@ export async function addToCart(prevState, queryData) {
 }
 ```
 
-```css styles.css hidden
+```css src/styles.css hidden
 form {
   border: solid 1px black;
   margin-bottom: 24px;

@@ -626,7 +626,11 @@ export default function PackingList() {
 
 Помните, что вы должны писать `importance > 0 && ...` вместо `importance && ...`, чтобы при `importance` равном `0` число `0` не рендерилось в результате!
 
+<<<<<<< HEAD
 В этом решении используются два отдельных условия для вставки пробела между именем и меткой важности. Кроме того, можно использовать фрагмент с ведущим пробелом: `importance > 0 && <> <i>...</i></>` или добавить пробел сразу внутри тега `<i>`: `importance > 0 && <i> ...</i>`.
+=======
+In this solution, two separate conditions are used to insert a space between the name and the importance label. Alternatively, you could use a Fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
+>>>>>>> 6bfde58c109ec86fd6c5767421404cb679ffba9a
 
 </Solution>
 
