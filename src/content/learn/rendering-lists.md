@@ -159,7 +159,7 @@ return <ul>{listItems}</ul>;
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -184,7 +184,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -218,7 +218,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -293,7 +293,7 @@ JSX-элементы, созданные внутри `map()` всегда до�
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -315,7 +315,7 @@ export default function List() {
 }
 ```
 
-```js data.js active
+```js src/data.js active
 export const people = [{
   id: 0, // Используется в JSX в качестве ключа
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -349,7 +349,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -450,7 +450,7 @@ const listItems = people.map(person =>
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -477,7 +477,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -511,7 +511,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -541,7 +541,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -592,7 +592,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -626,7 +626,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -656,7 +656,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -706,7 +706,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -740,7 +740,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -770,7 +770,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -824,7 +824,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -858,7 +858,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -896,7 +896,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { recipes } from './data.js';
 
 export default function RecipeList() {
@@ -908,7 +908,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [{
   id: 'greek-salad',
   name: 'Греческий салат',
@@ -932,7 +932,7 @@ export const recipes = [{
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { recipes } from './data.js';
 
 export default function RecipeList() {
@@ -956,7 +956,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [{
   id: 'greek-salad',
   name: 'Греческий салат',
@@ -984,7 +984,7 @@ export const recipes = [{
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { recipes } from './data.js';
 
 export default function RecipeList() {
@@ -1008,7 +1008,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [{
   id: 'greek-salad',
   name: 'Греческий салат',
@@ -1062,7 +1062,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [{
   id: 'greek-salad',
   name: 'Греческий салат',
@@ -1147,7 +1147,11 @@ hr {
 
 <Hint>
 
+<<<<<<< HEAD
 Вам понадобится либо поменять `map` на обычный цикл, либо использовать фрагмент.
+=======
+You'll either need to convert `map` to a manual loop, or use a Fragment.
+>>>>>>> 3563d95efe8719bdae8bbd258e6ab4134753348b
 
 </Hint>
 
@@ -1210,7 +1214,11 @@ hr {
 
 Использование исходного индекса строки в качестве ключа больше не работает, потому что теперь каждый разделитель и абзац находятся в одном и том же массиве. Однако вы можете присвоить каждому из них уникальный ключ с использованием суффикса, например, `key={i + '-text'}`.
 
+<<<<<<< HEAD
 В качестве альтернативы, вы можете отрендерить коллекцию фрагментов, содержащих `<hr />` и `<p>...</p>`. Однако сокращенный синтаксис `<>...</>` не поддерживает передачу ключей, поэтому вам придется явно использовать `<Fragment>`:
+=======
+Alternatively, you could render a collection of Fragments which contain `<hr />` and `<p>...</p>`. However, the `<>...</>` shorthand syntax doesn't support passing keys, so you'd have to write `<Fragment>` explicitly:
+>>>>>>> 3563d95efe8719bdae8bbd258e6ab4134753348b
 
 <Sandpack>
 
@@ -1256,7 +1264,11 @@ hr {
 
 </Sandpack>
 
+<<<<<<< HEAD
 Запомните, фрагменты (часто записываемые как `<> </>`) позволяют группировать JSX-узлы без добавления дополнительных `<div>`!
+=======
+Remember, Fragments (often written as `<> </>`) let you group JSX nodes without adding extra `<div>`s!
+>>>>>>> 3563d95efe8719bdae8bbd258e6ab4134753348b
 
 </Solution>
 

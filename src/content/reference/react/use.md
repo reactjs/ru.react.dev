@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-The `use` Hook is currently only available in React's canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+The `use` Hook is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
 
 </Canary>
 
@@ -247,7 +247,7 @@ Because <CodeStep step={2}>`Message`</CodeStep> is wrapped in <CodeStep step={3}
 
 <Sandpack>
 
-```js message.js active
+```js src/message.js active
 "use client";
 
 import { use, Suspense } from "react";
@@ -266,7 +266,7 @@ export function MessageContainer({ messagePromise }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from "react";
 import { MessageContainer } from "./message.js";
 
@@ -290,7 +290,7 @@ export default function App() {
 }
 ```
 
-```js index.js hidden
+```js src/index.js hidden
 // TODO: update to import from stable
 // react instead of canary once the `use`
 // Hook is in a stable release of React
@@ -337,7 +337,7 @@ When passing a Promise from a Server Component to a Client Component, its resolv
 A Promise can be passed from a Server Component to a Client Component and resolved in the Client Component with the `use` Hook. You can also resolve the Promise in a Server Component with `await` and pass the required data to the Client Component as a prop.
 
 ```js
-export default function App() {
+export default async function App() {
   const messageContent = await fetchMessage();
   return <Message messageContent={messageContent} />
 }
@@ -364,7 +364,7 @@ If you'd like to display an error to your users when a Promise is rejected, you 
 
 <Sandpack>
 
-```js message.js active
+```js src/message.js active
 "use client";
 
 import { use, Suspense } from "react";
@@ -386,7 +386,7 @@ function Message({ messagePromise }) {
 }
 ```
 
-```js App.js hidden
+```js src/App.js hidden
 import { useState } from "react";
 import { MessageContainer } from "./message.js";
 
@@ -410,7 +410,7 @@ export default function App() {
 }
 ```
 
-```js index.js hidden
+```js src/index.js hidden
 // TODO: update to import from stable
 // react instead of canary once the `use`
 // Hook is in a stable release of React
