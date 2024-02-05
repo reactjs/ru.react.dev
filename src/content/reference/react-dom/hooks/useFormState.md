@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-The `useFormState` Hook is currently only available in React's canary and experimental channels. Learn more about [release channels here](/community/versioning-policy#all-release-channels). In addition, you need to use a framework that supports [React Server Components](/reference/react/use-client) to get the full benefit of `useFormState`.
+The `useFormState` Hook is currently only available in React's Canary and experimental channels. Learn more about [release channels here](/community/versioning-policy#all-release-channels). In addition, you need to use a framework that supports [React Server Components](/reference/react/use-client) to get the full benefit of `useFormState`.
 
 </Canary>
 
@@ -14,7 +14,7 @@ The `useFormState` Hook is currently only available in React's canary and experi
 `useFormState` is a Hook that allows you to update state based on the result of a form action.
 
 ```js
-const [state, formAction] = useFormState(fn, initialState);
+const [state, formAction] = useFormState(fn, initialState, permalink?);
 ```
 
 </Intro>
@@ -25,7 +25,7 @@ const [state, formAction] = useFormState(fn, initialState);
 
 ## Reference {/*reference*/}
 
-### `useFormState(action, initialState)` {/*useformstate*/}
+### `useFormState(action, initialState, permalink?)` {/*useformstate*/}
 
 {/* TODO T164397693: link to actions documentation once it exists */}
 
@@ -59,6 +59,7 @@ If used with a Server Action, `useFormState` allows the server's response from s
 
 * `fn`: The function to be called when the form is submitted or button pressed. When the function is called, it will receive the previous state of the form (initially the `initialState` that you pass, subsequently its previous return value) as its initial argument, followed by the arguments that a form action normally receives.
 * `initialState`: The value you want the state to be initially. It can be any serializable value. This argument is ignored after the action is first invoked.
+* **optional** `permalink`: A string containing the unique page URL that this form modifies. For use on pages with dynamic content (eg: feeds) in conjunction with progressive enhancement: if `fn` is a [server action](/reference/react/use-server) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL, rather than the current page's URL. Ensure that the same form component is rendered on the destination page (including the same action `fn` and `permalink`) so that React knows how to pass the state through. Once the form has been hydrated, this parameter has no effect.
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
 
@@ -104,7 +105,7 @@ function MyComponent() {
 
 When the form is submitted, the <CodeStep step={3}>action</CodeStep> function that you provided will be called. Its return value will become the new <CodeStep step={1}>current state</CodeStep> of the form.
 
-The <CodeStep step={3}>action</CodeStep> that you provide will also receive a new first argument, namely the <CodeStep step={1}>current state</CodeStep> of the form. The first time the form is submitted, this will be the <CodeStep step={4}>initial state</CodeStep> you provided, while with subsequent submissions, it will be the return value from the last time the action was called. The rest of the arguments are the same as if `useFormState` had not been used
+The <CodeStep step={3}>action</CodeStep> that you provide will also receive a new first argument, namely the <CodeStep step={1}>current state</CodeStep> of the form. The first time the form is submitted, this will be the <CodeStep step={4}>initial state</CodeStep> you provided, while with subsequent submissions, it will be the return value from the last time the action was called. The rest of the arguments are the same as if `useFormState` had not been used.
 
 ```js [[3, 1, "action"], [1, 1, "currentState"]]
 function action(currentState, formData) {
@@ -121,7 +122,7 @@ To display messages such as an error message or toast that's returned by a Serve
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from "react";
 import { useFormState } from "react-dom";
 import { addToCart } from "./actions.js";
@@ -148,7 +149,7 @@ export default function App() {
 }
 ```
 
-```js actions.js
+```js src/actions.js
 "use server";
 
 export async function addToCart(prevState, queryData) {
@@ -161,7 +162,7 @@ export async function addToCart(prevState, queryData) {
 }
 ```
 
-```css styles.css hidden
+```css src/styles.css hidden
 form {
   border: solid 1px black;
   margin-bottom: 24px;
@@ -194,7 +195,7 @@ The return value from a Server Action can be any serializable value. For example
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from "react";
 import { useFormState } from "react-dom";
 import { addToCart } from "./actions.js";
@@ -230,7 +231,7 @@ export default function App() {
 }
 ```
 
-```js actions.js
+```js src/actions.js
 "use server";
 
 export async function addToCart(prevState, queryData) {
@@ -249,7 +250,7 @@ export async function addToCart(prevState, queryData) {
 }
 ```
 
-```css styles.css hidden
+```css src/styles.css hidden
 form {
   border: solid 1px black;
   margin-bottom: 24px;
