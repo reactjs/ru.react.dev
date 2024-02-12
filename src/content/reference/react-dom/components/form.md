@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-React's extensions to `<form>` are currently only available in React's canary and experimental channels. In stable releases of React `<form>` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+React's extensions to `<form>` are currently only available in React's canary and experimental channels. In stable releases of React, `<form>` works only as a [built-in browser HTML component](https://react.dev/reference/react-dom/components#all-html-components). Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
 
 </Canary>
 
@@ -62,7 +62,7 @@ Pass a function to the `action` prop of form to run the function when the form i
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 export default function Search() {
   function search(formData) {
     const query = formData.get("query");
@@ -118,7 +118,7 @@ function AddToCart({productId}) {
 }
 ```
 
-In lieu of using hidden form fields to provide data to the `<form>`'s action, you can call the <CodeStep step={1}>`bind`</CodeStep> method to supply it with extra arguments. This will bind a new argument (<CodeStep step={2}>`productId`</CodeStep>) to the function in addition to the <CodeStep step={3}>`formData`</CodeStep> that is passed as a argument to the function.
+In lieu of using hidden form fields to provide data to the `<form>`'s action, you can call the <CodeStep step={1}>`bind`</CodeStep> method to supply it with extra arguments. This will bind a new argument (<CodeStep step={2}>`productId`</CodeStep>) to the function in addition to the <CodeStep step={3}>`formData`</CodeStep> that is passed as an argument to the function.
 
 ```jsx [[1, 8, "bind"], [2,8, "productId"], [2,4, "productId"], [3,4, "formData"]]
 import { updateCart } from './lib.js';
@@ -146,7 +146,7 @@ Here, we use the `pending` property to indicate the form is submitting.
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useFormStatus } from "react-dom";
 import { submitForm } from "./actions.js";
 
@@ -172,7 +172,7 @@ export default function App() {
 }
 ```
 
-```js actions.js hidden
+```js src/actions.js hidden
 export async function submitForm(query) {
     await new Promise((res) => setTimeout(res, 1000));
 }
@@ -201,7 +201,7 @@ For example, when a user types a message into the form and hits the "Send" butto
 <Sandpack>
 
 
-```js App.js
+```js src/App.js
 import { useOptimistic, useState, useRef } from "react";
 import { deliverMessage } from "./actions.js";
 
@@ -251,7 +251,7 @@ export default function App() {
 }
 ```
 
-```js actions.js
+```js src/actions.js
 export async function deliverMessage(message) {
   await new Promise((res) => setTimeout(res, 1000));
   return message;
@@ -278,11 +278,11 @@ export async function deliverMessage(message) {
 
 ### Handling form submission errors {/*handling-form-submission-errors*/}
 
-In some cases the function called by a `<form>`'s `action` prop throw an error. You can handle these errors by wrapping `<form>` in an Error Boundary. If the function called by a `<form>`'s `action` prop throws an error, the fallback for the error boundary will be displayed.
+In some cases the function called by a `<form>`'s `action` prop throws an error. You can handle these errors by wrapping `<form>` in an Error Boundary. If the function called by a `<form>`'s `action` prop throws an error, the fallback for the error boundary will be displayed.
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { ErrorBoundary } from "react-error-boundary";
 
 export default function Search() {
@@ -330,7 +330,7 @@ Displaying a form submission error message before the JavaScript bundle loads fo
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useFormState } from "react-dom";
 import { signUpNewUser } from "./api";
 
@@ -361,7 +361,7 @@ export default function Page() {
 }
 ```
 
-```js api.js hidden
+```js src/api.js hidden
 let emails = [];
 
 export async function signUpNewUser(newEmail) {
@@ -396,7 +396,7 @@ When a user taps a specific button, the form is submitted, and a corresponding a
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 export default function Search() {
   function publish(formData) {
     const content = formData.get("content");
