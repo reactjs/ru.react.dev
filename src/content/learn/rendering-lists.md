@@ -1147,11 +1147,7 @@ hr {
 
 <Hint>
 
-<<<<<<< HEAD
 Вам понадобится либо поменять `map` на обычный цикл, либо использовать фрагмент.
-=======
-You'll either need to convert `map` to a manual loop, or use a Fragment.
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
 
 </Hint>
 
@@ -1214,11 +1210,7 @@ hr {
 
 Использование исходного индекса строки в качестве ключа больше не работает, потому что теперь каждый разделитель и абзац находятся в одном и том же массиве. Однако вы можете присвоить каждому из них уникальный ключ с использованием суффикса, например, `key={i + '-text'}`.
 
-<<<<<<< HEAD
 В качестве альтернативы, вы можете отрендерить коллекцию фрагментов, содержащих `<hr />` и `<p>...</p>`. Однако сокращенный синтаксис `<>...</>` не поддерживает передачу ключей, поэтому вам придется явно использовать `<Fragment>`:
-=======
-Alternatively, you could render a collection of Fragments which contain `<hr />` and `<p>...</p>`. However, the `<>...</>` shorthand syntax doesn't support passing keys, so you'd have to write `<Fragment>` explicitly:
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
 
 <Sandpack>
 
@@ -1264,11 +1256,7 @@ hr {
 
 </Sandpack>
 
-<<<<<<< HEAD
 Запомните, фрагменты (часто записываемые как `<> </>`) позволяют группировать JSX-узлы без добавления дополнительных `<div>`!
-=======
-Remember, Fragments (often written as `<> </>`) let you group JSX nodes without adding extra `<div>`s!
->>>>>>> 081d1008dd1eebffb9550a3ff623860a7d977acf
 
 </Solution>
 
