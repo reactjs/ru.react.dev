@@ -40,11 +40,7 @@ function SearchPage() {
 
 #### Возвращаемое значение {/*returns*/}
 
-<<<<<<< HEAD
 При первом рендеринге вызов вернёт то же значение, которое вы указали. Когда в следующих обновлениях значение изменится, вызов вернёт прошлое значение, но при этом React запустит дополнительный фоновый рендеринг, в котором вызов вернёт обновлённое значение.
-=======
-During the initial render, the returned deferred value will be the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value). 
->>>>>>> 5de85198a3c575d94a395138e3f471cc7172a51c
 
 #### Замечания {/*caveats*/}
 
@@ -80,11 +76,7 @@ function SearchPage() {
 
 При первом рендеринге <CodeStep step={2}>отложенное значение</CodeStep> будет равно <CodeStep step={1}>значению</CodeStep>, которое вы передадите.
 
-<<<<<<< HEAD
 В следующих обновлениях <CodeStep step={2}>отложенное значение</CodeStep> будет как бы "отставать" от актуального <CodeStep step={1}>значения</CodeStep>. А именно: сначала React отрендерит компонент, *не обновляя* отложенное значение, а затем в фоне попытается отрендерить компонент с новым значением.
-=======
-During updates, the <CodeStep step={2}>deferred value</CodeStep> will "lag behind" the latest <CodeStep step={1}>value</CodeStep>. In particular, React will first re-render *without* updating the deferred value, and then try to re-render with the newly received value in the background.
->>>>>>> 5de85198a3c575d94a395138e3f471cc7172a51c
 
 **Разберём на примере, когда это может быть полезно.**
 
@@ -516,11 +508,7 @@ input { margin: 10px; }
 
 1. **Сначала React отрендерит компонент с новым запросом `"ab"` в `query`, но пока что с отложенным `"a"` в `deferredQuery`.** Значение в `deferredQuery`, которое вы передаёте в список результатов, является *отложенным:* оно "отстаёт" от значения `query`.
 
-<<<<<<< HEAD
 2. **Затем в фоне React попытается ещё раз отрендерить компонент, но уже с новым запросом `"ab"` и в `query`, и в `deferredQuery`.** Если этот рендеринг выполнится до конца, то React отобразит его результаты на экране. Но если рендеринг задержится (встанет в ожидании результатов для  `"ab"`), то React эту конкретную попытку прервёт, а когда результаты загрузятся, попробует снова. Пока данные не загрузились, пользователю будет показываться старое отложенное значение.
-=======
-2. **In the background, React tries to re-render with *both* `query` and `deferredQuery` updated to `"ab"`.** If this re-render completes, React will show it on the screen. However, if it suspends (the results for `"ab"` have not loaded yet), React will abandon this rendering attempt, and retry this re-render again after the data has loaded. The user will keep seeing the stale deferred value until the data is ready.
->>>>>>> 5de85198a3c575d94a395138e3f471cc7172a51c
 
 Отложенный фоновый рендеринг можно прервать. Если, например, продолжить печатать запрос, React прервёт фоновый рендеринг и перезапустит его уже с новым вводом. React всегда будет ориентироваться только на самое последнее переданное ему значение.
 
@@ -964,11 +952,7 @@ export default SlowList;
 
 Можно не привязываться к какой-то фиксированной задержке. У пользователей с быстрым, мощным устройством фоновый рендеринг будет выполняться быстро и без заметной задержки. А у пользователей со слабым устройством список будет "отставать" ровно на столько, на сколько позволяет устройство.
 
-<<<<<<< HEAD
 Кроме того, в отличие от дебаунсинга и тротлинга, отложенный с помощью `useDeferredValue` рендеринг можно прервать. Это значит, что если, например, пользователь введёт очередной символ, пока в фоне рендерится большой сложный список, React прервёт этот рендеринг, обработает ввод, и затем снова запустит рендеринг в фоне. При этом с дебаунсингом или тротлингом в такой же ситуации интерфейс всё ещё будет тормозить и заедать -- ведь эти приёмы не устраняют собственно *блокировку* ввода: с ними она случается просто либо позже, либо реже.
-=======
-Also, unlike with debouncing or throttling, deferred re-renders done by `useDeferredValue` are interruptible by default. This means that if React is in the middle of re-rendering a large list, but the user makes another keystroke, React will abandon that re-render, handle the keystroke, and then start rendering in the background again. By contrast, debouncing and throttling still produce a janky experience because they're *blocking:* they merely postpone the moment when rendering blocks the keystroke.
->>>>>>> 5de85198a3c575d94a395138e3f471cc7172a51c
 
 Когда нужно оптимизировать что-то помимо рендеринга, дебаунсинг и тротлинг могут наоборот быть очень полезны. Например, они помогут уменьшить количество запросов в сеть. А ещё их можно совмещать с описанными здесь техниками.
 
