@@ -94,9 +94,9 @@ export default function Copyright({year}) {
 
 ```js quotes.js
 export default [
-  "Don’t let yesterday take up too much of today.” — Will Rogers",
-  "Ambition is putting a ladder against the sky.",
-  "A joy that's shared is a joy made double.",
+  "Не позволяй вчерашнему дню занять слишком много времени сегодня.” — Уилл Роджерс",
+  "Амбиции — это поставить лестницу к небу.",
+  "Радость, которой делятся, — это радость вдвойне",
   ];
 ```
 
@@ -214,11 +214,11 @@ export default function Copyright({year}) {
 
 ```js inspirations.js
 export default [
-  {type: 'quote', value: "Don’t let yesterday take up too much of today.” — Will Rogers"},
+  {type: 'quote', value: "Не позволяй вчерашнему дню занять слишком много времени сегодня.” — Уилл Роджерс"},
   {type: 'color', value: "#B73636"},
-  {type: 'quote', value: "Ambition is putting a ladder against the sky."},
+  {type: 'quote', value: "Амбиции — это поставить лестницу к небу."},
   {type: 'color', value: "#256266"},
-  {type: 'quote', value: "A joy that's shared is a joy made double."},
+  {type: 'quote', value: "Радость, которой делятся, — это радость вдвойне."},
   {type: 'color', value: "#F9F2B4"},
 ];
 ```
