@@ -193,7 +193,7 @@ export default function App() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection(serverUrl, roomId) {
   // A real implementation would actually connect to the server
   return {
@@ -317,7 +317,7 @@ export default function App() {
 }
 ```
 
-```js animation.js
+```js src/animation.js
 export class FadeInAnimation {
   constructor(node) {
     this.node = node;
@@ -393,7 +393,7 @@ export default function App() {
 }
 ```
 
-```js ModalDialog.js active
+```js src/ModalDialog.js active
 import { useEffect, useRef } from 'react';
 
 export default function ModalDialog({ isOpen, children }) {
@@ -454,7 +454,7 @@ function LongSection() {
 }
 ```
 
-```js Box.js active
+```js src/Box.js active
 import { useRef, useEffect } from 'react';
 
 export default function Box() {
@@ -597,7 +597,7 @@ export default function App() {
 }
 ```
 
-```js useChatRoom.js
+```js src/useChatRoom.js
 import { useEffect } from 'react';
 import { createConnection } from './chat.js';
 
@@ -612,7 +612,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection(serverUrl, roomId) {
   // A real implementation would actually connect to the server
   return {
@@ -669,7 +669,7 @@ export default function App() {
 }
 ```
 
-```js useWindowListener.js
+```js src/useWindowListener.js
 import { useState, useEffect } from 'react';
 
 export function useWindowListener(eventType, listener) {
@@ -722,7 +722,7 @@ function LongSection() {
 }
 ```
 
-```js Box.js active
+```js src/Box.js active
 import { useRef, useEffect } from 'react';
 import { useIntersectionObserver } from './useIntersectionObserver.js';
 
@@ -752,7 +752,7 @@ export default function Box() {
 }
 ```
 
-```js useIntersectionObserver.js
+```js src/useIntersectionObserver.js
 import { useState, useEffect } from 'react';
 
 export function useIntersectionObserver(ref) {
@@ -810,7 +810,7 @@ For example, if you have a third-party map widget or a video player component wr
 }
 ```
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import Map from './Map.js';
 
@@ -828,7 +828,7 @@ export default function App() {
 }
 ```
 
-```js Map.js active
+```js src/Map.js active
 import { useRef, useEffect } from 'react';
 import { MapWidget } from './map-widget.js';
 
@@ -854,7 +854,7 @@ export default function Map({ zoomLevel }) {
 }
 ```
 
-```js map-widget.js
+```js src/map-widget.js
 import 'leaflet/dist/leaflet.css';
 import * as L from 'leaflet';
 
@@ -926,7 +926,7 @@ Note the `ignore` variable which is initialized to `false`, and is set to `true`
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -962,7 +962,7 @@ export default function Page() {
 }
 ```
 
-```js api.js hidden
+```js src/api.js hidden
 export async function fetchBio(person) {
   const delay = person === 'Bob' ? 2000 : 200;
   return new Promise(resolve => {
@@ -979,7 +979,7 @@ You can also rewrite using the [`async` / `await`](https://developer.mozilla.org
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1018,7 +1018,7 @@ export default function Page() {
 }
 ```
 
-```js api.js hidden
+```js src/api.js hidden
 export async function fetchBio(person) {
   const delay = person === 'Bob' ? 2000 : 200;
   return new Promise(resolve => {
@@ -1047,7 +1047,7 @@ Writing `fetch` calls inside Effects is a [popular way to fetch data](https://ww
 This list of downsides is not specific to React. It applies to fetching data on mount with any library. Like with routing, data fetching is not trivial to do well, so we recommend the following approaches:
 
 - **If you use a [framework](/learn/start-a-new-react-project#production-grade-react-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
-- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://react-query.tanstack.com/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
 
 You can continue fetching data directly in Effects if neither of these approaches suit you.
 
@@ -1214,7 +1214,7 @@ export default function App() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection(serverUrl, roomId) {
   // A real implementation would actually connect to the server
   return {
@@ -1295,7 +1295,7 @@ export default function App() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection(serverUrl, roomId) {
   // A real implementation would actually connect to the server
   return {
@@ -1388,7 +1388,7 @@ export default function App() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection(serverUrl, roomId) {
   // A real implementation would actually connect to the server
   return {
@@ -1551,7 +1551,7 @@ export default function App() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
   // A real implementation would actually connect to the server
   return {
@@ -1661,7 +1661,7 @@ export default function App() {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
   // A real implementation would actually connect to the server
   return {

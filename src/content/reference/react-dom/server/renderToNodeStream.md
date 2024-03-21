@@ -13,7 +13,7 @@
 `renderToNodeStream` отображает дерево React в [Node.js Readable Stream.](https://nodejsdev.ru/api/stream/#streamreadable)
 
 ```js
-const stream = renderToNodeStream(reactNode)
+const stream = renderToNodeStream(reactNode, options?)
 ```
 
 </Intro>
@@ -24,7 +24,7 @@ const stream = renderToNodeStream(reactNode)
 
 ## Справка {/*reference*/}
 
-### `renderToNodeStream(reactNode)` {/*rendertonodestream*/}
+### `renderToNodeStream(reactNode, options?)` {/*rendertonodestream*/}
 
 На сервере вызовите `renderToNodeStream`, чтобы получить [Node.js Readable Stream](https://nodejsdev.ru/api/stream/#streamreadable), который вы можете передать в ответ.
 
@@ -43,7 +43,10 @@ stream.pipe(response);
 
 * `reactNode`: Узел React, который вы хотите отобразить в HTML. Например, такой JSX элемент как `<App />`.
 
-#### Возвращает {/*returns*/}
+* **необязательный** `options`: Объект для серверного рендера.
+  * **необязательный** `identifierPrefix`: Строковый префикс, который React использует для генерации идентификаторов с помощью [`useId`.](/reference/react/useId) Полезен, чтобы избежать конфликтов между разными корневыми элементами на одной и той же странице. Должен совпадать с префиксом, переданным в [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot#parameters)
+
+#### Возвращаемое значение {/*returns*/}
 
 [Node.js Readable Stream](https://nodejsdev.ru/api/stream/#streamreadable), который выводит строку HTML.
 

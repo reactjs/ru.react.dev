@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-The `useFormStatus` Hook is currently only available in React's canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
+The `useFormStatus` Hook is currently only available in React's Canary and experimental channels. Learn more about [React's release channels here](/community/versioning-policy#all-release-channels).
 
 </Canary>
 
@@ -38,7 +38,7 @@ function Submit() {
   return <button disabled={status.pending}>Submit</button>
 }
 
-export default App() {
+export default function App() {
   return (
     <form action={action}>
       <Submit />
@@ -86,7 +86,7 @@ Here, we use the `pending` property to indicate the form is submitting.
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useFormStatus } from "react-dom";
 import { submitForm } from "./actions.js";
 
@@ -112,7 +112,7 @@ export default function App() {
 }
 ```
 
-```js actions.js hidden
+```js src/actions.js hidden
 export async function submitForm(query) {
     await new Promise((res) => setTimeout(res, 1000));
 }
@@ -175,64 +175,63 @@ Here, we have a form where users can request a username. We can use `useFormStat
 
 <Sandpack>
 
-```js UsernameForm.js active
+```js src/UsernameForm.js active
 import {useState, useMemo, useRef} from 'react';
 import {useFormStatus} from 'react-dom';
 
 export default function UsernameForm() {
   const {pending, data} = useFormStatus();
 
-  const [showSubmitted, setShowSubmitted] = useState(false);
-  const submittedUsername = useRef(null);
-  const timeoutId = useRef(null);
-
-  useMemo(() => {
-    if (pending) {
-      submittedUsername.current = data?.get('username');
-      if (timeoutId.current != null) {
-        clearTimeout(timeoutId.current);
-      }
-
-      timeoutId.current = setTimeout(() => {
-        timeoutId.current = null;
-        setShowSubmitted(false);
-      }, 2000);
-      setShowSubmitted(true);
-    }
-  }, [pending, data]);
-
   return (
-    <>
-      <label>Request a Username: </label><br />
-      <input type="text" name="username" />
+    <div>
+      <h3>Request a Username: </h3>
+      <input type="text" name="username" disabled={pending}/>
       <button type="submit" disabled={pending}>
-        {pending ? 'Submitting...' : 'Submit'}
+        Submit
       </button>
-      {showSubmitted ? (
-        <p>Submitted request for username: {submittedUsername.current}</p>
-      ) : null}
-    </>
+      <br />
+      <p>{data ? `Requesting ${data?.get("username")}...`: ''}</p>
+    </div>
   );
 }
 ```
 
-```js App.js
+```js src/App.js
 import UsernameForm from './UsernameForm';
 import { submitForm } from "./actions.js";
+import {useRef} from 'react';
 
 export default function App() {
+  const ref = useRef(null);
   return (
-    <form action={submitForm}>
+    <form ref={ref} action={async (formData) => {
+      await submitForm(formData);
+      ref.current.reset();
+    }}>
       <UsernameForm />
     </form>
   );
 }
 ```
 
-```js actions.js hidden
+```js src/actions.js hidden
 export async function submitForm(query) {
-    await new Promise((res) => setTimeout(res, 1000));
+    await new Promise((res) => setTimeout(res, 2000));
 }
+```
+
+```css
+p {
+    height: 14px;
+    padding: 0;
+    margin: 2px 0 0 0 ;
+    font-size: 14px
+}
+
+button {
+    margin-left: 2px;
+}
+
 ```
 
 ```json package.json hidden
