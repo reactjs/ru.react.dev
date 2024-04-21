@@ -13,7 +13,7 @@ title: renderToString
 `renderToString` рендерит дерево React в HTML-строку.
 
 ```js
-const html = renderToString(reactNode)
+const html = renderToString(reactNode, options?)
 ```
 
 </Intro>
@@ -24,7 +24,7 @@ const html = renderToString(reactNode)
 
 ## Справка {/*reference*/}
 
-### `renderToString(reactNode)` {/*rendertostring*/}
+### `renderToString(reactNode, options?)` {/*rendertostring*/}
 
 На сервере вызовите `renderToString`, чтобы отрендерить ваше приложение в HTML.
 
@@ -42,7 +42,10 @@ const html = renderToString(<App />);
 
 * `reactNode`: Узел React, который вы хотите отрендерить в HTML. Например, JSX узел типа `<App />`.
 
-#### Возвращаемые значения {/*returns*/}
+* **необязательный** `options`: Объект для серверного рендера.
+  * **необязательный** `identifierPrefix`: Строковый префикс, который React использует для генерации идентификаторов с помощью [`useId`.](/reference/react/useId) Полезен, чтобы избежать конфликтов между разными корневыми элементами на одной и той же странице. Должен совпадать с префиксом, переданным в [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot#parameters)
+
+#### Возвращаемое значение {/*returns*/}
 
 Строка HTML.
 

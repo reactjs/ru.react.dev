@@ -31,7 +31,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 #### Параметры {/*parameters*/}
 
-* `load`: Функция, которая возвращает [Промис](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise) или другой *thenable* (объект, в котором определен метод `then`). Вызова `load` не произойдет до тех пор, пока вы не попытаетесь отрендерить возвращённый компонент. После первого вызова `load`, React будет ждать завершения выполнения команды, а затем отрендерит разрешённое значение как React-компонент. Возвращаемый промис и разрешенное значение промиса будут кэшироваться, поэтому React не будет вызывать `load` более одного раза. Если Promise отклоняется, React укажет причину в ближайшем Error Boundary.
+* `load`: Функция, которая возвращает [Промис](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise) или другой *thenable* (объект, в котором определен метод `then`). Вызова `load` не произойдет до тех пор, пока вы не попытаетесь отрендерить возвращённый компонент. После первого вызова `load`, React будет ждать завершения выполнения команды, а затем отрендерит разрешённое значение `.default` как React-компонент. Возвращаемый промис и разрешённое значение промиса будут кэшироваться, поэтому React не будет вызывать `load` более одного раза. Если Promise отклоняется, React укажет причину в ближайшем Error Boundary.
 
 #### Возвращаемое значение {/*returns*/}
 
@@ -47,7 +47,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 #### Возвращаемое значение {/*load-returns*/}
 
-Возвращает [Промис](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise) или другой *thenable* (объект, в котором определен метод `then`). В конечном итоге он вернётся к действительному React компоненту, например к функции, [`memo`](/reference/react/memo), или [`forwardRef`](/reference/react/forwardRef) компоненту.
+Возвращает [Промис](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise) или другой *thenable* (объект, в котором определен метод `then`). В конечном итоге он вернёт объект со свойством `.default`, принимающим валидный React-компонент, например функцию, [`memo`](/reference/react/memo), или [`forwardRef`](/reference/react/forwardRef)-компонент.
 
 ---
 
@@ -69,7 +69,7 @@ import { lazy } from 'react';
 const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 ```
 
-Этот код опирается на [динамический `import()`,](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) который должен поддерживаться вашим бандлером или фреймворком.
+Этот код опирается на [динамический `import()`,](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/import) который должен поддерживаться вашим бандлером или фреймворком. Использование этого подхода требует, чтобы импортируемый компонент был экспортирован с помощью экспорта по умолчанию.
 
 Теперь, когда код вашего компонента загружается по запросу, вам также необходимо указать, что должно отображаться во время его загрузки. Это можно сделать путем оборачивания ленивого компонента или его родителя в границы [`<Suspense>`](/reference/react/Suspense):
 
@@ -84,7 +84,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState, Suspense, lazy } from 'react';
 import Loading from './Loading.js';
 
@@ -119,13 +119,13 @@ function delayForDemo(promise) {
 }
 ```
 
-```js Loading.js
+```js src/Loading.js
 export default function Loading() {
   return <p><i>Loading...</i></p>;
 }
 ```
 
-```js MarkdownPreview.js
+```js src/MarkdownPreview.js
 import { Remarkable } from 'remarkable';
 
 const md = new Remarkable();

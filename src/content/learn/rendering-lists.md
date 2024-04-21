@@ -113,9 +113,11 @@ const people = [{
   name: 'Мухаммад Абдус Салам (Mohammad Abdus Salam)',
   profession: 'физик',
 }, {
+  id: 3,
   name: 'Перси Джулиан (Percy Lavon Julian)',
   profession: 'химик',  
 }, {
+  id: 4,
   name: 'Субраманьян Чандрасекар (Subrahmanyan Chandrasekhar)',
   profession: 'астрофизик',
 }];
@@ -159,7 +161,7 @@ return <ul>{listItems}</ul>;
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -184,7 +186,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -218,7 +220,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -293,7 +295,7 @@ JSX-элементы, созданные внутри `map()` всегда до�
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -315,7 +317,7 @@ export default function List() {
 }
 ```
 
-```js data.js active
+```js src/data.js active
 export const people = [{
   id: 0, // Используется в JSX в качестве ключа
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -349,7 +351,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -450,7 +452,7 @@ const listItems = people.map(person =>
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -477,7 +479,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -511,7 +513,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -541,7 +543,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -592,7 +594,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -626,7 +628,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -656,7 +658,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -706,7 +708,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -740,7 +742,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -770,7 +772,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { people } from './data.js';
 import { getImageUrl } from './utils.js';
 
@@ -824,7 +826,7 @@ export default function List() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const people = [{
   id: 0,
   name: 'Креола Кэтрин Джонсон (Creola Katherine Johnson)',
@@ -858,7 +860,7 @@ export const people = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(person) {
   return (
     'https://i.imgur.com/' +
@@ -896,7 +898,7 @@ img { width: 100px; height: 100px; border-radius: 50%; }
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { recipes } from './data.js';
 
 export default function RecipeList() {
@@ -908,7 +910,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [{
   id: 'greek-salad',
   name: 'Греческий салат',
@@ -932,7 +934,7 @@ export const recipes = [{
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { recipes } from './data.js';
 
 export default function RecipeList() {
@@ -956,7 +958,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [{
   id: 'greek-salad',
   name: 'Греческий салат',
@@ -984,7 +986,7 @@ export const recipes = [{
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { recipes } from './data.js';
 
 export default function RecipeList() {
@@ -1008,7 +1010,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [{
   id: 'greek-salad',
   name: 'Греческий салат',
@@ -1062,7 +1064,7 @@ export default function RecipeList() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const recipes = [{
   id: 'greek-salad',
   name: 'Греческий салат',
@@ -1088,7 +1090,7 @@ export const recipes = [{
 
 #### Список с разделителем {/*list-with-a-separator*/}
 
-Данный пример рендерит известное хокку Кацусики Хокусая, каждая строка обернута в тег `<p>`. Ваша задача -- вставить разделитель `<hr />` между каждым параграфом. Ваша структура должна выглядеть так:
+Данный пример рендерит известное хокку Татибана Хокуси, каждая строка обернута в тег `<p>`. Ваша задача -- вставить разделитель `<hr />` между каждым параграфом. Ваша структура должна выглядеть так:
 
 ```js
 <article>
