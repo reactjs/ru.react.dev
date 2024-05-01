@@ -18,7 +18,7 @@ const deferredValue = useDeferredValue(value)
 
 ## Справочник {/*reference*/}
 
-### `useDeferredValue(value)` {/*usedeferredvalue*/}
+### `useDeferredValue(value, initialValue?)` {/*usedeferredvalue*/}
 
 Чтобы сделать обновления значения отложенными, вызовите `useDeferredValue` с этим значением на верхнем уровне своего компонента:
 
@@ -36,15 +36,37 @@ function SearchPage() {
 
 #### Параметры {/*parameters*/}
 
+<<<<<<< HEAD
 * `value`: Значение, обновление которого вы хотите отложить.
+=======
+* `value`: The value you want to defer. It can have any type.
+* <CanaryBadge title="This feature is only available in the Canary channel" /> **optional** `initialValue`: A value to use during the initial render of a component. If this option is omitted, `useDeferredValue` will not defer during the initial render, because there's no previous version of `value` that it can render instead.
+
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 #### Возвращаемое значение {/*returns*/}
 
+<<<<<<< HEAD
 При первом рендеринге вызов вернёт то же значение, которое вы указали. Когда в следующих обновлениях значение изменится, вызов вернёт прошлое значение, но при этом React запустит дополнительный фоновый рендеринг, в котором вызов вернёт обновлённое значение.
+=======
+- `currentValue`: During the initial render, the returned deferred value will be the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value).
+
+<Canary>
+
+In the latest React Canary versions, `useDeferredValue` returns the `initialValue` on initial render, and schedules a re-render in the background with the `value` returned.
+
+</Canary>
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 #### Замечания {/*caveats*/}
 
+<<<<<<< HEAD
 - Значения, которые вы передаёте в `useDeferredValue`, должны либо быть примитивного типа (как, например, строки или числа), либо должны создаваться **не** во время рендеринга. Если вы будете во время рендеринга каждый раз передавать в `useDeferredValue` свеже созданный объект, то так вы будете постоянно запускать ненужный фоновый рендеринг.
+=======
+- When an update is inside a Transition, `useDeferredValue` always returns the new `value` and does not spawn a deferred render, since the update is already deferred.
+
+- The values you pass to `useDeferredValue` should either be primitive values (like strings and numbers) or objects created outside of rendering. If you create a new object during rendering and immediately pass it to `useDeferredValue`, it will be different on every render, causing unnecessary background re-renders.
+>>>>>>> 9e1f5cd590fd066e72dda9022237bee30b499951
 
 - Когда `useDeferredValue` получит другое значение (сравниваться будет через [`Object.is`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), помимо текущего рендеринга (в котором хук вернёт старое значение), дополнительно в фоне запустится рендеринг для собственно нового значения. Но этот фоновый рендеринг может прерваться: если значение параметра `value` изменится ещё раз, то React перезапустит фоновый рендеринг заново. Например, если пользователь будет печатать быстрее, чем зависящий от ввода график будет успевать в фоне рендерить предыдущий ввод -- график в таком случае обновится, только когда пользователь перестанет печатать.
 
