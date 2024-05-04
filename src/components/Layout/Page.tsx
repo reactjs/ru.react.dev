@@ -161,7 +161,7 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
                     <>
                       <div className="flex flex-col items-center p-4 m-4">
                         <p className="mb-4 text-lg font-bold text-primary dark:text-primary-dark">
-                          How do you like these docs?
+                          Вам нравится эта документация?
                         </p>
                         <div>
                           <ButtonLink
@@ -170,7 +170,7 @@ export function Page({children, toc, routeTree, meta, section}: PageProps) {
                             type="primary"
                             size="md"
                             target="_blank">
-                            Take our survey!
+                            Пройдите наш опрос!
                             <IconNavArrow
                               displayDirection="end"
                               className="inline ms-1"
