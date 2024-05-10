@@ -1,31 +1,31 @@
 ---
-title: 'Tutorial: Tic-Tac-Toe'
+title: 'Учебник: Крестики-Нолики'
 ---
 
 <Intro>
 
-You will build a small tic-tac-toe game during this tutorial. This tutorial does not assume any existing React knowledge. The techniques you'll learn in the tutorial are fundamental to building any React app, and fully understanding it will give you a deep understanding of React.
+В ходе этого урока вы создадите небольшую игру в крестики-нолики. Этот урок не предполагает наличия каких-либо знаний о React. Методы, которые вы изучите в этом уроке, являются основополагающими для создания приложения React, и их полное понимание даст вам глубокое представление о React.
 
 </Intro>
 
 <Note>
 
-This tutorial is designed for people who prefer to **learn by doing** and want to quickly try making something tangible. If you prefer learning each concept step by step, start with [Describing the UI.](/learn/describing-the-ui)
+Это руководство предназначено для людей, которые предпочитают **учиться на практике** и хотят быстро попробовать сделать что-то осязаемое. Если вы предпочитаете изучать каждую концепцию шаг за шагом, начните с [Описания пользовательского интерфейса.](/learn/describing-the-ui)
 
 </Note>
 
-The tutorial is divided into several sections:
+Учебник разделен на несколько разделов:
 
-- [Setup for the tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-- [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-- [Completing the game](#completing-the-game) will teach you **the most common techniques** in React development.
-- [Adding time travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+- [Настройка учебника](#setup-for-the-tutorial) даст вам **отправную точку** для дальнейшего изучения учебного пособия.
+- [Обзор](#overview) научит вас **основам** React: компонентам, реквизитам и состоянию.
+- [Завершение игры научит](#completing-the-game) вас **наиболее распространенным методам** в разработке React.
+- [Добавление путешествие во времени](#adding-time-travel) даст вам **более глубокое представление** об уникальных сильных сторонах React.
 
-### What are you building? {/*what-are-you-building*/}
+### Что ты строишь? {/*what-are-you-building*/}
 
-In this tutorial, you'll build an interactive tic-tac-toe game with React.
+В этом уроке вы создадите интерактивную игру в tic-tac-toe с React.
 
-You can see what it will look like when you're finished here:
+Вы можете увидеть, как это будет выглядеть, когда вы закончите здесь:
 
 <Sandpack>
 
@@ -57,9 +57,9 @@ function Board({ xIsNext, squares, onPlay }) {
   const winner = calculateWinner(squares);
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = 'Выйграл: ' + winner;
   } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+    status = 'Следующий игрок: ' + (xIsNext ? 'X' : 'O');
   }
 
   return (
@@ -103,9 +103,9 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Go to move #' + move;
+      description = 'Перейти к перемещению #' + move;
     } else {
-      description = 'Go to game start';
+      description = 'Перейти к началу игры';
     }
     return (
       <li key={move}>
@@ -194,15 +194,15 @@ body {
 
 </Sandpack>
 
-If the code doesn't make sense to you yet, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+Если код пока не имеет для вас смысла или вы не знакомы с синтаксисом кода, не волнуйтесь! Цель этого руководства - помочь вам разобраться в React и его синтаксисе.
 
-We recommend that you check out the tic-tac-toe game above before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and it is updated as the game progresses.
+Мы рекомендуем вам ознакомиться с игрой в крестики-нолики, описанной выше, прежде чем продолжить обучение. Одна из особенностей, которую вы заметите, заключается в том, что справа от игрового поля находится нумерованный список. Этот список содержит историю всех ходов, которые были выполнены в игре, и обновляется по ходу игры.
 
-Once you've played around with the finished tic-tac-toe game, keep scrolling. You'll start with a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
+После того, как вы поиграете с готовой игрой в крестики-нолики, продолжайте прокручивать. В этом руководстве вы начнете с более простого шаблона. Наш следующий шаг - настроить вас так, чтобы вы могли приступить к созданию игры.
 
-## Setup for the tutorial {/*setup-for-the-tutorial*/}
+## Настройка учебника {/*setup-for-the-tutorial*/}
 
-In the live code editor below, click **Fork** in the top-right corner to open the editor in a new tab using the website CodeSandbox. CodeSandbox lets you write code in your browser and preview how your users will see the app you've created. The new tab should display an empty square and the starter code for this tutorial.
+В редакторе живого кода ниже нажмите **Fork** в правом верхнем углу, чтобы открыть редактор в новой вкладке с помощью веб-сайта CodeSandbox. CodeSandbox позволяет писать код в браузере и просматривать, как ваши пользователи увидят созданное вами приложение. На новой вкладке должен отображаться пустой квадрат и начальный код для этого учебника.
 
 <Sandpack>
 
@@ -261,11 +261,11 @@ body {
 
 <Note>
 
-You can also follow this tutorial using your local development environment. To do this, you need to:
+Вы также можете следовать этому руководству, используя локальную среду разработки. Для этого вам необходимо:
 
-1. Install [Node.js](https://nodejs.org/en/)
-1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **Download Sandbox** in that menu to download an archive of the files locally
-1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
+1. Скачайте [Node.js](https://nodejs.org/en/)
+1. На вкладке CodeSandbox, которую вы открыли ранее, нажмите кнопку в левом верхнем углу, чтобы открыть меню, а затем выберите Скачать Sandbox в этом меню, чтобы загрузить архив файлов локально.    
+1. Разархивируйте архив, затем откройте терминал и перейдите в каталог, который вы разархивировали.
 1. Install the dependencies with `npm install`
 1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
 
