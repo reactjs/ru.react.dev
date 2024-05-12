@@ -266,28 +266,27 @@ body {
 1. Скачайте [Node.js](https://nodejs.org/en/)
 1. На вкладке CodeSandbox, которую вы открыли ранее, нажмите кнопку в левом верхнем углу, чтобы открыть меню, а затем выберите Скачать Sandbox в этом меню, чтобы загрузить архив файлов локально.    
 1. Разархивируйте архив, затем откройте терминал и перейдите в каталог, который вы разархивировали.
-1. Install the dependencies with `npm install`
-1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
-
-If you get stuck, don't let this stop you! Follow along online instead and try a local setup again later.
+1. Скачайте зависимо с помощью `npm install`
+1. Запустите `npm start`, чтобы запустить локальный сервер, и следуйте инструкциям, чтобы просмотреть код, работающий в браузере.
+Если вы застряли, не позволяйте этому остановить вас! Вместо этого следуйте инструкциям в Интернете и повторите попытку локальной настройки позже.
 
 </Note>
 
-## Overview {/*overview*/}
+## Обзор {/*overview*/}
 
-Now that you're set up, let's get an overview of React!
+Теперь, когда вы все настроили, давайте посмотрим на React!
 
-### Inspecting the starter code {/*inspecting-the-starter-code*/}
+### Проверка стартового кода {/*inspecting-the-starter-code*/}
 
-In CodeSandbox you'll see three main sections:
+В CodeSandbox вы увидите три основных раздела:
 
 ![CodeSandbox with starter code](../images/tutorial/react-starter-code-codesandbox.png)
 
-1. The _Files_ section with a list of files like `App.js`, `index.js`, `styles.css` and a folder called `public`
-1. The _code editor_ where you'll see the source code of your selected file
-1. The _browser_ section where you'll see how the code you've written will be displayed
+1. В разделе _Файлы/Files_ со списком таких файлов, как `App.js`, `index.js`, `styles.css` и папкой `public`.
+1. В _редакторе кода_, где вы увидите исходный код выбранного вами файла.
+1. Разделе _браузера/browser_, в котором вы увидите, как будет отображаться написанный вами код.
 
-The `App.js` file should be selected in the _Files_ section. The contents of that file in the _code editor_ should be:
+Файл `App.js` должен быть выбран в разделе _Файлы/Files_. Содержимое этого файла в _редакторе кода_ должно быть:
 
 ```jsx
 export default function Square() {
@@ -295,15 +294,14 @@ export default function Square() {
 }
 ```
 
-The _browser_ section should be displaying a square with a X in it like this:
-
+В разделе _браузера/browser_ должен отображаться квадрат в котором в нутри его буква X, пример выглядит следующим образом:
 ![x-filled square](../images/tutorial/x-filled-square.png)
 
-Now let's have a look at the files in the starter code.
+Теперь давайте взглянем на файлы в стартовом коде.
 
 #### `App.js` {/*appjs*/}
 
-The code in `App.js` creates a _component_. In React, a component is a piece of reusable code that represents a part of a user interface. Components are used to render, manage, and update the UI elements in your application. Let's look at the component line by line to see what's going on:
+Коде в App.js создает _компонент_. В React компонент — это фрагмент многократно используемого кода, который представляет собой часть пользовательского интерфейса. Компоненты используются для визуализации, управления и обновления элементов пользовательского интерфейса в вашем приложении. Давайте посмотрим на компонент построчно, чтобы увидеть, что происходит:
 
 ```js {1}
 export default function Square() {
@@ -311,7 +309,7 @@ export default function Square() {
 }
 ```
 
-The first line defines a function called `Square`. The `export` JavaScript keyword makes this function accessible outside of this file. The `default` keyword tells other files using your code that it's the main function in your file.
+Первая строка определяет функцию под названием `Квадрат/Square`. Ключевое слово `export/экспорт` в JavaScript делает эту функцию доступной за пределами этого файла. Ключевое слово `default/по умолчанию` сообщает другим файлам, использующим ваш код, что это основная функция в вашем файле.
 
 ```js {2}
 export default function Square() {
@@ -320,6 +318,8 @@ export default function Square() {
 ```
 
 The second line returns a button. The `return` JavaScript keyword means whatever comes after is returned as a value to the caller of the function. `<button>` is a *JSX element*. A JSX element is a combination of JavaScript code and HTML tags that describes what you'd like to display. `className="square"` is a button property or *prop* that tells CSS how to style the button. `X` is the text displayed inside of the button and `</button>` closes the JSX element to indicate that any following content shouldn't be placed inside the button.
+
+Вторая строка возвращает значение button. Ключевое слово JavaScript `return/возвращает` означает, что все, что следует за ним, возвращается в качестве значения вызывающей функции. "<button>` - это элемент *JSX*. Элемент JSX - это комбинация кода JavaScript и HTML-тегов, описывающая то, что вы хотели бы отобразить. `className="square"` - это свойство кнопки или *prop/опора*, которое указывает CSS, как стилизовать кнопку. `X` - это текст, отображаемый внутри кнопки, а "</button>" закрывает элемент JSX, указывая, что любое последующее содержимое не должно размещаться внутри кнопки.
 
 #### `styles.css` {/*stylescss*/}
 
