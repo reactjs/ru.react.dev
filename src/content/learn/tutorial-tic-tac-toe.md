@@ -103,7 +103,7 @@ export default function Game() {
   const moves = history.map((squares, move) => {
     let description;
     if (move > 0) {
-      description = 'Перейти к перемещению #' + move;
+      description = 'Перейти к ходу #' + move;
     } else {
       description = 'Перейти к началу игры';
     }
