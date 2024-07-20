@@ -92,7 +92,7 @@ function Tooltip() {
 
   useLayoutEffect(() => {
     const { height } = ref.current.getBoundingClientRect();
-    setTooltipHeight(height); // Теперь перерендерьте, когда вы знаете реальную высоту.
+    setTooltipHeight(height); // Теперь вызовите повторный рендер, когда вы знаете реальную высоту.
   }, []);
 
   // ...используйте tooltipHeight в логике рендеринга ниже...
