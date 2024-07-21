@@ -4,7 +4,7 @@ title: useReducer
 
 <Intro>
 
-`useReducer` is a React Hook that lets you add a [reducer](/learn/extracting-state-logic-into-a-reducer) to your component.
+`useReducer` -- это хук, который использует [редюсер](/learn/extracting-state-logic-into-a-reducer) для управления состоянием компонента. 
 
 ```js
 const [state, dispatch] = useReducer(reducer, initialArg, init?)
@@ -16,11 +16,11 @@ const [state, dispatch] = useReducer(reducer, initialArg, init?)
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `useReducer(reducer, initialArg, init?)` {/*usereducer*/}
 
-Call `useReducer` at the top level of your component to manage its state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+Вызовите `useReducer` на верхнем уровне компонента, чтобы управлять состоянием с помощью [редюсера.](/learn/extracting-state-logic-into-a-reducer)
 
 ```js
 import { useReducer } from 'react';
@@ -34,31 +34,31 @@ function MyComponent() {
   // ...
 ```
 
-[See more examples below.](#usage)
+[Больше примеров ниже.](#usage)
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-* `reducer`: The reducer function that specifies how the state gets updated. It must be pure, should take the state and action as arguments, and should return the next state. State and action can be of any types. 
-* `initialArg`: The value from which the initial state is calculated. It can be a value of any type. How the initial state is calculated from it depends on the next `init` argument.
-* **optional** `init`: The initializer function that should return the initial state. If it's not specified, the initial state is set to `initialArg`. Otherwise, the initial state is set to the result of calling `init(initialArg)`.
+* `reducer`: Редюсер — чистая функция, которая определяет логику обновления состояния. Редюсер принимает два аргумента – состояние и действие, и возвращает следующее состояние. Состояние и действие могут быть любых типов.
+* `initialArg`: Значение на основе которого вычисляется начальное состояние. Значение начального состояния может быть любого типа. То как из него будет вычисляться начальное состояние, зависит от аргумента `init`.
+* **optional** `init`: Функция инициализатора, которая возвращает начальное состояние. Если она не указана, то начальное состояние устанавливается в `initialArg`. В противном случае начальное состояние устанавливается в результат вызова `init(initialArg)`.
 
-#### Returns {/*returns*/}
+#### Возвращаемое значение {/*returns*/}
 
-`useReducer` returns an array with exactly two values:
+`useReducer` возвращает массив, который содержит только два значения:
 
-1. The current state. During the first render, it's set to `init(initialArg)` or `initialArg` (if there's no `init`).
-2. The [`dispatch` function](#dispatch) that lets you update the state to a different value and trigger a re-render.
+1. Текущее состояние. Во время первого рендеринга устанавливается `init(initialArg)` или `initialArg`, если параметр `init` не указан.
+2. Функцию [`dispatch`](#dispatch), которая обновляет состояние до другого значения и вызывает повторный рендеринг.
 
-#### Caveats {/*caveats*/}
+#### Замечания {/*caveats*/}
 
-* `useReducer` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
-* In Strict Mode, React will **call your reducer and initializer twice** in order to [help you find accidental impurities.](#my-reducer-or-initializer-function-runs-twice) This is development-only behavior and does not affect production. If your reducer and initializer are pure (as they should be), this should not affect your logic. The result from one of the calls is ignored.
+* `useReducer -- это хук, поэтому вызывайте его только **на верхнем уровне компонента** или собственных хуков. useReducer нельзя вызвать внутри циклов или условий. Если это нужно, создайте новый компонент и переместите состояние в него.
+* В строгом режиме React будет **вызывать редюсер и инициализатор дважды**, [чтобы помочь обнаружить случайные побочные эффекты.](#my-reducer-or-initializer-function-runs-twice) Такое поведение проявляется только в режиме разработки и не влияет на продакшен-режим. Логика обновления состояния не изменится, если редюсер и инициализатор – чистые функции (какими они и должны быть). Результат второго вызова проигнорируется.
 
 ---
 
-### `dispatch` function {/*dispatch*/}
+### Функция `dispatch` {/*dispatch*/}
 
-The `dispatch` function returned by `useReducer` lets you update the state to a different value and trigger a re-render. You need to pass the action as the only argument to the `dispatch` function:
+Функция `dispatch`, которую возвращает `useReducer`, обновляет состояние до другого значения и вызывает повторный рендеринг. Передайте действие в качестве единственного аргумента функции `dispatch`:
 
 ```js
 const [state, dispatch] = useReducer(reducer, { age: 42 });
@@ -68,31 +68,31 @@ function handleClick() {
   // ...
 ```
 
-React will set the next state to the result of calling the `reducer` function you've provided with the current `state` and the action you've passed to `dispatch`.
+React установит следующее состояние как результат вызова функции `reducer`, которую вы предоставляете с текущим `state` и действием, которое вы передали в `dispatch`.
 
-#### Parameters {/*dispatch-parameters*/}
+#### Параметры {/*dispatch-parameters*/}
 
-* `action`: The action performed by the user. It can be a value of any type. By convention, an action is usually an object with a `type` property identifying it and, optionally, other properties with additional information.
+* `action`: Действие, выполняемое пользователем. `action` может быть значением любого типа. По соглашению `action` — объект со свойством `type`, идентифицирующим его, и, по желанию, другими свойствами с дополнительной информацией.
 
 #### Returns {/*dispatch-returns*/}
 
-`dispatch` functions do not have a return value.
+Функция `dispatch` не возвращает значения.
 
-#### Caveats {/*setstate-caveats*/}
+#### Замечания {/*setstate-caveats*/}
 
-* The `dispatch` function **only updates the state variable for the *next* render**. If you read the state variable after calling the `dispatch` function, [you will still get the old value](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) that was on the screen before your call.
+* Функция `dispatch` **обновляет состояние только для *следующего* рендера**. Если прочитать переменную состояния после вызова функции `dispatch`, [вы получите старое значение,](#ive-dispatched-an-action-but-logging-gives-me-the-old-state-value) которое было на экране до вашего вызова.
 
-* If the new value you provide is identical to the current `state`, as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison, React will **skip re-rendering the component and its children.** This is an optimization. React may still need to call your component before ignoring the result, but it shouldn't affect your code.
+* Если новое значение, которое вы предоставили, идентично текущему `state`, что определяется сравнением [`Object.is`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is), React  **пропустит повторное отображение компонента и дочерних элементов.** Это оптимизация. React также может попытаться вызвать компонент перед игнорированием результата, но это не должно повлиять на код.
 
-* React [batches state updates.](/learn/queueing-a-series-of-state-updates) It updates the screen **after all the event handlers have run** and have called their `set` functions. This prevents multiple re-renders during a single event. In the rare case that you need to force React to update the screen earlier, for example to access the DOM, you can use [`flushSync`.](/reference/react-dom/flushSync)
+* [Пакетное обновление состояния](/learn/queueing-a-series-of-state-updates) React. Обновляет экран **после того, как все обработчики событий были запущены** и вызвали свои `set` функции. Это предотвратит множественные повторные рендеринги во время одного события. В редких случаях, когда нужно заставить React обновить экран раньше, например, для доступа к DOM, используйте  [`flushSync`.](/reference/react-dom/flushSync)
 
 ---
 
-## Usage {/*usage*/}
+## Применение {/*usage*/}
 
-### Adding a reducer to a component {/*adding-a-reducer-to-a-component*/}
+### Добавление редюсера в компонент {/*adding-a-reducer-to-a-component*/}
 
-Call `useReducer` at the top level of your component to manage state with a [reducer.](/learn/extracting-state-logic-into-a-reducer)
+Вызовите `useReducer` на верхнем уровне компонента, чтобы управлять состоянием компонента с помощью [редюсера.](/learn/extracting-state-logic-into-a-reducer)
 
 ```js [[1, 8, "state"], [2, 8, "dispatch"], [4, 8, "reducer"], [3, 8, "{ age: 42 }"]]
 import { useReducer } from 'react';
@@ -106,12 +106,12 @@ function MyComponent() {
   // ...
 ```
 
-`useReducer` returns an array with exactly two items:
+`useReducer` возвращает массив, который состоит из двух элементов:
 
-1. The <CodeStep step={1}>current state</CodeStep> of this state variable, initially set to the <CodeStep step={3}>initial state</CodeStep> you provided.
-2. The <CodeStep step={2}>`dispatch` function</CodeStep> that lets you change it in response to interaction.
+1. <CodeStep step={1}>Текущее состояние</CodeStep> этой переменной состояния, первоначально установленное в <CodeStep step={3}>начальное состояние</CodeStep>, которое вы предоставили.
+2. Функция <CodeStep step={2}>`dispatch`</CodeStep>, которая позволяет менять состояние в ответ на взаимодействие.
 
-To update what's on the screen, call <CodeStep step={2}>`dispatch`</CodeStep> with an object representing what the user did, called an *action*:
+Чтобы обновить то, что вы видите на экране, вызовите <CodeStep step={2}>`dispatch`</CodeStep> с объектом, представляющим то, что сделал пользователь, который называется *action*:
 
 ```js [[2, 2, "dispatch"]]
 function handleClick() {
@@ -119,7 +119,7 @@ function handleClick() {
 }
 ```
 
-React will pass the current state and the action to your <CodeStep step={4}>reducer function</CodeStep>. Your reducer will calculate and return the next state. React will store that next state, render your component with it, and update the UI.
+React передаст текущее состояние и действие в <CodeStep step={4}>редюсер</CodeStep>. Редюсер вычислит и вернёт следующее состояние. React сохранит это состояние, отрисует компонент и обновит пользовательский интерфейс.
 
 <Sandpack>
 
@@ -143,9 +143,9 @@ export default function Counter() {
       <button onClick={() => {
         dispatch({ type: 'incremented_age' })
       }}>
-        Increment age
+        Добавить год к возрасту
       </button>
-      <p>Hello! You are {state.age}.</p>
+      <p>Привет! Тебе {state.age}.</p>
     </>
   );
 }
@@ -157,13 +157,13 @@ button { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-`useReducer` is very similar to [`useState`](/reference/react/useState), but it lets you move the state update logic from event handlers into a single function outside of your component. Read more about [choosing between `useState` and `useReducer`.](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)
+`useReducer` похож на [`useState`](/reference/react/useState), но он переносит логику обновления состояния из обработчиков событий в одну функцию вне компонента. Подробнее о [выборе между `useState` и `useReducer`.](/learn/extracting-state-logic-into-a-reducer#comparing-usestate-and-usereducer)
 
 ---
 
-### Writing the reducer function {/*writing-the-reducer-function*/}
+### Составление функции редюсера {/*writing-the-reducer-function*/}
 
-A reducer function is declared like this:
+Объявите редюсер следующим образом:
 
 ```js
 function reducer(state, action) {
@@ -171,7 +171,7 @@ function reducer(state, action) {
 }
 ```
 
-Then you need to fill in the code that will calculate and return the next state. By convention, it is common to write it as a [`switch` statement.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) For each `case` in the `switch`, calculate and return some next state.
+Затем, напишите код, который вычислит и возвратит следующее состояние. По традиции это делают при помощи инструкции [`switch`.](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/switch) Для каждого `case` в `switch` вычислите и возвратите следующее состояние.
 
 ```js {4-7,10-13}
 function reducer(state, action) {
@@ -193,7 +193,7 @@ function reducer(state, action) {
 }
 ```
 
-Actions can have any shape. By convention, it's common to pass objects with a `type` property identifying the action. It should include the minimal necessary information that the reducer needs to compute the next state.
+Действия могут иметь любую форму. По традиции принято передавать объекты со свойством `type`, идентифицирующим действие. Оно должно включать минимально необходимую информацию, которая нужна редюсеру для вычисления следующего состояния.
 
 ```js {5,9-12}
 function Form() {
@@ -212,31 +212,31 @@ function Form() {
   // ...
 ```
 
-The action type names are local to your component. [Each action describes a single interaction, even if that leads to multiple changes in data.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) The shape of the state is arbitrary, but usually it'll be an object or an array.
+Имена типов действий являются локальными для вашего компонента. [Каждое действие описывает одно взаимодействие, даже если оно приводит к нескольким изменениям данных.](/learn/extracting-state-logic-into-a-reducer#writing-reducers-well) Форма состояния произвольна, но обычно это будет объект или массив.
 
-Read [extracting state logic into a reducer](/learn/extracting-state-logic-into-a-reducer) to learn more.
+Прочитайте про [извлечение логики состояния в редюсер](/learn/extracting-state-logic-into-a-reducer) чтобы узнать больше.
 
 <Pitfall>
 
-State is read-only. Don't modify any objects or arrays in state:
+Состояние доступно только для чтения. Не изменяйте никакие объекты или массивы в состоянии:
 
 ```js {4,5}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // 🚩 Don't mutate an object in state like this:
+      // 🚩 Не изменяйте состояние объекта напрямую, подобно этому:
       state.age = state.age + 1;
       return state;
     }
 ```
 
-Instead, always return new objects from your reducer:
+Вместо этого всегда возвращайте новые объекты из вашего редюсера:
 
 ```js {4-8}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // ✅ Instead, return a new object
+      // ✅ вместо этого верните новый объект:
       return {
         ...state,
         age: state.age + 1
@@ -244,15 +244,15 @@ function reducer(state, action) {
     }
 ```
 
-Read [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) to learn more.
+Прочитайте про [обновление объектов в состоянии](/learn/updating-objects-in-state) и [обновление массивов в состоянии,](/learn/updating-arrays-in-state) чтобы узнать больше.
 
 </Pitfall>
 
-<Recipes titleText="Basic useReducer examples" titleId="examples-basic">
+<Recipes titleText="Основные примеры использования useReducer" titleId="examples-basic">
 
-#### Form (object) {/*form-object*/}
+#### Форма (объект) {/*form-object*/}
 
-In this example, the reducer manages a state object with two fields: `name` and `age`.
+В этом примере редюсер управляет состоянием объекта с двумя полями: `name` и `age`.
 
 <Sandpack>
 
@@ -277,7 +277,7 @@ function reducer(state, action) {
   throw Error('Unknown action: ' + action.type);
 }
 
-const initialState = { name: 'Taylor', age: 42 };
+const initialState = { name: 'Тэйлор', age: 42 };
 
 export default function Form() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -300,9 +300,9 @@ export default function Form() {
         onChange={handleInputChange}
       />
       <button onClick={handleButtonClick}>
-        Increment age
+        Добавить год возраста
       </button>
-      <p>Hello, {state.name}. You are {state.age}.</p>
+      <p>Привет, {state.name}. Тебе {state.age}.</p>
     </>
   );
 }
@@ -316,13 +316,13 @@ button { display: block; margin-top: 10px; }
 
 <Solution />
 
-#### Todo list (array) {/*todo-list-array*/}
+#### Список дел (массив) {/*todo-list-array*/}
 
-In this example, the reducer manages an array of tasks. The array needs to be updated [without mutation.](/learn/updating-arrays-in-state)
+В этом примере редюсер управляет массивом из задач. Массив необходимо обновлять [без мутации.](/learn/updating-arrays-in-state)
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useReducer } from 'react';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
@@ -399,13 +399,13 @@ export default function TaskApp() {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: 'Visit Kafka Museum', done: true },
-  { id: 1, text: 'Watch a puppet show', done: false },
-  { id: 2, text: 'Lennon Wall pic', done: false }
+  { id: 0, text: 'Посетить музей Кафки', done: true },
+  { id: 1, text: 'Посмотреть кукольный спектакль', done: false },
+  { id: 2, text: 'Сфотографировать стену Леннона', done: false }
 ];
 ```
 
-```js AddTask.js hidden
+```js src/AddTask.js hidden
 import { useState } from 'react';
 
 export default function AddTask({ onAddTask }) {
@@ -413,7 +413,7 @@ export default function AddTask({ onAddTask }) {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="Добавить задачу"
         value={text}
         onChange={e => setText(e.target.value)}
       />
@@ -426,7 +426,7 @@ export default function AddTask({ onAddTask }) {
 }
 ```
 
-```js TaskList.js hidden
+```js src/TaskList.js hidden
 import { useState } from 'react';
 
 export default function TaskList({
@@ -509,13 +509,13 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution />
 
-#### Writing concise update logic with Immer {/*writing-concise-update-logic-with-immer*/}
+#### Написание лаконичной логики, с помощью Immer {/*writing-concise-update-logic-with-immer*/}
 
-If updating arrays and objects without mutation feels tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer#useimmerreducer) to reduce repetitive code. Immer lets you write concise code as if you were mutating objects, but under the hood it performs immutable updates:
+Если обновление массивов и объектов без мутации для вас является утомительным занятием, вы можете использовать такую библиотеку как [Immer](https://github.com/immerjs/use-immer#useimmerreducer) для сокращения повторяющегося кода. Immer позволит вам писать лаконичный код, как если бы вы изменяли объекты, но под капотом она создаст новые объекты:
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useImmerReducer } from 'use-immer';
 import AddTask from './AddTask.js';
 import TaskList from './TaskList.js';
@@ -576,7 +576,7 @@ export default function TaskApp() {
 
   return (
     <>
-      <h1>Prague itinerary</h1>
+      <h1>Маршрут по Праге</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
@@ -591,13 +591,13 @@ export default function TaskApp() {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: 'Visit Kafka Museum', done: true },
-  { id: 1, text: 'Watch a puppet show', done: false },
-  { id: 2, text: 'Lennon Wall pic', done: false },
+  { id: 0, text: 'Посетить музей Кафки', done: true },
+  { id: 1, text: 'Посмотреть кукольный спектакль', done: false },
+  { id: 2, text: 'Сфотографировать стену Леннона', done: false },
 ];
 ```
 
-```js AddTask.js hidden
+```js src/AddTask.js hidden
 import { useState } from 'react';
 
 export default function AddTask({ onAddTask }) {
@@ -605,7 +605,7 @@ export default function AddTask({ onAddTask }) {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="Добавить задачу"
         value={text}
         onChange={e => setText(e.target.value)}
       />
@@ -618,7 +618,7 @@ export default function AddTask({ onAddTask }) {
 }
 ```
 
-```js TaskList.js hidden
+```js src/TaskList.js hidden
 import { useState } from 'react';
 
 export default function TaskList({
@@ -723,9 +723,9 @@ ul, li { margin: 0; padding: 0; }
 
 ---
 
-### Avoiding recreating the initial state {/*avoiding-recreating-the-initial-state*/}
+### Избегание пересоздания начального состояния {/*avoiding-recreating-the-initial-state*/}
 
-React saves the initial state once and ignores it on the next renders.
+React сохраняет начальное состояние один раз и игнорирует его при последующих рендерах.
 
 ```js
 function createInitialState(username) {
@@ -737,9 +737,9 @@ function TodoList({ username }) {
   // ...
 ```
 
-Although the result of `createInitialState(username)` is only used for the initial render, you're still calling this function on every render. This can be wasteful if it's creating large arrays or performing expensive calculations.
+Хотя результат `createInitialState(username)` используется только для начального рендеринга, вы всё равно вызываете эту функцию при каждом рендеринге. Это может быть расточительно, если она создаёт большие массивы или выполняет дорогостоящие вычисления.
 
-To solve this, you may **pass it as an _initializer_ function** to `useReducer` as the third argument instead:
+Чтобы решить эту проблему, вы можете **передать её в качестве функции _initializer_**, чтобы вместо него в качестве третьего аргумента использовать `useReducer`:
 
 ```js {6}
 function createInitialState(username) {
@@ -751,27 +751,27 @@ function TodoList({ username }) {
   // ...
 ```
 
-Notice that you’re passing `createInitialState`, which is the *function itself*, and not `createInitialState()`, which is the result of calling it. This way, the initial state does not get re-created after initialization.
+Обратите внимание, что вы передаёте `createInitialState`, которая сама является *функцией*, а не `createInitialState()`, что является результатом её вызова. Таким образом, начальное состояние не будет повторно создано после инициализации.
 
-In the above example, `createInitialState` takes a `username` argument. If your initializer doesn't need any information to compute the initial state, you may pass `null` as the second argument to `useReducer`.
+В приведённом выше примере `createInitialState` принимает аргумент `username`. Если вашему инициализатору не нужна информация для вычисления начального состояния, вы можете передать `null` в качестве второго аргумента `useReducer`.
 
-<Recipes titleText="The difference between passing an initializer and passing the initial state directly" titleId="examples-initializer">
+<Recipes titleText="Разница между передачей инициализатора и начального состояния напрямую" titleId="examples-initializer">
 
-#### Passing the initializer function {/*passing-the-initializer-function*/}
+#### Передача функции инициализатора {/*passing-the-initializer-function*/}
 
-This example passes the initializer function, so the `createInitialState` function only runs during initialization. It does not run when component re-renders, such as when you type into the input.
+В этом примере передаётся функция инициализатора, поэтому функция `createInitialState` выполняется только во время инициализации. Она не выполняется при повторном рендеринге компонента, например, когда вы вводите текст в поле ввода.
 
 <Sandpack>
 
-```js App.js hidden
+```js src/App.js hidden
 import TodoList from './TodoList.js';
 
 export default function App() {
-  return <TodoList username="Taylor" />;
+  return <TodoList username="Тэйлор" />;
 }
 ```
 
-```js TodoList.js active
+```js src/TodoList.js active
 import { useReducer } from 'react';
 
 function createInitialState(username) {
@@ -845,21 +845,21 @@ export default function TodoList({ username }) {
 
 <Solution />
 
-#### Passing the initial state directly {/*passing-the-initial-state-directly*/}
+#### Передача начального значения напрямую {/*passing-the-initial-state-directly*/}
 
-This example **does not** pass the initializer function, so the `createInitialState` function runs on every render, such as when you type into the input. There is no observable difference in behavior, but this code is less efficient.
+В этом примере **не** передаётся функция инициализатора, поэтому функция `createInitialState` выполняется при каждом рендере, например, когда вы вводите текст в input. Разница в поведении не заметна, но этот код менее эффективен.
 
 <Sandpack>
 
-```js App.js hidden
+```js src/App.js hidden
 import TodoList from './TodoList.js';
 
 export default function App() {
-  return <TodoList username="Taylor" />;
+  return <TodoList username="Тэйлор" />;
 }
 ```
 
-```js TodoList.js active
+```js src/TodoList.js active
 import { useReducer } from 'react';
 
 function createInitialState(username) {
@@ -936,54 +936,54 @@ export default function TodoList({ username }) {
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
-### I've dispatched an action, but logging gives me the old state value {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
+### Я отправил действие, но возвращается старое значение состояния {/*ive-dispatched-an-action-but-logging-gives-me-the-old-state-value*/}
 
-Calling the `dispatch` function **does not change state in the running code**:
+Вызов функции `dispatch` **не изменяет состояние в вызываемом коде**:
 
 ```js {4,5,8}
 function handleClick() {
   console.log(state.age);  // 42
 
-  dispatch({ type: 'incremented_age' }); // Request a re-render with 43
-  console.log(state.age);  // Still 42!
+  dispatch({ type: 'incremented_age' }); // Запрос повторного рендеринга с 43
+  console.log(state.age);  // Все ещё 42!
 
   setTimeout(() => {
-    console.log(state.age); // Also 42!
+    console.log(state.age); // Так же 42!
   }, 5000);
 }
 ```
 
-This is because [states behaves like a snapshot.](/learn/state-as-a-snapshot) Updating state requests another render with the new state value, but does not affect the `state` JavaScript variable in your already-running event handler.
+Это происходит, потому что [состояние ведёт себя как снимок.](/learn/state-as-a-snapshot) Обновление состояния запрашивает другой рендер с новым значением состояния, но не влияет на JavaScript-переменную `state` в уже запущенном обработчике событий.
 
-If you need to guess the next state value, you can calculate it manually by calling the reducer yourself:
+Если вам нужно получить значение следующего состояния, вы можете вычислить его вручную, вызвав редюсер самостоятельно:
 
 ```js
 const action = { type: 'incremented_age' };
 dispatch(action);
 
 const nextState = reducer(state, action);
-console.log(state);     // { age: 42 }
-console.log(nextState); // { age: 43 }
+console.log(state);     // { возраст: 42 }
+console.log(nextState); // { возраст: 43 }
 ```
 
 ---
 
-### I've dispatched an action, but the screen doesn't update {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
+### Я отправил действие, но экран не обновляется {/*ive-dispatched-an-action-but-the-screen-doesnt-update*/}
 
-React will **ignore your update if the next state is equal to the previous state,** as determined by an [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. This usually happens when you change an object or an array in state directly:
+React будет **игнорировать ваше обновление, если следующее состояние равно предыдущему,** что определяется инструкцией [`Object.is`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is) сравнения. Обычно это происходит, когда вы изменяете объект или массив в состоянии напрямую:
 
 ```js {4-5,9-10}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // 🚩 Wrong: mutating existing object
+      // 🚩 Неправильно: изменение существующего объекта
       state.age++;
       return state;
     }
     case 'changed_name': {
-      // 🚩 Wrong: mutating existing object
+      // 🚩 Неправильно: изменение существующего объекта
       state.name = action.nextName;
       return state;
     }
@@ -992,20 +992,20 @@ function reducer(state, action) {
 }
 ```
 
-You mutated an existing `state` object and returned it, so React ignored the update. To fix this, you need to ensure that you're always [updating objects in state](/learn/updating-objects-in-state) and [updating arrays in state](/learn/updating-arrays-in-state) instead of mutating them:
+Вы изменили существующий объект `state` и вернули его, поэтому React проигнорировал обновление. Чтобы исправить это, убедитесь, что вы всегда [обновляете объекты в состоянии](/learn/updating-objects-in-state) и [обновляете массивы в состоянии,](/learn/updating-arrays-in-state) не изменяя их:
 
 ```js {4-8,11-15}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
-      // ✅ Correct: creating a new object
+      // ✅ Правильно: создание нового объекта
       return {
         ...state,
         age: state.age + 1
       };
     }
     case 'changed_name': {
-      // ✅ Correct: creating a new object
+      // ✅ Правильно: создание нового объекта
       return {
         ...state,
         name: action.nextName
@@ -1018,29 +1018,29 @@ function reducer(state, action) {
 
 ---
 
-### A part of my reducer state becomes undefined after dispatching {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
+### Часть состояния моего редюсера становится неопределённой после диспетчеризации {/*a-part-of-my-reducer-state-becomes-undefined-after-dispatching*/}
 
-Make sure that every `case` branch **copies all of the existing fields** when returning the new state:
+Убедитесь, что каждая ветвь `case` **копирует все существующие поля**, когда возвращает новое состояние:
 
 ```js {5}
 function reducer(state, action) {
   switch (action.type) {
     case 'incremented_age': {
       return {
-        ...state, // Don't forget this!
+        ...state, // Не забывайте об этом!
         age: state.age + 1
       };
     }
     // ...
 ```
 
-Without `...state` above, the returned next state would only contain the `age` field and nothing else.
+Без `...state` выше, следующее состояние будет возвращать только поле `age` и ничего больше.
 
 ---
 
-### My entire reducer state becomes undefined after dispatching {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
+### Все состояние моего редюсера становится неопределённым после диспетчеризации {/*my-entire-reducer-state-becomes-undefined-after-dispatching*/}
 
-If your state unexpectedly becomes `undefined`, you're likely forgetting to `return` state in one of the cases, or your action type doesn't match any of the `case` statements. To find why, throw an error outside the `switch`:
+Если ваше состояние неожиданно становится `undefined`, скорее всего, вы забыли `возвратить` состояние в одном из случаев, или ваш тип действия не соответствует ни одному из утверждений `case`. Чтобы выяснить причину, выбросьте ошибку вне `case`:
 
 ```js {10}
 function reducer(state, action) {
@@ -1056,42 +1056,42 @@ function reducer(state, action) {
 }
 ```
 
-You can also use a static type checker like TypeScript to catch such mistakes.
+Вы также можете использовать статическую проверку типов, например TypeScript, для выявления таких ошибок.
 
 ---
 
-### I'm getting an error: "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
+### Я получаю ошибку: "Too many re-renders" {/*im-getting-an-error-too-many-re-renders*/}
 
-You might get an error that says: `Too many re-renders. React limits the number of renders to prevent an infinite loop.` Typically, this means that you're unconditionally dispatching an action *during render*, so your component enters a loop: render, dispatch (which causes a render), render, dispatch (which causes a render), and so on. Very often, this is caused by a mistake in specifying an event handler:
+Вы можете получить ошибку, которая гласит: `Слишком много повторных рендеров. React ограничивает количество рендеров для предотвращения бесконечного цикла.` Обычно это означает, что вы безоговорочно отправляете действие *во время рендера*, поэтому ваш компонент попадает в цикл: рендер, диспетчеризация (которая вызывает рендер), рендер, диспетчеризация (которая вызывает рендер) и так далее. Очень часто причиной этого является ошибка в определении обработчика события:
 
 ```js {1-2}
-// 🚩 Wrong: calls the handler during render
+// 🚩 Неправильно: вызывает обработчик во время рендеринга
 return <button onClick={handleClick()}>Click me</button>
 
-// ✅ Correct: passes down the event handler
+// ✅ Правильно: передаёт обработчик события
 return <button onClick={handleClick}>Click me</button>
 
-// ✅ Correct: passes down an inline function
+// ✅ Правильно: передаётся через встроенную функцию
 return <button onClick={(e) => handleClick(e)}>Click me</button>
 ```
 
-If you can't find the cause of this error, click on the arrow next to the error in the console and look through the JavaScript stack to find the specific `dispatch` function call responsible for the error.
+Если вы не можете найти причину этой ошибки, нажмите на стрелку рядом с ошибкой в консоли и просмотрите стек JavaScript, чтобы найти конкретный вызов функции `dispatch`, ответственный за ошибку.
 
 ---
 
-### My reducer or initializer function runs twice {/*my-reducer-or-initializer-function-runs-twice*/}
+### Моя функция редюсера или инициализатора выполняется дважды {/*my-reducer-or-initializer-function-runs-twice*/}
 
-In [Strict Mode](/reference/react/StrictMode), React will call your reducer and initializer functions twice. This shouldn't break your code.
+В [строгом режиме](/reference/react/StrictMode) React будет вызывать ваши функции, редюсер и инициализатор, дважды. Это не должно сломать ваш код.
 
-This **development-only** behavior helps you [keep components pure.](/learn/keeping-components-pure) React uses the result of one of the calls, and ignores the result of the other call. As long as your component, initializer, and reducer functions are pure, this shouldn't affect your logic. However, if they are accidentally impure, this helps you notice the mistakes.
+Это поведение справедливо только для **режима разработки** и помогает вам [поддерживать чистоту компонентов.](/learn/keeping-components-pure) React использует результат одного из вызовов и игнорирует результат другого вызова. Пока ваши функции компонента, инициализатора и редюсера чисты, это не должно влиять на вашу логику. Однако если они случайно оказались нечистыми, это поможет вам заметить ошибки.
 
-For example, this impure reducer function mutates an array in state:
+Например, эта нечистая функция редюсера изменяет массив состояния напрямую:
 
 ```js {4-6}
 function reducer(state, action) {
   switch (action.type) {
     case 'added_todo': {
-      // 🚩 Mistake: mutating state
+      // 🚩 Ошибка: изменения состояния напрямую
       state.todos.push({ id: nextId++, text: action.text });
       return state;
     }
@@ -1099,14 +1099,13 @@ function reducer(state, action) {
   }
 }
 ```
-
-Because React calls your reducer function twice, you'll see the todo was added twice, so you'll know that there is a mistake. In this example, you can fix the mistake by [replacing the array instead of mutating it](/learn/updating-arrays-in-state#adding-to-an-array):
+Поскольку React дважды вызывает вашу функцию reducer, вы увидите, что todo было добавлено дважды, поэтому вы будете знать, что произошла ошибка. В этом примере вы можете исправить ошибку, [заменив массив вместо его изменения](/learn/updating-arrays-in-state#adding-to-an-array):
 
 ```js {4-11}
 function reducer(state, action) {
   switch (action.type) {
     case 'added_todo': {
-      // ✅ Correct: replacing with new state
+      // ✅ Правильно: замена на новое состояние
       return {
         ...state,
         todos: [
@@ -1120,6 +1119,6 @@ function reducer(state, action) {
 }
 ```
 
-Now that this reducer function is pure, calling it an extra time doesn't make a difference in behavior. This is why React calling it twice helps you find mistakes. **Only component, initializer, and reducer functions need to be pure.** Event handlers don't need to be pure, so React will never call your event handlers twice.
+Теперь, когда функция редюсера является чистой, её повторный вызов не изменит поведение. Вот почему двойной вызов в React помогает найти ошибки. **Только функции компонента, инициализатора и редюсера должны быть чистыми.** Обработчики событий не должны быть чистыми, поэтому React никогда не будет вызывать обработчики событий дважды.
 
-Read [keeping components pure](/learn/keeping-components-pure) to learn more.
+Прочитайте про [сохранение чистоты компонентов,](/learn/keeping-components-pure) чтобы узнать больше.

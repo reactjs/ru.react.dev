@@ -1,18 +1,18 @@
 ---
-title: Thinking in React
+title: Философия React
 ---
 
 <Intro>
 
-React can change how you think about the designs you look at and the apps you build. When you build a user interface with React, you will first break it apart into pieces called *components*. Then, you will describe the different visual states for each of your components. Finally, you will connect your components together so that the data flows through them. In this tutorial, we’ll guide you through the thought process of building a searchable product data table with React.
+С React вы начнёте по-другому смотреть на дизайны макетов и мыслить во время разработки приложений. Когда вы создаёте интерфейс на React, первым делом вы разбиваете его на части -- *компоненты*. Потом вы описываете для них всевозможные визуальные состояния. Наконец, вы соединяете ваши компоненты между собой так, чтобы данные перемещались по ним. В этом руководстве мы разберём пример создания таблицы продуктов с поиском на React.
 
 </Intro>
 
-## Start with the mockup {/*start-with-the-mockup*/}
+## Начнём с макета {/*start-with-the-mockup*/}
 
-Imagine that you already have a JSON API and a mockup from a designer.
+Представьте, что у вас уже есть JSON API и макет от дизайнера.
 
-The JSON API returns some data that looks like this:
+JSON API возвращает данные, которые выглядят так:
 
 ```json
 [
@@ -25,25 +25,25 @@ The JSON API returns some data that looks like this:
 ]
 ```
 
-The mockup looks like this:
+Макет выглядит так:
 
 <img src="/images/docs/s_thinking-in-react_ui.png" width="300" style={{margin: '0 auto'}} />
 
-To implement a UI in React, you will usually follow the same five steps.
+Когда вы создаёте UI на React, обычно надо сделать одни и те же пять шагов.
 
-## Step 1: Break the UI into a component hierarchy {/*step-1-break-the-ui-into-a-component-hierarchy*/}
+## Шаг 1: Разбейте интерфейс на составляющие {/*step-1-break-the-ui-into-a-component-hierarchy*/}
 
-Start by drawing boxes around every component and subcomponent in the mockup and naming them. If you work with a designer, they may have already named these components in their design tool. Ask them!
+Для начала выделите все компоненты и подкомпоненты на макете и дайте им имена. Если вы работаете с дизайнерами, то вполне возможно, что они уже как-то называют эти компоненты. Узнайте у них как! 
 
-Depending on your background, you can think about splitting up a design into components in different ways:
+Вы можете подходить к разбиению дизайна на компоненты по-разному, основываясь на вашем опыте:
 
-* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle), that is, a component should ideally only do one thing. If it ends up growing, it should be decomposed into smaller subcomponents. 
-* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
-* **Design**--consider how you would organize the design's layers.
+* **Программирование** -- используйте тот же подход, как при решении создать простую функцию или целый объект. Можно применить [принцип единственной ответственности:](https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF_%D0%B5%D0%B4%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9_%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8) каждый компонент должен заниматься какой-то одной задачей. Если функциональность компонента увеличивается с течением времени, его следует разбить на более мелкие подкомпоненты.
+* **CSS** -- подумайте, для чего бы вы сделали селекторы класса. (Помните, что компоненты не настолько узкие.)
+* **Дизайн** -- подумайте, как бы вы организовали слои дизайна.
 
-If your JSON is well-structured, you'll often find that it naturally maps to the component structure of your UI. That's because UI and data models often have the same information architecture--that is, the same shape. Separate your UI into components, where each component matches one piece of your data model.
+Хорошая структура у JSON часто уже отражает структуру компонентов на вашем UI. Это происходит из-за того, что у UI и модели данных часто похожая информационная архитектура. Разбейте UI на компоненты, каждый из которых отображает часть модели данных.
 
-There are five components on this screen:
+Здесь можно выделить пять компонентов:
 
 <FullWidth>
 
@@ -51,19 +51,19 @@ There are five components on this screen:
 
 <img src="/images/docs/s_thinking-in-react_ui_outline.png" width="500" style={{margin: '0 auto'}} />
 
-1. `FilterableProductTable` (grey) contains the entire app.
-2. `SearchBar` (blue) receives the user input.
-3. `ProductTable` (lavender) displays and filters the list according to the user input.
-4. `ProductCategoryRow` (green) displays a heading for each category.
-5. `ProductRow`	(yellow) displays a row for each product.
+1. `FilterableProductTable` (серый) содержит в себе приложение целиком.
+2. `SearchBar` (синий) получает пользовательский ввод.
+3. `ProductTable` (фиолетовый) отображает и фильтрует список в соответствии с пользовательским вводом.
+4. `ProductCategoryRow` (зелёный) отображает заголовки категорий.
+5. `ProductRow`	(жёлтый) отображает отдельно взятые товары.
 
 </CodeDiagram>
 
 </FullWidth>
 
-If you look at `ProductTable` (lavender), you'll see that the table header (containing the "Name" and "Price" labels) isn't its own component. This is a matter of preference, and you could go either way. For this example, it is a part of `ProductTable` because it appears inside the `ProductTable`'s list. However, if this header grows to be complex (e.g., if you add sorting), you can move it into its own `ProductTableHeader` component.
+Обратите внимание, что внутри `ProductTable` (фиолетовый) заголовок таблицы ("Name" и "Price") сам по себе не является отдельным компонентом. Отделять его или нет -- вопрос личного предпочтения. В данном примере он является частью `ProductTable`, потому что находится внутри списка `ProductTable`. Тем не менее, если в будущем заголовок пополнится новыми функциями (например, возможностью сортировать товар), вы можете извлечь его в самостоятельный компонент  `ProductTableHeader`.
 
-Now that you've identified the components in the mockup, arrange them into a hierarchy. Components that appear within another component in the mockup should appear as a child in the hierarchy:
+Теперь, когда вы определили компоненты на макете, расположите их согласно иерархии. Компоненты, которые являются частью других компонентов, в иерархии будут дочерними:
 
 * `FilterableProductTable`
     * `SearchBar`
@@ -71,17 +71,17 @@ Now that you've identified the components in the mockup, arrange them into a hie
         * `ProductCategoryRow`
         * `ProductRow`
 
-## Step 2: Build a static version in React {/*step-2-build-a-static-version-in-react*/}
+## Шаг 2: Создайте статическое приложение на React {/*step-2-build-a-static-version-in-react*/}
 
-Now that you have your component hierarchy, it's time to implement your app. The most straightforward approach is to build a version that renders the UI from your data model without adding any interactivity... yet! It's often easier to build the static version first and add interactivity later. Building a static version requires a lot of typing and no thinking, but adding interactivity requires a lot of thinking and not a lot of typing.
+Теперь, когда все компоненты расположены в иерархическом порядке, пришло время воплотить в жизнь ваше приложение. Самый лёгкий способ -- создать версию, которая рендерит UI, основанный на вашей модели данных, но не предполагает никакой интерактивности... пока что! Обычно проще всего сначала создать статическое приложение и только потом добавить интерактивность. Написание статического приложения требует много печатать и совсем немного думать. С другой стороны, создание интерактивного приложения подразумевает более глубокий мыслительный процесс и лишь долю рутинной печати.
 
-To build a static version of your app that renders your data model, you'll want to build [components](/learn/your-first-component) that reuse other components and pass data using [props.](/learn/passing-props-to-a-component) Props are a way of passing data from parent to child. (If you're familiar with the concept of [state](/learn/state-a-components-memory), don't use state at all to build this static version. State is reserved only for interactivity, that is, data that changes over time. Since this is a static version of the app, you don't need it.)
+Чтобы написать статическое приложение, отображающее модель данных, нам нужно создать [компоненты,](/learn/your-first-component) которые используют другие компоненты и передают данные через [пропсы.](/learn/passing-props-to-a-component) С помощью пропсов данные передаются от родителя к потомку. (Если вы знакомы с понятием [состояния,](/learn/state-a-components-memory) то для статического приложения это как раз то, чего вам использовать не нужно. Состояние подразумевает собой данные, которые меняются со временем, интерактивность. Так как мы работаем над статическим приложением, нам этого не нужно.)
 
-You can either build "top down" by starting with building the components higher up in the hierarchy (like `FilterableProductTable`) or "bottom up" by working from components lower down (like `ProductRow`). In simpler examples, it’s usually easier to go top-down, and on larger projects, it’s easier to go bottom-up.
+Написание кода можно начать как сверху вниз с компонентов, которые находятся выше по иерархии (таких как `FilterableProductTable`), так и снизу вверх с низкоуровневых компонентов (таких как `ProductRow`). Более простые приложения удобнее начать с компонентов, находящихся выше по иерархии. В более сложных приложениях удобнее в первую очередь создавать и тестировать подкомпоненты.
 
 <Sandpack>
 
-```jsx App.js
+```jsx src/App.js
 function ProductCategoryRow({ category }) {
   return (
     <tr>
@@ -130,8 +130,8 @@ function ProductTable({ products }) {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Price</th>
+          <th>Наименование</th>
+          <th>Цена</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -146,7 +146,7 @@ function SearchBar() {
       <label>
         <input type="checkbox" />
         {' '}
-        Only show products in stock
+        Показывать только товар в наличии
       </label>
     </form>
   );
@@ -162,12 +162,12 @@ function FilterableProductTable({ products }) {
 }
 
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  {category: "Фрукты", price: "$1", stocked: true, name: "Яблоко"},
+  {category: "Фрукты", price: "$1", stocked: true, name: "Питахайя"},
+  {category: "Фрукты", price: "$2", stocked: false, name: "Маракуйя"},
+  {category: "Овощи", price: "$2", stocked: true, name: "Шпинат"},
+  {category: "Овощи", price: "$4", stocked: false, name: "Тыква"},
+  {category: "Овощи", price: "$1", stocked: true, name: "Горох"}
 ];
 
 export default function App() {
@@ -195,85 +195,85 @@ td {
 
 </Sandpack>
 
-(If this code looks intimidating, go through the [Quick Start](/learn/) first!)
+(Если этот код показался вам сложным, то прочтите раздел [Начало работы!](/learn/))
 
-After building your components, you'll have a library of reusable components that render your data model. Because this is a static app, the components will only return JSX. The component at the top of the hierarchy (`FilterableProductTable`) will take your data model as a prop. This is called _one-way data flow_ because the data flows down from the top-level component to the ones at the bottom of the tree.
+Когда закончите создавать компоненты, у вас на руках появится библиотека повторно используемых компонентов, отображающих вашу модель данных. Так как это статическое приложение, компоненты будут лишь возвращать JSX. Компонент выше по иерархии (`FilterableProductTable`) будет передавать модель данных через пропсы. Это называется _односторонний поток данных,_ потому что данные передаются по компонентам, начиная с высокоуровневых и заканчивая теми, что ниже по иерархии.
 
 <Pitfall>
 
-At this point, you should not be using any state values. That’s for the next step!
+Сейчас вы не должны использовать никаких значений состояния. Вы сделаете их в следующем шаге!
 
 </Pitfall>
 
-## Step 3: Find the minimal but complete representation of UI state {/*step-3-find-the-minimal-but-complete-representation-of-ui-state*/}
+## Шаг 3: Определите минимальное, но полноценное отображение состояния интерфейса {/*step-3-find-the-minimal-but-complete-representation-of-ui-state*/}
 
-To make the UI interactive, you need to let users change your underlying data model. You will use *state* for this.
+Чтобы сделать UI интерактивным, нужно сделать так, чтобы пользователи могли изменять вашу модель данных. Для этого вы и используете *состояние*.
 
-Think of state as the minimal set of changing data that your app needs to remember. The most important principle for structuring state is to keep it [DRY (Don't Repeat Yourself).](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself) Figure out the absolute minimal representation of the state your application needs and compute everything else on-demand. For example, if you're building a shopping list, you can store the items as an array in state. If you want to also display the number of items in the list, don't store the number of items as another state value--instead, read the length of your array.
+Под состоянием подразумевается минимальный набор изменяемых данных, который необходимо запомнить вашему приложению. Главное в его разработке -- следовать принципу [DRY: Don't Repeat Yourself (рус. не повторяйся).](https://ru.wikipedia.org/wiki/Don%27t_repeat_yourself) Определите минимально необходимое состояние, которое нужно вашему приложению. Всё остальное вычисляйте по необходимости. Например, если вы создаёте список покупок, можете создать состояние и поместить в него массив предметов из списка. Если надо отобразить количество предметов, не стоит создавать ещё одно состояние для их числа. Вместо этого используйте длину существующего массива.
 
-Now think of all of the pieces of data in this example application:
+Обдумайте все данные в демо-приложении:
 
-1. The original list of products
-2. The search text the user has entered
-3. The value of the checkbox
-4. The filtered list of products
+1. Первоначальный список товаров
+2. Поисковый запрос, введённый пользователем
+3. Значение чекбокса
+4. Отфильтрованный список товаров
 
-Which of these are state? Identify the ones that are not:
+Какие из этих данных должны храниться в состоянии? Определите те, которые не должны:
 
-* Does it **remain unchanged** over time? If so, it isn't state.
-* Is it **passed in from a parent** via props? If so, it isn't state.
-* **Can you compute it** based on existing state or props in your component? If so, it *definitely* isn't state!
+* Остаются ли они **неизменными** со временем? Если так, то эти данные не должны храниться в состоянии.
+* **Передаются ли они от родителя** через пропсы? Если так, то эти данные не должны храниться в состоянии.
+* **Можете ли вы вычислить их** на основании существующих состояний или пропсов в своём компоненте? Если так, то эти данные *точно* не должны храниться в состоянии!
 
-What's left is probably state.
+Оставшиеся данные, скорее всего, должны храниться в состоянии.
 
-Let's go through them one by one again:
+Пройдёмся по каждому из них ещё раз:
 
-1. The original list of products is **passed in as props, so it's not state.** 
-2. The search text seems to be state since it changes over time and can't be computed from anything.
-3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
-4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
+1. Исходный список товаров **передаётся через пропсы, так что не нужно хранить его в состоянии.** 
+2. Поисковый запрос изменяется со временем, и его нельзя вычислить из других данных, так что он вполне сойдёт за состояние.
+3. Значение чекбокса изменяется со временем, и его нельзя вычислить из других данных, так что его стоит хранить в состоянии.
+4. Отфильтрованный список товаров **не является состоянием, так как его можно вычислить,** отфильтровав оригинальный список с помощью поискового запроса и значения чекбокса.
 
-This means only the search text and the value of the checkbox are state! Nicely done!
+Получается, что только поисковой запрос и значение чекбокса являются состояниями! Отличная работа!
 
 <DeepDive>
 
-#### Props vs State {/*props-vs-state*/}
+#### Разница между пропсами и состоянием {/*props-vs-state*/}
 
-There are two types of "model" data in React: props and state. The two are very different:
+В React существует два типа "модели" данных: пропсы и состояние. Они сильно отличаются друг от друга:
 
-* [**Props** are like arguments you pass](/learn/passing-props-to-a-component) to a function. They let a parent component pass data to a child component and customize its appearance. For example, a `Form` can pass a `color` prop to a `Button`.
-* [**State** is like a component’s memory.](/learn/state-a-components-memory) It lets a component keep track of some information and change it in response to interactions. For example, a `Button` might keep track of `isHovered` state.
+* [**Пропсы** похожи на аргументы, которые вы передаёте](/learn/passing-props-to-a-component) функции. Они позволяют родительскому компоненту передавать данные дочернему компоненту и изменять его вид. Например, `Form` может передавать проп `color` компоненту `Button`.
+* [**Состояние** можно назвать памятью компонента.](/learn/state-a-components-memory) Оно позволяет компоненту хранить информацию и изменять её во время работы. Например, `Button` может иметь состояние `isHovered`.
 
-Props and state are different, but they work together. A parent component will often keep some information in state (so that it can change it), and *pass it down* to child components as their props. It's okay if the difference still feels fuzzy on the first read. It takes a bit of practice for it to really stick!
+Пропсы и состояние отличаются, но работают вместе. Родительский компонент будет часто хранить у себя информацию в состоянии (чтобы он мог её изменить) и *передавать* её дочерним компонентам как пропсы. Если вам всё ещё не до конца понятны различия -- ничего страшного. После небольшой практики разница станет более очевидной!
 
 </DeepDive>
 
-## Step 4: Identify where your state should live {/*step-4-identify-where-your-state-should-live*/}
+## Шаг 4: Определите, где должно находиться ваше состояние {/*step-4-identify-where-your-state-should-live*/}
 
-After identifying your app’s minimal state data, you need to identify which component is responsible for changing this state, or *owns* the state. Remember: React uses one-way data flow, passing data down the component hierarchy from parent to child component. It may not be immediately clear which component should own what state. This can be challenging if you’re new to this concept, but you can figure it out by following these steps!
+После определения минимального набора состояний приложения вам нужно выяснить, какой из компонентов отвечает за изменение состояния или *владеет* им. Помните: React использует односторонний поток данных, передавая данные от родительских компонентов к их потомкам. Сначала может быть не совсем ясно, какой из компонентов какое состояние должен хранить. Если эта концепция для вас новая, то, возможно, для вас это будет тяжело. Однако вы можете разобраться, следуя этим инструкциям!
 
-For each piece of state in your application:
+Для каждой части состояния в вашем приложении:
 
-1. Identify *every* component that renders something based on that state.
-2. Find their closest common parent component--a component above them all in the hierarchy.
-3. Decide where the state should live:
-    1. Often, you can put the state directly into their common parent.
-    2. You can also put the state into some component above their common parent.
-    3. If you can't find a component where it makes sense to own the state, create a new component solely for holding the state and add it somewhere in the hierarchy above the common parent component.
+1. Определите *все* компоненты, которые рендерят что-то, исходя из этого состояния.
+2. Найдите их ближайший общий родительский компонент -- это компонент, расположенный над всеми компонентами в иерархии.
+3. Определите, где должно находиться состояние:
+    1. Часто вы можете поместить состояние прямо в общего предка.
+    2. Так же вы можете поместить состояние в любой из компонентов над их общим предком.
+    3. Если вам не удаётся найти подходящий компонент, то создайте новый исключительно для хранения состояния и разместите его выше в иерархии над общим родительским компонентом.
 
-In the previous step, you found two pieces of state in this application: the search input text, and the value of the checkbox. In this example, they always appear together, so it makes sense to put them into the same place.
+В предыдущем шаге вы нашли два состояния в демо-приложении: поисковой запрос и значение чекбокса. В этом примере они всегда находятся вместе, поэтому логично поместить их в один компонент.
 
-Now let's run through our strategy for them:
+Давайте разберём их с помощью нашей стратегии:
 
-1. **Identify components that use state:**
-    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value). 
-    * `SearchBar` needs to display that state (search text and checkbox value).
-1. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
-2. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+1. **Определите компоненты, которые используют состояния:**
+    * `ProductTable` фильтрует список товаров, основываясь на состояниях (поисковой запрос и значение чекбокса). 
+    * `SearchBar` отображает состояния (поисковой запрос и значение чекбокса).
+1. **Найдите их общего предка:** Первый общий родительский компонент для них -- `FilterableProductTable`.
+2. **Определите, где будет находиться состояние**: Мы будем хранить текст фильтра и значение чекбокса в `FilterableProductTable`.
 
-So the state values will live in `FilterableProductTable`. 
+Итак, значения состояний будут находиться в `FilterableProductTable`. 
 
-Add state to the component with the [`useState()` Hook.](/reference/react/useState) Hooks are special functions that let you "hook into" React. Add two state variables at the top of `FilterableProductTable` and specify their initial state:
+Добавьте состояние в компонент при помощи [хука `useState()`.](/reference/react/useState) Хуки -- это особые функции, с помощью которых вы можете "подцепиться" к React. Добавьте две переменные состояния в начало `FilterableProductTable` и укажите их начальное значение:
 
 ```js
 function FilterableProductTable({ products }) {
@@ -281,7 +281,7 @@ function FilterableProductTable({ products }) {
   const [inStockOnly, setInStockOnly] = useState(false);  
 ```
 
-Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as props:
+После этого передайте `filterText` и `inStockOnly` в компоненты `ProductTable` и `SearchBar` как пропсы:
 
 ```js
 <div>
@@ -295,11 +295,11 @@ Then, pass `filterText` and `inStockOnly` to `ProductTable` and `SearchBar` as p
 </div>
 ```
 
-You can start seeing how your application will behave. Edit the `filterText` initial value from `useState('')` to `useState('fruit')` in the sandbox code below. You'll see both the search input text and the table update:
+Теперь вы начинаете видеть, как будет работать ваше приложение. Измените начальное значение `filterText` на `useState('fruit')` вместо `useState('')` в редакторе кода ниже. Вы увидите, что изменились и поисковой запрос, и таблица:
 
 <Sandpack>
 
-```jsx App.js
+```jsx src/App.js
 import { useState } from 'react';
 
 function FilterableProductTable({ products }) {
@@ -377,8 +377,8 @@ function ProductTable({ products, filterText, inStockOnly }) {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Price</th>
+          <th>Наименование</th>
+          <th>Цена</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -398,19 +398,19 @@ function SearchBar({ filterText, inStockOnly }) {
           type="checkbox" 
           checked={inStockOnly} />
         {' '}
-        Only show products in stock
+        Показывать только товар в наличии
       </label>
     </form>
   );
 }
 
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  {category: "Фрукты", price: "$1", stocked: true, name: "Яблоко"},
+  {category: "Фрукты", price: "$1", stocked: true, name: "Питахайя"},
+  {category: "Фрукты", price: "$2", stocked: false, name: "Маракуйя"},
+  {category: "Овощи", price: "$2", stocked: true, name: "Шпинат"},
+  {category: "Овощи", price: "$4", stocked: false, name: "Тыква"},
+  {category: "Овощи", price: "$1", stocked: true, name: "Горох"}
 ];
 
 export default function App() {
@@ -437,7 +437,7 @@ td {
 
 </Sandpack>
 
-Notice that editing the form doesn't work yet. There is a console error in the sandbox above explaining why:
+Обратите внимание, что изменение поискового запроса пока ничего не делает. Ошибка в консоли редактора выше объясняет, почему:
 
 <ConsoleBlock level="error">
 
@@ -445,7 +445,7 @@ You provided a \`value\` prop to a form field without an \`onChange\` handler. T
 
 </ConsoleBlock>
 
-In the sandbox above, `ProductTable` and `SearchBar` read the `filterText` and `inStockOnly` props to render the table, the input, and the checkbox. For example, here is how `SearchBar` populates the input value:
+В редакторе кода сверху `ProductTable` и `SearchBar` считывают `filterText` и `inStockOnly`, чтобы отрендерить таблицу, поле ввода и чекбокс. Например, вот так `SearchBar` заполняет значение поля ввода:
 
 ```js {1,6}
 function SearchBar({ filterText, inStockOnly }) {
@@ -457,16 +457,16 @@ function SearchBar({ filterText, inStockOnly }) {
         placeholder="Search..."/>
 ```
 
-However, you haven't added any code to respond to the user actions like typing yet. This will be your final step.
+Однако вы пока не добавили никакого кода, который бы реагировал на действия пользователя. Это вы сделаете в последнем шаге.
 
 
-## Step 5: Add inverse data flow {/*step-5-add-inverse-data-flow*/}
+## Шаг 5: Добавьте обратный поток данных {/*step-5-add-inverse-data-flow*/}
 
-Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`. 
+Сейчас ваше приложение рендерится, основываясь  на пропсах и состоянии, передающихся вниз по иерархии. Однако для того, чтобы состояние менялось от пользовательского ввода, вам надо обеспечить поток данных в обратную сторону: компоненты формы в самом низу иерархии должны обновлять состояние в `FilterableProductTable`. 
 
-React makes this data flow explicit, but it requires a little more typing than two-way data binding. If you try to type or check the box in the example above, you'll see that React ignores your input. This is intentional. By writing `<input value={filterText} />`, you've set the `value` prop of the `input` to always be equal to the `filterText` state passed in from `FilterableProductTable`. Since `filterText` state is never set, the input never changes.
+Поток данных в React однонаправленный. Из-за этого требуется немного больше кода, чем с двусторонней привязкой данных. Если вы попытаетесь ввести текст в поле поиска или установить флажок в чекбоксе в примере выше, то увидите, что React игнорирует любой ввод. Так и должно быть. Когда вы написали `<input value={filterText} />`, вы приравняли значение пропа `value` в `input` к состоянию `filterText`, которое передаётся из `FilterableProductTable`. Так как состояние `filterText` не задано, поле ввода никогда не изменится.
 
-You want to make it so whenever the user changes the form inputs, the state updates to reflect those changes. The state is owned by `FilterableProductTable`, so only it can call `setFilterText` and `setInStockOnly`. To let `SearchBar` update the `FilterableProductTable`'s state, you need to pass these functions down to `SearchBar`:
+Вам нужно, чтобы при изменениях поисковой формы менялось состояние ввода. Состояние находится в  `FilterableProductTable`, поэтому только он может вызвать `setFilterText` и `setInStockOnly`. Чтобы `SearchBar` мог обновлять состояние в `FilterableProductTable`, вам надо передать эти функции в `SearchBar`:
 
 ```js {2,3,10,11}
 function FilterableProductTable({ products }) {
@@ -482,21 +482,35 @@ function FilterableProductTable({ products }) {
         onInStockOnlyChange={setInStockOnly} />
 ```
 
-Inside the `SearchBar`, you will add the `onChange` event handlers and set the parent state from them:
+Внутри `SearchBar` добавьте обработчики событий `onChange` и с их помощью установите значения состояний в родителе:
 
-```js {5}
-<input 
-  type="text" 
-  value={filterText} 
-  placeholder="Search..." 
-  onChange={(e) => onFilterTextChange(e.target.value)} />
+```js {4,5,13,19}
+function SearchBar({
+  filterText,
+  inStockOnly,
+  onFilterTextChange,
+  onInStockOnlyChange
+}) {
+  return (
+    <form>
+      <input
+        type="text"
+        value={filterText}
+        placeholder="Search..."
+        onChange={(e) => onFilterTextChange(e.target.value)}
+      />
+      <label>
+        <input
+          type="checkbox"
+          checked={inStockOnly}
+          onChange={(e) => onInStockOnlyChange(e.target.checked)}
 ```
 
-Now the application fully works!
+Теперь приложение полностью работает!
 
 <Sandpack>
 
-```jsx App.js
+```jsx src/App.js
 import { useState } from 'react';
 
 function FilterableProductTable({ products }) {
@@ -576,8 +590,8 @@ function ProductTable({ products, filterText, inStockOnly }) {
     <table>
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Price</th>
+          <th>Наименование</th>
+          <th>Цена</th>
         </tr>
       </thead>
       <tbody>{rows}</tbody>
@@ -603,19 +617,19 @@ function SearchBar({
           checked={inStockOnly} 
           onChange={(e) => onInStockOnlyChange(e.target.checked)} />
         {' '}
-        Only show products in stock
+        Показывать только товар в наличии
       </label>
     </form>
   );
 }
 
 const PRODUCTS = [
-  {category: "Fruits", price: "$1", stocked: true, name: "Apple"},
-  {category: "Fruits", price: "$1", stocked: true, name: "Dragonfruit"},
-  {category: "Fruits", price: "$2", stocked: false, name: "Passionfruit"},
-  {category: "Vegetables", price: "$2", stocked: true, name: "Spinach"},
-  {category: "Vegetables", price: "$4", stocked: false, name: "Pumpkin"},
-  {category: "Vegetables", price: "$1", stocked: true, name: "Peas"}
+  {category: "Фрукты", price: "$1", stocked: true, name: "Яблоко"},
+  {category: "Фрукты", price: "$1", stocked: true, name: "Питахайя"},
+  {category: "Фрукты", price: "$2", stocked: false, name: "Маракуйя"},
+  {category: "Овощи", price: "$2", stocked: true, name: "Шпинат"},
+  {category: "Овощи", price: "$4", stocked: false, name: "Тыква"},
+  {category: "Овощи", price: "$1", stocked: true, name: "Горох"}
 ];
 
 export default function App() {
@@ -642,8 +656,8 @@ td {
 
 </Sandpack>
 
-You can learn all about handling events and updating state in the [Adding Interactivity](/learn/adding-interactivity) section.
+Об обработке событий и обновлении состояния вы можете прочитать в разделе [Добавление интерактивности.](/learn/adding-interactivity)
 
-## Where to go from here {/*where-to-go-from-here*/}
+## Что дальше {/*where-to-go-from-here*/}
 
-This was a very brief introduction to how to think about building components and applications with React. You can [start a React project](/learn/installation) right now or [dive deeper on all the syntax](/learn/describing-the-ui) used in this tutorial.
+Это было очень краткое введение в подход к написанию компонентов и приложений на React. Теперь вы можете [начать проект на React](/learn/installation) или [углубиться в синтаксис,](/learn/describing-the-ui) использованный в этом руководстве.

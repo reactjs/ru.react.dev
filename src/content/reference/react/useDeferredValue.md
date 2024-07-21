@@ -18,7 +18,7 @@ const deferredValue = useDeferredValue(value)
 
 ## Справочник {/*reference*/}
 
-### `useDeferredValue(value)` {/*usedeferredvalue*/}
+### `useDeferredValue(value, initialValue?)` {/*usedeferredvalue*/}
 
 Чтобы сделать обновления значения отложенными, вызовите `useDeferredValue` с этим значением на верхнем уровне своего компонента:
 
@@ -37,12 +37,22 @@ function SearchPage() {
 #### Параметры {/*parameters*/}
 
 * `value`: Значение, обновление которого вы хотите отложить.
+* <CanaryBadge title="Эта функциональность доступна только в canary-версии" /> **необязательный** `initialValue`: Значение, установленное для первого рендера. Если этот параметр опущен, `useDeferredValue` не сработает для первого рендера, так как нет предыдущей версии `value`, которую можно было бы показать.
+
 
 #### Возвращаемое значение {/*returns*/}
 
-При первом рендеринге вызов вернёт то же значение, которое вы указали. Когда в следующих обновлениях значение изменится, вызов вернёт прошлое значение, но при этом React запустит дополнительный фоновый рендеринг, в котором вызов вернёт обновлённое значение.
+- `currentValue`: При первом рендеринге вызов вернёт то же значение, которое вы указали. Когда в следующих обновлениях значение изменится, вызов вернёт прошлое значение, но при этом React запустит дополнительный фоновый рендеринг, в котором вызов вернёт обновлённое значение.
+
+<Canary>
+
+В последних canary-версиях React, `useDeferredValue` возвращает `initialValue` для первого рендера, и в фоновом режиме планирует последующий рендер уже с `value`.
+
+</Canary>
 
 #### Замечания {/*caveats*/}
+
+- Когда обновление происходит внутри перехода (Transition), оно уже отложено, поэтому `useDeferredValue` всегда возвращает новое значение `value` и не приводит к повторному рендеру.
 
 - Значения, которые вы передаёте в `useDeferredValue`, должны либо быть примитивного типа (как, например, строки или числа), либо должны создаваться **не** во время рендеринга. Если вы будете во время рендеринга каждый раз передавать в `useDeferredValue` свеже созданный объект, то так вы будете постоянно запускать ненужный фоновый рендеринг.
 
@@ -112,7 +122,7 @@ function SearchPage() {
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, useState } from 'react';
 import SearchResults from './SearchResults.js';
 
@@ -132,7 +142,7 @@ export default function App() {
 }
 ```
 
-```js SearchResults.js hidden
+```js src/SearchResults.js hidden
 import { fetchData } from './data.js';
 
 // Note: this component is written using an experimental API
@@ -186,7 +196,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // Note: the way you would do data fetching depends on
 // the framework that you use together with Suspense.
 // Normally, the caching logic would be inside a framework.
@@ -326,7 +336,7 @@ export default function App() {
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
 
@@ -347,7 +357,7 @@ export default function App() {
 }
 ```
 
-```js SearchResults.js hidden
+```js src/SearchResults.js hidden
 import { fetchData } from './data.js';
 
 // Note: this component is written using an experimental API
@@ -401,7 +411,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // Note: the way you would do data fetching depends on
 // the framework that you use together with Suspense.
 // Normally, the caching logic would be inside a framework.
@@ -549,7 +559,7 @@ input { margin: 10px; }
 }
 ```
 
-```js App.js
+```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
 
@@ -576,7 +586,7 @@ export default function App() {
 }
 ```
 
-```js SearchResults.js hidden
+```js src/SearchResults.js hidden
 import { fetchData } from './data.js';
 
 // Note: this component is written using an experimental API
@@ -630,7 +640,7 @@ function use(promise) {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 // Note: the way you would do data fetching depends on
 // the framework that you use together with Suspense.
 // Normally, the caching logic would be inside a framework.
@@ -800,7 +810,7 @@ export default function App() {
 }
 ```
 
-```js SlowList.js
+```js src/SlowList.js
 import { memo } from 'react';
 
 const SlowList = memo(function SlowList({ text }) {
@@ -877,7 +887,7 @@ export default function App() {
 }
 ```
 
-```js SlowList.js
+```js src/SlowList.js
 import { memo } from 'react';
 
 const SlowList = memo(function SlowList({ text }) {
