@@ -67,6 +67,8 @@ function Tooltip() {
 
 * Код внутри `useLayoutEffect` и все обновления состояния, запланированные из него, **блокируют браузер от перерисовки экрана.** При чрезмерном использовании это замедляет работу вашего приложения. По возможности предпочитайте [`useEffect`.](/reference/react/useEffect)
 
+* If you trigger a state update inside `useLayoutEffect`, React will execute all remaining Effects immediately including `useEffect`.
+
 ---
 
 ## Использование {/*usage*/}
