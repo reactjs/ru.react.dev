@@ -52,13 +52,17 @@ export default function PackingList() {
 </Sandpack>
                   
 
+<<<<<<< HEAD
 Обратите внимание, что у некоторых компонентов `Item` проп `isPacked` имеет значение `true`, вместо значения `false`. Если `isPacked={true}`, вы хотите добавить галочку(✔) к упакованным вещам.
+=======
+Notice that some of the `Item` components have their `isPacked` prop set to `true` instead of `false`. You want to add a checkmark (✅) to packed items if `isPacked={true}`.
+>>>>>>> 7d50c3ffd4df2dc7903f4e41069653a456a9c223
 
 Можно реализовать это с помощью [управляющей конструкции `if`/`else`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/if...) таким образом:
 
 ```js
 if (isPacked) {
-  return <li className="item">{name} ✔</li>;
+  return <li className="item">{name} ✅</li>;
 }
 return <li className="item">{name}</li>;
 ```
@@ -70,7 +74,7 @@ return <li className="item">{name}</li>;
 ```js
 function Item({ name, isPacked }) {
   if (isPacked) {
-    return <li className="item">{name} ✔</li>;
+    return <li className="item">{name} ✅</li>;
   }
   return <li className="item">{name}</li>;
 }
@@ -159,7 +163,7 @@ export default function PackingList() {
 В предыдущем примере вы контролировали, какое JSX дерево будет возвращено компонентом (если вообще будет!). Возможно, вы уже заметили некоторое дублирование в выводе рендера:
 
 ```js
-<li className="item">{name} ✔</li>
+<li className="item">{name} ✅</li>
 ```
 
 очень похоже на
@@ -172,7 +176,7 @@ export default function PackingList() {
 
 ```js
 if (isPacked) {
-  return <li className="item">{name} ✔</li>;
+  return <li className="item">{name} ✅</li>;
 }
 return <li className="item">{name}</li>;
 ```
@@ -187,7 +191,7 @@ return <li className="item">{name}</li>;
 
 ```js
 if (isPacked) {
-  return <li className="item">{name} ✔</li>;
+  return <li className="item">{name} ✅</li>;
 }
 return <li className="item">{name}</li>;
 ```
@@ -197,12 +201,16 @@ return <li className="item">{name}</li>;
 ```js
 return (
   <li className="item">
-    {isPacked ? name + ' ✔' : name}
+    {isPacked ? name + ' ✅' : name}
   </li>
 );
 ```
 
+<<<<<<< HEAD
 Вы можете читать это как *"если `isPacked` равно true, тогда (`?`) рендерим `name + ' ✔'`, в противном случае (`:`) рендерим `name`"*.
+=======
+You can read it as *"if `isPacked` is true, then (`?`) render `name + ' ✅'`, otherwise (`:`) render `name`"*.
+>>>>>>> 7d50c3ffd4df2dc7903f4e41069653a456a9c223
 
 <DeepDive>
 
@@ -222,7 +230,7 @@ function Item({ name, isPacked }) {
     <li className="item">
       {isPacked ? (
         <del>
-          {name + ' ✔'}
+          {name + ' ✅'}
         </del>
       ) : (
         name
@@ -265,7 +273,7 @@ export default function PackingList() {
 ```js
 return (
   <li className="item">
-    {name} {isPacked && '✔'}
+    {name} {isPacked && '✅'}
   </li>
 );
 ```
@@ -280,7 +288,7 @@ return (
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && '✔'}
+      {name} {isPacked && '✅'}
     </li>
   );
 }
@@ -337,7 +345,11 @@ let itemContent = name;
 
 ```js
 if (isPacked) {
+<<<<<<< HEAD
   itemContent = name + ' ✔';
+=======
+  itemContent = name + " ✅";
+>>>>>>> 7d50c3ffd4df2dc7903f4e41069653a456a9c223
 }
 ```
 
@@ -357,7 +369,11 @@ if (isPacked) {
 function Item({ name, isPacked }) {
   let itemContent = name;
   if (isPacked) {
+<<<<<<< HEAD
     itemContent = name + ' ✔';
+=======
+    itemContent = name + " ✅";
+>>>>>>> 7d50c3ffd4df2dc7903f4e41069653a456a9c223
   }
   return (
     <li className="item">
@@ -401,7 +417,7 @@ function Item({ name, isPacked }) {
   if (isPacked) {
     itemContent = (
       <del>
-        {name + " ✔"}
+        {name + " ✅"}
       </del>
     );
   }
@@ -464,7 +480,7 @@ export default function PackingList() {
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked && '✔'}
+      {name} {isPacked && '✅'}
     </li>
   );
 }
@@ -502,7 +518,7 @@ export default function PackingList() {
 function Item({ name, isPacked }) {
   return (
     <li className="item">
-      {name} {isPacked ? '✔' : '❌'}
+      {name} {isPacked ? '✅' : '❌'}
     </li>
   );
 }
