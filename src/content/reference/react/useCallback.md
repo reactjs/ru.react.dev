@@ -773,7 +773,7 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Теперь ваш код проще и не нуждается в `useCallback`. [ Узнайте больше о удалении зависимостей эффекта.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+Теперь ваш код проще и не нуждается в `useCallback`. [ Узнайте больше об удалении зависимостей эффекта.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
 ---
 
