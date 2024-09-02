@@ -83,7 +83,7 @@ function ProductPage({ productId, referrer, theme }) {
 
 При первом рендере <CodeStep step={3}>возвращаемая функция</CodeStep> из `useCallback` будет той функцией, которую вы передали.
 
-При последующих рендерах React сравнит <CodeStep step={2}>зависимости</CodeStep> с теми, которые вы передали при предыдущем рендере. Если ни одна из зависимостей не изменилась (сравнение производится с помощью [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), `useCallback` вернёт ту же функцию, что и раньше. В противном случае, `useCallback` вернёт функцию, переданную при *текущем* рендере.
+При последующих рендерах React сравнит <CodeStep step={2}>зависимости</CodeStep> с теми, которые вы передали при предыдущем рендере. Если ни одна из зависимостей не изменилась (сравнение производится с помощью [`Object.is`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is)), `useCallback` вернёт ту же функцию, что и раньше. В противном случае, `useCallback` вернёт функцию, переданную при *текущем* рендере.
 
 Другими словами, `useCallback` кеширует функцию между повторными рендерами до тех пор, пока её зависимости не изменятся.
 
