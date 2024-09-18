@@ -1,48 +1,48 @@
 ---
-title: Passing Data Deeply with Context
+title: Передача данных через контекст
 ---
 
 <Intro>
 
-Usually, you will pass information from a parent component to a child component via props. But passing props can become verbose and inconvenient if you have to pass them through many components in the middle, or if many components in your app need the same information. *Context* lets the parent component make some information available to any component in the tree below it—no matter how deep—without passing it explicitly through props.
+Обычно вы передаёте информацию от родительского компонента к дочернему с помощью пропсов. Однако такая передача может стать многослойной и неудобной, если необходимо передавать информацию через множество промежуточных компонентов или если многим компонентам в вашем приложении нужна одна и та же информация. *Контекст* позволяет родительскому компоненту передавать информацию любому компоненту в дереве под ним, независимо от глубины и не передавая данные явно через пропсы.
 
 </Intro>
 
 <YouWillLearn>
 
-- What "prop drilling" is
-- How to replace repetitive prop passing with context
-- Common use cases for context
-- Common alternatives to context
+- Что такое "проп бурение"
+- Как заменить повторяющуюся передачу пропсов
+- Рядовые случаи использования контекста
+- Альтернативы контекста
 
 </YouWillLearn>
 
-## The problem with passing props {/*the-problem-with-passing-props*/}
+## Проблема передачи пропса {/*the-problem-with-passing-props*/}
 
-[Passing props](/learn/passing-props-to-a-component) is a great way to explicitly pipe data through your UI tree to the components that use it.
+[Передача пропсов](/learn/passing-props-to-a-component) — это отличный способ явно передать данные через UI дерево компонентам, которые их используют.
 
-But passing props can become verbose and inconvenient when you need to pass some prop deeply through the tree, or if many components need the same prop. The nearest common ancestor could be far removed from the components that need data, and [lifting state up](/learn/sharing-state-between-components) that high can lead to a situation called "prop drilling".
+Однако передача пропсов может стать муторной, если вам нужно передать их глубоко в дерево, или если многим компонентам нужен один и тот же пропс. Ближайший общий предок может находиться далеко от компонентов, которым нужны данные, и [подъём состояния вверх](/learn/sharing-state-between-components) на такую высоту может привести к ситуации, называемой «проп бурение».
 
 <DiagramGroup>
 
 <Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in purple. The value flows down to each of the two children, both highlighted in purple." >
 
-Lifting state up
+Подъём состояния
 
 </Diagram>
 <Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root node contains a bubble representing a value highlighted in purple. The value flows down through the two children, each of which pass the value but do not contain it. The left child passes the value down to two children which are both highlighted purple. The right child of the root passes the value through to one of its two children - the right one, which is highlighted purple. That child passed the value through its single child, which passes it down to both of its two children, which are highlighted purple.">
 
-Prop drilling
+Проп бурение
 
 </Diagram>
 
 </DiagramGroup>
 
-Wouldn't it be great if there were a way to "teleport" data to the components in the tree that need it without passing props? With React's context feature, there is!
+Было замечательно, если бы существовал способ «телепортировать» данные в те компоненты дерева, которым они нужны, без передачи пропсов? С помощью функции React контекст это возможно!
 
-## Context: an alternative to passing props {/*context-an-alternative-to-passing-props*/}
+## Контекст: альтернатива передачи пропсов {/*context-an-alternative-to-passing-props*/}
 
-Context lets a parent component provide data to the entire tree below it. There are many uses for context. Here is one example. Consider this `Heading` component that accepts a `level` for its size:
+Контекст позволяет родительскому компоненту предоставлять данные всему дереву под ним. Существует множество вариантов использования контекста. Вот один из примеров. Рассмотрим компонент `Heading`, который принимает значение `level` для своего размера:
 
 <Sandpack>
 
@@ -53,12 +53,12 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading level={1}>Title</Heading>
-      <Heading level={2}>Heading</Heading>
-      <Heading level={3}>Sub-heading</Heading>
-      <Heading level={4}>Sub-sub-heading</Heading>
-      <Heading level={5}>Sub-sub-sub-heading</Heading>
-      <Heading level={6}>Sub-sub-sub-sub-heading</Heading>
+      <Heading level={1}>Наименование</Heading>
+      <Heading level={2}>Заголовок</Heading>
+      <Heading level={3}>Под-заголовок</Heading>
+      <Heading level={4}>Под-под-заголовок</Heading>
+      <Heading level={5}>Под-под-под-заголовок</Heading>
+      <Heading level={6}>Под-под-под-под-заголовок</Heading>
     </Section>
   );
 }
@@ -90,7 +90,7 @@ export default function Heading({ level, children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('Неизвестный уровень: ' + level);
   }
 }
 ```
@@ -106,7 +106,7 @@ export default function Heading({ level, children }) {
 
 </Sandpack>
 
-Let's say you want multiple headings within the same `Section` to always have the same size:
+Допустим, вы хотите, чтобы несколько заголовков в одном `Section` всегда имели одинаковый размер:
 
 <Sandpack>
 
@@ -117,19 +117,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading level={1}>Title</Heading>
+      <Heading level={1}>Наименование</Heading>
       <Section>
-        <Heading level={2}>Heading</Heading>
-        <Heading level={2}>Heading</Heading>
-        <Heading level={2}>Heading</Heading>
+        <Heading level={2}>Заголовок</Heading>
+        <Heading level={2}>Заголовок</Heading>
+        <Heading level={2}>Заголовок</Heading>
         <Section>
-          <Heading level={3}>Sub-heading</Heading>
-          <Heading level={3}>Sub-heading</Heading>
-          <Heading level={3}>Sub-heading</Heading>
+          <Heading level={3}>Под-заголовок</Heading>
+          <Heading level={3}>Под-заголовок</Heading>
+          <Heading level={3}>Под-заголовок</Heading>
           <Section>
-            <Heading level={4}>Sub-sub-heading</Heading>
-            <Heading level={4}>Sub-sub-heading</Heading>
-            <Heading level={4}>Sub-sub-heading</Heading>
+            <Heading level={4}>Под-под-заголовок</Heading>
+            <Heading level={4}>Под-под-заголовок</Heading>
+            <Heading level={4}>Под-под-заголовок</Heading>
           </Section>
         </Section>
       </Section>
@@ -164,7 +164,7 @@ export default function Heading({ level, children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('Неизвестный уровень: ' + level);
   }
 }
 ```
@@ -180,47 +180,47 @@ export default function Heading({ level, children }) {
 
 </Sandpack>
 
-Currently, you pass the `level` prop to each `<Heading>` separately:
+Сейчас вы передаёте проп `level` каждому `<Heading>` отдельно:
 
 ```js
 <Section>
-  <Heading level={3}>About</Heading>
-  <Heading level={3}>Photos</Heading>
-  <Heading level={3}>Videos</Heading>
+  <Heading level={3}>О нас</Heading>
+  <Heading level={3}>Фото</Heading>
+  <Heading level={3}>Видео</Heading>
 </Section>
 ```
 
-It would be nice if you could pass the `level` prop to the `<Section>` component instead and remove it from the `<Heading>`. This way you could enforce that all headings in the same section have the same size:
+Было неплохо, если бы мы могли передавать параметр `level` в компонент `<Section>` и убирать его из `<Heading>`. Таким образом, мы можем добиться того, чтобы все заголовки в одном разделе имели одинаковый размер:
 
 ```js
 <Section level={3}>
-  <Heading>About</Heading>
-  <Heading>Photos</Heading>
-  <Heading>Videos</Heading>
+  <Heading>О нас</Heading>
+  <Heading>Фото</Heading>
+  <Heading>Видео</Heading>
 </Section>
 ```
 
-But how can the `<Heading>` component know the level of its closest `<Section>`? **That would require some way for a child to "ask" for data from somewhere above in the tree.**
+Но как компонент `<Heading>` может узнать уровень ближайшего к нему `<Section>`? **Это потребует от дочернего компонента какого-то способа «запрашивать» данные откуда-то сверху.**
 
-You can't do it with props alone. This is where context comes into play. You will do it in three steps:
+С помощью одних только пропсов этого не сделать. Здесь на помощь приходит контекст. Вы можете сделать это в три шага:
 
-1. **Create** a context. (You can call it `LevelContext`, since it's for the heading level.)
-2. **Use** that context from the component that needs the data. (`Heading` will use `LevelContext`.)
-3. **Provide** that context from the component that specifies the data. (`Section` will provide `LevelContext`.)
+1. **Создать** контекст. (Вы можете назвать его `LevelContext`, поскольку он предназначен для уровня заголовка).
+2. **Использовать** этот контекст в компоненте, которому нужны данные. (`Heading` будет использовать `LevelContext`).
+3. **Предоставить** этот контекст компоненту, определяющему данные. (`Section` предоставит `LevelContext`).
 
-Context lets a parent--even a distant one!--provide some data to the entire tree inside of it.
+Контекст позволяет родительскому компоненту — даже удалённому — предоставлять определённые данные всему дереву компонентов внутри него.
 
 <DiagramGroup>
 
 <Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in orange which projects down to the two children, each highlighted in orange." >
 
-Using context in close children
+Использование контекста с детьми вблизи
 
 </Diagram>
 
 <Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root parent node contains a bubble representing a value highlighted in orange. The value projects down directly to four leaves and one intermediate component in the tree, which are all highlighted in orange. None of the other intermediate components are highlighted.">
 
-Using context in distant children
+Использование контекста с детьми на расстоянии
 
 </Diagram>
 
