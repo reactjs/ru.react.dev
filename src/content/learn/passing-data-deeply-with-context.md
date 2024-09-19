@@ -226,9 +226,9 @@ export default function Heading({ level, children }) {
 
 </DiagramGroup>
 
-### Step 1: Create the context {/*step-1-create-the-context*/}
+### Шаг 1: Создать контекст {/*step-1-create-the-context*/}
 
-First, you need to create the context. You'll need to **export it from a file** so that your components can use it:
+Сначала нужно создать контекст. Потом вам нужно будет **экспортировать его из файла**, чтобы ваши компоненты могли его использовать:
 
 <Sandpack>
 
@@ -239,19 +239,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading level={1}>Title</Heading>
+      <Heading level={1}>Наименование</Heading>
       <Section>
-        <Heading level={2}>Heading</Heading>
-        <Heading level={2}>Heading</Heading>
-        <Heading level={2}>Heading</Heading>
+        <Heading level={2}>Заголовок</Heading>
+        <Heading level={2}>Заголовок</Heading>
+        <Heading level={2}>Заголовок</Heading>
         <Section>
-          <Heading level={3}>Sub-heading</Heading>
-          <Heading level={3}>Sub-heading</Heading>
-          <Heading level={3}>Sub-heading</Heading>
+          <Heading level={3}>Под-заголовок</Heading>
+          <Heading level={3}>Под-заголовок</Heading>
+          <Heading level={3}>Под-заголовок</Heading>
           <Section>
-            <Heading level={4}>Sub-sub-heading</Heading>
-            <Heading level={4}>Sub-sub-heading</Heading>
-            <Heading level={4}>Sub-sub-heading</Heading>
+            <Heading level={4}>Под-под-заголовок</Heading>
+            <Heading level={4}>Под-под-заголовок</Heading>
+            <Heading level={4}>Под-под-заголовок</Heading>
           </Section>
         </Section>
       </Section>
@@ -286,7 +286,7 @@ export default function Heading({ level, children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('Неизвестный уровень: ' + level);
   }
 }
 ```
@@ -308,18 +308,18 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-The only argument to `createContext` is the _default_ value. Here, `1` refers to the biggest heading level, but you could pass any kind of value (even an object). You will see the significance of the default value in the next step.
+Единственным аргументом `createContext` является значение по _умолчанию_. Здесь `1` означает самый большой уровень заголовка, но вы можете передать любое значение (даже объект). Значимость значения по умолчанию вы увидите в следующем шаге.
 
-### Step 2: Use the context {/*step-2-use-the-context*/}
+### Шаг 2: Использовать контекст {/*step-2-use-the-context*/}
 
-Import the `useContext` Hook from React and your context:
+Импортируем хук `useContext` и ваш контекст из React:
 
 ```js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 ```
 
-Currently, the `Heading` component reads `level` from props:
+Сейчас компонент `Heading` считывает `level` из пропсов:
 
 ```js
 export default function Heading({ level, children }) {
@@ -327,7 +327,7 @@ export default function Heading({ level, children }) {
 }
 ```
 
-Instead, remove the `level` prop and read the value from the context you just imported, `LevelContext`:
+Вместо этого удалите параметр `level` и прочитайте значение из контекста, который вы только что импортировали — `LevelContext`:
 
 ```js {2}
 export default function Heading({ children }) {
@@ -336,29 +336,29 @@ export default function Heading({ children }) {
 }
 ```
 
-`useContext` is a Hook. Just like `useState` and `useReducer`, you can only call a Hook immediately inside a React component (not inside loops or conditions). **`useContext` tells React that the `Heading` component wants to read the `LevelContext`.**
+`useContext` — это хук. Как и `useState`, и `useReducer`, его можно вызывать только непосредственно внутри компонента React (не в циклах или условиях). **`useContext` сообщает React, что компонент `Heading` хочет получить данные из `LevelContext`.**
 
-Now that the `Heading` component doesn't have a `level` prop, you don't need to pass the level prop to `Heading` in your JSX like this anymore:
+Теперь, когда компонент `Heading` больше не имеет свойство `level`, вам не нужно передавать этот проп внутрь `Heading` в ваш JSX как здесь:
 
 ```js
 <Section>
-  <Heading level={4}>Sub-sub-heading</Heading>
-  <Heading level={4}>Sub-sub-heading</Heading>
-  <Heading level={4}>Sub-sub-heading</Heading>
+  <Heading level={4}>Под-под-заголовок</Heading>
+  <Heading level={4}>Под-под-заголовок</Heading>
+  <Heading level={4}>Под-под-заголовок</Heading>
 </Section>
 ```
 
-Update the JSX so that it's the `Section` that receives it instead:
+Обновите JSX так, чтобы компонент `Section` получал проп `level` как в примере:
 
 ```jsx
 <Section level={4}>
-  <Heading>Sub-sub-heading</Heading>
-  <Heading>Sub-sub-heading</Heading>
-  <Heading>Sub-sub-heading</Heading>
+  <Heading>Под-под-заголовок</Heading>
+  <Heading>Под-под-заголовок</Heading>
+  <Heading>Под-под-заголовок</Heading>
 </Section>
 ```
 
-As a reminder, this is the markup that you were trying to get working:
+Вспомним, что это тот код, который вы пытались заставить работать:
 
 <Sandpack>
 
@@ -369,19 +369,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section level={1}>
-      <Heading>Title</Heading>
+      <Heading>Наименование</Heading>
       <Section level={2}>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
+        <Heading>Заголовок</Heading>
+        <Heading>Заголовок</Heading>
+        <Heading>Заголовок</Heading>
         <Section level={3}>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
+          <Heading>Под-заголовок</Heading>
+          <Heading>Под-заголовок</Heading>
+          <Heading>Под-заголовок</Heading>
           <Section level={4}>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
+            <Heading>Под-под-заголовок</Heading>
+            <Heading>Под-под-заголовок</Heading>
+            <Heading>Под-под-заголовок</Heading>
           </Section>
         </Section>
       </Section>
@@ -420,7 +420,7 @@ export default function Heading({ children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('Неизвестный уровень: ' + level);
   }
 }
 ```
@@ -442,13 +442,13 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-Notice this example doesn't quite work, yet! All the headings have the same size because **even though you're *using* the context, you have not *provided* it yet.** React doesn't know where to get it!
+Обратите внимание, что этот пример еще не совсем рабочий! Все заголовки имеют одинаковый размер, потому что **хоть вы и *используете* контекст, вы еще не *указали* его.** React не знает, где его взять!
 
-If you don't provide the context, React will use the default value you've specified in the previous step. In this example, you specified `1` as the argument to `createContext`, so `useContext(LevelContext)` returns `1`, setting all those headings to `<h1>`. Let's fix this problem by having each `Section` provide its own context.
+Если вы не укажете контекст, React будет использовать значение по умолчанию, которое вы указали на предыдущем шаге. В этом примере вы указали `1` в качестве аргумента для `createContext`, поэтому `useContext(LevelContext)` возвращает `1`, устанавливая для всех заголовков `<h1>` это значение. Давайте исправим эту проблему, заставив каждый `Section` предоставлять свой собственный контекст.
 
-### Step 3: Provide the context {/*step-3-provide-the-context*/}
+### Шаг 3: Указать контекст {/*step-3-provide-the-context*/}
 
-The `Section` component currently renders its children:
+Компонент `Section` в данный момент отображает свои дочерние элементы:
 
 ```js
 export default function Section({ children }) {
@@ -460,7 +460,7 @@ export default function Section({ children }) {
 }
 ```
 
-**Wrap them with a context provider** to provide the `LevelContext` to them:
+**Оберните их провайдером контекста**, чтобы предоставить им `LevelContext`:
 
 ```js {1,6,8}
 import { LevelContext } from './LevelContext.js';
@@ -476,7 +476,7 @@ export default function Section({ level, children }) {
 }
 ```
 
-This tells React: "if any component inside this `<Section>` asks for `LevelContext`, give them this `level`." The component will use the value of the nearest `<LevelContext.Provider>` in the UI tree above it.
+Это сообщает React: "если какой-либо компонент внутри `<Section>` запрашивает `LevelContext`, дайте ему этот уровень." Компонент будет использовать значение ближайшего `<LevelContext.Provider>` в дереве UI над ним.
 
 <Sandpack>
 
@@ -487,19 +487,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section level={1}>
-      <Heading>Title</Heading>
+      <Heading>Наименование</Heading>
       <Section level={2}>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
+        <Heading>Заголовок</Heading>
+        <Heading>Заголовок</Heading>
+        <Heading>Заголовок</Heading>
         <Section level={3}>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
+          <Heading>Под-заголовок</Heading>
+          <Heading>Под-заголовок</Heading>
+          <Heading>Под-заголовок</Heading>
           <Section level={4}>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
+            <Heading>Под-под-заголовок</Heading>
+            <Heading>Под-под-заголовок</Heading>
+            <Heading>Под-под-заголовок</Heading>
           </Section>
         </Section>
       </Section>
@@ -542,7 +542,7 @@ export default function Heading({ children }) {
     case 6:
       return <h6>{children}</h6>;
     default:
-      throw Error('Unknown level: ' + level);
+      throw Error('Неизвестный уровень: ' + level);
   }
 }
 ```
@@ -564,15 +564,15 @@ export const LevelContext = createContext(1);
 
 </Sandpack>
 
-It's the same result as the original code, but you did not need to pass the `level` prop to each `Heading` component! Instead, it "figures out" its heading level by asking the closest `Section` above:
+Это тот же результат, что и в исходном коде, но вам не нужно передавать проп `level` каждому компоненту `Heading`! Вместо этого он «выясняет» уровень своего заголовка, запрашивая ближайший `Section` выше:
 
-1. You pass a `level` prop to the `<Section>`.
-2. `Section` wraps its children into `<LevelContext.Provider value={level}>`.
-3. `Heading` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
+1. Вы передаёте проп `level` в `<Section>`.
+2. `Section` оборачивает дочерние элементы в `<LevelContext.Provider value={level}>`.
+3. `Heading` запрашивает ближайшее значение `LevelContext` с помощью `useContext(LevelContext)`.
 
-## Using and providing context from the same component {/*using-and-providing-context-from-the-same-component*/}
+## Использование и предоставление контекста в одном и том же компоненте {/*using-and-providing-context-from-the-same-component*/}
 
-Currently, you still have to specify each section's `level` manually:
+В настоящее время вам по-прежнему приходится указывать `level` каждого раздела вручную:
 
 ```js
 export default function Page() {
@@ -585,7 +585,7 @@ export default function Page() {
           ...
 ```
 
-Since context lets you read information from a component above, each `Section` could read the `level` from the `Section` above, and pass `level + 1` down automatically. Here is how you could do it:
+Так как контекст позволяет считывать информацию из компонента выше, каждый `Section` может считывать `level` из `Section` выше, и автоматически передавать `level + 1` вниз. Вот как это можно сделать:
 
 ```js src/Section.js {5,8}
 import { useContext } from 'react';
@@ -603,7 +603,7 @@ export default function Section({ children }) {
 }
 ```
 
-With this change, you don't need to pass the `level` prop *either* to the `<Section>` or to the `<Heading>`:
+Благодаря этому изменению вам не нужно передавать параметр `level` *какому либо* `<Section>` или `<Heading>`:
 
 <Sandpack>
 
@@ -614,19 +614,19 @@ import Section from './Section.js';
 export default function Page() {
   return (
     <Section>
-      <Heading>Title</Heading>
+      <Heading>Наименование</Heading>
       <Section>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
-        <Heading>Heading</Heading>
+        <Heading>Заголовок</Heading>
+        <Heading>Заголовок</Heading>
+        <Heading>Заголовок</Heading>
         <Section>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
-          <Heading>Sub-heading</Heading>
+          <Heading>Под-заголовок</Heading>
+          <Heading>Под-заголовок</Heading>
+          <Heading>Под-заголовок</Heading>
           <Section>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
-            <Heading>Sub-sub-heading</Heading>
+            <Heading>Под-под-заголовок</Heading>
+            <Heading>Под-под-заголовок</Heading>
+            <Heading>Под-под-заголовок</Heading>
           </Section>
         </Section>
       </Section>
@@ -695,11 +695,11 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
-Now both `Heading` and `Section` read the `LevelContext` to figure out how "deep" they are. And the `Section` wraps its children into the `LevelContext` to specify that anything inside of it is at a "deeper" level.
+Теперь и `Heading`, и `Section` читают `LevelContext`, чтобы выяснить, насколько "глубоко" они находятся. А `Section` оборачивает свои дочерние элементы в `LevelContext`, чтобы указать, что все, что находится внутри него, находится на более "глубоком" уровне.
 
 <Note>
 
-This example uses heading levels because they show visually how nested components can override context. But context is useful for many other use cases too. You can pass down any information needed by the entire subtree: the current color theme, the currently logged in user, and so on.
+В этом примере используются уровни заголовков, потому что они наглядно показывают, как вложенные компоненты могут переопределять контекст. Но контекст полезен и во многих других случаях. Вы можете передать любую информацию, необходимую всему поддереву: текущую цветовую тему, пользователя вошедшего в систему, и так далее.
 
 </Note>
 
