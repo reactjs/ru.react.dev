@@ -21,7 +21,7 @@ title: Передача данных через контекст
 
 [Передача пропсов](/learn/passing-props-to-a-component) — это отличный способ явно передать данные через UI дерево компонентам, которые их используют.
 
-Однако передача пропсов может стать муторной, если вам нужно передать их глубоко в дерево, или если многим компонентам нужен один и тот же пропс. Ближайший общий предок может находиться далеко от компонентов, которым нужны данные, и [подъём состояния вверх](/learn/sharing-state-between-components) на такую высоту может привести к ситуации, называемой «проп бурение».
+Однако передача пропсов может стать муторной, если вам нужно передать их глубоко в дерево, или если многим компонентам нужен один и тот же проп. Ближайший общий предок может находиться далеко от компонентов, которым нужны данные, и [подъём состояния вверх](/learn/sharing-state-between-components) на такую высоту может привести к ситуации, называемой «проп бурение».
 
 <DiagramGroup>
 
@@ -703,11 +703,11 @@ export const LevelContext = createContext(0);
 
 </Note>
 
-## Context passes through intermediate components {/*context-passes-through-intermediate-components*/}
+## Прохождение контекста через промежуточные компоненты {/*context-passes-through-intermediate-components*/}
 
-You can insert as many components as you like between the component that provides context and the one that uses it. This includes both built-in components like `<div>` and components you might build yourself.
+Вы можете использовать столько компонентов, между предоставляющим контекст, и тем, который его использует компонентами, сколько захотите. Сюда входят как базовые компоненты, такие как `<div>`, так и те, которые вы можете создать самостоятельно.
 
-In this example, the same `Post` component (with a dashed border) is rendered at two different nesting levels. Notice that the `<Heading>` inside of it gets its level automatically from the closest `<Section>`:
+В этом примере один и тот же компонент `Post` (с пунктирной границей) отображается на двух разных уровнях вложенности. Обратите внимание, что `<Heading>` внутри него автоматически получает свой уровень из ближайшего `<Section>`:
 
 <Sandpack>
 
@@ -718,10 +718,10 @@ import Section from './Section.js';
 export default function ProfilePage() {
   return (
     <Section>
-      <Heading>My Profile</Heading>
+      <Heading>Мой профиль</Heading>
       <Post
-        title="Hello traveller!"
-        body="Read about my adventures."
+        title="Привет, путешественник!"
+        body="Почитай о моих путешествиях."
       />
       <AllPosts />
     </Section>
@@ -731,7 +731,7 @@ export default function ProfilePage() {
 function AllPosts() {
   return (
     <Section>
-      <Heading>Posts</Heading>
+      <Heading>Пост</Heading>
       <RecentPosts />
     </Section>
   );
@@ -740,14 +740,14 @@ function AllPosts() {
 function RecentPosts() {
   return (
     <Section>
-      <Heading>Recent Posts</Heading>
+      <Heading>Последние посты</Heading>
       <Post
-        title="Flavors of Lisbon"
+        title="Вкусы Лиссабона"
         body="...those pastéis de nata!"
       />
       <Post
-        title="Buenos Aires in the rhythm of tango"
-        body="I loved it!"
+        title="Буэнос-Айрес в ритме танго"
+        body="Мне понравилось это!"
       />
     </Section>
   );
@@ -792,7 +792,7 @@ export default function Heading({ children }) {
   const level = useContext(LevelContext);
   switch (level) {
     case 0:
-      throw Error('Heading must be inside a Section!');
+      throw Error('Heading должен находиться внутри раздела!');
     case 1:
       return <h1>{children}</h1>;
     case 2:
@@ -832,58 +832,58 @@ export const LevelContext = createContext(0);
 
 </Sandpack>
 
-You didn't do anything special for this to work. A `Section` specifies the context for the tree inside it, so you can insert a `<Heading>` anywhere, and it will have the correct size. Try it in the sandbox above!
+Вы не сделали ничего волшебного, чтобы это заработало. `Section` определяет контекст для дерева внутри него, поэтому вы можете поставить `<Heading>` в любое место, и он будет иметь правильный размер. Попробуйте это в песочнице выше!
 
-**Context lets you write components that "adapt to their surroundings" and display themselves differently depending on _where_ (or, in other words, _in which context_) they are being rendered.**
+**Контекст позволяет вам писать компоненты, которые "адаптируются к своему окружению" и отображаются по-разному в зависимости от того, _где_ (или, другими словами, _в каком контексте_) они отображаются.**
 
-How context works might remind you of [CSS property inheritance.](https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance) In CSS, you can specify `color: blue` for a `<div>`, and any DOM node inside of it, no matter how deep, will inherit that color unless some other DOM node in the middle overrides it with `color: green`. Similarly, in React, the only way to override some context coming from above is to wrap children into a context provider with a different value.
+То, как работает контекст, может напомнить вам о [наследовании свойств CSS.](https://developer.mozilla.org/ru/docs/Web/CSS/Inheritance) В нём вы можете указать `color: blue` для `<div>`, и любой узел DOM внутри него, независимо от его глубины, унаследует этот цвет, если только какой-либо другой узел DOM в середине не переопределит его на `color: green`. Аналогично, в React единственный способ переопределить контекст, поступающий сверху, — это обернуть дочерние элементы в провайдер контекста с другим значением.
 
-In CSS, different properties like `color` and `background-color` don't override each other. You can set all  `<div>`'s `color` to red without impacting `background-color`. Similarly, **different React contexts don't override each other.** Each context that you make with `createContext()` is completely separate from other ones, and ties together components using and providing *that particular* context. One component may use or provide many different contexts without a problem.
+В CSS разные свойства, такие как `color` и `background-color`, не переопределяют друг друга. Вы можете установить во всех `<div>` свойство `color` на красный, не влияя на `background-color`. Аналогично, **разные контексты React не переопределяют друг друга.** Каждый контекст, который вы создаете с помощью `createContext()`, полностью отделен от других и связывает компоненты, использующие и предоставляющие *этот конкретный* контекст. Один компонент может использовать или предоставлять множество разных контекстов без проблем.
 
-## Before you use context {/*before-you-use-context*/}
+## Перед использованием контекста {/*before-you-use-context*/}
 
-Context is very tempting to use! However, this also means it's too easy to overuse it. **Just because you need to pass some props several levels deep doesn't mean you should put that information into context.**
+Контекст — это очень заманчиво! Однако это также означает, что им слишком легко злоупотребить. **Если вам нужно просто передать какие-то пропсы на несколько уровней в глубину, это не значит, что вы должны передавать информацию через контекст.**
 
-Here's a few alternatives you should consider before using context:
+Вот несколько альтернатив, которые нужно рассмотреть, прежде чем использовать контекст:
 
-1. **Start by [passing props.](/learn/passing-props-to-a-component)** If your components are not trivial, it's not unusual to pass a dozen props down through a dozen components. It may feel like a slog, but it makes it very clear which components use which data! The person maintaining your code will be glad you've made the data flow explicit with props.
-2. **Extract components and [pass JSX as `children`](/learn/passing-props-to-a-component#passing-jsx-as-children) to them.** If you pass some data through many layers of intermediate components that don't use that data (and only pass it further down), this often means that you forgot to extract some components along the way. For example, maybe you pass data props like `posts` to visual components that don't use them directly, like `<Layout posts={posts} />`. Instead, make `Layout` take `children` as a prop, and render `<Layout><Posts posts={posts} /></Layout>`. This reduces the number of layers between the component specifying the data and the one that needs it.
+1. **Начните с [передачи пропсов.](/learn/passing-props-to-a-component)** Если ваши компоненты достаточно простые, то нередко приходится передавать множество пропсов вниз через множество компонентов. Это может показаться трудоёмкой задачей, но так становится ясно, какие компоненты используют те или иные данные! Человек, обслуживающий ваш код, будет рад, что вы сделали поток данных явным с помощью пропсов.
+2. **Извлекайте компоненты и [передавайте им JSX как `детям`](/learn/passing-props-to-a-component#passing-jsx-as-children).** Если вы передаете какие-то данные через множество промежуточных компонентов, которые не используют эти данные (а только передают их дальше вниз), это часто означает, что вы забыли извлечь некоторые компоненты на этом пути. Например, вы передаете такие пропсы данных, как `posts`, визуальным компонентам, которые не используют их напрямую, например `<Layout posts={posts} />`. Вместо этого сделайте так, чтобы `Layout` принимал `children` в качестве проп, и выводил `<Layout><Posts posts={posts} /></Layout>`. Это уменьшает количество слоев между компонентом, задающим данные, и компонентом, которому они нужны.
 
-If neither of these approaches works well for you, consider context.
+Если ни один из этих подходов вам не подходит, рассмотрите контекст.
 
-## Use cases for context {/*use-cases-for-context*/}
+## Варианты использования контекста {/*use-cases-for-context*/}
 
-* **Theming:** If your app lets the user change its appearance (e.g. dark mode), you can put a context provider at the top of your app, and use that context in components that need to adjust their visual look.
-* **Current account:** Many components might need to know the currently logged in user. Putting it in context makes it convenient to read it anywhere in the tree. Some apps also let you operate multiple accounts at the same time (e.g. to leave a comment as a different user). In those cases, it can be convenient to wrap a part of the UI into a nested provider with a different current account value.
-* **Routing:** Most routing solutions use context internally to hold the current route. This is how every link "knows" whether it's active or not. If you build your own router, you might want to do it too.
-* **Managing state:** As your app grows, you might end up with a lot of state closer to the top of your app. Many distant components below may want to change it. It is common to [use a reducer together with context](/learn/scaling-up-with-reducer-and-context) to manage complex state and pass it down to distant components without too much hassle.
-  
-Context is not limited to static values. If you pass a different value on the next render, React will update all the components reading it below! This is why context is often used in combination with state.
+* **Изменение темы:** Если ваше приложение позволяет пользователю изменять его внешний вид (например, темный режим), вы можете поместить провайдер контекста в верхней части приложения и использовать этот контекст в компонентах, которым нужно изменять свой внешний вид.
+* **Текущий аккаунт:** Многим компонентам может потребоваться информация о текущем вошедшем в систему пользователе. Поместив его в контекст, его удобно читать в любом месте дерева. Некоторые приложения также позволяют работать с несколькими учетными записями одновременно (например, оставлять комментарии от имени другого пользователя). В таких случаях может быть удобно обернуть часть UI во вложенный провайдер с другим текущим значением.
+* **Маршрутизация:** Большинство решений для маршрутизации используют внутренний контекст для хранения текущего маршрута. Так каждая ссылка "знает", активна она или нет. Если вы создадите свой собственный маршрутизатор, то, возможно, захотите сделать также.
+* **Управление состоянием:** По мере роста вашего приложения вы можете столкнуться с большим количеством состояний в верхней части вашего приложения. Многие дальние компоненты внизу могут захотеть изменить их. Обычно [используется редюсер вместе с контекстом](/learn/scaling-up-with-reducer-and-context), чтобы управлять сложным состоянием и передавать его вниз удаленным компонентам без особых проблем.
 
-In general, if some information is needed by distant components in different parts of the tree, it's a good indication that context will help you.
+Контекст не ограничивается статическими значениями. Если при следующем рендере вы передадите другое значение, React обновит все компоненты, читающие его ниже! Именно поэтому контекст часто используется в связке с состоянием.
+
+В общем, если какая-то информация нужна удаленным компонентам в разных частях дерева, это хороший признак того, что контекст вам может помочь.
 
 <Recap>
 
-* Context lets a component provide some information to the entire tree below it.
-* To pass context:
-  1. Create and export it with `export const MyContext = createContext(defaultValue)`.
-  2. Pass it to the `useContext(MyContext)` Hook to read it in any child component, no matter how deep.
-  3. Wrap children into `<MyContext.Provider value={...}>` to provide it from a parent.
-* Context passes through any components in the middle.
-* Context lets you write components that "adapt to their surroundings".
-* Before you use context, try passing props or passing JSX as `children`.
+* Контекст позволяет компоненту предоставлять некоторую информацию всему дереву под ним.
+* Чтобы передать контекст:
+  1. Создайте и экспортируйте его с помощью `export const MyContext = createContext(defaultValue)`.
+  2. Передайте его хуку `useContext(MyContext)`, чтобы прочитать его в любом дочернем компоненте, независимо от его глубины.
+  3. Заверните дочерние компоненты в обертку `<MyContext.Provider value={...}>`, чтобы подтянуть его из родительского компонента.
+* Контекст проходит через любые компоненты в середине.
+* Контекст позволяет писать компоненты, которые "адаптируются к своему окружению".
+* Прежде чем использовать контекст, попробуйте передать пропсы или передать JSX в качестве `children`.
 
 </Recap>
 
 <Challenges>
 
-#### Replace prop drilling with context {/*replace-prop-drilling-with-context*/}
+#### Замените проп бурение на контекст {/*replace-prop-drilling-with-context*/}
 
-In this example, toggling the checkbox changes the `imageSize` prop passed to each `<PlaceImage>`. The checkbox state is held in the top-level `App` component, but each `<PlaceImage>` needs to be aware of it.
+В этом примере переключение `checkbox` изменяет проп `imageSize`, передаваемый каждому `<PlaceImage>`. Состояние элемента `checkbox` хранится в компоненте верхнего уровня `App`, но каждый `<PlaceImage>` должен знать о нем.
 
-Currently, `App` passes `imageSize` to `List`, which passes it to each `Place`, which passes it to the `PlaceImage`. Remove the `imageSize` prop, and instead pass it from the `App` component directly to `PlaceImage`.
+Сейчас `App` передает `imageSize` в `List`, который передает его в каждый `Place`, который передает его в `PlaceImage`. Удалите проп `imageSize`, и вместо этого передавайте его из компонента `App` прямо в `PlaceImage`.
 
-You can declare context in `Context.js`.
+Вы можете объявить контекст в файле `Context.js`.
 
 <Sandpack>
 
@@ -905,7 +905,7 @@ export default function App() {
             setIsLarge(e.target.checked);
           }}
         />
-        Use large images
+        Использовать большие изображения
       </label>
       <hr />
       <List imageSize={imageSize} />
@@ -959,38 +959,38 @@ function PlaceImage({ place, imageSize }) {
 ```js src/data.js
 export const places = [{
   id: 0,
-  name: 'Bo-Kaap in Cape Town, South Africa',
-  description: 'The tradition of choosing bright colors for houses began in the late 20th century.',
+  name: 'Бо-Каап в Кейптауне, Южная Африка',
+  description: 'Традиция выбирать яркие цвета для домов зародилась в конце 20 века.',
   imageId: 'K9HVAGH'
 }, {
   id: 1, 
-  name: 'Rainbow Village in Taichung, Taiwan',
-  description: 'To save the houses from demolition, Huang Yung-Fu, a local resident, painted all 1,200 of them in 1924.',
+  name: 'Радужная деревня в Тайчжуне, Тайвань',
+  description: 'Чтобы спасти дома от сноса, местный житель Хуан Юн Фу в 1924 году раскрасил все 1200 зданий.',
   imageId: '9EAYZrt'
 }, {
   id: 2, 
-  name: 'Macromural de Pachuca, Mexico',
-  description: 'One of the largest murals in the world covering homes in a hillside neighborhood.',
+  name: 'Макромурал из Пачуки, Мексика',
+  description: 'Одна из самых больших фресок в мире, покрывающая дома в районе на холме.',
   imageId: 'DgXHVwu'
 }, {
   id: 3, 
-  name: 'Selarón Staircase in Rio de Janeiro, Brazil',
-  description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people."',
+  name: 'Лестница Селарона в Рио-де-Жанейро, Бразилия',
+  description: 'Эта достопримечательность была создана Хорхе Селароном, художником чилийского происхождения, как "дань уважения бразильскому народу".',
   imageId: 'aeO3rpI'
 }, {
   id: 4, 
-  name: 'Burano, Italy',
-  description: 'The houses are painted following a specific color system dating back to 16th century.',
+  name: 'Бурано, Италия',
+  description: 'Дома окрашены по особой системе цветов, восходящей к 16 веку.',
   imageId: 'kxsph5C'
 }, {
   id: 5, 
-  name: 'Chefchaouen, Marocco',
-  description: 'There are a few theories on why the houses are painted blue, including that the color repels mosquitos or that it symbolizes sky and heaven.',
+  name: 'Шефчауэн, Марокко',
+  description: 'Существует несколько теорий, почему дома окрашены в синий цвет, в том числе то, что этот цвет отпугивает комаров или символизирует небо и рай.',
   imageId: 'rTqKo46'
 }, {
   id: 6,
-  name: 'Gamcheon Culture Village in Busan, South Korea',
-  description: 'In 2009, the village was converted into a cultural hub by painting the houses and featuring exhibitions and art installations.',
+  name: 'Культурная деревня Гамчхон в Пусане, Южная Корея',
+  description: 'В 2009 году деревня была превращена в культурный центр: дома были покрашены, в них были организованы выставки и художественные инсталляции.',
   imageId: 'ZfQOOzf'
 }];
 ```
@@ -1020,9 +1020,9 @@ li {
 
 <Solution>
 
-Remove `imageSize` prop from all the components.
+Удалите проп `imageSize` из всех компонентов.
 
-Create and export `ImageSizeContext` from `Context.js`. Then wrap the List into `<ImageSizeContext.Provider value={imageSize}>` to pass the value down, and `useContext(ImageSizeContext)` to read it in the `PlaceImage`:
+Создайте и экспортируйте `ImageSizeContext` из `Context.js`. Затем оберните список провайдером`<ImageSizeContext.Provider value={imageSize}>`, чтобы передать значение вниз, и используйте `useContext(ImageSizeContext)`, чтобы прочитать его в `PlaceImage`:
 
 <Sandpack>
 
@@ -1047,7 +1047,7 @@ export default function App() {
             setIsLarge(e.target.checked);
           }}
         />
-        Use large images
+        Использовать большие изображения
       </label>
       <hr />
       <List />
@@ -1098,38 +1098,38 @@ export const ImageSizeContext = createContext(500);
 ```js src/data.js
 export const places = [{
   id: 0,
-  name: 'Bo-Kaap in Cape Town, South Africa',
-  description: 'The tradition of choosing bright colors for houses began in the late 20th century.',
+  name: 'Бо-Каап в Кейптауне, Южная Африка',
+  description: 'Традиция выбирать яркие цвета для домов зародилась в конце 20 века.',
   imageId: 'K9HVAGH'
 }, {
   id: 1, 
-  name: 'Rainbow Village in Taichung, Taiwan',
-  description: 'To save the houses from demolition, Huang Yung-Fu, a local resident, painted all 1,200 of them in 1924.',
+  name: 'Радужная деревня в Тайчжуне, Тайвань',
+  description: 'Чтобы спасти дома от сноса, местный житель Хуан Юн Фу в 1924 году раскрасил все 1200 зданий.',
   imageId: '9EAYZrt'
 }, {
   id: 2, 
-  name: 'Macromural de Pachuca, Mexico',
-  description: 'One of the largest murals in the world covering homes in a hillside neighborhood.',
+  name: 'Макромурал из Пачуки, Мексика',
+  description: 'Одна из самых больших фресок в мире, покрывающая дома в районе на холме.',
   imageId: 'DgXHVwu'
 }, {
   id: 3, 
-  name: 'Selarón Staircase in Rio de Janeiro, Brazil',
-  description: 'This landmark was created by Jorge Selarón, a Chilean-born artist, as a "tribute to the Brazilian people".',
+  name: 'Лестница Селарона в Рио-де-Жанейро, Бразилия',
+  description: 'Эта достопримечательность была создана Хорхе Селароном, художником чилийского происхождения, как "дань уважения бразильскому народу".',
   imageId: 'aeO3rpI'
 }, {
   id: 4, 
-  name: 'Burano, Italy',
-  description: 'The houses are painted following a specific color system dating back to 16th century.',
+  name: 'Бурано, Италия',
+  description: 'Дома окрашены по особой системе цветов, восходящей к 16 веку.',
   imageId: 'kxsph5C'
 }, {
   id: 5, 
-  name: 'Chefchaouen, Marocco',
-  description: 'There are a few theories on why the houses are painted blue, including that the color repels mosquitos or that it symbolizes sky and heaven.',
+  name: 'Шефчауэн, Марокко',
+  description: 'Существует несколько теорий, почему дома окрашены в синий цвет, в том числе то, что этот цвет отпугивает комаров или символизирует небо и рай.',
   imageId: 'rTqKo46'
 }, {
   id: 6,
-  name: 'Gamcheon Culture Village in Busan, South Korea',
-  description: 'In 2009, the village was converted into a cultural hub by painting the houses and featuring exhibitions and art installations.',
+  name: 'Культурная деревня Гамчхон в Пусане, Южная Корея',
+  description: 'В 2009 году деревня была превращена в культурный центр: дома были покрашены, в них были организованы выставки и художественные инсталляции.',
   imageId: 'ZfQOOzf'
 }];
 ```
@@ -1157,7 +1157,7 @@ li {
 
 </Sandpack>
 
-Note how components in the middle don't need to pass `imageSize` anymore.
+Обратите внимание, что компонентам в середине больше не нужно передавать `imageSize`.
 
 </Solution>
 
