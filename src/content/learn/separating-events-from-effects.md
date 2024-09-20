@@ -1,37 +1,37 @@
 ---
-title: 'Separating Events from Effects'
+title: 'Вынесение событий из Эффектов'
 ---
 
 <Intro>
 
-Event handlers only re-run when you perform the same interaction again. Unlike event handlers, Effects re-synchronize if some value they read, like a prop or a state variable, is different from what it was during the last render. Sometimes, you also want a mix of both behaviors: an Effect that re-runs in response to some values but not others. This page will teach you how to do that.
+Обработчики событий перезапускаются только при повторении одного и того же взаимодействия. В отличие от обработчиков событий, Эффекты перезапускаются, если одно из считываемых значений, например, проп или состояние, изменилось во время рендера. Но иногда вам нужно объединить оба поведения так, чтобы эффект перезапускался при изменении одних значений и игнорировал изменения других. На этой странице вы узнаете, как это сделать.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to choose between an event handler and an Effect
-- Why Effects are reactive, and event handlers are not
-- What to do when you want a part of your Effect's code to not be reactive
-- What Effect Events are, and how to extract them from your Effects
-- How to read the latest props and state from Effects using Effect Events
+- В каких случаях использовать обработчики событий, а в каких — Эффекты
+- Почему Эффекты реактивны, а обработчики событий — нет
+- Что делать, если вы хотите, чтобы части кода вашего Эффекта не были реактивными
+- Что такое События эффектов, и как вынести их из Эффектов
+- Как считывать последние пропсы и состояния из Эффектов, используя События эффектов.
 
 </YouWillLearn>
 
-## Choosing between event handlers and Effects {/*choosing-between-event-handlers-and-effects*/}
+## Выбор между обработчиками событий и Эффектами {/*choosing-between-event-handlers-and-effects*/}
 
-First, let's recap the difference between event handlers and Effects.
+Для начала, вспомним различия между обработчиками событий и Эффектами.
 
-Imagine you're implementing a chat room component. Your requirements look like this:
+Представим, что вы разрабатываете компонент чата, который должен удовлетворять следующим требованиям:
 
-1. Your component should automatically connect to the selected chat room.
-1. When you click the "Send" button, it should send a message to the chat.
+1. Компонент должен автоматически подключаться к выбранному чату.
+2. При клике на кнопку "Отправить" должно отправляться сообщение в чат.
 
-Let's say you've already implemented the code for them, but you're not sure where to put it. Should you use event handlers or Effects? Every time you need to answer this question, consider [*why* the code needs to run.](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)
+Допустим, вы уже реализовали логику компонента, но не уверены, куда его поместить. Использовать обработчики событий или Эффекты? Перед тем, как ответить на этот вопрос, подумайте, [в чём *предназначение* этого кода.](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events)
 
-### Event handlers run in response to specific interactions {/*event-handlers-run-in-response-to-specific-interactions*/}
+### Обработчики событий выполняются в ответ на определённые взаимодействия {/*event-handlers-run-in-response-to-specific-interactions*/}
 
-From the user's perspective, sending a message should happen *because* the particular "Send" button was clicked. The user will get rather upset if you send their message at any other time or for any other reason. This is why sending a message should be an event handler. Event handlers let you handle specific interactions:
+С точки зрения пользователя, отправка сообщения должна произойти *потому*, что была нажата конкретная кнопка "Отправить". Пользователь будет растерян, если вы отправите его сообщение в неожиданное для него время или по любой другой причине. Вот почему отправка сообщения должна быть обработчиком событий. Обработчики событий позволяют вам обрабатывать определённые взаимодействия:
 
 ```js {4-6}
 function ChatRoom({ roomId }) {
@@ -50,13 +50,13 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-With an event handler, you can be sure that `sendMessage(message)` will *only* run if the user presses the button.
+Используя обработчик событий, вы можете быть уверены, что `sendMessage(message)` будет выполнен, *только* если пользователь нажмёт на кнопку.
 
-### Effects run whenever synchronization is needed {/*effects-run-whenever-synchronization-is-needed*/}
+### Эффекты запускаются всякий раз, когда необходима синхронизация. {/*effects-run-whenever-synchronization-is-needed*/}
 
-Recall that you also need to keep the component connected to the chat room. Where does that code go?
+Помните, что вам также нужно поддерживать компонент подключенным к чату. Где запускать этот код?
 
-The *reason* to run this code is not some particular interaction. It doesn't matter why or how the user navigated to the chat room screen. Now that they're looking at it and could interact with it, the component needs to stay connected to the selected chat server. Even if the chat room component was the initial screen of your app, and the user has not performed any interactions at all, you would *still* need to connect. This is why it's an Effect:
+Этот код *не предназначен* для обработки взаимодействия. Неважно, почему или как пользователь перешёл на экран чата. Теперь, когда он смотрит на него и может взаимодействовать с ним, компонент должен оставаться подключенным к выбранному серверу чата. Даже если пользователь только открыл чат и вообще не выполнял никаких взаимодействий, вам *всё равно* нужно будет подключиться. Вот почему это Эффект:
 
 ```js {3-9}
 function ChatRoom({ roomId }) {
@@ -72,7 +72,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-With this code, you can be sure that there is always an active connection to the currently selected chat server, *regardless* of the specific interactions performed by the user. Whether the user has only opened your app, selected a different room, or navigated to another screen and back, your Effect ensures that the component will *remain synchronized* with the currently selected room, and will [re-connect whenever it's necessary.](/learn/lifecycle-of-reactive-effects#why-synchronization-may-need-to-happen-more-than-once)
+С этим кодом вы можете быть уверены, что чат всегда подключен к выбранному серверу, *независимо* от действий пользователя. Независимо от того, открыл ли пользователь только ваше приложение, выбрал другой чат или перешёл на другой экран и обратно, ваш эффект гарантирует, что компонент *останется синхронизированным* с выбранным в данный момент чатом и [повторно подключится, когда это необходимо.](/learn/lifecycle-of-reactive-effects#why-synchronization-may-need-to-happen-more-than-once)
 
 <Sandpack>
 
@@ -136,7 +136,7 @@ export function sendMessage(message) {
 }
 
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // Логика подключения к серверу
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -154,13 +154,13 @@ input, select { margin-right: 20px; }
 
 </Sandpack>
 
-## Reactive values and reactive logic {/*reactive-values-and-reactive-logic*/}
+## Реактивные значения и реактивная логика {/*reactive-values-and-reactive-logic*/}
 
-Intuitively, you could say that event handlers are always triggered "manually", for example by clicking a button. Effects, on the other hand, are "automatic": they run and re-run as often as it's needed to stay synchronized.
+Интуитивно мы понимаем, что обработчики событий всегда запускаются "вручную", например, при нажатии на кнопку. Эффекты же запускаются "автоматически": они запускаются и перезапускаются так часто, как это необходимо, чтобы оставаться синхронизированным.
 
-There is a more precise way to think about this.
+Есть более точное понимание этого вопроса.
 
-Props, state, and variables declared inside your component's body are called <CodeStep step={2}>reactive values</CodeStep>. In this example, `serverUrl` is not a reactive value, but `roomId` and `message` are. They participate in the rendering data flow:
+Пропсы, состояние и переменные, объявленные внутри тела компонента, называются <CodeStep step={2}>реактивными значениями</CodeStep>. В этом примере `serverUrl` не является реактивным значением, а `roomId` и `message` являются. Они участвуют в потоке данных рендера:
 
 ```js [[2, 3, "roomId"], [2, 4, "message"]]
 const serverUrl = 'https://localhost:1234';
@@ -172,16 +172,16 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Reactive values like these can change due to a re-render. For example, the user may edit the `message` or choose a different `roomId` in a dropdown. Event handlers and Effects respond to changes differently:
+Подобные реактивные значения могут измениться при повторном рендере. Например, пользователь может отредактировать `message` или выбрать другой `roomId` в раскрывающемся списке. Обработчики событий и Эффекты реагируют на изменения по-разному:
 
-- **Logic inside event handlers is *not reactive.*** It will not run again unless the user performs the same interaction (e.g. a click) again. Event handlers can read reactive values without "reacting" to their changes.
-- **Logic inside Effects is *reactive.*** If your Effect reads a reactive value, [you have to specify it as a dependency.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) Then, if a re-render causes that value to change, React will re-run your Effect's logic with the new value.
+- **Логика внутри обработчиков событий *не* является *реактивной.*** Код не перезапуститься пока пользователь не выполнит то же самое взаимодействие (т.е. клик) по кнопке. Обработчики событий считывают реактивные значения не "реагируя" на их изменения.
+- **Логика внутри Эффектов *реактивна.*** Если ваш Эффект считывает реактивное значение, [то нужно добавить его в качестве зависимости.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) Тогда, если повторный рендер изменит это значение, то React перезапустит логику Эффекта с этим новым значением.
 
-Let's revisit the previous example to illustrate this difference.
+Вернёмся к предыдущему примеру, чтобы показать эту разницу.
 
-### Logic inside event handlers is not reactive {/*logic-inside-event-handlers-is-not-reactive*/}
+### Логика внутри обработчиков событий не является реактивной {/*logic-inside-event-handlers-is-not-reactive*/}
 
-Take a look at this line of code. Should this logic be reactive or not?
+Взгляните на эту строку кода. Должна ли эта логика быть реактивной?
 
 ```js [[2, 2, "message"]]
     // ...
@@ -189,7 +189,7 @@ Take a look at this line of code. Should this logic be reactive or not?
     // ...
 ```
 
-From the user's perspective, **a change to the `message` does _not_ mean that they want to send a message.** It only means that the user is typing. In other words, the logic that sends a message should not be reactive. It should not run again only because the <CodeStep step={2}>reactive value</CodeStep> has changed. That's why it belongs in the event handler:
+С точки зрения пользователя, **изменение `message` _не_ означает, что он хочет отправить сообщение.** Это означает только то, что пользователь печатает. Другими словами, логика, которая отправляет сообщение, не должна быть реактивной. Она не должна запускаться снова только потому, что <CodeStep step={2}>реактивное значение</CodeStep> изменилось. Вот почему она находится внутри обработчика событий:
 
 ```js {2}
   function handleSendClick() {
@@ -197,11 +197,11 @@ From the user's perspective, **a change to the `message` does _not_ mean that th
   }
 ```
 
-Event handlers aren't reactive, so `sendMessage(message)` will only run when the user clicks the Send button.
+Обработчики событий не являются реактивными, поэтому `sendMessage(message)` будет выполнен только при клике на кнопку "Отправить".
 
-### Logic inside Effects is reactive {/*logic-inside-effects-is-reactive*/}
+### Логика внутри Эффектов реактивна {/*logic-inside-effects-is-reactive*/}
 
-Now let's return to these lines:
+Теперь взглянем на эти строки:
 
 ```js [[2, 2, "roomId"]]
     // ...
@@ -210,7 +210,7 @@ Now let's return to these lines:
     // ...
 ```
 
-From the user's perspective, **a change to the `roomId` *does* mean that they want to connect to a different room.** In other words, the logic for connecting to the room should be reactive. You *want* these lines of code to "keep up" with the <CodeStep step={2}>reactive value</CodeStep>, and to run again if that value is different. That's why it belongs in an Effect:
+С точки зрения пользователя, **изменение `roomId` *означает*, что он хочет подключиться к другому чату.** Другими словами, логика подключения к чату должна быть реактивной. Вы *хотите*, чтобы этот код "отставал" от <CodeStep step={2}>реактивного значения</CodeStep> и перезапускался при изменении этого значения. Поэтому он относится к Эффекту:
 
 ```js {2-3}
   useEffect(() => {
@@ -222,13 +222,13 @@ From the user's perspective, **a change to the `roomId` *does* mean that they wa
   }, [roomId]);
 ```
 
-Effects are reactive, so `createConnection(serverUrl, roomId)` and `connection.connect()` will run for every distinct value of `roomId`. Your Effect keeps the chat connection synchronized to the currently selected room.
+Эффекты являются реактивными, поэтому `createConnection(serverUrl, roomId)` и `connection.connect()` будут запускаться для каждого нового значения `roomId`. Ваш Эффект синхронизирует соединение с выбранным в данный момент чатом.
 
-## Extracting non-reactive logic out of Effects {/*extracting-non-reactive-logic-out-of-effects*/}
+## Извлечение нереактивной логики из Эффектов {/*extracting-non-reactive-logic-out-of-effects*/}
 
-Things get more tricky when you want to mix reactive logic with non-reactive logic.
+Все становится сложнее, когда вы хотите смешать реактивную логику с нереактивной логикой.
 
-For example, imagine that you want to show a notification when the user connects to the chat. You read the current theme (dark or light) from the props so that you can show the notification in the correct color:
+Например, представьте, что вы хотите показать уведомление, когда пользователь подключается к чату. Вы считываете текущую тему (тёмную или светлую) из пропсов, чтобы показать уведомление в правильном цвете:
 
 ```js {1,4-6}
 function ChatRoom({ roomId, theme }) {
@@ -241,7 +241,7 @@ function ChatRoom({ roomId, theme }) {
     // ...
 ```
 
-However, `theme` is a reactive value (it can change as a result of re-rendering), and [every reactive value read by an Effect must be declared as its dependency.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) Now you have to specify `theme` as a dependency of your Effect:
+Однако `theme` — это реактивное значение (оно может измениться в результате повторного рендера), поэтому [каждое реактивное значение внутри Эффекта нужно добавить в зависимости.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) Теперь придётся добавить `theme` в массив зависимостей Эффекта:
 
 ```js {5,11}
 function ChatRoom({ roomId, theme }) {
@@ -254,11 +254,11 @@ function ChatRoom({ roomId, theme }) {
     return () => {
       connection.disconnect()
     };
-  }, [roomId, theme]); // ✅ All dependencies declared
+  }, [roomId, theme]); // ✅ Все зависимости добавлены
   // ...
 ```
 
-Play with this example and see if you can spot the problem with this user experience:
+Попробуйте найти проблему с пользовательским опытом в приведённом ниже примере:
 
 <Sandpack>
 
@@ -335,7 +335,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // Логика подключения к серверу
   let connectedCallback;
   let timeout;
   return {
@@ -386,9 +386,9 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-When the `roomId` changes, the chat re-connects as you would expect. But since `theme` is also a dependency, the chat *also* re-connects every time you switch between the dark and the light theme. That's not great!
+Когда `roomId` меняется, чат переподключается, как и ожидалось. Но поскольку `theme` также является зависимостью, то при изменении темы чат *также* переподключается. Это не очень хорошо!
 
-In other words, you *don't* want this line to be reactive, even though it is inside an Effect (which is reactive):
+Иначе говоря, вы *не* хотите, чтобы эта часть кода внутри Эффекта была реактивной:
 
 ```js
       // ...
@@ -396,17 +396,17 @@ In other words, you *don't* want this line to be reactive, even though it is ins
       // ...
 ```
 
-You need a way to separate this non-reactive logic from the reactive Effect around it.
+Вам нужен способ вынести эту нереактивную логику из реактивного Эффекта.
 
-### Declaring an Effect Event {/*declaring-an-effect-event*/}
+### Объявление События эффекта {/*declaring-an-effect-event*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+Этот раздел описывает **экспериментальный API, который ещё не был выпущен** в стабильной версии React.
 
 </Wip>
 
-Use a special Hook called [`useEffectEvent`](/reference/react/experimental_useEffectEvent) to extract this non-reactive logic out of your Effect:
+Используйте специальный хук [`useEffectEvent`](/reference/react/experimental_useEffectEvent), чтобы извлечь эту нереактивную логику из вашего Эффекта:
 
 ```js {1,4-6}
 import { useEffect, useEffectEvent } from 'react';
@@ -418,9 +418,9 @@ function ChatRoom({ roomId, theme }) {
   // ...
 ```
 
-Here, `onConnected` is called an *Effect Event.* It's a part of your Effect logic, but it behaves a lot more like an event handler. The logic inside it is not reactive, and it always "sees" the latest values of your props and state.
+`onConnected` называется *Событием эффекта.* Это часть логики вашего Эффекта, но она ведёт себя скорее как обработчик событий. Логика внутри неё не реактивна, и она всегда «видит» последние значения ваших пропсов и состояния.
 
-Now you can call the `onConnected` Effect Event from inside your Effect:
+Теперь можно вызвать Событие эффекта `onConnected` внутри вашего Эффекта:
 
 ```js {2-4,9,13}
 function ChatRoom({ roomId, theme }) {
@@ -435,13 +435,13 @@ function ChatRoom({ roomId, theme }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ Все зависимости добавлены
   // ...
 ```
 
-This solves the problem. Note that you had to *remove* `onConnected` from the list of your Effect's dependencies. **Effect Events are not reactive and must be omitted from dependencies.**
+Это решает проблему. Обратите внимание, что вам пришлось *удалить* `onConnected` из списка зависимостей вашего эффекта. **События эффекта не являются реактивными и должны быть исключены из зависимостей.**
 
-Verify that the new behavior works as you would expect:
+Убедитесь, что теперь всё работает так, как вы ожидаете:
 
 <Sandpack>
 
@@ -523,7 +523,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // Логика подключения к серверу
   let connectedCallback;
   let timeout;
   return {
@@ -574,19 +574,19 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-You can think of Effect Events as being very similar to event handlers. The main difference is that event handlers run in response to a user interactions, whereas Effect Events are triggered by you from Effects. Effect Events let you "break the chain" between the reactivity of Effects and code that should not be reactive.
+Вы можете думать о Событиях эффектов как о чём-то очень похожем на обработчики событий. Главное отличие в том, что обработчики событий запускаются в ответ на взаимодействие с пользователем, тогда как События эффектов запускаются вами из Эффектов. События эффектов "разрывают связь" между реактивностью эффектов и кодом, который не должен быть реактивным.
 
-### Reading latest props and state with Effect Events {/*reading-latest-props-and-state-with-effect-events*/}
+### Чтение последних пропсов и состояния с помощью Событий эффектов {/*reading-latest-props-and-state-with-effect-events*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+Этот раздел описывает **экспериментальный API, который ещё не был выпущен** в стабильной версии React.
 
 </Wip>
 
-Effect Events let you fix many patterns where you might be tempted to suppress the dependency linter.
+События эффектов позволяют исправить множество паттернов, в которых может возникнуть соблазн отключить линтер зависимостей.
 
-For example, say you have an Effect to log the page visits:
+Например, у вас есть Эффект, чтобы логировать страницу посещений:
 
 ```js
 function Page() {
@@ -597,29 +597,29 @@ function Page() {
 }
 ```
 
-Later, you add multiple routes to your site. Now your `Page` component receives a `url` prop with the current path. You want to pass the `url` as a part of your `logVisit` call, but the dependency linter complains:
+Далее вы добавляете для вашего сайта многостраничность. Теперь ваш компонент `Page` получает проп `url` с текущим путём. Если вы хотите использовать `url` при вызове функции `logVisit`, то линтер зависимостей выдаст предупреждение:
 
 ```js {1,3}
 function Page({ url }) {
   useEffect(() => {
     logVisit(url);
-  }, []); // 🔴 React Hook useEffect has a missing dependency: 'url'
+  }, []); // 🔴 В зависимостях React хука useEffect отсутствует: 'url'
   // ...
 }
 ```
 
-Think about what you want the code to do. You *want* to log a separate visit for different URLs since each URL represents a different page. In other words, this `logVisit` call *should* be reactive with respect to the `url`. This is why, in this case, it makes sense to follow the dependency linter, and add `url` as a dependency:
+Подумайте, что вы хотите от вашего кода. Вы *хотите* логировать посещения для разных URL, поскольку каждый URL представляет собой отдельную страницу. Другими словами, вызов `logVisit` *должен* быть реактивным по отношению к `url`. Вот почему в этом случае следует прислушаться к линтеру и добавить `url` в качестве зависимости:
 
 ```js {4}
 function Page({ url }) {
   useEffect(() => {
     logVisit(url);
-  }, [url]); // ✅ All dependencies declared
+  }, [url]); // ✅ Все зависимости добавлены
   // ...
 }
 ```
 
-Now let's say you want to include the number of items in the shopping cart together with every page visit:
+Теперь предположим, что вы хотите включать в логи количество товаров в корзине:
 
 ```js {2-3,6}
 function Page({ url }) {
@@ -628,14 +628,14 @@ function Page({ url }) {
 
   useEffect(() => {
     logVisit(url, numberOfItems);
-  }, [url]); // 🔴 React Hook useEffect has a missing dependency: 'numberOfItems'
+  }, [url]); // 🔴 В зависимостях React хука useEffect отсутствует: 'numberOfItems'
   // ...
 }
 ```
 
-You used `numberOfItems` inside the Effect, so the linter asks you to add it as a dependency. However, you *don't* want the `logVisit` call to be reactive with respect to `numberOfItems`. If the user puts something into the shopping cart, and the `numberOfItems` changes, this *does not mean* that the user visited the page again. In other words, *visiting the page* is, in some sense, an "event". It happens at a precise moment in time.
+Вы использовали `numberOfItems` внутри Эффекта, поэтому линтер просит добавить его как зависимость. Однако вы *не* хотите, чтобы вызов `logVisit` был реактивным по отношению к `numberOfItems`. Если пользователь кладёт что-то в корзину, и `numberOfItems` изменяется, это *не значит*, что пользователь снова посетил страницу. Другими словами, *посещение страницы* является, в некотором смысле, «событием». Оно происходит в определённый момент времени.
 
-Split the code in two parts:
+Разделим код на две части:
 
 ```js {5-7,10}
 function Page({ url }) {
@@ -648,20 +648,20 @@ function Page({ url }) {
 
   useEffect(() => {
     onVisit(url);
-  }, [url]); // ✅ All dependencies declared
+  }, [url]); // ✅ Все зависимости добавлены
   // ...
 }
 ```
 
-Here, `onVisit` is an Effect Event. The code inside it isn't reactive. This is why you can use `numberOfItems` (or any other reactive value!) without worrying that it will cause the surrounding code to re-execute on changes.
+Здесь `onVisit` — это Событие эффекта. Код внутри него не реактивный. Вот почему вы можете использовать `numberOfItems` (или любое другое реактивное значение!), не беспокоясь о том, что это приведёт к повторному выполнению внешнего кода при изменениях.
 
-On the other hand, the Effect itself remains reactive. Code inside the Effect uses the `url` prop, so the Effect will re-run after every re-render with a different `url`. This, in turn, will call the `onVisit` Effect Event.
+С другой стороны, Эффект остаётся реактивным. Код внутри Эффекта использует свойство `url`, поэтому Эффект будет перезапускаться при изменении `url`. Это, в свою очередь, вызовет Событие эффекта `onVisit`.
 
-As a result, you will call `logVisit` for every change to the `url`, and always read the latest `numberOfItems`. However, if `numberOfItems` changes on its own, this will not cause any of the code to re-run.
+В результате вы будете вызывать `logVisit` при каждом изменении `url` и всегда иметь актуальное `numberOfItems`. Однако, если `numberOfItems` изменится сам по себе, это не приведёт к повторному запуску кода.
 
 <Note>
 
-You might be wondering if you could call `onVisit()` with no arguments, and read the `url` inside it:
+Возможно, вы зададитесь вопросом, можно ли вызвать `onVisit()` без аргументов и считать `url` внутри него:
 
 ```js {2,6}
   const onVisit = useEffectEvent(() => {
@@ -673,7 +673,7 @@ You might be wondering if you could call `onVisit()` with no arguments, and read
   }, [url]);
 ```
 
-This would work, but it's better to pass this `url` to the Effect Event explicitly. **By passing `url` as an argument to your Effect Event, you are saying that visiting a page with a different `url` constitutes a separate "event" from the user's perspective.** The `visitedUrl` is a *part* of the "event" that happened:
+Это сработает, но лучше передать этот `url` в Событие эффекта явно. **Передавая `url` в качестве аргумента в событие эффекта, вы говорите, что посещение страницы с другим `url` представляет собой отдельное «событие» с точки зрения пользователя.** `visitedUrl` является *частью* произошедшего «события»:
 
 ```js {1-2,6}
   const onVisit = useEffectEvent(visitedUrl => {
@@ -685,9 +685,9 @@ This would work, but it's better to pass this `url` to the Effect Event explicit
   }, [url]);
 ```
 
-Since your Effect Event explicitly "asks" for the `visitedUrl`, now you can't accidentally remove `url` from the Effect's dependencies. If you remove the `url` dependency (causing distinct page visits to be counted as one), the linter will warn you about it. You want `onVisit` to be reactive with regards to the `url`, so instead of reading the `url` inside (where it wouldn't be reactive), you pass it *from* your Effect.
+Поскольку Событие эффекта явно «запрашивает» `visitedUrl`, теперь вы не можете случайно удалить `url` из зависимостей эффекта. Если вы удалите зависимость `url` (что приведёт к тому, что отдельные посещения страницы будут засчитаны как одно), линтер предупредит вас об этом. Вам нужно, чтобы `onVisit` был реактивным по отношению к `url`, поэтому вместо того, чтобы читать `url` внутри (где он не будет реактивным), вы передаёте его *из* вашего Эффекта.
 
-This becomes especially important if there is some asynchronous logic inside the Effect:
+Это особенно важно, если внутри Эффекта есть асинхронная логика:
 
 ```js {6,8}
   const onVisit = useEffectEvent(visitedUrl => {
@@ -697,19 +697,19 @@ This becomes especially important if there is some asynchronous logic inside the
   useEffect(() => {
     setTimeout(() => {
       onVisit(url);
-    }, 5000); // Delay logging visits
+    }, 5000); // Задержка при логировании посещений
   }, [url]);
 ```
 
-Here, `url` inside `onVisit` corresponds to the *latest* `url` (which could have already changed), but `visitedUrl` corresponds to the `url` that originally caused this Effect (and this `onVisit` call) to run.
+Здесь `url` внутри `onVisit` соответствует *последнему* значению `url` (которое уже могло измениться), а `visitedUrl` соответствует `url`, который изначально вызвал этот Эффект (и вызвал `onVisit`).
 
 </Note>
 
 <DeepDive>
 
-#### Is it okay to suppress the dependency linter instead? {/*is-it-okay-to-suppress-the-dependency-linter-instead*/}
+#### Можно ли вместо этого игнорировать линтер зависимостей? {/*is-it-okay-to-suppress-the-dependency-linter-instead*/}
 
-In the existing codebases, you may sometimes see the lint rule suppressed like this:
+В коде вы иногда можете увидеть игнорирование правил линтера:
 
 ```js {7-9}
 function Page({ url }) {
@@ -718,20 +718,20 @@ function Page({ url }) {
 
   useEffect(() => {
     logVisit(url, numberOfItems);
-    // 🔴 Avoid suppressing the linter like this:
+    // 🔴 Избегайте подобного игнорирования правил линтера:
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url]);
   // ...
 }
 ```
 
-After `useEffectEvent` becomes a stable part of React, we recommend **never suppressing the linter**.
+После того как `useEffectEvent` станет стабильной частью React, мы рекомендуем **никогда не подавлять линтер**.
 
-The first downside of suppressing the rule is that React will no longer warn you when your Effect needs to "react" to a new reactive dependency you've introduced to your code. In the earlier example, you added `url` to the dependencies *because* React reminded you to do it. You will no longer get such reminders for any future edits to that Effect if you disable the linter. This leads to bugs.
+Первый недостаток при отключении этого правила заключается в том, что React перестанет предупреждать, чтобы вы добавили зависимости в свой Эффект при использовании новых реактивных значений Эффект. В предыдущем примере вы добавили `url` к зависимостям, *потому что* React напомнил вам сделать это. Вы больше не будете получать такие напоминания при редактировании этого Эффекта, если вы отключите линтер. Это ведёт к ошибкам.
 
-Here is an example of a confusing bug caused by suppressing the linter. In this example, the `handleMove` function is supposed to read the current `canMove` state variable value in order to decide whether the dot should follow the cursor. However, `canMove` is always `true` inside `handleMove`.
+Вот пример запутанной ошибки, вызванной отключением линтера. В примере функция `handleMove` должна считывать текущее значение переменной состояния `canMove`, чтобы решить, должна ли точка следовать за курсором. Однако `canMove` всегда остаётся равной `true` внутри `handleMove`.
 
-Can you see why?
+Можете сказать почему?
 
 <Sandpack>
 
@@ -790,13 +790,13 @@ body {
 </Sandpack>
 
 
-The problem with this code is in suppressing the dependency linter. If you remove the suppression, you'll see that this Effect should depend on the `handleMove` function. This makes sense: `handleMove` is declared inside the component body, which makes it a reactive value. Every reactive value must be specified as a dependency, or it can potentially get stale over time!
+Проблема заключается в отключении линтера зависимостей. Если вы включите линтер, то увидите, что этот Эффект должен зависеть от функции `handleMove`. Это имеет смысл: `handleMove` объявлен внутри тела компонента, что делает его реактивным значением. Каждое реактивное значение должно быть включено в зависимость, иначе оно может устареть!
 
-The author of the original code has "lied" to React by saying that the Effect does not depend (`[]`) on any reactive values. This is why React did not re-synchronize the Effect after `canMove` has changed (and `handleMove` with it). Because React did not re-synchronize the Effect, the `handleMove` attached as a listener is the `handleMove` function created during the initial render. During the initial render, `canMove` was `true`, which is why `handleMove` from the initial render will forever see that value.
+Автор исходного кода «солгал» React'у, сказав, что Эффект не зависит (`[]`) от каких-либо реактивных значений. Вот почему React не перезапустил Эффект после изменения `canMove` (и `handleMove` вместе с ним). Поскольку React не перезапустил Эффект, `handleMove`, присоединённый в качестве слушателя, является функцией `handleMove`, созданной во время первого рендера. Во время первого рендера `canMove` был `true`, поэтому `handleMove` из первого рендера всегда будет видеть это значение.
 
-**If you never suppress the linter, you will never see problems with stale values.**
+**Если вы никогда не отключаете линтер, вы никогда не увидите проблем с устаревшими значениями.**
 
-With `useEffectEvent`, there is no need to "lie" to the linter, and the code works as you would expect:
+При использовании `useEffectEvent` нет необходимости «лгать» линтеру, и код будет работать так, как ожидалось:
 
 <Sandpack>
 
@@ -870,26 +870,26 @@ body {
 
 </Sandpack>
 
-This doesn't mean that `useEffectEvent` is *always* the correct solution. You should only apply it to the lines of code that you don't want to be reactive. In the above sandbox, you didn't want the Effect's code to be reactive with regards to `canMove`. That's why it made sense to extract an Effect Event.
+Это вовсе не значит, что `useEffectEvent` — это *всегда* правильное решение. Вы должны применять его только к тому коду, который не должен быть реактивным. В примере выше вы не хотели, чтобы код Эффекта был реактивным по отношению к `canMove`. Вот почему имело смысл вынести Событие Эффекта.
 
-Read [Removing Effect Dependencies](/learn/removing-effect-dependencies) for other correct alternatives to suppressing the linter.
+Почитайте об [удалении зависимостей Эффекта](/learn/removing-effect-dependencies), чтобы узнать о других альтернативах отключению линтера.
 
 </DeepDive>
 
-### Limitations of Effect Events {/*limitations-of-effect-events*/}
+### Ограничения при использовании Эффектов событий {/*limitations-of-effect-events*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+Этот раздел описывает **экспериментальный API, который ещё не был выпущен** в стабильной версии React.
 
 </Wip>
 
-Effect Events are very limited in how you can use them:
+Использование Эффектов событий накладывает ряд ограничений:
 
-* **Only call them from inside Effects.**
-* **Never pass them to other components or Hooks.**
+* **Вызывайте их только внутри Эффектов.**
+* **Никогда не передавайте их в другие компоненты или хуки.**
 
-For example, don't declare and pass an Effect Event like this:
+Например, не объявляйте и не передавайте Событие эффекта следующим образом:
 
 ```js {4-6,8}
 function Timer() {
@@ -899,7 +899,7 @@ function Timer() {
     setCount(count + 1);
   });
 
-  useTimer(onTick, 1000); // 🔴 Avoid: Passing Effect Events
+  useTimer(onTick, 1000); // 🔴 Избегай передачи Эффекта событий
 
   return <h1>{count}</h1>
 }
@@ -912,11 +912,11 @@ function useTimer(callback, delay) {
     return () => {
       clearInterval(id);
     };
-  }, [delay, callback]); // Need to specify "callback" in dependencies
+  }, [delay, callback]); // Необходимо указать "колбэк" в качестве зависимости
 }
 ```
 
-Instead, always declare Effect Events directly next to the Effects that use them:
+Вместо этого всегда объявляйте События эффектов рядом с Эффектами, которые их используют:
 
 ```js {10-12,16,21}
 function Timer() {
@@ -934,40 +934,40 @@ function useTimer(callback, delay) {
 
   useEffect(() => {
     const id = setInterval(() => {
-      onTick(); // ✅ Good: Only called locally inside an Effect
+      onTick(); // ✅ Принято: вызывается локально только внутри эффекта
     }, delay);
     return () => {
       clearInterval(id);
     };
-  }, [delay]); // No need to specify "onTick" (an Effect Event) as a dependency
+  }, [delay]); // Не нужно определять "onTick" (Событине эффекта) в качестве зависимости
 }
 ```
 
-Effect Events are non-reactive "pieces" of your Effect code. They should be next to the Effect using them.
+События эффекта — это не реактивные «части» кода вашего Эффекта. Они должны быть рядом с Эффектом, который их использует.
 
 <Recap>
 
-- Event handlers run in response to specific interactions.
-- Effects run whenever synchronization is needed.
-- Logic inside event handlers is not reactive.
-- Logic inside Effects is reactive.
-- You can move non-reactive logic from Effects into Effect Events.
-- Only call Effect Events from inside Effects.
-- Don't pass Effect Events to other components or Hooks.
+- Обработчики событий запускаются в результате определённых взаимодействий.
+- Эффекты запускаются всякий раз, когда требуется синхронизация.
+- Логика внутри обработчиков событий не является реактивной.
+- Логика внутри Эффектов является реактивной.
+- Вы можете вынести нереактивную логику из Эффектов в События эффектов.
+- Вызывайте События эффектов только внутри Эффектов.
+- Не передавайте События эффектов другим компонентам или хукам.
 
 </Recap>
 
 <Challenges>
 
-#### Fix a variable that doesn't update {/*fix-a-variable-that-doesnt-update*/}
+#### Исправьте переменную, которая не обновляется {/*fix-a-variable-that-doesnt-update*/}
 
-This `Timer` component keeps a `count` state variable which increases every second. The value by which it's increasing is stored in the `increment` state variable. You can control the `increment` variable with the plus and minus buttons.
+В компоненте `Timer` задано состояние `count`, которое увеличивается каждую секунду. Значение, на которое она увеличивается, хранится в переменной состояния `increment`. Вы можете управлять переменной `increment` с помощью кнопок плюс и минус.
 
-However, no matter how many times you click the plus button, the counter is still incremented by one every second. What's wrong with this code? Why is `increment` always equal to `1` inside the Effect's code? Find the mistake and fix it.
+Однако, сколько бы раз вы ни нажимали кнопку «плюс», счётчик всё равно увеличивается на единицу каждую секунду. Что не так с этим кодом? Почему `increment` всегда равен `1` внутри Эффекта? Найдите ошибку и исправьте её.
 
 <Hint>
 
-To fix this code, it's enough to follow the rules.
+Чтобы исправить этот код, достаточно следовать правилам.
 
 </Hint>
 
@@ -1020,9 +1020,9 @@ button { margin: 10px; }
 
 <Solution>
 
-As usual, when you're looking for bugs in Effects, start by searching for linter suppressions.
+Как обычно, при поиске ошибок в Эффектах начните с поиска отключений линтера.
 
-If you remove the suppression comment, React will tell you that this Effect's code depends on `increment`, but you "lied" to React by claiming that this Effect does not depend on any reactive values (`[]`). Add `increment` to the dependency array:
+Если вы удалите комментарий, отключающий линтер, React скажет вам, что Эффект зависит от `increment`, но вы «солгали» React'у, заявив, что этот Эффект не зависит ни от одного реактивного значения (`[]`). Добавьте `increment` в массив зависимостей:
 
 <Sandpack>
 
@@ -1070,19 +1070,19 @@ button { margin: 10px; }
 
 </Sandpack>
 
-Now, when `increment` changes, React will re-synchronize your Effect, which will restart the interval.
+Теперь, когда `increment` изменится, React обновит ваш Эффект, что перезапустит интервал.
 
 </Solution>
 
-#### Fix a freezing counter {/*fix-a-freezing-counter*/}
+#### Исправьте залипающий счётчик {/*fix-a-freezing-counter*/}
 
-This `Timer` component keeps a `count` state variable which increases every second. The value by which it's increasing is stored in the `increment` state variable, which you can control it with the plus and minus buttons. For example, try pressing the plus button nine times, and notice that the `count` now increases each second by ten rather than by one.
+В компоненте `Timer` задано состояние `count`, которое увеличивается каждую секунду. Значение, на которое она увеличивается, хранится в переменной состояния `increment`. Вы можете управлять переменной `increment` с помощью кнопок «плюс» и «минус». Например, попробуйте нажать на кнопку «плюс» девять раз и обратите внимание, что `count` теперь увеличивается каждую секунду на десять, а не на один.
 
-There is a small issue with this user interface. You might notice that if you keep pressing the plus or minus buttons faster than once per second, the timer itself seems to pause. It only resumes after a second passes since the last time you've pressed either button. Find why this is happening, and fix the issue so that the timer ticks on *every* second without interruptions.
+Но сейчас есть небольшая проблема. Вы могли заметить, что если вы нажмёте на кнопки «плюс» или «минус» больше одного раза в секунду, сам таймер, кажется, останавливается. Он возобновляется только через секунду с момента последнего нажатия на любую из кнопок. Найдите причину и устраните проблему, чтобы таймер тикал *каждую* секунду без перерывов.
 
 <Hint>
 
-It seems like the Effect which sets up the timer "reacts" to the `increment` value. Does the line that uses the current `increment` value in order to call `setCount` really need to be reactive?
+Похоже, что Эффект, который устанавливает таймер, «реагирует» на значение `increment`. Действительно ли строка, которая использует текущее значение `increment` для вызова `setCount`, должна быть реактивной?
 
 </Hint>
 
@@ -1151,9 +1151,9 @@ button { margin: 10px; }
 
 <Solution>
 
-The issue is that the code inside the Effect uses the `increment` state variable. Since it's a dependency of your Effect, every change to `increment` causes the Effect to re-synchronize, which causes the interval to clear. If you keep clearing the interval every time before it has a chance to fire, it will appear as if the timer has stalled.
+Проблема в том, что код внутри Эффекта использует переменную состояния `increment`. Поскольку это зависимость вашего Эффекта, каждое изменение `increment` приводит к повторной синхронизации Эффекта, что приводит к очистке интервала. Если вы будете продолжать очищать интервал каждый раз, прежде чем он успеет сработать, это будет выглядеть так, как будто таймер остановился.
 
-To solve the issue, extract an `onTick` Effect Event from the Effect:
+Чтобы решить эту проблему, нужно отделить Событие эффекта `onTick` от Эффекта:
 
 <Sandpack>
 
@@ -1223,17 +1223,17 @@ button { margin: 10px; }
 
 </Sandpack>
 
-Since `onTick` is an Effect Event, the code inside it isn't reactive. The change to `increment` does not trigger any Effects.
+Поскольку `onTick` является Событием эффекта, то код внутри него не является реактивным. Изменение `increment` не вызывает перезапуска Эффекта.
 
 </Solution>
 
-#### Fix a non-adjustable delay {/*fix-a-non-adjustable-delay*/}
+#### Исправьте неуправляемую задержку {/*fix-a-non-adjustable-delay*/}
 
-In this example, you can customize the interval delay. It's stored in a `delay` state variable which is updated by two buttons. However, even if you press the "plus 100 ms" button until the `delay` is 1000 milliseconds (that is, a second), you'll notice that the timer still increments very fast (every 100 ms). It's as if your changes to the `delay` are ignored. Find and fix the bug.
+В этом примере вы можете настраивать время задержки. Оно хранится в переменной состояния `delay`, которая обновляется двумя кнопками. Однако, даже если вы нажмёте кнопку «плюс 100 мс», пока `delay` не станет 1000 миллисекунд (то есть секунда), вы заметите, что таймер всё равно увеличивается очень быстро (каждые 100 мс). То есть ваши изменения `delay` игнорируются. Найдите и исправьте ошибку.
 
 <Hint>
 
-Code inside Effect Events is not reactive. Are there cases in which you would _want_ the `setInterval` call to re-run?
+Код внутри Событий эффектов не является реактивным. Возможно есть ли случаи, при которых вы бы _хотели_ повторного запуска вызова `setInterval`?
 
 </Hint>
 
@@ -1322,7 +1322,7 @@ button { margin: 10px; }
 
 <Solution>
 
-The problem with the above example is that it extracted an Effect Event called `onMount` without considering what the code should actually be doing. You should only extract Effect Events for a specific reason: when you want to make a part of your code non-reactive. However, the `setInterval` call *should* be reactive with respect to the `delay` state variable. If the `delay` changes, you want to set up the interval from scratch! To fix this code, pull all the reactive code back inside the Effect:
+Проблема заключается в том, что при вынесении События эффекта с именем `onMount` мы не учли, что должен делать код. События эффектов следует выносить только в том случае, если вы хотите сделать часть своего кода нереактивной. Однако вызов `setInterval` *должен* быть реактивным по отношению к переменной состояния `delay`. Если `delay` изменится, вам нужно сбросить интервал! Чтобы исправить этот код, верните весь реактивный код обратно в Эффект:
 
 <Sandpack>
 
@@ -1402,21 +1402,21 @@ button { margin: 10px; }
 
 </Sandpack>
 
-In general, you should be suspicious of functions like `onMount` that focus on the *timing* rather than the *purpose* of a piece of code. It may feel "more descriptive" at first but it obscures your intent. As a rule of thumb, Effect Events should correspond to something that happens from the *user's* perspective. For example, `onMessage`, `onTick`, `onVisit`, or `onConnected` are good Effect Event names. Code inside them would likely not need to be reactive. On the other hand, `onMount`, `onUpdate`, `onUnmount`, or `onAfterRender` are so generic that it's easy to accidentally put code that *should* be reactive into them. This is why you should name your Effect Events after *what the user thinks has happened,* not when some code happened to run.
+В целом, следует с подозрением относиться к функциям вроде `onMount`, которые фокусируются на *времени*, а не на *предназначении* написанного кода. Сначала это могло казаться «более информативным», но это исказит ваши намерения. Как правило, События эффекта должны соответствовать чему-то, что происходит с точки зрения *пользователя*. Например, `onMessage`, `onTick`, `onVisit` или `onConnected` — хорошие имена Событий эффекта. Код внутри них, скорее всего, не должен быть реактивным. С другой стороны, `onMount`, `onUpdate`, `onUnmount` или `onAfterRender` настолько общие, что в них легко случайно поместить код, который *должен* быть реактивным. Вот почему вы должны называть свои События эффекта в честь *того, что, по мнению пользователя, произошло*, а не того, в какой момент код был запущен.
 
 </Solution>
 
-#### Fix a delayed notification {/*fix-a-delayed-notification*/}
+#### Исправьте задержку уведомления {/*fix-a-delayed-notification*/}
 
-When you join a chat room, this component shows a notification. However, it doesn't show the notification immediately. Instead, the notification is artificially delayed by two seconds so that the user has a chance to look around the UI.
+Когда вы подключаетесь к чату, компонент показывает уведомление. Однако уведомление не появляется сразу. Вместо этого уведомление искусственно задерживается на две секунды, чтобы пользователь познакомился с интерфейсом.
 
-This almost works, but there is a bug. Try changing the dropdown from "general" to "travel" and then to "music" very quickly. If you do it fast enough, you will see two notifications (as expected!) but they will *both* say "Welcome to music".
+Казалось бы, что это работает, но есть ошибка. Попробуйте в выпадающем списке быстро изменить поля с «general» на «travel», а затем на «music». Если сделать это достаточно быстро, вы увидите два уведомления (как и ожидалось!), но в *обоих* будет показано «Welcome to music».
 
-Fix it so that when you switch from "general" to "travel" and then to "music" very quickly, you see two notifications, the first one being "Welcome to travel" and the second one being "Welcome to music". (For an additional challenge, assuming you've *already* made the notifications show the correct rooms, change the code so that only the latter notification is displayed.)
+Исправьте это так, чтобы при очень быстром переключении с «general» на «travel», а затем на «music» вы видели два уведомления: первое — «Welcome to travel», а второе — «Welcome to music». (В качестве дополнительной задачи, *после* исправления уведомлений, измените код так, чтобы отображалось только последнее уведомление.)
 
 <Hint>
 
-Your Effect knows which room it connected to. Is there any information that you might want to pass to your Effect Event?
+Ваш Эффект знает, к какому чату он подключен. Может быть есть какая-либо информация, которую вы хотели бы передать в Событие эффекта?
 
 </Hint>
 
@@ -1502,7 +1502,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // Логика подключения к серверу
   let connectedCallback;
   let timeout;
   return {
@@ -1555,11 +1555,11 @@ label { display: block; margin-top: 10px; }
 
 <Solution>
 
-Inside your Effect Event, `roomId` is the value *at the time Effect Event was called.*
+Внутри События эффекта значение `roomId` считывается *в момент вызова События эффекта.*
 
-Your Effect Event is called with a two second delay. If you're quickly switching from the travel to the music room, by the time the travel room's notification shows, `roomId` is already `"music"`. This is why both notifications say "Welcome to music".
+Событие эффекта вызывается с двухсекундной задержкой. Если вы быстро переключаетесь между чатами «travel» и «music», к тому времени, как отобразится уведомление для «travel», `roomId` уже будет `"music"`. Вот почему в обоих уведомлениях написано «Welcome to music».
 
-To fix the issue, instead of reading the *latest* `roomId` inside the Effect Event, make it a parameter of your Effect Event, like `connectedRoomId` below. Then pass `roomId` from your Effect by calling `onConnected(roomId)`:
+Чтобы исправить проблему, вместо чтения *последнего* значения `roomId` внутри События эффекта, сделайте его параметром вашего События эффекта, например `connectedRoomId`. Затем передайте `roomId` из вашего эффекта, вызвав `onConnected(roomId)`:
 
 <Sandpack>
 
@@ -1643,7 +1643,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // Логика подключения к серверу
   let connectedCallback;
   let timeout;
   return {
@@ -1694,9 +1694,9 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-The Effect that had `roomId` set to `"travel"` (so it connected to the `"travel"` room) will show the notification for `"travel"`. The Effect that had `roomId` set to `"music"` (so it connected to the `"music"` room) will show the notification for `"music"`. In other words, `connectedRoomId` comes from your Effect (which is reactive), while `theme` always uses the latest value.
+Эффект, у которого `roomId` равен `"travel"` (при подключении к чату `"travel"`), покажет уведомление для `"travel"`. Эффект, у которого `roomId` равен `"music"` (при подключении к чату `"music"`), покажет уведомление для `"music"`. Другими словами, `connectedRoomId` исходит из вашего Эффекта (который является реактивным), в то время как `theme` всегда использует последнее значение.
 
-To solve the additional challenge, save the notification timeout ID and clear it in the cleanup function of your Effect:
+Чтобы решить дополнительную задачу, сохраните идентификатор таймера для уведомления и очистите его в функции очистки Эффекта:
 
 <Sandpack>
 
@@ -1786,7 +1786,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection(serverUrl, roomId) {
-  // A real implementation would actually connect to the server
+  // Логика подключения к серверу
   let connectedCallback;
   let timeout;
   return {
@@ -1837,7 +1837,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-This ensures that already scheduled (but not yet displayed) notifications get cancelled when you change rooms.
+Это гарантирует, что запланированные (но ещё не отображённые) уведомления будут отменены при переключении чата.
 
 </Solution>
 
