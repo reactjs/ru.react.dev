@@ -1055,12 +1055,9 @@ label {
 
 ---
 
-<<<<<<< HEAD
-### Мемоизация зависимостей других хуков {/*memoizing-a-dependency-of-another-hook*/}
-=======
-### Preventing an Effect from firing too often {/*preventing-an-effect-from-firing-too-often*/}
+### Слишком частые вызовы эффекта {/*preventing-an-effect-from-firing-too-often*/}
 
-Sometimes, you might want to use a value inside an [Effect:](/learn/synchronizing-with-effects)
+Время от времени вам могут понадобиться значения внутри [эффекта:](/learn/synchronizing-with-effects)
 
 ```js {4-7,10}
 function ChatRoom({ roomId }) {
@@ -1077,7 +1074,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-This creates a problem. [Every reactive value must be declared as a dependency of your Effect.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) However, if you declare `options` as a dependency, it will cause your Effect to constantly reconnect to the chat room:
+Это создаёт проблему. [Каждое реактивное значение должно быть объявлено как зависимость вашего эффекта.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) Но если вы добавите `options` как зависимость, ваш эффект начнёт постоянно переподключаться к чату:
 
 
 ```js {5}
@@ -1085,11 +1082,11 @@ This creates a problem. [Every reactive value must be declared as a dependency o
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // 🔴 Problem: This dependency changes on every render
+  }, [options]); // 🔴 Проблема: эта зависимость меняется при каждом рендере
   // ...
 ```
 
-To solve this, you can wrap the object you need to call from an Effect in `useMemo`:
+Решение – обернуть необходимый в эффекте объект в `useMemo`:
 
 ```js {4-9,16}
 function ChatRoom({ roomId }) {
@@ -1100,27 +1097,26 @@ function ChatRoom({ roomId }) {
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     };
-  }, [roomId]); // ✅ Only changes when roomId changes
+  }, [roomId]); // ✅ Меняется только тогда, когда меняется roomId
 
   useEffect(() => {
-    const options = createOptions();
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ Only changes when createOptions changes
+  }, [options]); // ✅ Вызывается только тогда, когда меняется options
   // ...
 ```
 
-This ensures that the `options` object is the same between re-renders if `useMemo` returns the cached object.
+Это гарантирует, что объект `options` один и тот же между повторными рендерами, если `useMemo` возвращает закешированный объект.
 
-However, since `useMemo` is performance optimization, not a semantic guarantee, React may throw away the cached value if [there is a specific reason to do that](#caveats). This will also cause the effect to re-fire, **so it's even better to remove the need for a function dependency** by moving your object *inside* the Effect:
+Однако `useMemo` является оптимизацией производительности, а не семантической гарантией. React может отбросить закешированное значение, если [возникнет условие для этого](#caveats). Это также спровоцирует перезапуск эффекта, **так что ещё лучше будет избавиться от зависимости,** переместив ваш объект *внутрь* эффекта:
 
 ```js {5-8,13}
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    const options = { // ✅ No need for useMemo or object dependencies!
+    const options = { // ✅ Нет необходимости для useMemo или зависимостей объекта!
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     }
@@ -1128,15 +1124,14 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ Only changes when roomId changes
+  }, [roomId]); // ✅ Меняется только тогда, когда меняется roomId
   // ...
 ```
 
-Now your code is simpler and doesn't need `useMemo`. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+Теперь ваш код стал проще и не требует `useMemo`. [Узнайте больше об удалении зависимостей эффекта.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
 
-### Memoizing a dependency of another Hook {/*memoizing-a-dependency-of-another-hook*/}
->>>>>>> c003ac4eb130fca70b88cf3a1b80ce5f76c51ae3
+### Мемоизация зависимостей других хуков {/*memoizing-a-dependency-of-another-hook*/}
 
 Предположим, что у нас есть вычисления, зависящие от объекта, создаваемого внутри компонента:
 
