@@ -570,7 +570,7 @@ export const LevelContext = createContext(1);
 2. `Section` оборачивает дочерние элементы в `<LevelContext.Provider value={level}>`.
 3. `Heading` запрашивает ближайшее значение `LevelContext` с помощью `useContext(LevelContext)`.
 
-## Использование и передача контекста в одинаковых компонентах {/*using-and-providing-context-from-the-same-component*/}
+## Использование и передача контекста в компонентах {/*using-and-providing-context-from-the-same-component*/}
 
 В настоящее время вам по-прежнему приходится указывать `level` каждого раздела вручную:
 
