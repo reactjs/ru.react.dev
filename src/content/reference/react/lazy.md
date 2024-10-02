@@ -77,7 +77,7 @@ const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 <Suspense fallback={<Loading />}>
   <h2>Preview</h2>
   <MarkdownPreview />
- </Suspense>
+</Suspense>
 ```
 
 Например, код для `MarkdownPreview` не загрузится, пока его не попытаются вызвать. Если `MarkdownPreview` ещё не загрузился, на его месте отобразится `Loading`. Попробуйте поставить галочку в чекбоксе:
