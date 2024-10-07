@@ -265,19 +265,11 @@ td {
 
 Давайте разберём их с помощью нашей стратегии:
 
-<<<<<<< HEAD
 1. **Определите компоненты, которые используют состояния:**
     * `ProductTable` фильтрует список товаров, основываясь на состояниях (поисковой запрос и значение чекбокса). 
     * `SearchBar` отображает состояния (поисковой запрос и значение чекбокса).
-1. **Найдите их общего предка:** Первый общий родительский компонент для них -- `FilterableProductTable`.
-2. **Определите, где будет находиться состояние**: Мы будем хранить текст фильтра и значение чекбокса в `FilterableProductTable`.
-=======
-1. **Identify components that use state:**
-    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value). 
-    * `SearchBar` needs to display that state (search text and checkbox value).
-2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
-3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
->>>>>>> 1697ae89a3bbafd76998dd7496754e5358bc1e9a
+2. **Найдите их общего предка:** Первый общий родительский компонент для них -- `FilterableProductTable`.
+3. **Определите, где будет находиться состояние**: Мы будем хранить текст фильтра и значение чекбокса в `FilterableProductTable`.
 
 Итак, значения состояний будут находиться в `FilterableProductTable`. 
 
