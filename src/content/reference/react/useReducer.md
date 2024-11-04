@@ -51,9 +51,15 @@ function MyComponent() {
 
 #### Замечания {/*caveats*/}
 
+<<<<<<< HEAD
 * `useReducer -- это хук, поэтому вызывайте его только **на верхнем уровне компонента** или собственных хуков. useReducer нельзя вызвать внутри циклов или условий. Если это нужно, создайте новый компонент и переместите состояние в него.
 * Функция `dispatch` стабильна между повторными рендерами, поэтому вы увидите, что её часто пропускают в списке зависимостей эффекта, но и её включение не вызовет перезапуск эффекта. Если линтер позволяет вам пропускать зависимости без ошибок, то вы можете делать это без опаски. [Узнайте больше об удалении зависимостей эффекта.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 * В строгом режиме React будет **вызывать редюсер и инициализатор дважды**, [чтобы помочь обнаружить случайные побочные эффекты.](#my-reducer-or-initializer-function-runs-twice) Такое поведение проявляется только в режиме разработки и не влияет на продакшен-режим. Логика обновления состояния не изменится, если редюсер и инициализатор – чистые функции (какими они и должны быть). Результат второго вызова проигнорируется.
+=======
+* `useReducer` is a Hook, so you can only call it **at the top level of your component** or your own Hooks. You can't call it inside loops or conditions. If you need that, extract a new component and move the state into it.
+* The `dispatch` function has a stable identity, so you will often see it omitted from Effect dependencies, but including it will not cause the Effect to fire. If the linter lets you omit a dependency without errors, it is safe to do. [Learn more about removing Effect dependencies.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+* In Strict Mode, React will **call your reducer and initializer twice** in order to [help you find accidental impurities.](#my-reducer-or-initializer-function-runs-twice) This is development-only behavior and does not affect production. If your reducer and initializer are pure (as they should be), this should not affect your logic. The result from one of the calls is ignored.
+>>>>>>> 8201e7e9203321bd1648c3ab0b76ef943c9ec3ad
 
 ---
 
