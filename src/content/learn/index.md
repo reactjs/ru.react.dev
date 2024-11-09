@@ -1,5 +1,5 @@
 ---
-title: Quick Start
+title: Быстрый старт
 ---
 
 <Intro>
