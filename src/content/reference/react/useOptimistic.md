@@ -5,7 +5,7 @@ canary: true
 
 <Canary>
 
-Хук useOptimistic доступен только в React Canary и experimental. Узнайте больше о [релизах React здесь](/community/versioning-policy#all-release-channels).
+Хук useOptimistic доступен только в React Canary и является экспериментальным. Узнайте больше о [релизах React здесь](/community/versioning-policy#all-release-channels).
 
 </Canary>
 
