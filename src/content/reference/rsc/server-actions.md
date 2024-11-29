@@ -53,7 +53,7 @@ When React renders the `EmptyNote` Server Component, it will create a reference 
 export default function Button({onClick}) { 
   console.log(onClick); 
   // {$$typeof: Symbol.for("react.server.reference"), $$id: 'createNoteAction'}
-  return <button onClick={onClick}>Create Empty Note</button>
+  return <button onClick={() => onClick()}>Create Empty Note</button>
 }
 ```
 
@@ -82,7 +82,7 @@ import {createNoteAction} from './actions';
 function EmptyNote() {
   console.log(createNoteAction);
   // {$$typeof: Symbol.for("react.server.reference"), $$id: 'createNoteAction'}
-  <button onClick={createNoteAction} />
+  return <button onClick={createNoteAction} />
 }
 ```
 
