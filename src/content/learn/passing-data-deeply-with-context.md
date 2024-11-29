@@ -879,7 +879,7 @@ export const LevelContext = createContext(0);
 
 #### Замените "prop drilling" (бурение пропсов) на контекст {/*replace-prop-drilling-with-context*/}
 
-В этом примере переключение `checkbox` изменяет проп `imageSize`, передаваемый каждому `<PlaceImage>`. Состояние элемента `checkbox` хранится в компоненте верхнего уровня `App`, но каждый `<PlaceImage>` должен знать о нем.
+В этом примере переключение `checkbox` изменяет проп `imageSize`, передаваемый каждому `<PlaceImage>`. Состояние элемента `checkbox` хранится в компоненте верхнего уровня `App`, но каждый `<PlaceImage>` должен знать о нём.
 
 Сейчас `App` передает `imageSize` в `List`, который передает его в каждый `Place`, который передает его в `PlaceImage`. Удалите проп `imageSize` и вместо этого передавайте его из компонента `App` прямо в `PlaceImage`.
 
