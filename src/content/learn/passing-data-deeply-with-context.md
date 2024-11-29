@@ -25,12 +25,12 @@ title: Передача данных через контекст
 
 <DiagramGroup>
 
-<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in purple. The value flows down to each of the two children, both highlighted in purple." >
+<Diagram name="passing_data_lifting_state" height={160} width={608} captionPosition="top" alt="Диаграмма в виде дерева, состоящая из трех компонентов. Родительский компонент содержит элемент, по форме напоминающий таблетку, он представляет значение, выделенное фиолетовым цветом. Значение попадает в каждый из двух дочерних компонентов, оба которые также выделены фиолетовым цветом." >
 
 Подъём состояния
 
 </Diagram>
-<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root node contains a bubble representing a value highlighted in purple. The value flows down through the two children, each of which pass the value but do not contain it. The left child passes the value down to two children which are both highlighted purple. The right child of the root passes the value through to one of its two children - the right one, which is highlighted purple. That child passed the value through its single child, which passes it down to both of its two children, which are highlighted purple.">
+<Diagram name="passing_data_prop_drilling" height={430} width={608} captionPosition="top" alt="Диаграмма в виде дерева из десяти компонентов, каждый из которых имеет до двух дочерних узлов. В корневом узле находится элемент, по форме напоминающий таблетку, представляющий значение, выделенное фиолетовым цветом. Значение передается вниз через два дочерних узла, каждый из которых передает это значение дальше, но не использует его. Левый узел передает значение вниз двум своим детям, которые оба помечены фиолетовым цветом. Правый же узел корня передает значение одному из двух своих детей, а именно правому, который также выделен фиолетовым цветом. Этот узел передает значение дальше, своему единственному ребенку, который передает его другим, обоим детям, помеченным фиолетовым цветом.">
 
 Бурение пропсов
 
@@ -212,13 +212,13 @@ export default function Heading({ level, children }) {
 
 <DiagramGroup>
 
-<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="Diagram with a tree of three components. The parent contains a bubble representing a value highlighted in orange which projects down to the two children, each highlighted in orange." >
+<Diagram name="passing_data_context_close" height={160} width={608} captionPosition="top" alt="Диаграмма в виде дерева из трех компонентов. Родительский узел содержит элемент, по форме напоминающий таблетку, представляющий значение, выделенное оранжевым цветом, которое проецируется вниз на два дочерних компонента, каждый из которых помечен оранжевым цветом." >
 
 Использование контекста с детьми вблизи
 
 </Diagram>
 
-<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="Diagram with a tree of ten nodes, each node with two children or less. The root parent node contains a bubble representing a value highlighted in orange. The value projects down directly to four leaves and one intermediate component in the tree, which are all highlighted in orange. None of the other intermediate components are highlighted.">
+<Diagram name="passing_data_context_far" height={430} width={608} captionPosition="top" alt="Диаграмма в виде дерева из десяти компонентов, каждый из которых имеет до двух дочерних узлов. Корневой родительский узел содержит элемент, по форме напоминающий таблетку, представляющий значение, выделенное оранжевым цветом. Это значение проецируется вниз на остальные четыре узла и один промежуточный компонент дерева, которые помечены оранжевым цветом. Остальные другие промежуточные компоненты не выделены.">
 
 Использование контекста с детьми на расстоянии
 
