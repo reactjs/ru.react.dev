@@ -312,7 +312,7 @@ export const LevelContext = createContext(1);
 
 ### Шаг 2: Использовать контекст {/*step-2-use-the-context*/}
 
-Импортируем хук `useContext` и ваш контекст из React:
+Импортируем хук `useContext` из React и ваш контекст:
 
 ```js
 import { useContext } from 'react';
