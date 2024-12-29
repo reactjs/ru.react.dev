@@ -1,27 +1,27 @@
 {
-  "title": "Learn React",
+  "title": "Учить React",
   "path": "/learn",
   "routes": [
     {
       "hasSectionHeader": true,
-      "sectionHeader": "GET STARTED"
+      "sectionHeader": "НАЧАТЬ РАБОТУ"
     },
     {
-      "title": "Quick Start",
+      "title": "Быстрый старт",
       "path": "/learn",
       "routes": [
         {
-          "title": "Tutorial: Tic-Tac-Toe",
+          "title": "Урок: крестики-нолики",
           "path": "/learn/tutorial-tic-tac-toe"
         },
         {
-          "title": "Thinking in React",
+          "title": "Мыслить в React",
           "path": "/learn/thinking-in-react"
         }
       ]
     },
     {
-      "title": "Installation",
+      "title": "Установка",
       "path": "/learn/installation",
       "routes": [
         {
