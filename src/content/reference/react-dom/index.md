@@ -41,6 +41,7 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 
 ---
 
+<<<<<<< HEAD
 ## Устаревшие API {/*deprecated-apis*/}
 
 <Deprecated>
@@ -53,3 +54,15 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 * [`hydrate`](/reference/react-dom/hydrate) монтирует дерево в DOM, созданное из HTML на сервере. Устарел в пользу [`hydrateRoot`](/reference/react-dom/client/hydrateRoot).
 * [`render`](/reference/react-dom/render) монтирует дерево в DOM. Устарел в пользу [`createRoot`](/reference/react-dom/client/createRoot).
 * [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode) размонтирует дерево из DOM. Устарел в пользу [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount).
+=======
+## Removed APIs {/*removed-apis*/}
+
+These APIs were removed in React 19:
+
+* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
+* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
+* [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
+* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
+* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
+>>>>>>> 9000e6e003854846c4ce5027703b5ce6f81aad80
