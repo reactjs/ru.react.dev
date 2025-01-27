@@ -25,7 +25,7 @@
       "path": "/learn/installation",
       "routes": [
         {
-          "title": "Start a New React Project",
+          "title": "Начать новый React-проект",
           "path": "/learn/start-a-new-react-project"
         },
         {
@@ -37,8 +37,17 @@
           "path": "/learn/editor-setup"
         },
         {
+          "title": "Using TypeScript",
+          "path": "/learn/typescript"
+        },
+        {
           "title": "React Developer Tools",
           "path": "/learn/react-developer-tools"
+        },
+        {
+          "title": "React Compiler",
+          "path": "/learn/react-compiler",
+          "canary": true
         }
       ]
     },
@@ -82,6 +91,10 @@
         {
           "title": "Keeping Components Pure",
           "path": "/learn/keeping-components-pure"
+        },
+        {
+          "title": "Your UI as a Tree",
+          "path": "/learn/understanding-your-ui-as-a-tree"
         }
       ]
     },
