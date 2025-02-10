@@ -4,10 +4,14 @@
 
 <Intro>
 
+<<<<<<< HEAD
 `startTransition` позволяет обновлять состояние без блокировки интерфейса. 
+=======
+`startTransition` lets you render a part of the UI in the background.
+>>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
 
 ```js
-startTransition(scope)
+startTransition(action)
 ```
 
 </Intro>
@@ -18,7 +22,7 @@ startTransition(scope)
 
 ## Справочник {/*reference*/}
 
-### `startTransition(scope)` {/*starttransitionscope*/}
+### `startTransition(action)` {/*starttransition*/}
 
 Функция `startTransition`  позволяет пометить обновление состояния как переход.
 
@@ -41,7 +45,11 @@ function TabContainer() {
 
 #### Параметры {/*parameters*/}
 
+<<<<<<< HEAD
 * `scope`: Функция, которая обновляет состояние, вызывая одну или несколько [функций `set`.](/reference/react/useState#setstate) React немедленно вызывает `scope` без параметров и помечает все обновления состояния, запланированные синхронно во время вызова функции scope, как переходы. Они будут [неблокирующими](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition) и [не будут отображать нежелательные индикаторы загрузки.](/reference/react/useTransition#preventing-unwanted-loading-indicators)
+=======
+* `action`: A function that updates some state by calling one or more [`set` functions](/reference/react/useState#setstate). React calls `action` immediately with no parameters and marks all state updates scheduled synchronously during the `action` function call as Transitions. Any async calls awaited in the `action` will be included in the transition, but currently require wrapping any `set` functions after the `await` in an additional `startTransition` (see [Troubleshooting](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)). State updates marked as Transitions will be [non-blocking](#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators.](/reference/react/useTransition#preventing-unwanted-loading-indicators).
+>>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
 
 #### Возвращаемое значение {/*returns*/}
 
@@ -53,13 +61,23 @@ function TabContainer() {
 
 * Вы можете обернуть обновление в переход только в том случае, если у вас есть доступ к функции `set` для этого состояния. Если вы хотите начать переход в ответ на какой-то проп или значение, возвращаемое пользовательским хуком, попробуйте использовать [`useDeferredValue`](/reference/react/useDeferredValue).
 
+<<<<<<< HEAD
 * Функция, передаваемая в `startTransition`, должна быть синхронной. React немедленно выполняет эту функцию, помечая как переходы все обновления состояния которые происходят во время ее выполнения. Если вы попытаетесь выполнить дополнительные обновления состояния позже (например, в таймауте), они не будут помечены как переходы.
+=======
+* The function you pass to `startTransition` is called immediately, marking all state updates that happen while it executes as Transitions. If you try to perform state updates in a `setTimeout`, for example, they won't be marked as Transitions.
+
+* You must wrap any state updates after any async requests in another `startTransition` to mark them as Transitions. This is a known limitation that we will fix in the future (see [Troubleshooting](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+>>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
 
 * Обновление состояния, помеченное как переход, будет прервано другими обновлениями состояния. Например, если вы обновите компонент диаграммы внутри перехода, но затем начнете вводить текст в поле ввода, пока диаграмма находится в процессе повторного рендеринга, React перезапустит процесс рендеринга компонента диаграммы после обработки обновления состояния в поле ввода.
 
 * Обновления перехода не могут использоваться для управления текстовыми полями ввода.
 
+<<<<<<< HEAD
 * В случае наличия нескольких одновременных переходов, React в настоящее время группирует их вместе. Это ограничение, вероятно, будет устранено в будущих релизах.
+=======
+* If there are multiple ongoing Transitions, React currently batches them together. This is a limitation that may be removed in a future release.
+>>>>>>> 91614a51a1be9078777bc337ba83fc62e606cc14
 
 ---
 
