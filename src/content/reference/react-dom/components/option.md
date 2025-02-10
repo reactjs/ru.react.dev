@@ -4,12 +4,12 @@ title: "<option>"
 
 <Intro>
 
-The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) lets you render an option inside a [`<select>`](/reference/react-dom/components/select) box.
+[Встроенный в браузер компонент `<option>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/option) отвечает за рендер некоторого пункта списка в поле [`<select>`](/reference/react-dom/components/select).
 
 ```js
 <select>
-  <option value="someOption">Some option</option>
-  <option value="otherOption">Other option</option>
+  <option value="someOption">Пункт списка</option>
+  <option value="otherOption">Другой пункт списка</option>
 </select>
 ```
 
@@ -19,44 +19,44 @@ The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `<option>` {/*option*/}
 
-The [built-in browser `<option>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option) lets you render an option inside a [`<select>`](/reference/react-dom/components/select) box.
+[Встроенный в браузер компонент `<option>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/option) отвечает за рендер некоторого пункта списка в поле [`<select>`](/reference/react-dom/components/select).
 
 ```js
 <select>
-  <option value="someOption">Some option</option>
-  <option value="otherOption">Other option</option>
+  <option value="someOption">Пункт списка</option>
+  <option value="otherOption">Другой пункт списка</option>
 </select>
 ```
 
-[See more examples below.](#usage)
+[См. больше примеров ниже.](#usage)
 
-#### Props {/*props*/}
+#### Пропсы {/*props*/}
 
-`<option>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<option>` поддерживает все [пропсы общих HTML-элементов.](/reference/react-dom/components/common#props)
 
-Additionally, `<option>` supports these props:
+Кроме того, `<option>` поддерживает следующие пропсы:
 
-* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#disabled): A boolean. If `true`, the option will not be selectable and will appear dimmed.
-* [`label`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#label): A string. Specifies the meaning of the option. If not specified, the text inside the option is used.
-* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#value): The value to be used [when submitting the parent `<select>` in a form](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form) if this option is selected.
+* [`disabled`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/option#disabled): булево значение. Если `true`, то пункт списка не будет доступен для выбора и будет отображаться затемнённым.
+* [`label`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/option#label): строка. Указывает смысловое значение пункта списка. Если значение не указано, то будет использоваться текст самого элемента `<option>`.
+* [`value`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/option#value): Значение, которое будет использоваться [в родительском теге `<select>` при отправке формы](/reference/react-dom/components/select#reading-the-select-box-value-when-submitting-a-form), если данный пункт списка будет выбран.
 
-#### Caveats {/*caveats*/}
+#### Предостережения {/*caveats*/}
 
-* React does not support the `selected` attribute on `<option>`. Instead, pass this option's `value` to the parent [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option) for an uncontrolled select box, or [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable) for a controlled select.
+* React не поддерживает атрибут `selected` тега `<option>`. Вместо этого, передайте `value` пункта списка родительскому [`<select defaultValue>`](/reference/react-dom/components/select#providing-an-initially-selected-option) для неуправляемого поля выбора или [`<select value>`](/reference/react-dom/components/select#controlling-a-select-box-with-a-state-variable) для управляемого.
 
 ---
 
-## Usage {/*usage*/}
+## Применение {/*usage*/}
 
-### Displaying a select box with options {/*displaying-a-select-box-with-options*/}
+### Отображение поля выбора с пунктами списка {/*displaying-a-select-box-with-options*/}
 
-Render a `<select>` with a list of `<option>` components inside to display a select box. Give each `<option>` a `value` representing the data to be submitted with the form.
+Для отображения поля выбора используйте список компонентов `<option>` внутри тега `<select>`. Задайте `value` каждому элементу `<option>`, чтобы предоставить данные для отправки вместе с формой.
 
-[Read more about displaying a `<select>` with a list of `<option>` components.](/reference/react-dom/components/select)
+[Подробнее про отображение тега `<select>` со списком компонентов `<option>`.](/reference/react-dom/components/select)
 
 <Sandpack>
 
@@ -64,11 +64,11 @@ Render a `<select>` with a list of `<option>` components inside to display a sel
 export default function FruitPicker() {
   return (
     <label>
-      Pick a fruit:
+      Выберите фрукт:
       <select name="selectedFruit">
-        <option value="apple">Apple</option>
-        <option value="banana">Banana</option>
-        <option value="orange">Orange</option>
+        <option value="apple">Яблоко</option>
+        <option value="banana">Банан</option>
+        <option value="orange">Апельсин</option>
       </select>
     </label>
   );
