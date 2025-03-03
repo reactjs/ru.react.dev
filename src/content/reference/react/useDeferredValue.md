@@ -36,12 +36,18 @@ function SearchPage() {
 
 #### Параметры {/*parameters*/}
 
+<<<<<<< HEAD
 * `value`: Значение, обновление которого вы хотите отложить.
 * <CanaryBadge title="Эта функциональность доступна только в canary-версии" /> **необязательный** `initialValue`: Значение, установленное для первого рендера. Если этот параметр опущен, `useDeferredValue` не сработает для первого рендера, так как нет предыдущей версии `value`, которую можно было бы показать.
+=======
+* `value`: The value you want to defer. It can have any type.
+* **optional** `initialValue`: A value to use during the initial render of a component. If this option is omitted, `useDeferredValue` will not defer during the initial render, because there's no previous version of `value` that it can render instead.
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 
 #### Возвращаемое значение {/*returns*/}
 
+<<<<<<< HEAD
 - `currentValue`: При первом рендеринге вызов вернёт то же значение, которое вы указали. Когда в следующих обновлениях значение изменится, вызов вернёт прошлое значение, но при этом React запустит дополнительный фоновый рендеринг, в котором вызов вернёт обновлённое значение.
 
 <Canary>
@@ -49,6 +55,9 @@ function SearchPage() {
 В последних canary-версиях React, `useDeferredValue` возвращает `initialValue` для первого рендера, и в фоновом режиме планирует последующий рендер уже с `value`.
 
 </Canary>
+=======
+- `currentValue`: During the initial render, the returned deferred value will be the `initialValue`, or the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value).
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 #### Замечания {/*caveats*/}
 
@@ -94,9 +103,15 @@ function SearchPage() {
 
 Предполагается, что данные в этом примере вы получаете через источники, которые поддерживают Suspense:
 
+<<<<<<< HEAD
 - Запрашиваете данные с помощью поддерживающих Suspense фреймворков, как, например, [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) или [Next.js](https://nextjs.org/docs/getting-started/react-essentials).
 - Лениво загружаете код компонентов с помощью [`lazy`](/reference/react/lazy).
 - Читаете значение промиса с помощью [`use`](/reference/react/use).
+=======
+- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense)
+- Lazy-loading component code with [`lazy`](/reference/react/lazy)
+- Reading the value of a Promise with [`use`](/reference/react/use)
+>>>>>>> 6326e7b1b9fa2a7e36a555792e2f1b97cfcf2669
 
 [Подробнее о Suspense и связанных с ним ограничениях.](/reference/react/Suspense)
 
@@ -106,21 +121,6 @@ function SearchPage() {
 В этом примере компонент `SearchResults` [задерживается](/reference/react/Suspense#displaying-a-fallback-while-content-is-loading), т.к. отправляет поисковый запрос. Попробуйте ввести `"a"`, дождаться результатов поиска, и затем ввести `"ab"`. На месте результатов по запросу `"a"` ненадолго появится индикатор загрузки.
 
 <Sandpack>
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
 ```js src/App.js
 import { Suspense, useState } from 'react';
@@ -142,14 +142,9 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -168,31 +163,6 @@ export default function SearchResults({ query }) {
       ))}
     </ul>
   );
-}
-
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
-function use(promise) {
-  if (promise.status === 'fulfilled') {
-    return promise.value;
-  } else if (promise.status === 'rejected') {
-    throw promise.reason;
-  } else if (promise.status === 'pending') {
-    throw promise;
-  } else {
-    promise.status = 'pending';
-    promise.then(
-      result => {
-        promise.status = 'fulfilled';
-        promise.value = result;
-      },
-      reason => {
-        promise.status = 'rejected';
-        promise.reason = reason;
-      },      
-    );
-    throw promise;
-  }
 }
 ```
 
@@ -221,7 +191,7 @@ async function getData(url) {
 async function getSearchResults(query) {
   // Add a fake delay to make waiting noticeable.
   await new Promise(resolve => {
-    setTimeout(resolve, 500);
+    setTimeout(resolve, 1000);
   });
 
   const allAlbums = [{
@@ -321,21 +291,6 @@ export default function App() {
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
@@ -357,14 +312,9 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -383,31 +333,6 @@ export default function SearchResults({ query }) {
       ))}
     </ul>
   );
-}
-
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
-function use(promise) {
-  if (promise.status === 'fulfilled') {
-    return promise.value;
-  } else if (promise.status === 'rejected') {
-    throw promise.reason;
-  } else if (promise.status === 'pending') {
-    throw promise;
-  } else {
-    promise.status = 'pending';
-    promise.then(
-      result => {
-        promise.status = 'fulfilled';
-        promise.value = result;
-      },
-      reason => {
-        promise.status = 'rejected';
-        promise.reason = reason;
-      },      
-    );
-    throw promise;
-  }
 }
 ```
 
@@ -436,7 +361,7 @@ async function getData(url) {
 async function getSearchResults(query) {
   // Add a fake delay to make waiting noticeable.
   await new Promise(resolve => {
-    setTimeout(resolve, 500);
+    setTimeout(resolve, 1000);
   });
 
   const allAlbums = [{
@@ -544,21 +469,6 @@ input { margin: 10px; }
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js src/App.js
 import { Suspense, useState, useDeferredValue } from 'react';
 import SearchResults from './SearchResults.js';
@@ -586,14 +496,9 @@ export default function App() {
 }
 ```
 
-```js src/SearchResults.js hidden
+```js src/SearchResults.js
+import {use} from 'react';
 import { fetchData } from './data.js';
-
-// Note: this component is written using an experimental API
-// that's not yet available in stable versions of React.
-
-// For a realistic example you can follow today, try a framework
-// that's integrated with Suspense, like Relay or Next.js.
 
 export default function SearchResults({ query }) {
   if (query === '') {
@@ -612,31 +517,6 @@ export default function SearchResults({ query }) {
       ))}
     </ul>
   );
-}
-
-// This is a workaround for a bug to get the demo running.
-// TODO: replace with real implementation when the bug is fixed.
-function use(promise) {
-  if (promise.status === 'fulfilled') {
-    return promise.value;
-  } else if (promise.status === 'rejected') {
-    throw promise.reason;
-  } else if (promise.status === 'pending') {
-    throw promise;
-  } else {
-    promise.status = 'pending';
-    promise.then(
-      result => {
-        promise.status = 'fulfilled';
-        promise.value = result;
-      },
-      reason => {
-        promise.status = 'rejected';
-        promise.reason = reason;
-      },      
-    );
-    throw promise;
-  }
 }
 ```
 
@@ -665,7 +545,7 @@ async function getData(url) {
 async function getSearchResults(query) {
   // Add a fake delay to make waiting noticeable.
   await new Promise(resolve => {
-    setTimeout(resolve, 500);
+    setTimeout(resolve, 1000);
   });
 
   const allAlbums = [{
