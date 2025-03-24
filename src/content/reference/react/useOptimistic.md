@@ -1,14 +1,16 @@
 ---
 title: useOptimistic
-canary: true
 ---
 
+<<<<<<< HEAD
 <Canary>
 
 Хук useOptimistic доступен только в React Canary и является экспериментальным. Узнайте больше о [релизах React здесь](/community/versioning-policy#all-release-channels).
 
 </Canary>
 
+=======
+>>>>>>> f6d762cbbf958ca45bb8d1d011b31e5289e43a3d
 <Intro>
 
 `useOptimistic` -- это хук React, который позволяет оптимистично обновлять UI.
@@ -129,17 +131,5 @@ export async function deliverMessage(message) {
 }
 ```
 
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "18.3.0-canary-6db7f4209-20231021",
-    "react-dom": "18.3.0-canary-6db7f4209-20231021",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
 
 </Sandpack>

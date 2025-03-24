@@ -70,7 +70,7 @@ export default function Image() {
 После того как компонент был первоначально отрендерен, вы можете инициировать последующие рендеры, обновляя его состояние с помощью функции [`set`](/reference/react/useState#setstate). Обновление состояние компонента автоматически ставит его в очередь на рендер. (Вы можете представить это как посетитель ресторана, который после первого заказа заказывает чай, десерт и всевозможные вещи, в зависимости от состояния жажды или голода).
 
 <IllustrationBlock sequential>
-  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. They patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
+  <Illustration caption="State update..." alt="React as a server in a restaurant, serving a Card UI to the user, represented as a patron with a cursor for their head. The patron expresses they want a pink card, not a black one!" src="/images/docs/illustrations/i_rerender1.png" />
   <Illustration caption="...triggers..." alt="React returns to the Component Kitchen and tells the Card Chef they need a pink Card." src="/images/docs/illustrations/i_rerender2.png" />
   <Illustration caption="...render!" alt="The Card Chef gives React the pink Card." src="/images/docs/illustrations/i_rerender3.png" />
 </IllustrationBlock>
@@ -84,7 +84,11 @@ export default function Image() {
 
 Этот процесс рекурсивен: если обновленный компонент возвращает какой-то другой компонент, React будет рендерить _этот_ компонент следующим, и если этот компонент тоже что-то возвращает, он будет рендерить _этот_ компонент следующим, и так далее. Этот процесс будет продолжаться до тех пор, пока не останется вложенных компонентов и React не будет точно знать, что должно быть отображено на экране.
 
+<<<<<<< HEAD
 В следующем примере React вызовет `Gallery()` и  `Image()` несколько раз:
+=======
+In the following example, React will call `Gallery()` and `Image()` several times:
+>>>>>>> f6d762cbbf958ca45bb8d1d011b31e5289e43a3d
 
 <Sandpack>
 
@@ -148,10 +152,17 @@ img { margin: 0 10px 10px 0; }
 
 ## Часть 3: React фиксирует изменения в DOM {/*step-3-react-commits-changes-to-the-dom*/}
 
+<<<<<<< HEAD
 После рендеринга (вызова) ваших компонентов React модифицирует DOM. 
 
 * **На начальном рендере,** React использует [`appendChild()`](https://developer.mozilla.org/ru/docs/Web/API/Node/appendChild) DOM API, чтобы вставить все DOM ноды, которые он создал на экране. 
 * **Для ре-рендеров,** React будет применять минимально необходимые операции (вычисляемые во время рендеринга!), чтобы DOM соответствовал последнему выводу рендеринга.
+=======
+After rendering (calling) your components, React will modify the DOM.
+
+* **For the initial render,** React will use the [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API to put all the DOM nodes it has created on screen.
+* **For re-renders,** React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
+>>>>>>> f6d762cbbf958ca45bb8d1d011b31e5289e43a3d
 
 **React изменяет узлы DOM только если есть разница между рендерами.** Например, вот компонент, который рендерится с разными пропсами, передаваемыми от родителя каждую секунду. Обратите внимание, как вы можете добавить некоторый текст в `<input>`, обновляя его `значение`, но текст не исчезает при повторном рендеринге компонента:
 
