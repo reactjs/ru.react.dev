@@ -4,7 +4,11 @@ title: Быстрый старт
 
 <Intro>
 
+<<<<<<< HEAD
 Добро пожаловать в документацию React! Эта страница познакомит вас с большинством концепций React, которыми вы будете пользоваться каждый день.
+=======
+Welcome to the React documentation! This page will give you an introduction to 80% of the React concepts that you will use on a daily basis.
+>>>>>>> 2859efa07357dfc2927517ce9765515acf903c7c
 
 </Intro>
 

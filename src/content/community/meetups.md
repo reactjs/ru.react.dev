@@ -47,6 +47,9 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 ## Colombia {/*colombia*/}
 * [Medellin](https://www.meetup.com/React-Medellin/)
 
+## Czechia {/*czechia*/}
+* [Prague](https://guild.host/react-prague/)
+
 ## Denmark {/*denmark*/}
 * [Aalborg](https://www.meetup.com/Aalborg-React-React-Native-Meetup/)
 * [Aarhus](https://www.meetup.com/Aarhus-ReactJS-Meetup/)
@@ -56,6 +59,9 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 * [React.JS Girls London](https://www.meetup.com/ReactJS-Girls-London/)
 * [React Advanced London](https://guild.host/react-advanced-london)
 * [React Native London](https://guild.host/RNLDN)
+
+## Finland {/*finland*/}
+* [Helsinki](https://www.meetabit.com/communities/react-helsinki)
 
 ## France {/*france*/}
 * [Lille](https://www.meetup.com/ReactBeerLille/)
@@ -135,6 +141,9 @@ Do you have a local React.js meetup? Add it here! (Please keep the list alphabet
 
 ## Spain {/*spain*/}
 * [Barcelona](https://www.meetup.com/ReactJS-Barcelona/)
+
+## Sri Lanka {/*sri-lanka*/}
+* [Colombo](https://www.javascriptcolombo.com/)
 
 ## Sweden {/*sweden*/}
 * [Goteborg](https://www.meetup.com/ReactJS-Goteborg/)
