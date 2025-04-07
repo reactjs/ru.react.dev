@@ -8,6 +8,7 @@ React был спроектирован с самого начала с учёт
 
 </Intro>
 
+<<<<<<< HEAD
 <YouWillLearn isChapter={true}>
 
 * [Как создать новый React-проект](/learn/start-a-new-react-project)
@@ -18,6 +19,9 @@ React был спроектирован с самого начала с учёт
 </YouWillLearn>
 
 ## Попробовать React {/*try-react*/}
+=======
+## Try React {/*try-react*/}
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
 
 Вам не нужно ничего устанавливать, чтобы попробовать React. Поредактируйте код в песочнице!
 
@@ -39,6 +43,7 @@ export default function App() {
 
 Такие песочницы есть на большинстве страниц React-документации. За пределами React-документации также есть большое количество песочниц, поддерживающих React. Например: [CodeSandbox](https://codesandbox.io/s/new), [StackBlitz](https://stackblitz.com/fork/react) или [CodePen.](https://codepen.io/pen?template=QWYVwWN)
 
+<<<<<<< HEAD
 ### Попробовать React локально {/*try-react-locally*/}
 
 Чтобы попробовать React локально на вашем компьютере, [скачайте эту HTML страницу.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) Откройте её в своем текстовом редакторе и браузере!
@@ -46,10 +51,34 @@ export default function App() {
 ## Начать новый React-проект {/*start-a-new-react-project*/}
 
 Если вы хотите создать приложение или сайт полностью на React — [создайте новый React-проект.](/learn/start-a-new-react-project)
+=======
+To try React locally on your computer, [download this HTML page.](https://gist.githubusercontent.com/gaearon/0275b1e1518599bbeafcde4722e79ed1/raw/db72dcbf3384ee1708c4a07d3be79860db04bff0/example.html) Open it in your editor and in your browser!
+
+## Creating a React App {/*creating-a-react-app*/}
+
+If you want to start a new React app, you can [create a React app](/learn/creating-a-react-app) using a recommended framework.
+
+## Build a React App from Scratch {/*build-a-react-app-from-scratch*/}
+
+If a framework is not a good fit for your project, you prefer to build your own framework, or you just want to learn the basics of a React app you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
 
 ## Добавить React в существующий проект {/*add-react-to-an-existing-project*/}
 
+<<<<<<< HEAD
 Если вы хотите попробовать React в существующем приложении или сайте — [добавьте React в существующий проект.](/learn/add-react-to-an-existing-project)
+=======
+If want to try using React in your existing app or a website, you can [add React to an existing project.](/learn/add-react-to-an-existing-project)
+
+
+<Note>
+
+#### Should I use Create React App? {/*should-i-use-create-react-app*/}
+
+No. Create React App has been deprecated. For more information, see [Sunsetting Create React App](/blog/2025/02/14/sunsetting-create-react-app).
+
+</Note>
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
 
 ## Дальнейшие шаги {/*next-steps*/}
 

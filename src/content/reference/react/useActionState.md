@@ -1,19 +1,6 @@
 ---
 title: useActionState
-canary: true
 ---
-
-<Canary>
-
-The `useActionState` Hook is currently only available in React's Canary and experimental channels. Learn more about [release channels here](/community/versioning-policy#all-release-channels). In addition, you need to use a framework that supports [React Server Components](/reference/rsc/use-client) to get the full benefit of `useActionState`.
-
-</Canary>
-
-<Note>
-
-In earlier React Canary versions, this API was part of React DOM and called `useFormState`.
-
-</Note>
 
 <Intro>
 
@@ -24,6 +11,13 @@ const [state, formAction, isPending] = useActionState(fn, initialState, permalin
 ```
 
 </Intro>
+
+<Note>
+
+In earlier React Canary versions, this API was part of React DOM and called `useFormState`.
+
+</Note>
+
 
 <InlineToc />
 
@@ -57,7 +51,7 @@ function StatefulForm({}) {
 
 The form state is the value returned by the action when the form was last submitted. If the form has not yet been submitted, it is the initial state that you pass.
 
-If used with a Server Action, `useActionState` allows the server's response from submitting the form to be shown even before hydration has completed.
+If used with a Server Function, `useActionState` allows the server's response from submitting the form to be shown even before hydration has completed.
 
 [See more examples below.](#usage)
 
@@ -65,7 +59,7 @@ If used with a Server Action, `useActionState` allows the server's response from
 
 * `fn`: The function to be called when the form is submitted or button pressed. When the function is called, it will receive the previous state of the form (initially the `initialState` that you pass, subsequently its previous return value) as its initial argument, followed by the arguments that a form action normally receives.
 * `initialState`: The value you want the state to be initially. It can be any serializable value. This argument is ignored after the action is first invoked.
-* **optional** `permalink`: A string containing the unique page URL that this form modifies. For use on pages with dynamic content (eg: feeds) in conjunction with progressive enhancement: if `fn` is a [server action](/reference/rsc/use-server) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL, rather than the current page's URL. Ensure that the same form component is rendered on the destination page (including the same action `fn` and `permalink`) so that React knows how to pass the state through. Once the form has been hydrated, this parameter has no effect.
+* **optional** `permalink`: A string containing the unique page URL that this form modifies. For use on pages with dynamic content (eg: feeds) in conjunction with progressive enhancement: if `fn` is a [server function](/reference/rsc/server-functions) and the form is submitted before the JavaScript bundle loads, the browser will navigate to the specified permalink URL, rather than the current page's URL. Ensure that the same form component is rendered on the destination page (including the same action `fn` and `permalink`) so that React knows how to pass the state through. Once the form has been hydrated, this parameter has no effect.
 
 {/* TODO T164397693: link to serializable values docs once it exists */}
 
@@ -74,7 +68,7 @@ If used with a Server Action, `useActionState` allows the server's response from
 `useActionState` returns an array with the following values:
 
 1. The current state. During the first render, it will match the `initialState` you have passed. After the action is invoked, it will match the value returned by the action.
-2. A new action that you can pass as the `action` prop to your `form` component or `formAction` prop to any `button` component within the form.
+2. A new action that you can pass as the `action` prop to your `form` component or `formAction` prop to any `button` component within the form. The action can also be called manually within [`startTransition`](/reference/react/startTransition).
 3. The `isPending` flag that tells you whether there is a pending Transition.
 
 #### Caveats {/*caveats*/}
@@ -108,8 +102,8 @@ function MyComponent() {
 `useActionState` returns an array with the following items:
 
 1. The <CodeStep step={1}>current state</CodeStep> of the form, which is initially set to the <CodeStep step={4}>initial state</CodeStep> you provided, and after the form is submitted is set to the return value of the <CodeStep step={3}>action</CodeStep> you provided.
-2. A <CodeStep step={2}>new action</CodeStep> that you pass to `<form>` as its `action` prop.
-3. A <CodeStep step={1}>pending state</CodeStep> that you can utilise whilst your action is processing.
+2. A <CodeStep step={2}>new action</CodeStep> that you pass to `<form>` as its `action` prop or call manually within `startTransition`.
+3. A <CodeStep step={1}>pending state</CodeStep> that you can utilise while your action is processing.
 
 When the form is submitted, the <CodeStep step={3}>action</CodeStep> function that you provided will be called. Its return value will become the new <CodeStep step={1}>current state</CodeStep> of the form.
 
@@ -126,7 +120,7 @@ function action(currentState, formData) {
 
 #### Display form errors {/*display-form-errors*/}
 
-To display messages such as an error message or toast that's returned by a Server Action, wrap the action in a call to `useActionState`.
+To display messages such as an error message or toast that's returned by a Server Function, wrap the action in a call to `useActionState`.
 
 <Sandpack>
 
@@ -184,25 +178,13 @@ form button {
   margin-right: 12px;
 }
 ```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
-}
-```
 </Sandpack>
 
 <Solution />
 
 #### Display structured information after submitting a form {/*display-structured-information-after-submitting-a-form*/}
 
-The return value from a Server Action can be any serializable value. For example, it could be an object that includes a boolean indicating whether the action was successful, an error message, or updated information.
+The return value from a Server Function can be any serializable value. For example, it could be an object that includes a boolean indicating whether the action was successful, an error message, or updated information.
 
 <Sandpack>
 
@@ -269,18 +251,6 @@ form {
 
 form button {
   margin-right: 12px;
-}
-```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "canary",
-    "react-dom": "canary",
-    "react-scripts": "^5.0.0"
-  },
-  "main": "/index.js",
-  "devDependencies": {}
 }
 ```
 </Sandpack>

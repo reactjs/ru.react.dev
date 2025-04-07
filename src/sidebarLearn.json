@@ -25,13 +25,28 @@
       "path": "/learn/installation",
       "routes": [
         {
+<<<<<<< HEAD
           "title": "Начать новый React-проект",
           "path": "/learn/start-a-new-react-project"
+=======
+          "title": "Creating a React App",
+          "path": "/learn/creating-a-react-app"
+        },
+        {
+          "title": "Build a React App from Scratch",
+          "path": "/learn/build-a-react-app-from-scratch"
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
         },
         {
           "title": "Add React to an Existing Project",
           "path": "/learn/add-react-to-an-existing-project"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Setup",
+      "path": "/learn/setup",
+      "routes": [
         {
           "title": "Editor Setup",
           "path": "/learn/editor-setup"

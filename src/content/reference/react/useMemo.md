@@ -1103,7 +1103,11 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
+<<<<<<< HEAD
   }, [options]); // ✅ Вызывается только тогда, когда меняется options
+=======
+  }, [options]); // ✅ Only changes when options changes
+>>>>>>> 5138e605225b24d25701a1a1f68daa90499122a4
   // ...
 ```
 
