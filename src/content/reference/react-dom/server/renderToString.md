@@ -150,9 +150,5 @@ console.log(div.innerHTML); // Например, "<svg>...</svg>"
 
 Если какой-либо компонент приостанавливается (например, потому что он определен с [`lazy`](/reference/react/lazy) или извлекает данные), `renderToString` не будет ждать разрешения своего содержимого. Вместо этого `renderToString` найдет ближайшую [`<Suspense>`](/reference/react/Suspense) границу над ней и отрендерит её `fallback` в HTML. Содержимое не появится, пока не загрузится клиентский код.
 
-<<<<<<< HEAD
-Чтобы решить эту проблему, используйте одно из [рекомендуемых решений для потоковой передачи.](#migrating-from-rendertostring-to-a-streaming-method-on-the-server) Они могут передавать контент фрагментами по мере его разрешения на сервере, чтобы пользователь видел, что страница постепенно заполняется до загрузки клиентского кода.
-=======
-To solve this, use one of the [recommended streaming solutions.](#alternatives) For server side rendering, they can stream content in chunks as it resolves on the server so that the user sees the page being progressively filled in before the client code loads. For static site generation, they can wait for all the content to resolve before generating the static HTML.
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
+Чтобы решить эту проблему, используйте одно из [рекомендуемых решений для потоковой передачи.](#alternatives) При серверном рендеринге они могут передавать содержимое фрагментами по мере его разрешения на сервере, чтобы пользователь видел, что страница постепенно заполняется до загрузки клиентского кода. Для статической генерации сайтов, они могут ожидать доступности всего содержимого прежде чем сгенерировать статический HTML.
 
