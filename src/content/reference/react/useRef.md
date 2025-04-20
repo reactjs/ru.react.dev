@@ -450,16 +450,16 @@ button { display: block; margin-bottom: 20px; }
 
 #### Передача рефа в пользовательский компонент {/*exposing-a-ref-to-your-own-component*/}
 
-Иногда может понадобиться управлять DOM-узлом дочернего компонента из родительского. Например, если вы разрабатываете компонент `MyInput` и хотите дать возможность родительскому компоненту фокусировать `<input>` (к которому родитель не имеет доступа), то можно воспользоваться комбинацией `useRef` (для хранения DOM-узла) и [`forwardRef`](/reference/react/forwardRef) (для передачи рефа родительскому компоненту). Подробнее об этом в [пошаговом руководстве](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes).
+Иногда может понадобиться управлять DOM-узлом дочернего компонента из родительского. Например, если вы разрабатываете компонент `MyInput` и хотите дать возможность родительскому компоненту фокусировать `<input>` (к которому родитель не имеет доступа), то можно создать `реф` в родительском компоненте и передать `реф` как проп в дочерний компонент. Подробнее об этом в [пошаговом руководстве](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes).
 
 <Sandpack>
 
 ```js
-import { forwardRef, useRef } from 'react';
+import { useRef } from 'react';
 
-const MyInput = forwardRef((props, ref) => {
-  return <input {...props} ref={ref} />;
-});
+function MyInput({ ref }) {
+  return <input ref={ref} />;
+};
 
 export default function Form() {
   const inputRef = useRef(null);
@@ -556,7 +556,7 @@ return <MyInput ref={inputRef} />;
 
 <ConsoleBlock level="error">
 
-Warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+TypeError: Cannot read properties of null
 
 </ConsoleBlock>
 
@@ -575,12 +575,10 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-И затем оберните его в [`forwardRef`](/reference/react/forwardRef):
+И затем добавьте `реф` в список пропов вашего компонента и передайте `ref` как проп в нужный дочерний [встроенный компонент](/reference/react-dom/components/common):
 
-```js {3,8}
-import { forwardRef } from 'react';
-
-const MyInput = forwardRef(({ value, onChange }, ref) => {
+```js {1,6}
+function MyInput({ value, onChange, ref }) {
   return (
     <input
       value={value}
@@ -588,7 +586,7 @@ const MyInput = forwardRef(({ value, onChange }, ref) => {
       ref={ref}
     />
   );
-});
+};
 
 export default MyInput;
 ```

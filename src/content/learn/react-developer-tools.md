@@ -54,24 +54,8 @@ react-devtools
 ![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
 
 ## Мобильные устройства (React Native) {/*mobile-react-native*/}
-React Developer Tools также можно использовать для отладки приложений, созданных с помощью [React Native](https://reactnative.dev/).
-Самый простой способ использования React Developer Tools - установить их глобально:
+Для отладки приложений, созданных с помощью [React Native](https://reactnative.dev/), вы можете использовать [React Native DevTools](https://reactnative.dev/docs/react-native-devtools), встроенный отладчик, который уже синтегрирован с React Developer Tools. Вся функциональность работает аналогично браузерному расширению, включая подсветку и выбор элементов.
 
-```bash
-# Yarn
-yarn global add react-devtools
+[Узнайте больше об отладке в React Native.](https://reactnative.dev/docs/debugging)
 
-# Npm
-npm install -g react-devtools
-```
-
-Откройте инструменты разработчика в терминале.
-```bash
-react-devtools
-```
-
-Он подключится к любому локальному приложению React Native, которое запущено.
-
-> Попробуйте перезагрузить приложение, если инструменты разработчика не подключатся через несколько секунд.
-
-[Узнайте больше о отладке React Native.](https://reactnative.dev/docs/debugging)
+> Для версий React Native более ранних чем 0.76, пожалуйста, используйте автономную сборку React DevTools, следуя инструкции [Safari и другие браузеры](#safari-and-other-browsers) выше. 

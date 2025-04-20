@@ -26,12 +26,22 @@
       "routes": [
         {
           "title": "Начать новый React-проект",
-          "path": "/learn/start-a-new-react-project"
+          "path": "/learn/creating-a-react-app"
+        },
+        {
+          "title": "Build a React App from Scratch",
+          "path": "/learn/build-a-react-app-from-scratch"
         },
         {
           "title": "Add React to an Existing Project",
           "path": "/learn/add-react-to-an-existing-project"
-        },
+        }
+      ]
+    },
+    {
+      "title": "Setup",
+      "path": "/learn/setup",
+      "routes": [
         {
           "title": "Editor Setup",
           "path": "/learn/editor-setup"
