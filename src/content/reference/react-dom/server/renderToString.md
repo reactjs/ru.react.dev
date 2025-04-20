@@ -86,15 +86,9 @@ app.use('/', (request, response) => {
 
 ## Альтернативные варианты {/*alternatives*/}
 
-<<<<<<< HEAD
 ### Переход от `renderToString` к потоковому методу на сервере {/*migrating-from-rendertostring-to-a-streaming-method-on-the-server*/}
 
 `renderToString` немедленно возвращает строку, поэтому он не поддерживает потоковую передачу или ожидание данных.
-=======
-### Migrating from `renderToString` to a streaming render on the server {/*migrating-from-rendertostring-to-a-streaming-method-on-the-server*/}
-
-`renderToString` returns a string immediately, so it does not support streaming content as it loads.
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
 
 Мы рекомендуем использовать эти полнофункциональные альтернативы, когда это возможно:
 
@@ -105,24 +99,20 @@ app.use('/', (request, response) => {
 
 ---
 
-<<<<<<< HEAD
-### Удаление `renderToString` из клиентского кода {/*removing-rendertostring-from-the-client-code*/}
-=======
-### Migrating from `renderToString` to a static prerender on the server {/*migrating-from-rendertostring-to-a-static-prerender-on-the-server*/}
+### Переход от `renderToString` к предварительному статическому рендеру на сервере {/*migrating-from-rendertostring-to-a-static-prerender-on-the-server*/}
 
-`renderToString` returns a string immediately, so it does not support waiting for data to load for static HTML generation.
+`renderToString` немедленно возвращает строку, таким образом он не поддерживает ожидание загрузки данных для статически сгенерированного HTML
 
-We recommend using these fully-featured alternatives:
+Мы рекомендуем использовать эти полноценные альтернативы:
 
-* If you use Node.js, use [`prerenderToNodeStream`.](/reference/react-dom/static/prerenderToNodeStream)
-* If you use Deno or a modern edge runtime with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), use [`prerender`.](/reference/react-dom/static/prerender)
+* Если вы используете Node.js, то вам подойдёт [`prerenderToNodeStream`.](/reference/react-dom/static/prerenderToNodeStream)
+* Если вы используете Deno или самые современные [API обработки потоков](https://developer.mozilla.org/ru-RU/docs/Web/API/Streams_API), вам подойдёт [`prerender`.](/reference/react-dom/static/prerender)
 
-You can continue using `renderToString` if your static site generation environment does not support streams.
+Вы можете продолжать использовать `renderToString`, если ваша среда статической генерации не поддерживает потоки.
 
 ---
 
-### Removing `renderToString` from the client code {/*removing-rendertostring-from-the-client-code*/}
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
+### Удаление `renderToString` из клиентского кода {/*removing-rendertostring-from-the-client-code*/}
 
 Иногда `renderToString` используют на клиенте для преобразования какого-либо компонента в HTML.
 

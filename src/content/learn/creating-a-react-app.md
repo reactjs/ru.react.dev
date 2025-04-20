@@ -1,94 +1,86 @@
 ---
-title: Creating a React App
+title: Начать новый React-проект
 ---
 
 <Intro>
 
-If you want to build a new app or website with React, we recommend starting with a framework.
+Если вы хотите создать новое приложение или веб-сайт с помощью React, мы рекомендуем выбрать один из популярных в сообществе фреймворков на базе React.
 
 </Intro>
 
-If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, you can [build a React app from scratch](/learn/build-a-react-app-from-scratch).
-
-## Full-stack frameworks {/*full-stack-frameworks*/}
-
-These recommended frameworks support all the features you need to deploy and scale your app in production. They have integrated the latest React features and take advantage of React’s architecture.
+Если вы столкнулись с задачами, неподдержанными существующими фреймворками, вы предпочитаете собственное решение, или хотите получше изучить основы React-приложений, вы можете [создать React-приложение с нуля](/learn/build-a-react-app-from-scratch).
 
 <Note>
 
-#### Full-stack frameworks do not require a server. {/*react-frameworks-do-not-require-a-server*/}
+#### Фулстек-фреймворки не требуют сервер. {/*react-frameworks-do-not-require-a-server*/}
 
-All the frameworks on this page support client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)), single-page apps ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), and static-site generation ([SSG](https://developer.mozilla.org/en-US/docs/Glossary/SSG)). These apps can be deployed to a [CDN](https://developer.mozilla.org/en-US/docs/Glossary/CDN) or static hosting service without a server. Additionally, these frameworks allow you to add server-side rendering on a per-route basis, when it makes sense for your use case.
+Все фреймворки на этой странице поддерживают клиентский рендеринг ([CSR](https://developer.mozilla.org/ru-RU/docs/Glossary/CSR)), одностраничные приложения ([SPA](https://developer.mozilla.org/ru-RU/docs/Glossary/SPA)), и генерацию статических сайтов ([SSG](https://developer.mozilla.org/ru-RU/docs/Glossary/SSG)). Эти приложения могут быть выложены в [CDN](https://developer.mozilla.org/ru-RU/docs/Glossary/CDN) или сервисы статического хостинга без сервера. Также эти фреймворки позволяют добавлять серверный рендеринг для выбранных маршрутов вашего приложения, если того требует ваша задача.
 
-This allows you to start with a client-only app, and if your needs change later, you can opt-in to using server features on individual routes without rewriting your app. See your framework's documentation for configuring the rendering strategy.
+Так вы можете начать с клиентского приложения и добавить серверную функциональность позже для выбранных маршрутов без переписывания всего приложения. Изучите документацию вашего фреймворка, чтобы настроить рендеринг нужным вам образом.
 
 </Note>
 
-### Next.js (App Router) {/*nextjs-app-router*/}
+### Next.js (Маршрутизатор приложения) {/*nextjs-app-router*/}
 
-**[Next.js's App Router](https://nextjs.org/docs) is a React framework that takes full advantage of React's architecture to enable full-stack React apps.**
+**[Маршрутизатор приложения Next.js (Next.js App Router)](https://nextjs.org/docs) -- React-фреймворк, полностью использующий преимущества архитектуры React для создания фулстек-приложений.
 
-<TerminalBlock>
-npx create-next-app@latest
-</TerminalBlock>
-
-Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any Node.js or serverless hosting, or to your own server. Next.js also supports [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) which doesn't require a server. Vercel additionally provides opt-in paid cloud services.
+Команда [Vercel](https://vercel.com/) постоянно улучшает Next.js. Вы можете [развернуть Next.js-приложение](https://nextjs.org/docs/app/building-your-application/deploying) на облачном хостинге с Node.js или бессерверными вычислениями, а также на вашем собственном сервере. Next.js также поддерживает [статический экспорт](https://nextjs.org/docs/app/building-your-application/deploying/static-exports), который не требует сервера. Дополнительно Vercel предлагает платные облачные сервисы.
 
 ### React Router (v7) {/*react-router-v7*/}
 
-**[React Router](https://reactrouter.com/start/framework/installation) is the most popular routing library for React and can be paired with Vite to create a full-stack React framework**. It emphasizes standard Web APIs and has several [ready to deploy templates](https://github.com/remix-run/react-router-templates) for various JavaScript runtimes and platforms.
+**[React Router](https://reactrouter.com/start/framework/installation) -- наиболее популярная библиотека маршрутизации для React, которая может быть использована в паре с Vite, чтобы создать фулстек-фреймворк**. Она фокусируется на веб-стандартах и имеет несколько [готовых к развёртыванию шаблонов](https://github.com/remix-run/react-router-templates) для различных платформ и сред запуска JavaScript-кода.
 
-To create a new React Router framework project, run:
+Для создания нового проекта c React Router выполните команду:
 
 <TerminalBlock>
 npx create-react-router@latest
 </TerminalBlock>
 
-React Router is maintained by [Shopify](https://www.shopify.com).
+React Router поддерживается [Shopify](https://www.shopify.com).
 
-### Expo (for native apps) {/*expo*/}
+### Expo (для нативных приложений) {/*expo*/}
 
-**[Expo](https://expo.dev/) is a React framework that lets you create universal Android, iOS, and web apps with truly native UIs.** It provides an SDK for [React Native](https://reactnative.dev/) that makes the native parts easier to use. To create a new Expo project, run:
+**[Expo](https://expo.dev/) -- React-фреймворк, который позволяет создавать универсальные приложения с нативными интерфейсами для Android, iOS и браузеров.** Он идёт вместе с SDK для [React Native](https://reactnative.dev/) и облегчает разработку нативных частей. Чтобы создать новый проект с Expo, запустите в терминале команду:
 
 <TerminalBlock>
-npx create-expo-app@latest
+npx create-expo-app
 </TerminalBlock>
 
-If you're new to Expo, check out the [Expo tutorial](https://docs.expo.dev/tutorial/introduction/).
+Чтобы узнать больше, ознакомьтесь с [руководством по Expo](https://docs.expo.dev/tutorial/introduction/).
 
-Expo is maintained by [Expo (the company)](https://expo.dev/about). Building apps with Expo is free, and you can submit them to the Google and Apple app stores without restrictions. Expo additionally provides opt-in paid cloud services.
+Фреймворк поддерживается командой [Expo](https://expo.dev/about). Вы можете бесплатно создавать приложения с помощью Expo и добавлять их в магазины Apple и Google без каких-либо ограничений. Дополнительно Expo предлагает платные облачные сервисы.
 
 
-## Other frameworks {/*other-frameworks*/}
+## Другие фреймворки {/*other-frameworks*/}
 
-There are other up-and-coming frameworks that are working towards our full stack React vision:
+Вот ещё пара перспективных фулстек-фреймворков, следующих нашему архитектурному видению:
 
-- [TanStack Start (Beta)](https://tanstack.com/): TanStack Start is a full-stack React framework powered by TanStack Router. It provides a full-document SSR, streaming, server functions, bundling, and more using tools like Nitro and Vite.
-- [RedwoodJS](https://redwoodjs.com/): Redwood is a full stack React framework with lots of pre-installed packages and configuration that makes it easy to build full-stack web applications.
+- [TanStack Start (Beta)](https://tanstack.com/): TanStack Start -- фулстек-фреймворк, разрабатываемый TanStack Router. Он предоставляет полнодокументный серверный рендеринг, стриминг, серверные функции, сборку и другие функции, используя такие инструменты как Nitro и Vite.
+- [RedwoodJS](https://redwoodjs.com/): Redwood -- фулстек-фреймворк с множеством предустановленных пакетов и конфигураций, которые делают разработку веб-приложений значительно проще.
 
 <DeepDive>
 
-#### Which features make up the React team’s full-stack architecture vision? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
+#### Что включает архитектурное видение фулстек-приложений командой React? {/*which-features-make-up-the-react-teams-full-stack-architecture-vision*/}
 
-Next.js's App Router bundler fully implements the official [React Server Components specification](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md). This lets you mix build-time, server-only, and interactive components in a single React tree.
+Бандлер маршрутизатора приложения Next.js полностью реализует официальную [спецификацию серверных React-компонентов](https://github.com/reactjs/rfcs/blob/main/text/0188-server-components.md). Это даёт возможность сочетать компоненты, сгенерированные во время сборки, на сервере и на клиенте в одном React-дереве.
 
-For example, you can write a server-only React component as an `async` function that reads from a database or from a file. Then you can pass data down from it to your interactive components:
+Например, вы можете написать серверный компонент как асинхронную функцию и прочитать данные из базы или файла. После этого вы можете передать эти данные ниже по дереву в динамический компонент, который будет запускаться в браузере:
 
 ```js
-// This component runs *only* on the server (or during the build).
+// Этот компонент запускается *только* на сервере (или во время сборки).
 async function Talks({ confId }) {
-  // 1. You're on the server, so you can talk to your data layer. API endpoint not required.
+  // 1. Это серверный код, вы можете напрямую обратиться к вашей базе данных без запросов к API.
   const talks = await db.Talks.findAll({ confId });
 
-  // 2. Add any amount of rendering logic. It won't make your JavaScript bundle larger.
+  // 2. Добавьте любую логику рендеринга. Это не увеличит ваш JavaScript-бандл.
   const videos = talks.map(talk => talk.video);
 
-  // 3. Pass the data down to the components that will run in the browser.
+  // 3. Передайте данные ниже по дереву в компонент, который будет запускаться в браузере.
   return <SearchableVideoList videos={videos} />;
 }
 ```
 
-Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03/29/react-v18#suspense-in-data-frameworks). This lets you specify a loading state (like a skeleton placeholder) for different parts of your user interface directly in your React tree:
+Маршрутизатор приложения Next.js также поддерживает [загрузку данных с задержкой (Suspense)](/blog/2022/03/29/react-v18#suspense-in-data-frameworks). Так вы можете задать вид различных частей вашего приложения при загрузке (например, показать заглушки) прямо в React-дереве:
 
 ```js
 <Suspense fallback={<TalksLoading />}>
@@ -96,18 +88,18 @@ Next.js's App Router also integrates [data fetching with Suspense](/blog/2022/03
 </Suspense>
 ```
 
-Server Components and Suspense are React features rather than Next.js features. However, adopting them at the framework level requires buy-in and non-trivial implementation work. At the moment, the Next.js App Router is the most complete implementation. The React team is working with bundler developers to make these features easier to implement in the next generation of frameworks.
+Серверные компоненты и задержка -- скорее возможности React, чем Next.js. Однако, команда фреймворка должна подписаться на их внедрение и провести нетривиальную работу. В данный момент маршрутизатор приложения Next.js является наиболее полной реализацией этих возможностей. Команда React продолжает совместную работу с разработчиками бандлеров над предоставлением новых возможностей в следующем поколении фреймворков.
 
 </DeepDive>
 
-## Start From Scratch {/*start-from-scratch*/}
+## Создать React-приложение с нуля {/*start-from-scratch*/}
 
-If your app has constraints not well-served by existing frameworks, you prefer to build your own framework, or you just want to learn the basics of a React app, there are other options available for starting a React project from scratch.
+Если существующие фреймворки не подходят вашему проекту, вы предпочитаете написать свой собственный или изучить внутренности React-приложения, вы можете создать [React-приложение с нуля](/learn/build-a-react-app-from-scratch).
 
-Starting from scratch gives you more flexibility, but does require that you make choices on which tools to use for routing, data fetching, and other common usage patterns.  It's a lot like building your own framework, instead of using a framework that already exists. The [frameworks we recommend](#full-stack-frameworks) have built-in solutions for these problems.  
+Начиная приложение с чистого листа, вы получите гибкость, но будете вынуждены самостоятельно подбирать необходимые инструменты для маршрутизации, загрузки данных и других часто используемых средств. Это будет похоже на написание собственного фреймворка вместо использования уже существующего. [Фреймворки, которые мы рекомендуем](#full-stack-frameworks), имеют встроенные средства для решения этих проблем.
 
-If you want to build your own solutions, see our guide to [build a React app from Scratch](/learn/build-a-react-app-from-scratch) for instructions on how to set up a new React project starting with a built tool like [Vite](https://vite.dev/), [Parcel](https://parceljs.org/), or [RSbuild](https://rsbuild.dev/).
+Если вы хотите создать собственное решение, посмотрите нашу инструкцию [как создавать приложения с нуля](/learn/build-a-react-app-from-scratch) и настроить новый React-проект с инструментами вроде [Vite](https://vite.dev/), [Parcel](https://parceljs.org/) или [RSbuild](https://rsbuild.dev/).
 
 -----
 
-_If you’re a framework author interested in being included on this page, [please let us know](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+)._
+_Если вы создатель фреймворка, который достоин включения на эту страницу, [пожалуйста, дайте нам знать](https://github.com/reactjs/react.dev/issues/new?assignees=&labels=type%3A+framework&projects=&template=3-framework.yml&title=%5BFramework%5D%3A+)._

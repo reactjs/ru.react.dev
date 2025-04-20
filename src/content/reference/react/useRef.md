@@ -450,11 +450,7 @@ button { display: block; margin-bottom: 20px; }
 
 #### Передача рефа в пользовательский компонент {/*exposing-a-ref-to-your-own-component*/}
 
-<<<<<<< HEAD
-Иногда может понадобиться управлять DOM-узлом дочернего компонента из родительского. Например, если вы разрабатываете компонент `MyInput` и хотите дать возможность родительскому компоненту фокусировать `<input>` (к которому родитель не имеет доступа), то можно воспользоваться комбинацией `useRef` (для хранения DOM-узла) и [`forwardRef`](/reference/react/forwardRef) (для передачи рефа родительскому компоненту). Подробнее об этом в [пошаговом руководстве](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes).
-=======
-Sometimes, you may want to let the parent component manipulate the DOM inside of your component. For example, maybe you're writing a `MyInput` component, but you want the parent to be able to focus the input (which the parent has no access to). You can create a `ref` in the parent and pass the `ref` as prop to the child component. Read a [detailed walkthrough](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes) here.
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
+Иногда может понадобиться управлять DOM-узлом дочернего компонента из родительского. Например, если вы разрабатываете компонент `MyInput` и хотите дать возможность родительскому компоненту фокусировать `<input>` (к которому родитель не имеет доступа), то можно создать `реф` в родительском компоненте и передать `реф` как проп в дочерний компонент. Подробнее об этом в [пошаговом руководстве](/learn/manipulating-the-dom-with-refs#accessing-another-components-dom-nodes).
 
 <Sandpack>
 
@@ -579,11 +575,7 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-<<<<<<< HEAD
-И затем оберните его в [`forwardRef`](/reference/react/forwardRef):
-=======
-And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevent child [built-in component](/reference/react-dom/components/common) like this:
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
+И затем добавьте `реф` в список пропов вашего компонента и передайте `ref` как проп в нужный дочерний [встроенный компонент](/reference/react-dom/components/common):
 
 ```js {1,6}
 function MyInput({ value, onChange, ref }) {

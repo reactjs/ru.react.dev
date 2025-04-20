@@ -36,28 +36,13 @@ function SearchPage() {
 
 #### Параметры {/*parameters*/}
 
-<<<<<<< HEAD
 * `value`: Значение, обновление которого вы хотите отложить.
-* <CanaryBadge title="Эта функциональность доступна только в canary-версии" /> **необязательный** `initialValue`: Значение, установленное для первого рендера. Если этот параметр опущен, `useDeferredValue` не сработает для первого рендера, так как нет предыдущей версии `value`, которую можно было бы показать.
-=======
-* `value`: The value you want to defer. It can have any type.
-* **optional** `initialValue`: A value to use during the initial render of a component. If this option is omitted, `useDeferredValue` will not defer during the initial render, because there's no previous version of `value` that it can render instead.
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
+* **необязательный** `initialValue`: Значение, установленное для первого рендера. Если этот параметр опущен, `useDeferredValue` не сработает для первого рендера, так как нет предыдущей версии `value`, которую можно было бы показать.
 
 
 #### Возвращаемое значение {/*returns*/}
 
-<<<<<<< HEAD
 - `currentValue`: При первом рендеринге вызов вернёт то же значение, которое вы указали. Когда в следующих обновлениях значение изменится, вызов вернёт прошлое значение, но при этом React запустит дополнительный фоновый рендеринг, в котором вызов вернёт обновлённое значение.
-
-<Canary>
-
-В последних canary-версиях React, `useDeferredValue` возвращает `initialValue` для первого рендера, и в фоновом режиме планирует последующий рендер уже с `value`.
-
-</Canary>
-=======
-- `currentValue`: During the initial render, the returned deferred value will be the `initialValue`, or the same as the value you provided. During updates, React will first attempt a re-render with the old value (so it will return the old value), and then try another re-render in the background with the new value (so it will return the updated value).
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
 
 #### Замечания {/*caveats*/}
 
@@ -103,15 +88,9 @@ function SearchPage() {
 
 Предполагается, что данные в этом примере вы получаете через источники, которые поддерживают Suspense:
 
-<<<<<<< HEAD
-- Запрашиваете данные с помощью поддерживающих Suspense фреймворков, как, например, [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) или [Next.js](https://nextjs.org/docs/getting-started/react-essentials).
+- Запрашиваете данные с помощью поддерживающих Suspense фреймворков, как, например, [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) или [Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense).
 - Лениво загружаете код компонентов с помощью [`lazy`](/reference/react/lazy).
 - Читаете значение промиса с помощью [`use`](/reference/react/use).
-=======
-- Data fetching with Suspense-enabled frameworks like [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) and [Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense)
-- Lazy-loading component code with [`lazy`](/reference/react/lazy)
-- Reading the value of a Promise with [`use`](/reference/react/use)
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
 
 [Подробнее о Suspense и связанных с ним ограничениях.](/reference/react/Suspense)
 

@@ -42,16 +42,10 @@ root.render(
 
 Строгий режим активирует следующие варианты поведения в режиме разработки:
 
-<<<<<<< HEAD
 - Ваши компоненты будут [рендерится повторно](#fixing-bugs-found-by-double-rendering-in-development), чтобы можно было найти баги, вызванные нечистым рендерингом.
 - Ваши компоненты будут [повторно запускать эффекты](#fixing-bugs-found-by-re-running-effects-in-development), чтобы можно было найти баги, возникающие из-за отсутствия сброса эффекта.
+- Ваши компоненты будут [повторно запускать реф-колбэки](#fixing-bugs-found-by-re-running-ref-callbacks-in-development), чтобы найти баги, вызванные пропущенной очисткой рефов.
 - Ваши компоненты будут [проверяться на использование устаревших API.](#fixing-deprecation-warnings-enabled-by-strict-mode)
-=======
-- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
-- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
-- Your components will [re-run refs callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
 
 #### Пропсы {/*props*/}
 
@@ -92,16 +86,10 @@ root.render(
 
 Строгий режим включает следующие дополнительные проверки в режиме разработки:
 
-<<<<<<< HEAD
 - Ваши компоненты будут [рендерится повторно](#fixing-bugs-found-by-double-rendering-in-development), чтобы можно было найти баги, вызванные нечистым рендерингом.
 - Ваши компоненты будут [повторно запускать эффекты](#fixing-bugs-found-by-re-running-effects-in-development), чтобы можно было найти баги, возникающие из-за отсутствия сброса эффекта.
+- Ваши компоненты будут [повторно запускать реф-колбэки](#fixing-bugs-found-by-re-running-ref-callbacks-in-development), чтобы найти баги, вызванные пропущенной очисткой рефов.
 - Ваши компоненты будут [проверяться на использование устаревших API.](#fixing-deprecation-warnings-enabled-by-strict-mode)
-=======
-- Your components will [re-render an extra time](#fixing-bugs-found-by-double-rendering-in-development) to find bugs caused by impure rendering.
-- Your components will [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) to find bugs caused by missing Effect cleanup.
-- Your components will [re-run ref callbacks an extra time](#fixing-bugs-found-by-re-running-ref-callbacks-in-development) to find bugs caused by missing ref cleanup.
-- Your components will [be checked for usage of deprecated APIs.](#fixing-deprecation-warnings-enabled-by-strict-mode)
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
 
 **Все эти проверки работают только в режиме разработки и не оказывают никакого эффекта в продакшен-сборке.**
 
@@ -136,7 +124,7 @@ function App() {
 
 <Note>
 
-When `StrictMode` is enabled for a part of the app, React will only enable behaviors that are possible in production. For example, if `<StrictMode>` is not enabled at the root of the app, it will not [re-run Effects an extra time](#fixing-bugs-found-by-re-running-effects-in-development) on initial mount, since this would cause child effects to double fire without the parent effects, which cannot happen in production.
+Когда `StrictMode` включен только для части приложения, React включит только то, что может быть использовано в продакшене. Например, если `<StrictMode>` не включен в корне приложения, он не будет [перезапускать эффекты повторно](#fixing-bugs-found-by-re-running-effects-in-development) при начальном монтировании, так как это вызвало бы повторное срабатывание дочерних эффектов без родительских, что не может произойти в продакшене.
 
 </Note>
 
@@ -847,9 +835,6 @@ button { margin-left: 10px; }
 ---
 ### Fixing bugs found by re-running ref callbacks in development {/*fixing-bugs-found-by-re-running-ref-callbacks-in-development*/}
 
-<<<<<<< HEAD
-### Исправление предупреждений об устаревших методах в строгом режиме {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
-=======
 Strict Mode can also help find bugs in [callbacks refs.](/learn/manipulating-the-dom-with-refs)
 
 Every callback `ref` has some setup code and may have some cleanup code. Normally, React calls setup when the element is *created* (is added to the DOM) and calls cleanup when the element is *removed* (is removed from the DOM).
@@ -1260,18 +1245,10 @@ Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, 
 Without Strict Mode, it was easy to miss the bug until you clicked around to app to notice broken features. Strict Mode made the bugs appear right away, before you push them to production.
 
 --- 
-### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
+### Исправление предупреждений об устаревших методах в строгом режиме {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
 
 React предупреждает, если какой-либо компонент внутри дерева `<StrictMode>` использует одно из следующих устаревших API:
 
-<<<<<<< HEAD
-* [`findDOMNode`](/reference/react-dom/findDOMNode). [Смотреть альтернативные решения.](https://reactjs.org/docs/strict-mode.html#warning-about-deprecated-finddomnode-usage)
-* `UNSAFE_` классовые методы жизненного цикла, такие как [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [Смотреть альтернативные решения.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles) 
-* Устаревший контекст ([`childContextTypes`](/reference/react/Component#static-childcontexttypes), [`contextTypes`](/reference/react/Component#static-contexttypes), и [`getChildContext`](/reference/react/Component#getchildcontext)). [Смотреть альтернативные решения.](/reference/react/createContext)
-* Устаревшие строковые рефы ([`this.refs`](/reference/react/Component#refs)). [Смотреть альтернативные решения.](https://reactjs.org/docs/strict-mode.html#warning-about-legacy-string-ref-api-usage)
-=======
-* `UNSAFE_` class lifecycle methods like [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [See alternatives.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
+* `UNSAFE_` методы жизненного цикла классового компонента, такие как [`UNSAFE_componentWillMount`](/reference/react/Component#unsafe_componentwillmount). [Изучите альтернативы.](https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html#migrating-from-legacy-lifecycles)
 
 Эти API в основном используются в старых [классовых компонентах](/reference/react/Component), поэтому они редко встречаются в современных приложениях.

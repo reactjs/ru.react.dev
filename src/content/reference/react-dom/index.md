@@ -41,28 +41,13 @@ These APIs can be used to make apps faster by pre-loading resources such as scri
 
 ---
 
-<<<<<<< HEAD
-## Устаревшие API {/*deprecated-apis*/}
+## Удалённые API {/*deprecated-apis*/}
 
-<Deprecated>
+Эти API были удалены в React 19.
 
-Эти API будут удалены в одной из следующих версий React.
-
-</Deprecated>
-
-* [`findDOMNode`](/reference/react-dom/findDOMNode) находит ближайший DOM-узел, соответствующий экземпляру классового компонента.
-* [`hydrate`](/reference/react-dom/hydrate) монтирует дерево в DOM, созданное из HTML на сервере. Устарел в пользу [`hydrateRoot`](/reference/react-dom/client/hydrateRoot).
-* [`render`](/reference/react-dom/render) монтирует дерево в DOM. Устарел в пользу [`createRoot`](/reference/react-dom/client/createRoot).
-* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode) размонтирует дерево из DOM. Устарел в пользу [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount).
-=======
-## Removed APIs {/*removed-apis*/}
-
-These APIs were removed in React 19:
-
-* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): see [alternatives](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
-* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): use [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) instead.
-* [`render`](https://18.react.dev/reference/react-dom/render): use [`createRoot`](/reference/react-dom/client/createRoot) instead.
-* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode): use [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) instead.
-* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
-* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): use [`react-dom/server`](/reference/react-dom/server) APIs instead.
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
+* [`findDOMNode`](https://18.react.dev/reference/react-dom/findDOMNode): изучите [альтернативы](https://18.react.dev/reference/react-dom/findDOMNode#alternatives).
+* [`hydrate`](https://18.react.dev/reference/react-dom/hydrate): используйте [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) вместо.
+* [`render`](https://18.react.dev/reference/react-dom/render): используйте [`createRoot`](/reference/react-dom/client/createRoot) вместо.
+* [`unmountComponentAtNode`](/reference/react-dom/unmountComponentAtNode): используйте [`root.unmount()`](/reference/react-dom/client/createRoot#root-unmount) вместо.
+* [`renderToNodeStream`](https://18.react.dev/reference/react-dom/server/renderToNodeStream): используйте [`react-dom/server`](/reference/react-dom/server) API вместо.
+* [`renderToStaticNodeStream`](https://18.react.dev/reference/react-dom/server/renderToStaticNodeStream): используйте [`react-dom/server`](/reference/react-dom/server) API вместо.

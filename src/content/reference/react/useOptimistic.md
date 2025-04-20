@@ -2,15 +2,6 @@
 title: useOptimistic
 ---
 
-<<<<<<< HEAD
-<Canary>
-
-Хук useOptimistic доступен только в React Canary и является экспериментальным. Узнайте больше о [релизах React здесь](/community/versioning-policy#all-release-channels).
-
-</Canary>
-
-=======
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
 <Intro>
 
 `useOptimistic` -- это хук React, который позволяет оптимистично обновлять UI.

@@ -84,11 +84,7 @@ export default function Image() {
 
 Этот процесс рекурсивен: если обновленный компонент возвращает какой-то другой компонент, React будет рендерить _этот_ компонент следующим, и если этот компонент тоже что-то возвращает, он будет рендерить _этот_ компонент следующим, и так далее. Этот процесс будет продолжаться до тех пор, пока не останется вложенных компонентов и React не будет точно знать, что должно быть отображено на экране.
 
-<<<<<<< HEAD
-В следующем примере React вызовет `Gallery()` и  `Image()` несколько раз:
-=======
-In the following example, React will call `Gallery()` and `Image()` several times:
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
+В следующем примере React вызовет `Gallery()` и `Image()` несколько раз:
 
 <Sandpack>
 
@@ -152,17 +148,10 @@ img { margin: 0 10px 10px 0; }
 
 ## Часть 3: React фиксирует изменения в DOM {/*step-3-react-commits-changes-to-the-dom*/}
 
-<<<<<<< HEAD
 После рендеринга (вызова) ваших компонентов React модифицирует DOM. 
 
 * **На начальном рендере,** React использует [`appendChild()`](https://developer.mozilla.org/ru/docs/Web/API/Node/appendChild) DOM API, чтобы вставить все DOM ноды, которые он создал на экране. 
 * **Для ре-рендеров,** React будет применять минимально необходимые операции (вычисляемые во время рендеринга!), чтобы DOM соответствовал последнему выводу рендеринга.
-=======
-After rendering (calling) your components, React will modify the DOM.
-
-* **For the initial render,** React will use the [`appendChild()`](https://developer.mozilla.org/docs/Web/API/Node/appendChild) DOM API to put all the DOM nodes it has created on screen.
-* **For re-renders,** React will apply the minimal necessary operations (calculated while rendering!) to make the DOM match the latest rendering output.
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
 
 **React изменяет узлы DOM только если есть разница между рендерами.** Например, вот компонент, который рендерится с разными пропсами, передаваемыми от родителя каждую секунду. Обратите внимание, как вы можете добавить некоторый текст в `<input>`, обновляя его `значение`, но текст не исчезает при повторном рендеринге компонента:
 

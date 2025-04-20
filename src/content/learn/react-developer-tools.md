@@ -53,33 +53,9 @@ react-devtools
 
 ![React Developer Tools standalone](/images/docs/react-devtools-standalone.png)
 
-<<<<<<< HEAD
 ## Мобильные устройства (React Native) {/*mobile-react-native*/}
-React Developer Tools также можно использовать для отладки приложений, созданных с помощью [React Native](https://reactnative.dev/).
-Самый простой способ использования React Developer Tools - установить их глобально:
+Для отладки приложений, созданных с помощью [React Native](https://reactnative.dev/), вы можете использовать [React Native DevTools](https://reactnative.dev/docs/react-native-devtools), встроенный отладчик, который уже синтегрирован с React Developer Tools. Вся функциональность работает аналогично браузерному расширению, включая подсветку и выбор элементов.
 
-```bash
-# Yarn
-yarn global add react-devtools
-=======
-## Mobile (React Native) {/*mobile-react-native*/}
+[Узнайте больше об отладке в React Native.](https://reactnative.dev/docs/debugging)
 
-To inspect apps built with [React Native](https://reactnative.dev/), you can use [React Native DevTools](https://reactnative.dev/docs/react-native-devtools), the built-in debugger that deeply integrates React Developer Tools. All features work identically to the browser extension, including native element highlighting and selection.
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
-
-[Learn more about debugging in React Native.](https://reactnative.dev/docs/debugging)
-
-<<<<<<< HEAD
-Откройте инструменты разработчика в терминале.
-```bash
-react-devtools
-```
-
-Он подключится к любому локальному приложению React Native, которое запущено.
-
-> Попробуйте перезагрузить приложение, если инструменты разработчика не подключатся через несколько секунд.
-
-[Узнайте больше о отладке React Native.](https://reactnative.dev/docs/debugging)
-=======
-> For versions of React Native earlier than 0.76, please use the standalone build of React DevTools by following the [Safari and other browsers](#safari-and-other-browsers) guide above.
->>>>>>> 55986965fbf69c2584040039c9586a01bd54eba7
+> Для версий React Native более ранних чем 0.76, пожалуйста, используйте автономную сборку React DevTools, следуя инструкции [Safari и другие браузеры](#safari-and-other-browsers) выше. 
