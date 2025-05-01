@@ -4,7 +4,7 @@ title: "<progress>"
 
 <Intro>
 
-The [built-in browser `<progress>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) lets you render a progress indicator.
+[Встроенный в браузер компонент `<progress>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/progress) отвечает за рендер индикатора прогресса.
 
 ```js
 <progress value={0.5} />
@@ -16,36 +16,36 @@ The [built-in browser `<progress>` component](https://developer.mozilla.org/en-U
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `<progress>` {/*progress*/}
 
-To display a progress indicator, render the [built-in browser `<progress>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress) component.
+Для отображения индикатора прогресса отрендерите [встроенный в браузер компонент `<progress>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/progress).
 
 ```js
 <progress value={0.5} />
 ```
 
-[See more examples below.](#usage)
+[См. больше примеров ниже.](#usage)
 
-#### Props {/*props*/}
+#### Пропсы {/*props*/}
 
-`<progress>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<progress>` поддерживает все [пропсы общих HTML-элементов.](/reference/react-dom/components/common#props)
 
-Additionally, `<progress>` supports these props:
+Кроме того, `<progress>` поддерживает следующие пропсы:
 
-* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-max): A number. Specifies the maximum `value`. Defaults to `1`.
-* [`value`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#attr-value): A number between `0` and `max`, or `null` for indeterminate progress. Specifies how much was done.
+* [`max`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/progress#max): число. Указывает максимальное `value`. По умолчанию `1`.
+* [`value`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/progress#value): число между `0` и `max`, или `null` для неопределённого прогресса. Указывает сколько было сделано.
 
 ---
 
-## Usage {/*usage*/}
+## Применение {/*usage*/}
 
-### Controlling a progress indicator {/*controlling-a-progress-indicator*/}
+### Управление индикатором прогресса {/*controlling-a-progress-indicator*/}
 
-To display a progress indicator, render a `<progress>` component. You can pass a number `value` between `0` and the `max` value you specify. If you don't pass a `max` value, it will assumed to be `1` by default.
+Для отображения индикатора прогресса отрендерите компонент `<progress>`. Можно передать числовое `value` между `0` и указанным значением `max`. Если не указать `max`, то по умолчанию его значение будет равно `1`.
 
-If the operation is not ongoing, pass `value={null}` to put the progress indicator into an indeterminate state.
+Если никакая операция не выполняется, передайте `value={null}`, чтобы индикатор прогресса перешёл в неопределённое состояние.
 
 <Sandpack>
 

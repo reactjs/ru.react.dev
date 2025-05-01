@@ -64,7 +64,7 @@ export default function Page() {
 }
 ```
 
-```js Section.js
+```js src/Section.js
 export default function Section({ children }) {
   return (
     <section className="section">
@@ -74,7 +74,7 @@ export default function Section({ children }) {
 }
 ```
 
-```js Heading.js
+```js src/Heading.js
 export default function Heading({ level, children }) {
   switch (level) {
     case 1:
@@ -138,7 +138,7 @@ export default function Page() {
 }
 ```
 
-```js Section.js
+```js src/Section.js
 export default function Section({ children }) {
   return (
     <section className="section">
@@ -148,7 +148,7 @@ export default function Section({ children }) {
 }
 ```
 
-```js Heading.js
+```js src/Heading.js
 export default function Heading({ level, children }) {
   switch (level) {
     case 1:
@@ -260,7 +260,7 @@ export default function Page() {
 }
 ```
 
-```js Section.js
+```js src/Section.js
 export default function Section({ children }) {
   return (
     <section className="section">
@@ -270,7 +270,7 @@ export default function Section({ children }) {
 }
 ```
 
-```js Heading.js
+```js src/Heading.js
 export default function Heading({ level, children }) {
   switch (level) {
     case 1:
@@ -291,7 +291,7 @@ export default function Heading({ level, children }) {
 }
 ```
 
-```js LevelContext.js active
+```js src/LevelContext.js active
 import { createContext } from 'react';
 
 export const LevelContext = createContext(1);
@@ -390,7 +390,7 @@ export default function Page() {
 }
 ```
 
-```js Section.js
+```js src/Section.js
 export default function Section({ children }) {
   return (
     <section className="section">
@@ -400,7 +400,7 @@ export default function Section({ children }) {
 }
 ```
 
-```js Heading.js
+```js src/Heading.js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 
@@ -425,7 +425,7 @@ export default function Heading({ children }) {
 }
 ```
 
-```js LevelContext.js
+```js src/LevelContext.js
 import { createContext } from 'react';
 
 export const LevelContext = createContext(1);
@@ -468,15 +468,15 @@ import { LevelContext } from './LevelContext.js';
 export default function Section({ level, children }) {
   return (
     <section className="section">
-      <LevelContext.Provider value={level}>
+      <LevelContext value={level}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
 ```
 
-This tells React: "if any component inside this `<Section>` asks for `LevelContext`, give them this `level`." The component will use the value of the nearest `<LevelContext.Provider>` in the UI tree above it.
+This tells React: "if any component inside this `<Section>` asks for `LevelContext`, give them this `level`." The component will use the value of the nearest `<LevelContext>` in the UI tree above it.
 
 <Sandpack>
 
@@ -508,21 +508,21 @@ export default function Page() {
 }
 ```
 
-```js Section.js
+```js src/Section.js
 import { LevelContext } from './LevelContext.js';
 
 export default function Section({ level, children }) {
   return (
     <section className="section">
-      <LevelContext.Provider value={level}>
+      <LevelContext value={level}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
 ```
 
-```js Heading.js
+```js src/Heading.js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 
@@ -547,7 +547,7 @@ export default function Heading({ children }) {
 }
 ```
 
-```js LevelContext.js
+```js src/LevelContext.js
 import { createContext } from 'react';
 
 export const LevelContext = createContext(1);
@@ -567,7 +567,7 @@ export const LevelContext = createContext(1);
 It's the same result as the original code, but you did not need to pass the `level` prop to each `Heading` component! Instead, it "figures out" its heading level by asking the closest `Section` above:
 
 1. You pass a `level` prop to the `<Section>`.
-2. `Section` wraps its children into `<LevelContext.Provider value={level}>`.
+2. `Section` wraps its children into `<LevelContext value={level}>`.
 3. `Heading` asks the closest value of `LevelContext` above with `useContext(LevelContext)`.
 
 ## Using and providing context from the same component {/*using-and-providing-context-from-the-same-component*/}
@@ -587,7 +587,7 @@ export default function Page() {
 
 Since context lets you read information from a component above, each `Section` could read the `level` from the `Section` above, and pass `level + 1` down automatically. Here is how you could do it:
 
-```js Section.js {5,8}
+```js src/Section.js {5,8}
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 
@@ -595,9 +595,9 @@ export default function Section({ children }) {
   const level = useContext(LevelContext);
   return (
     <section className="section">
-      <LevelContext.Provider value={level + 1}>
+      <LevelContext value={level + 1}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
@@ -635,7 +635,7 @@ export default function Page() {
 }
 ```
 
-```js Section.js
+```js src/Section.js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 
@@ -643,15 +643,15 @@ export default function Section({ children }) {
   const level = useContext(LevelContext);
   return (
     <section className="section">
-      <LevelContext.Provider value={level + 1}>
+      <LevelContext value={level + 1}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
 ```
 
-```js Heading.js
+```js src/Heading.js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 
@@ -678,7 +678,7 @@ export default function Heading({ children }) {
 }
 ```
 
-```js LevelContext.js
+```js src/LevelContext.js
 import { createContext } from 'react';
 
 export const LevelContext = createContext(0);
@@ -765,7 +765,7 @@ function Post({ title, body }) {
 }
 ```
 
-```js Section.js
+```js src/Section.js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 
@@ -776,15 +776,15 @@ export default function Section({ children, isFancy }) {
       'section ' +
       (isFancy ? 'fancy' : '')
     }>
-      <LevelContext.Provider value={level + 1}>
+      <LevelContext value={level + 1}>
         {children}
-      </LevelContext.Provider>
+      </LevelContext>
     </section>
   );
 }
 ```
 
-```js Heading.js
+```js src/Heading.js
 import { useContext } from 'react';
 import { LevelContext } from './LevelContext.js';
 
@@ -811,7 +811,7 @@ export default function Heading({ children }) {
 }
 ```
 
-```js LevelContext.js
+```js src/LevelContext.js
 import { createContext } from 'react';
 
 export const LevelContext = createContext(0);
@@ -868,7 +868,7 @@ In general, if some information is needed by distant components in different par
 * To pass context:
   1. Create and export it with `export const MyContext = createContext(defaultValue)`.
   2. Pass it to the `useContext(MyContext)` Hook to read it in any child component, no matter how deep.
-  3. Wrap children into `<MyContext.Provider value={...}>` to provide it from a parent.
+  3. Wrap children into `<MyContext value={...}>` to provide it from a parent.
 * Context passes through any components in the middle.
 * Context lets you write components that "adapt to their surroundings".
 * Before you use context, try passing props or passing JSX as `children`.
@@ -887,7 +887,7 @@ You can declare context in `Context.js`.
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import { places } from './data.js';
 import { getImageUrl } from './utils.js';
@@ -952,11 +952,11 @@ function PlaceImage({ place, imageSize }) {
 }
 ```
 
-```js Context.js
+```js src/Context.js
 
 ```
 
-```js data.js
+```js src/data.js
 export const places = [{
   id: 0,
   name: 'Bo-Kaap in Cape Town, South Africa',
@@ -985,7 +985,7 @@ export const places = [{
 }, {
   id: 5, 
   name: 'Chefchaouen, Marocco',
-  description: 'There are a few theories on why the houses are painted blue, including that the color repells mosquitos or that it symbolizes sky and heaven.',
+  description: 'There are a few theories on why the houses are painted blue, including that the color repels mosquitos or that it symbolizes sky and heaven.',
   imageId: 'rTqKo46'
 }, {
   id: 6,
@@ -995,7 +995,7 @@ export const places = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(place) {
   return (
     'https://i.imgur.com/' +
@@ -1022,11 +1022,11 @@ li {
 
 Remove `imageSize` prop from all the components.
 
-Create and export `ImageSizeContext` from `Context.js`. Then wrap the List into `<ImageSizeContext.Provider value={imageSize}>` to pass the value down, and `useContext(ImageSizeContext)` to read it in the `PlaceImage`:
+Create and export `ImageSizeContext` from `Context.js`. Then wrap the List into `<ImageSizeContext value={imageSize}>` to pass the value down, and `useContext(ImageSizeContext)` to read it in the `PlaceImage`:
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState, useContext } from 'react';
 import { places } from './data.js';
 import { getImageUrl } from './utils.js';
@@ -1036,7 +1036,7 @@ export default function App() {
   const [isLarge, setIsLarge] = useState(false);
   const imageSize = isLarge ? 150 : 100;
   return (
-    <ImageSizeContext.Provider
+    <ImageSizeContext
       value={imageSize}
     >
       <label>
@@ -1051,7 +1051,7 @@ export default function App() {
       </label>
       <hr />
       <List />
-    </ImageSizeContext.Provider>
+    </ImageSizeContext>
   )
 }
 
@@ -1089,13 +1089,13 @@ function PlaceImage({ place }) {
 }
 ```
 
-```js Context.js
+```js src/Context.js
 import { createContext } from 'react';
 
 export const ImageSizeContext = createContext(500);
 ```
 
-```js data.js
+```js src/data.js
 export const places = [{
   id: 0,
   name: 'Bo-Kaap in Cape Town, South Africa',
@@ -1124,7 +1124,7 @@ export const places = [{
 }, {
   id: 5, 
   name: 'Chefchaouen, Marocco',
-  description: 'There are a few theories on why the houses are painted blue, including that the color repells mosquitos or that it symbolizes sky and heaven.',
+  description: 'There are a few theories on why the houses are painted blue, including that the color repels mosquitos or that it symbolizes sky and heaven.',
   imageId: 'rTqKo46'
 }, {
   id: 6,
@@ -1134,7 +1134,7 @@ export const places = [{
 }];
 ```
 
-```js utils.js
+```js src/utils.js
 export function getImageUrl(place) {
   return (
     'https://i.imgur.com/' +

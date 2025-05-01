@@ -1,13 +1,13 @@
 ---
-title: startTransition
+Заголовок: startTransition
 ---
 
 <Intro>
 
-`startTransition` lets you update the state without blocking the UI.
+`startTransition` позволяет обновлять состояние без блокировки интерфейса. 
 
 ```js
-startTransition(scope)
+startTransition(action)
 ```
 
 </Intro>
@@ -16,11 +16,11 @@ startTransition(scope)
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
-### `startTransition(scope)` {/*starttransitionscope*/}
+### `startTransition(action)` {/*starttransition*/}
 
-The `startTransition` function lets you mark a state update as a transition.
+Функция `startTransition`  позволяет пометить обновление состояния как переход.
 
 ```js {7,9}
 import { startTransition } from 'react';
@@ -37,37 +37,39 @@ function TabContainer() {
 }
 ```
 
-[See more examples below.](#usage)
+[См. другие примеры ниже.](#usage)
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-* `scope`: A function that updates some state by calling one or more [`set` functions.](/reference/react/useState#setstate) React immediately calls `scope` with no parameters and marks all state updates scheduled synchronously during the `scope` function call as transitions. They will be [non-blocking](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition) and [will not display unwanted loading indicators.](/reference/react/useTransition#preventing-unwanted-loading-indicators)
+* `action`: Функция, которая обновляет состояние, вызывая одну или несколько [функций `set`.](/reference/react/useState#setstate) React немедленно вызывает `action` без параметров и помечает все обновления состояния, запланированные синхронно во время вызова функции action, как переходы. Любые асинхронные вызовы, ожидаемые в `action` будут включены в переход, но в требуют обернуть все функции `set` после `await` в дополнительный `startTransition` (смотрите [Решение проблем](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)). Переходы будут [неблокирующими](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition) и [не будут отображать нежелательные индикаторы загрузки.](/reference/react/useTransition#preventing-unwanted-loading-indicators)
 
-#### Returns {/*returns*/}
+#### Возвращаемое значение {/*returns*/}
 
-`startTransition` does not return anything.
+`startTransition` ничего не возвращает. 
 
-#### Caveats {/*caveats*/}
+#### Замечания {/*caveats*/}
 
-* `startTransition` does not provide a way to track whether a transition is pending. To show a pending indicator while the transition is ongoing, you need [`useTransition`](/reference/react/useTransition) instead.
+* `startTransition` не предоставляет способа отслеживать, ожидает ли переход выполнения. Чтобы показать индикатор ожидания во время выполнения перехода, необходимо использовать [`useTransition`](/reference/react/useTransition). 
 
-* You can wrap an update into a transition only if you have access to the `set` function of that state. If you want to start a transition in response to some prop or a custom Hook return value, try [`useDeferredValue`](/reference/react/useDeferredValue) instead.
+* Вы можете обернуть обновление в переход только в том случае, если у вас есть доступ к функции `set` для этого состояния. Если вы хотите начать переход в ответ на какой-то проп или значение, возвращаемое пользовательским хуком, попробуйте использовать [`useDeferredValue`](/reference/react/useDeferredValue).
 
-* The function you pass to `startTransition` must be synchronous. React immediately executes this function, marking all state updates that happen while it executes as transitions. If you try to perform more state updates later (for example, in a timeout), they won't be marked as transitions.
+* Функция, передаваемая в `startTransition`, должна быть синхронной. React немедленно выполняет эту функцию, помечая как переходы все обновления состояния которые происходят во время ее выполнения. Если вы попытаетесь выполнить дополнительные обновления состояния позже (например, в таймауте), они не будут помечены как переходы.
 
-* A state update marked as a transition will be interrupted by other state updates. For example, if you update a chart component inside a transition, but then start typing into an input while the chart is in the middle of a re-render, React will restart the rendering work on the chart component after handling the input state update.
+* Вы должны обернуть все обновления состояния, вызванные после асинхронных запросов в дополнительный `startTransition`, чтобы пометить их как переходы. Это известное ограничение, которое мы планируем исправить в будущем (смотрите [Решение проблем](/reference/react/useTransition#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
 
-* Transition updates can't be used to control text inputs.
+* Обновление состояния, помеченное как переход, будет прервано другими обновлениями состояния. Например, если вы обновите компонент диаграммы внутри перехода, но затем начнете вводить текст в поле ввода, пока диаграмма находится в процессе повторного рендеринга, React перезапустит процесс рендеринга компонента диаграммы после обработки обновления состояния в поле ввода.
 
-* If there are multiple ongoing transitions, React currently batches them together. This is a limitation that will likely be removed in a future release.
+* Обновления перехода не могут использоваться для управления текстовыми полями ввода.
+
+* В случае наличия нескольких одновременных переходов, React в настоящее время группирует их вместе. Это ограничение, вероятно, будет устранено в будущих релизах.
 
 ---
 
-## Usage {/*usage*/}
+## Применение {/*usage*/}
 
-### Marking a state update as a non-blocking transition {/*marking-a-state-update-as-a-non-blocking-transition*/}
+### Пометка обновления состояния как неблокирующего перехода. {/*marking-a-state-update-as-a-non-blocking-transition*/}
 
-You can mark a state update as a *transition* by wrapping it in a `startTransition` call:
+Вы можете пометить обновление состояния как *переход*, обернув его в вызов `startTransition`:
 
 ```js {7,9}
 import { startTransition } from 'react';
@@ -84,14 +86,14 @@ function TabContainer() {
 }
 ```
 
-Transitions let you keep the user interface updates responsive even on slow devices.
+Переходы позволяют сохранить отзывчивость обновлений интерфейса даже на медленных устройствах.
 
-With a transition, your UI stays responsive in the middle of a re-render. For example, if the user clicks a tab but then change their mind and click another tab, they can do that without waiting for the first re-render to finish.
+С помощью перехода ваш UI остается отзывчивым даже во время повторного рендера. Например, если пользователь нажимает на вкладку, но затем меняет свое решение и нажимает на другую вкладку, он может это сделать, не дожидаясь завершения первого перерендеринга.
 
 <Note>
 
-`startTransition` is very similar to [`useTransition`](/reference/react/useTransition), except that it does not provide the `isPending` flag to track whether a transition is ongoing. You can call `startTransition` when `useTransition` is not available. For example, `startTransition` works outside components, such as from a data library.
+`startTransition` очень похож на [`useTransition`](/reference/react/useTransition), за исключением того, что он не предоставляет флаг `isPending` для отслеживания того, идет ли в данный момент переход. Вы можете вызвать `startTransition`, когда `useTransition` недоступен. Например, `startTransition` работает вне компонентов из например, библиотеки данных.
 
-[Learn about transitions and see examples on the `useTransition` page.](/reference/react/useTransition)
+[Узнайте о переходах и посмотрите примеры на странице `useTransition`.](/reference/react/useTransition)
 
 </Note>
