@@ -38,7 +38,7 @@ function AppRoot() {
 
 #### Параметры {/*parameters*/}
 
-* `href`: string — URL сервера, с которым нужно установить соединение.
+* `href`: строка — URL сервера, с которым нужно установить соединение.
 
 
 #### Возвращает {/*returns*/}
@@ -83,7 +83,7 @@ function CallToAction() {
         startWizard();
     }
     return (
-        <button onClick={onClick}>Start Wizard</button>
+        <button onClick={onClick}>Запустить мастер настройки</button>
     );
 }
 ```
