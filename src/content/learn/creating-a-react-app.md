@@ -24,7 +24,15 @@ title: Начать новый React-проект
 
 **[Маршрутизатор приложения Next.js (Next.js App Router)](https://nextjs.org/docs) -- React-фреймворк, полностью использующий преимущества архитектуры React для создания фулстек-приложений.
 
+<<<<<<< HEAD
 Команда [Vercel](https://vercel.com/) постоянно улучшает Next.js. Вы можете [развернуть Next.js-приложение](https://nextjs.org/docs/app/building-your-application/deploying) на облачном хостинге с Node.js или бессерверными вычислениями, а также на вашем собственном сервере. Next.js также поддерживает [статический экспорт](https://nextjs.org/docs/app/building-your-application/deploying/static-exports), который не требует сервера. Дополнительно Vercel предлагает платные облачные сервисы.
+=======
+<TerminalBlock>
+npx create-next-app@latest
+</TerminalBlock>
+
+Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any hosting provider that supports Node.js or Docker containers, or to your own server. Next.js also supports [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) which doesn't require a server.
+>>>>>>> a3e9466dfeea700696211533a3570bc48d7bc3d3
 
 ### React Router (v7) {/*react-router-v7*/}
 
@@ -98,7 +106,11 @@ async function Talks({ confId }) {
 
 Начиная приложение с чистого листа, вы получите гибкость, но будете вынуждены самостоятельно подбирать необходимые инструменты для маршрутизации, загрузки данных и других часто используемых средств. Это будет похоже на написание собственного фреймворка вместо использования уже существующего. [Фреймворки, которые мы рекомендуем](#full-stack-frameworks), имеют встроенные средства для решения этих проблем.
 
+<<<<<<< HEAD
 Если вы хотите создать собственное решение, посмотрите нашу инструкцию [как создавать приложения с нуля](/learn/build-a-react-app-from-scratch) и настроить новый React-проект с инструментами вроде [Vite](https://vite.dev/), [Parcel](https://parceljs.org/) или [RSbuild](https://rsbuild.dev/).
+=======
+If you want to build your own solutions, see our guide to [build a React app from Scratch](/learn/build-a-react-app-from-scratch) for instructions on how to set up a new React project starting with a build tool like [Vite](https://vite.dev/), [Parcel](https://parceljs.org/), or [RSbuild](https://rsbuild.dev/).
+>>>>>>> a3e9466dfeea700696211533a3570bc48d7bc3d3
 
 -----
 
