@@ -102,11 +102,7 @@ async function Talks({ confId }) {
 
 Начиная приложение с чистого листа, вы получите гибкость, но будете вынуждены самостоятельно подбирать необходимые инструменты для маршрутизации, загрузки данных и других часто используемых средств. Это будет похоже на написание собственного фреймворка вместо использования уже существующего. [Фреймворки, которые мы рекомендуем](#full-stack-frameworks), имеют встроенные средства для решения этих проблем.
 
-<<<<<<< HEAD
 Если вы хотите создать собственное решение, посмотрите нашу инструкцию [как создавать приложения с нуля](/learn/build-a-react-app-from-scratch) и настроить новый React-проект с инструментами вроде [Vite](https://vite.dev/), [Parcel](https://parceljs.org/) или [RSbuild](https://rsbuild.dev/).
-=======
-If you want to build your own solutions, see our guide to [build a React app from Scratch](/learn/build-a-react-app-from-scratch) for instructions on how to set up a new React project starting with a build tool like [Vite](https://vite.dev/), [Parcel](https://parceljs.org/), or [RSbuild](https://rsbuild.dev/).
->>>>>>> a3e9466dfeea700696211533a3570bc48d7bc3d3
 
 -----
 
