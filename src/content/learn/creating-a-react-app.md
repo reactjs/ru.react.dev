@@ -24,15 +24,11 @@ title: Начать новый React-проект
 
 **[Маршрутизатор приложения Next.js (Next.js App Router)](https://nextjs.org/docs) -- React-фреймворк, полностью использующий преимущества архитектуры React для создания фулстек-приложений.
 
-<<<<<<< HEAD
-Команда [Vercel](https://vercel.com/) постоянно улучшает Next.js. Вы можете [развернуть Next.js-приложение](https://nextjs.org/docs/app/building-your-application/deploying) на облачном хостинге с Node.js или бессерверными вычислениями, а также на вашем собственном сервере. Next.js также поддерживает [статический экспорт](https://nextjs.org/docs/app/building-your-application/deploying/static-exports), который не требует сервера. Дополнительно Vercel предлагает платные облачные сервисы.
-=======
 <TerminalBlock>
 npx create-next-app@latest
 </TerminalBlock>
 
-Next.js is maintained by [Vercel](https://vercel.com/). You can [deploy a Next.js app](https://nextjs.org/docs/app/building-your-application/deploying) to any hosting provider that supports Node.js or Docker containers, or to your own server. Next.js also supports [static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) which doesn't require a server.
->>>>>>> a3e9466dfeea700696211533a3570bc48d7bc3d3
+Команда [Vercel](https://vercel.com/) постоянно улучшает Next.js. Вы можете [развернуть Next.js-приложение](https://nextjs.org/docs/app/building-your-application/deploying) на любом облачном хостинге с поддержкой Node.js или Docker-контейнеров, а также на вашем собственном сервере. Next.js также поддерживает [статический экспорт](https://nextjs.org/docs/app/building-your-application/deploying/static-exports), который не требует сервера.
 
 ### React Router (v7) {/*react-router-v7*/}
 
