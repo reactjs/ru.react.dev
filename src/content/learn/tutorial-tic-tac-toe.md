@@ -29,7 +29,7 @@ You can see what it will look like when you're finished here:
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
@@ -147,7 +147,7 @@ function calculateWinner(squares) {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -206,13 +206,13 @@ In the live code editor below, click **Fork** in the top-right corner to open th
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 export default function Square() {
   return <button className="square">X</button>;
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -264,7 +264,7 @@ body {
 You can also follow this tutorial using your local development environment. To do this, you need to:
 
 1. Install [Node.js](https://nodejs.org/en/)
-1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **File > Export to ZIP** in that menu to download an archive of the files locally
+1. In the CodeSandbox tab you opened earlier, press the top-left corner button to open the menu, and then choose **Download Sandbox** in that menu to download an archive of the files locally
 1. Unzip the archive, then open a terminal and `cd` to the directory you unzipped
 1. Install the dependencies with `npm install`
 1. Run `npm start` to start a local server and follow the prompts to view the code running in a browser
@@ -295,7 +295,7 @@ export default function Square() {
 }
 ```
 
-The _browser_ section should be displaying a square with a X in it like this:
+The _browser_ section should be displaying a square with an X in it like this:
 
 ![x-filled square](../images/tutorial/x-filled-square.png)
 
@@ -337,7 +337,7 @@ import './styles.css';
 import App from './App';
 ```
 
-Lines 1-5 brings all the necessary pieces together: 
+Lines 1-5 bring all the necessary pieces together: 
 
 * React
 * React's library to talk to web browsers (React DOM)
@@ -362,11 +362,11 @@ You'll get this error:
 
 <ConsoleBlock level="error">
 
-/src/App.js: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX fragment `<>...</>`?
+/src/App.js: Adjacent JSX elements must be wrapped in an enclosing tag. Did you want a JSX Fragment `<>...</>`?
 
 </ConsoleBlock>
 
-React components need to return a single JSX element and not multiple adjacent JSX elements like two buttons. To fix this you can use *fragments* (`<>` and `</>`) to wrap multiple adjacent JSX elements like this:
+React components need to return a single JSX element and not multiple adjacent JSX elements like two buttons. To fix this you can use *Fragments* (`<>` and `</>`) to wrap multiple adjacent JSX elements like this:
 
 ```js {3-6}
 export default function Square() {
@@ -455,7 +455,7 @@ export default function Board() {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -627,7 +627,7 @@ Your updated code should look like this:
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 function Square({ value }) {
   return <button className="square">{value}</button>;
 }
@@ -655,7 +655,7 @@ export default function Board() {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -807,7 +807,7 @@ After you've made the above changes, your code will look like this:
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square() {
@@ -850,7 +850,7 @@ export default function Board() {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -988,7 +988,7 @@ And your code should look like this:
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square({ value }) {
@@ -1019,7 +1019,7 @@ export default function Board() {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -1133,7 +1133,7 @@ Calling the `setSquares` function lets React know the state of the component has
 
 <Note>
 
-JavaScript supports [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) which means an inner function (e.g. `handleClick`) has access to variables and functions defined in a outer function (e.g. `Board`). The `handleClick` function can read the `squares` state and call the `setSquares` method because they are both defined inside of the `Board` function.
+JavaScript supports [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) which means an inner function (e.g. `handleClick`) has access to variables and functions defined in an outer function (e.g. `Board`). The `handleClick` function can read the `squares` state and call the `setSquares` method because they are both defined inside of the `Board` function.
 
 </Note>
 
@@ -1173,7 +1173,7 @@ Why didn't this problem happen earlier?
 
 When you were passing `onSquareClick={handleClick}`, you were passing the `handleClick` function down as a prop. You were not calling it! But now you are *calling* that function right away--notice the parentheses in `handleClick(0)`--and that's why it runs too early. You don't *want* to call `handleClick` until the user clicks!
 
-You could fix by creating a function like `handleFirstSquareClick` that calls `handleClick(0)`, a function like `handleSecondSquareClick` that calls `handleClick(1)`, and so on. You would pass (rather than call) these functions down as props like `onSquareClick={handleFirstSquareClick}`. This would solve the infinite loop.
+You could fix this by creating a function like `handleFirstSquareClick` that calls `handleClick(0)`, a function like `handleSecondSquareClick` that calls `handleClick(1)`, and so on. You would pass (rather than call) these functions down as props like `onSquareClick={handleFirstSquareClick}`. This would solve the infinite loop.
 
 However, defining nine different functions and giving each of them a name is too verbose. Instead, let's do this:
 
@@ -1228,7 +1228,7 @@ This is what your code should look like:
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
@@ -1270,7 +1270,7 @@ export default function Board() {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -1325,7 +1325,7 @@ Let's recap what happens when a user clicks the top left square on your board to
 1. `handleClick` uses the argument (`0`) to update the first element of the `squares` array from `null` to `X`.
 1. The `squares` state of the `Board` component was updated, so the `Board` and all of its children re-render. This causes the `value` prop of the `Square` component with index `0` to change from `null` to `X`.
 
-In the end the user sees that the upper left square has changed from empty to having a `X` after clicking it.
+In the end the user sees that the upper left square has changed from empty to having an `X` after clicking it.
 
 <Note>
 
@@ -1406,7 +1406,7 @@ But wait, there's a problem. Try clicking on the same square multiple times:
 
 The `X` is overwritten by an `O`! While this would add a very interesting twist to the game, we're going to stick to the original rules for now.
 
-When you mark a square with a `X` or an `O` you aren't first checking to see if the square already has a `X` or `O` value. You can fix this by *returning early*. You'll check to see if the square already has a `X` or an `O`. If the square is already filled, you will `return` in the `handleClick` function early--before it tries to update the board state.
+When you mark a square with an `X` or an `O` you aren't first checking to see if the square already has an `X` or `O` value. You can fix this by *returning early*. You'll check to see if the square already has an `X` or an `O`. If the square is already filled, you will `return` in the `handleClick` function early--before it tries to update the board state.
 
 ```js {2,3,4}
 function handleClick(i) {
@@ -1422,7 +1422,7 @@ Now you can only add `X`'s or `O`'s to empty squares! Here is what your code sho
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square({value, onSquareClick}) {
@@ -1473,7 +1473,7 @@ export default function Board() {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -1524,7 +1524,7 @@ body {
 
 Now that the players can take turns, you'll want to show when the game is won and there are no more turns to make. To do this you'll add a helper function called `calculateWinner` that takes an array of 9 squares, checks for a winner and returns `'X'`, `'O'`, or `null` as appropriate. Don't worry too much about the `calculateWinner` function; it's not specific to React:
 
-```js App.js
+```js src/App.js
 export default function Board() {
   //...
 }
@@ -1556,7 +1556,7 @@ It does not matter whether you define `calculateWinner` before or after the `Boa
 
 </Note>
 
-You will call `calculateWinner(squares)` in the `Board` component's `handleClick` function to check if a player has won. You can perform this check at the same time you check if a user has clicked a square that already has a `X` or and `O`. We'd like to return early in both cases:
+You will call `calculateWinner(squares)` in the `Board` component's `handleClick` function to check if a player has won. You can perform this check at the same time you check if a user has clicked a square that already has an `X` or an `O`. We'd like to return early in both cases:
 
 ```js {2}
 function handleClick(i) {
@@ -1594,7 +1594,7 @@ Congratulations! You now have a working tic-tac-toe game. And you've just learne
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square({value, onSquareClick}) {
@@ -1674,7 +1674,7 @@ function calculateWinner(squares) {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -1872,7 +1872,7 @@ At this point, you've moved the state to live in the `Game` component, and the U
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
@@ -1970,7 +1970,7 @@ function calculateWinner(squares) {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -2073,11 +2073,17 @@ export default function Game() {
 }
 ```
 
-You can see what your code should look like below. Note that you should see an error in the developer tools console that says: ``Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of `Game`.`` You'll fix this error in the next section.
+You can see what your code should look like below. Note that you should see an error in the developer tools console that says: 
+
+<ConsoleBlock level="warning">
+Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of &#96;Game&#96;.
+</ConsoleBlock>
+  
+You'll fix this error in the next section.
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
@@ -2193,7 +2199,7 @@ function calculateWinner(squares) {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -2241,7 +2247,7 @@ body {
 
 </Sandpack>
 
-As you iterate through `history` array inside the function you passed to `map`, the `squares` argument goes through each element of `history`, and the `move` argument goes through each array index: `0`, `1`, `2`, …. (In most cases, you'd need the actual array elements, but to render a list of moves you will only need indexes.)
+As you iterate through the `history` array inside the function you passed to `map`, the `squares` argument goes through each element of `history`, and the `move` argument goes through each array index: `0`, `1`, `2`, …. (In most cases, you'd need the actual array elements, but to render a list of moves you will only need indexes.)
 
 For each move in the tic-tac-toe game's history, you create a list item `<li>` which contains a button `<button>`. The button has an `onClick` handler which calls a function called `jumpTo` (that you haven't implemented yet).
 
@@ -2266,7 +2272,7 @@ to
 <li>Alexa: 5 tasks left</li>
 ```
 
-In addition to the updated counts, a human reading this would probably say that you swapped Alexa and Ben's ordering and inserted Claudia between Alexa and Ben. However, React is a computer program and can't know what you intended, so you need to specify a _key_ property for each list item to differentiate each list item from its siblings. If your data was from a database, Alexa, Ben, and Claudia's database IDs could be used as keys.
+In addition to the updated counts, a human reading this would probably say that you swapped Alexa and Ben's ordering and inserted Claudia between Alexa and Ben. However, React is a computer program and does not know what you intended, so you need to specify a _key_ property for each list item to differentiate each list item from its siblings. If your data was from a database, Alexa, Ben, and Claudia's database IDs could be used as keys.
 
 ```js {1}
 <li key={user.id}>
@@ -2305,7 +2311,7 @@ const moves = history.map((squares, move) => {
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
@@ -2422,7 +2428,7 @@ function calculateWinner(squares) {
 
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -2526,7 +2532,7 @@ If you click on any step in the game's history, the tic-tac-toe board should imm
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square({value, onSquareClick}) {
@@ -2646,7 +2652,7 @@ function calculateWinner(squares) {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -2736,7 +2742,7 @@ Check out the final result here:
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 
 function Square({ value, onSquareClick }) {
@@ -2854,7 +2860,7 @@ function calculateWinner(squares) {
 }
 ```
 
-```css styles.css
+```css src/styles.css
 * {
   box-sizing: border-box;
 }
@@ -2909,4 +2915,4 @@ If you have extra time or want to practice your new React skills, here are some 
 1. When someone wins, highlight the three squares that caused the win (and when no one wins, display a message about the result being a draw).
 1. Display the location for each move in the format (row, col) in the move history list.
 
-Throughout this tutorial, you've touched on React concepts including elements, components, props, and state. Now that you've seen how these concepts work when building a game, check out [Thinking in React](/learn/thinking-in-react) to see how the same React concepts work when build an app's UI.
+Throughout this tutorial, you've touched on React concepts including elements, components, props, and state. Now that you've seen how these concepts work when building a game, check out [Thinking in React](/learn/thinking-in-react) to see how the same React concepts work when building an app's UI.

@@ -58,7 +58,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
@@ -238,7 +238,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
@@ -427,7 +427,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
@@ -536,7 +536,7 @@ This example **doesn't use React** but it gives you an idea of how `useState` wo
 
 <Sandpack>
 
-```js index.js active
+```js src/index.js active
 let componentHooks = [];
 let currentHookIndex = 0;
 
@@ -750,7 +750,7 @@ export default function Page() {
 
 ```
 
-```js Gallery.js
+```js src/Gallery.js
 import { useState } from 'react';
 import { sculptureList } from './data.js';
 
@@ -792,7 +792,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
@@ -963,7 +963,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js
+```js src/data.js
 export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
@@ -1125,7 +1125,7 @@ export default function Gallery() {
 }
 ```
 
-```js data.js hidden
+```js src/data.js hidden
 export const sculptureList = [{
   name: 'Homenaje a la Neurocirugía',
   artist: 'Marta Colvin Andrade',
@@ -1452,7 +1452,7 @@ If your linter is [configured for React](/learn/editor-setup#linting), you shoul
 
 #### Remove unnecessary state {/*remove-unnecessary-state*/}
 
-When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason it always shows "Hello, !".
+When the button is clicked, this example should ask for the user's name and then display an alert greeting them. You tried to use state to keep the name, but for some reason the first time it shows "Hello, !", and then "Hello, [name]!" with the previous input every time after.
 
 To fix this code, remove the unnecessary state variable. (We will discuss about [why this didn't work](/learn/state-as-a-snapshot) later.)
 
@@ -1488,8 +1488,6 @@ Here is a fixed version that uses a regular `name` variable declared in the func
 <Sandpack>
 
 ```js
-import { useState } from 'react';
-
 export default function FeedbackForm() {
   function handleClick() {
     const name = prompt('What is your name?');

@@ -50,7 +50,7 @@ Only the `render` method is required, other methods are optional.
 
 ### `context` {/*context*/}
 
-The [context](/learn/passing-data-deeply-with-context) of a class component is available as `this.context`. It is only available if you specify *which* context you want to receive using [`static contextType`](#static-contexttype) (modern) or [`static contextTypes`](#static-contexttypes) (deprecated).
+The [context](/learn/passing-data-deeply-with-context) of a class component is available as `this.context`. It is only available if you specify *which* context you want to receive using [`static contextType`](#static-contexttype).
 
 A class component can only read one context at a time.
 
@@ -102,18 +102,6 @@ Reading `this.props` in class components is equivalent to [declaring props](/lea
 [See how to migrate.](#migrating-a-simple-component-from-a-class-to-a-function)
 
 </Note>
-
----
-
-### `refs` {/*refs*/}
-
-<Deprecated>
-
-This API will be removed in a future major version of React. [Use `createRef` instead.](/reference/react/createRef)
-
-</Deprecated>
-
-Lets you access [legacy string refs](https://reactjs.org/docs/refs-and-the-dom.html#legacy-api-string-refs) for this component.
 
 ---
 
@@ -248,7 +236,7 @@ There is no direct equivalent for `componentDidCatch` in function components yet
 
 ### `componentDidMount()` {/*componentdidmount*/}
 
-If you define the `componentDidMount` method, React will call it when your component is first added *(mounted)* to the screen. This is a common place to start data fetching, set up subscriptions, or manipulate the DOM nodes.
+If you define the `componentDidMount` method, React will call it when your component is added *(mounted)* to the screen. This is a common place to start data fetching, set up subscriptions, or manipulate the DOM nodes.
 
 If you implement `componentDidMount`, you usually need to implement other lifecycle methods to avoid bugs. For example, if `componentDidMount` reads some state or props, you also have to implement [`componentDidUpdate`](#componentdidupdate) to handle their changes, and [`componentWillUnmount`](#componentwillunmount) to clean up whatever `componentDidMount` was doing.
 
@@ -494,18 +482,6 @@ Reading an external data source and forcing class components to re-render in res
 
 ---
 
-### `getChildContext()` {/*getchildcontext*/}
-
-<Deprecated>
-
-This API will be removed in a future major version of React. [Use `Context.Provider` instead.](/reference/react/createContext#provider)
-
-</Deprecated>
-
-Lets you specify the values for the [legacy context](https://reactjs.org/docs/legacy-context.html) is provided by this component.
-
----
-
 ### `getSnapshotBeforeUpdate(prevProps, prevState)` {/*getsnapshotbeforeupdate*/}
 
 If you implement `getSnapshotBeforeUpdate`, React will call it immediately before React updates the DOM. It enables your component to capture some information from the DOM (e.g. scroll position) before it is potentially changed. Any value returned by this lifecycle method will be passed as a parameter to [`componentDidUpdate`.](#componentdidupdate)
@@ -593,9 +569,7 @@ You should write the `render` method as a pure function, meaning that it should 
 
 #### Parameters {/*render-parameters*/}
 
-* `prevProps`: Props before the update. Compare `prevProps` to [`this.props`](#props) to determine what changed.
-
-* `prevState`: State before the update. Compare `prevState` to [`this.state`](#state) to determine what changed.
+`render` does not take any parameters.
 
 #### Returns {/*render-returns*/}
 
@@ -634,7 +608,7 @@ class Form extends Component {
     return (
       <>
         <input value={this.state.name} onChange={this.handleNameChange} />
-        <p>Hello, {this.state.name}.
+        <p>Hello, {this.state.name}.</p>
       </>
     );
   }
@@ -740,7 +714,7 @@ React calls `shouldComponentUpdate` before rendering when new props or state are
 
 - `nextProps`: The next props that the component is about to render with. Compare `nextProps` to [`this.props`](#props) to determine what changed.
 - `nextState`: The next state that the component is about to render with. Compare `nextState` to [`this.state`](#props) to determine what changed.
-- `nextContext`: The next context that the component is about to render with. Compare `nextContext` to [`this.context`](#context) to determine what changed. Only available if you specify [`static contextType`](#static-contexttype) (modern) or [`static contextTypes`](#static-contexttypes) (legacy).
+- `nextContext`: The next context that the component is about to render with. Compare `nextContext` to [`this.context`](#context) to determine what changed. Only available if you specify [`static contextType`](#static-contexttype).
 
 #### Returns {/*shouldcomponentupdate-returns*/}
 
@@ -815,7 +789,7 @@ If you define `UNSAFE_componentWillReceiveProps`, React will call it when the co
 #### Parameters {/*unsafe_componentwillreceiveprops-parameters*/}
 
 - `nextProps`: The next props that the component is about to receive from its parent component. Compare `nextProps` to [`this.props`](#props) to determine what changed.
-- `nextContext`: The next props that the component is about to receive from the closest provider. Compare `nextContext` to [`this.context`](#context) to determine what changed. Only available if you specify [`static contextType`](#static-contexttype) (modern) or [`static contextTypes`](#static-contexttypes) (legacy).
+- `nextContext`: The next context that the component is about to receive from the closest provider. Compare `nextContext` to [`this.context`](#context) to determine what changed. Only available if you specify [`static contextType`](#static-contexttype).
 
 #### Returns {/*unsafe_componentwillreceiveprops-returns*/}
 
@@ -877,30 +851,6 @@ If you define `UNSAFE_componentWillUpdate`, React will call it before rendering 
 There is no direct equivalent to `UNSAFE_componentWillUpdate` in function components.
 
 </Note>
-
----
-
-### `static childContextTypes` {/*static-childcontexttypes*/}
-
-<Deprecated>
-
-This API will be removed in a future major version of React. [Use `static contextType` instead.](#static-contexttype)
-
-</Deprecated>
-
-Lets you specify which [legacy context](https://reactjs.org/docs/legacy-context.html) is provided by this component.
-
----
-
-### `static contextTypes` {/*static-contexttypes*/}
-
-<Deprecated>
-
-This API will be removed in a future major version of React. [Use `static contextType` instead.](#static-contexttype)
-
-</Deprecated>
-
-Lets you specify which [legacy context](https://reactjs.org/docs/legacy-context.html) is consumed by this component.
 
 ---
 
@@ -982,7 +932,7 @@ Defining `defaultProps` in class components is similar to using [default values]
 
 If you define `static getDerivedStateFromError`, React will call it when a child component (including distant children) throws an error during rendering. This lets you display an error message instead of clearing the UI.
 
-Typically, it is used together with [`componentDidCatch`](#componentDidCatch) which lets you send the error report to some analytics service. A component with these methods is called an *error boundary.*
+Typically, it is used together with [`componentDidCatch`](#componentdidcatch) which lets you send the error report to some analytics service. A component with these methods is called an *error boundary.*
 
 [See an example.](#catching-rendering-errors-with-an-error-boundary)
 
@@ -1187,7 +1137,7 @@ We recommend defining components as functions instead of classes. [See how to mi
 
 There are a few special methods you can define on your class.
 
-If you define the [`componentDidMount`](#componentdidmount) method, React will call it when your component is first added *(mounted)* to the screen. React will call [`componentDidUpdate`](#componentdidupdate) after your component re-renders due to changed props or state. React will call [`componentWillUnmount`](#componentwillunmount) after your component has been removed *(unmounted)* from the screen.
+If you define the [`componentDidMount`](#componentdidmount) method, React will call it when your component is added *(mounted)* to the screen. React will call [`componentDidUpdate`](#componentdidupdate) after your component re-renders due to changed props or state. React will call [`componentWillUnmount`](#componentwillunmount) after your component has been removed *(unmounted)* from the screen.
 
 If you implement `componentDidMount`, you usually need to implement all three lifecycles to avoid bugs. For example, if `componentDidMount` reads some state or props, you also have to implement `componentDidUpdate` to handle their changes, and `componentWillUnmount` to clean up whatever `componentDidMount` was doing.
 
@@ -1195,7 +1145,7 @@ For example, this `ChatRoom` component keeps a chat connection synchronized with
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import ChatRoom from './ChatRoom.js';
 
@@ -1225,7 +1175,7 @@ export default function App() {
 }
 ```
 
-```js ChatRoom.js active
+```js src/ChatRoom.js active
 import { Component } from 'react';
 import { createConnection } from './chat.js';
 
@@ -1286,7 +1236,7 @@ export default class ChatRoom extends Component {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection(serverUrl, roomId) {
   // A real implementation would actually connect to the server
   return {
@@ -1323,7 +1273,11 @@ By default, if your application throws an error during rendering, React will rem
 
 To implement an error boundary component, you need to provide [`static getDerivedStateFromError`](#static-getderivedstatefromerror) which lets you update state in response to an error and display an error message to the user. You can also optionally implement [`componentDidCatch`](#componentdidcatch) to add some extra logic, for example, to log the error to an analytics service.
 
-```js {7-10,12-19}
+With [`captureOwnerStack`](/reference/react/captureOwnerStack) you can include the Owner Stack during development.
+
+```js {9-12,14-27}
+import * as React from 'react';
+
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -1336,12 +1290,17 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, info) {
-    // Example "componentStack":
-    //   in ComponentThatThrows (created by App)
-    //   in ErrorBoundary (created by App)
-    //   in div (created by App)
-    //   in App
-    logErrorToMyService(error, info.componentStack);
+    logErrorToMyService(
+      error,
+      // Example "componentStack":
+      //   in ComponentThatThrows (created by App)
+      //   in ErrorBoundary (created by App)
+      //   in div (created by App)
+      //   in App
+      info.componentStack,
+      // Warning: `captureOwnerStack` is not available in production.
+      React.captureOwnerStack(),
+    );
   }
 
   render() {
@@ -1365,7 +1324,7 @@ Then you can wrap a part of your component tree with it:
 
 If `Profile` or its child component throws an error, `ErrorBoundary` will "catch" that error, display a fallback UI with the error message you've provided, and send a production error report to your error reporting service.
 
-You don't need to wrap every component into a separate error boundary. When you think about the [granularity of error boundaries,](https://aweary.dev/fault-tolerance-react/) consider where it makes sense to display an error message. For example, in a messaging app, it makes sense to place an error boundary around the list of conversations. It also makes sense to place one around every individual message. However, it wouldn't make sense to place a boundary around every avatar.
+You don't need to wrap every component into a separate error boundary. When you think about the [granularity of error boundaries,](https://www.brandondail.com/posts/fault-tolerance-react) consider where it makes sense to display an error message. For example, in a messaging app, it makes sense to place an error boundary around the list of conversations. It also makes sense to place one around every individual message. However, it wouldn't make sense to place a boundary around every avatar.
 
 <Note>
 
@@ -1575,7 +1534,7 @@ Suppose you're converting this `ChatRoom` class component with lifecycle methods
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import ChatRoom from './ChatRoom.js';
 
@@ -1605,7 +1564,7 @@ export default function App() {
 }
 ```
 
-```js ChatRoom.js active
+```js src/ChatRoom.js active
 import { Component } from 'react';
 import { createConnection } from './chat.js';
 
@@ -1666,7 +1625,7 @@ export default class ChatRoom extends Component {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection(serverUrl, roomId) {
   // A real implementation would actually connect to the server
   return {
@@ -1715,7 +1674,7 @@ This [`useEffect`](/reference/react/useEffect) call is equivalent to the logic i
 
 <Sandpack>
 
-```js App.js
+```js src/App.js
 import { useState } from 'react';
 import ChatRoom from './ChatRoom.js';
 
@@ -1745,7 +1704,7 @@ export default function App() {
 }
 ```
 
-```js ChatRoom.js active
+```js src/ChatRoom.js active
 import { useState, useEffect } from 'react';
 import { createConnection } from './chat.js';
 
@@ -1775,7 +1734,7 @@ export default function ChatRoom({ roomId }) {
 }
 ```
 
-```js chat.js
+```js src/chat.js
 export function createConnection(serverUrl, roomId) {
   // A real implementation would actually connect to the server
   return {

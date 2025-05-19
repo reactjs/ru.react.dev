@@ -4,12 +4,55 @@ title: React Blog
 
 <Intro>
 
-This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first. You can also follow the [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
+This blog is the official source for the updates from the React team. Anything important, including release notes or deprecation notices, will be posted here first. 
+
+You can also follow the [@react.dev](https://bsky.app/profile/react.dev) account on Bluesky, or [@reactjs](https://twitter.com/reactjs) account on Twitter, but you won’t miss anything essential if you only read this blog.
 
 </Intro>
 
 <div className="sm:-mx-5 flex flex-col gap-5 mt-12">
 
+<BlogCard title="Sunsetting Create React App" date="February 13, 2025" url="/blog/2025/02/14/sunsetting-create-react-app">
+
+Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework, or to migrate to a build tool like Vite, Parcel, or RSBuild. We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by building a React app from scratch ...
+
+</BlogCard>
+
+<BlogCard title="React v19 " date="December 5, 2024" url="/blog/2024/12/05/react-19">
+
+In the React 19 Upgrade Guide, we shared step-by-step instructions for upgrading your app to React 19. In this post, we'll give an overview of the new features in React 19, and how you can adopt them ...
+
+</BlogCard>
+
+<BlogCard title="React Compiler Beta Release" date="October 21, 2024" url="/blog/2024/10/21/react-compiler-beta-release">
+
+We announced an experimental release of React Compiler at React Conf 2024. We've made a lot of progress since then, and in this post we want to share what's next for React Compiler ...
+
+</BlogCard>
+
+<BlogCard title="React Conf 2024 Recap" date="May 22, 2024" url="/blog/2024/05/22/react-conf-2024-recap">
+
+Last week we hosted React Conf 2024, a two-day conference in Henderson, Nevada where 700+ attendees gathered in-person to discuss the latest in UI engineering. This was our first in-person conference since 2019, and we were thrilled to be able to bring the community together again ...
+
+</BlogCard>
+
+<BlogCard title="React 19 Upgrade Guide" date="April 25, 2024" url="/blog/2024/04/25/react-19-upgrade-guide">
+
+The improvements added to React 19 require some breaking changes, but we've worked to make the upgrade as smooth as possible, and we don't expect the changes to impact most apps. In this post, we will guide you through the steps for upgrading libraries to React 19 ...
+
+</BlogCard>
+
+<BlogCard title="React Labs: What We've Been Working On – February 2024" date="February 15, 2024" url="/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024">
+
+In React Labs posts, we write about projects in active research and development. Since our last update, we've made significant progress on React Compiler, new features, and React 19, and we'd like to share what we learned.
+
+</BlogCard>
+
+<BlogCard title="React Canaries: Incremental Feature Rollout Outside Meta" date="May 3, 2023" url="/blog/2023/05/03/react-canaries">
+
+Traditionally, new React features used to only be available at Meta first, and land in the open source releases later. We'd like to offer the React community an option to adopt individual new features as soon as their design is close to final--similar to how Meta uses React internally. We are introducing a new officially supported Canary release channel. It lets curated setups like frameworks decouple adoption of individual React features from the React release schedule.
+
+</BlogCard>
 
 <BlogCard title="React Labs: What We've Been Working On – March 2023" date="March 22, 2023" url="/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023">
 
