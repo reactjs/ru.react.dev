@@ -381,7 +381,7 @@ return (
 
 <Sandpack>
 
-```json package.json (скрыт)
+```json package.json hidden
 {
   "dependencies": {
     "leaflet": "1.9.1",
