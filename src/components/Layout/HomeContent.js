@@ -136,7 +136,7 @@ export function HomeContent() {
             React
           </h1>
           <p className="text-4xl font-display max-w-lg md:max-w-full py-1 text-center text-secondary dark:text-primary-dark leading-snug self-center">
-            The library for web and native user interfaces
+            Библиотека для веб- и нативных пользовательских интерфейсов
           </p>
           <div className="mt-5 self-center flex gap-2 w-full sm:w-auto flex-col sm:flex-row">
             <ButtonLink
@@ -144,7 +144,7 @@ export function HomeContent() {
               type="primary"
               size="lg"
               className="w-full sm:w-auto justify-center"
-              label="Learn React">
+              label="К изучению React">
               Learn React
             </ButtonLink>
             <ButtonLink
@@ -152,7 +152,7 @@ export function HomeContent() {
               type="secondary"
               size="lg"
               className="w-full sm:w-auto justify-center"
-              label="API Reference">
+              label="Справочник API">
               API Reference
             </ButtonLink>
           </div>
@@ -160,13 +160,12 @@ export function HomeContent() {
 
         <Section background="left-card">
           <Center>
-            <Header>Create user interfaces from components</Header>
+            <Header>Создание пользовательских интерфейсов из компонентов</Header>
             <Para>
-              React lets you build user interfaces out of individual pieces
-              called components. Create your own React components like{' '}
-              <Code>Thumbnail</Code>, <Code>LikeButton</Code>, and{' '}
-              <Code>Video</Code>. Then combine them into entire screens, pages,
-              and apps.
+              React позволяет вам создавать пользовательские интерфейсы из
+              отдельных частей, называемых компонентами. Создавайте собственные React-компоненты, такие как{' '}
+              <Code>Thumbnail</Code>, <Code>LikeButton</Code>, и{' '}
+              <Code>Video</Code>, затем объединяйте их в целые страницы и приложения.
             </Para>
           </Center>
           <FullBleed>
@@ -174,22 +173,22 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              Whether you work on your own or with thousands of other
-              developers, using React feels the same. It is designed to let you
-              seamlessly combine components written by independent people,
-              teams, and organizations.
+              Независимо от того, работаете ли вы самостоятельно или с тысячами
+              других разработчиков, использование React ощущается одинаково, ведь
+              он разработан так, чтобы позволить вам легко объединять компоненты,
+              написанные независимыми людьми, командами и организациями.
             </Para>
           </Center>
         </Section>
 
         <Section background="right-card">
           <Center>
-            <Header>Write components with code and markup</Header>
+            <Header>Создавайте компоненты с кодом и разметкой</Header>
             <Para>
-              React components are JavaScript functions. Want to show some
-              content conditionally? Use an <Code>if</Code> statement.
-              Displaying a list? Try array <Code>map()</Code>. Learning React is
-              learning programming.
+              Компоненты React — это функции JavaScript. Хотите отобразить
+              содержимое условно? Используйте оператор <Code>if</Code>.
+              Отображаете список? Попробуйте метод массива <Code>map()</Code>.
+              Изучение React — это изучение программирования.
             </Para>
           </Center>
           <FullBleed>
@@ -197,10 +196,10 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              This markup syntax is called JSX. It is a JavaScript syntax
-              extension popularized by React. Putting JSX markup close to
-              related rendering logic makes React components easy to create,
-              maintain, and delete.
+              Этот синтаксис называется JSX. Это расширение для ситнаксиса
+              JavaScript, которое популяризировал React. Размещение JSX-разметки
+              рядом с соответствующей логикой рендеринга упрощает создание,
+              изменение и удаление компонентов React.
             </Para>
           </Center>
         </Section>
