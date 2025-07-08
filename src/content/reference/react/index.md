@@ -1,42 +1,42 @@
 ---
-title: React Reference Overview
+title: Обзор справочника React
 ---
 
 <Intro>
 
-This section provides detailed reference documentation for working with React. For an introduction to React, please visit the [Learn](/learn) section.
+В этом разделе представлена подробная справочная документация по React. Если вы только начинаете знакомство с React, рекомендуем начать с раздела [Изучение](/learn).
 
 </Intro>
 
-The React reference documentation is broken down into functional subsections:
+Справочник разбит на несколько функциональных разделов:
 
 ## React {/*react*/}
 
-Programmatic React features:
+Основные возможности ядра React:
 
-* [Hooks](/reference/react/hooks) - Use different React features from your components.
-* [Components](/reference/react/components) - Built-in components that you can use in your JSX.
-* [APIs](/reference/react/apis) - APIs that are useful for defining components.
-* [Directives](/reference/rsc/directives) - Provide instructions to bundlers compatible with React Server Components.
+- [Хуки](/reference/react/hooks) — использование встроенных функций React в компонентах.
+- [Компоненты](/reference/react/components) — встроенные компоненты, доступные для использования в JSX.
+- [API](/reference/react/apis) — функции, полезные для определения компонентов.
+- [Директивы](/reference/rsc/directives) — инструкции для совместимых с серверными компонентами пакетов.
 
 ## React DOM {/*react-dom*/}
 
-React-dom contains features that are only supported for web applications (which run in the browser DOM environment). This section is broken into the following:
+Пакет `react-dom` предоставляет функциональность, специфичную для веб-среды (браузера). Раздел включает:
 
-* [Hooks](/reference/react-dom/hooks) - Hooks for web applications which run in the browser DOM environment.
-* [Components](/reference/react-dom/components) - React supports all of the browser built-in HTML and SVG components.
-* [APIs](/reference/react-dom) - The `react-dom` package contains methods supported only in web applications.
-* [Client APIs](/reference/react-dom/client) - The `react-dom/client` APIs let you render React components on the client (in the browser).
-* [Server APIs](/reference/react-dom/server) - The `react-dom/server` APIs let you render React components to HTML on the server.
+- [Хуки](/reference/react-dom/hooks) — хуки, работающие в DOM-среде.
+- [Компоненты](/reference/react-dom/components) — поддержка всех стандартных HTML- и SVG-элементов как компонентов React.
+- [API](/reference/react-dom) — методы из пакета `react-dom`, доступные только в веб-приложениях.
+- [Клиентские API](/reference/react-dom/client) — API для рендеринга React-компонентов в браузере.
+- [Серверные API](/reference/react-dom/server) — API для рендеринга React-компонентов на сервере.
 
-## Rules of React {/*rules-of-react*/}
+## Правила React {/*rules-of-react*/}
 
-React has idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications:
+React предъявляет определённые требования к структуре компонентов, чтобы код был понятным и приложения — надёжными:
 
-* [Components and Hooks must be pure](/reference/rules/components-and-hooks-must-be-pure) – Purity makes your code easier to understand, debug, and allows React to automatically optimize your components and hooks correctly.
-* [React calls Components and Hooks](/reference/rules/react-calls-components-and-hooks) – React is responsible for rendering components and hooks when necessary to optimize the user experience.
-* [Rules of Hooks](/reference/rules/rules-of-hooks) – Hooks are defined using JavaScript functions, but they represent a special type of reusable UI logic with restrictions on where they can be called.
+- [Компоненты и хуки должны быть чистыми](/reference/rules/components-and-hooks-must-be-pure) — чистота кода делает его более понятным и предсказуемым и облегчает оптимизацию со стороны React.
+- [React управляет вызовами компонентов и хуков](/reference/rules/react-calls-components-and-hooks) — React сам инициирует вызовы компонентов и хуков, чтобы обеспечить оптимальный пользовательский опыт.
+- [Правила хуков](/reference/rules/rules-of-hooks) — хуки — это особый тип логики интерфейса с ограничениями на место вызова.
 
-## Legacy APIs {/*legacy-apis*/}
+## Устаревшие API {/*legacy-apis*/}
 
-* [Legacy APIs](/reference/react/legacy) - Exported from the `react` package, but not recommended for use in newly written code.
+- [Устаревшие API](/reference/react/legacy) — экспортируются из пакета `react`, но не рекомендуются к использованию.
