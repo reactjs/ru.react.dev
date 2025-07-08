@@ -1,30 +1,30 @@
 ---
-title: Describing the UI
+title: Описание UI
 ---
 
 <Intro>
 
-React is a JavaScript library for rendering user interfaces (UI). UI is built from small units like buttons, text, and images. React lets you combine them into reusable, nestable *components.* From web sites to phone apps, everything on the screen can be broken down into components. In this chapter, you'll learn to create, customize, and conditionally display React components.
+React — JavaScript библиотека, предназначенная для отрисовки пользовательских интерфейсов (UI). UI создается из таких маленьких блоков, как кнопка, текст и изображение. React позволяет вам объединить их в переиспользуемые и вкладываемые *компоненты*. Все, что находится на экране, от веб-сайтов до приложений для телефона, можно разделить на компоненты. В этой главе вы узнаете, как создавать, настраивать и условно отображать компоненты React.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to write your first React component](/learn/your-first-component)
-* [When and how to create multi-component files](/learn/importing-and-exporting-components)
-* [How to add markup to JavaScript with JSX](/learn/writing-markup-with-jsx)
-* [How to use curly braces with JSX to access JavaScript functionality from your components](/learn/javascript-in-jsx-with-curly-braces)
-* [How to configure components with props](/learn/passing-props-to-a-component)
-* [How to conditionally render components](/learn/conditional-rendering)
-* [How to render multiple components at a time](/learn/rendering-lists)
-* [How to avoid confusing bugs by keeping components pure](/learn/keeping-components-pure)
-* [Why understanding your UI as trees is useful](/learn/understanding-your-ui-as-a-tree)
+* [Как написать свой первый компонент React](/learn/your-first-component)
+* [Когда и как создавать файлы с несколькими компонентами](/learn/importing-and-exporting-components)
+* [Как добавить разметку в JavaScript с помощью JSX](/learn/writing-markup-with-jsx)
+* [Как использовать фигурные скобки в JSX для доступа к функциям JavaScript из ваших компонентов](/learn/javascript-in-jsx-with-curly-braces)
+* [Как настраивать компоненты при помощи пропсов](/learn/passing-props-to-a-component)
+* [Как условно отображать компоненты](/learn/conditional-rendering)
+* [Как одновременно отображать несколько компонентов](/learn/rendering-lists)
+* [Как избежать запутанных ошибок, сохранив чистоту компонентов](/learn/keeping-components-pure)
+* [Почему полезно представлять свой UI в виде деревьев](/learn/understanding-your-ui-as-a-tree)
 
 </YouWillLearn>
 
-## Your first component {/*your-first-component*/}
+## Ваш первый компонент {/*your-first-component*/}
 
-React applications are built from isolated pieces of UI called *components*. A React component is a JavaScript function that you can sprinkle with markup. Components can be as small as a button, or as large as an entire page. Here is a `Gallery` component rendering three `Profile` components:
+Приложения, написанные при помощи React, состоят из изолированных блоков UI, называемых *компонентами*. React-компонент представляет из себя JavaScript функцию, в которую вы можете добавлять разметку. Компоненты могут быть маленькими, как кнопка, или большими, как целая страница. Ниже показан компонент `Gallery`, который отображает три компонента `Profile`:
 
 <Sandpack>
 
@@ -33,7 +33,7 @@ function Profile() {
   return (
     <img
       src="https://i.imgur.com/MK3eW3As.jpg"
-      alt="Katherine Johnson"
+      alt="Кэтрин Джонсон"
     />
   );
 }
@@ -41,7 +41,7 @@ function Profile() {
 export default function Gallery() {
   return (
     <section>
-      <h1>Amazing scientists</h1>
+      <h1>Удивительные ученые</h1>
       <Profile />
       <Profile />
       <Profile />
@@ -58,11 +58,11 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 <LearnMore path="/learn/your-first-component">
 
-Read **[Your First Component](/learn/your-first-component)** to learn how to declare and use React components.
+Прочитайте статью **[Ваш первый компонент](/learn/your-first-component)**, чтобы узнать, как объявлять и использовать React-компоненты.
 
 </LearnMore>
 
-## Importing and exporting components {/*importing-and-exporting-components*/}
+## Импорт и экспорт компонентов {/*importing-and-exporting-components*/}
 
 You can declare many components in one file, but large files can get difficult to navigate. To solve this, you can *export* a component into its own file, and then *import* that component from another file:
 
@@ -117,7 +117,7 @@ Read **[Importing and Exporting Components](/learn/importing-and-exporting-compo
 
 </LearnMore>
 
-## Writing markup with JSX {/*writing-markup-with-jsx*/}
+## Пишем разметку при помощи JSX {/*writing-markup-with-jsx*/}
 
 Each React component is a JavaScript function that may contain some markup that React renders into the browser. React components use a syntax extension called JSX to represent that markup. JSX looks a lot like HTML, but it is a bit stricter and can display dynamic information.
 
@@ -186,7 +186,7 @@ Read **[Writing Markup with JSX](/learn/writing-markup-with-jsx)** to learn how 
 
 </LearnMore>
 
-## JavaScript in JSX with curly braces {/*javascript-in-jsx-with-curly-braces*/}
+## Использование JavaScript внутри JSX при помощи фигурных скобок {/*javascript-in-jsx-with-curly-braces*/}
 
 JSX lets you write HTML-like markup inside a JavaScript file, keeping rendering logic and content in the same place. Sometimes you will want to add a little JavaScript logic or reference a dynamic property inside that markup. In this situation, you can use curly braces in your JSX to "open a window" to JavaScript:
 
@@ -234,7 +234,7 @@ Read **[JavaScript in JSX with Curly Braces](/learn/javascript-in-jsx-with-curly
 
 </LearnMore>
 
-## Passing props to a component {/*passing-props-to-a-component*/}
+## Передача пропсов в компонент {/*passing-props-to-a-component*/}
 
 React components use *props* to communicate with each other. Every parent component can pass some information to its child components by giving them props. Props might remind you of HTML attributes, but you can pass any JavaScript value through them, including objects, arrays, functions, and even JSX!
 
@@ -315,7 +315,7 @@ Read **[Passing Props to a Component](/learn/passing-props-to-a-component)** to 
 
 </LearnMore>
 
-## Conditional rendering {/*conditional-rendering*/}
+## Условный рендеринг {/*conditional-rendering*/}
 
 Your components will often need to display different things depending on different conditions. In React, you can conditionally render JSX using JavaScript syntax like `if` statements, `&&`, and `? :` operators.
 
@@ -363,7 +363,7 @@ Read **[Conditional Rendering](/learn/conditional-rendering)** to learn the diff
 
 </LearnMore>
 
-## Rendering lists {/*rendering-lists*/}
+## Рендерим списки {/*rendering-lists*/}
 
 You will often want to display multiple similar components from a collection of data. You can use JavaScript's `filter()` and `map()` with React to filter and transform your array of data into an array of components.
 
@@ -463,7 +463,7 @@ Read **[Rendering Lists](/learn/rendering-lists)** to learn how to render a list
 
 </LearnMore>
 
-## Keeping components pure {/*keeping-components-pure*/}
+## Поддерживаем компоненты чистыми {/*keeping-components-pure*/}
 
 Some JavaScript functions are *pure.* A pure function:
 
@@ -524,7 +524,7 @@ Read **[Keeping Components Pure](/learn/keeping-components-pure)** to learn how 
 
 </LearnMore>
 
-## Your UI as a tree {/*your-ui-as-a-tree*/}
+## Ваш UI как дерево {/*your-ui-as-a-tree*/}
 
 React uses trees to model the relationships between components and modules. 
 
@@ -555,8 +555,8 @@ Read **[Your UI as a Tree](/learn/understanding-your-ui-as-a-tree)** to learn ho
 </LearnMore>
 
 
-## What's next? {/*whats-next*/}
+## Что дальше? {/*whats-next*/}
 
-Head over to [Your First Component](/learn/your-first-component) to start reading this chapter page by page!
+Перейдите к статье [Ваш первый компонент](/learn/your-first-component), чтобы начать чтение этой главы статья за статьёй!
 
-Or, if you're already familiar with these topics, why not read about [Adding Interactivity](/learn/adding-interactivity)?
+Или, если эти темы вам знакомы, почему бы не прочитать про [Добавление интерактивности](/learn/adding-interactivity)?
