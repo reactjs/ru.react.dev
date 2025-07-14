@@ -241,7 +241,11 @@ export default function ModalContent({ onClose }) {
 
 Важно убедиться, что при использовании порталов ваше приложение остаётся доступным. Например, вам может потребоваться управлять фокусом клавиатуры, чтобы пользователь мог перемещать фокус внутрь и наружу из портала естественным способом.
 
+<<<<<<< HEAD
 Следуйте [рекомендациям WAI-ARIA по созданию модальных окон](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal). Если вы используете готовую библиотеку, убедитесь, что она поддерживает доступность и следует этим рекомендациям.
+=======
+Follow the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal) when creating modals. If you use a community package, ensure that it is accessible and follows these guidelines.
+>>>>>>> 84a56968d92b9a9e9bbac1ca13011e159e815dc1
 
 </Pitfall>
 
