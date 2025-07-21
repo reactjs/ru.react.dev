@@ -732,8 +732,13 @@ function TodoList() {
 
 Этот список недостатков не специфичен для React. Он применим к получению данных при монтировании с любой библиотекой. Как и с маршрутизацией, получение данных не является тривиальной задачей, поэтому мы рекомендуем следующие подходы:
 
+<<<<<<< HEAD
 - **Если вы используете [фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks), используйте его встроенный механизм получения данных.** Современные React-фреймворки имеют интегрированные механизмы получения данных, которые эффективны и не страдают от вышеупомянутых недостатков.
 - **В противном случае рассмотрите возможность использования или создания кэша на стороне клиента.** Популярные решения с открытым исходным кодом включают [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/) и [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) Вы также можете создать собственное решение, в этом случае вы будете использовать Эффекты под капотом, но добавите логику, чтобы устранить дублирование запросов, кэширования ответов и избежать сетевые водопады (предзагружая данные или поднимая требования к данным к маршрутам).
+=======
+- **If you use a [framework](/learn/creating-a-react-app#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood, but add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+>>>>>>> d52b3ec734077fd56f012fc2b30a67928d14cc73
 
 Вы можете продолжать получать данные напрямую в Эффектах, если ни один из этих подходов вам не подходит.
 
