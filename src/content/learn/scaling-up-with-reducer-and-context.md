@@ -1,24 +1,24 @@
 ---
-title: Scaling Up with Reducer and Context
+title: Масштабирование с помощью редюсера и контекста
 ---
 
 <Intro>
 
-Reducers let you consolidate a component's state update logic. Context lets you pass information deep down to other components. You can combine reducers and context together to manage state of a complex screen.
+Редюсеры позволяют объединить и упорядочить логику обновления состояния. Контекст позволяет передавать состояние глубоко в дочерние компоненты. Вы можете объединить редюсеры и контекст для управления комплексом состояний.
 
 </Intro>
 
 <YouWillLearn>
 
-* How to combine a reducer with context
-* How to avoid passing state and dispatch through props
-* How to keep context and state logic in a separate file
+* Как объединить редюсер и контекст
+* Как избежать передачи состояния и отправителя через пропсы
+* Как хранить логику контекста и состояния в отдельном файле
 
 </YouWillLearn>
 
-## Combining a reducer with context {/*combining-a-reducer-with-context*/}
+## Объединение редюсера с контекстом {/*combining-a-reducer-with-context*/}
 
-In this example from [the introduction to reducers](/learn/extracting-state-logic-into-a-reducer), the state is managed by a reducer. The reducer function contains all of the state update logic and is declared at the bottom of this file:
+В этом примере из [введения в редюсеры](/learn/extracting-state-logic-into-a-reducer), состояние контролируется редюсером. Функция редюсер содержит в себе всю логику обновления состояния и объявлена в нижней части этого файла:
 
 <Sandpack>
 
@@ -57,7 +57,7 @@ export default function TaskApp() {
 
   return (
     <>
-      <h1>Day off in Kyoto</h1>
+      <h1>День в Киото</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
@@ -99,9 +99,9 @@ function tasksReducer(tasks, action) {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: 'Philosopher’s Path', done: true },
-  { id: 1, text: 'Visit the temple', done: false },
-  { id: 2, text: 'Drink matcha', done: false }
+  { id: 0, text: 'Тропа философа', done: true },
+  { id: 1, text: 'Посетить храм', done: false },
+  { id: 2, text: 'Выпить маття', done: false }
 ];
 ```
 
@@ -113,14 +113,14 @@ export default function AddTask({ onAddTask }) {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="Добавить задачу"
         value={text}
         onChange={e => setText(e.target.value)}
       />
       <button onClick={() => {
         setText('');
         onAddTask(text);
-      }}>Add</button>
+      }}>Добавить</button>
     </>
   )
 }
@@ -164,7 +164,7 @@ function Task({ task, onChange, onDelete }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          Сохранить
         </button>
       </>
     );
@@ -173,7 +173,7 @@ function Task({ task, onChange, onDelete }) {
       <>
         {task.text}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          Редактировать
         </button>
       </>
     );
@@ -192,7 +192,7 @@ function Task({ task, onChange, onDelete }) {
       />
       {taskContent}
       <button onClick={() => onDelete(task.id)}>
-        Delete
+        Удалить
       </button>
     </label>
   );
@@ -207,9 +207,9 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-A reducer helps keep the event handlers short and concise. However, as your app grows, you might run into another difficulty. **Currently, the `tasks` state and the `dispatch` function are only available in the top-level `TaskApp` component.** To let other components read the list of tasks or change it, you have to explicitly [pass down](/learn/passing-props-to-a-component) the current state and the event handlers that change it as props.
+Редюсер помогает сделать обработчики событий краткими и лаконичными. Однако по мере роста вашего приложения вы можете столкнуться с другой трудностью. **В настоящее время, состояние `tasks` и функция `dispatch` доступны только на верхнем уровне, в компоненте `TaskApp`.** Что бы дать доступ к чтению и изменению списка задач другим компонентам, вам надо явно  [передать в дочернии компоненты](/learn/passing-props-to-a-component) в виде пропсов, текущее состояние и обработчики событий для его изменения.
 
-For example, `TaskApp` passes a list of tasks and the event handlers to `TaskList`:
+Например, `TaskApp` передает список задач и обработчики событий в `TaskList`:
 
 ```js
 <TaskList
@@ -219,7 +219,7 @@ For example, `TaskApp` passes a list of tasks and the event handlers to `TaskLis
 />
 ```
 
-And `TaskList` passes the event handlers to `Task`:
+Также `TaskList` передает обработчики событий в `Task`:
 
 ```js
 <Task
@@ -229,30 +229,30 @@ And `TaskList` passes the event handlers to `Task`:
 />
 ```
 
-In a small example like this, this works well, but if you have tens or hundreds of components in the middle, passing down all state and functions can be quite frustrating!
+Это небольшой пример который хорошо работает, но если у вас десятки или сотни компонентов между начальной точкой, где создаются состояние и функции, и конечной точкой, где они будут использованы, передача их через пропсы может быть крайне затруднительной!
 
-This is why, as an alternative to passing them through props, you might want to put both the `tasks` state and the `dispatch` function [into context.](/learn/passing-data-deeply-with-context) **This way, any component below `TaskApp` in the tree can read the tasks and dispatch actions without the repetitive "prop drilling".**
+И поэтому в качестве альтернативы передачи их через пропсы, вы можете поместить в [контекст](/learn/passing-data-deeply-with-context) состояние `tasks` и функцию `dispatch` **Благодаря этому дочернии компоненты `TaskApp` получить доступ к `tasks` и отправлять действия без передачи пропсов через компоненты которым они не нужны.**
 
-Here is how you can combine a reducer with context:
+Вот как вы можешь объединить редюсер с контекстом:
 
-1. **Create** the context.
-2. **Put** state and dispatch into context.
-3. **Use** context anywhere in the tree.
+1. **Создайте** контекст.
+2. **Поместите** состояние и функцию отправитель в контекст.
+3. **Используйте** контекст в любых дочерних элементах.
 
-### Step 1: Create the context {/*step-1-create-the-context*/}
+### Шаг 1: Создайте контекст {/*step-1-create-the-context*/}
 
-The `useReducer` Hook returns the current `tasks` and the `dispatch` function that lets you update them:
+Хук `useReducer` возвращает текущее состояние `tasks` и функцию `dispatch` которая позволяет его обновлять:
 
 ```js
 const [tasks, dispatch] = useReducer(tasksReducer, initialTasks);
 ```
 
-To pass them down the tree, you will [create](/learn/passing-data-deeply-with-context#step-2-use-the-context) two separate contexts:
+Что бы передать их дальше по дереву вам надо [создать](/learn/passing-data-deeply-with-context#step-2-use-the-context) два раздельных контекста:
 
-- `TasksContext` provides the current list of tasks.
-- `TasksDispatchContext` provides the function that lets components dispatch actions.
+- `TasksContext` содержит текущий список задач.
+- `TasksDispatchContext` содержит функции которая позволяет компонентам отправлять действия(`dispatch`).
 
-Export them from a separate file so that you can later import them from other files:
+Экспортируйте их из разных файлов что бы потом импортировать в других файлах:
 
 <Sandpack>
 
@@ -291,7 +291,7 @@ export default function TaskApp() {
 
   return (
     <>
-      <h1>Day off in Kyoto</h1>
+      <h1>День в Киото</h1>
       <AddTask
         onAddTask={handleAddTask}
       />
@@ -333,9 +333,9 @@ function tasksReducer(tasks, action) {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: 'Philosopher’s Path', done: true },
-  { id: 1, text: 'Visit the temple', done: false },
-  { id: 2, text: 'Drink matcha', done: false }
+  { id: 0, text: 'Тропа философа', done: true },
+  { id: 1, text: 'Посетить храм', done: false },
+  { id: 2, text: 'Выпить маття', done: false }
 ];
 ```
 
@@ -354,14 +354,14 @@ export default function AddTask({ onAddTask }) {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="Добавить задачу"
         value={text}
         onChange={e => setText(e.target.value)}
       />
       <button onClick={() => {
         setText('');
         onAddTask(text);
-      }}>Add</button>
+      }}>Добавить</button>
     </>
   )
 }
@@ -405,7 +405,7 @@ function Task({ task, onChange, onDelete }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          Сохранить
         </button>
       </>
     );
@@ -414,7 +414,7 @@ function Task({ task, onChange, onDelete }) {
       <>
         {task.text}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          Редактировать
         </button>
       </>
     );
@@ -433,7 +433,7 @@ function Task({ task, onChange, onDelete }) {
       />
       {taskContent}
       <button onClick={() => onDelete(task.id)}>
-        Delete
+        Удалить
       </button>
     </label>
   );
@@ -448,11 +448,11 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Here, you're passing `null` as the default value to both contexts. The actual values will be provided by the `TaskApp` component.
+В этом примере вы можете передать `null` как значение по умолчанию в каждый контекст. Актуальное значение передаст компонент `TaskApp`.
 
-### Step 2: Put state and dispatch into context {/*step-2-put-state-and-dispatch-into-context*/}
+### Шаг 2: Поместите состояние и отправителя в контекст {/*step-2-put-state-and-dispatch-into-context*/}
 
-Now you can import both contexts in your `TaskApp` component. Take the `tasks` and `dispatch` returned by `useReducer()` and [provide them](/learn/passing-data-deeply-with-context#step-3-provide-the-context) to the entire tree below:
+Сейчас вы можете импортировать контексты которые создавали в компонент `TaskApp`. Поместите `tasks` и `dispatch` возвращенные хуком `useReducer()` и [передайте их](/learn/passing-data-deeply-with-context#step-3-provide-the-context) во все дочерние компоненты:
 
 ```js {4,7-8}
 import { TasksContext, TasksDispatchContext } from './TasksContext.js';
@@ -470,7 +470,7 @@ export default function TaskApp() {
 }
 ```
 
-For now, you pass the information both via props and in context:
+На данный момент вы передаете информацию как через пропсы, так и в контексте:
 
 <Sandpack>
 
@@ -511,7 +511,7 @@ export default function TaskApp() {
   return (
     <TasksContext.Provider value={tasks}>
       <TasksDispatchContext.Provider value={dispatch}>
-        <h1>Day off in Kyoto</h1>
+        <h1>День в Киото</h1>
         <AddTask
           onAddTask={handleAddTask}
         />
@@ -554,9 +554,9 @@ function tasksReducer(tasks, action) {
 
 let nextId = 3;
 const initialTasks = [
-  { id: 0, text: 'Philosopher’s Path', done: true },
-  { id: 1, text: 'Visit the temple', done: false },
-  { id: 2, text: 'Drink matcha', done: false }
+  { id: 0, text: 'Тропа философа', done: true },
+  { id: 1, text: 'Посетить храм', done: false },
+  { id: 2, text: 'Выпить маття', done: false }
 ];
 ```
 
@@ -575,14 +575,14 @@ export default function AddTask({ onAddTask }) {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="Добавить задачу"
         value={text}
         onChange={e => setText(e.target.value)}
       />
       <button onClick={() => {
         setText('');
         onAddTask(text);
-      }}>Add</button>
+      }}>Добавить</button>
     </>
   )
 }
@@ -626,7 +626,7 @@ function Task({ task, onChange, onDelete }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          Сохранить
         </button>
       </>
     );
@@ -635,7 +635,7 @@ function Task({ task, onChange, onDelete }) {
       <>
         {task.text}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          Редактировать
         </button>
       </>
     );
@@ -654,7 +654,7 @@ function Task({ task, onChange, onDelete }) {
       />
       {taskContent}
       <button onClick={() => onDelete(task.id)}>
-        Delete
+        Удалить
       </button>
     </label>
   );
@@ -669,23 +669,23 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-In the next step, you will remove prop passing.
+На следующем шаге, вы избавитесь от пропсов.
 
-### Step 3: Use context anywhere in the tree {/*step-3-use-context-anywhere-in-the-tree*/}
+### Шаг 3: Используйте контекст в любом месте дерева {/*step-3-use-context-anywhere-in-the-tree*/}
 
-Now you don't need to pass the list of tasks or the event handlers down the tree:
+Теперь вам не надо передавать список задач или слушатели событий в дочернии компоненты:
 
 ```js {4-5}
 <TasksContext.Provider value={tasks}>
   <TasksDispatchContext.Provider value={dispatch}>
-    <h1>Day off in Kyoto</h1>
+    <h1>День в Киото</h1>
     <AddTask />
     <TaskList />
   </TasksDispatchContext.Provider>
 </TasksContext.Provider>
 ```
 
-Instead, any component that needs the task list can read it from the `TaskContext`:
+Вместо этого, все компоненты которым нужен список задач, могут получить его из `TaskContext`:
 
 ```js {2}
 export default function TaskList() {
@@ -693,7 +693,7 @@ export default function TaskList() {
   // ...
 ```
 
-To update the task list, any component can read the `dispatch` function from context and call it:
+Что бы обновить список задач, любой компонент может получить функцию `dispatch` из контекста и использовать ее:
 
 ```js {3,9-13}
 export default function AddTask() {
@@ -709,11 +709,11 @@ export default function AddTask() {
         id: nextId++,
         text: text,
       });
-    }}>Add</button>
+    }}>Добавить</button>
     // ...
 ```
 
-**The `TaskApp` component does not pass any event handlers down, and the `TaskList` does not pass any event handlers to the `Task` component either.** Each component reads the context that it needs:
+**Компонент `TaskApp` никаких слушателей событий в дерево, как и `TaskList` не передает слушатели в компонент`Task`.** Каждый компонент использует контекст который им нужен:
 
 <Sandpack>
 
@@ -732,7 +732,7 @@ export default function TaskApp() {
   return (
     <TasksContext.Provider value={tasks}>
       <TasksDispatchContext.Provider value={dispatch}>
-        <h1>Day off in Kyoto</h1>
+        <h1>День в Киото</h1>
         <AddTask />
         <TaskList />
       </TasksDispatchContext.Provider>
@@ -768,9 +768,9 @@ function tasksReducer(tasks, action) {
 }
 
 const initialTasks = [
-  { id: 0, text: 'Philosopher’s Path', done: true },
-  { id: 1, text: 'Visit the temple', done: false },
-  { id: 2, text: 'Drink matcha', done: false }
+  { id: 0, text: 'Тропа философа', done: true },
+  { id: 1, text: 'Посетить храм', done: false },
+  { id: 2, text: 'Выпить маття', done: false }
 ];
 ```
 
@@ -791,7 +791,7 @@ export default function AddTask() {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="Добавить задачу"
         value={text}
         onChange={e => setText(e.target.value)}
       />
@@ -802,7 +802,7 @@ export default function AddTask() {
           id: nextId++,
           text: text,
         }); 
-      }}>Add</button>
+      }}>Добавить</button>
     </>
   );
 }
@@ -846,7 +846,7 @@ function Task({ task }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          Сохранить
         </button>
       </>
     );
@@ -855,7 +855,7 @@ function Task({ task }) {
       <>
         {task.text}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          Редактировать
         </button>
       </>
     );
@@ -882,7 +882,7 @@ function Task({ task }) {
           id: task.id
         });
       }}>
-        Delete
+        Удалить
       </button>
     </label>
   );
@@ -897,11 +897,11 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-**The state still "lives" in the top-level `TaskApp` component, managed with `useReducer`.** But its `tasks` and `dispatch` are now available to every component below in the tree by importing and using these contexts.
+**Состояние все ещё "живёт" в родительском компоненте `TaskApp`, управляемое с помощью `useReducer`.** Но его `tasks` и `dispatch` теперь доступны каждому дочернему компоненту путем импорта и использования этих контекстов.
 
-## Moving all wiring into a single file {/*moving-all-wiring-into-a-single-file*/}
+## Перемещение всех частей в один файл {/*moving-all-wiring-into-a-single-file*/}
 
-You don't have to do this, but you could further declutter the components by moving both reducer and context into a single file. Currently, `TasksContext.js` contains only two context declarations:
+Это необязательно делать, но вы можете еще больше упростить компоненты, переместив и редюсер, и контекст в один файл. В настоящее время, `TasksContext.js` содержит только два объявления контекста:
 
 ```js
 import { createContext } from 'react';
@@ -910,11 +910,11 @@ export const TasksContext = createContext(null);
 export const TasksDispatchContext = createContext(null);
 ```
 
-This file is about to get crowded! You'll move the reducer into that same file. Then you'll declare a new `TasksProvider` component in the same file. This component will tie all the pieces together:
+Этот файл скоро будет переполнен! Вам надо переместить редюсер в этот же файл. Затем создать новый компонент `TasksProvider` в этом же файле. Этот компонент соберет все части воедино:
 
-1. It will manage the state with a reducer.
-2. It will provide both contexts to components below.
-3. It will [take `children` as a prop](/learn/passing-props-to-a-component#passing-jsx-as-children) so you can pass JSX to it.
+1. Он будет управлять состоянием с помощью редюсера.
+2. Он будет передавать оба контекста дочерним компонентам.
+3. Он будет [принимать `children` как пропс](/learn/passing-props-to-a-component#passing-jsx-as-children) что бы вы могли передавать JSX в него.
 
 ```js
 export function TasksProvider({ children }) {
@@ -930,7 +930,7 @@ export function TasksProvider({ children }) {
 }
 ```
 
-**This removes all the complexity and wiring from your `TaskApp` component:**
+**Это убирает всю лишнюю логику из вашего компонента `TaskApp`:**
 
 <Sandpack>
 
@@ -942,7 +942,7 @@ import { TasksProvider } from './TasksContext.js';
 export default function TaskApp() {
   return (
     <TasksProvider>
-      <h1>Day off in Kyoto</h1>
+      <h1>День в Киото</h1>
       <AddTask />
       <TaskList />
     </TasksProvider>
@@ -999,9 +999,9 @@ function tasksReducer(tasks, action) {
 }
 
 const initialTasks = [
-  { id: 0, text: 'Philosopher’s Path', done: true },
-  { id: 1, text: 'Visit the temple', done: false },
-  { id: 2, text: 'Drink matcha', done: false }
+  { id: 0, text: 'Тропа философа', done: true },
+  { id: 1, text: 'Посетить храм', done: false },
+  { id: 2, text: 'Выпить маття', done: false }
 ];
 ```
 
@@ -1015,7 +1015,7 @@ export default function AddTask() {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="Добавить задачу"
         value={text}
         onChange={e => setText(e.target.value)}
       />
@@ -1026,7 +1026,7 @@ export default function AddTask() {
           id: nextId++,
           text: text,
         }); 
-      }}>Add</button>
+      }}>Добавить</button>
     </>
   );
 }
@@ -1070,7 +1070,7 @@ function Task({ task }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          Сохранить
         </button>
       </>
     );
@@ -1079,7 +1079,7 @@ function Task({ task }) {
       <>
         {task.text}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          Редактировать
         </button>
       </>
     );
@@ -1106,7 +1106,7 @@ function Task({ task }) {
           id: task.id
         });
       }}>
-        Delete
+        Удалить
       </button>
     </label>
   );
@@ -1121,7 +1121,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-You can also export functions that _use_ the context from `TasksContext.js`:
+Вы так—же можете экспортировать функции которые _используют_ контекст из `TasksContext.js`:
 
 ```js
 export function useTasks() {
@@ -1133,14 +1133,14 @@ export function useTasksDispatch() {
 }
 ```
 
-When a component needs to read context, it can do it through these functions:
+Когда надо будет получить контекст в других компонентах, вы можете сделать это с помощью этих функций:
 
 ```js
 const tasks = useTasks();
 const dispatch = useTasksDispatch();
 ```
 
-This doesn't change the behavior in any way, but it lets you later split these contexts further or add some logic to these functions. **Now all of the context and reducer wiring is in `TasksContext.js`. This keeps the components clean and uncluttered, focused on what they display rather than where they get the data:**
+Это никак не меняет поведение, но позволяет вам впоследствии разделить эти контексты еще больше или добавить некоторую логику в эти функции. **Теперь все контексты и редюсеры находятся в `TasksContext.js`. Это делает компоненты чистыми и упорядоченными, сосредоточенными на отображении данных, а не на том, откуда эти данные берутся:**
 
 <Sandpack>
 
@@ -1152,7 +1152,7 @@ import { TasksProvider } from './TasksContext.js';
 export default function TaskApp() {
   return (
     <TasksProvider>
-      <h1>Day off in Kyoto</h1>
+      <h1>День в Киото</h1>
       <AddTask />
       <TaskList />
     </TasksProvider>
@@ -1218,9 +1218,9 @@ function tasksReducer(tasks, action) {
 }
 
 const initialTasks = [
-  { id: 0, text: 'Philosopher’s Path', done: true },
-  { id: 1, text: 'Visit the temple', done: false },
-  { id: 2, text: 'Drink matcha', done: false }
+  { id: 0, text: 'Тропа философа', done: true },
+  { id: 1, text: 'Посетить храм', done: false },
+  { id: 2, text: 'Выпить маття', done: false }
 ];
 ```
 
@@ -1234,7 +1234,7 @@ export default function AddTask() {
   return (
     <>
       <input
-        placeholder="Add task"
+        placeholder="Добавить задачу"
         value={text}
         onChange={e => setText(e.target.value)}
       />
@@ -1245,7 +1245,7 @@ export default function AddTask() {
           id: nextId++,
           text: text,
         }); 
-      }}>Add</button>
+      }}>Добавить</button>
     </>
   );
 }
@@ -1289,7 +1289,7 @@ function Task({ task }) {
             });
           }} />
         <button onClick={() => setIsEditing(false)}>
-          Save
+          Сохранить
         </button>
       </>
     );
@@ -1298,7 +1298,7 @@ function Task({ task }) {
       <>
         {task.text}
         <button onClick={() => setIsEditing(true)}>
-          Edit
+          Редактировать
         </button>
       </>
     );
@@ -1325,7 +1325,7 @@ function Task({ task }) {
           id: task.id
         });
       }}>
-        Delete
+        Удалить
       </button>
     </label>
   );
@@ -1340,27 +1340,27 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-You can think of `TasksProvider` as a part of the screen that knows how to deal with tasks, `useTasks` as a way to read them, and `useTasksDispatch` as a way to update them from any component below in the tree.
+Можно представить TasksProvider как часть интерфейса, которая знает, как работать с задачами, useTasks — как способ их чтения, а useTasksDispatch — как способ обновления из любого дочернего компонента.
 
 <Note>
 
-Functions like `useTasks` and `useTasksDispatch` are called *[Custom Hooks.](/learn/reusing-logic-with-custom-hooks)* Your function is considered a custom Hook if its name starts with `use`. This lets you use other Hooks, like `useContext`, inside it.
+Функции похожие на `useTasks` и `useTasksDispatch` называются *[Пользовательские  хуки.](/learn/reusing-logic-with-custom-hooks)* Ваша функция считается пользовательским хуком если ее название начинается с `use`. Это позволяет вам использовать другие хуки, такие как `useContext`, внутри неё.
 
 </Note>
 
-As your app grows, you may have many context-reducer pairs like this. This is a powerful way to scale your app and [lift state up](/learn/sharing-state-between-components) without too much work whenever you want to access the data deep in the tree.
+По мере роста вашего приложения у вас может появиться много таких контекст-редюсер пар. Это мощный способ масштабировать приложение и [передавать состояние](/learn/sharing-state-between-components) без лишних усилий, когда вам нужно получить доступ к данным глубоко в дереве.
 
 <Recap>
 
-- You can combine reducer with context to let any component read and update state above it.
-- To provide state and the dispatch function to components below:
-  1. Create two contexts (for state and for dispatch functions).
-  2. Provide both contexts from the component that uses the reducer.
-  3. Use either context from components that need to read them.
-- You can further declutter the components by moving all wiring into one file.
-  - You can export a component like `TasksProvider` that provides context.
-  - You can also export custom Hooks like `useTasks` and `useTasksDispatch` to read it.
-- You can have many context-reducer pairs like this in your app.
+- Вы можете комбинировать редюсер с контекстом, что бы любой компонент мог получить доступ к состоянию родительского компонента и изменять его
+- Чтобы предоставить состояние и функцию отправителя в дочернии компоненты, надо:
+  1. Создать два контекста (для состояния и функций отправителей).
+  2. Экспортируйте оба контекста из компонента в котором объявлен редюсер.
+  3. Используйте оба контекста в компонентах где вам это нужно.
+- Можно ещё больше упростить компоненты, переместив всю логику создания в один файл.
+  - Вы можете экспортировать компонент, например, `TasksProvider`, который предоставляет контекст.
+  - Также можно экспортировать пользовательские хуки, такие как `useTasks` и `useTasksDispatch`, для доступа к данным.
+- В вашем приложении может быть много таких контекст-редюсер пар.
 
 </Recap>
 
