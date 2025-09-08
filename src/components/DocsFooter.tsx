@@ -80,7 +80,11 @@ function FooterLink({
       />
       <div className="flex flex-col overflow-hidden">
         <span className="text-sm font-bold tracking-wide no-underline uppercase text-secondary dark:text-secondary-dark group-focus:text-link dark:group-focus:text-link-dark group-focus:text-opacity-100">
+<<<<<<< HEAD
           {type === 'Previous' ? 'Предыдущая глава' : 'Следующая глава'}
+=======
+          {type === 'Previous' ? 'Previous' : 'Next'}
+>>>>>>> d34c6a2c6fa49fc6f64b07aa4fa979d86d41c4e8
         </span>
         <span className="text-lg break-words group-hover:underline">
           {title}

@@ -2495,7 +2495,7 @@ For example, we can slow down the `default` cross fade animation:
 </ViewTransition>
 ```
 
-And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-classes):
+And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-class):
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2521,7 +2521,7 @@ export default function App() {
   const { url } = useRouter();
 
   // Define a default animation of .slow-fade.
-  // See animations.css for the animation definiton.
+  // See animations.css for the animation definition.
   return (
     <ViewTransition default="slow-fade">
       {url === '/' ? <Home /> : <Details />}
