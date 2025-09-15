@@ -896,7 +896,11 @@ button { margin: 5px; }
 
 ### Получение данных в эффекте {/*fetching-data-with-effects*/}
 
+<<<<<<< HEAD
 В эффекте можно запрашивать для компонента данные. [Если вы используете фреймворк,](/learn/start-a-new-react-project#production-grade-react-frameworks) то будет эффективнее воспользоваться встроенным в ваш фреймворк механизмом получения данных, чем вручную писать собственные эффекты.
+=======
+You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/start-a-new-react-project#full-stack-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
+>>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 Если вы всё же хотите вручную в эффекте запрашивать данные, то можно написать, например, такой код:
 
@@ -1048,8 +1052,13 @@ export async function fetchBio(person) {
 
 Эти недостатки не являются какой-то особенностью именно React. Такие же проблемы получения данных при монтировании будут и с любой другой библиотекой. Как и маршрутизацию, нельзя просто взять и правильно реализовать получение данных -- поэтому мы рекомендуем следующие подходы:
 
+<<<<<<< HEAD
 - **Если вы используете [фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks), то возьмите встроенный в него механизм получения данных.** В современные React-фреймворки уже встроены эффективные механизмы получения данных без перечисленных недостатков.
 - **Если нет, то попробуйте написать или использовать готовый клиентский кэш.** [React Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), и [React Router 6.4+](https://beta.reactrouter.com/en/main/start/overview) -- примеры популярных готовых решений с открытым исходным кодом. Создать собственное решение тоже можно: под капотом будут эффекты, но также и логика для дедупликации запросов, кэширования ответов и предотвращения водопадов (через предзагрузку или через перенос на уровень маршрутов требований, какие данные будут нужны).
+=======
+- **If you use a [framework](/learn/start-a-new-react-project#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+>>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 Получать данные прямо в эффекте -- всё ещё вполне приемлемый вариант, если ничто из перечисленного вам не подходит.
 
@@ -1733,7 +1742,11 @@ function Page({ url, shoppingCart }) {
 
 ### Отображение разного содержимого на сервере и на клиенте {/*displaying-different-content-on-the-server-and-the-client*/}
 
+<<<<<<< HEAD
 Если в вашем приложении есть серверный рендеринг ([ручной](/reference/react-dom/server) или через [фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks)), то ваши компоненты будут рендериться в двух разных окружениях. Один рендеринг на сервере создаст первоначальный HTML, и один рендеринг на клиенте к этому HTML подключит обработчики событий. Поэтому для правильной работы [гидратации](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) первоначальный рендеринг на сервере и на клиенте должны давать одинаковый результат.
+=======
+If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/start-a-new-react-project#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
+>>>>>>> a5181c291f01896735b65772f156cfde34df20ee
 
 При этом изредка вам может понадобиться отобразить на клиенте другое содержимое. Например, если ваше приложение читает данные из [`localStorage`](https://developer.mozilla.org/ru/docs/Web/API/Window/localStorage) -- что в принципе невозможно делать на сервере. В таком случае разное отображение можно реализовать вот так:
 
