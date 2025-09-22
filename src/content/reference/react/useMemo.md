@@ -12,6 +12,12 @@ const cachedValue = useMemo(calculateValue, dependencies)
 
 </Intro>
 
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useMemo` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
 <InlineToc />
 
 ---
@@ -143,7 +149,11 @@ console.timeEnd('filter array');
 
 #### Везде ли стоит использовать useMemo? {/*should-you-add-usememo-everywhere*/}
 
+<<<<<<< HEAD
 В приложениях, подобных этому сайту, где большинство взаимодействий «грубые» (например, изменение страницы или целого раздела), мемоизация может быть излишня. С другой стороны, если ваше приложение больше похоже на графический редактор, где происходит много мелких взаимодействий (например, передвижение фигур), мемоизация может иметь смысл.
+=======
+If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 Прибегать к оптимизации при помощи `useMemo` стоит лишь в некоторых случаях:
 
@@ -219,7 +229,8 @@ export default function App() {
 
 ```
 
-```js src/TodoList.js active
+{/* TODO(@poteto) - investigate potential false positives in react compiler validation */}
+```js {expectedErrors: {'react-compiler': [5]}} src/TodoList.js active
 import { useMemo } from 'react';
 import { filterTodos } from './utils.js'
 
@@ -710,7 +721,7 @@ export default function TodoList({ todos, theme, tab }) {
 }
 ```
 
-```js src/List.js
+```js {expectedErrors: {'react-compiler': [5, 6]}} src/List.js
 import { memo } from 'react';
 
 const List = memo(function List({ items }) {
@@ -848,7 +859,7 @@ export default function TodoList({ todos, theme, tab }) {
 }
 ```
 
-```js src/List.js
+```js {expectedErrors: {'react-compiler': [5, 6]}} src/List.js
 import { memo } from 'react';
 
 const List = memo(function List({ items }) {
@@ -1120,7 +1131,7 @@ function ChatRoom({ roomId }) {
       serverUrl: 'https://localhost:1234',
       roomId: roomId
     }
-    
+
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
@@ -1363,7 +1374,7 @@ Object.is(temp1[2], temp2[2]); // ... и так для всех зависимо
 
 Предположим, что компонент `Chart` обёрнут в [`memo`](/reference/react/memo). Необходимо пропустить ререндеры для каждого из них, если родительский компонент `ReportList` ререндерится. Однако вызывать `useMemo` в циклах запрещено:
 
-```js {5-11}
+```js {expectedErrors: {'react-compiler': [6]}} {5-11}
 function ReportList({ items }) {
   return (
     <article>

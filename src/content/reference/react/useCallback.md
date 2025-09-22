@@ -12,6 +12,12 @@ const cachedFn = useCallback(fn, dependencies)
 
 </Intro>
 
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useCallback` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
 <InlineToc />
 
 ---
@@ -124,7 +130,7 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }
-  
+
   return (
     <div className={theme}>
       {/* ... таким образом, пропсы ShippingForm никогда не будут одинаковыми, и он будет повторно рендериться каждый раз. */}
@@ -201,8 +207,13 @@ function ProductPage({ productId, referrer }) {
 
 Если вы уже знакомы с [`useMemo`,](/reference/react/useMemo) вам может быть полезно думать о `useCallback` так:
 
+<<<<<<< HEAD
 ```js
 // Упрощённая реализация (внутри React)
+=======
+```js {expectedErrors: {'react-compiler': [3]}}
+// Simplified implementation (inside React)
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
 }
@@ -216,7 +227,11 @@ function useCallback(fn, dependencies) {
 
 #### Следует ли добавлять useCallback повсюду? {/*should-you-add-usecallback-everywhere*/}
 
+<<<<<<< HEAD
 Если ваше приложение похоже на этот сайт, и большинство взаимодействий грубые (например, замена страницы или целого раздела), мемоизация обычно не нужна. С другой стороны, если ваше приложение похоже на редактор рисунков, и большинство взаимодействий детализированы (например, перемещение фигур), мемоизация может быть очень полезной.
+=======
+If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
+>>>>>>> 366b5fbdadefecbbf9f6ef36c0342c083248c691
 
 Кеширование функции с помощью `useCallback` полезно в нескольких случаях:
 
@@ -304,7 +319,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -443,7 +458,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -863,7 +878,7 @@ Object.is(temp1[2], temp2[2]); // ... и так далее для каждой �
 
 Предположим, что компонент `Chart` обёрнут в [`memo`](/reference/react/memo). Вы хотите пропустить повторный рендеринг каждого `Chart` в списке, когда компонент `ReportList` рендерится заново. Однако вы не можете вызывать `useCallback` в цикле:
 
-```js {5-14}
+```js {expectedErrors: {'react-compiler': [6]}} {5-14}
 function ReportList({ items }) {
   return (
     <article>
