@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
@@ -82,11 +89,9 @@ export function Page({
               'max-w-7xl mx-auto',
               section === 'blog' && 'lg:flex lg:flex-col lg:items-center'
             )}>
-            <TocContext.Provider value={toc}>
-              <LanguagesContext.Provider value={languages}>
-                {children}
-              </LanguagesContext.Provider>
-            </TocContext.Provider>
+            <TocContext value={toc}>
+              <LanguagesContext value={languages}>{children}</LanguagesContext>
+            </TocContext>
           </div>
           {!isBlogIndex && (
             <DocsPageFooter

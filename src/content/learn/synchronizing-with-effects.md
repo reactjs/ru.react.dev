@@ -95,7 +95,7 @@ function VideoPlayer({ src, isPlaying }) {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [7, 9]}}
 import { useState, useRef, useEffect } from 'react';
 
 function VideoPlayer({ src, isPlaying }) {
@@ -617,7 +617,11 @@ React намеренно повторно монтирует ваши компо
 
 Это позволяет видеть "✅ Подключение..." только один раз в режиме разработки, но не решает проблему.
 
+<<<<<<< HEAD
 Когда пользователь уходит со страницы, соединение всё равно не закрывается, и когда он возвращается, создаётся новое соединение. По мере того как пользователь перемещается по приложению, соединения будут накапливаться, так же как и до "исправления".
+=======
+When the user navigates away, the connection still isn't closed and when they navigate back, a new connection is created. As the user navigates across the app, the connections would keep piling up, the same as it would before the "fix".
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
 Чтобы устранить ошибку, недостаточно просто сделать так, чтобы Эффект срабатывал один раз. Эффект должен корректно работать после повторного монтирования, что означает, что соединение должно быть очищено, как в решении выше.
 
@@ -732,8 +736,13 @@ function TodoList() {
 
 Этот список недостатков не специфичен для React. Он применим к получению данных при монтировании с любой библиотекой. Как и с маршрутизацией, получение данных не является тривиальной задачей, поэтому мы рекомендуем следующие подходы:
 
+<<<<<<< HEAD
 - **Если вы используете [фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks), используйте его встроенный механизм получения данных.** Современные React-фреймворки имеют интегрированные механизмы получения данных, которые эффективны и не страдают от вышеупомянутых недостатков.
 - **В противном случае рассмотрите возможность использования или создания кэша на стороне клиента.** Популярные решения с открытым исходным кодом включают [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/) и [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) Вы также можете создать собственное решение, в этом случае вы будете использовать Эффекты под капотом, но добавите логику, чтобы устранить дублирование запросов, кэширования ответов и избежать сетевые водопады (предзагружая данные или поднимая требования к данным к маршрутам).
+=======
+- **If you use a [framework](/learn/start-a-new-react-project#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood, but add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
 Вы можете продолжать получать данные напрямую в Эффектах, если ни один из этих подходов вам не подходит.
 
@@ -1004,8 +1013,13 @@ import { useEffect, useRef } from 'react';
 export default function MyInput({ value, onChange }) {
   const ref = useRef(null);
 
+<<<<<<< HEAD
   // TODO: Это не совсем работает. Исправьте это.
   // ref.current.focus()    
+=======
+  // TODO: This doesn't quite work. Fix it.
+  // ref.current.focus()
+>>>>>>> 49c2d26722fb1b5865ce0221a4cadc71b615e4cf
 
   return (
     <input
@@ -1468,7 +1482,8 @@ body {
 
 <Sandpack>
 
-```js src/App.js
+{/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
+```js {expectedErrors: {'react-compiler': [9]}} src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1541,7 +1556,8 @@ export async function fetchBio(person) {
 
 <Sandpack>
 
-```js src/App.js
+{/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
+```js {expectedErrors: {'react-compiler': [9]}} src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1605,4 +1621,3 @@ export async function fetchBio(person) {
 </Solution>
 
 </Challenges>
-
