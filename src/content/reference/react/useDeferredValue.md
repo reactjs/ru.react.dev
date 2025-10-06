@@ -244,7 +244,11 @@ input { margin: 10px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 Однако здесь можно применить другой частый паттерн в UI: *отложить* обновление списка результатов, продолжив показывать старые результаты, пока не подготовятся новые. Чтобы показать результаты поиска по отложенной версии запроса, можно применить `useDeferredValue`:
+=======
+A common alternative UI pattern is to *defer* updating the list of results and to keep showing the previous results until the new results are ready. Call `useDeferredValue` to pass a deferred version of the query down:
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 
 ```js {3,11}
 export default function App() {
@@ -420,7 +424,11 @@ input { margin: 10px; }
 
 Для простоты удобно представлять, что обновление происходит в два этапа:
 
+<<<<<<< HEAD
 1. **Сначала React отрендерит компонент с новым запросом `"ab"` в `query`, но пока что с отложенным `"a"` в `deferredQuery`.** Значение в `deferredQuery`, которое вы передаёте в список результатов, является *отложенным:* оно "отстаёт" от значения `query`.
+=======
+1. **First, React re-renders with the new `query` (`"ab"`) but with the old `deferredQuery` (still `"a"`).** The `deferredQuery` value, which you pass to the result list, is *deferred:* it "lags behind" the `query` value.
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 
 2. **Затем в фоне React попытается ещё раз отрендерить компонент, но уже с новым запросом `"ab"` и в `query`, и в `deferredQuery`.** Если этот рендеринг выполнится до конца, то React отобразит его результаты на экране. Но если рендеринг задержится (встанет в ожидании результатов для  `"ab"`), то React эту конкретную попытку прервёт, а когда результаты загрузятся, попробует снова. Пока данные не загрузились, пользователю будет показываться старое отложенное значение.
 
@@ -669,7 +677,7 @@ export default function App() {
 }
 ```
 
-```js src/SlowList.js
+```js {expectedErrors: {'react-compiler': [19, 20]}} src/SlowList.js
 import { memo } from 'react';
 
 const SlowList = memo(function SlowList({ text }) {
@@ -746,7 +754,7 @@ export default function App() {
 }
 ```
 
-```js src/SlowList.js
+```js {expectedErrors: {'react-compiler': [19, 20]}} src/SlowList.js
 import { memo } from 'react';
 
 const SlowList = memo(function SlowList({ text }) {

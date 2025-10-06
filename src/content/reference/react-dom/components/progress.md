@@ -30,7 +30,11 @@ title: "<progress>"
 
 #### Пропсы {/*props*/}
 
+<<<<<<< HEAD
 `<progress>` поддерживает все [пропсы общих HTML-элементов.](/reference/react-dom/components/common#props)
+=======
+`<progress>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 
 Кроме того, `<progress>` поддерживает следующие пропсы:
 

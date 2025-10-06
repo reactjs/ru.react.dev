@@ -50,7 +50,11 @@ import { createPortal } from 'react-dom';
 
 * `domNode`: DOM-элемент (например, возвращённый `document.getElementById()`). Он должен существовать к моменту рендера. Если при обновлении передать другой DOM-узел — содержимое портала будет пересоздано.
 
+<<<<<<< HEAD
 * **необязательный** `key`: Уникальная строка или число, используемые как [key](/learn/rendering-lists/#keeping-list-items-in-order-with-key) для портала.
+=======
+* **optional** `key`: A unique string or number to be used as the portal's [key.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 
 #### Возвращаемое значение {/*returns*/}
 
@@ -241,7 +245,11 @@ export default function ModalContent({ onClose }) {
 
 Важно убедиться, что при использовании порталов ваше приложение остаётся доступным. Например, вам может потребоваться управлять фокусом клавиатуры, чтобы пользователь мог перемещать фокус внутрь и наружу из портала естественным способом.
 
+<<<<<<< HEAD
 Следуйте [рекомендациям WAI-ARIA по созданию модальных окон](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal). Если вы используете готовую библиотеку, убедитесь, что она поддерживает доступность и следует этим рекомендациям.
+=======
+Follow the [WAI-ARIA Modal Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal) when creating modals. If you use a community package, ensure that it is accessible and follows these guidelines.
+>>>>>>> 11cb6b591571caf5fa2a192117b6a6445c3f2027
 
 </Pitfall>
 
@@ -399,7 +407,8 @@ return (
 }
 ```
 
-```js src/App.js
+{/* TODO(@poteto) - fixed by https://github.com/facebook/react/pull/34462. need a new release */}
+```js {expectedErrors: {'react-compiler': [15]}} src/App.js
 import { useRef, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { createMapWidget, addPopupToMapWidget } from './map-widget.js';
