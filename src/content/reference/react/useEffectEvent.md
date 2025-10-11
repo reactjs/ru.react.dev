@@ -4,7 +4,7 @@ title: useEffectEvent
 
 <Intro>
 
-`useEffectEvent` — это хук React, который позволяет вынести не реактивную (не зависящую от состояния или пропсов) логику из эффекта в переиспользуемую функцию, называемую [Effect Event](/learn/separating-events-from-effects#declaring-an-effect-event).
+Хук `useEffectEvent` позволяет вынести не реактивную (не зависящую от состояния или пропсов) логику из эффекта в переиспользуемую функцию, называемую [Effect Event](/learn/separating-events-from-effects#declaring-an-effect-event).
 
 ```js
 const onSomething = useEffectEvent(callback)
@@ -18,8 +18,7 @@ const onSomething = useEffectEvent(callback)
 
 ### `useEffectEvent(callback)` {/*useeffectevent*/}
 
-Вызывайте `useEffectEvent` на верхнем уровне вашего компонента, чтобы объявить **Effect Event**.
-Effect Event — это функция, которую можно вызывать внутри эффектов (`useEffect`, `useLayoutEffect`, и т.д.):
+Чтобы объявить **Effect Event** функцию, вызовите `useEffectEvent` на верхнем уровне вашего компонента. Effect Event функцию можно безопасно вызывать внутри эффектов (`useEffect`, `useLayoutEffect`, и т.д.):
 
 ```js {4-6,11}
 import { useEffectEvent, useEffect } from 'react';
