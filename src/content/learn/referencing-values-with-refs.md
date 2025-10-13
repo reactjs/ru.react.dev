@@ -211,7 +211,7 @@ export default function Counter() {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [13]}}
 import { useRef } from 'react';
 
 export default function Counter() {
@@ -313,7 +313,7 @@ console.log(ref.current); // 5
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [10]}}
 import { useState } from 'react';
 
 export default function Chat() {
@@ -418,7 +418,7 @@ export default function Chat() {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [10]}}
 import { useRef } from 'react';
 
 export default function Toggle() {
@@ -464,7 +464,11 @@ export default function Toggle() {
 
 #### Исправьте debouncing {/*fix-debouncing*/}
 
+<<<<<<< HEAD
 В данном примере все обработчики событий для кнопок являются ["debounced".](https://redd.one/blog/debounce-vs-throttle) Чтобы понять, как это работает, кликните на одну из кнопок. Обратите внимание, что сообщение появляется через секунду. Если нажать на кнопку во время ожидания сообщения, таймер сбросится. Таким образом, если вы продолжите кликать одну и ту же кнопку много раз, сообщение не появится до тех пор, пока не пройдёт секунда _после_ последнего клика. Debouncing позволяет вам установить задержку до тех пор, пока пользователь «не прекратит делать что-то», прежде чем произойдёт какое-то действие.
+=======
+In this example, all button click handlers are ["debounced".](https://kettanaito.com/blog/debounce-vs-throttle) To see what this means, press one of the buttons. Notice how the message appears a second later. If you press the button while waiting for the message, the timer will reset. So if you keep clicking the same button fast many times, the message won't appear until a second *after* you stop clicking. Debouncing lets you delay some action until the user "stops doing things".
+>>>>>>> 0d05d9b6ef0f115ec0b96a2726ab0699a9ebafe1
 
 Этот пример работает, но не совсем как было задумано. Кнопки не являются независимыми. Чтобы увидеть проблему, кликните на одну из кнопок и затем кликните на другую кнопку. Мы ожидаем увидеть два сообщения, которые привязаны к каждой кнопке. Но мы увидим только сообщение последней. Сообщение первой кнопки потерялось.
 
