@@ -12,6 +12,12 @@ const MemoizedComponent = memo(SomeComponent, arePropsEqual?)
 
 </Intro>
 
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically applies the equivalent of `memo` to all components, reducing the need for manual memoization. You can use the compiler to handle component memoization automatically.
+
+</Note>
+
 <InlineToc />
 
 ---
@@ -112,7 +118,11 @@ label {
 
 #### Нужно ли везде добавлять memo? {/*should-you-add-memo-everywhere*/}
 
+<<<<<<< HEAD
 Если ваше приложение похоже на текущий сайт, и большинство взаимодействий глобальные (как замена страницы или целого раздела), в мемоизации нет необходимости. С другой стороны, если ваше приложение похоже на приложение для рисования и редактирования, и большинство взаимодействий более детальные (как перемещение фигур), мемоизация может оказаться очень полезной. 
+=======
+If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 Оптимизация с `memo`  является очень ценной, когда ваш компонент повторно рендерится с абсолютно одинаковыми пропсами, и повторная отрисовка очень дорогостоящая. Если при повторном рендере нет заметной задержки, использовать `memo` необязательно. Учтите, что `memo` будет абсолютно бесполезным решением, если передаваемые пропсы *всегда разные*, например, при передаче объектов или функций, которые создаются каждый раз с нуля. Именно поэтому, чаще всего вам нужно использовать  [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) и [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components) в паре с `memo`.
 
@@ -222,16 +232,16 @@ export default function MyApp() {
   const [theme, setTheme] = useState('dark');
 
   function handleClick() {
-    setTheme(theme === 'dark' ? 'light' : 'dark'); 
+    setTheme(theme === 'dark' ? 'light' : 'dark');
   }
 
   return (
-    <ThemeContext.Provider value={theme}>
+    <ThemeContext value={theme}>
       <button onClick={handleClick}>
         Switch theme
       </button>
       <Greeting name="Taylor" />
-    </ThemeContext.Provider>
+    </ThemeContext>
   );
 }
 
@@ -357,7 +367,93 @@ function arePropsEqual(oldProps, newProps) {
 
 ---
 
+<<<<<<< HEAD
 ## Устранение неполадок {/*troubleshooting*/}
 ### Мой компонент рендерится повторно, если проп это объект, массив или функция {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
+=======
+### Do I still need React.memo if I use React Compiler? {/*react-compiler-memo*/}
+
+When you enable [React Compiler](/learn/react-compiler), you typically don't need `React.memo` anymore. The compiler automatically optimizes component re-rendering for you.
+
+Here's how it works:
+
+**Without React Compiler**, you need `React.memo` to prevent unnecessary re-renders:
+
+```js
+// Parent re-renders every second
+function Parent() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSeconds(s => s + 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <>
+      <h1>Seconds: {seconds}</h1>
+      <ExpensiveChild name="John" />
+    </>
+  );
+}
+
+// Without memo, this re-renders every second even though props don't change
+const ExpensiveChild = memo(function ExpensiveChild({ name }) {
+  console.log('ExpensiveChild rendered');
+  return <div>Hello, {name}!</div>;
+});
+```
+
+**With React Compiler enabled**, the same optimization happens automatically:
+
+```js
+// No memo needed - compiler prevents re-renders automatically
+function ExpensiveChild({ name }) {
+  console.log('ExpensiveChild rendered');
+  return <div>Hello, {name}!</div>;
+}
+```
+
+Here's the key part of what the React Compiler generates:
+
+```js {6-12}
+function Parent() {
+  const $ = _c(7);
+  const [seconds, setSeconds] = useState(0);
+  // ... other code ...
+
+  let t3;
+  if ($[4] === Symbol.for("react.memo_cache_sentinel")) {
+    t3 = <ExpensiveChild name="John" />;
+    $[4] = t3;
+  } else {
+    t3 = $[4];
+  }
+  // ... return statement ...
+}
+```
+
+Notice the highlighted lines: The compiler wraps `<ExpensiveChild name="John" />` in a cache check. Since the `name` prop is always `"John"`, this JSX is created once and reused on every parent re-render. This is exactly what `React.memo` does - it prevents the child from re-rendering when its props haven't changed.
+
+The React Compiler automatically:
+1. Tracks that the `name` prop passed to `ExpensiveChild` hasn't changed
+2. Reuses the previously created JSX for `<ExpensiveChild name="John" />`
+3. Skips re-rendering `ExpensiveChild` entirely
+
+This means **you can safely remove `React.memo` from your components when using React Compiler**. The compiler provides the same optimization automatically, making your code cleaner and easier to maintain.
+
+<Note>
+
+The compiler's optimization is actually more comprehensive than `React.memo`. It also memoizes intermediate values and expensive computations within your components, similar to combining `React.memo` with `useMemo` throughout your component tree.
+
+</Note>
+
+---
+
+## Troubleshooting {/*troubleshooting*/}
+### My component re-renders when a prop is an object, array, or function {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 React поверхностно сравнивает старые и новые пропсы: это значит, что проверяется ссылка старого и нового пропа. Если вы создаёте новый объект или массив, родительский компонент рендерится повторно, даже если конкретный элемент каждый раз такой же, React по прежнему будет считать, что он изменился. Тоже самое происходит, когда вы создаёте функцию, при рендере родительского компонента, React будет считать, что она изменилась даже, если определение функции осталось прежним. Чтобы избежать такого поведения, [делайте пропсы проще или мемоизируйте пропсы родительского компонента](#minimizing-props-changes).

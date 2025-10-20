@@ -199,7 +199,7 @@ React ожидает, что компоненты будут [вести себ�
 
 Перезаписывание или считывание рефа **во время рендера** не оправдывает эти ожидания.
 
-```js {3-4,6-7}
+```js {expectedErrors: {'react-compiler': [4]}} {3-4,6-7}
 function MyComponent() {
   // ...
   // 🚩 Не перезаписывайте рефы во время рендера
@@ -575,7 +575,11 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
+<<<<<<< HEAD
 И затем добавьте `реф` в список пропов вашего компонента и передайте `ref` как проп в нужный дочерний [встроенный компонент](/reference/react-dom/components/common):
+=======
+And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevant child [built-in component](/reference/react-dom/components/common) like this:
+>>>>>>> f8c81a0f4f8e454c850f0c854ad054b32313345c
 
 ```js {1,6}
 function MyInput({ value, onChange, ref }) {
