@@ -37,9 +37,15 @@ JSON API возвращает данные, которые выглядят та
 
 Вы можете подходить к разбиению дизайна на компоненты по-разному, основываясь на вашем опыте:
 
+<<<<<<< HEAD
 * **Программирование** -- используйте тот же подход, как при решении создать простую функцию или целый объект. Можно применить [принцип единственной ответственности:](https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF_%D0%B5%D0%B4%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9_%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8) каждый компонент должен заниматься какой-то одной задачей. Если функциональность компонента увеличивается с течением времени, его следует разбить на более мелкие подкомпоненты.
 * **CSS** -- подумайте, для чего бы вы сделали селекторы класса. (Помните, что компоненты не настолько узкие.)
 * **Дизайн** -- подумайте, как бы вы организовали слои дизайна.
+=======
+* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents. 
+* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
+* **Design**--consider how you would organize the design's layers.
+>>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 Хорошая структура у JSON часто уже отражает структуру компонентов на вашем UI. Это происходит из-за того, что у UI и модели данных часто похожая информационная архитектура. Разбейте UI на компоненты, каждый из которых отображает часть модели данных.
 
