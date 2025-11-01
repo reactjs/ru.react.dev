@@ -36,7 +36,7 @@ title: "<option>"
 
 #### Пропсы {/*props*/}
 
-`<option>` поддерживает все [пропсы общих HTML-элементов.](/reference/react-dom/components/common#props)
+`<option>` поддерживает все [пропсы общих HTML-элементов.](/reference/react-dom/components/common#common-props)
 
 Кроме того, `<option>` поддерживает следующие пропсы:
 

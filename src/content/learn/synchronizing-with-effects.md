@@ -95,7 +95,7 @@ function VideoPlayer({ src, isPlaying }) {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [7, 9]}}
 import { useState, useRef, useEffect } from 'react';
 
 function VideoPlayer({ src, isPlaying }) {
@@ -732,7 +732,7 @@ function TodoList() {
 
 Этот список недостатков не специфичен для React. Он применим к получению данных при монтировании с любой библиотекой. Как и с маршрутизацией, получение данных не является тривиальной задачей, поэтому мы рекомендуем следующие подходы:
 
-- **Если вы используете [фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks), используйте его встроенный механизм получения данных.** Современные React-фреймворки имеют интегрированные механизмы получения данных, которые эффективны и не страдают от вышеупомянутых недостатков.
+- **Если вы используете [фреймворк](//learn/start-a-new-react-project#full-stack-frameworks), используйте его встроенный механизм получения данных.** Современные React-фреймворки имеют интегрированные механизмы получения данных, которые эффективны и не страдают от вышеупомянутых недостатков.
 - **В противном случае рассмотрите возможность использования или создания кэша на стороне клиента.** Популярные решения с открытым исходным кодом включают [React Query](https://tanstack.com/query/latest), [useSWR](https://swr.vercel.app/) и [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) Вы также можете создать собственное решение, в этом случае вы будете использовать Эффекты под капотом, но добавите логику, чтобы устранить дублирование запросов, кэширования ответов и избежать сетевые водопады (предзагружая данные или поднимая требования к данным к маршрутам).
 
 Вы можете продолжать получать данные напрямую в Эффектах, если ни один из этих подходов вам не подходит.
@@ -1005,7 +1005,7 @@ export default function MyInput({ value, onChange }) {
   const ref = useRef(null);
 
   // TODO: Это не совсем работает. Исправьте это.
-  // ref.current.focus()    
+  // ref.current.focus()
 
   return (
     <input
@@ -1468,7 +1468,8 @@ body {
 
 <Sandpack>
 
-```js src/App.js
+{/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
+```js {expectedErrors: {'react-compiler': [9]}} src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1541,7 +1542,8 @@ export async function fetchBio(person) {
 
 <Sandpack>
 
-```js src/App.js
+{/* not the most efficient, but this validation is enabled in the linter only, so it's fine to ignore it here since we know what we're doing */}
+```js {expectedErrors: {'react-compiler': [9]}} src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1605,4 +1607,3 @@ export async function fetchBio(person) {
 </Solution>
 
 </Challenges>
-

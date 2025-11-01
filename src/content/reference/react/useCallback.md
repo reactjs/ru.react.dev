@@ -12,6 +12,12 @@ const cachedFn = useCallback(fn, dependencies)
 
 </Intro>
 
+<Note>
+
+[React Compiler](/learn/react-compiler) automatically memoizes values and functions, reducing the need for manual `useCallback` calls. You can use the compiler to handle memoization automatically.
+
+</Note>
+
 <InlineToc />
 
 ---
@@ -124,7 +130,7 @@ function ProductPage({ productId, referrer, theme }) {
       orderDetails,
     });
   }
-  
+
   return (
     <div className={theme}>
       {/* ... таким образом, пропсы ShippingForm никогда не будут одинаковыми, и он будет повторно рендериться каждый раз. */}
@@ -201,7 +207,7 @@ function ProductPage({ productId, referrer }) {
 
 Если вы уже знакомы с [`useMemo`,](/reference/react/useMemo) вам может быть полезно думать о `useCallback` так:
 
-```js
+```js {expectedErrors: {'react-compiler': [3]}}
 // Упрощённая реализация (внутри React)
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
@@ -304,7 +310,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -443,7 +449,7 @@ function post(url, data) {
 }
 ```
 
-```js src/ShippingForm.js
+```js {expectedErrors: {'react-compiler': [7, 8]}} src/ShippingForm.js
 import { memo, useState } from 'react';
 
 const ShippingForm = memo(function ShippingForm({ onSubmit }) {
@@ -863,7 +869,7 @@ Object.is(temp1[2], temp2[2]); // ... и так далее для каждой �
 
 Предположим, что компонент `Chart` обёрнут в [`memo`](/reference/react/memo). Вы хотите пропустить повторный рендеринг каждого `Chart` в списке, когда компонент `ReportList` рендерится заново. Однако вы не можете вызывать `useCallback` в цикле:
 
-```js {5-14}
+```js {expectedErrors: {'react-compiler': [6]}} {5-14}
 function ReportList({ items }) {
   return (
     <article>

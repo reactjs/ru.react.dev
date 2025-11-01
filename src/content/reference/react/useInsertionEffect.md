@@ -133,7 +133,7 @@ function useCSS(rule) {
 
 #### Почему это лучше чем внедрение стилей во время рендера или использование useLayoutEffect? {/*how-is-this-better-than-injecting-styles-during-rendering-or-uselayouteffect*/}
 
-Если вы вставляете стили во время рендеринга, и React обрабатывает [неблокирующее обновление,](/reference/react/useTransition#marking-a-state-update-as-a-non-blocking-transition) браузер будет пересчитывать стили на каждом кадре во время рендеринга дерева компонентов, что может быть **чрезвычайно медленным.**
+Если вы вставляете стили во время рендеринга, и React обрабатывает [неблокирующее обновление,](/reference/react/useTransition#perform-non-blocking-updates-with-actions) браузер будет пересчитывать стили на каждом кадре во время рендеринга дерева компонентов, что может быть **чрезвычайно медленным.**
 
 `useInsertionEffect` лучше, чем вставка стилей во время [`useLayoutEffect`](/reference/react/useLayoutEffect) или [`useEffect`](/reference/react/useEffect) потому что это гарантирует, что к тому времени, как другие эффекты запускаются в ваших компонентах, теги `<style>` уже будут вставлены. В противном случае расчёты компоновки в обычных эффектах будут неверными из-за устаревших стилей.
 

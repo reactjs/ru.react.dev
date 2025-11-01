@@ -50,7 +50,7 @@ import { createPortal } from 'react-dom';
 
 * `domNode`: DOM-элемент (например, возвращённый `document.getElementById()`). Он должен существовать к моменту рендера. Если при обновлении передать другой DOM-узел — содержимое портала будет пересоздано.
 
-* **необязательный** `key`: Уникальная строка или число, используемые как [key](/learn/rendering-lists/#keeping-list-items-in-order-with-key) для портала.
+* **необязательный** `key`: Уникальная строка или число, используемые как [key](/learn/rendering-lists#keeping-list-items-in-order-with-key) для портала.
 
 #### Возвращаемое значение {/*returns*/}
 
