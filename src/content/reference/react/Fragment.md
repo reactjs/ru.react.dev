@@ -4,13 +4,9 @@ title: <Fragment> (<>...</>)
 
 <Intro>
 
-<<<<<<< HEAD
 `<Fragment>`, или `<>...</>`, позволяет группировать элементы без тега-обертки.
-=======
-`<Fragment>`, often used via `<>...</>` syntax, lets you group elements without a wrapper node. 
 
-<Canary> Fragments can also accept refs, which enable interacting with underlying DOM nodes without adding wrapper elements. See reference and usage below.</Canary>
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
+<Canary> Fragments также могут принимать refs, которые позволяют взаимодействовать со вложенными DOM nodes без добавления дополнительных элементов-оберток. Смотрите справочник и применение ниже. </Canary>
 
 ```js
 <>
@@ -33,10 +29,7 @@ title: <Fragment> (<>...</>)
 
 #### Пропсы {/*props*/}
 
-<<<<<<< HEAD
 - **необязательный** `key`: Фрагменты, объявленные с помощью явного синтаксиса `<Fragment>`, могут иметь [ключи.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
-=======
-- **optional** `key`: Fragments declared with the explicit `<Fragment>` syntax may have [keys.](/learn/rendering-lists#keeping-list-items-in-order-with-key)
 - <CanaryBadge />  **optional** `ref`: A ref object (e.g. from [`useRef`](/reference/react/useRef)) or [callback function](/reference/react-dom/components/common#ref-callback). React provides a `FragmentInstance` as the ref value that implements methods for interacting with the DOM nodes wrapped by the Fragment.
 
 ### <CanaryBadge /> FragmentInstance {/*fragmentinstance*/}
@@ -64,7 +57,6 @@ When you pass a ref to a fragment, React provides a `FragmentInstance` object wi
 **Observer methods:**
 - `observeUsing(observer)`: Starts observing the Fragment's DOM children with an IntersectionObserver or ResizeObserver.
 - `unobserveUsing(observer)`: Stops observing the Fragment's DOM children with the specified observer.
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 #### Предостережения {/*caveats*/}
 

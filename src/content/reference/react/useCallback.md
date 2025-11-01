@@ -52,11 +52,7 @@ export default function ProductPage({ productId, referrer, theme }) {
 
 При первом рендере `useCallback` возвращает функцию `fn`, которую вы передали.
 
-<<<<<<< HEAD
 Во время последующих рендеров он либо возвращает уже сохранённую функцию `fn` с последнего рендера (если зависимости не изменились), либо возвращает функцию `fn`, переданную при текущем рендере.
-=======
-During subsequent renders, it will either return an already stored `fn` function from the last render (if the dependencies haven't changed), or return the `fn` function you have passed during this render.
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 #### Предостережения {/*caveats*/}
 
@@ -211,13 +207,8 @@ function ProductPage({ productId, referrer }) {
 
 Если вы уже знакомы с [`useMemo`,](/reference/react/useMemo) вам может быть полезно думать о `useCallback` так:
 
-<<<<<<< HEAD
-```js
-// Упрощённая реализация (внутри React)
-=======
 ```js {expectedErrors: {'react-compiler': [3]}}
-// Simplified implementation (inside React)
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
+// Упрощённая реализация (внутри React)
 function useCallback(fn, dependencies) {
   return useMemo(() => fn, dependencies);
 }
@@ -231,15 +222,9 @@ function useCallback(fn, dependencies) {
 
 #### Следует ли добавлять useCallback повсюду? {/*should-you-add-usecallback-everywhere*/}
 
-<<<<<<< HEAD
 Если ваше приложение похоже на этот сайт, и большинство взаимодействий грубые (например, замена страницы или целого раздела), мемоизация обычно не нужна. С другой стороны, если ваше приложение похоже на редактор рисунков, и большинство взаимодействий детализированы (например, перемещение фигур), мемоизация может быть очень полезной.
 
 Кеширование функции с помощью `useCallback` полезно в нескольких случаях:
-=======
-If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
-
-Caching a function with `useCallback` is only valuable in a few cases:
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 - Вы передаёте её как проп компоненту, обёрнутому в [`memo`.](/reference/react/memo) Вы хотите пропустить повторный рендер, если значение не изменилось. Мемоизация позволяет вашему компоненту повторно рендериться, только если зависимости изменились.
 - Функция, которую вы передаёте, позже используется как зависимость в каком-то хуке. Например, другая функция, обёрнутая в `useCallback`, зависит от неё, или вы зависите от этой функции в [`useEffect.`](/reference/react/useEffect)
@@ -250,19 +235,11 @@ Caching a function with `useCallback` is only valuable in a few cases:
 
 **На практике можно сделать большую часть мемоизации ненужной, следуя нескольким принципам:**
 
-<<<<<<< HEAD
 1. Когда компонент оборачивает другие компоненты, пусть он [принимает JSX как дочерний.](/learn/passing-props-to-a-component#passing-jsx-as-children) Если обёрточный компонент обновляет своё состояние, React знает, что его дети не нужно повторно рендерить.
 1. Предпочитайте локальное состояние и не [поднимайте состояние выше,](/learn/sharing-state-between-components) чем это необходимо. Не держите временное состояние, такое как формы или состояние наведения, на верхнем уровне дерева или в глобальной библиотеке состояния.
 1. Держите [логику рендеринга чистой.](/learn/keeping-components-pure) Если повторный рендеринг компонента вызывает проблему или заметные визуальные артефакты, это ошибка в вашем компоненте! Исправьте ошибку вместо добавления мемоизации.
 1. Избегайте [ненужных эффектов, которые обновляют состояние.](/learn/you-might-not-need-an-effect) Большинство проблем с производительностью в приложениях React вызвано цепочками обновлений, исходящими от эффектов, которые заставляют ваши компоненты рендериться снова и снова.
 1. Попытайтесь [удалить ненужные зависимости из ваших эффектов.](/learn/removing-effect-dependencies) Например, вместо мемоизации часто проще переместить какой-то объект или функцию внутрь эффекта или за пределы компонента.
-=======
-1. When a component visually wraps other components, let it [accept JSX as children.](/learn/passing-props-to-a-component#passing-jsx-as-children) Then, if the wrapper component updates its own state, React knows that its children don't need to re-render.
-2. Prefer local state and don't [lift state up](/learn/sharing-state-between-components) any further than necessary. Don't keep transient state like forms and whether an item is hovered at the top of your tree or in a global state library.
-3. Keep your [rendering logic pure.](/learn/keeping-components-pure) If re-rendering a component causes a problem or produces some noticeable visual artifact, it's a bug in your component! Fix the bug instead of adding memoization.
-4. Avoid [unnecessary Effects that update state.](/learn/you-might-not-need-an-effect) Most performance problems in React apps are caused by chains of updates originating from Effects that cause your components to render over and over.
-5. Try to [remove unnecessary dependencies from your Effects.](/learn/removing-effect-dependencies) For example, instead of memoization, it's often simpler to move some object or a function inside an Effect or outside the component.
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 Если конкретное взаимодействие все ещё кажется медленным, [используйте профайлер в React Developer Tools,](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) чтобы определить, какие компоненты больше всего выиграют от мемоизации, и добавьте мемоизацию там, где это необходимо. Эти принципы делают ваши компоненты легче для отладки и понимания, поэтому хорошо следовать им в любом случае. В долгосрочной перспективе мы исследуем [возможность автоматической мемоизации](https://www.youtube.com/watch?v=lGEMwh32soc), чтобы решить эту проблему раз и навсегда.
 

@@ -224,11 +224,7 @@ li {
 
 В коде выше закралась ошибка. Но её не так просто заметить, потому что на первый взгляд всё выглядит правильно.
 
-<<<<<<< HEAD
 Ошибка станет более заметной, если компонент `StoryTray` будет отрендерен несколько раз. Например, давайте сделаем так, чтобы `StoryTray` рендерился с другим цветом фона каждый раз, когда вы наводите на него курсор: 
-=======
-This mistake will become more noticeable if the `StoryTray` component re-renders multiple times. For example, let's make the `StoryTray` re-render with a different background color whenever you hover over it:
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 <Sandpack>
 
@@ -1245,13 +1241,8 @@ Now on inital mount in StrictMode, the ref callbacks are all setup, cleaned up, 
 
 Without Strict Mode, it was easy to miss the bug until you clicked around to app to notice broken features. Strict Mode made the bugs appear right away, before you push them to production.
 
-<<<<<<< HEAD
 --- 
 ### Исправление предупреждений об устаревших методах в строгом режиме {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
-=======
----
-### Fixing deprecation warnings enabled by Strict Mode {/*fixing-deprecation-warnings-enabled-by-strict-mode*/}
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 React предупреждает, если какой-либо компонент внутри дерева `<StrictMode>` использует одно из следующих устаревших API:
 

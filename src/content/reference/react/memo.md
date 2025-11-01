@@ -118,11 +118,7 @@ label {
 
 #### Нужно ли везде добавлять memo? {/*should-you-add-memo-everywhere*/}
 
-<<<<<<< HEAD
 Если ваше приложение похоже на текущий сайт, и большинство взаимодействий глобальные (как замена страницы или целого раздела), в мемоизации нет необходимости. С другой стороны, если ваше приложение похоже на приложение для рисования и редактирования, и большинство взаимодействий более детальные (как перемещение фигур), мемоизация может оказаться очень полезной. 
-=======
-If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 Оптимизация с `memo`  является очень ценной, когда ваш компонент повторно рендерится с абсолютно одинаковыми пропсами, и повторная отрисовка очень дорогостоящая. Если при повторном рендере нет заметной задержки, использовать `memo` необязательно. Учтите, что `memo` будет абсолютно бесполезным решением, если передаваемые пропсы *всегда разные*, например, при передаче объектов или функций, которые создаются каждый раз с нуля. Именно поэтому, чаще всего вам нужно использовать  [`useMemo`](/reference/react/useMemo#skipping-re-rendering-of-components) и [`useCallback`](/reference/react/useCallback#skipping-re-rendering-of-components) в паре с `memo`.
 
@@ -367,10 +363,6 @@ function arePropsEqual(oldProps, newProps) {
 
 ---
 
-<<<<<<< HEAD
-## Устранение неполадок {/*troubleshooting*/}
-### Мой компонент рендерится повторно, если проп это объект, массив или функция {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
-=======
 ### Do I still need React.memo if I use React Compiler? {/*react-compiler-memo*/}
 
 When you enable [React Compiler](/learn/react-compiler), you typically don't need `React.memo` anymore. The compiler automatically optimizes component re-rendering for you.
@@ -452,8 +444,7 @@ The compiler's optimization is actually more comprehensive than `React.memo`. It
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
-### My component re-renders when a prop is an object, array, or function {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
+## Устранение неполадок {/*troubleshooting*/}
+### Мой компонент рендерится повторно, если проп это объект, массив или функция {/*my-component-rerenders-when-a-prop-is-an-object-or-array*/}
 
 React поверхностно сравнивает старые и новые пропсы: это значит, что проверяется ссылка старого и нового пропа. Если вы создаёте новый объект или массив, родительский компонент рендерится повторно, даже если конкретный элемент каждый раз такой же, React по прежнему будет считать, что он изменился. Тоже самое происходит, когда вы создаёте функцию, при рендере родительского компонента, React будет считать, что она изменилась даже, если определение функции осталось прежним. Чтобы избежать такого поведения, [делайте пропсы проще или мемоизируйте пропсы родительского компонента](#minimizing-props-changes).

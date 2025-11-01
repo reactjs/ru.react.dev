@@ -149,11 +149,7 @@ console.timeEnd('filter array');
 
 #### Везде ли стоит использовать useMemo? {/*should-you-add-usememo-everywhere*/}
 
-<<<<<<< HEAD
-В приложениях, подобных этому сайту, где большинство взаимодействий «грубые» (например, изменение страницы или целого раздела), мемоизация может быть излишня. С другой стороны, если ваше приложение больше похоже на графический редактор, где происходит много мелких взаимодействий (например, передвижение фигур), мемоизация может иметь смысл.
-=======
-If your app is like this site, and most interactions are coarse (like replacing a page or an entire section), memoization is usually unnecessary. On the other hand, if your app is more like a drawing editor, and most interactions are granular (like moving shapes), then you might find memoization very helpful.
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
+В приложениях, подобных этому сайту, где большинство взаимодействий «грубые» (например, изменение страницы или целого раздела), мемоизация может быть излишней. С другой стороны, если ваше приложение больше похоже на графический редактор, где происходит много мелких взаимодействий (например, передвижение фигур), мемоизация может иметь смысл.
 
 Прибегать к оптимизации при помощи `useMemo` стоит лишь в некоторых случаях:
 

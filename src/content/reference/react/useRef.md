@@ -575,11 +575,7 @@ export default function MyInput({ value, onChange }) {
 }
 ```
 
-<<<<<<< HEAD
 И затем добавьте `реф` в список пропов вашего компонента и передайте `ref` как проп в нужный дочерний [встроенный компонент](/reference/react-dom/components/common):
-=======
-And then add `ref` to the list of props your component accepts and pass `ref` as a prop to the relevant child [built-in component](/reference/react-dom/components/common) like this:
->>>>>>> 2c7798dcc51fbd07ebe41f49e5ded4839a029f72
 
 ```js {1,6}
 function MyInput({ value, onChange, ref }) {
