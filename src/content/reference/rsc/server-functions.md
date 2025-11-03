@@ -28,7 +28,7 @@ To support Server Functions as a bundler or framework, we recommend pinning to a
 
 </Note>
 
-When a Server Function is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the server function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
+When a Server Function is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the Server Function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
 
 Server Functions can be created in Server Components and passed as props to Client Components, or they can be imported and used in Client Components.
 
@@ -195,7 +195,7 @@ function UpdateName() {
 
 When using `useActionState` with Server Functions, React will also automatically replay form submissions entered before hydration finishes. This means users can interact with your app even before the app has hydrated.
 
-For more, see the docs for [`useActionState`](/reference/react-dom/hooks/useFormState).
+For more, see the docs for [`useActionState`](/reference/react/useActionState).
 
 ### Progressive enhancement with `useActionState` {/*progressive-enhancement-with-useactionstate*/}
 
@@ -219,4 +219,4 @@ function UpdateName() {
 
 When the <CodeStep step={2}>permalink</CodeStep> is provided to `useActionState`, React will redirect to the provided URL if the form is submitted before the JavaScript bundle loads.
 
-For more, see the docs for [`useActionState`](/reference/react-dom/hooks/useFormState).
+For more, see the docs for [`useActionState`](/reference/react/useActionState).
