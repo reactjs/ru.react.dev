@@ -29,6 +29,20 @@ React-dom contains features that are only supported for web applications (which 
 * [Client APIs](/reference/react-dom/client) - The `react-dom/client` APIs let you render React components on the client (in the browser).
 * [Server APIs](/reference/react-dom/server) - The `react-dom/server` APIs let you render React components to HTML on the server.
 
+## React Compiler {/*react-compiler*/}
+
+The React Compiler is a build-time optimization tool that automatically memoizes your React components and values:
+
+* [Configuration](/reference/react-compiler/configuration) - Configuration options for React Compiler.
+* [Directives](/reference/react-compiler/directives) - Function-level directives to control compilation.
+* [Compiling Libraries](/reference/react-compiler/compiling-libraries) - Guide for shipping pre-compiled library code.
+
+## ESLint Plugin React Hooks {/*eslint-plugin-react-hooks*/}
+
+The [ESLint plugin for React Hooks](/reference/eslint-plugin-react-hooks) helps enforce the Rules of React:
+
+* [Lints](/reference/eslint-plugin-react-hooks) - Detailed documentation for each lint with examples.
+
 ## Rules of React {/*rules-of-react*/}
 
 React has idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications:
