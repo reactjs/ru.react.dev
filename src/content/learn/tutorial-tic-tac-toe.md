@@ -1091,7 +1091,7 @@ function Square({ value, onSquareClick }) {
 }
 ```
 
-Now you'll connect the `onSquareClick` prop to a function in the `Board` component that you'll name `handleClick`. To connect `onSquareClick` to `handleClick` you'll pass a function to the `onSquareClick` prop of the first `Square` component: 
+Теперь подключите prop `onSquareClick` к функции в компоненте `Board`, которую вы назовёте `handleClick`. Чтобы подключить `onSquareClick` к `handleClick`, передайте функцию в prop `onSquareClick` первого компонента `Square`:
 
 ```js {7}
 export default function Board() {
@@ -1106,7 +1106,7 @@ export default function Board() {
 }
 ```
 
-Lastly, you will define the `handleClick` function inside the Board component to update the `squares` array holding your board's state:
+В компоненте `Board` определите функцию `handleClick`, чтобы обновить массив `squares`, хранящий состояние доски:
 
 ```js {4-8}
 export default function Board() {
@@ -1124,17 +1124,17 @@ export default function Board() {
 }
 ```
 
-The `handleClick` function creates a copy of the `squares` array (`nextSquares`) with the JavaScript `slice()` Array method. Then, `handleClick` updates the `nextSquares` array to add `X` to the first (`[0]` index) square.
+Функция `handleClick` создает копию массива `squares` (`nextSquares`) с помощью метода `slice()` JavaScript. Затем функция `handleClick` обновляет массив `nextSquares`, добавляя `X` в первый (`[0]` индекс) квадрат.
 
-Calling the `setSquares` function lets React know the state of the component has changed. This will trigger a re-render of the components that use the `squares` state (`Board`) as well as its child components (the `Square` components that make up the board).
+Вызов функции `setSquares` позволяет React знать, что состояние компонента изменилось. Это вызовет перерендер компонентов, которые используют состояние `squares` (`Board`), а также его дочерних компонентов (компоненты `Square`, составляющие доску).
 
 <Note>
 
-JavaScript supports [closures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures) which means an inner function (e.g. `handleClick`) has access to variables and functions defined in an outer function (e.g. `Board`). The `handleClick` function can read the `squares` state and call the `setSquares` method because they are both defined inside of the `Board` function.
+JavaScript поддерживает [замыкания](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures), что означает, что внутренняя функция (например, `handleClick`) имеет доступ к переменным и функциям, определенным в внешней функции (например, `Board`). Функция `handleClick` может читать состояние `squares` и вызывать метод `setSquares`, потому что они обе определены внутри функции `Board`.
 
 </Note>
 
-Now you can add X's to the board...  but only to the upper left square. Your `handleClick` function is hardcoded to update the index for the upper left square (`0`). Let's update `handleClick` to be able to update any square. Add an argument `i` to the `handleClick` function that takes the index of the square to update:
+Теперь вы можете добавить X'ы на доску... но только в верхний левый квадрат. Ваша функция `handleClick` зашита в код, которая обновляет индекс для верхнего левого квадрата (`0`). Давайте обновим `handleClick`, чтобы он мог обновить любой квадрат. Добавьте аргумент `i` в функцию `handleClick`, который принимает индекс квадрата для обновления:
 
 ```js {4,6}
 export default function Board() {
@@ -1152,13 +1152,13 @@ export default function Board() {
 }
 ```
 
-Next, you will need to pass that `i` to `handleClick`. You could try to set the `onSquareClick` prop of square to be `handleClick(0)` directly in the JSX like this, but it won't work:
+Дальше вы должны передать `i` в `handleClick`. Вы можете попытаться установить `onSquareClick` prop квадрата `handleClick(0)` непосредственно в JSX, но это не будет работать:
 
 ```jsx
 <Square value={squares[0]} onSquareClick={handleClick(0)} />
 ```
 
-Here is why this doesn't work. The `handleClick(0)` call will be a part of rendering the board component. Because `handleClick(0)` alters the state of the board component by calling `setSquares`, your entire board component will be re-rendered again. But this runs `handleClick(0)` again, leading to an infinite loop:
+Здесь описано почему это не работает. Вызов `handleClick(0)` будет частью рендеринга компонента `Board`. Поскольку `handleClick(0)` изменяет состояние компонента `Board` вызывая `setSquares`, ваш компонент `Board` будет снова рендериться. Но это вызывает `handleClick(0)` снова, что приводит к бесконечному циклу:
 
 <ConsoleBlock level="error">
 
@@ -1166,13 +1166,13 @@ Too many re-renders. React limits the number of renders to prevent an infinite l
 
 </ConsoleBlock>
 
-Why didn't this problem happen earlier?
+Почему эта ошибка не произошла ранее?
 
-When you were passing `onSquareClick={handleClick}`, you were passing the `handleClick` function down as a prop. You were not calling it! But now you are *calling* that function right away--notice the parentheses in `handleClick(0)`--and that's why it runs too early. You don't *want* to call `handleClick` until the user clicks!
+Когда вы передавали `onSquareClick={handleClick}`, вы передавали функцию `handleClick` вниз как prop. Вы не вызывали её! Но теперь вы вызываете эту функцию сразу--установите скобки в `handleClick(0)`--и это вызывает её слишком рано. Вы не хотите вызывать `handleClick` до нажатия пользователя!
 
-You could fix this by creating a function like `handleFirstSquareClick` that calls `handleClick(0)`, a function like `handleSecondSquareClick` that calls `handleClick(1)`, and so on. You would pass (rather than call) these functions down as props like `onSquareClick={handleFirstSquareClick}`. This would solve the infinite loop.
+Вы можете исправить это, создав функцию, например `handleFirstSquareClick`, которая вызывает `handleClick(0)`, функцию `handleSecondSquareClick`, которая вызывает `handleClick(1)`, и так далее. Вы передадите (а не вызовете) эти функции вниз как props, например `onSquareClick={handleFirstSquareClick}`. Это решит бесконечный цикл.
 
-However, defining nine different functions and giving each of them a name is too verbose. Instead, let's do this:
+Тем не менее, определение девяти разных функций и присвоение каждой из них имени слишком подробно. Вместо этого давайте сделаем это:
 
 ```js {6}
 export default function Board() {
@@ -1186,9 +1186,9 @@ export default function Board() {
 }
 ```
 
-Notice the new `() =>` syntax. Here, `() => handleClick(0)` is an *arrow function,* which is a shorter way to define functions. When the square is clicked, the code after the `=>` "arrow" will run, calling `handleClick(0)`.
+Обратите внимание на синтаксис `() =>`. Здесь `() => handleClick(0)` является *стрелочной функцией*, которая является более коротким способом определения функций. Когда квадрат нажимается, код после `=>` "стрелки" будет выполняться, вызывая `handleClick(0)`.
 
-Now you need to update the other eight squares to call `handleClick` from the arrow functions you pass. Make sure that the argument for each call of the `handleClick` corresponds to the index of the correct square:
+Теперь вам нужно обновить остальные восемь квадратов, чтобы вызвать `handleClick` из функций-стрелок, которые вы передаете. Убедитесь, что аргумент для каждого вызова `handleClick` соответствует индексу правильного квадрата:
 
 ```js {6-8,11-13,16-18}
 export default function Board() {
@@ -1215,13 +1215,13 @@ export default function Board() {
 };
 ```
 
-Now you can again add X's to any square on the board by clicking on them:
+Теперь вы можете снова добавить X'ы на доску, нажимая на них:
 
 ![filling the board with X](../images/tutorial/tictac-adding-x-s.gif)
 
-But this time all the state management is handled by the `Board` component!
+Но теперь всё управление состоянием осуществляется компонентом `Board`!
 
-This is what your code should look like:
+Вот как должен выглядеть ваш код:
 
 <Sandpack>
 
@@ -1314,53 +1314,53 @@ body {
 
 </Sandpack>
 
-Now that your state handling is in the `Board` component, the parent `Board` component passes props to the child `Square` components so that they can be displayed correctly. When clicking on a `Square`, the child `Square` component now asks the parent `Board` component to update the state of the board. When the `Board`'s state changes, both the `Board` component and every child `Square` re-renders automatically. Keeping the state of all squares in the `Board` component will allow it to determine the winner in the future.
+Теперь ваше состояние содержит компонент `Board`, родительский компонет `Board` передаёт пропсы в дочерние компоненты `Square` так, чтобы они могли быть отображены правильно. Когда пользователь нажимает на `Square`, дочерний компонент `Square` теперь просит родительский компонент `Board` обновить состояние доски. Когда состояние `Board` изменяется, оба компонента `Board` и каждый дочерний компонент `Square` автоматически перерисовываются. Сохранение состояния всех квадратов в компоненте `Board` позволит ему определить победителя в будущем.
 
-Let's recap what happens when a user clicks the top left square on your board to add an `X` to it:
+Напомним, что происходит, когда пользователь нажимает на верхний левый квадрат на вашей доске, чтобы добавить `X`:
 
-1. Clicking on the upper left square runs the function that the `button` received as its `onClick` prop from the `Square`. The `Square` component received that function as its `onSquareClick` prop from the `Board`. The `Board` component defined that function directly in the JSX. It calls `handleClick` with an argument of `0`.
-1. `handleClick` uses the argument (`0`) to update the first element of the `squares` array from `null` to `X`.
-1. The `squares` state of the `Board` component was updated, so the `Board` and all of its children re-render. This causes the `value` prop of the `Square` component with index `0` to change from `null` to `X`.
+1. Нажатие на верхний левый квадрат запускает функцию, которая получила компонент `button` как пропс `onClick` от компонента `Square`. Компонент `Square` получил эту функцию как пропс `onSquareClick` от компонента `Board`. Компонент `Board` определил эту функцию непосредственно в JSX. Он вызывает `handleClick` с аргументом `0`.
+1. `handleClick` использует аргумент (`0`), чтобы обновить первый элемент массива `squares` от `null` до `X`.
+1. Состояние `Board` компонента было обновлено, поэтому компонент `Board` и все его дочерние компоненты перерисовываются. Это вызывает изменение пропса `value` компонента `Square` с индексом `0` от `null` до `X`.
 
-In the end the user sees that the upper left square has changed from empty to having an `X` after clicking it.
+Пользователь видит, что верхний левый квадрат изменился от пустого до `X` после нажатия.
 
 <Note>
 
-The DOM `<button>` element's `onClick` attribute has a special meaning to React because it is a built-in component. For custom components like Square, the naming is up to you. You could give any name to the `Square`'s `onSquareClick` prop or `Board`'s `handleClick` function, and the code would work the same. In React, it's conventional to use `onSomething` names for props which represent events and `handleSomething` for the function definitions which handle those events.
+ Событие `onClick` DOM элемента `<button>` имеет особое значение для React, потому что это встроенный компонент. Для пользовательских компонентов, таких как `Square`, названия остаются за вами. Вы могли бы дать любое имя  `onSquareClick` пропсу компонента `Square` или `handleClick` функции компонента `Board`, и код работал бы так же. В React принято использовать `onSomething` для пропсов, представляющих события, и `handleSomething` для функций, которые обрабатывают эти события.
 
 </Note>
 
-### Why immutability is important {/*why-immutability-is-important*/}
+### Почему неизменяемость важна {/*why-immutability-is-important*/}
 
-Note how in `handleClick`, you call `.slice()` to create a copy of the `squares` array instead of modifying the existing array. To explain why, we need to discuss immutability and why immutability is important to learn.
+Обратите внимание как в `handleClick`, вы вызываете `.slice()` для создания копии массива `squares` вместо изменения существующего массива. Чтобы объяснить почему, нам нужно обсудить иммутабельность и почему она важна для изучения.
 
-There are generally two approaches to changing data. The first approach is to _mutate_ the data by directly changing the data's values. The second approach is to replace the data with a new copy which has the desired changes. Here is what it would look like if you mutated the `squares` array:
+В общем случае существует две подхода к изменению данных. Первый подход - изменение данных напрямую (_мутировать_) изменяя их значения напрямую. Второй подход - замена данных новой копией, которая имеет необходимые изменения. Вот как это выглядело бы, если бы вы мутировали массив `squares`:
 
 ```jsx
 const squares = [null, null, null, null, null, null, null, null, null];
 squares[0] = 'X';
-// Now `squares` is ["X", null, null, null, null, null, null, null, null];
+// Теперь `squares` является ["X", null, null, null, null, null, null, null, null];
 ```
 
-And here is what it would look like if you changed data without mutating the `squares` array:
+А так, если бы вы заменили данные новой копией, которая имеет необходимые изменения:
 
 ```jsx
 const squares = [null, null, null, null, null, null, null, null, null];
 const nextSquares = ['X', null, null, null, null, null, null, null, null];
-// Now `squares` is unchanged, but `nextSquares` first element is 'X' rather than `null`
+// Теперь `squares` не изменился, но `nextSquares` имеет первый элемент 'X' вместо `null`
 ```
 
-The result is the same but by not mutating (changing the underlying data) directly, you gain several benefits.
+Результат будет таким же, но не мутируя (изменяя базовые данные) напрямую, вы получаете несколько преимуществ.
 
-Immutability makes complex features much easier to implement. Later in this tutorial, you will implement a "time travel" feature that lets you review the game's history and "jump back" to past moves. This functionality isn't specific to games--an ability to undo and redo certain actions is a common requirement for apps. Avoiding direct data mutation lets you keep previous versions of the data intact, and reuse them later.
+Иммутабельность делает сложные функции намного проще для реализации. Позже в этом руководстве вы реализуете функциональность "time travel" (_путишествие во времени_), которая позволяет вам просмотреть историю игры и "вернуться" к предыдущим ходам. Эта функциональность не специфична для игр--способность отменить и повторить определенные действия является общим требованием для приложений. Избегание непосредственного мутирования данных позволяет вам сохранить предыдущие версии данных и использовать их позже.
 
-There is also another benefit of immutability. By default, all child components re-render automatically when the state of a parent component changes. This includes even the child components that weren't affected by the change. Although re-rendering is not by itself noticeable to the user (you shouldn't actively try to avoid it!), you might want to skip re-rendering a part of the tree that clearly wasn't affected by it for performance reasons. Immutability makes it very cheap for components to compare whether their data has changed or not. You can learn more about how React chooses when to re-render a component in [the `memo` API reference](/reference/react/memo).
+Также есть еще одно преимущество иммутабельности. По умолчанию все дочерние компоненты автоматически перерисовываются, когда состояние родительского компонента изменяется. Это включает даже дочерние компоненты, которые не были затронуты изменением. Хотя перерисовка сама по себе не заметна пользователю (вы не должны активно пытаться избегать этого!), вы можете пропустить перерисовку части дерева, которая очевидно не была затронута изменением, для целей оптимизации производительности. Иммутабельность упрощает сравнение для компонентов, изменились ли их данные или нет. Вы можете узнать больше о том, как React выбирает, когда перерисовывать компонент, в [справочнике API `memo`](/reference/react/memo).
 
-### Taking turns {/*taking-turns*/}
+### Реализация ходов {/*taking-turns*/}
 
-It's now time to fix a major defect in this tic-tac-toe game: the "O"s cannot be marked on the board.
+Теперь вам нужно исправить серьезную ошибку в этой игре: пока что "O" не могут быть отмечены на доске.
 
-You'll set the first move to be "X" by default. Let's keep track of this by adding another piece of state to the Board component:
+Вы зададите первый ход "X" по умолчанию. Давайте отслеживаем это, добавив еще одно состояние в компонент Board:
 
 ```js {2}
 function Board() {
@@ -1371,7 +1371,7 @@ function Board() {
 }
 ```
 
-Each time a player moves, `xIsNext` (a boolean) will be flipped to determine which player goes next and the game's state will be saved. You'll update the `Board`'s `handleClick` function to flip the value of `xIsNext`:
+Каждый раз, когда игрок делает ход, `xIsNext` (булево значение) будет перевернуто, чтобы определить, кто ходит следующим, и состояние игры будет сохранено. Вы обновите функцию `handleClick` компонента `Board`, чтобы перевернуть значение `xIsNext`:
 
 ```js {7,8,9,10,11,13}
 export default function Board() {
@@ -1395,15 +1395,15 @@ export default function Board() {
 }
 ```
 
-Now, as you click on different squares, they will alternate between `X` and `O`, as they should!
+Теперь, когда вы кликаете на разные ячейки, они будут чередовать между `X` и `O`, как и должно быть!
 
-But wait, there's a problem. Try clicking on the same square multiple times:
+Но подождите, есть проблема. Попробуйте кликнуть на одну и ту же ячейку несколько раз:
 
 ![O overwriting an X](../images/tutorial/o-replaces-x.gif)
 
-The `X` is overwritten by an `O`! While this would add a very interesting twist to the game, we're going to stick to the original rules for now.
+`X` перезаписывается `O`! Хотя это добавит очень интересный поворот в игру, мы сейчас остановимся на оригинальных правилах игры.
 
-When you mark a square with an `X` or an `O` you aren't first checking to see if the square already has an `X` or `O` value. You can fix this by *returning early*. You'll check to see if the square already has an `X` or an `O`. If the square is already filled, you will `return` in the `handleClick` function early--before it tries to update the board state.
+Когда вы отмечаете ячейку `X` или `O`, вы не проверяете, не имеет ли ячейки уже значения `X` или `O`. Вы можете это исправить, *заранее*. Вы проверяете, не имеет ли ячейка уже значения `X` или `O`. Если ячейка уже заполнена, вы вернетесь к функции `handleClick` раньше--до попытки обновления состояния доски.
 
 ```js {2,3,4}
 function handleClick(i) {
@@ -1415,7 +1415,7 @@ function handleClick(i) {
 }
 ```
 
-Now you can only add `X`'s or `O`'s to empty squares! Here is what your code should look like at this point:
+Теперь вы можете добавлять только `X`'ы или `O`'и в пустые ячейки! Вот как должен выглядеть ваш код на этом этапе:
 
 <Sandpack>
 
@@ -1517,9 +1517,9 @@ body {
 
 </Sandpack>
 
-### Declaring a winner {/*declaring-a-winner*/}
+### Определение победителя {/*declaring-a-winner*/}
 
-Now that the players can take turns, you'll want to show when the game is won and there are no more turns to make. To do this you'll add a helper function called `calculateWinner` that takes an array of 9 squares, checks for a winner and returns `'X'`, `'O'`, or `null` as appropriate. Don't worry too much about the `calculateWinner` function; it's not specific to React:
+Теперь, когда игроки могут играть по очереди, вы покажете им, что игра завершена и больше ходов не осталось. Для этого вы добавим вспомогательную функцию под названием `calculateWinner`, которая принимает массив из 9 ячеек, проверяет наличие победителя и возвращает `'X'`, `'O'`, или `null`, в зависимости от ситуации. Не волнуйтесь слишком сильно о функции `calculateWinner`; она не специфична для React:
 
 ```js src/App.js
 export default function Board() {
