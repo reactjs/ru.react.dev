@@ -163,7 +163,7 @@ export function HomeContent() {
             <Header>Создавай пользовательский интерфейс из компонентов</Header>
             <Para>
               React позволяет создавать пользовательский интерфейс из отдельных
-              компонентов. Создай свои собственные React компоненты, например{' '}
+              компонентов. Создай свои собственные React-компоненты, например{' '}
               <Code>Thumbnail</Code>, <Code>LikeButton</Code>, и{' '}
               <Code>Video</Code>. Затем объедини их в экраны, страницы, и
               приложения.
@@ -187,7 +187,7 @@ export function HomeContent() {
           <Center>
             <Header>Пиши компоненты с кодом и разметкой</Header>
             <Para>
-              React компоненты - это JavaScript функции. Хочешь показать что-то
+              React-компоненты - это JavaScript-функции. Хочешь показать что-то
               условно? Используй <Code>if</Code> оператор. Отображаешь список?
               Используй массив с функцией <Code>map()</Code>. Изучение React -
               это изучение программирования.
@@ -198,8 +198,8 @@ export function HomeContent() {
           </FullBleed>
           <Center>
             <Para>
-              Этот синтаксис разметки называется JSX. Это расширение JavaScript
-              синтаксиса популяризированное React. Приближение разметки JSX к
+              Этот синтаксис разметки называется JSX. Это расширение синтаксиса
+              JavaScript популяризированное React. Приближение разметки JSX к
               соответствующей логике рендеринга упрощает создание, обслуживание
               и удаление компонентов React.
             </Para>
@@ -210,7 +210,7 @@ export function HomeContent() {
           <Center>
             <Header>Добавляйте интерактивность везде, где вам это нужно</Header>
             <Para>
-              React компоненты получают данные и возвращают то, что должно
+              React-компоненты получают данные и возвращают то, что должно
               появиться на экране. Вы можете передавать им новые данные в ответ
               на взаимодействие, например, когда пользователь вводит данные в
               поле ввода, React обновляет экран, чтобы содержимое
@@ -223,7 +223,7 @@ export function HomeContent() {
           <Center>
             <Para>
               Вы не обязаны создавать всю страницу в React. Вы можете добавить
-              React в существующую HTML страницу, и отобразить интерактивные
+              React в существующую HTML-страницу, и отобразить интерактивные
               компоненты React в любом месте.
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
@@ -259,8 +259,8 @@ export function HomeContent() {
               React также является архитектурой. Фреймворки, которые реализуют
               эту архитектуру, позволяют вам получать данные в асинхронных
               компонентах, которые могут запускаться на сервере или даже во
-              время сборки. Чтение данных из файла или базы данных, и передача
-              их в интерактивные компоненты.
+              время сборки. Читайте данные из файла или базы данных, и
+              передавайте их в интерактивные компоненты.
             </Para>
             <div className="flex justify-start w-full lg:justify-center">
               <CTA
@@ -279,7 +279,7 @@ export function HomeContent() {
               <Para>
                 Люди любят веб и мобильные приложения по разным причинам. React
                 позволяет вам создавать как веб-приложения, так и мобильные
-                приложения используя одинаковые навыки. Он придерживается
+                приложения, используя одинаковые навыки. Он придерживается
                 уникальных сильных сторон каждой платформы, чтобы ваши
                 интерфейсы чувствовали себя идеально на любой платформе.
               </Para>
@@ -302,9 +302,9 @@ export function HomeContent() {
                         быстро. На сервере React позволяет начать передачу HTML,
                         пока вы все еще загружаете данные, прогрессивно заполняя
                         оставшееся содержимое перед загрузкой какого-либо кода
-                        JavaScript. На клиенте, React может использовать
-                        стандартные веб-API для поддержания вашей UI отзывчивой
-                        даже в процессе рендеринга.
+                        JavaScript. На клиенте React может использовать
+                        стандартные веб-API, чтобы интерфейс оставался
+                        отзывчивым даже во время рендеринга.
                       </p>
                     </div>
                   </div>
@@ -396,7 +396,7 @@ export function HomeContent() {
                           Android, iOS и других платформ. Они выглядят и
                           ощущаются как написанные на нативных платформах,
                           потому что их UI <i> действительно </i> нативный. Это
-                          не веб-представление — ваши React компоненты рендерят
+                          не веб-представление — ваши React-компоненты рендерят
                           реальные нативные элементы.
                         </p>
                       </div>
@@ -432,8 +432,8 @@ export function HomeContent() {
                 </Header>
                 <Para>
                   React подходит к изменениям с уважением. Каждый коммит React
-                  тестируется на критичных для бизнеса облостях более миллиарда
-                  пользователей. Более 100 тысяч React компонентов в Meta
+                  тестируется на критичных для бизнеса областях более миллиарда
+                  пользователей. Более 100 тысяч React-компонентов в Meta
                   помогают валидировать каждую стратегию миграции.
                 </Para>
                 <div className="order-last pt-5">
@@ -472,7 +472,7 @@ export function HomeContent() {
                 </div>
                 <div className="flex lg:hidden justify-start w-full">
                   <CTA color="gray" icon="news" href="/blog">
-                    Читайте новостей из мира React
+                    Читайте больше новостей из мира React
                   </CTA>
                 </div>
               </div>
@@ -491,8 +491,8 @@ export function HomeContent() {
                 </Header>
                 <Para>
                   Ты не одинок. Два миллиона разработчиков по всему миру
-                  посещают React docs каждый месяц. React - это что-то, что люди
-                  и команды могут согласиться.
+                  посещают документацию React каждый месяц. React - это что-то,
+                  что люди и команды могут согласиться.
                 </Para>
               </Center>
             </div>
@@ -525,7 +525,7 @@ export function HomeContent() {
             <Logo className="uwu-hidden text-brand dark:text-brand-dark w-24 lg:w-28 mb-10 lg:mb-8 mt-12 h-auto mx-auto self-start" />
             <Header>
               Добро пожаловать в<br className="hidden lg:inline" />
-              React сообщество
+              React-сообщество
             </Header>
             <ButtonLink
               href={'/learn'}
@@ -2465,7 +2465,7 @@ function fetchTalks(confId) {
           },
           {
             id: 'conf-2021-4',
-            title: 'React инструменты разработчика',
+            title: 'React-инструменты разработчика',
             description: 'Brian Vaughn',
             url: 'https://www.youtube.com/watch?v=oxDfrke8rZg&list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa&index=5',
             image: {
@@ -2483,7 +2483,7 @@ function fetchTalks(confId) {
           },
           {
             id: 'conf-2021-6',
-            title: 'React Docs ключевые моменты',
+            title: 'ДокументацияReact ключевые моменты',
             description: 'Rachel Nabors',
             url: 'https://www.youtube.com/watch?v=mneDaMYOKP8&list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa&index=7',
             image: {
@@ -2492,7 +2492,7 @@ function fetchTalks(confId) {
           },
           {
             id: 'conf-2021-7',
-            title: 'Вещи, которые я выучил из обновлённого React Docs',
+            title: 'Вещи, которые я выучил из обновлённой документации React',
             description: "Debbie O'Brien",
             url: 'https://www.youtube.com/watch?v=-7odLW_hG7s&list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa&index=8',
             image: {
@@ -2576,7 +2576,7 @@ function fetchTalks(confId) {
           },
           {
             id: 'conf-2021-16',
-            title: 'Доступный японский Form компонент с React',
+            title: 'Доступные форы на японском с React',
             description: 'Tafu Nakazaki',
             url: 'https://www.youtube.com/watch?v=S4a0QlsH0pU&list=PLNG_1j3cPCaZZ7etkzWA7JfdmKWT0pMsa&index=17',
             image: {
