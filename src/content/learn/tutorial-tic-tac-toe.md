@@ -1565,7 +1565,7 @@ function handleClick(i) {
 }
 ```
 
-To let the players know when the game is over, you can display text such as "Winner: X" or "Winner: O". To do that you'll add a `status` section to the `Board` component. The status will display the winner if the game is over and if the game is ongoing you'll display which player's turn is next:
+Давайте дадим игрокам знать, когда игра завершена, вы можете отобразить текст, такой как "Winner: X" или "Winner: O". Для этого вы добавите раздел `status` в компонент `Board`. Статус будет отображать победителя, если игра завершена, и если игра продолжается, вы отобразите, чей ход следующий:
 
 ```js {3-9,13}
 export default function Board() {
@@ -1587,7 +1587,7 @@ export default function Board() {
 }
 ```
 
-Congratulations! You now have a working tic-tac-toe game. And you've just learned the basics of React too. So _you_ are the real winner here. Here is what the code should look like:
+Поздравляем! Теперь у вас есть работающая игра в крестики-нолики. И вы только что узнали основы React. Поэтому _вы_ - настоящий победитель здесь. Вот как должен выглядеть код:
 
 <Sandpack>
 
@@ -1718,17 +1718,17 @@ body {
 
 </Sandpack>
 
-## Adding time travel {/*adding-time-travel*/}
+## Добавление путешествия в прошлое {/*adding-time-travel*/}
 
-As a final exercise, let's make it possible to "go back in time" to the previous moves in the game.
+В качестве финального задания, давайте дадим возможность "вернуться назад во времени" к предыдущим ходам в игре.
 
-### Storing a history of moves {/*storing-a-history-of-moves*/}
+### Хранение истории ходов {/*storing-a-history-of-moves*/}
 
-If you mutated the `squares` array, implementing time travel would be very difficult.
+Если вы мутировали массив `squares`, реализовать путешествие в прошлое было бы очень сложно.
 
-However, you used `slice()` to create a new copy of the `squares` array after every move, and treated it as immutable. This will allow you to store every past version of the `squares` array, and navigate between the turns that have already happened.
+Однако вы использовали `slice()`, чтобы создать новую копию массива `squares` после каждого хода, и рассматривали его как неизменяемый. Это позволит вам хранить каждую предыдущую версию массива `squares`, и перемещаться между ходами, которые уже произошли.
 
-You'll store the past `squares` arrays in another array called `history`, which you'll store as a new state variable. The `history` array represents all board states, from the first to the last move, and has a shape like this:
+Вы будете хранить предыдущие массивы `squares` в другом массиве, названном `history`, который вы храните как новую переменную состояния. Массив `history` представляет все состояния доски, от первого до последнего хода, и имеет форму, как показано ниже:
 
 ```jsx
 [
@@ -1742,13 +1742,13 @@ You'll store the past `squares` arrays in another array called `history`, which 
 ]
 ```
 
-### Lifting state up, again {/*lifting-state-up-again*/}
+### Поднятие состояния, снова {/*lifting-state-up-again*/}
 
-You will now write a new top-level component called `Game` to display a list of past moves. That's where you will place the `history` state that contains the entire game history.
+Теперь вы напишете новый компонент верхнего уровня, названный `Game`, чтобы отобразить список предыдущих ходов. Это место, где вы будете хранить `history` состояние, содержащее всю историю игры.
 
-Placing the `history` state into the `Game` component will let you remove the `squares` state from its child `Board` component. Just like you "lifted state up" from the `Square` component into the `Board` component, you will now lift it up from the `Board` into the top-level `Game` component. This gives the `Game` component full control over the `Board`'s data and lets it instruct the `Board` to render previous turns from the `history`.
+Помещение `history` состояния в компонент `Game` позволит вам удалить `squares` состояние из его дочернего компонента `Board`. Как вы "подняли состояние" из компонента `Square` в компонент `Board`, так теперь вы поднимаете его из `Board` в компонент верхнего уровня `Game`. Это дает компоненту `Game` полный контроль над данными `Board` и позволяет ему инструктировать `Board` отображать предыдущие ходы из `history`.
 
-First, add a `Game` component with `export default`. Have it render the `Board` component and some markup:
+Сначала добавьте компонент `Game` с `export default`. Дайте ему отображать компонент `Board` и некоторую разметку:
 
 ```js {1,5-16}
 function Board() {
@@ -1769,9 +1769,9 @@ export default function Game() {
 }
 ```
 
-Note that you are removing the `export default` keywords before the `function Board() {` declaration and adding them before the `function Game() {` declaration. This tells your `index.js` file to use the `Game` component as the top-level component instead of your `Board` component. The additional `div`s returned by the `Game` component are making room for the game information you'll add to the board later.
+Обратите внимание, что вы удаляете ключевые слова `export default` перед объявлением `function Board() {` и добавляете их перед объявлением `function Game() {`. Это говорит вашему `index.js` файлу использовать компонент `Game` как компонент верхнего уровня вместо компонента `Board`. Дополнительные `div`s возвращаемые компонентом `Game` занимают место для информации о игре, которую вы добавите на доску позже.
 
-Add some state to the `Game` component to track which player is next and the history of moves:
+Добавьте состояние в компонент `Game`, чтобы отслеживать, кто ходит следующим, и историю ходов:
 
 ```js {2-3}
 export default function Game() {
@@ -1780,9 +1780,9 @@ export default function Game() {
   // ...
 ```
 
-Notice how `[Array(9).fill(null)]` is an array with a single item, which itself is an array of 9 `null`s.
+Обратите внимание, что `[Array(9).fill(null)]` является массивом с одним элементом, который в свою очередь является массивом из 9 `null`ов.
 
-To render the squares for the current move, you'll want to read the last squares array from the `history`. You don't need `useState` for this--you already have enough information to calculate it during rendering:
+Чтобы отобразить квадраты для текущего хода, вы можете прочитать последний массив квадратов из `history`. Вы не нуждаетесь в `useState` для этого--у вас достаточно информации для вычисления его в процессе рендеринга:
 
 ```js {4}
 export default function Game() {
@@ -1792,7 +1792,7 @@ export default function Game() {
   // ...
 ```
 
-Next, create a `handlePlay` function inside the `Game` component that will be called by the `Board` component to update the game. Pass `xIsNext`, `currentSquares` and `handlePlay` as props to the `Board` component:
+Далее создайте функцию `handlePlay` внутри компонента `Game`, которая будет вызываться компонентом `Board` для обновления игры. Передайте `xIsNext`, `currentSquares` и `handlePlay` как props компоненту `Board`:
 
 ```js {6-8,13}
 export default function Game() {
@@ -1813,7 +1813,7 @@ export default function Game() {
 }
 ```
 
-Let's make the `Board` component fully controlled by the props it receives. Change the `Board` component to take three props: `xIsNext`, `squares`, and a new `onPlay` function that `Board` can call with the updated squares array when a player makes a move. Next, remove the first two lines of the `Board` function that call `useState`:
+Давайте сделаем компонент `Board` полностью контролируемым с помощью props, которые он получает. Измените компонент `Board`, чтобы он принимал три props: `xIsNext`, `squares`, и новую функцию `onPlay`, которую `Board` может вызвать с обновленным массивом квадратов, когда игрок делает ход. Затем удалите первые две строки функции `Board`, которые вызывают `useState`:
 
 ```js {1}
 function Board({ xIsNext, squares, onPlay }) {
@@ -1824,7 +1824,7 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 ```
 
-Now replace the `setSquares` and `setXIsNext` calls in `handleClick` in the `Board` component with a single call to your new `onPlay` function so the `Game` component can update the `Board` when the user clicks a square:
+Теперь замените вызовы `setSquares` и `setXIsNext` в `handleClick` в компоненте `Board` на вызов новой функции `onPlay`, чтобы компонент `Game` мог обновить `Board` при нажатии на квадрат:
 
 ```js {12}
 function Board({ xIsNext, squares, onPlay }) {
@@ -1844,11 +1844,11 @@ function Board({ xIsNext, squares, onPlay }) {
 }
 ```
 
-The `Board` component is fully controlled by the props passed to it by the `Game` component. You need to implement the `handlePlay` function in the `Game` component to get the game working again.
+Компонент `Board` полностью контролируется props, передаваемыми ему компонентом `Game`. Вам нужно реализовать функцию `handlePlay` в компоненте `Game`, чтобы снова заставить игру работать.
 
-What should `handlePlay` do when called? Remember that Board used to call `setSquares` with an updated array; now it passes the updated `squares` array to `onPlay`.
+Что должно делать `handlePlay` при вызове? Помните, что `Board` использовал раньше вызывать `setSquares` с обновленным массивом; теперь он передает обновленный `squares` массив в `onPlay`.
 
-The `handlePlay` function needs to update `Game`'s state to trigger a re-render, but you don't have a `setSquares` function that you can call any more--you're now using the `history` state variable to store this information. You'll want to update `history` by appending the updated `squares` array as a new history entry. You also want to toggle `xIsNext`, just as Board used to do:
+Функция `handlePlay` должна обновить состояние `Game`, чтобы вызвать перерендеринг, но у вас больше нет функции `setSquares`, которую вы можете вызвать--вы теперь используете переменную состояния `history` для хранения этой информации. Вы хотите обновить `history`, добавив обновленный `squares` массив как новую запись истории. Вы также хотите переключить `xIsNext`, как `Board` использовал раньше:
 
 ```js {4-5}
 export default function Game() {
@@ -1861,11 +1861,11 @@ export default function Game() {
 }
 ```
 
-Here, `[...history, nextSquares]` creates a new array that contains all the items in `history`, followed by `nextSquares`. (You can read the `...history` [*spread syntax*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) as "enumerate all the items in `history`".)
+Здесь, `[...history, nextSquares]` создает новый массив, содержащий все элементы в `history`, за которыми следуют `nextSquares`. (Вы можете прочитать `...history` [*spread syntax*](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) как "перечислите все элементы в `history`".)
 
-For example, if `history` is `[[null,null,null], ["X",null,null]]` and `nextSquares` is `["X",null,"O"]`, then the new `[...history, nextSquares]` array will be `[[null,null,null], ["X",null,null], ["X",null,"O"]]`.
+Например, если `history` равно `[[null,null,null], ["X",null,null]]` и `nextSquares` равно `["X",null,"O"]`, то новый массив `[...history, nextSquares]` будет `[[null,null,null], ["X",null,null], ["X",null,"O"]]`.
 
-At this point, you've moved the state to live in the `Game` component, and the UI should be fully working, just as it was before the refactor. Here is what the code should look like at this point:
+В этом месте вы переместили состояние в компонент `Game`, и UI должен быть полностью работать, как и перед рефакторингом. Вот как должен выглядеть код на этом этапе:
 
 <Sandpack>
 
@@ -2014,19 +2014,19 @@ body {
 
 </Sandpack>
 
-### Showing the past moves {/*showing-the-past-moves*/}
+### Отображение прошлых ходов {/*showing-the-past-moves*/}
 
-Since you are recording the tic-tac-toe game's history, you can now display a list of past moves to the player.
+Поскольку вы записываете историю игры в крестики-нолики, теперь вы можете отобразить список прошлых ходов игроку.
 
-React elements like `<button>` are regular JavaScript objects; you can pass them around in your application. To render multiple items in React, you can use an array of React elements.
+React-элементы, такие как `<button>`, являются обычными объектами JavaScript; вы можете передавать их по всему приложению. Чтобы отобразить несколько элементов в React, вы можете использовать массив React элементов.
 
-You already have an array of `history` moves in state, so now you need to transform it to an array of React elements. In JavaScript, to transform one array into another, you can use the [array `map` method:](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
+Вы уже имеете массив ходов `history` в состоянии, поэтому вам нужно преобразовать его в массив React-элементов. В JavaScript для преобразования одного массива в другой вы можете использовать метод [array `map` method:](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
 
 ```jsx
 [1, 2, 3].map((x) => x * 2) // [2, 4, 6]
 ```
 
-You'll use `map` to transform your `history` of moves into React elements representing buttons on the screen, and display a list of buttons to "jump" to past moves. Let's `map` over the `history` in the Game component:
+Воспользуйтесь `map`, чтобы преобразовать `history` ходов в React-элементы, представляющие кнопки на экране, и отобразите список кнопок для "перехода" к прошлым ходам. Сделайте `map` по `history` в компоненте Game:
 
 ```js {11-13,15-27,35}
 export default function Game() {
@@ -2070,13 +2070,13 @@ export default function Game() {
 }
 ```
 
-You can see what your code should look like below. Note that you should see an error in the developer tools console that says: 
+Вы можете увидеть, как должен выглядеть ваш код ниже. Обратите внимание, что вы должны увидеть ошибку в консоли разработчика, сообщающую: 
 
 <ConsoleBlock level="warning">
 Warning: Each child in an array or iterator should have a unique "key" prop. Check the render method of &#96;Game&#96;.
 </ConsoleBlock>
   
-You'll fix this error in the next section.
+Вы исправите эту ошибку в следующем разделе.
 
 <Sandpack>
 
@@ -2244,24 +2244,24 @@ body {
 
 </Sandpack>
 
-As you iterate through the `history` array inside the function you passed to `map`, the `squares` argument goes through each element of `history`, and the `move` argument goes through each array index: `0`, `1`, `2`, …. (In most cases, you'd need the actual array elements, but to render a list of moves you will only need indexes.)
+Пока вы выполняете итерацию по массиву `history` в функции, переданной в `map`, аргумент `squares` проходит через каждый элемент `history`, а аргумент `move` проходит через каждый индекс массива: `0`, `1`, `2`, …. (В большинстве случаев вам нужно будет иметь фактические элементы массива, но для отображения списка ходов вам нужно будет иметь только индексы.)
 
-For each move in the tic-tac-toe game's history, you create a list item `<li>` which contains a button `<button>`. The button has an `onClick` handler which calls a function called `jumpTo` (that you haven't implemented yet).
+Для каждого хода в истории игры крестики-нолики вы создаете элемент списка `<li>`, содержащий кнопку `<button>`. Кнопка имеет обработчик `onClick`, который вызывает функцию под названием `jumpTo` (которую вы пока не реализовали).
 
-For now, you should see a list of the moves that occurred in the game and an error in the developer tools console. Let's discuss what the "key" error means.
+В настоящее время вы должны увидеть список ходов, которые произошли в игре, и ошибку в консоли разработчика. Давайте обсудим, что означает сообщение об ошибке "key".
 
-### Picking a key {/*picking-a-key*/}
+### Выбор ключа {/*picking-a-key*/}
 
-When you render a list, React stores some information about each rendered list item. When you update a list, React needs to determine what has changed. You could have added, removed, re-arranged, or updated the list's items.
+Когда вы отображаете список, React хранит некоторую информацию о каждом отображаемом элементе списка. Когда вы обновляете список, React должен определить, что изменилось. Вы могли добавить, удалить, переставить или обновить элементы списка.
 
-Imagine transitioning from
+Представьте переход от
 
 ```html
 <li>Alexa: 7 tasks left</li>
 <li>Ben: 5 tasks left</li>
 ```
 
-to
+к
 
 ```html
 <li>Ben: 9 tasks left</li>
@@ -2269,7 +2269,7 @@ to
 <li>Alexa: 5 tasks left</li>
 ```
 
-In addition to the updated counts, a human reading this would probably say that you swapped Alexa and Ben's ordering and inserted Claudia between Alexa and Ben. However, React is a computer program and does not know what you intended, so you need to specify a _key_ property for each list item to differentiate each list item from its siblings. If your data was from a database, Alexa, Ben, and Claudia's database IDs could be used as keys.
+Кроме обновленных счетов, человек, читающий это, вероятно, скажет, что вы переставили расположение Алекси и Бена и вставили Клодию между Алекси и Беном. Однако React является компьютерной программой и не знает, что вы хотели сделать, поэтому вам нужно указать свойство _key_ для каждого элемента списка, чтобы различать каждый элемент списка от его братьев и сестер. Если ваши данные были из базы данных, идентификаторы базы данных Алекси, Бена и Клодии могли бы использоваться как ключи.
 
 ```js {1}
 <li key={user.id}>
@@ -2277,23 +2277,23 @@ In addition to the updated counts, a human reading this would probably say that 
 </li>
 ```
 
-When a list is re-rendered, React takes each list item's key and searches the previous list's items for a matching key. If the current list has a key that didn't exist before, React creates a component. If the current list is missing a key that existed in the previous list, React destroys the previous component. If two keys match, the corresponding component is moved.
+Когда список перерендеривается, React берет ключ каждого элемента списка и ищет в предыдущем списке элементы с совпадающим ключом. Если текущий список имеет ключ, который не существовал до этого, React создает компонент. Если текущий список отсутствует ключ, который существовал в предыдущем списке, React стирает предыдущий компонент. Если два ключа совпадают, соответствующий компонент перемещается.
 
-Keys tell React about the identity of each component, which allows React to maintain state between re-renders. If a component's key changes, the component will be destroyed and re-created with a new state.
+Ключи сообщают React о идентичности каждого компонента, что позволяет React поддерживать состояние между перерендерами. Если ключ компонента изменяется, компонент будет уничтожен и создан снова с новым состоянием.
 
-`key` is a special and reserved property in React. When an element is created, React extracts the `key` property and stores the key directly on the returned element. Even though `key` may look like it is passed as props, React automatically uses `key` to decide which components to update. There's no way for a component to ask what `key` its parent specified.
+`key` является специальным и зарезервированным свойством в React. Когда создается элемент, React извлекает свойство `key` и хранит ключ напрямую в возвращаемом элементе. Даже если `key` может выглядеть как передаваемый как prop, React автоматически использует `key` для определения, какие компоненты обновить. У компонента нет возможности запросить, какой `key` указан его родителем.
 
-**It's strongly recommended that you assign proper keys whenever you build dynamic lists.** If you don't have an appropriate key, you may want to consider restructuring your data so that you do.
+**Рекомендуется всегда присваивать корректные ключи при создании динамических списков.** Если у вас нет подходящего ключа, вы можете рассмотреть возможность перестройки ваших данных, чтобы это сделать.
 
-If no key is specified, React will report an error and use the array index as a key by default. Using the array index as a key is problematic when trying to re-order a list's items or inserting/removing list items. Explicitly passing `key={i}` silences the error but has the same problems as array indices and is not recommended in most cases.
+Если не указан ключ, React будет сообщать об ошибке и использовать индекс массива как ключ по умолчанию. Использование индекса массива как ключа является проблематичным при попытке перестановки элементов списка или вставки/удаления элементов списка. Явное передача `key={i}` тихонько подавляет ошибку, но имеет те же проблемы, что и индексы массива, и не рекомендуется в большинстве случаев.
 
-Keys do not need to be globally unique; they only need to be unique between components and their siblings.
+Ключи не должны быть глобально уникальными; они должны быть уникальными только между компонентами и их собратьями.
 
-### Implementing time travel {/*implementing-time-travel*/}
+### Реализация путешествия во времени {/*implementing-time-travel*/}
 
-In the tic-tac-toe game's history, each past move has a unique ID associated with it: it's the sequential number of the move. Moves will never be re-ordered, deleted, or inserted in the middle, so it's safe to use the move index as a key.
+В истории игры крестики-нолики каждый прошлый ход имеет уникальный ID, связанный с ним: это последовательный номер хода. Ходы никогда не будут переставляться, удаляться или вставляться в середину, поэтому безопасно использовать индекс хода как ключ.
 
-In the `Game` function, you can add the key as `<li key={move}>`, and if you reload the rendered game, React's "key" error should disappear:
+В функции `Game` вы можете добавить ключ как `<li key={move}>`, и если вы перезагрузите отображаемую игру, сообщение об ошибке React "key" должно исчезнуть:
 
 ```js {4}
 const moves = history.map((squares, move) => {
@@ -2473,7 +2473,7 @@ body {
 
 </Sandpack>
 
-Before you can implement `jumpTo`, you need the `Game` component to keep track of which step the user is currently viewing. To do this, define a new state variable called `currentMove`, defaulting to `0`:
+Перед тем, как вы сможете осуществить `jumpTo`, вы должны сделать `Game` компонентом, который будет отслеживать, какая игра сейчас просматривается пользователем. Для этого определите новую переменную состояния, называемую `currentMove`, по умолчанию `0`:
 
 ```js {4}
 export default function Game() {
@@ -2485,7 +2485,7 @@ export default function Game() {
 }
 ```
 
-Next, update the `jumpTo` function inside `Game` to update that `currentMove`. You'll also set `xIsNext` to `true` if the number that you're changing `currentMove` to is even.
+Дальше, обновите функцию `jumpTo` внутри `Game`, чтобы обновить этот `currentMove`. Также установите `xIsNext` в `true`, если число, на которое вы меняете `currentMove`, является четным.
 
 ```js {4-5}
 export default function Game() {
@@ -2498,10 +2498,10 @@ export default function Game() {
 }
 ```
 
-You will now make two changes to the `Game`'s `handlePlay` function which is called when you click on a square.
+Теперь вы сделаете два изменения в функции `handlePlay` компонента `Game`, которая вызывается при нажатии на квадрат.
 
-- If you "go back in time" and then make a new move from that point, you only want to keep the history up to that point. Instead of adding `nextSquares` after all items (`...` spread syntax) in `history`, you'll add it after all items in `history.slice(0, currentMove + 1)` so that you're only keeping that portion of the old history.
-- Each time a move is made, you need to update `currentMove` to point to the latest history entry.
+- Если вы "вернетесь в прошлое" и затем сделаете новый ход от этой точки, вы хотите сохранить только историю до этой точки. Вместо добавления `nextSquares` после всех элементов (`...` синтаксисspread оператора) в `history`, вы добавите его после всех элементов в `history.slice(0, currentMove + 1)`, чтобы сохранить только эту часть старой истории.
+- Каждый раз, когда сделан ход, вам нужно обновить `currentMove`, чтобы указать на последнюю запись истории.
 
 ```js {2-4}
 function handlePlay(nextSquares) {
@@ -2512,7 +2512,7 @@ function handlePlay(nextSquares) {
 }
 ```
 
-Finally, you will modify the `Game` component to render the currently selected move, instead of always rendering the final move:
+Наконец, вы измените компонент `Game`, чтобы отображать текущий выбранный ход, а не всегда отображать последний ход:
 
 ```js {5}
 export default function Game() {
@@ -2525,7 +2525,7 @@ export default function Game() {
 }
 ```
 
-If you click on any step in the game's history, the tic-tac-toe board should immediately update to show what the board looked like after that step occurred.
+Если вы нажмете на любую запись в истории игры, доска крестики-нолики должна немедленно обновиться, чтобы показать, как выглядела доска после того, как эта запись была сделана.
 
 <Sandpack>
 
@@ -2696,11 +2696,11 @@ body {
 
 </Sandpack>
 
-### Final cleanup {/*final-cleanup*/}
+### Финальная чистка {/*final-cleanup*/}
 
-If you look at the code very closely, you may notice that `xIsNext === true` when `currentMove` is even and `xIsNext === false` when `currentMove` is odd. In other words, if you know the value of `currentMove`, then you can always figure out what `xIsNext` should be.
+Если вы посмотрите на код очень внимательно, вы можете заметить, что `xIsNext === true` когда `currentMove` четное и `xIsNext === false` когда `currentMove` нечетное. В другими словами, если вы знаете значение `currentMove`, то вы всегда можете определить, что должно быть `xIsNext`.
 
-There's no reason for you to store both of these in state. In fact, always try to avoid redundant state. Simplifying what you store in state reduces bugs and makes your code easier to understand. Change `Game` so that it doesn't store `xIsNext` as a separate state variable and instead figures it out based on the `currentMove`:
+Нет никакой причины хранить оба этих значения в состоянии. На самом деле, всегда пытайтесь избежать избыточного состояния. Упрощение того, что вы храните в состоянии, уменьшает ошибки и делает ваш код легче для понимания. Измените `Game`, чтобы он не хранил `xIsNext` как отдельную переменную состояния и вместо этого определял его на основе `currentMove`:
 
 ```js {4,11,15}
 export default function Game() {
@@ -2722,20 +2722,20 @@ export default function Game() {
 }
 ```
 
-You no longer need the `xIsNext` state declaration or the calls to `setXIsNext`. Now, there's no chance for `xIsNext` to get out of sync with `currentMove`, even if you make a mistake while coding the components.
+Вы больше не нуждаетесь в объявлении состояния `xIsNext` или вызовах `setXIsNext`. Теперь, для `xIsNext` нет возможности быть несогласованным с `currentMove`, даже если вы сделаете ошибку при написании компонентов.
 
-### Wrapping up {/*wrapping-up*/}
+### Завершение {/*wrapping-up*/}
 
-Congratulations! You've created a tic-tac-toe game that:
+Поздравляем! Вы создали игру крестики-нолики, которая:
 
-- Lets you play tic-tac-toe,
-- Indicates when a player has won the game,
-- Stores a game's history as a game progresses,
-- Allows players to review a game's history and see previous versions of a game's board.
+- позволяет играть в крестики-нолики,
+- указывает, когда игрок победил,
+- хранит историю игры как игра идет,
+- позволяет игрокам просматривать историю игры и видеть предыдущие версии доски игры.
 
-Nice work! We hope you now feel like you have a decent grasp of how React works.
+Отличная работа! Надеемся, что теперь вы чувствуете, что достаточно понимаете, как работает React.
 
-Check out the final result here:
+Проверьте конечный результат здесь:
 
 <Sandpack>
 
@@ -2904,12 +2904,12 @@ body {
 
 </Sandpack>
 
-If you have extra time or want to practice your new React skills, here are some ideas for improvements that you could make to the tic-tac-toe game, listed in order of increasing difficulty:
+Если у вас есть дополнительное время или вы хотите потренировать свои новые навыки React, вот несколько идей для улучшений, которые вы можете сделать для игры крестики-нолики, расположенных в порядке увеличения сложности:
 
-1. For the current move only, show "You are at move #..." instead of a button.
-1. Rewrite `Board` to use two loops to make the squares instead of hardcoding them.
-1. Add a toggle button that lets you sort the moves in either ascending or descending order.
-1. When someone wins, highlight the three squares that caused the win (and when no one wins, display a message about the result being a draw).
-1. Display the location for each move in the format (row, col) in the move history list.
+1. Для текущего хода только показать "Вы находитесь на ходе #..." вместо кнопки.
+2. Перепишите `Board` для использования двух циклов для создания квадратов вместо хардкодинга их.
+3. Добавьте кнопку переключения, которая позволяет сортировать ходы в порядке возрастания или убывания.
+4. Когда кто-то выигрывает, подсветите три квадрата, вызвавшие победу (и когда никто не выигрывает, отобразите сообщение о том, что результат является ничьей).
+5. Покажите местоположение для каждого хода в формате (строка, столбец) в списке истории ходов.
 
-Throughout this tutorial, you've touched on React concepts including elements, components, props, and state. Now that you've seen how these concepts work when building a game, check out [Thinking in React](/learn/thinking-in-react) to see how the same React concepts work when building an app's UI.
+В течение этого руководства вы касались концепций React, включая элементы, компоненты, props и состояние. Теперь, когда вы видите, как эти концепции работают при создании игры, проверьте [Thinking in React](/learn/thinking-in-react), чтобы увидеть, как те же концепции React работают при создании пользовательского интерфейса для приложений.
