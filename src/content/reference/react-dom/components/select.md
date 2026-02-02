@@ -36,7 +36,11 @@ title: "<select>"
 
 #### Пропсы {/*props*/}
 
+<<<<<<< HEAD
 `<select>` поддерживает все [общие пропсы HTML-элементов.](/reference/react-dom/components/common#props)
+=======
+`<select>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> 38b52cfdf059b2efc5ee3223a758efe00319fcc7
 
 Можно сделать [поле выбора управляемым](#controlling-a-select-box-with-a-state-variable), передав проп `value`:
 
