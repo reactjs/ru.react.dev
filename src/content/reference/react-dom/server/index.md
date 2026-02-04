@@ -4,33 +4,33 @@ title: Server React DOM APIs
 
 <Intro>
 
-The `react-dom/server` APIs let you server-side render React components to HTML. These APIs are only used on the server at the top level of your app to generate the initial HTML. A [framework](/learn/start-a-new-react-project#production-grade-react-frameworks) may call them for you. Most of your components don't need to import or use them.
+API `react-dom/server` позволяют вам выполнять серверный рендеринг React-компонентов в HTML. Эти API используются только на сервере на верхнем уровне вашего приложения для генерации начального HTML. [Фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks) может вызывать их за вас. Большинству ваших компонентов не нужно их импортировать или использовать.
 
 </Intro>
 
 ---
 
-## Server APIs for Node.js Streams {/*server-apis-for-nodejs-streams*/}
+## Server APIs для Node.js Streams {/*server-apis-for-nodejs-streams*/}
 
-These methods are only available in the environments with [Node.js Streams:](https://nodejs.org/api/stream.html)
+Эти методы доступны только в средах с [Node.js Streams:](https://nodejs.org/api/stream.html)
 
-* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) renders a React tree to a pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
-
----
-
-## Server APIs for Web Streams {/*server-apis-for-web-streams*/}
-
-These methods are only available in the environments with [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), which includes browsers, Deno, and some modern edge runtimes:
-
-* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) renders a React tree to a [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
+* [`renderToPipeableStream`](/reference/react-dom/server/renderToPipeableStream) рендерит React-дерево в pipeable [Node.js Stream.](https://nodejs.org/api/stream.html)
 
 ---
 
-## Legacy Server APIs for non-streaming environments {/*legacy-server-apis-for-non-streaming-environments*/}
+## Server APIs для Web Streams {/*server-apis-for-web-streams*/}
 
-These methods can be used in the environments that don't support streams:
+Эти методы доступны только в средах с [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), которые включают браузеры, Deno и некоторые современные edge-среды выполнения:
 
-* [`renderToString`](/reference/react-dom/server/renderToString) renders a React tree to a string.
-* [`renderToStaticMarkup`](/reference/react-dom/server/renderToStaticMarkup) renders a non-interactive React tree to a string.
+* [`renderToReadableStream`](/reference/react-dom/server/renderToReadableStream) рендерит React-дерево в [Readable Web Stream.](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream)
 
-They have limited functionality compared to the streaming APIs.
+---
+
+## Устаревшие Server APIs для сред без потоковой передачи {/*legacy-server-apis-for-non-streaming-environments*/}
+
+Эти методы можно использовать в средах, которые не поддерживают потоки:
+
+* [`renderToString`](/reference/react-dom/server/renderToString) рендерит React-дерево в строку.
+* [`renderToStaticMarkup`](/reference/react-dom/server/renderToStaticMarkup) рендерит неинтерактивное React-дерево в строку.
+
+Они имеют ограниченную функциональность по сравнению с потоковыми API.
