@@ -1,82 +1,82 @@
 ---
-title: "React Labs: What We've Been Working On – June 2022"
+title: "React Labs: Над чем мы работали – Июнь 2022"
 author:  Andrew Clark, Dan Abramov, Jan Kassens, Joseph Savona, Josh Story, Lauren Tan, Luna Ruan, Mengdi Chen, Rick Hanlon, Robert Zhang, Sathya Gunasekaran, Sebastian Markbage, and Xuan Huang
 date: 2022/06/15
-description: React 18 was years in the making, and with it brought valuable lessons for the React team. Its release was the result of many years of research and exploring many paths. Some of those paths were successful; many more were dead-ends that led to new insights. One lesson we’ve learned is that it’s frustrating for the community to wait for new features without having insight into these paths that we’re exploring.
+description: React 18 разрабатывался годами, и вместе с ним команда React получила ценные уроки. Его выпуск стал результатом многих лет исследований и изучения различных путей. Некоторые из этих путей были успешными; многие другие оказались тупиками, которые привели к новым открытиям. Один из уроков, который мы усвоили, заключается в том, что сообществу неприятно ждать новых функций, не имея представления об этих путях, которые мы исследуем.
 ---
 
-June 15, 2022 by [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Jan Kassens](https://twitter.com/kassens), [Joseph Savona](https://twitter.com/en_JS), [Josh Story](https://twitter.com/joshcstory), [Lauren Tan](https://twitter.com/potetotes), [Luna Ruan](https://twitter.com/lunaruan), [Mengdi Chen](https://twitter.com/mengdi_en), [Rick Hanlon](https://twitter.com/rickhanlonii), [Robert Zhang](https://twitter.com/jiaxuanzhang01), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Sebastian Markbåge](https://twitter.com/sebmarkbage), and [Xuan Huang](https://twitter.com/Huxpro)
+15 июня 2022 г. [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Jan Kassens](https://twitter.com/kassens), [Joseph Savona](https://twitter.com/en_JS), [Josh Story](https://twitter.com/joshcstory), [Lauren Tan](https://twitter.com/potetotes), [Luna Ruan](https://twitter.com/lunaruan), [Mengdi Chen](https://twitter.com/mengdi_en), [Rick Hanlon](https://twitter.com/rickhanlonii), [Robert Zhang](https://twitter.com/jiaxuanzhang01), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Sebastian Markbåge](https://twitter.com/sebmarkbage) и [Xuan Huang](https://twitter.com/Huxpro)
 
 ---
 
 <Intro>
 
-[React 18](/blog/2022/03/29/react-v18) was years in the making, and with it brought valuable lessons for the React team. Its release was the result of many years of research and exploring many paths. Some of those paths were successful; many more were dead-ends that led to new insights. One lesson we’ve learned is that it’s frustrating for the community to wait for new features without having insight into these paths that we’re exploring.
+[React 18](/blog/2022/03/29/react-v18) разрабатывался годами, и вместе с ним команда React получила ценные уроки. Его выпуск стал результатом многих лет исследований и изучения различных путей. Некоторые из этих путей были успешными; многие другие оказались тупиками, которые привели к новым открытиям. Один из уроков, который мы усвоили, заключается в том, что сообществу неприятно ждать новых функций, не имея представления об этих путях, которые мы исследуем.
 
 </Intro>
 
 ---
 
-We typically have a number of projects being worked on at any time, ranging from the more experimental to the clearly defined. Looking ahead, we’d like to start regularly sharing more about what we’ve been working on with the community across these projects.
+Обычно мы одновременно работаем над несколькими проектами, от экспериментальных до четко определенных. Заглядывая в будущее, мы хотели бы начать регулярно делиться с сообществом более подробной информацией о том, над чем мы работаем в рамках этих проектов.
 
-To set expectations, this is not a roadmap with clear timelines. Many of these projects are under active research and are difficult to put concrete ship dates on. They may possibly never even ship in their current iteration depending on what we learn. Instead, we want to share with you the problem spaces we’re actively thinking about, and what we’ve learned so far.
+Чтобы задать ожидания, это не дорожная карта с четкими сроками. Многие из этих проектов находятся на стадии активных исследований, и их сложно определить конкретные даты выпуска. Возможно, они даже никогда не будут выпущены в текущей итерации, в зависимости от того, что мы узнаем. Вместо этого мы хотим поделиться с вами проблемными областями, над которыми мы активно думаем, и тем, что мы узнали на данный момент.
 
 ## Server Components {/*server-components*/}
 
-We announced an [experimental demo of React Server Components](https://legacy.reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html) (RSC) in December 2020. Since then we’ve been finishing up its dependencies in React 18, and working on changes inspired by experimental feedback.
+Мы анонсировали [экспериментальную демонстрацию React Server Components](https://legacy.reactjs.org/blog/2020/12/21/data-fetching-with-react-server-components.html) (RSC) в декабре 2020 года. С тех пор мы завершили работу над зависимостями в React 18 и внесли изменения, вдохновленные экспериментальной обратной связью.
 
-In particular, we’re abandoning the idea of having forked I/O libraries (eg react-fetch), and instead adopting an async/await model for better compatibility. This doesn’t technically block RSC’s release because you can also use routers for data fetching. Another change is that we’re also moving away from the file extension approach in favor of [annotating boundaries](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278).
+В частности, мы отказываемся от идеи использования форкнутых библиотек ввода-вывода (например, react-fetch) и вместо этого принимаем модель async/await для лучшей совместимости. Технически это не блокирует выпуск RSC, поскольку вы также можете использовать маршрутизаторы для получения данных. Еще одно изменение заключается в том, что мы также отказываемся от подхода с расширениями файлов в пользу [аннотирования границ](https://github.com/reactjs/rfcs/pull/189#issuecomment-1116482278).
 
-We’re working together with Vercel and Shopify to unify bundler support for shared semantics in both webpack and Vite. Before launch, we want to make sure that the semantics of RSCs are the same across the whole React ecosystem. This is the major blocker for reaching stable.
+Мы сотрудничаем с Vercel и Shopify для унификации поддержки бандлеров с общими семантическими правилами как в webpack, так и в Vite. Перед запуском мы хотим убедиться, что семантика RSC одинакова во всей экосистеме React. Это является основным препятствием для достижения стабильности.
 
-## Asset Loading {/*asset-loading*/}
+## Загрузка ресурсов {/*asset-loading*/}
 
-Currently, assets like scripts, external styles, fonts, and images are typically preloaded and loaded using external systems. This can make it tricky to coordinate across new environments like streaming, Server Components, and more.
-We’re looking at adding APIs to preload and load deduplicated external assets through React APIs that work in all React environments.
+В настоящее время такие ресурсы, как скрипты, внешние стили, шрифты и изображения, обычно предварительно загружаются и загружаются с использованием внешних систем. Это может затруднить координацию в новых средах, таких как потоковая передача, Server Components и т. д.
+Мы рассматриваем возможность добавления API для предварительной загрузки и загрузки дедуплицированных внешних ресурсов через API React, которые работают во всех средах React.
 
-We’re also looking at having these support Suspense so you can have images, CSS, and fonts that block display until they’re loaded but don’t block streaming and concurrent rendering. This can help avoid [“popcorning“](https://twitter.com/sebmarkbage/status/1516852731251724293) as the visuals pop and layout shifts.
+Мы также рассматриваем возможность поддержки этих API с помощью Suspense, чтобы вы могли использовать изображения, CSS и шрифты, которые блокируют отображение до их загрузки, но не блокируют потоковую передачу и конкурентное рендеринг. Это может помочь избежать [«попкорнинга»](https://twitter.com/sebmarkbage/status/1516852731251724293), когда визуальные элементы появляются и макет смещается.
 
-## Static Server Rendering Optimizations {/*static-server-rendering-optimizations*/}
+## Оптимизации статического серверного рендеринга {/*static-server-rendering-optimizations*/}
 
-Static Site Generation (SSG) and Incremental Static Regeneration (ISR) are great ways to get performance for cacheable pages, but we think we can add features to improve performance of dynamic Server Side Rendering (SSR) – especially when most but not all of the content is cacheable. We're exploring ways to optimize server rendering utilizing compilation and static passes.
+Генерация статических сайтов (SSG) и инкрементальная статическая регенерация (ISR) — отличные способы повышения производительности для кэшируемых страниц, но мы думаем, что можем добавить функции для улучшения производительности динамического серверного рендеринга (SSR), особенно когда большая часть контента, но не весь, кэшируется. Мы изучаем способы оптимизации серверного рендеринга с использованием компиляции и статических проходов.
 
-## React Optimizing Compiler {/*react-compiler*/}
+## Оптимизирующий компилятор React {/*react-compiler*/}
 
-We gave an [early preview](https://www.youtube.com/watch?v=lGEMwh32soc) of React Forget at React Conf 2021. It’s a compiler that automatically generates the equivalent of `useMemo` and `useCallback` calls to minimize the cost of re-rendering, while retaining React’s programming model.
+Мы представили [ранний предварительный просмотр](https://www.youtube.com/watch?v=lGEMwh32soc) React Forget на React Conf 2021. Это компилятор, который автоматически генерирует эквивалент вызовов `useMemo` и `useCallback` для минимизации затрат на повторный рендеринг, сохраняя при этом модель программирования React.
 
-Recently, we finished a rewrite of the compiler to make it more reliable and capable. This new architecture allows us to analyze and memoize more complex patterns such as the use of [local mutations](/learn/keeping-components-pure#local-mutation-your-components-little-secret), and opens up many new compile-time optimization opportunities beyond just being on par with memoization Hooks.
+Недавно мы завершили переписывание компилятора, чтобы сделать его более надежным и мощным. Эта новая архитектура позволяет нам анализировать и мемоизировать более сложные шаблоны, такие как использование [локальных мутаций](/learn/keeping-components-pure#local-mutation-your-components-little-secret), и открывает множество новых возможностей оптимизации на этапе компиляции, помимо простого соответствия хукам мемоизации.
 
-We’re also working on a playground for exploring many aspects of the compiler. While the goal of the playground is to make development of the compiler easier, we think that it will make it easier to try it out and build intuition for what the compiler does. It reveals various insights into how it works under the hood, and live renders the compiler’s outputs as you type. This will be shipped together with the compiler when it’s released.
+Мы также работаем над песочницей для изучения многих аспектов компилятора. Хотя цель песочницы — упростить разработку компилятора, мы думаем, что она облегчит его тестирование и формирование интуиции относительно того, что делает компилятор. Она раскрывает различные сведения о том, как он работает под капотом, и в реальном времени отображает выходные данные компилятора по мере ввода. Это будет выпущено вместе с компилятором при его релизе.
 
 ## Offscreen {/*offscreen*/}
 
-Today, if you want to hide and show a component, you have two options. One is to add or remove it from the tree completely. The problem with this approach is that the state of your UI is lost each time you unmount, including state stored in the DOM, like scroll position.
+Сегодня, если вы хотите скрыть и показать компонент, у вас есть два варианта. Один — полностью удалить его из дерева. Проблема этого подхода заключается в том, что состояние вашего пользовательского интерфейса теряется каждый раз при размонтировании, включая состояние, хранящееся в DOM, например, положение прокрутки.
 
-The other option is to keep the component mounted and toggle the appearance visually using CSS. This preserves the state of your UI, but it comes at a performance cost, because React must keep rendering the hidden component and all of its children whenever it receives new updates.
+Другой вариант — оставить компонент смонтированным и визуально переключать его внешний вид с помощью CSS. Это сохраняет состояние вашего пользовательского интерфейса, но сопряжено с затратами на производительность, поскольку React должен продолжать рендерить скрытый компонент и все его дочерние элементы при получении новых обновлений.
 
-Offscreen introduces a third option: hide the UI visually, but deprioritize its content. The idea is similar in spirit to the `content-visibility` CSS property: when content is hidden, it doesn't need to stay in sync with the rest of the UI. React can defer the rendering work until the rest of the app is idle, or until the content becomes visible again.
+Offscreen предлагает третий вариант: визуально скрыть пользовательский интерфейс, но понизить приоритет его содержимого. Идея похожа по духу на CSS-свойство `content-visibility`: когда контент скрыт, ему не нужно оставаться синхронизированным с остальной частью пользовательского интерфейса. React может отложить работу по рендерингу до тех пор, пока остальная часть приложения не станет неактивной, или до тех пор, пока контент снова не станет видимым.
 
-Offscreen is a low level capability that unlocks high level features. Similar to React's other concurrent features like `startTransition`, in most cases you won't interact with the Offscreen API directly, but instead via an opinionated framework to implement patterns like:
+Offscreen — это низкоуровневая возможность, которая открывает высокоуровневые функции. Подобно другим конкурентным функциям React, таким как `startTransition`, в большинстве случаев вы не будете напрямую взаимодействовать с API Offscreen, а скорее через структурированный фреймворк для реализации таких шаблонов, как:
 
-* **Instant transitions.** Some routing frameworks already prefetch data to speed up subsequent navigations, like when hovering over a link. With Offscreen, they'll also be able to prerender the next screen in the background.
-* **Reusable state.** Similarly, when navigating between routes or tabs, you can use Offscreen to preserve the state of the previous screen so you can switch back and pick up where you left off.
-* **Virtualized list rendering.** When displaying large lists of items, virtualized list frameworks will prerender more rows than are currently visible. You can use Offscreen to prerender the hidden rows at a lower priority than the visible items in the list.
-* **Backgrounded content.** We're also exploring a related feature for deprioritizing content in the background without hiding it, like when displaying a modal overlay.
+*   **Мгновенные переходы.** Некоторые фреймворки маршрутизации уже предварительно загружают данные для ускорения последующих навигаций, например, при наведении курсора на ссылку. С Offscreen они также смогут предварительно рендерить следующий экран в фоновом режиме.
+*   **Повторно используемое состояние.** Аналогично, при навигации между маршрутами или вкладками вы можете использовать Offscreen для сохранения состояния предыдущего экрана, чтобы вы могли вернуться и продолжить с того места, где остановились.
+*   **Виртуализированный рендеринг списков.** При отображении больших списков элементов фреймворки виртуализации списков предварительно рендерят больше строк, чем видимы в данный момент. Вы можете использовать Offscreen для предварительного рендеринга скрытых строк с более низким приоритетом, чем видимые элементы в списке.
+*   **Фоновый контент.** Мы также изучаем связанную функцию для понижения приоритета контента в фоновом режиме без его скрытия, например, при отображении модального окна.
 
-## Transition Tracing {/*transition-tracing*/}
+## Отслеживание переходов {/*transition-tracing*/}
 
-Currently, React has two profiling tools. The [original Profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) shows an overview of all the commits in a profiling session. For each commit, it also shows all components that rendered and the amount of time it took for them to render. We also have a beta version of a [Timeline Profiler](https://github.com/reactwg/react-18/discussions/76) introduced in React 18 that shows when components schedule updates and when React works on these updates. Both of these profilers help developers identify performance problems in their code.
+В настоящее время React имеет два инструмента профилирования. [Оригинальный Profiler](https://legacy.reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html) показывает обзор всех коммитов в сеансе профилирования. Для каждого коммита он также показывает все компоненты, которые рендерились, и время, затраченное на их рендеринг. У нас также есть бета-версия [Timeline Profiler](https://github.com/reactwg/react-18/discussions/76), представленная в React 18, которая показывает, когда компоненты планируют обновления и когда React работает над этими обновлениями. Оба этих профилировщика помогают разработчикам выявлять проблемы с производительностью в своем коде.
 
-We’ve realized that developers don’t find knowing about individual slow commits or components out of context that useful. It’s more useful to know about what actually causes the slow commits. And that developers want to be able to track specific interactions (eg a button click, an initial load, or a page navigation) to watch for performance regressions and to understand why an interaction was slow and how to fix it.
+Мы поняли, что разработчикам не очень полезно знать об отдельных медленных коммитах или компонентах вне контекста. Более полезно знать, что на самом деле вызывает медленные коммиты. И что разработчики хотят иметь возможность отслеживать конкретные взаимодействия (например, нажатие кнопки, начальную загрузку или навигацию по странице), чтобы отслеживать регрессии производительности и понимать, почему взаимодействие было медленным и как его исправить.
 
-We previously tried to solve this issue by creating an [Interaction Tracing API](https://gist.github.com/bvaughn/8de925562903afd2e7a12554adcdda16), but it had some fundamental design flaws that reduced the accuracy of tracking why an interaction was slow and sometimes resulted in interactions never ending. We ended up [removing this API](https://github.com/facebook/react/pull/20037) because of these issues.
+Ранее мы пытались решить эту проблему, создав [API отслеживания взаимодействий](https://gist.github.com/bvaughn/8de925562903afd2e7a12554adcdda16), но у него были некоторые фундаментальные недостатки в дизайне, которые снизили точность отслеживания причин медленных взаимодействий и иногда приводили к бесконечному выполнению взаимодействий. Мы в конечном итоге [удалили этот API](https://github.com/facebook/react/pull/20037) из-за этих проблем.
 
-We are working on a new version for the Interaction Tracing API (tentatively called Transition Tracing because it is initiated via `startTransition`) that solves these problems.
+Мы работаем над новой версией API отслеживания взаимодействий (предварительно названной Transition Tracing, поскольку она инициируется через `startTransition`), которая решает эти проблемы.
 
-## New React Docs {/*new-react-docs*/}
+## Новая документация React {/*new-react-docs*/}
 
-Last year, we announced the beta version of the new React documentation website ([later shipped as react.dev](/blog/2023/03/16/introducing-react-dev)) of the new React documentation website. The new learning materials teach Hooks first and has new diagrams, illustrations, as well as many interactive examples and challenges. We took a break from that work to focus on the React 18 release, but now that React 18 is out, we’re actively working to finish and ship the new documentation.
+В прошлом году мы анонсировали бета-версию нового веб-сайта документации React ([позже выпущенную как react.dev](/blog/2023/03/16/introducing-react-dev)) нового веб-сайта документации React. Новые учебные материалы обучают хукам в первую очередь и содержат новые диаграммы, иллюстрации, а также множество интерактивных примеров и задач. Мы сделали перерыв в этой работе, чтобы сосредоточиться на выпуске React 18, но теперь, когда React 18 вышел, мы активно работаем над завершением и выпуском новой документации.
 
-We are currently writing a detailed section about effects, as we’ve heard that is one of the more challenging topics for both new and experienced React users. [Synchronizing with Effects](/learn/synchronizing-with-effects) is the first published page in the series, and there are more to come in the following weeks. When we first started writing a detailed section about effects, we’ve realized that many common effect patterns can be simplified by adding a new primitive to React. We’ve shared some initial thoughts on that in the [useEvent RFC](https://github.com/reactjs/rfcs/pull/220). It is currently in early research, and we are still iterating on the idea. We appreciate the community’s comments on the RFC so far, as well as the [feedback](https://github.com/reactjs/react.dev/issues/3308) and contributions to the ongoing documentation rewrite. We’d specifically like to thank [Harish Kumar](https://github.com/harish-sethuraman) for submitting and reviewing many improvements to the new website implementation.
+В настоящее время мы пишем подробный раздел об эффектах, поскольку, по нашим сведениям, это одна из наиболее сложных тем как для новых, так и для опытных пользователей React. [Синхронизация с эффектами](/learn/synchronizing-with-effects) — первая опубликованная страница в серии, и в ближайшие недели появятся новые. Когда мы начали писать подробный раздел об эффектах, мы поняли, что многие распространенные шаблоны эффектов можно упростить, добавив новый примитив в React. Мы поделились некоторыми первоначальными мыслями об этом в [RFC useEvent](https://github.com/reactjs/rfcs/pull/220). В настоящее время он находится на ранней стадии исследования, и мы все еще дорабатываем эту идею. Мы ценим комментарии сообщества по RFC на данный момент, а также [обратную связь](https://github.com/reactjs/react.dev/issues/3308) и вклад в текущую переработку документации. Мы хотели бы особо поблагодарить [Harish Kumar](https://github.com/harish-sethuraman) за предоставление и проверку множества улучшений реализации нового веб-сайта.
 
-*Thanks to [Sophie Alpert](https://twitter.com/sophiebits) for reviewing this blog post!*
+*Благодарим [Sophie Alpert](https://twitter.com/sophiebits) за проверку этой записи в блоге!*
