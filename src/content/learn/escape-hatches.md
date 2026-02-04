@@ -1,35 +1,35 @@
 ---
-title: Escape Hatches
+title: Лазейки
 ---
 
 <Intro>
 
-Some of your components may need to control and synchronize with systems outside of React. For example, you might need to focus an input using the browser API, play and pause a video player implemented without React, or connect and listen to messages from a remote server. In this chapter, you'll learn the escape hatches that let you "step outside" React and connect to external systems. Most of your application logic and data flow should not rely on these features.
+Некоторые ваши компоненты могут нуждаться в управлении и синхронизации с системами вне React. Например, вам может понадобиться сфокусироваться на поле ввода с помощью API браузера, воспроизвести и поставить на паузу видеоплеер, реализованный без React, или подключиться и слушать сообщения от удалённого сервера. В этой главе вы узнаете о лазейках, которые позволяют вам «выйти» из React и подключиться к внешним системам. Большая часть вашей логики приложения и потока данных не должна полагаться на эти возможности.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to "remember" information without re-rendering](/learn/referencing-values-with-refs)
-* [How to access DOM elements managed by React](/learn/manipulating-the-dom-with-refs)
-* [How to synchronize components with external systems](/learn/synchronizing-with-effects)
-* [How to remove unnecessary Effects from your components](/learn/you-might-not-need-an-effect)
-* [How an Effect's lifecycle is different from a component's](/learn/lifecycle-of-reactive-effects)
-* [How to prevent some values from re-triggering Effects](/learn/separating-events-from-effects)
-* [How to make your Effect re-run less often](/learn/removing-effect-dependencies)
-* [How to share logic between components](/learn/reusing-logic-with-custom-hooks)
+* [Как «запоминать» информацию без повторного рендеринга](/learn/referencing-values-with-refs)
+* [Как получать доступ к DOM-элементам, управляемым React](/learn/manipulating-the-dom-with-refs)
+* [Как синхронизировать компоненты с внешними системами](/learn/synchronizing-with-effects)
+* [Как удалять ненужные эффекты из ваших компонентов](/learn/you-might-not-need-an-effect)
+* [Чем жизненный цикл эффекта отличается от жизненного цикла компонента](/learn/lifecycle-of-reactive-effects)
+* [Как предотвратить повторное срабатывание эффектов для некоторых значений](/learn/separating-events-from-effects)
+* [Как сделать так, чтобы эффект срабатывал реже](/learn/removing-effect-dependencies)
+* [Как разделять логику между компонентами](/learn/reusing-logic-with-custom-hooks)
 
 </YouWillLearn>
 
-## Referencing values with refs {/*referencing-values-with-refs*/}
+## Обращение к значениям с помощью рефов {/*referencing-values-with-refs*/}
 
-When you want a component to "remember" some information, but you don't want that information to [trigger new renders](/learn/render-and-commit), you can use a *ref*:
+Когда вы хотите, чтобы компонент «запоминал» какую-то информацию, но не хотите, чтобы эта информация [вызывала новые рендеры](/learn/render-and-commit), вы можете использовать *реф*:
 
 ```js
 const ref = useRef(0);
 ```
 
-Like state, refs are retained by React between re-renders. However, setting state re-renders a component. Changing a ref does not! You can access the current value of that ref through the `ref.current` property.
+Как и состояние, рефы сохраняются React между рендерами. Однако изменение состояния вызывает повторный рендер компонента. Изменение рефа — нет! Вы можете получить доступ к текущему значению этого рефа через свойство `ref.current`.
 
 <Sandpack>
 
@@ -54,17 +54,17 @@ export default function Counter() {
 
 </Sandpack>
 
-A ref is like a secret pocket of your component that React doesn't track. For example, you can use refs to store [timeout IDs](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value), [DOM elements](https://developer.mozilla.org/en-US/docs/Web/API/Element), and other objects that don't impact the component's rendering output.
+Реф — это как секретный карман вашего компонента, который React не отслеживает. Например, вы можете использовать рефы для хранения [идентификаторов таймеров](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout#return_value), [DOM-элементов](https://developer.mozilla.org/en-US/docs/Web/API/Element) и других объектов, которые не влияют на вывод рендера компонента.
 
 <LearnMore path="/learn/referencing-values-with-refs">
 
-Read **[Referencing Values with Refs](/learn/referencing-values-with-refs)** to learn how to use refs to remember information.
+Прочтите **[Обращение к значениям с помощью рефов](/learn/referencing-values-with-refs)**, чтобы узнать, как использовать рефы для запоминания информации.
 
 </LearnMore>
 
-## Manipulating the DOM with refs {/*manipulating-the-dom-with-refs*/}
+## Манипулирование DOM с помощью рефов {/*manipulating-the-dom-with-refs*/}
 
-React automatically updates the DOM to match your render output, so your components won't often need to manipulate it. However, sometimes you might need access to the DOM elements managed by React—for example, to focus a node, scroll to it, or measure its size and position. There is no built-in way to do those things in React, so you will need a ref to the DOM node. For example, clicking the button will focus the input using a ref:
+React автоматически обновляет DOM, чтобы он соответствовал результату вашего рендера, поэтому вашим компонентам редко придётся им манипулировать. Однако иногда вам может понадобиться доступ к DOM-элементам, управляемым React — например, чтобы сфокусироваться на узле, прокрутить его или измерить его размер и положение. В React нет встроенного способа сделать это, поэтому вам понадобится реф на DOM-узел. Например, нажатие на кнопку сфокусируется на поле ввода с помощью рефа:
 
 <Sandpack>
 
@@ -93,15 +93,15 @@ export default function Form() {
 
 <LearnMore path="/learn/manipulating-the-dom-with-refs">
 
-Read **[Manipulating the DOM with Refs](/learn/manipulating-the-dom-with-refs)** to learn how to access DOM elements managed by React.
+Прочтите **[Манипулирование DOM с помощью рефов](/learn/manipulating-the-dom-with-refs)**, чтобы узнать, как получать доступ к DOM-элементам, управляемым React.
 
 </LearnMore>
 
-## Synchronizing with Effects {/*synchronizing-with-effects*/}
+## Синхронизация с эффектами {/*synchronizing-with-effects*/}
 
-Some components need to synchronize with external systems. For example, you might want to control a non-React component based on the React state, set up a server connection, or send an analytics log when a component appears on the screen. Unlike event handlers, which let you handle particular events, *Effects* let you run some code after rendering. Use them to synchronize your component with a system outside of React.
+Некоторым компонентам требуется синхронизация с внешними системами. Например, вы можете захотеть управлять не-React компонентом на основе состояния React, настроить серверное соединение или отправить аналитический лог при появлении компонента на экране. В отличие от обработчиков событий, которые позволяют обрабатывать конкретные события, *эффекты* позволяют выполнять некоторый код после рендеринга. Используйте их для синхронизации вашего компонента с системой вне React.
 
-Press Play/Pause a few times and see how the video player stays synchronized to the `isPlaying` prop value:
+Нажмите Play/Pause несколько раз и посмотрите, как видеоплеер остаётся синхронизированным со значением пропса `isPlaying`:
 
 <Sandpack>
 
@@ -145,7 +145,7 @@ video { width: 250px; }
 
 </Sandpack>
 
-Many Effects also "clean up" after themselves. For example, an Effect that sets up a connection to a chat server should return a *cleanup function* that tells React how to disconnect your component from that server:
+Многие эффекты также «очищают» за собой. Например, эффект, который устанавливает соединение с чат-сервером, должен возвращать *функцию очистки*, которая говорит React, как отключить ваш компонент от этого сервера:
 
 <Sandpack>
 
@@ -183,30 +183,30 @@ input { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-In development, React will immediately run and clean up your Effect one extra time. This is why you see `"✅ Connecting..."` printed twice. This ensures that you don't forget to implement the cleanup function.
+В режиме разработки React немедленно выполнит и очистит ваш эффект один дополнительный раз. Вот почему вы видите `"✅ Connecting..."` дважды. Это гарантирует, что вы не забудете реализовать функцию очистки.
 
 <LearnMore path="/learn/synchronizing-with-effects">
 
-Read **[Synchronizing with Effects](/learn/synchronizing-with-effects)** to learn how to synchronize components with external systems.
+Прочтите **[Синхронизация с эффектами](/learn/synchronizing-with-effects)**, чтобы узнать, как синхронизировать компоненты с внешними системами.
 
 </LearnMore>
 
-## You Might Not Need An Effect {/*you-might-not-need-an-effect*/}
+## Возможно, вам не нужен эффект {/*you-might-not-need-an-effect*/}
 
-Effects are an escape hatch from the React paradigm. They let you "step outside" of React and synchronize your components with some external system. If there is no external system involved (for example, if you want to update a component's state when some props or state change), you shouldn't need an Effect. Removing unnecessary Effects will make your code easier to follow, faster to run, and less error-prone.
+Эффекты — это лазейка из парадигмы React. Они позволяют вам «выйти» из React и синхронизировать ваши компоненты с некоторой внешней системой. Если внешняя система не задействована (например, если вы хотите обновить состояние компонента при изменении некоторых пропсов или состояния), вам не нужен эффект. Удаление ненужных эффектов сделает ваш код проще для понимания, быстрее в выполнении и менее подверженным ошибкам.
 
-There are two common cases in which you don't need Effects:
-- **You don't need Effects to transform data for rendering.**
-- **You don't need Effects to handle user events.**
+Есть два распространённых случая, когда вам не нужны эффекты:
+- **Вам не нужны эффекты для преобразования данных для рендеринга.**
+- **Вам не нужны эффекты для обработки событий пользователя.**
 
-For example, you don't need an Effect to adjust some state based on other state:
+Например, вам не нужен эффект для корректировки некоторого состояния на основе другого состояния:
 
 ```js {5-9}
 function Form() {
   const [firstName, setFirstName] = useState('Taylor');
   const [lastName, setLastName] = useState('Swift');
 
-  // 🔴 Avoid: redundant state and unnecessary Effect
+  // 🔴 Избегайте: избыточное состояние и ненужный эффект
   const [fullName, setFullName] = useState('');
   useEffect(() => {
     setFullName(firstName + ' ' + lastName);
@@ -215,31 +215,31 @@ function Form() {
 }
 ```
 
-Instead, calculate as much as you can while rendering:
+Вместо этого вычисляйте как можно больше во время рендеринга:
 
 ```js {4-5}
 function Form() {
   const [firstName, setFirstName] = useState('Taylor');
   const [lastName, setLastName] = useState('Swift');
-  // ✅ Good: calculated during rendering
+  // ✅ Хорошо: вычислено во время рендеринга
   const fullName = firstName + ' ' + lastName;
   // ...
 }
 ```
 
-However, you *do* need Effects to synchronize with external systems. 
+Однако вам *нужны* эффекты для синхронизации с внешними системами.
 
 <LearnMore path="/learn/you-might-not-need-an-effect">
 
-Read **[You Might Not Need an Effect](/learn/you-might-not-need-an-effect)** to learn how to remove unnecessary Effects.
+Прочтите **[Возможно, вам не нужен эффект](/learn/you-might-not-need-an-effect)**, чтобы узнать, как удалять ненужные эффекты.
 
 </LearnMore>
 
-## Lifecycle of reactive effects {/*lifecycle-of-reactive-effects*/}
+## Жизненный цикл реактивных эффектов {/*lifecycle-of-reactive-effects*/}
 
-Effects have a different lifecycle from components. Components may mount, update, or unmount. An Effect can only do two things: to start synchronizing something, and later to stop synchronizing it. This cycle can happen multiple times if your Effect depends on props and state that change over time.
+Эффекты имеют другой жизненный цикл, чем компоненты. Компоненты могут монтироваться, обновляться или размонтироваться. Эффект может делать только две вещи: начать синхронизацию чего-либо и позже прекратить её. Этот цикл может происходить несколько раз, если ваш эффект зависит от пропсов и состояния, которые меняются со временем.
 
-This Effect depends on the value of the `roomId` prop. Props are *reactive values,* which means they can change on a re-render. Notice that the Effect *re-synchronizes* (and re-connects to the server) if `roomId` changes:
+Этот эффект зависит от значения пропса `roomId`. Пропсы — это *реактивные значения*, что означает, что они могут изменяться при повторном рендеринге. Обратите внимание, что эффект *пересинхронизируется* (и переподключается к серверу), если `roomId` изменяется:
 
 <Sandpack>
 
@@ -302,25 +302,25 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-React provides a linter rule to check that you've specified your Effect's dependencies correctly. If you forget to specify `roomId` in the list of dependencies in the above example, the linter will find that bug automatically.
+React предоставляет правило линтера для проверки правильности указания зависимостей вашего эффекта. Если вы забудете указать `roomId` в списке зависимостей в приведенном выше примере, линтер автоматически найдёт эту ошибку.
 
 <LearnMore path="/learn/lifecycle-of-reactive-effects">
 
-Read **[Lifecycle of Reactive Events](/learn/lifecycle-of-reactive-effects)** to learn how an Effect's lifecycle is different from a component's.
+Прочтите **[Жизненный цикл реактивных эффектов](/learn/lifecycle-of-reactive-effects)**, чтобы узнать, чем жизненный цикл эффекта отличается от жизненного цикла компонента.
 
 </LearnMore>
 
-## Separating events from Effects {/*separating-events-from-effects*/}
+## Разделение событий и эффектов {/*separating-events-from-effects*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+Этот раздел описывает **экспериментальный API, который ещё не был выпущен** в стабильной версии React.
 
 </Wip>
 
-Event handlers only re-run when you perform the same interaction again. Unlike event handlers, Effects re-synchronize if any of the values they read, like props or state, are different than during last render. Sometimes, you want a mix of both behaviors: an Effect that re-runs in response to some values but not others.
+Обработчики событий повторно запускаются только при повторном выполнении того же взаимодействия. В отличие от обработчиков событий, эффекты повторно синхронизируются, если какие-либо из значений, которые они считывают (например, пропсы или состояние), отличаются от тех, что были во время последнего рендеринга. Иногда вам нужно сочетание обоих поведений: эффект, который повторно запускается в ответ на одни значения, но не на другие.
 
-All code inside Effects is *reactive.* It will run again if some reactive value it reads has changed due to a re-render. For example, this Effect will re-connect to the chat if either `roomId` or `theme` have changed:
+Весь код внутри эффектов является *реактивным*. Он будет запущен снова, если какое-либо реактивное значение, которое он считывает, изменилось из-за повторного рендеринга. Например, этот эффект повторно подключится к чату, если изменится либо `roomId`, либо `theme`:
 
 <Sandpack>
 
@@ -388,7 +388,7 @@ export default function App() {
       <hr />
       <ChatRoom
         roomId={roomId}
-        theme={isDark ? 'dark' : 'light'} 
+        theme={isDark ? 'dark' : 'light'}
       />
     </>
   );
@@ -448,7 +448,7 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-This is not ideal. You want to re-connect to the chat only if the `roomId` has changed. Switching the `theme` shouldn't re-connect to the chat! Move the code reading `theme` out of your Effect into an *Effect Event*:
+Это не идеально. Вы хотите повторно подключаться к чату только в том случае, если изменился `roomId`. Переключение `theme` не должно приводить к повторному подключению к чату! Перенесите код, считывающий `theme`, из вашего эффекта в *Effect Event*:
 
 <Sandpack>
 
@@ -521,7 +521,7 @@ export default function App() {
       <hr />
       <ChatRoom
         roomId={roomId}
-        theme={isDark ? 'dark' : 'light'} 
+        theme={isDark ? 'dark' : 'light'}
       />
     </>
   );
@@ -581,180 +581,25 @@ label { display: block; margin-top: 10px; }
 
 </Sandpack>
 
-Code inside Effect Events isn't reactive, so changing the `theme` no longer makes your Effect re-connect.
+Код внутри Effect Events не является реактивным, поэтому изменение `theme` больше не вызывает повторное подключение вашего эффекта.
 
 <LearnMore path="/learn/separating-events-from-effects">
 
-Read **[Separating Events from Effects](/learn/separating-events-from-effects)** to learn how to prevent some values from re-triggering Effects.
+Прочтите **[Разделение событий и эффектов](/learn/separating-events-from-effects)**, чтобы узнать, как предотвратить повторное срабатывание эффектов из-за некоторых значений.
 
 </LearnMore>
 
-## Removing Effect dependencies {/*removing-effect-dependencies*/}
+## Удаление зависимостей эффекта {/*removing-effect-dependencies*/}
 
-When you write an Effect, the linter will verify that you've included every reactive value (like props and state) that the Effect reads in the list of your Effect's dependencies. This ensures that your Effect remains synchronized with the latest props and state of your component. Unnecessary dependencies may cause your Effect to run too often, or even create an infinite loop. The way you remove them depends on the case.
+Когда вы пишете эффект, линтер проверяет, включили ли вы каждое реактивное значение (например, пропсы и состояние), которое эффект считывает, в список зависимостей вашего эффекта. Это гарантирует, что ваш эффект остаётся синхронизированным с последними пропсами и состоянием вашего компонента. Ненужные зависимости могут привести к тому, что ваш эффект будет выполняться слишком часто или даже создаст бесконечный цикл. Способ их удаления зависит от случая.
 
-For example, this Effect depends on the `options` object which gets re-created every time you edit the input:
+Например, этот эффект зависит от объекта `options`, который пересо
 
-<Sandpack>
+## Повторное использование логики с помощью пользовательских хуков {/*reusing-logic-with-custom-hooks*/}
 
-```js
-import { useState, useEffect } from 'react';
-import { createConnection } from './chat.js';
+React поставляется со встроенными хуками, такими как `useState`, `useContext` и `useEffect`. Иногда вам может захотеться, чтобы существовал хук для более конкретной цели: например, для получения данных, отслеживания состояния подключения пользователя к сети или для подключения к чату. Для этого вы можете создавать собственные хуки для нужд вашего приложения.
 
-const serverUrl = 'https://localhost:1234';
-
-function ChatRoom({ roomId }) {
-  const [message, setMessage] = useState('');
-
-  const options = {
-    serverUrl: serverUrl,
-    roomId: roomId
-  };
-
-  useEffect(() => {
-    const connection = createConnection(options);
-    connection.connect();
-    return () => connection.disconnect();
-  }, [options]);
-
-  return (
-    <>
-      <h1>Welcome to the {roomId} room!</h1>
-      <input value={message} onChange={e => setMessage(e.target.value)} />
-    </>
-  );
-}
-
-export default function App() {
-  const [roomId, setRoomId] = useState('general');
-  return (
-    <>
-      <label>
-        Choose the chat room:{' '}
-        <select
-          value={roomId}
-          onChange={e => setRoomId(e.target.value)}
-        >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
-        </select>
-      </label>
-      <hr />
-      <ChatRoom roomId={roomId} />
-    </>
-  );
-}
-```
-
-```js src/chat.js
-export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
-  return {
-    connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
-    },
-    disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
-    }
-  };
-}
-```
-
-```css
-input { display: block; margin-bottom: 20px; }
-button { margin-left: 10px; }
-```
-
-</Sandpack>
-
-You don't want the chat to re-connect every time you start typing a message in that chat. To fix this problem, move creation of the `options` object inside the Effect so that the Effect only depends on the `roomId` string:
-
-<Sandpack>
-
-```js
-import { useState, useEffect } from 'react';
-import { createConnection } from './chat.js';
-
-const serverUrl = 'https://localhost:1234';
-
-function ChatRoom({ roomId }) {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    const options = {
-      serverUrl: serverUrl,
-      roomId: roomId
-    };
-    const connection = createConnection(options);
-    connection.connect();
-    return () => connection.disconnect();
-  }, [roomId]);
-
-  return (
-    <>
-      <h1>Welcome to the {roomId} room!</h1>
-      <input value={message} onChange={e => setMessage(e.target.value)} />
-    </>
-  );
-}
-
-export default function App() {
-  const [roomId, setRoomId] = useState('general');
-  return (
-    <>
-      <label>
-        Choose the chat room:{' '}
-        <select
-          value={roomId}
-          onChange={e => setRoomId(e.target.value)}
-        >
-          <option value="general">general</option>
-          <option value="travel">travel</option>
-          <option value="music">music</option>
-        </select>
-      </label>
-      <hr />
-      <ChatRoom roomId={roomId} />
-    </>
-  );
-}
-```
-
-```js src/chat.js
-export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
-  return {
-    connect() {
-      console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
-    },
-    disconnect() {
-      console.log('❌ Disconnected from "' + roomId + '" room at ' + serverUrl);
-    }
-  };
-}
-```
-
-```css
-input { display: block; margin-bottom: 20px; }
-button { margin-left: 10px; }
-```
-
-</Sandpack>
-
-Notice that you didn't start by editing the dependency list to remove the `options` dependency. That would be wrong. Instead, you changed the surrounding code so that the dependency became *unnecessary.* Think of the dependency list as a list of all the reactive values used by your Effect's code. You don't intentionally choose what to put on that list. The list describes your code. To change the dependency list, change the code.
-
-<LearnMore path="/learn/removing-effect-dependencies">
-
-Read **[Removing Effect Dependencies](/learn/removing-effect-dependencies)** to learn how to make your Effect re-run less often.
-
-</LearnMore>
-
-## Reusing logic with custom Hooks {/*reusing-logic-with-custom-hooks*/}
-
-React comes with built-in Hooks like `useState`, `useContext`, and `useEffect`. Sometimes, you’ll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. To do this, you can create your own Hooks for your application's needs.
-
-In this example, the `usePointerPosition` custom Hook tracks the cursor position, while `useDelayedValue` custom Hook returns a value that's "lagging behind" the value you passed by a certain number of milliseconds. Move the cursor over the sandbox preview area to see a moving trail of dots following the cursor:
+В этом примере пользовательский хук `usePointerPosition` отслеживает положение курсора, а пользовательский хук `useDelayedValue` возвращает значение, которое «отстает» от переданного значения на определенное количество миллисекунд. Переместите курсор над областью предварительного просмотра песочницы, чтобы увидеть движущийся след точек, следующих за курсором:
 
 <Sandpack>
 
@@ -835,14 +680,14 @@ body { min-height: 300px; }
 
 </Sandpack>
 
-You can create custom Hooks, compose them together, pass data between them, and reuse them between components. As your app grows, you will write fewer Effects by hand because you'll be able to reuse custom Hooks you already wrote. There are also many excellent custom Hooks maintained by the React community.
+Вы можете создавать пользовательские хуки, комбинировать их, передавать между ними данные и повторно использовать их в разных компонентах. По мере роста вашего приложения вы будете писать меньше эффектов вручную, поскольку сможете повторно использовать уже написанные пользовательские хуки. Существует также множество отличных пользовательских хуков, поддерживаемых сообществом React.
 
 <LearnMore path="/learn/reusing-logic-with-custom-hooks">
 
-Read **[Reusing Logic with Custom Hooks](/learn/reusing-logic-with-custom-hooks)** to learn how to share logic between components.
+Прочтите **[Повторное использование логики с помощью пользовательских хуков](/learn/reusing-logic-with-custom-hooks)**, чтобы узнать, как делиться логикой между компонентами.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## Что дальше? {/*whats-next*/}
 
-Head over to [Referencing Values with Refs](/learn/referencing-values-with-refs) to start reading this chapter page by page!
+Перейдите к [Ссылки на значения с помощью Refs](/learn/referencing-values-with-refs), чтобы начать читать эту главу страница за страницей!
