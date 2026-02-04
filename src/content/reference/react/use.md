@@ -4,7 +4,7 @@ title: use
 
 <Intro>
 
-`use` is a React API that lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+`use` — это API React, который позволяет считывать значение ресурса, такого как [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) или [контекст](/learn/passing-data-deeply-with-context).
 
 ```js
 const value = use(resource);
@@ -16,11 +16,11 @@ const value = use(resource);
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `use(resource)` {/*use*/}
 
-Call `use` in your component to read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+Вызовите `use` в вашем компоненте, чтобы считать значение ресурса, такого как [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) или [контекст](/learn/passing-data-deeply-with-context).
 
 ```jsx
 import { use } from 'react';
@@ -31,33 +31,33 @@ function MessageComponent({ messagePromise }) {
   // ...
 ```
 
-Unlike React Hooks, `use` can be called within loops and conditional statements like `if`. Like React Hooks, the function that calls `use` must be a Component or Hook.
+В отличие от React Hooks, `use` можно вызывать внутри циклов и условных операторов, таких как `if`. Как и React Hooks, функция, вызывающая `use`, должна быть Компонентом или Хуком.
 
-When called with a Promise, the `use` API integrates with [`Suspense`](/reference/react/Suspense) and [error boundaries](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). The component calling `use` *suspends* while the Promise passed to `use` is pending. If the component that calls `use` is wrapped in a Suspense boundary, the fallback will be displayed.  Once the Promise is resolved, the Suspense fallback is replaced by the rendered components using the data returned by the `use` API. If the Promise passed to `use` is rejected, the fallback of the nearest Error Boundary will be displayed.
+При вызове с Promise, API `use` интегрируется с [`Suspense`](/reference/react/Suspense) и [предохранителями ошибок](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). Компонент, вызывающий `use`, *приостанавливается* (suspends), пока Promise, переданный в `use`, находится в ожидании. Если компонент, вызывающий `use`, обёрнут в границу Suspense, будет отображаться резервный вариант (fallback). Как только Promise будет разрешён, резервный вариант Suspense будет заменён отрендеренными компонентами, использующими данные, возвращённые API `use`. Если Promise, переданный в `use`, будет отклонён, будет отображён резервный вариант ближайшего Предохранителя ошибок.
 
-[See more examples below.](#usage)
+[См. примеры ниже.](#usage)
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-* `resource`: this is the source of the data you want to read a value from. A resource can be a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or a [context](/learn/passing-data-deeply-with-context).
+* `resource`: это источник данных, из которых вы хотите считать значение. Ресурсом может быть [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) или [контекст](/learn/passing-data-deeply-with-context).
 
-#### Returns {/*returns*/}
+#### Возвращает {/*returns*/}
 
-The `use` API returns the value that was read from the resource like the resolved value of a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+API `use` возвращает значение, считанное из ресурса, такое как разрешённое значение [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) или [контекст](/learn/passing-data-deeply-with-context).
 
-#### Caveats {/*caveats*/}
+#### Ограничения {/*caveats*/}
 
-* The `use` API must be called inside a Component or a Hook.
-* When fetching data in a [Server Component](/reference/rsc/server-components), prefer `async` and `await` over `use`. `async` and `await` pick up rendering from the point where `await` was invoked, whereas `use` re-renders the component after the data is resolved.
-* Prefer creating Promises in [Server Components](/reference/rsc/server-components) and passing them to [Client Components](/reference/rsc/use-client) over creating Promises in Client Components. Promises created in Client Components are recreated on every render. Promises passed from a Server Component to a Client Component are stable across re-renders. [See this example](#streaming-data-from-server-to-client).
+* API `use` должен быть вызван внутри Компонента или Хука.
+* При получении данных в [Серверном Компоненте](/reference/rsc/server-components) отдавайте предпочтение `async` и `await` перед `use`. `async` и `await` возобновляют рендеринг с точки, где был вызван `await`, тогда как `use` повторно рендерит компонент после разрешения данных.
+* Предпочитайте создание Promise в [Серверных Компонентах](/reference/rsc/server-components) и передачу их в [Клиентские Компоненты](/reference/rsc/use-client) вместо создания Promise в Клиентских Компонентах. Promise, созданные в Клиентских Компонентах, воссоздаются при каждом рендеринге. Promise, переданные из Серверного Компонента в Клиентский Компонент, стабильны при повторных рендерингах. [См. этот пример](#streaming-data-from-server-to-client).
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Reading context with `use` {/*reading-context-with-use*/}
+### Чтение контекста с помощью `use` {/*reading-context-with-use*/}
 
-When a [context](/learn/passing-data-deeply-with-context) is passed to `use`, it works similarly to [`useContext`](/reference/react/useContext). While `useContext` must be called at the top level of your component, `use` can be called inside conditionals like `if` and loops like `for`. `use` is preferred over `useContext` because it is more flexible.
+Когда [контекст](/learn/passing-data-deeply-with-context) передается в `use`, он работает аналогично [`useContext`](/reference/react/useContext). В то время как `useContext` должен вызываться на верхнем уровне вашего компонента, `use` может быть вызван внутри условных операторов, таких как `if`, и циклов, таких как `for`. `use` предпочтительнее `useContext`, потому что он более гибок.
 
 ```js [[2, 4, "theme"], [1, 4, "ThemeContext"]]
 import { use } from 'react';
@@ -67,9 +67,9 @@ function Button() {
   // ... 
 ```
 
-`use` returns the <CodeStep step={2}>context value</CodeStep> for the <CodeStep step={1}>context</CodeStep> you passed. To determine the context value, React searches the component tree and finds **the closest context provider above** for that particular context.
+`use` возвращает <CodeStep step={2}>значение контекста</CodeStep> для <CodeStep step={1}>контекста</CodeStep>, который вы передали. Чтобы определить значение контекста, React ищет в дереве компонентов и находит **ближайший вышестоящий провайдер контекста** для данного конкретного контекста.
 
-To pass context to a `Button`, wrap it or one of its parent components into the corresponding context provider.
+Чтобы передать контекст в `Button`, оберните его или один из его родительских компонентов в соответствующий провайдер контекста.
 
 ```js [[1, 3, "ThemeContext"], [2, 3, "\\"dark\\""], [1, 5, "ThemeContext"]]
 function MyPage() {
@@ -81,13 +81,13 @@ function MyPage() {
 }
 
 function Form() {
-  // ... renders buttons inside ...
+  // ... рендерит кнопки внутри ...
 }
 ```
 
-It doesn't matter how many layers of components there are between the provider and the `Button`. When a `Button` *anywhere* inside of `Form` calls `use(ThemeContext)`, it will receive `"dark"` as the value.
+Не имеет значения, сколько слоев компонентов находится между провайдером и `Button`. Когда `Button`, находящийся *где угодно* внутри `Form`, вызывает `use(ThemeContext)`, он получит `"dark"` в качестве значения.
 
-Unlike [`useContext`](/reference/react/useContext), <CodeStep step={2}>`use`</CodeStep> can be called in conditionals and loops like <CodeStep step={1}>`if`</CodeStep>.
+В отличие от [`useContext`](/reference/react/useContext), <CodeStep step={2}>`use`</CodeStep> может быть вызван в условных операторах и циклах, таких как <CodeStep step={1}>`if`</CodeStep>.
 
 ```js [[1, 2, "if"], [2, 3, "use"]]
 function HorizontalRule({ show }) {
@@ -99,11 +99,11 @@ function HorizontalRule({ show }) {
 }
 ```
 
-<CodeStep step={2}>`use`</CodeStep> is called from inside a <CodeStep step={1}>`if`</CodeStep> statement, allowing you to conditionally read values from a Context.
+<CodeStep step={2}>`use`</CodeStep> вызывается изнутри оператора <CodeStep step={1}>`if`</CodeStep>, что позволяет вам условно считывать значения из контекста.
 
 <Pitfall>
 
-Like `useContext`, `use(context)` always looks for the closest context provider *above* the component that calls it. It searches upwards and **does not** consider context providers in the component from which you're calling `use(context)`.
+Как и `useContext`, `use(context)` всегда ищет ближайший провайдер контекста *выше* компонента, который его вызывает. Он ищет вверх и **не** учитывает провайдеры контекста в компоненте, из которого вы вызываете `use(context)`.
 
 </Pitfall>
 
@@ -194,9 +194,9 @@ function Button({ show, children }) {
 
 </Sandpack>
 
-### Streaming data from the server to the client {/*streaming-data-from-server-to-client*/}
+### Потоковая передача данных с сервера на клиент {/*streaming-data-from-server-to-client*/}
 
-Data can be streamed from the server to the client by passing a Promise as a prop from a <CodeStep step={1}>Server Component</CodeStep> to a <CodeStep step={2}>Client Component</CodeStep>.
+Данные могут передаваться потоком с сервера на клиент путем передачи Promise в качестве пропса из [серверного компонента](/reference/react/components#server-components) в [клиентский компонент](/reference/react/components#client-components).
 
 ```js [[1, 4, "App"], [2, 2, "Message"], [3, 7, "Suspense"], [4, 8, "messagePromise", 30], [4, 5, "messagePromise"]]
 import { fetchMessage } from './lib.js';
@@ -212,7 +212,7 @@ export default function App() {
 }
 ```
 
-The <CodeStep step={2}>Client Component</CodeStep> then takes <CodeStep step={4}>the Promise it received as a prop</CodeStep> and passes it to the <CodeStep step={5}>`use`</CodeStep> API. This allows the <CodeStep step={2}>Client Component</CodeStep> to read the value from <CodeStep step={4}>the Promise</CodeStep> that was initially created by the Server Component.
+[Клиентский компонент](/reference/react/components#client-components) затем берет <CodeStep step={4}>Promise, который он получил как пропс</CodeStep>, и передает его в API <CodeStep step={5}>`use`</CodeStep>. Это позволяет [клиентскому компоненту](/reference/react/components#client-components) считывать значение из <CodeStep step={4}>Promise</CodeStep>, который изначально был создан серверным компонентом.
 
 ```js [[2, 6, "Message"], [4, 6, "messagePromise"], [4, 7, "messagePromise"], [5, 7, "use"]]
 // message.js
@@ -225,7 +225,7 @@ export function Message({ messagePromise }) {
   return <p>Here is the message: {messageContent}</p>;
 }
 ```
-Because <CodeStep step={2}>`Message`</CodeStep> is wrapped in <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep>, the fallback will be displayed until the Promise is resolved. When the Promise is resolved, the value will be read by the <CodeStep step={5}>`use`</CodeStep> API and the <CodeStep step={2}>`Message`</CodeStep> component will replace the Suspense fallback.
+Поскольку <CodeStep step={2}>`Message`</CodeStep> обернут в <CodeStep step={3}>[`Suspense`](/reference/react/Suspense)</CodeStep>, будет отображаться резервный вариант, пока Promise не будет разрешен. Когда Promise будет разрешен, значение будет прочитано API <CodeStep step={5}>`use`</CodeStep>, и компонент <CodeStep step={2}>`Message`</CodeStep> заменит резервный вариант Suspense.
 
 <Sandpack>
 
@@ -294,16 +294,16 @@ root.render(
 
 <Note>
 
-When passing a Promise from a Server Component to a Client Component, its resolved value must be serializable to pass between server and client. Data types like functions aren't serializable and cannot be the resolved value of such a Promise.
+При передаче Promise из серверного компонента в клиентский, его разрешенное значение должно быть сериализуемым для передачи между сервером и клиентом. Типы данных, такие как функции, не сериализуемы и не могут быть разрешенным значением такого Promise.
 
 </Note>
 
 
 <DeepDive>
 
-#### Should I resolve a Promise in a Server or Client Component? {/*resolve-promise-in-server-or-client-component*/}
+#### Следует ли разрешать Promise в серверном или клиентском компоненте? {/*resolve-promise-in-server-or-client-component*/}
 
-A Promise can be passed from a Server Component to a Client Component and resolved in the Client Component with the `use` API. You can also resolve the Promise in a Server Component with `await` and pass the required data to the Client Component as a prop.
+Promise может быть передан из серверного компонента в клиентский и разрешен в клиентском компоненте с помощью API `use`. Вы также можете разрешить Promise в серверном компоненте с помощью `await` и передать необходимые данные в клиентский компонент в качестве пропса.
 
 ```js
 export default async function App() {
@@ -312,24 +312,24 @@ export default async function App() {
 }
 ```
 
-But using `await` in a [Server Component](/reference/react/components#server-components) will block its rendering until the `await` statement is finished. Passing a Promise from a Server Component to a Client Component prevents the Promise from blocking the rendering of the Server Component.
+Но использование `await` в [серверном компоненте](/reference/react/components#server-components) заблокирует его рендеринг до завершения оператора `await`. Передача Promise из серверного компонента в клиентский предотвращает блокировку рендеринга серверного компонента Promise.
 
 </DeepDive>
 
-### Dealing with rejected Promises {/*dealing-with-rejected-promises*/}
+### Обработка отклоненных Promise {/*dealing-with-rejected-promises*/}
 
-In some cases a Promise passed to `use` could be rejected. You can handle rejected Promises by either:
+В некоторых случаях Promise, переданный в `use`, может быть отклонен. Вы можете обрабатывать отклоненные Promise одним из следующих способов:
 
-1. [Displaying an error to users with an error boundary.](#displaying-an-error-to-users-with-error-boundary)
-2. [Providing an alternative value with `Promise.catch`](#providing-an-alternative-value-with-promise-catch)
+1. [Отображение ошибки пользователям с помощью предохранителя ошибок.](#displaying-an-error-to-users-with-error-boundary)
+2. [Предоставление альтернативного значения с помощью `Promise.catch`](#providing-an-alternative-value-with-promise-catch)
 
 <Pitfall>
-`use` cannot be called in a try-catch block. Instead of a try-catch block [wrap your component in an Error Boundary](#displaying-an-error-to-users-with-error-boundary), or [provide an alternative value to use with the Promise's `.catch` method](#providing-an-alternative-value-with-promise-catch).
+`use` не может быть вызван в блоке try-catch. Вместо блока try-catch [оберните ваш компонент в предохранитель ошибок](#displaying-an-error-to-users-with-error-boundary) или [предоставьте альтернативное значение для использования с методом `.catch` Promise](#providing-an-alternative-value-with-promise-catch).
 </Pitfall>
 
-#### Displaying an error to users with an error boundary {/*displaying-an-error-to-users-with-error-boundary*/}
+#### Отображение ошибки пользователям с помощью предохранителя ошибок {/*displaying-an-error-to-users-with-error-boundary*/}
 
-If you'd like to display an error to your users when a Promise is rejected, you can use an [error boundary](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). To use an error boundary, wrap the component where you are calling the `use` API in an error boundary. If the Promise passed to `use` is rejected the fallback for the error boundary will be displayed.
+Если вы хотите отобразить ошибку пользователям при отклонении Promise, вы можете использовать [предохранитель ошибок](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). Чтобы использовать предохранитель ошибок, оберните компонент, в котором вы вызываете API `use`, в предохранитель ошибок. Если Promise, переданный в `use`, будет отклонен, будет отображен резервный вариант для предохранителя ошибок.
 
 <Sandpack>
 
@@ -410,9 +410,9 @@ root.render(
 ```
 </Sandpack>
 
-#### Providing an alternative value with `Promise.catch` {/*providing-an-alternative-value-with-promise-catch*/}
+#### Предоставление альтернативного значения с помощью `Promise.catch` {/*providing-an-alternative-value-with-promise-catch*/}
 
-If you'd like to provide an alternative value when the Promise passed to `use` is rejected you can use the Promise's <CodeStep step={1}>[`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)</CodeStep> method.
+Если вы хотите предоставить альтернативное значение при отклонении Promise, переданного в `use`, вы можете использовать метод Promise <CodeStep step={1}>[`catch`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch)</CodeStep>.
 
 ```js [[1, 6, "catch"],[2, 7, "return"]]
 import { Message } from './message.js';
@@ -432,31 +432,31 @@ export default function App() {
 }
 ```
 
-To use the Promise's <CodeStep step={1}>`catch`</CodeStep> method, call <CodeStep step={1}>`catch`</CodeStep> on the Promise object. <CodeStep step={1}>`catch`</CodeStep> takes a single argument: a function that takes an error message as an argument. Whatever is <CodeStep step={2}>returned</CodeStep> by the function passed to <CodeStep step={1}>`catch`</CodeStep> will be used as the resolved value of the Promise.
+Чтобы использовать метод <CodeStep step={1}>`catch`</CodeStep> Promise, вызовите <CodeStep step={1}>`catch`</CodeStep> для объекта Promise. <CodeStep step={1}>`catch`</CodeStep> принимает один аргумент: функцию, которая принимает сообщение об ошибке в качестве аргумента. Все, что <CodeStep step={2}>возвращается</CodeStep> функцией, переданной в <CodeStep step={1}>`catch`</CodeStep>, будет использоваться в качестве разрешенного значения Promise.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
 ### "Suspense Exception: This is not a real error!" {/*suspense-exception-error*/}
 
-You are either calling `use` outside of a React Component or Hook function, or calling `use` in a try–catch block. If you are calling `use` inside a try–catch block, wrap your component in an error boundary, or call the Promise's `catch` to catch the error and resolve the Promise with another value. [See these examples](#dealing-with-rejected-promises).
+Вы либо вызываете `use` вне компонента React или функции хука, либо вызываете `use` в блоке try-catch. Если вы вызываете `use` внутри блока try-catch, оберните ваш компонент в предохранитель ошибок или вызовите `catch` Promise, чтобы перехватить ошибку и разрешить Promise другим значением. [См. эти примеры](#dealing-with-rejected-promises).
 
-If you are calling `use` outside a React Component or Hook function, move the `use` call to a React Component or Hook function.
+Если вы вызываете `use` вне компонента React или функции хука, переместите вызов `use` в компонент React или функцию хука.
 
 ```jsx
 function MessageComponent({messagePromise}) {
   function download() {
-    // ❌ the function calling `use` is not a Component or Hook
+    // ❌ функция, вызывающая `use`, не является компонентом или хуком
     const message = use(messagePromise);
     // ...
 ```
 
-Instead, call `use` outside any component closures, where the function that calls `use` is a Component or Hook.
+Вместо этого вызывайте `use` вне любых замыканий компонентов, где функция, вызывающая `use`, является компонентом или хуком.
 
 ```jsx
 function MessageComponent({messagePromise}) {
-  // ✅ `use` is being called from a component. 
+  // ✅ `use` вызывается из компонента. 
   const message = use(messagePromise);
   // ...
 ```
