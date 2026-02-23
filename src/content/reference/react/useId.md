@@ -44,7 +44,13 @@ function PasswordField() {
 
 * `useId` -- это хук, поэтому его нужно вызывать только **на верхнем уровне вашего компонента** или хука. Его нельзя вызывать внутри циклов и условий. Если это всё же для чего-то нужно, выделите этот вызов в отдельный компонент, который затем можно рендерить по условию или в цикле.
 
+<<<<<<< HEAD
 * `useId` **не должен использоваться для создания ключей** в списках. [Ключи должны выбираться на основе данных.](/learn/rendering-lists#where-to-get-your-key)
+=======
+* `useId` **should not be used to generate cache keys** for [use()](/reference/react/use). The ID is stable when a component is mounted but may change during rendering. Cache keys should be generated from your data.
+
+* `useId` **should not be used to generate keys** in a list. [Keys should be generated from your data.](/learn/rendering-lists#where-to-get-your-key)
+>>>>>>> a1cc2ab4bf06b530f86a7049923c402baf86aca1
 
 * `useId` currently cannot be used in [async Server Components](/reference/rsc/server-components#async-components-with-server-components).
 
