@@ -26,7 +26,11 @@ title: 'Возможно, вам не нужен Эффект'
 * **Вам не нужны Эффекты чтобы трансформировать данные для рендера.** Например, для фильтра списка перед тем, как отобразить его. Это не совсем эффективно. Когда вы обновляете состояние, React сначала вызовет функции вашего компонента для расчета того, что должно быть на экране. Затем, React ["фиксирует"](/learn/render-and-commit) текущие изменения в DOM обновляя экран, и уже после перечисленного выполнит Эффекты. Если Эффект *еще* и изменяет состояние компонента, то весь процесс начнётся заново! Чтобы избежать ненужных фаз рендеринга, трансформируйте все данные в начале ваших компонентов. Этот код будет автоматически выполнен повторно как только изменятся пропсы или состояние.
 * **Вам не нужны Эффекты для обработчиков событий.** Допустим вы хотите отправить POST-запрос на `/api/buy` и показать уведомление, как только пользователь приобретёт товар. Вы точно знаете что произошло в обработчике событий кнопки "Купить". К моменту выполнения эффекта вы не знаете, *что* сделал пользователь (например, какая кнопка была нажата). Вот почему предпочтительно обрабатывать пользовательские события в соответствующих обработчиках.
 
+<<<<<<< HEAD
 Вам *нужны* эффекты для [синхронизации](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events) с внешней средой. Например, вы можете написать эффект, который синхронизирует виджет jQuery с состоянием React. Также можно запрашивать данные с помощью эффектов: например, синхронизировать результаты поиска с самим поисковым запросом. Учтите, что современные [фреймворки](/learn/start-a-new-react-project#production-grade-react-frameworks) предоставляют более эффективные встроенные механизмы получения данных, чем написание эффектов непосредственно в компонентах.
+=======
+You *do* need Effects to [synchronize](/learn/synchronizing-with-effects#what-are-effects-and-how-are-they-different-from-events) with external systems. For example, you can write an Effect that keeps a jQuery widget synchronized with the React state. You can also fetch data with Effects: for example, you can synchronize the search results with the current search query. Keep in mind that modern [frameworks](/learn/creating-a-react-app#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than writing Effects directly in your components.
+>>>>>>> 7c90c6eb4bb93a5eacb9cb4ad4ca496c32984636
 
 Чтобы помочь вам развить интуицию, давайте рассмотрим несколько распространенных конкретных примеров!
 
@@ -34,7 +38,7 @@ title: 'Возможно, вам не нужен Эффект'
 
 Предположим, есть компонент с двумя переменными состояния: `firstName` и `lastName`. Вы хотите вычислить `fullName`, объединив их. Более того, вы хотите, чтобы `fullName` обновлялся при изменении `firstName` или `lastName`. Может возникнуть мысль  добавить переменную состояния `fullName` и обновлять её с помощью эффекта:
 
-```js {5-9}
+```js {expectedErrors: {'react-compiler': [8]}} {5-9}
 function Form() {
   const [firstName, setFirstName] = useState('Taylor');
   const [lastName, setLastName] = useState('Swift');
@@ -66,7 +70,7 @@ function Form() {
 
 Этот компонент вычисляет `visibleTodos`, принимая `todos` в качестве пропсов, и фильтрует их согласно пропсу `filter`. Вам может показаться заманчивым хранить результат в состоянии и обновлять его с помощью эффекта:
 
-```js {4-8}
+```js {expectedErrors: {'react-compiler': [7]}} {4-8}
 function TodoList({ todos, filter }) {
   const [newTodo, setNewTodo] = useState('');
 
@@ -94,6 +98,12 @@ function TodoList({ todos, filter }) {
 Как правило, это хорошо работающий код! Но иногда `getFilteredTodos()` может быть медленной или у вас может быть много `todos`. В таком случае лучше не пересчитывать `getFilteredTodos()` если одна из несвязанных переменных изменилась, например, `newTodo`.
 
 Вы можете кэшировать (или ["мемоизировать"](https://ru.wikipedia.org/wiki/Мемоизация)) дорогое вычисление обернув его в [`useMemo`](/reference/react/useMemo) хук:
+
+<Note>
+
+[React Compiler](/learn/react-compiler) can automatically memoize expensive calculations for you, eliminating the need for manual `useMemo` in many cases.
+
+</Note>
 
 ```js {5-8}
 import { useMemo, useState } from 'react';
@@ -159,7 +169,7 @@ console.timeEnd('filter array');
 
 Компонент `ProfilePage` получает `userId` через пропсы. На страннице находится поле ввода для комментария и используется состояние `comment` для сохранения его значения. Как-то раз вы заметили проблему: во время навигации с одного профиля на другой, состояние `comment` не сбрасывается и в результате, очень просто допустить ошибку случайно опубликовав комментарий в профиле не того пользователя. Чтобы исправить проблему, покажется хорошей идеей очистить состояние `comment` при изменении `userId`:
 
-```js {4-7}
+```js {expectedErrors: {'react-compiler': [6]}} {4-7}
 export default function ProfilePage({ userId }) {
   const [comment, setComment] = useState('');
 
@@ -202,7 +212,7 @@ function Profile({ userId }) {
 
 Компонент `List` получает список `items` в качестве пропсов и сохраняет выбранный элемент в переменной состояния `selection`. Вы захотели сбрасывать значение `selection` каждый раз, когда свойство `items` получает другой массив:
 
-```js {5-8}
+```js {expectedErrors: {'react-compiler': [7]}} {5-8}
 function List({ items }) {
   const [isReverse, setIsReverse] = useState(false);
   const [selection, setSelection] = useState(null);
@@ -433,7 +443,7 @@ function Game() {
     // ✅ Вычисление следующего состояния в обработчике событий
     setCard(nextCard);
     if (nextCard.gold) {
-      if (goldCardCount <= 3) {
+      if (goldCardCount < 3) {
         setGoldCardCount(goldCardCount + 1);
       } else {
         setGoldCardCount(0);
@@ -753,7 +763,11 @@ function SearchResults({ query }) {
 
 Управление состоянием гонки - не единственная сложность при реализации получения данных. Вам также может потребоваться кэширование ответов (чтобы пользователь мог нажать Назад и сразу увидеть предыдущий результат), как получать данные на сервере (чтобы начальный HTML, отрисованный сервером, содержал полученное содержимое, а не индикатор загрузки) и как избежать сетевых водопадов (чтобы дочерний компонент мог получать данные без ожидания каждого родительского компонента).
 
+<<<<<<< HEAD
 **Эти проблемы относятся ко всем UI-библиотекам, а не только к React. Решение их не является тривиальным, поэтому современные [фреймворки](/learn/start-a-new-react-project#production-grade-react-frameworks) предоставляют более эффективные встроенные механизмы получения данных, чем получение данных с помощью эффектов.**
+=======
+**These issues apply to any UI library, not just React. Solving them is not trivial, which is why modern [frameworks](/learn/creating-a-react-app#full-stack-frameworks) provide more efficient built-in data fetching mechanisms than fetching data in Effects.**
+>>>>>>> 7c90c6eb4bb93a5eacb9cb4ad4ca496c32984636
 
 Если вы не используете фреймворк (и не хотите создавать свой), но хотите сделать получение данных с помощью эффектов более удобным, рассмотрите возможность извлечения вашей логики получения данных в пользовательский хук, как в этом примере:
 
@@ -815,7 +829,7 @@ function useData(url) {
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [12, 16, 20]}}
 import { useState, useEffect } from 'react';
 import { initialTodos, createTodo } from './todos.js';
 
@@ -1018,7 +1032,7 @@ input { margin-top: 10px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11]}}
 import { useState, useEffect } from 'react';
 import { initialTodos, createTodo, getVisibleTodos } from './todos.js';
 
@@ -1359,7 +1373,7 @@ export default function ContactList({
 }
 ```
 
-```js src/EditContact.js active
+```js {expectedErrors: {'react-compiler': [8, 9]}} src/EditContact.js active
 import { useState, useEffect } from 'react';
 
 export default function EditContact({ savedContact, onSave }) {
