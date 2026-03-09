@@ -21,7 +21,11 @@ title: API React DOM
 
 Эти API можно использовать для ускорения работы приложений за счёт предварительной загрузки ресурсов — таких как скрипты, таблицы стилей и шрифты — сразу после того, как становится понятно, что они понадобятся. Например, до перехода на другую страницу, где эти ресурсы будут использоваться.
 
+<<<<<<< HEAD
 [Фреймворки на базе React](/learn/start-a-new-react-project) часто берут на себя управление загрузкой ресурсов, так что вам может не понадобиться напрямую вызывать эти API. Подробнее об этом — в документации фреймворка.
+=======
+[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call these APIs yourself. Consult your framework's documentation for details.
+>>>>>>> 7c90c6eb4bb93a5eacb9cb4ad4ca496c32984636
 
 * [`prefetchDNS`](/reference/react-dom/prefetchDNS) позволяет предварительно получить IP-адрес доменного имени, с которым вы планируете установить соединение.
 * [`preconnect`](/reference/react-dom/preconnect) заранее устанавливает соединение с сервером, с которого вы, скорее всего, запросите ресурсы, даже если ещё не знаете, какие именно.
