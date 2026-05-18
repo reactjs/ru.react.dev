@@ -4,7 +4,7 @@ title: act
 
 <Intro>
 
-`act` is a test helper to apply pending React updates before making assertions.
+`act` — это вспомогательная функция для тестирования, которая применяет ожидающие обновления React перед выполнением утверждений.
 
 ```js
 await act(async actFn)
@@ -12,10 +12,10 @@ await act(async actFn)
 
 </Intro>
 
-To prepare a component for assertions, wrap the code rendering it and performing updates inside an `await act()` call. This makes your test run closer to how React works in the browser.
+Чтобы подготовить компонент к утверждениям, оберните код, который его отображает и выполняет обновления, в вызов `await act()`. Это позволит вашему тесту работать ближе к тому, как React работает в браузере.
 
 <Note>
-You might find using `act()` directly a bit too verbose. To avoid some of the boilerplate, you could use a library like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), whose helpers are wrapped with `act()`.
+Вы можете найти использование `act()` напрямую немного избыточным. Чтобы избежать некоторого шаблонного кода, вы можете использовать библиотеку, такую как [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), вспомогательные функции которой обёрнуты в `act()`.
 </Note>
 
 
@@ -23,13 +23,13 @@ You might find using `act()` directly a bit too verbose. To avoid some of the bo
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `await act(async actFn)` {/*await-act-async-actfn*/}
 
-When writing UI tests, tasks like rendering, user events, or data fetching can be considered as “units” of interaction with a user interface. React provides a helper called `act()` that makes sure all updates related to these “units” have been processed and applied to the DOM before you make any assertions.
+При написании UI-тестов такие задачи, как рендеринг, пользовательские события или получение данных, можно рассматривать как «единицы» взаимодействия с пользовательским интерфейсом. React предоставляет вспомогательную функцию `act()`, которая гарантирует, что все обновления, связанные с этими «единицами», были обработаны и применены к DOM перед выполнением каких-либо утверждений.
 
-The name `act` comes from the [Arrange-Act-Assert](https://wiki.c2.com/?ArrangeActAssert) pattern.
+Название `act` происходит от паттерна [Arrange-Act-Assert](https://wiki.c2.com/?ArrangeActAssert).
 
 ```js {2,4}
 it ('renders with button disabled', async () => {
@@ -42,25 +42,25 @@ it ('renders with button disabled', async () => {
 
 <Note>
 
-We recommend using `act` with `await` and an `async` function. Although the sync version works in many cases, it doesn't work in all cases and due to the way React schedules updates internally, it's difficult to predict when you can use the sync version.
+Мы рекомендуем использовать `act` с `await` и `async` функцией. Хотя синхронная версия работает во многих случаях, она не работает во всех, и из-за того, как React планирует обновления внутренне, трудно предсказать, когда вы можете использовать синхронную версию.
 
-We will deprecate and remove the sync version in the future.
+В будущем мы объявим синхронную версию устаревшей и удалим её.
 
 </Note>
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-* `async actFn`: An async function wrapping renders or interactions for components being tested. Any updates triggered within the `actFn`, are added to an internal act queue, which are then flushed together to process and apply any changes to the DOM. Since it is async, React will also run any code that crosses an async boundary, and flush any updates scheduled.
+* `async actFn`: Асинхронная функция, оборачивающая рендеринг или взаимодействия для тестируемых компонентов. Любые обновления, инициированные внутри `actFn`, добавляются во внутреннюю очередь `act`, которая затем обрабатывается вместе для обработки и применения любых изменений к DOM. Поскольку она асинхронна, React также будет выполнять любой код, который пересекает асинхронную границу, и обрабатывать любые запланированные обновления.
 
-#### Returns {/*returns*/}
+#### Возвращает {/*returns*/}
 
-`act` does not return anything.
+`act` ничего не возвращает.
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-When testing a component, you can use `act` to make assertions about its output.
+При тестировании компонента вы можете использовать `act` для утверждений о его выводе.
 
-For example, let’s say we have this `Counter` component, the usage examples below show how to test it:
+Например, предположим, у нас есть компонент `Counter`, примеры использования ниже показывают, как его протестировать:
 
 ```js
 function Counter() {
@@ -84,9 +84,9 @@ function Counter() {
 }
 ```
 
-### Rendering components in tests {/*rendering-components-in-tests*/}
+### Рендеринг компонентов в тестах {/*rendering-components-in-tests*/}
 
-To test the render output of a component, wrap the render inside `act()`:
+Чтобы протестировать вывод рендеринга компонента, оберните рендеринг в `act()`:
 
 ```js  {10,12}
 import {act} from 'react';
@@ -97,7 +97,7 @@ it('can render and update a counter', async () => {
   container = document.createElement('div');
   document.body.appendChild(container);
   
-  // ✅ Render the component inside act().
+  // ✅ Оберните рендеринг компонента в act().
   await act(() => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
@@ -109,13 +109,13 @@ it('can render and update a counter', async () => {
 });
 ```
 
-Here, we create a container, append it to the document, and render the `Counter` component inside `act()`. This ensures that the component is rendered and its effects are applied before making assertions.
+Здесь мы создаём контейнер, добавляем его в документ и отображаем компонент `Counter` внутри `act()`. Это гарантирует, что компонент будет отображён и его эффекты будут применены перед выполнением утверждений.
 
-Using `act` ensures that all updates have been applied before we make assertions.
+Использование `act` гарантирует, что все обновления были применены перед выполнением утверждений.
 
-### Dispatching events in tests {/*dispatching-events-in-tests*/}
+### Генерация событий в тестах {/*dispatching-events-in-tests*/}
 
-To test events, wrap the event dispatch inside `act()`:
+Чтобы протестировать события, оберните генерацию события в `act()`:
 
 ```js {14,16}
 import {act} from 'react';
@@ -130,7 +130,7 @@ it.only('can render and update a counter', async () => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
   
-  // ✅ Dispatch the event inside act().
+  // ✅ Генерируйте событие внутри act().
   await act(async () => {
     button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   });
@@ -142,21 +142,21 @@ it.only('can render and update a counter', async () => {
 });
 ```
 
-Here, we render the component with `act`, and then dispatch the event inside another `act()`. This ensures that all updates from the event are applied before making assertions.
+Здесь мы отображаем компонент с помощью `act`, а затем генерируем событие внутри другого `act()`. Это гарантирует, что все обновления от события будут применены перед выполнением утверждений.
 
 <Pitfall>
 
-Don’t forget that dispatching DOM events only works when the DOM container is added to the document. You can use a library like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro) to reduce the boilerplate code.
+Не забывайте, что генерация DOM-событий работает только тогда, когда DOM-контейнер добавлен в документ. Вы можете использовать библиотеку, такую как [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), чтобы уменьшить количество шаблонного кода.
 
 </Pitfall>
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
-### I'm getting an error: "The current testing environment is not configured to support act"(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+### Я получаю ошибку: "The current testing environment is not configured to support act"(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
 
-Using `act` requires setting `global.IS_REACT_ACT_ENVIRONMENT=true` in your test environment. This is to ensure that `act` is only used in the correct environment.
+Использование `act` требует установки `global.IS_REACT_ACT_ENVIRONMENT=true` в вашей тестовой среде. Это сделано для того, чтобы `act` использовался только в правильной среде.
 
-If you don't set the global, you will see an error like this:
+Если вы не установите глобальную переменную, вы увидите ошибку, подобную этой:
 
 <ConsoleBlock level="error">
 
@@ -164,7 +164,7 @@ Warning: The current testing environment is not configured to support act(...)
 
 </ConsoleBlock>
 
-To fix, add this to your global setup file for React tests:
+Чтобы исправить это, добавьте следующую строку в ваш файл глобальной настройки для React-тестов:
 
 ```js
 global.IS_REACT_ACT_ENVIRONMENT=true
@@ -172,6 +172,6 @@ global.IS_REACT_ACT_ENVIRONMENT=true
 
 <Note>
 
-In testing frameworks like [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), `IS_REACT_ACT_ENVIRONMENT` is already set for you.
+В таких фреймворках для тестирования, как [React Testing Library](https://testing-library.com/docs/react-testing-library/intro), `IS_REACT_ACT_ENVIRONMENT` уже установлен для вас.
 
 </Note>
