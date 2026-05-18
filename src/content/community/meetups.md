@@ -1,10 +1,9 @@
 ---
-title: React Meetups
+title: Встречи React
 ---
-
 <Intro>
 
-У вас есть местная группа по React.js? Добавьте её сюда! (Пожалуйста, сохраняйте список в алфавитном порядке)
+У вас есть местная встреча пользователей React.js? Добавьте её сюда! (Пожалуйста, сохраняйте список в алфавитном порядке)
 
 </Intro>
 
@@ -30,7 +29,7 @@ title: React Meetups
 * [Белу-Оризонти](https://www.meetup.com/reactbh/)
 * [Куритиба](https://www.meetup.com/pt-br/ReactJS-CWB/)
 * [Флорианополис](https://www.meetup.com/pt-br/ReactJS-Floripa/)
-* [Жуанвилл](https://www.meetup.com/pt-BR/React-Joinville/)
+* [Жуанвилле](https://www.meetup.com/pt-BR/React-Joinville/)
 * [Сан-Паулу](https://www.meetup.com/pt-BR/ReactJS-SP/)
 
 ## Боливия {/*bolivia*/}
@@ -81,12 +80,12 @@ title: React Meetups
 * [Салоники](https://www.meetup.com/Thessaloniki-ReactJS-Meetup/)
 
 ## Индия {/*india*/}
-* [Ахмедабад](https://reactahmedabad.dev/)
+* [Ахмедабад](reactahmedabad.dev/)
 * [Бангалор (React)](https://www.meetup.com/ReactJS-Bangalore/)
 * [Бангалор (React Native)](https://www.meetup.com/React-Native-Bangalore-Meetup)
 * [Ченнаи](https://www.linkedin.com/company/chennaireact)
 * [Дели NCR](https://www.meetup.com/React-Delhi-NCR/)
-* [Мумбаи](https://reactmumbai.dev)
+* [Мумбаи](reactmumbai.dev)
 * [Пуна](https://www.meetup.com/ReactJS-and-Friends/)
 
 ## Индонезия {/*indonesia*/}
