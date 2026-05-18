@@ -2,9 +2,9 @@
 title: "React v19"
 author: The React Team
 date: 2024/12/05
-description: React 19 теперь доступен в npm! В этой статье мы рассмотрим новые
-  возможности React 19 и способы их внедрения.
+description: React 19 теперь доступен в npm! В этой статье мы рассмотрим новые возможности React 19 и способы их внедрения.
 ---
+
 05 декабря 2024 г. от [Команды React](/community/team)
 
 ---
