@@ -2,112 +2,112 @@
 title: "Sunsetting Create React App"
 author: Matt Carroll and Ricky Hanlon
 date: 2025/02/14
-description: Today, we’re deprecating Create React App for new apps, and encouraging existing apps to migrate to a framework, or to migrate to a build tool like Vite, Parcel, or RSBuild. We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by building a React app from scratch.
+description: Сегодня мы объявляем устаревшим Create React App для новых приложений и рекомендуем существующим приложениям перейти на фреймворк или на сборщик, такой как Vite, Parcel или RSBuild. Мы также предоставляем документацию на случай, если фреймворк не подходит для вашего проекта, вы хотите создать собственный фреймворк или просто узнать, как работает React, создав приложение React с нуля.
 ---
 
-February 14, 2025 by [Matt Carroll](https://twitter.com/mattcarrollcode) and [Ricky Hanlon](https://bsky.app/profile/ricky.fm)
+14 февраля 2025 г. от [Мэтта Кэрролла](https://twitter.com/mattcarrollcode) и [Рики Хэнлона](https://bsky.app/profile/ricky.fm)
 
 ---
 
 <Intro>
 
-Today, we’re deprecating [Create React App](https://create-react-app.dev/) for new apps, and encouraging existing apps to migrate to a [framework](#how-to-migrate-to-a-framework), or to [migrate to a build tool](#how-to-migrate-to-a-build-tool) like Vite, Parcel, or RSBuild. 
+Сегодня мы объявляем [Create React App](https://create-react-app.dev/) устаревшим для новых приложений и призываем существующие приложения мигрировать на [фреймворк](#how-to-migrate-to-a-framework) или на [инструмент сборки](#how-to-migrate-to-a-build-tool), такой как Vite, Parcel или RSBuild.
 
-We’re also providing docs for when a framework isn’t a good fit for your project, you want to build your own framework, or you just want to learn how React works by [building a React app from scratch](/learn/build-a-react-app-from-scratch).
+Мы также предоставляем документацию для случаев, когда фреймворк не подходит для вашего проекта, вы хотите создать свой собственный фреймворк или просто хотите узнать, как работает React, [создав приложение React с нуля](/learn/build-a-react-app-from-scratch).
 
 </Intro>
 
 -----
 
-When we released Create React App in 2016, there was no clear way to build a new React app.
+Когда мы выпустили Create React App в 2016 году, не было явного способа создать новое приложение React.
 
-To create a React app, you had to install a bunch of tools and wire them up together yourself to support basic features like JSX, linting, and hot reloading. This was very tricky to do correctly, so the [community](https://github.com/react-boilerplate/react-boilerplate) [created](https://github.com/kriasoft/react-starter-kit) [boilerplates](https://github.com/petehunt/react-boilerplate) for [common](https://github.com/gaearon/react-hot-boilerplate) [setups](https://github.com/erikras/react-redux-universal-hot-example). However, boilerplates were difficult to update and fragmentation made it difficult for React to release new features.
+Чтобы создать приложение React, вам приходилось устанавливать кучу инструментов и настраивать их самостоятельно для поддержки основных функций, таких как JSX, линтинг и горячая перезагрузка. Это было очень сложно сделать правильно, поэтому [сообщество](https://github.com/react-boilerplate/react-boilerplate) [создавало](https://github.com/kriasoft/react-starter-kit) [стартовые наборы](https://github.com/petehunt/react-boilerplate) для [распространенных](https://github.com/gaearon/react-hot-boilerplate) [конфигураций](https://github.com/erikras/react-redux-universal-hot-example). Однако стартовые наборы было сложно обновлять, а фрагментация мешала React выпускать новые функции.
 
-Create React App solved these problems by combining several tools into a single recommended configuration. This allowed apps a simple way to upgrade to new tooling features, and allowed the React team to deploy non-trivial tooling changes (Fast Refresh support, React Hooks lint rules) to the broadest possible audience.
+Create React App решил эти проблемы, объединив несколько инструментов в единую рекомендуемую конфигурацию. Это позволило приложениям легко обновляться до новых инструментальных функций, а команде React — развертывать нетривиальные инструментальные изменения (поддержка Fast Refresh, правила линтинга для React Hooks) для максимально широкой аудитории.
 
-This model became so popular that there's an entire category of tools working this way today.
+Эта модель стала настолько популярной, что сегодня существует целая категория инструментов, работающих таким образом.
 
-## Deprecating Create React App {/*deprecating-create-react-app*/}
+## Устаревание Create React App {/*deprecating-create-react-app*/}
 
-Although Create React App makes it easy to get started, [there are several limitations](#limitations-of-build-tools) that make it difficult to build high performant production apps. In principle, we could solve these problems by essentially evolving it into a [framework](#why-we-recommend-frameworks).
+Хотя Create React App упрощает начало работы, [существует несколько ограничений](#limitations-of-build-tools), которые затрудняют создание высокопроизводительных продакшн-приложений. В принципе, мы могли бы решить эти проблемы, по сути, превратив его во [фреймворк](#why-we-recommend-frameworks).
 
-However, since Create React App currently has no active maintainers, and there are many existing frameworks that solve these problems already, we’ve decided to deprecate Create React App.
+Однако, поскольку у Create React App в настоящее время нет активных сопровождающих, а существует множество существующих фреймворков, которые уже решают эти проблемы, мы решили объявить Create React App устаревшим.
 
-Starting today, if you install a new app, you will see a deprecation warning:
+Начиная с сегодняшнего дня, при установке нового приложения вы увидите предупреждение об устаревании:
 
 <ConsoleBlockMulti>
 <ConsoleLogLine level="error">
 
-create-react-app is deprecated.
+create-react-app устарел.
 {'\n\n'}
-You can find a list of up-to-date React frameworks on react.dev
-For more info see: react.dev/link/cra
+Список актуальных фреймворков React вы можете найти на react.dev
+Подробнее: react.dev/link/cra
 {'\n\n'}
-This error message will only be shown once per install.
+Это сообщение об ошибке будет показано только один раз за установку.
 
 </ConsoleLogLine>
 </ConsoleBlockMulti>
 
-We've also added a deprecation notice to the Create React App [website](https://create-react-app.dev/) and GitHub [repo](https://github.com/facebook/create-react-app). Create React App will continue working in maintenance mode, and we've published a new version of Create React App to work with React 19.
+Мы также добавили уведомление об устаревании на [веб-сайт](https://create-react-app.dev/) и в [репозиторий](https://github.com/facebook/create-react-app) Create React App на GitHub. Create React App продолжит работать в режиме поддержки, и мы опубликовали новую версию Create React App для работы с React 19.
 
-## How to Migrate to a Framework {/*how-to-migrate-to-a-framework*/}
-We recommend [creating new React apps](/learn/creating-a-react-app) with a framework. All the frameworks we recommend support client-side rendering ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)) and single-page apps ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), and can be deployed to a CDN or static hosting service without a server.
+## Как мигрировать на фреймворк {/*how-to-migrate-to-a-framework*/}
+Мы рекомендуем [создавать новые приложения React](/learn/creating-a-react-app) с использованием фреймворка. Все рекомендуемые нами фреймворки поддерживают рендеринг на стороне клиента ([CSR](https://developer.mozilla.org/en-US/docs/Glossary/CSR)) и одностраничные приложения ([SPA](https://developer.mozilla.org/en-US/docs/Glossary/SPA)), и могут быть развернуты на CDN или статических хостингах без сервера.
 
-For existing apps, these guides will help you migrate to a client-only SPA:
+Для существующих приложений эти руководства помогут вам мигрировать на SPA только на стороне клиента:
 
-* [Next.js’ Create React App migration guide](https://nextjs.org/docs/app/building-your-application/upgrading/from-create-react-app)
-* [React Router’s framework adoption guide](https://reactrouter.com/upgrading/component-routes).
-* [Expo webpack to Expo Router migration guide](https://docs.expo.dev/router/migrate/from-expo-webpack/)
+* [Руководство по миграции с Create React App для Next.js](https://nextjs.org/docs/app/building-your-application/upgrading/from-create-react-app)
+* [Руководство по внедрению фреймворков от React Router](https://reactrouter.com/upgrading/component-routes).
+* [Руководство по миграции с Expo webpack на Expo Router](https://docs.expo.dev/router/migrate/from-expo-webpack/)
 
-## How to Migrate to a Build Tool {/*how-to-migrate-to-a-build-tool*/}
+## Как мигрировать на инструмент сборки {/*how-to-migrate-to-a-build-tool*/}
 
-If your app has unusual constraints, or you prefer to solve these problems by building your own framework, or you just want to learn how react works from scratch, you can roll your own custom setup with React using Vite, Parcel or Rsbuild.
+Если ваше приложение имеет необычные ограничения, или вы предпочитаете решать эти проблемы, создавая свой собственный фреймворк, или просто хотите узнать, как React работает с нуля, вы можете создать собственную пользовательскую конфигурацию с React, используя Vite, Parcel или Rsbuild.
 
-For existing apps, these guides will help you migrate to a build tool:
+Для существующих приложений эти руководства помогут вам мигрировать на инструмент сборки:
 
-* [Vite Create React App migration guide](https://www.robinwieruch.de/vite-create-react-app/)
-* [Parcel Create React App migration guide](https://parceljs.org/migration/cra/)
-* [Rsbuild Create React App migration guide](https://rsbuild.dev/guide/migration/cra)
+* [Руководство по миграции с Create React App на Vite](https://www.robinwieruch.de/vite-create-react-app/)
+* [Руководство по миграции с Create React App на Parcel](https://parceljs.org/migration/cra/)
+* [Руководство по миграции с Create React App на Rsbuild](https://rsbuild.dev/guide/migration/cra)
 
-To help get started with Vite, Parcel or Rsbuild, we've added new docs for [Building a React App from Scratch](/learn/build-a-react-app-from-scratch).
+Чтобы помочь вам начать работу с Vite, Parcel или Rsbuild, мы добавили новую документацию по [Созданию приложения React с нуля](/learn/build-a-react-app-from-scratch).
 
 <DeepDive>
 
-#### Do I need a framework? {/*do-i-need-a-framework*/}
+#### Нужен ли мне фреймворк? {/*do-i-need-a-framework*/}
 
-Most apps would benefit from a framework, but there are valid cases to build a React app from scratch. A good rule of thumb is if your app needs routing, you would probably benefit from a framework. 
+Большинство приложений выиграют от использования фреймворка, но существуют веские причины для создания приложения React с нуля. Хорошее эмпирическое правило: если вашему приложению требуется маршрутизация, вы, вероятно, выиграете от использования фреймворка.
 
-Just like Svelte has Sveltekit, Vue has Nuxt, and Solid has SolidStart, [React recommends using a framework](#why-we-recommend-frameworks) that fully integrates routing into features like data-fetching and code-splitting out of the box. This avoids the pain of needing to write your own complex configurations and essentially build a framework yourself.
+Подобно тому, как Svelte имеет Sveltekit, Vue имеет Nuxt, а Solid имеет SolidStart, [React рекомендует использовать фреймворк](#why-we-recommend-frameworks), который полностью интегрирует маршрутизацию с такими функциями, как получение данных и разделение кода "из коробки". Это избавляет от необходимости писать собственные сложные конфигурации и, по сути, создавать фреймворк самостоятельно.
 
-However, you can always [build a React app from scratch](/learn/build-a-react-app-from-scratch) using a build tool like Vite, Parcel, or Rsbuild.
+Однако вы всегда можете [создать приложение React с нуля](/learn/build-a-react-app-from-scratch), используя такой инструмент сборки, как Vite, Parcel или Rsbuild.
 
 </DeepDive>
 
-Continue reading to learn more about the [limitations of build tools](#limitations-of-build-tools) and [why we recommend frameworks](#why-we-recommend-frameworks).
+Продолжайте читать, чтобы узнать больше об [ограничениях инструментов сборки](#limitations-of-build-tools) и о том, [почему мы рекомендуем фреймворки](#why-we-recommend-frameworks).
 
-## Limitations of Build Tools {/*limitations-of-build-tools*/}
+## Ограничения инструментов сборки {/*limitations-of-build-tools*/}
 
-Create React App and build tools like it make it easy to get started building a React app. After running `npx create-react-app my-app`, you get a fully configured React app with a development server, linting, and a production build.
+Create React App и подобные ему инструменты сборки упрощают начало работы над приложением React. После выполнения `npx create-react-app my-app` вы получаете полностью настроенное приложение React с сервером разработки, линтингом и продакшн-сборкой.
 
-For example, if you're building an internal admin tool, you can start with a landing page:
+Например, если вы создаете внутренний административный инструмент, вы можете начать с целевой страницы:
 
 ```js
 export default function App() {
   return (
     <div>
-      <h1>Welcome to the Admin Tool!</h1>
+      <h1>Добро пожаловать в административный инструмент!</h1>
     </div>
   )
 }
 ```
 
-This allows you to immediately start coding in React with features like JSX, default linting rules, and a bundler to run in both development and production. However, this setup is missing the tools you need to build a real production app.
+Это позволяет вам немедленно начать кодировать на React с такими функциями, как JSX, правила линтинга по умолчанию и сборщик для работы как в режиме разработки, так и в продакшене. Однако этой настройке не хватает инструментов, необходимых для создания реального продакшн-приложения.
 
-Most production apps need solutions to problems like routing, data fetching, and code splitting.
+Большинству продакшн-приложений требуются решения для таких проблем, как маршрутизация, получение данных и разделение кода.
 
-### Routing {/*routing*/}
+### Маршрутизация {/*routing*/}
 
-Create React App does not include a specific routing solution. If you're just getting started, one option is to use `useState` to switch between routes. But doing this means that you can't share links to your app - every link would go to the same page - and structuring your app becomes difficult over time:
+Create React App не включает конкретного решения для маршрутизации. Если вы только начинаете, один из вариантов — использовать `useState` для переключения между маршрутами. Но делая это, вы не сможете делиться ссылками на ваше приложение — каждая ссылка будет вести на одну и ту же страницу — и со временем структурирование вашего приложения становится сложным:
 
 ```js
 import {useState} from 'react';
@@ -116,7 +116,7 @@ import Home from './Home';
 import Dashboard from './Dashboard';
 
 export default function App() {
-  // ❌ Routing in state does not create URLs
+  // ❌ Маршрутизация в состоянии не создает URL
   const [route, setRoute] = useState('home');
   return (
     <div>
@@ -127,7 +127,7 @@ export default function App() {
 }
 ```
 
-This is why most apps that use Create React App solve add routing with a routing library like [React Router](https://reactrouter.com/) or [Tanstack Router](https://tanstack.com/router/latest). With a routing library, you can add additional routes to the app, which provides opinions on the structure of your app, and allows you to start sharing links to routes. For example, with React Router you can define routes:
+Именно поэтому большинство приложений, использующих Create React App, решают проблему добавления маршрутизации с помощью библиотеки маршрутизации, такой как [React Router](https://reactrouter.com/) или [Tanstack Router](https://tanstack.com/router/latest). С помощью библиотеки маршрутизации вы можете добавлять дополнительные маршруты в приложение, что определяет структуру вашего приложения и позволяет начать делиться ссылками на маршруты. Например, с React Router вы можете определить маршруты:
 
 ```js
 import {RouterProvider, createBrowserRouter} from 'react-router';
@@ -135,7 +135,7 @@ import {RouterProvider, createBrowserRouter} from 'react-router';
 import Home from './Home';
 import Dashboard from './Dashboard';
 
-// ✅ Each route has it's own URL
+// ✅ Каждый маршрут имеет свой собственный URL
 const router = createBrowserRouter([
   {path: '/', element: <Home />},
   {path: '/dashboard', element: <Dashboard />}
@@ -148,21 +148,21 @@ export default function App() {
 }
 ```
 
-With this change, you can share a link to `/dashboard` and the app will navigate to the dashboard page . Once you have a routing library, you can add additional features like nested routes, route guards, and route transitions, which are difficult to implement without a routing library.
+С этим изменением вы можете поделиться ссылкой на `/dashboard`, и приложение перейдет на страницу панели управления. Как только у вас появится библиотека маршрутизации, вы сможете добавлять дополнительные функции, такие как вложенные маршруты, маршрутные охранники и переходы между маршрутами, которые сложно реализовать без библиотеки маршрутизации.
 
-There's a tradeoff being made here: the routing library adds complexity to the app, but it also adds features that are difficult to implement without it.
+Здесь идет компромисс: библиотека маршрутизации добавляет сложности в приложение, но также добавляет функции, которые сложно реализовать без нее.
 
-### Data Fetching {/*data-fetching*/}
+### Получение данных {/*data-fetching*/}
 
-Another common problem in Create React App is data fetching. Create React App does not include a specific data fetching solution. If you're just getting started, a common option is to use `fetch` in an effect to load data.
+Еще одна распространенная проблема в Create React App — получение данных. Create React App не включает конкретного решения для получения данных. Если вы только начинаете, распространенным вариантом является использование `fetch` в эффекте для загрузки данных.
 
-But doing this means that the data is fetched after the component renders, which can cause network waterfalls. Network waterfalls are caused by fetching data when your app renders instead of in parallel while the code is downloading:
+Но делая это, данные загружаются после рендеринга компонента, что может привести к сетевым водопадам. Сетевые водопады возникают из-за получения данных при рендеринге вашего приложения вместо параллельной загрузки кода во время загрузки кода:
 
 ```js
 export default function Dashboard() {
   const [data, setData] = useState(null);
 
-  // ❌ Fetching data in a component causes network waterfalls
+  // ❌ Получение данных в компоненте вызывает сетевые водопады
   useEffect(() => {
     fetch('/api/data')
       .then(response => response.json())
@@ -177,9 +177,9 @@ export default function Dashboard() {
 }
 ```
 
-Fetching in an effect means the user has to wait longer to see the content, even though the data could have been fetched earlier. To solve this, you can use a data fetching library like [React Query](https://react-query.tanstack.com/), [SWR](https://swr.vercel.app/), [Apollo](https://www.apollographql.com/docs/react), or [Relay](https://relay.dev/) which provide options to prefetch data so the request is started before the component renders.
+Получение данных в эффекте означает, что пользователю приходится дольше ждать, чтобы увидеть контент, хотя данные могли быть получены раньше. Чтобы решить эту проблему, вы можете использовать библиотеку получения данных, такую как [React Query](https://react-query.tanstack.com/), [SWR](https://swr.vercel.app/), [Apollo](https://www.apollographql.com/docs/react) или [Relay](https://relay.dev/), которые предоставляют опции для предварительной загрузки данных, чтобы запрос начинался до рендеринга компонента.
 
-These libraries work best when integrated with your routing "loader" pattern to specify data dependencies at the route level, which allows the router to optimize your data fetches:
+Эти библиотеки лучше всего работают при интеграции с вашим шаблоном "загрузчика" маршрутизации для определения зависимостей данных на уровне маршрута, что позволяет маршрутизатору оптимизировать получение данных:
 
 ```js
 export async function loader() {
@@ -188,7 +188,7 @@ export async function loader() {
   return data;
 }
 
-// ✅ Fetching data in parallel while the code is downloading
+// ✅ Получение данных параллельно во время загрузки кода
 export default function Dashboard({loaderData}) {
   return (
     <div>
@@ -198,21 +198,21 @@ export default function Dashboard({loaderData}) {
 }
 ```
 
-On initial load, the router can fetch the data immediately before the route is rendered. As the user navigates around the app, the router is able to fetch both the data and the route at the same time, parallelizing the fetches. This reduces the time it takes to see the content on the screen, and can improve the user experience.
+При первоначальной загрузке маршрутизатор может получить данные немедленно перед рендерингом маршрута. Когда пользователь перемещается по приложению, маршрутизатор может одновременно получать как данные, так и маршрут, параллелизируя запросы. Это сокращает время, необходимое для отображения контента на экране, и может улучшить пользовательский опыт.
 
-However, this requires correctly configuring the loaders in your app and trades off complexity for performance.
+Однако это требует правильной настройки загрузчиков в вашем приложении и сопряжено с увеличением сложности ради производительности.
 
-### Code Splitting {/*code-splitting*/}
+### Разделение кода {/*code-splitting*/}
 
-Another common problem in Create React App is [code splitting](https://www.patterns.dev/vanilla/bundle-splitting). Create React App does not include a specific code splitting solution. If you're just getting started, you might not consider code splitting at all.
+Еще одна распространенная проблема в Create React App — [разделение кода](https://www.patterns.dev/vanilla/bundle-splitting). Create React App не включает конкретного решения для разделения кода. Если вы только начинаете, вы можете вообще не рассматривать разделение кода.
 
-This means your app is shipped as a single bundle:
+Это означает, что ваше приложение поставляется как единый пакет:
 
 ```txt
 - bundle.js    75kb
 ```
 
-But for ideal performance, you should "split" your code into separate bundles so the user only needs to download what they need. This decreases the time the user needs to wait to load your app, by only downloading the code they need to see the page they are on.
+Но для идеальной производительности вы должны "разделять" свой код на отдельные пакеты, чтобы пользователь загружал только то, что ему нужно. Это сокращает время, которое пользователь должен ждать для загрузки вашего приложения, загружая только тот код, который ему нужен для просмотра страницы, на которой он находится.
 
 ```txt
 - core.js      25kb
@@ -220,101 +220,100 @@ But for ideal performance, you should "split" your code into separate bundles so
 - dashboard.js 25kb
 ```
 
-One way to do code-splitting is with `React.lazy`. However, this means that the code is not fetched until the component renders, which can cause network waterfalls. A more optimal solution is to use a router feature that fetches the code in parallel while the code is downloading. For example, React Router provides a `lazy` option to specify that a route should be code split and optimize when it is loaded:
+Один из способов разделения кода — использовать `React.lazy`. Однако это означает, что код не загружается до тех пор, пока компонент не будет отрендерен, что может привести к сетевым водопадам. Более оптимальным решением является использование функции маршрутизатора, которая загружает код параллельно во время загрузки кода. Например, React Router предоставляет опцию `lazy` для указания того, что маршрут должен быть разделен по коду и оптимизирован при его загрузке:
 
 ```js
 import Home from './Home';
 import Dashboard from './Dashboard';
 
-// ✅ Routes are downloaded before rendering
+// ✅ Маршруты загружаются до рендеринга
 const router = createBrowserRouter([
   {path: '/', lazy: () => import('./Home')},
   {path: '/dashboard', lazy: () => import('Dashboard')}
 ]);
 ```
 
-Optimized code-splitting is tricky to get right, and it's easy to make mistakes that can cause the user to download more code than they need. It works best when integrated with your router and data loading solutions to maximize caching, parallelize fetches, and support ["import on interaction"](https://www.patterns.dev/vanilla/import-on-interaction) patterns.
+Оптимизированное разделение кода сложно реализовать правильно, и легко допустить ошибки, которые могут привести к тому, что пользователь загрузит больше кода, чем ему нужно. Оно лучше всего работает при интеграции с вашим маршрутизатором и решениями для загрузки данных, чтобы максимизировать кеширование, параллелизировать запросы и поддерживать шаблоны ["импорт по взаимодействию"](https://www.patterns.dev/vanilla/import-on-interaction).
 
-### And more... {/*and-more*/}
+### И многое другое... {/*and-more*/}
 
-These are just a few examples of the limitations of Create React App.
+Это всего лишь несколько примеров ограничений Create React App.
 
-Once you've integrated routing, data-fetching, and code splitting, you now also need to consider pending states, navigation interruptions, error messages to the user, and revalidation of the data. There are entire categories of problems that users need to solve like:
+После интеграции маршрутизации, получения данных и разделения кода вам также необходимо учитывать состояния ожидания, прерывания навигации, сообщения об ошибках для пользователя и повторную проверку данных. Существуют целые категории проблем, которые пользователям необходимо решать, такие как:
 
 <div style={{display: 'flex', width: '100%', justifyContent: 'space-around'}}>
   <ul>
-    <li>Accessibility</li>
-    <li>Asset loading</li>
-    <li>Authentication</li>
-    <li>Caching</li>
+    <li>Доступность</li>
+    <li>Загрузка ресурсов</li>
+    <li>Аутентификация</li>
+    <li>Кеширование</li>
   </ul>
   <ul>
-    <li>Error handling</li>
-    <li>Mutating data</li>
-    <li>Navigations</li>
-    <li>Optimistic updates</li>
+    <li>Обработка ошибок</li>
+    <li>Изменение данных</li>
+    <li>Навигация</li>
+    <li>Оптимистичные обновления</li>
   </ul>
   <ul>
-    <li>Progressive enhancement</li>
-    <li>Server-side rendering</li>
-    <li>Static site generation</li>
-    <li>Streaming</li>
+    <li>Прогрессивное улучшение</li>
+    <li>Рендеринг на стороне сервера</li>
+    <li>Генерация статических сайтов</li>
+    <li>Потоковая передача</li>
   </ul>
 </div>
 
-All of these work together to create the most optimal [loading sequence](https://www.patterns.dev/vanilla/loading-sequence).
+Все это работает вместе, чтобы создать наиболее оптимальную [последовательность загрузки](https://www.patterns.dev/vanilla/loading-sequence).
 
-Solving each of these problems individually in Create React App can be difficult as each problem is interconnected with the others and can require deep expertise in problem areas users may not be familiar with. In order to solve these problems, users end up building their own bespoke solutions on top of Create React App, which was the problem Create React App originally tried to solve.
+Решение каждой из этих проблем по отдельности в Create React App может быть сложным, поскольку каждая проблема взаимосвязана с другими и может требовать глубоких знаний в областях, с которыми пользователи могут быть не знакомы. Чтобы решить эти проблемы, пользователи в конечном итоге создают свои собственные индивидуальные решения поверх Create React App, что и было проблемой, которую изначально пытался решить Create React App.
 
-## Why we Recommend Frameworks {/*why-we-recommend-frameworks*/}
+## Почему мы рекомендуем фреймворки {/*why-we-recommend-frameworks*/}
 
-Although you could solve all these pieces yourself in a build tool like Create React App, Vite, or Parcel, it is hard to do well. Just like when Create React App itself integrated several build tools together, you need a tool to integrate all of these features together to provide the best experience to users.
+Хотя вы могли бы решить все эти задачи самостоятельно в инструменте сборки, таком как Create React App, Vite или Parcel, это сложно сделать хорошо. Точно так же, как Create React App сам интегрировал несколько инструментов сборки, вам нужен инструмент для интеграции всех этих функций, чтобы обеспечить лучший пользовательский опыт.
 
-This category of tools that integrates build tools, rendering, routing, data fetching, and code splitting are known as "frameworks" -- or if you prefer to call React itself a framework, you might call them "metaframeworks".
+Эта категория инструментов, которые интегрируют инструменты сборки, рендеринг, маршрутизацию, получение данных и разделение кода, известна как "фреймворки" — или, если вы предпочитаете называть сам React фреймворком, вы можете назвать их "метафреймворками".
 
-Frameworks impose some opinions about structuring your app in order to provide a much better user experience, in the same way build tools impose some opinions to make tooling easier. This is why we started recommending frameworks like [Next.js](https://nextjs.org/), [React Router](https://reactrouter.com/), and [Expo](https://expo.dev/) for new projects.
+Фреймворки навязывают некоторые мнения о структурировании вашего приложения, чтобы обеспечить гораздо лучший пользовательский опыт, так же, как инструменты сборки навязывают некоторые мнения, чтобы упростить инструментарий. Именно поэтому мы начали рекомендовать фреймворки, такие как [Next.js](https://nextjs.org/), [React Router](https://reactrouter.com/) и [Expo](https://expo.dev/) для новых проектов.
 
-Frameworks provide the same getting started experience as Create React App, but also provide solutions to problems users need to solve anyway in real production apps.
+Фреймворки предоставляют такой же опыт начала работы, как и Create React App, но также предлагают решения проблем, которые пользователи в любом случае должны решать в реальных продакшн-приложениях.
 
 <DeepDive>
 
-#### Server rendering is optional {/*server-rendering-is-optional*/}
+#### Серверный рендеринг необязателен {/*server-rendering-is-optional*/}
 
-The frameworks we recommend all provide the option to create a [client-side rendered (CSR)](https://developer.mozilla.org/en-US/docs/Glossary/CSR) app.
+Все рекомендуемые нами фреймворки предоставляют возможность создавать приложение с [рендерингом на стороне клиента (CSR)](https://developer.mozilla.org/en-US/docs/Glossary/CSR).
 
-In some cases, CSR is the right choice for a page, but many times it's not. Even if most of your app is client-side, there are often individual pages that could benefit from server rendering features like [static-site generation (SSG)](https://developer.mozilla.org/en-US/docs/Glossary/SSG) or [server-side rendering (SSR)](https://developer.mozilla.org/en-US/docs/Glossary/SSR), for example a Terms of Service page, or documentation.
+В некоторых случаях CSR является правильным выбором для страницы, но во многих случаях это не так. Даже если большая часть вашего приложения находится на стороне клиента, часто есть отдельные страницы, которые могут выиграть от функций серверного рендеринга, таких как [генерация статических сайтов (SSG)](https://developer.mozilla.org/en-US/docs/Glossary/SSG) или [серверный рендеринг (SSR)](https://developer.mozilla.org/en-US/docs/Glossary/SSR), например, страница "Условия обслуживания" или документация.
 
-Server rendering generally sends less JavaScript to the client, and a full HTML document which produces a faster [First Contentful Paint (FCP)](https://web.dev/articles/fcp) by reducing [Total Blocking Time (TBD)](https://web.dev/articles/tbt), which can also lower [Interaction to Next Paint (INP)](https://web.dev/articles/inp). This is why the [Chrome team has encouraged](https://web.dev/articles/rendering-on-the-web) developers to consider static or server-side render over a full client-side approach to achieve the best possible performance.
+Серверный рендеринг обычно отправляет меньше JavaScript клиенту и полный HTML-документ, что обеспечивает более быструю [первую отрисовку контента (FCP)](https://web.dev/articles/fcp) за счет уменьшения [общего времени блокировки (TBD)](https://web.dev/articles/tbt), что также может снизить [время до следующего взаимодействия (INP)](https://web.dev/articles/inp). Именно поэтому [команда Chrome призывает](https://web.dev/articles/rendering-on-the-web) разработчиков рассматривать статический или серверный рендеринг вместо полного клиентского подхода для достижения наилучшей возможной производительности.
 
-There are tradeoffs to using a server, and it is not always the best option for every page. Generating pages on the server incurs additional cost and takes time to generate which can increase [Time to First Byte (TTFB)](https://web.dev/articles/ttfb). The best performing apps are able to pick the right rendering strategy on a per-page basis, based on the tradeoffs of each strategy.
+Использование сервера сопряжено с компромиссами, и это не всегда лучший вариант для каждой страницы. Генерация страниц на сервере влечет за собой дополнительные расходы и требует времени для генерации, что может увеличить [время до первого байта (TTFB)](https://web.dev/articles/ttfb). Наиболее производительные приложения способны выбирать правильную стратегию рендеринга для каждой страницы, основываясь на компромиссах каждой стратегии.
 
-Frameworks provide the option to use a server on any page if you want to, but do not force you to use a server. This allows you to pick the right rendering strategy for each page in your app.
+Фреймворки предоставляют возможность использовать сервер на любой странице, если вы этого хотите, но не заставляют вас использовать сервер. Это позволяет вам выбирать правильную стратегию рендеринга для каждой страницы в вашем приложении.
 
-#### What About Server Components {/*server-components*/}
+#### А как насчет серверных компонентов? {/*server-components*/}
 
-The frameworks we recommend also include support for React Server Components.
+Рекомендуемые нами фреймворки также включают поддержку серверных компонентов React.
 
-Server Components help solve these problems by moving routing and data fetching to the server, and allowing code splitting to be done for client components based on the data you render, instead of just the route rendered, and reducing the amount of JavaScript shipped for the best possible [loading sequence](https://www.patterns.dev/vanilla/loading-sequence).
+Серверные компоненты помогают решить эти проблемы, перемещая маршрутизацию и получение данных на сервер и позволяя разделять код для клиентских компонентов на основе данных, которые вы отображаете, а не только на основе отображаемого маршрута, и уменьшая объем JavaScript, отправляемый для наилучшей возможной [последовательности загрузки](https://www.patterns.dev/vanilla/loading-sequence).
 
-Server Components do not require a server. They can be run at build time on your CI server to create a static-site generated app (SSG) app, at runtime on a web server for a server-side rendered (SSR) app.
+Серверные компоненты не требуют сервера. Они могут быть запущены во время сборки на вашем CI-сервере для создания приложения со статической генерацией сайта (SSG) или во время выполнения на веб-сервере для приложения с серверным рендерингом (SSR).
 
-See [Introducing zero-bundle size React Server Components](/blog/2020/12/21/data-fetching-with-react-server-components) and [the docs](/reference/rsc/server-components) for more info.
+См. [Представляем серверные компоненты React с нулевым размером бандла](/blog/2020/12/21/data-fetching-with-react-server-components) и [документацию](/reference/rsc/server-components) для получения дополнительной информации.
 
 </DeepDive>
 
 <Note>
 
-#### Server Rendering is not just for SEO {/*server-rendering-is-not-just-for-seo*/}
+#### Серверный рендеринг — это не только для SEO {/*server-rendering-is-not-just-for-seo*/}
 
-A common misunderstanding is that server rendering is only for [SEO](https://developer.mozilla.org/en-US/docs/Glossary/SEO).
+Распространенное заблуждение заключается в том, что серверный рендеринг нужен только для [SEO](https://developer.mozilla.org/en-US/docs/Glossary/SEO).
 
-While server rendering can improve SEO, it also improves performance by reducing the amount of JavaScript the user needs to download and parse before they can see the content on the screen.
+Хотя серверный рендеринг может улучшить SEO, он также повышает производительность, уменьшая объем JavaScript, который пользователю необходимо загрузить и разобрать, прежде чем он сможет увидеть контент на экране.
 
-This is why the Chrome team [has encouraged](https://web.dev/articles/rendering-on-the-web) developers to consider static or server-side render over a full client-side approach to achieve the best possible performance.
+Именно поэтому [команда Chrome призывает](https://web.dev/articles/rendering-on-the-web) разработчиков рассматривать статический или серверный рендеринг вместо полного клиентского подхода для достижения наилучшей возможной производительности.
 
 </Note>
 
 ---
 
-_Thank you to [Dan Abramov](https://bsky.app/profile/danabra.mov) for creating Create React App, and [Joe Haddad](https://github.com/Timer), [Ian Schmitz](https://github.com/ianschmitz), [Brody McKee](https://github.com/mrmckeb), and [many others](https://github.com/facebook/create-react-app/graphs/contributors) for maintaining Create React App over the years. Thank you to [Brooks Lybrand](https://bsky.app/profile/brookslybrand.bsky.social), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Devon Govett](https://bsky.app/profile/devongovett.bsky.social), [Eli White](https://x.com/Eli_White), [Jack Herrington](https://bsky.app/profile/jherr.dev), [Joe Savona](https://x.com/en_JS), [Lauren Tan](https://bsky.app/profile/no.lol), [Lee Robinson](https://x.com/leeerob), [Mark Erikson](https://bsky.app/profile/acemarke.dev), [Ryan Florence](https://x.com/ryanflorence), [Sophie Alpert](https://bsky.app/profile/sophiebits.com), [Tanner Linsley](https://bsky.app/profile/tannerlinsley.com), and [Theo Browne](https://x.com/theo) for reviewing and providing feedback on this post._
-
+_Благодарим [Дэна Абрамова](https://bsky.app/profile/danabra.mov) за создание Create React App, а также [Джо Хаддада](https://github.com/Timer), [Иэна Шмитца](https://github.com/ianschmitz), [Броди МакКиба](https://github.com/mrmckeb) и [многих других](https://github.com/facebook/create-react-app/graphs/contributors) за поддержку Create React App на протяжении многих лет. Благодарим [Брукса Лайланда](https://bsky.app/profile/brookslybrand.bsky.social), [Дэна Абрамова](https://bsky.app/profile/danabra.mov), [Девона Говетта](https://bsky.app/profile/devongovett.bsky.social), [Эли Уайта](https://x.com/Eli_White), [Джека Херрингтона](https://bsky.app/profile/jherr.dev), [Джо Савону](https://x.com/en_JS), [Лорен Тан](https://bsky.app/profile/no.lol), [Ли Робинсона](https://x.com/leeerob), [Марка Эриксона](https://bsky.app/profile/acemarke.dev), [Райана Флоренса](https://x.com/ryanflorence), [Софи Алперт](https://bsky.app/profile/sophiebits.com), [Таннера Линсли](https://bsky.app/profile/tannerlinsley.com) и [Тео Брауна](https://x.com/theo) за рецензирование и предоставление отзывов по этой статье._
