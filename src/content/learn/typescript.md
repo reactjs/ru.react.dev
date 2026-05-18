@@ -1,11 +1,10 @@
 ---
-title: Использование TypeScript
+title: С использованием TypeScript
 re: https://github.com/reactjs/react.dev/issues/5960
 ---
-
 <Intro>
 
-TypeScript — популярный способ добавления определений типов в кодовые базы JavaScript. Из коробки TypeScript [поддерживает JSX](/learn/writing-markup-with-jsx), а для полной поддержки React Web вы можете добавить [`@types/react`](https://www.npmjs.com/package/@types/react) и [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) в свой проект.
+TypeScript — популярный способ добавления определений типов в кодовые базы JavaScript. Из коробки TypeScript [поддерживает JSX](/learn/writing-markup-with-jsx), а полную поддержку React Web можно получить, добавив [`@types/react`](https://www.npmjs.com/package/@types/react) и [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) в ваш проект.
 
 </Intro>
 
@@ -20,7 +19,7 @@ TypeScript — популярный способ добавления опред
 
 ## Установка {/*installation*/}
 
-Все [фреймворки React производственного уровня](/learn/start-a-new-react-project#production-grade-react-frameworks) поддерживают использование TypeScript. Следуйте руководству для вашего фреймворка по установке:
+Все [фреймворки React для продакшена](/learn/start-a-new-react-project#production-grade-react-frameworks) предлагают поддержку использования TypeScript. Следуйте руководству для конкретного фреймворка по установке:
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
@@ -39,19 +38,19 @@ npm install @types/react @types/react-dom
 
 1. `dom` должен быть включен в [`lib`](https://www.typescriptlang.org/tsconfig/#lib) (Примечание: Если опция `lib` не указана, `dom` включается по умолчанию).
 1. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) должен быть установлен в одно из допустимых значений. `preserve` должно быть достаточно для большинства приложений.
-  Если вы публикуете библиотеку, обратитесь к [документации `jsx`](https://www.typescriptlang.org/tsconfig/#jsx) по выбору значения.
+  Если вы публикуете библиотеку, обратитесь к документации по [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) относительно выбора значения.
 
 ## TypeScript с компонентами React {/*typescript-with-react-components*/}
 
 <Note>
 
-Каждый файл, содержащий JSX, должен использовать расширение файла `.tsx`. Это специфичное для TypeScript расширение, которое сообщает TypeScript, что данный файл содержит JSX.
+Каждый файл, содержащий JSX, должен использовать расширение файла `.tsx`. Это специфичное для TypeScript расширение, которое сообщает TypeScript, что этот файл содержит JSX.
 
 </Note>
 
-Написание TypeScript с React очень похоже на написание JavaScript с React. Ключевое отличие при работе с компонентом заключается в том, что вы можете предоставить типы для пропсов вашего компонента. Эти типы могут использоваться для проверки корректности и предоставления встроенной документации в редакторах.
+Написание TypeScript с React очень похоже на написание JavaScript с React. Ключевое отличие при работе с компонентом заключается в том, что вы можете предоставлять типы для пропсов вашего компонента. Эти типы могут использоваться для проверки корректности и предоставления встроенной документации в редакторах.
 
-Возьмем компонент [`MyButton`](/learn#components) из руководства [Быстрый старт](/learn), и добавим тип, описывающий `title` для кнопки:
+Взяв компонент [`MyButton`](/learn#components) из руководства [Быстрый старт](/learn), мы можем добавить тип, описывающий `title` для кнопки:
 
 <Sandpack>
 
@@ -80,11 +79,11 @@ export default App = AppTSX;
 
  <Note>
 
-Эти песочницы могут обрабатывать код TypeScript, но они не запускают проверку типов. Это означает, что вы можете изменять песочницы TypeScript для обучения, но не будете получать никаких ошибок или предупреждений типов. Чтобы получить проверку типов, вы можете использовать [TypeScript Playground](https://www.typescript.org/play) или более полнофункциональную онлайн-песочницу.
+Эти песочницы могут обрабатывать код TypeScript, но они не запускают проверку типов. Это означает, что вы можете изменять песочницы TypeScript для обучения, но не получите никаких ошибок или предупреждений типов. Чтобы получить проверку типов, вы можете использовать [TypeScript Playground](https://www.typescript.org/play) или более полнофункциональную онлайн-песочницу.
 
 </Note>
 
-Этот синтаксис внутри строки — самый простой способ предоставить типы для компонента, хотя, когда полей для описания становится несколько, он может стать громоздким. Вместо этого вы можете использовать `interface` или `type` для описания пропсов компонента:
+Этот синтаксис внутри строки — самый простой способ предоставления типов для компонента, хотя, как только у вас появится несколько полей для описания, это может стать громоздким. Вместо этого вы можете использовать `interface` или `type` для описания пропсов компонента:
 
 <Sandpack>
 
@@ -119,12 +118,12 @@ export default App = AppTSX;
 
 </Sandpack>
 
-Тип, описывающий пропсы вашего компонента, может быть настолько простым или сложным, насколько вам нужно, хотя он должен быть объектным типом, описанным с помощью `type` или `interface`. Вы можете узнать, как TypeScript описывает объекты, в разделе [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html), но вас также могут заинтересовать [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) для описания пропа, который может быть одним из нескольких разных типов, и руководство [Creating Types from Types](https://www.typescript.org/docs/handbook/2/types-from-types.html) для более продвинутых сценариев использования.
+Тип, описывающий пропсы вашего компонента, может быть простым или сложным, насколько вам нужно, хотя он должен быть объектным типом, описанным с помощью `type` или `interface`. Вы можете узнать, как TypeScript описывает объекты, в разделе [Object Types](https://www.typescript.org/docs/handbook/2/objects.html), но вас также могут заинтересовать [Union Types](https://www.typescript.org/docs/handbook/2/everyday-types.html#union-types) для описания пропса, который может быть одним из нескольких разных типов, и руководство [Creating Types from Types](https://www.typescript.org/docs/handbook/2/types-from-types.html) для более продвинутых сценариев использования.
 
 
 ## Примеры хуков {/*example-hooks*/}
 
-Определения типов из `@types/react` включают типы для встроенных хуков, поэтому вы можете использовать их в своих компонентах без дополнительной настройки. Они созданы с учетом кода, который вы пишете в своем компоненте, поэтому во многих случаях вы будете получать [выведенные типы](https://www.typescriptlang.org/docs/handbook/type-inference.html) и в идеале вам не придется заниматься мелочами предоставления типов.
+Определения типов из `@types/react` включают типы для встроенных хуков, поэтому вы можете использовать их в своих компонентах без дополнительной настройки. Они созданы с учетом кода, который вы пишете в своем компоненте, поэтому во многих случаях вы будете получать [выведенные типы](https://www.typescript.org/docs/handbook/type-inference.html) и в идеале вам не нужно будет заниматься мелочами предоставления типов.
 
 Однако давайте рассмотрим несколько примеров того, как предоставлять типы для хуков.
 
@@ -133,18 +132,18 @@ export default App = AppTSX;
 Хук [`useState`](/reference/react/useState) будет повторно использовать значение, переданное в качестве начального состояния, для определения типа значения. Например:
 
 ```ts
-// Тип выводится как "boolean"
+// Вывести тип как "boolean"
 const [enabled, setEnabled] = useState(false);
 ```
 
 Это присвоит тип `boolean` переменной `enabled`, а `setEnabled` будет функцией, принимающей либо аргумент типа `boolean`, либо функцию, возвращающую `boolean`. Если вы хотите явно указать тип для состояния, вы можете сделать это, предоставив аргумент типа вызову `useState`:
 
 ```ts
-// Явно установить тип "boolean"
+// Явно установить тип как "boolean"
 const [enabled, setEnabled] = useState<boolean>(false);
 ```
 
-В данном случае это не очень полезно, но распространенный случай, когда вы можете захотеть предоставить тип, — это когда у вас есть объединяющий тип. Например, `status` здесь может быть одной из нескольких разных строк:
+В данном случае это не очень полезно, но распространенный случай, когда вам может понадобиться предоставить тип, — это когда у вас есть объединяющий тип. Например, `status` здесь может быть одной из нескольких разных строк:
 
 ```ts
 type Status = "idle" | "loading" | "success" | "error";
@@ -166,7 +165,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 ### `useReducer` {/*typing-usereducer*/}
 
-Хук [`useReducer`](/reference/react/useReducer) — это более сложный хук, который принимает функцию-редьюсер и начальное состояние. Типы для функции-редьюсера выводятся из начального состояния. Вы можете опционально предоставить аргумент типа вызову `useReducer` для определения типа состояния, но часто лучше вместо этого установить тип в начальном состоянии:
+Хук [`useReducer`](/reference/react/useReducer) — это более сложный хук, который принимает функцию-редьюсер и начальное состояние. Типы для функции-редьюсера выводятся из начального состояния. Вы можете опционально предоставить аргумент типа вызову `useReducer` для предоставления типа состояния, но часто лучше вместо этого установить тип для начального состояния:
 
 <Sandpack>
 
@@ -224,11 +223,11 @@ export default App = AppTSX;
 Мы используем TypeScript в нескольких ключевых местах:
 
  - `interface State` описывает структуру состояния редьюсера.
- - `type CounterAction` описывает различные действия, которые могут быть отправлены в редьюсер.
+ - `type CounterAction` описывает различные действия, которые могут быть отправлены редьюсеру.
  - `const initialState: State` предоставляет тип для начального состояния, а также тип, который используется `useReducer` по умолчанию.
  - `stateReducer(state: State, action: CounterAction): State` устанавливает типы для аргументов и возвращаемого значения функции-редьюсера.
 
-Более явной альтернативой установке типа в `initialState` является предоставление аргумента типа для `useReducer`:
+Более явной альтернативой установке типа для `initialState` является предоставление аргумента типа для `useReducer`:
 
 ```ts
 import { stateReducer, State } from './your-reducer-implementation';
@@ -284,9 +283,9 @@ export default App = AppTSX;
 
 </Sandpack>
 
-Этот метод работает, когда у вас есть значение по умолчанию, которое имеет смысл — но иногда бывают случаи, когда его нет, и в этих случаях `null` может показаться разумным в качестве значения по умолчанию. Однако, чтобы система типов могла понять ваш код, вам нужно явно установить `ContextShape | null` для `createContext`.
+Этот метод работает, когда у вас есть значение по умолчанию, которое имеет смысл — но иногда бывают случаи, когда его нет, и в этих случаях `null` может показаться разумным в качестве значения по умолчанию. Однако, чтобы система типов понимала ваш код, вам нужно явно установить `ContextShape | null` для `createContext`.
 
-Это вызывает проблему, заключающуюся в том, что вам нужно устранить `| null` в типе для потребителей контекста. Наша рекомендация — использовать хук для проверки во время выполнения его существования и выбрасывать ошибку, когда он не присутствует:
+Это вызывает проблему, заключающуюся в том, что вам нужно устранить `| null` в типе для потребителей контекста. Наша рекомендация — использовать хук для проверки во время выполнения на его существование и выбрасывать ошибку, когда он не присутствует:
 
 ```js {5, 16-20}
 import { createContext, useContext, useState, useMemo } from 'react';
@@ -373,11 +372,11 @@ export default function Form() {
 
 ## Полезные типы {/*useful-types*/}
 
-Существует довольно обширный набор типов, поставляемых с пакетом `@types/react`. Стоит ознакомиться с ними, когда вы почувствуете себя увереннее во взаимодействии React и TypeScript. Вы можете найти их [в папке React в DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts). Здесь мы рассмотрим несколько наиболее распространенных типов.
+Пакет `@types/react` содержит довольно обширный набор типов, стоит ознакомиться с ним, когда вы почувствуете себя уверенно во взаимодействии React и TypeScript. Вы можете найти их [в папке React в DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts). Здесь мы рассмотрим несколько наиболее распространенных типов.
 
 ### DOM События {/*typing-dom-events*/}
 
-При работе с DOM-событиями в React тип события часто может быть выведен из обработчика события. Однако, когда вы хотите выделить функцию для передачи в обработчик события, вам потребуется явно указать тип события.
+При работе с DOM-событиями в React тип события часто может быть выведен из обработчика событий. Однако, когда вы хотите выделить функцию для передачи в обработчик событий, вам нужно будет явно указать тип события.
 
 <Sandpack>
 
@@ -407,15 +406,15 @@ export default App = AppTSX;
 
 </Sandpack>
 
-В типах React предусмотрено множество типов событий — полный список можно найти [здесь](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373), который основан на [наиболее популярных событиях DOM](https://developer.mozilla.org/en-US/docs/Web/Events).
+В типах React предоставляется множество типов событий — полный список можно найти [здесь](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373), который основан на [наиболее популярных событиях DOM](https://developer.mozilla.org/en-US/docs/Web/Events).
 
-При определении нужного типа вы можете сначала посмотреть информацию при наведении на используемый обработчик события, которая покажет тип события.
+При определении нужного типа вы можете сначала посмотреть информацию при наведении на используемый обработчик событий, которая покажет тип события.
 
-Если вам нужно использовать событие, не включенное в этот список, вы можете использовать тип `React.SyntheticEvent`, который является базовым типом для всех событий.
+Если вам нужно использовать событие, которое не включено в этот список, вы можете использовать тип `React.SyntheticEvent`, который является базовым типом для всех событий.
 
 ### Children {/*typing-children*/}
 
-Существует два распространенных способа описания дочерних элементов компонента. Первый — использовать тип `React.ReactNode`, который представляет собой объединение всех возможных типов, которые могут быть переданы в качестве дочерних элементов в JSX:
+Существует два распространенных способа описания дочерних элементов компонента. Первый — использовать тип `React.ReactNode`, который является объединением всех возможных типов, которые могут быть переданы в качестве дочерних элементов в JSX:
 
 ```ts
 interface ModalRendererProps {
@@ -424,7 +423,7 @@ interface ModalRendererProps {
 }
 ```
 
-Это очень широкое определение дочерних элементов. Второй — использовать тип `React.ReactElement`, который представляет только JSX-элементы, а не примитивы JavaScript, такие как строки или числа:
+Это очень широкое определение дочерних элементов. Второй — использовать тип `React.ReactElement`, который представляет собой только JSX-элементы, а не примитивы JavaScript, такие как строки или числа:
 
 ```ts
 interface ModalRendererProps {
@@ -435,11 +434,11 @@ interface ModalRendererProps {
 
 Обратите внимание, что вы не можете использовать TypeScript для описания того, что дочерние элементы являются определенным типом JSX-элементов, поэтому вы не можете использовать систему типов для описания компонента, который принимает только дочерние элементы `<li>`.
 
-Пример использования как `React.ReactNode`, так и `React.ReactElement` с проверкой типов можно найти [в этой песочнице TypeScript](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA).
+Вы можете увидеть примеры как `React.ReactNode`, так и `React.ReactElement` с проверкой типов в [этой песочнице TypeScript](https://www.typescript.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA).
 
 ### Style Props {/*typing-style-props*/}
 
-При использовании встроенных стилей в React вы можете использовать `React.CSSProperties` для описания объекта, передаваемого в `style` prop. Этот тип представляет собой объединение всех возможных CSS-свойств и является хорошим способом убедиться, что вы передаете допустимые CSS-свойства в `style` prop, а также получить автодополнение в вашем редакторе.
+При использовании встроенных стилей в React вы можете использовать `React.CSSProperties` для описания объекта, переданного в пропс `style`. Этот тип является объединением всех возможных CSS-свойств и является хорошим способом убедиться, что вы передаете допустимые CSS-свойства в пропс `style`, а также получить автодополнение в вашем редакторе.
 
 ```ts
 interface MyComponentProps {
@@ -447,17 +446,17 @@ interface MyComponentProps {
 }
 ```
 
-## Дальнейшее изучение {/*further-learning*/}
+## Дополнительное обучение {/*further-learning*/}
 
-В этом руководстве были рассмотрены основы использования TypeScript с React, но есть еще много чего предстоит изучить.
-Отдельные страницы API в документации могут содержать более подробную информацию о том, как использовать их с TypeScript.
+Это руководство охватило основы использования TypeScript с React, но есть еще много чего узнать.
+Отдельные страницы API в документации могут содержать более подробную документацию о том, как использовать их с TypeScript.
 
 Мы рекомендуем следующие ресурсы:
 
- - [Справочник TypeScript](https://www.typescriptlang.org/docs/handbook/) — это официальная документация по TypeScript, охватывающая большинство ключевых возможностей языка.
+ - [Справочник по TypeScript](https://www.typescriptlang.org/docs/handbook/) — это официальная документация по TypeScript, охватывающая большинство ключевых возможностей языка.
 
  - [Заметки о выпуске TypeScript](https://devblogs.microsoft.com/typescript/) подробно освещают новые возможности.
 
- - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) — это поддерживаемый сообществом справочник по использованию TypeScript с React, охватывающий множество полезных крайних случаев и предоставляющий более широкий охват, чем этот документ.
+ - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) — это поддерживаемый сообществом справочник по использованию TypeScript с React, охватывающий множество полезных крайних случаев и предоставляющий более широкое освещение, чем этот документ.
 
- - [Discord сообщества TypeScript](https://discord.com/invite/typescript) — отличное место, чтобы задавать вопросы и получать помощь по вопросам TypeScript и React.
+ - [TypeScript Community Discord](https://discord.com/invite/typescript) — отличное место, чтобы задавать вопросы и получать помощь по проблемам с TypeScript и React.
