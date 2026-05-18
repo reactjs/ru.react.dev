@@ -1,10 +1,9 @@
 ---
 title: "<textarea>"
 ---
-
 <Intro>
 
-The [built-in browser `<textarea>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) lets you render a multiline text input.
+Встроенный браузерный компонент [`<textarea>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea) позволяет отображать многострочное текстовое поле.
 
 ```js
 <textarea />
@@ -16,72 +15,72 @@ The [built-in browser `<textarea>` component](https://developer.mozilla.org/en-U
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `<textarea>` {/*textarea*/}
 
-To display a text area, render the [built-in browser `<textarea>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea) component.
+Чтобы отобразить текстовую область, используйте встроенный браузерный компонент [`<textarea>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea).
 
 ```js
 <textarea name="postContent" />
 ```
 
-[See more examples below.](#usage)
+[См. примеры ниже.](#usage)
 
-#### Props {/*props*/}
+#### Пропсы {/*props*/}
 
-`<textarea>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<textarea>` поддерживает все [общие пропсы элементов.](/reference/react-dom/components/common#props)
 
-You can [make a text area controlled](#controlling-a-text-area-with-a-state-variable) by passing a `value` prop:
+Вы можете [сделать текстовую область управляемой](#controlling-a-text-area-with-a-state-variable), передав ей пропс `value`:
 
-* `value`: A string. Controls the text inside the text area.
+* `value`: Строка. Управляет текстом внутри текстовой области.
 
-When you pass `value`, you must also pass an `onChange` handler that updates the passed value.
+Когда вы передаёте `value`, вы также должны передать обработчик `onChange`, который обновляет переданное значение.
 
-If your `<textarea>` is uncontrolled, you may pass the `defaultValue` prop instead:
+Если ваша `<textarea>` не является управляемой, вы можете вместо этого передать пропс `defaultValue`:
 
-* `defaultValue`: A string. Specifies [the initial value](#providing-an-initial-value-for-a-text-area) for a text area.
+* `defaultValue`: Строка. Задаёт [начальное значение](#providing-an-initial-value-for-a-text-area) для текстовой области.
 
-These `<textarea>` props are relevant both for uncontrolled and controlled text areas:
+Эти пропсы `<textarea>` актуальны как для неуправляемых, так и для управляемых текстовых областей:
 
-* [`autoComplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#autocomplete): Either `'on'` or `'off'`. Specifies the autocomplete behavior.
-* [`autoFocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#autofocus): A boolean. If `true`, React will focus the element on mount.
-* `children`: `<textarea>` does not accept children. To set the initial value, use `defaultValue`.
-* [`cols`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#cols): A number. Specifies the default width in average character widths. Defaults to `20`.
-* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#disabled): A boolean. If `true`, the input will not be interactive and will appear dimmed.
-* [`form`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#form): A string. Specifies the `id` of the `<form>` this input belongs to. If omitted, it's the closest parent form.
-* [`maxLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#maxlength): A number. Specifies the maximum length of text.
-* [`minLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#minlength): A number. Specifies the minimum length of text.
-* [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name): A string. Specifies the name for this input that's [submitted with the form.](#reading-the-textarea-value-when-submitting-a-form)
-* `onChange`: An [`Event` handler](/reference/react-dom/components/common#event-handler) function. Required for [controlled text areas.](#controlling-a-text-area-with-a-state-variable) Fires immediately when the input's value is changed by the user (for example, it fires on every keystroke). Behaves like the browser [`input` event.](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)
-* `onChangeCapture`: A version of `onChange` that fires in the [capture phase.](/learn/responding-to-events#capture-phase-events)
-* [`onInput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event): An [`Event` handler](/reference/react-dom/components/common#event-handler) function. Fires immediately when the value is changed by the user. For historical reasons, in React it is idiomatic to use `onChange` instead which works similarly.
-* `onInputCapture`: A version of `onInput` that fires in the [capture phase.](/learn/responding-to-events#capture-phase-events)
-* [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event): An [`Event` handler](/reference/react-dom/components/common#event-handler) function. Fires if an input fails validation on form submit. Unlike the built-in `invalid` event, the React `onInvalid` event bubbles.
-* `onInvalidCapture`: A version of `onInvalid` that fires in the [capture phase.](/learn/responding-to-events#capture-phase-events)
-* [`onSelect`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLTextAreaElement/select_event): An [`Event` handler](/reference/react-dom/components/common#event-handler) function. Fires after the selection inside the `<textarea>` changes. React extends the `onSelect` event to also fire for empty selection and on edits (which may affect the selection).
-* `onSelectCapture`: A version of `onSelect` that fires in the [capture phase.](/learn/responding-to-events#capture-phase-events)
-* [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#placeholder): A string. Displayed in a dimmed color when the text area value is empty.
-* [`readOnly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#readonly): A boolean. If `true`, the text area is not editable by the user.
-* [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#required): A boolean. If `true`, the value must be provided for the form to submit.
-* [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows): A number. Specifies the default height in average character heights. Defaults to `2`.
-* [`wrap`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#wrap): Either `'hard'`, `'soft'`, or `'off'`. Specifies how the text should be wrapped when submitting a form.
+* [`autoComplete`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#autocomplete): `'on'` или `'off'`. Задаёт поведение автозаполнения.
+* [`autoFocus`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#autofocus): Булево значение. Если `true`, React сфокусируется на элементе при его монтировании.
+* `children`: `<textarea>` не принимает дочерние элементы. Чтобы задать начальное значение, используйте `defaultValue`.
+* [`cols`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#cols): Число. Задаёт ширину по умолчанию в среднем количестве символов. По умолчанию `20`.
+* [`disabled`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#disabled): Булево значение. Если `true`, ввод будет неинтерактивным и будет выглядеть затемнённым.
+* [`form`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#form): Строка. Задаёт `id` формы `<form>`, к которой принадлежит этот ввод. Если опущено, используется ближайшая родительская форма.
+* [`maxLength`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#maxlength): Число. Задаёт максимальную длину текста.
+* [`minLength`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#minlength): Число. Задаёт минимальную длину текста.
+* [`name`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#name): Строка. Задаёт имя для этого ввода, которое [отправляется вместе с формой.](#reading-the-textarea-value-when-submitting-a-form)
+* `onChange`: Функция [`Event` handler](/reference/react-dom/components/common#event-handler). Требуется для [управляемых текстовых областей.](#controlling-a-text-area-with-a-state-variable) Срабатывает немедленно при изменении значения ввода пользователем (например, срабатывает при каждом нажатии клавиши). Работает аналогично браузерному событию [`input`.](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/input_event)
+* `onChangeCapture`: Версия `onChange`, которая срабатывает в [фазе захвата.](/learn/responding-to-events#capture-phase-events)
+* [`onInput`](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/input_event): Функция [`Event` handler](/reference/react-dom/components/common#event-handler). Срабатывает немедленно при изменении значения пользователем. По историческим причинам в React идиоматично использовать `onChange`, который работает аналогично.
+* `onInputCapture`: Версия `onInput`, которая срабатывает в [фазе захвата.](/learn/responding-to-events#capture-phase-events)
+* [`onInvalid`](https://developer.mozilla.org/ru/docs/Web/API/HTMLInputElement/invalid_event): Функция [`Event` handler](/reference/react-dom/components/common#event-handler). Срабатывает, если ввод не прошёл валидацию при отправке формы. В отличие от встроенного события `invalid`, событие React `onInvalid` всплывает.
+* `onInvalidCapture`: Версия `onInvalid`, которая срабатывает в [фазе захвата.](/learn/responding-to-events#capture-phase-events)
+* [`onSelect`](https://developer.mozilla.org/ru/docs/Web/API/HTMLTextAreaElement/select_event): Функция [`Event` handler](/reference/react-dom/components/common#event-handler). Срабатывает после изменения выделения внутри `<textarea>`. React расширяет событие `onSelect`, чтобы оно срабатывало также для пустого выделения и при редактировании (что может повлиять на выделение).
+* `onSelectCapture`: Версия `onSelect`, которая срабатывает в [фазе захвата.](/learn/responding-to-events#capture-phase-events)
+* [`placeholder`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#placeholder): Строка. Отображается приглушённым цветом, когда значение текстовой области пустое.
+* [`readOnly`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#readonly): Булево значение. Если `true`, текстовая область не может быть отредактирована пользователем.
+* [`required`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#required): Булево значение. Если `true`, значение должно быть предоставлено для отправки формы.
+* [`rows`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#rows): Число. Задаёт высоту по умолчанию в среднем количестве строк символов. По умолчанию `2`.
+* [`wrap`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#wrap): `'hard'`, `'soft'` или `'off'`. Задаёт, как текст должен быть перенесён при отправке формы.
 
-#### Caveats {/*caveats*/}
+#### Ограничения {/*caveats*/}
 
-- Passing children like `<textarea>something</textarea>` is not allowed. [Use `defaultValue` for initial content.](#providing-an-initial-value-for-a-text-area)
-- If a text area receives a string `value` prop, it will be [treated as controlled.](#controlling-a-text-area-with-a-state-variable)
-- A text area can't be both controlled and uncontrolled at the same time.
-- A text area cannot switch between being controlled or uncontrolled over its lifetime.
-- Every controlled text area needs an `onChange` event handler that synchronously updates its backing value.
+- Передача дочерних элементов, таких как `<textarea>что-то</textarea>`, не разрешена. [Используйте `defaultValue` для начального содержимого.](#providing-an-initial-value-for-a-text-area)
+- Если текстовой области передаётся строковый пропс `value`, она будет [считаться управляемой.](#controlling-a-text-area-with-a-state-variable)
+- Текстовая область не может быть одновременно управляемой и неуправляемой.
+- Текстовая область не может переключаться между управляемым и неуправляемым состоянием в течение своего жизненного цикла.
+- Каждая управляемая текстовая область требует обработчика события `onChange`, который синхронно обновляет её базовое значение.
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Displaying a text area {/*displaying-a-text-area*/}
+### Отображение текстовой области {/*displaying-a-text-area*/}
 
-Render `<textarea>` to display a text area. You can specify its default size with the [`rows`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#rows) and [`cols`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#cols) attributes, but by default the user will be able to resize it. To disable resizing, you can specify `resize: none` in the CSS.
+Отобразите `<textarea>`, чтобы показать текстовую область. Вы можете указать её размер по умолчанию с помощью атрибутов [`rows`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#rows) и [`cols`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/textarea#cols), но по умолчанию пользователь сможет изменять её размер. Чтобы отключить изменение размера, вы можете указать `resize: none` в CSS.
 
 <Sandpack>
 
@@ -107,11 +106,11 @@ label, textarea { display: block; }
 
 ---
 
-### Providing a label for a text area {/*providing-a-label-for-a-text-area*/}
+### Предоставление метки для текстовой области {/*providing-a-label-for-a-text-area*/}
 
-Typically, you will place every `<textarea>` inside a [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label) tag. This tells the browser that this label is associated with that text area. When the user clicks the label, the browser will focus the text area. It's also essential for accessibility: a screen reader will announce the label caption when the user focuses the text area.
+Обычно вы помещаете каждую `<textarea>` внутрь тега [`<label>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/label). Это сообщает браузеру, что эта метка связана с этой текстовой областью. Когда пользователь нажимает на метку, браузер фокусирует текстовую область. Это также важно для доступности: программа чтения с экрана объявит заголовок метки, когда пользователь сфокусируется на текстовой области.
 
-If you can't nest `<textarea>` into a `<label>`, associate them by passing the same ID to `<textarea id>` and [`<label htmlFor>`.](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor) To avoid conflicts between instances of one component, generate such an ID with [`useId`.](/reference/react/useId)
+Если вы не можете вложить `<textarea>` в `<label>`, свяжите их, передав одинаковый `id` в `<textarea id>` и [`<label htmlFor>`.](https://developer.mozilla.org/ru/docs/Web/API/HTMLLabelElement/htmlFor) Чтобы избежать конфликтов между экземплярами одного компонента, сгенерируйте такой `id` с помощью [`useId`.](/reference/react/useId)
 
 <Sandpack>
 
@@ -144,9 +143,9 @@ input { margin: 5px; }
 
 ---
 
-### Providing an initial value for a text area {/*providing-an-initial-value-for-a-text-area*/}
+### Предоставление начального значения для текстовой области {/*providing-an-initial-value-for-a-text-area*/}
 
-You can optionally specify the initial value for the text area. Pass it as the `defaultValue` string.
+Вы можете опционально указать начальное значение для текстовой области. Передайте его как строку `defaultValue`.
 
 <Sandpack>
 
@@ -177,15 +176,15 @@ label, textarea { display: block; }
 
 <Pitfall>
 
-Unlike in HTML, passing initial text like `<textarea>Some content</textarea>` is not supported.
+В отличие от HTML, передача начального текста в виде `<textarea>Какой-то текст</textarea>` не поддерживается.
 
 </Pitfall>
 
 ---
 
-### Reading the text area value when submitting a form {/*reading-the-text-area-value-when-submitting-a-form*/}
+### Чтение значения текстовой области при отправке формы {/*reading-the-text-area-value-when-submitting-a-form*/}
 
-Add a [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) around your textarea with a [`<button type="submit">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) inside. It will call your `<form onSubmit>` event handler. By default, the browser will send the form data to the current URL and refresh the page. You can override that behavior by calling `e.preventDefault()`. Read the form data with [`new FormData(e.target)`](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
+Добавьте [`<form>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/form) вокруг вашей текстовой области с [`<button type="submit">`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/button) внутри. Это вызовет ваш обработчик события `<form onSubmit>`. По умолчанию браузер отправит данные формы на текущий URL и перезагрузит страницу. Вы можете переопределить это поведение, вызвав `e.preventDefault()`. Прочитайте данные формы с помощью [`new FormData(e.target)`](https://developer.mozilla.org/ru/docs/Web/API/FormData).
 <Sandpack>
 
 ```js
@@ -237,38 +236,38 @@ input { margin: 5px; }
 
 <Note>
 
-Give a `name` to your `<textarea>`, for example `<textarea name="postContent" />`. The `name` you specified will be used as a key in the form data, for example `{ postContent: "Your post" }`.
+Присвойте `name` вашей `<textarea>`, например `<textarea name="postContent" />`. Указанное вами имя будет использоваться как ключ в данных формы, например `{ postContent: "Ваш пост" }`.
 
 </Note>
 
 <Pitfall>
 
-By default, *any* `<button>` inside a `<form>` will submit it. This can be surprising! If you have your own custom `Button` React component, consider returning [`<button type="button">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/button) instead of `<button>`. Then, to be explicit, use `<button type="submit">` for buttons that *are* supposed to submit the form.
+По умолчанию *любая* кнопка `<button>` внутри `<form>` отправляет её. Это может быть неожиданно! Если у вас есть собственный компонент `Button` React, рассмотрите возможность возврата [`<button type="button">`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input/button) вместо `<button>`. Затем, чтобы быть явным, используйте `<button type="submit">` для кнопок, которые *должны* отправлять форму.
 
 </Pitfall>
 
 ---
 
-### Controlling a text area with a state variable {/*controlling-a-text-area-with-a-state-variable*/}
+### Управление текстовой областью с помощью переменной состояния {/*controlling-a-text-area-with-a-state-variable*/}
 
-A text area like `<textarea />` is *uncontrolled.* Even if you [pass an initial value](#providing-an-initial-value-for-a-text-area) like `<textarea defaultValue="Initial text" />`, your JSX only specifies the initial value, not the value right now.
+Текстовая область, такая как `<textarea />`, является *неуправляемой*. Даже если вы [передаёте начальное значение](#providing-an-initial-value-for-a-text-area), например `<textarea defaultValue="Начальный текст" />`, ваш JSX указывает только начальное значение, а не текущее.
 
-**To render a _controlled_ text area, pass the `value` prop to it.** React will force the text area to always have the `value` you passed. Typically, you will control a text area by declaring a [state variable:](/reference/react/useState)
+**Чтобы отобразить _управляемую_ текстовую область, передайте ей пропс `value`.** React будет принудительно устанавливать для текстовой области значение, которое вы передали. Обычно вы управляете текстовой областью, объявляя [переменную состояния:](/reference/react/useState)
 
 ```js {2,6,7}
 function NewPost() {
-  const [postContent, setPostContent] = useState(''); // Declare a state variable...
+  const [postContent, setPostContent] = useState(''); // Объявите переменную состояния...
   // ...
   return (
     <textarea
-      value={postContent} // ...force the input's value to match the state variable...
-      onChange={e => setPostContent(e.target.value)} // ... and update the state variable on any edits!
+      value={postContent} // ...принудительно установите значение поля ввода в соответствии с переменной состояния...
+      onChange={e => setPostContent(e.target.value)} // ...и обновляйте переменную состояния при каждом редактировании!
     />
   );
 }
 ```
 
-This is useful if you want to re-render some part of the UI in response to every keystroke.
+Это полезно, если вы хотите перерисовать часть пользовательского интерфейса в ответ на каждое нажатие клавиши.
 
 <Sandpack>
 
@@ -330,20 +329,20 @@ textarea { display: block; margin-top: 5px; margin-bottom: 10px; }
 
 <Pitfall>
 
-**If you pass `value` without `onChange`, it will be impossible to type into the text area.** When you control a text area by passing some `value` to it, you *force* it to always have the value you passed. So if you pass a state variable as a `value` but forget to update that state variable synchronously during the `onChange` event handler, React will revert the text area after every keystroke back to the `value` that you specified.
+**Если вы передаёте `value` без `onChange`, вводить текст в текстовую область будет невозможно.** Когда вы управляете текстовой областью, передавая ей какое-либо значение `value`, вы *принуждаете* её всегда иметь то значение, которое вы указали. Поэтому, если вы передаёте переменную состояния как `value`, но забываете синхронно обновлять эту переменную состояния в обработчике события `onChange`, React будет откатывать текстовую область после каждого нажатия клавиши к значению, которое вы указали.
 
 </Pitfall>
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
-### My text area doesn't update when I type into it {/*my-text-area-doesnt-update-when-i-type-into-it*/}
+### Моя текстовая область не обновляется при вводе текста {/*my-text-area-doesnt-update-when-i-type-into-it*/}
 
-If you render a text area with `value` but no `onChange`, you will see an error in the console:
+Если вы отображаете текстовую область с `value`, но без `onChange`, вы увидите ошибку в консоли:
 
 ```js
-// 🔴 Bug: controlled text area with no onChange handler
+// 🔴 Ошибка: управляемое текстовое поле без обработчика onChange
 <textarea value={something} />
 ```
 
@@ -353,71 +352,71 @@ You provided a `value` prop to a form field without an `onChange` handler. This 
 
 </ConsoleBlock>
 
-As the error message suggests, if you only wanted to [specify the *initial* value,](#providing-an-initial-value-for-a-text-area) pass `defaultValue` instead:
+Как предполагает сообщение об ошибке, если вы хотели только [указать *начальное* значение,](#providing-an-initial-value-for-a-text-area) вместо этого используйте `defaultValue`:
 
 ```js
-// ✅ Good: uncontrolled text area with an initial value
+// ✅ Хорошо: неуправляемое текстовое поле с начальным значением
 <textarea defaultValue={something} />
 ```
 
-If you want [to control this text area with a state variable,](#controlling-a-text-area-with-a-state-variable) specify an `onChange` handler:
+Если вы хотите [управлять этой текстовой областью с помощью переменной состояния,](#controlling-a-text-area-with-a-state-variable) укажите обработчик `onChange`:
 
 ```js
-// ✅ Good: controlled text area with onChange
+// ✅ Хорошо: управляемое текстовое поле с onChange
 <textarea value={something} onChange={e => setSomething(e.target.value)} />
 ```
 
-If the value is intentionally read-only, add a `readOnly` prop to suppress the error:
+Если значение намеренно только для чтения, добавьте пропс `readOnly`, чтобы подавить ошибку:
 
 ```js
-// ✅ Good: readonly controlled text area without on change
+// ✅ Хорошо: управляемое текстовое поле только для чтения без onChange
 <textarea value={something} readOnly={true} />
 ```
 
 ---
 
-### My text area caret jumps to the beginning on every keystroke {/*my-text-area-caret-jumps-to-the-beginning-on-every-keystroke*/}
+### Курсор моей текстовой области перемещается в начало при каждом нажатии клавиши {/*my-text-area-caret-jumps-to-the-beginning-on-every-keystroke*/}
 
-If you [control a text area,](#controlling-a-text-area-with-a-state-variable) you must update its state variable to the text area's value from the DOM during `onChange`.
+Если вы [управляете текстовой областью,](#controlling-a-text-area-with-a-state-variable) вы должны обновлять её переменную состояния значением текстовой области из DOM во время `onChange`.
 
-You can't update it to something other than `e.target.value`:
+Вы не можете обновлять её чем-то другим, кроме `e.target.value`:
 
 ```js
 function handleChange(e) {
-  // 🔴 Bug: updating an input to something other than e.target.value
+  // 🔴 Ошибка: обновление поля ввода чем-то, кроме e.target.value
   setFirstName(e.target.value.toUpperCase());
 }
 ```
 
-You also can't update it asynchronously:
+Вы также не можете обновлять её асинхронно:
 
 ```js
 function handleChange(e) {
-  // 🔴 Bug: updating an input asynchronously
+  // 🔴 Ошибка: асинхронное обновление поля ввода
   setTimeout(() => {
     setFirstName(e.target.value);
   }, 100);
 }
 ```
 
-To fix your code, update it synchronously to `e.target.value`:
+Чтобы исправить ваш код, обновляйте его синхронно до `e.target.value`:
 
 ```js
 function handleChange(e) {
-  // ✅ Updating a controlled input to e.target.value synchronously
+  // ✅ Синхронное обновление управляемого поля ввода до e.target.value
   setFirstName(e.target.value);
 }
 ```
 
-If this doesn't fix the problem, it's possible that the text area gets removed and re-added from the DOM on every keystroke. This can happen if you're accidentally [resetting state](/learn/preserving-and-resetting-state) on every re-render. For example, this can happen if the text area or one of its parents always receives a different `key` attribute, or if you nest component definitions (which is not allowed in React and causes the "inner" component to remount on every render).
+Если это не решает проблему, возможно, текстовая область удаляется и повторно добавляется из DOM при каждом нажатии клавиши. Это может произойти, если вы случайно [сбрасываете состояние](/learn/preserving-and-resetting-state) при каждом перерендере. Например, это может произойти, если текстовая область или один из её родительских элементов всегда получает другой атрибут `key`, или если вы вкладываете определения компонентов (что не разрешено в React и приводит к повторному монтированию "внутреннего" компонента при каждом рендере).
 
 ---
 
-### I'm getting an error: "A component is changing an uncontrolled input to be controlled" {/*im-getting-an-error-a-component-is-changing-an-uncontrolled-input-to-be-controlled*/}
+### Я получаю ошибку: "Компонент изменяет неуправляемый ввод на управляемый" {/*im-getting-an-error-a-component-is-changing-an-uncontrolled-input-to-be-controlled*/}
 
 
-If you provide a `value` to the component, it must remain a string throughout its lifetime.
+Если вы передаёте `value` компоненту, он должен оставаться строкой на протяжении всего своего жизненного цикла.
 
-You cannot pass `value={undefined}` first and later pass `value="some string"` because React won't know whether you want the component to be uncontrolled or controlled. A controlled component should always receive a string `value`, not `null` or `undefined`.
+Вы не можете сначала передать `value={undefined}`, а затем передать `value="какая-то строка"`, потому что React не будет знать, хотите ли вы, чтобы компонент был неуправляемым или управляемым. Управляемый компонент всегда должен получать строковое значение `value`, а не `null` или `undefined`.
 
-If your `value` is coming from an API or a state variable, it might be initialized to `null` or `undefined`. In that case, either set it to an empty string (`''`) initially, or pass `value={someValue ?? ''}` to ensure `value` is a string.
+Если ваше значение поступает из API или переменной состояния, оно может быть инициализировано как `null` или `undefined`. В этом случае либо установите его как пустую строку (`''`) изначально, либо передайте `value={someValue ?? ''}`, чтобы гарантировать, что `value` является строкой.
