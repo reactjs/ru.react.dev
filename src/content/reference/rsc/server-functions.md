@@ -1,6 +1,7 @@
 ---
-title: Функции сервера
+title: Server Functions
 ---
+
 <RSC>
 
 Серверные функции предназначены для использования в [Компонентах сервера React](/reference/rsc/server-components).
