@@ -1,5 +1,5 @@
 ---
-title: "Итоги React Conf 2021"
+title: "React Conf 2021 Recap"
 author: Jesslyn Tannady and Rick Hanlon
 date: 2021/12/17
 description: На прошлой неделе мы провели нашу шестую React Conf. В предыдущие годы мы использовали сцену React Conf для объявления важных для индустрии новостей, таких как React Native и React Hooks. В этом году мы поделились нашим видением React для различных платформ, начиная с выпуска React 18 и постепенного внедрения конкурентных функций.
