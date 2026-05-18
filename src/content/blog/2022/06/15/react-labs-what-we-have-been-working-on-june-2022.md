@@ -1,15 +1,8 @@
 ---
 title: "React Labs: Над чем мы работали — июнь 2022 г."
-author: Andrew Clark, Dan Abramov, Jan Kassens, Joseph Savona, Josh Story,
-  Lauren Tan, Luna Ruan, Mengdi Chen, Rick Hanlon, Robert Zhang, Sathya
-  Gunasekaran, Sebastian Markbage, and Xuan Huang
+author: Andrew Clark, Dan Abramov, Jan Kassens, Joseph Savona, Josh Story, Lauren Tan, Luna Ruan, Mengdi Chen, Rick Hanlon, Robert Zhang, Sathya Gunasekaran, Sebastian Markbage, and Xuan Huang
 date: 2022/06/15
-description: React 18 готовился годами, и его выпуск принёс ценные уроки команде
-  React. Его выпуск стал результатом многих лет исследований и изучения
-  различных путей. Некоторые из этих путей оказались успешными; многие другие
-  оказались тупиковыми, но привели к новым открытиям. Один из усвоенных нами
-  уроков заключается в том, что сообществу неприятно ждать новых функций, не
-  имея представления об этих путях, которые мы исследуем.
+description: React 18 готовился годами, и его выпуск принёс ценные уроки команде React. Его выпуск стал результатом многих лет исследований и изучения различных путей. Некоторые из этих путей оказались успешными; многие другие оказались тупиковыми, но привели к новым открытиям. Один из усвоенных нами уроков заключается в том, что сообществу неприятно ждать новых функций, не имея представления об этих путях, которые мы исследуем.
 ---
 15 июня 2022 г. авторы: [Andrew Clark](https://twitter.com/acdlite), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Jan Kassens](https://twitter.com/kassens), [Joseph Savona](https://twitter.com/en_JS), [Josh Story](https://twitter.com/joshcstory), [Lauren Tan](https://twitter.com/potetotes), [Luna Ruan](https://twitter.com/lunaruan), [Mengdi Chen](https://twitter.com/mengdi_en), [Rick Hanlon](https://twitter.com/rickhanlonii), [Robert Zhang](https://twitter.com/jiaxuanzhang01), [Sathya Gunasekaran](https://twitter.com/_gsathya), [Sebastian Markbåge](https://twitter.com/sebmarkbage) и [Xuan Huang](https://twitter.com/Huxpro)
 
