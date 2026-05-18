@@ -1,16 +1,15 @@
 ---
 title: cloneElement
 ---
-
 <Pitfall>
 
-Using `cloneElement` is uncommon and can lead to fragile code. [See common alternatives.](#alternatives)
+Использование `cloneElement` встречается редко и может привести к хрупкому коду. [См. альтернативы.](#alternatives)
 
 </Pitfall>
 
 <Intro>
 
-`cloneElement` lets you create a new React element using another element as a starting point.
+`cloneElement` позволяет создать новый React-элемент, используя другой элемент в качестве отправной точки.
 
 ```js
 const clonedElement = cloneElement(element, props, ...children)
@@ -22,11 +21,11 @@ const clonedElement = cloneElement(element, props, ...children)
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `cloneElement(element, props, ...children)` {/*cloneelement*/}
 
-Call `cloneElement` to create a React element based on the `element`, but with different `props` and `children`:
+Вызовите `cloneElement`, чтобы создать React-элемент на основе `element`, но с другими `props` и `children`:
 
 ```js
 import { cloneElement } from 'react';
@@ -43,42 +42,42 @@ const clonedElement = cloneElement(
 console.log(clonedElement); // <Row title="Cabbage" isHighlighted={true}>Goodbye</Row>
 ```
 
-[See more examples below.](#usage)
+[См. больше примеров ниже.](#usage)
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-* `element`: The `element` argument must be a valid React element. For example, it could be a JSX node like `<Something />`, the result of calling [`createElement`](/reference/react/createElement), or the result of another `cloneElement` call.
+* `element`: Аргумент `element` должен быть валидным React-элементом. Например, это может быть JSX-узел вроде `<Something />`, результат вызова [`createElement`](/reference/react/createElement) или результат другого вызова `cloneElement`.
 
-* `props`: The `props` argument must either be an object or `null`. If you pass `null`, the cloned element will retain all of the original `element.props`. Otherwise, for every prop in the `props` object, the returned element will "prefer" the value from `props` over the value from `element.props`. The rest of the props will be filled from the original `element.props`. If you pass `props.key` or `props.ref`, they will replace the original ones.
+* `props`: Аргумент `props` должен быть объектом или `null`. Если вы передадите `null`, клонированный элемент сохранит все оригинальные `element.props`. В противном случае, для каждого свойства в объекте `props`, возвращаемый элемент будет «предпочитать» значение из `props` значению из `element.props`. Остальные свойства будут взяты из оригинального `element.props`. Если вы передадите `props.key` или `props.ref`, они заменят оригинальные.
 
-* **optional** `...children`: Zero or more child nodes. They can be any React nodes, including React elements, strings, numbers, [portals](/reference/react-dom/createPortal), empty nodes (`null`, `undefined`, `true`, and `false`), and arrays of React nodes. If you don't pass any `...children` arguments, the original `element.props.children` will be preserved.
+* **необязательный** `...children`: Ноль или более дочерних узлов. Это могут быть любые React-узлы, включая React-элементы, строки, числа, [порталы](/reference/react-dom/createPortal), пустые узлы (`null`, `undefined`, `true` и `false`) и массивы React-узлов. Если вы не передадите никаких аргументов `...children`, будут сохранены оригинальные `element.props.children`.
 
-#### Returns {/*returns*/}
+#### Возвращаемое значение {/*returns*/}
 
-`cloneElement` returns a React element object with a few properties:
+`cloneElement` возвращает объект React-элемента с несколькими свойствами:
 
-* `type`: Same as `element.type`.
-* `props`: The result of shallowly merging `element.props` with the overriding `props` you have passed.
-* `ref`: The original `element.ref`, unless it was overridden by `props.ref`.
-* `key`: The original `element.key`, unless it was overridden by `props.key`.
+* `type`: То же, что и `element.type`.
+* `props`: Результат поверхностного слияния `element.props` с переданными вами переопределяющими `props`.
+* `ref`: Оригинальный `element.ref`, если он не был переопределен `props.ref`.
+* `key`: Оригинальный `element.key`, если он не был переопределен `props.key`.
 
-Usually, you'll return the element from your component or make it a child of another element. Although you may read the element's properties, it's best to treat every element as opaque after it's created, and only render it.
+Обычно вы возвращаете элемент из своего компонента или делаете его дочерним элементом другого элемента. Хотя вы можете читать свойства элемента, лучше всего рассматривать каждый элемент как непрозрачный после его создания и только рендерить его.
 
-#### Caveats {/*caveats*/}
+#### Ограничения {/*caveats*/}
 
-* Cloning an element **does not modify the original element.**
+* Клонирование элемента **не изменяет оригинальный элемент.**
 
-* You should only **pass children as multiple arguments to `cloneElement` if they are all statically known,** like `cloneElement(element, null, child1, child2, child3)`. If your children are dynamic, pass the entire array as the third argument: `cloneElement(element, null, listItems)`. This ensures that React will [warn you about missing `key`s](/learn/rendering-lists#keeping-list-items-in-order-with-key) for any dynamic lists. For static lists this is not necessary because they never reorder.
+* Вы должны **передавать дочерние элементы в качестве нескольких аргументов `cloneElement` только в том случае, если они все статически известны,** например `cloneElement(element, null, child1, child2, child3)`. Если ваши дочерние элементы динамические, передайте весь массив в качестве третьего аргумента: `cloneElement(element, null, listItems)`. Это гарантирует, что React [предупредит вас об отсутствующих `key`](/learn/rendering-lists#keeping-list-items-in-order-with-key) для любых динамических списков. Для статических списков это не требуется, так как они никогда не меняют порядок.
 
-* `cloneElement` makes it harder to trace the data flow, so **try the [alternatives](#alternatives) instead.**
+* `cloneElement` затрудняет отслеживание потока данных, поэтому **попробуйте [альтернативы](#alternatives) вместо этого.**
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Overriding props of an element {/*overriding-props-of-an-element*/}
+### Переопределение пропсов элемента {/*overriding-props-of-an-element*/}
 
-To override the props of some <CodeStep step={1}>React element</CodeStep>, pass it to `cloneElement` with the <CodeStep step={2}>props you want to override</CodeStep>:
+Чтобы переопределить пропсы некоторого <CodeStep step={1}>React-элемента</CodeStep>, передайте его в `cloneElement` с <CodeStep step={2}>пропсами, которые вы хотите переопределить</CodeStep>:
 
 ```js [[1, 5, "<Row title=\\"Cabbage\\" />"], [2, 6, "{ isHighlighted: true }"], [3, 4, "clonedElement"]]
 import { cloneElement } from 'react';
@@ -90,11 +89,11 @@ const clonedElement = cloneElement(
 );
 ```
 
-Here, the resulting <CodeStep step={3}>cloned element</CodeStep> will be `<Row title="Cabbage" isHighlighted={true} />`.
+Здесь результирующий <CodeStep step={3}>клонированный элемент</CodeStep> будет `<Row title="Cabbage" isHighlighted={true} />`.
 
-**Let's walk through an example to see when it's useful.**
+**Давайте рассмотрим пример, чтобы увидеть, когда это полезно.**
 
-Imagine a `List` component that renders its [`children`](/learn/passing-props-to-a-component#passing-jsx-as-children) as a list of selectable rows with a "Next" button that changes which row is selected. The `List` component needs to render the selected `Row` differently, so it clones every `<Row>` child that it has received, and adds an extra `isHighlighted: true` or `isHighlighted: false` prop:
+Представьте компонент `List`, который рендерит свои [`children`](/learn/passing-props-to-a-component#passing-jsx-as-children) в виде списка выбираемых строк с кнопкой "Next", которая изменяет выбранную строку. Компоненту `List` нужно отображать выбранную `Row` по-другому, поэтому он клонирует каждый дочерний элемент `<Row>`, который он получил, и добавляет дополнительный пропс `isHighlighted: true` или `isHighlighted: false`:
 
 ```js {6-8}
 export default function List({ children }) {
@@ -108,7 +107,7 @@ export default function List({ children }) {
       )}
 ```
 
-Let's say the original JSX received by `List` looks like this:
+Допустим, оригинальный JSX, полученный `List`, выглядит так:
 
 ```js {2-4}
 <List>
@@ -118,7 +117,7 @@ Let's say the original JSX received by `List` looks like this:
 </List>
 ```
 
-By cloning its children, the `List` can pass extra information to every `Row` inside. The result looks like this:
+Клонируя свои дочерние элементы, `List` может передавать дополнительную информацию каждой `Row` внутри. Результат выглядит так:
 
 ```js {4,8,12}
 <List>
@@ -137,7 +136,7 @@ By cloning its children, the `List` can pass extra information to every `Row` in
 </List>
 ```
 
-Notice how pressing "Next" updates the state of the `List`, and highlights a different row:
+Обратите внимание, как нажатие "Next" обновляет состояние `List` и выделяет другую строку:
 
 <Sandpack>
 
@@ -232,21 +231,21 @@ button {
 
 </Sandpack>
 
-To summarize, the `List` cloned the `<Row />` elements it received and added an extra prop to them.
+Таким образом, `List` клонировал полученные элементы `<Row />` и добавил к ним дополнительный пропс.
 
 <Pitfall>
 
-Cloning children makes it hard to tell how the data flows through your app. Try one of the [alternatives.](#alternatives)
+Клонирование дочерних элементов затрудняет отслеживание потока данных в вашем приложении. Попробуйте [альтернативы.](#alternatives)
 
 </Pitfall>
 
 ---
 
-## Alternatives {/*alternatives*/}
+## Альтернативы {/*alternatives*/}
 
-### Passing data with a render prop {/*passing-data-with-a-render-prop*/}
+### Передача данных с помощью render prop {/*passing-data-with-a-render-prop*/}
 
-Instead of using `cloneElement`, consider accepting a *render prop* like `renderItem`. Here, `List` receives `renderItem` as a prop. `List` calls `renderItem` for every item and passes `isHighlighted` as an argument: 
+Вместо использования `cloneElement` рассмотрите возможность принятия *render prop*, такого как `renderItem`. Здесь `List` принимает `renderItem` в качестве пропса. `List` вызывает `renderItem` для каждого элемента и передает `isHighlighted` в качестве аргумента:
 
 ```js {1,7}
 export default function List({ items, renderItem }) {
@@ -259,7 +258,7 @@ export default function List({ items, renderItem }) {
       })}
 ```
 
-The `renderItem` prop is called a "render prop" because it's a prop that specifies how to render something. For example, you can pass a `renderItem` implementation that renders a `<Row>` with the given `isHighlighted` value:
+Render prop `renderItem` называется так потому, что это пропс, который определяет, как что-то рендерить. Например, вы можете передать реализацию `renderItem`, которая рендерит `<Row>` с заданным значением `isHighlighted`:
 
 ```js {3,7}
 <List
@@ -274,7 +273,7 @@ The `renderItem` prop is called a "render prop" because it's a prop that specifi
 />
 ```
 
-The end result is the same as with `cloneElement`:
+Конечный результат тот же, что и с `cloneElement`:
 
 ```js {4,8,12}
 <List>
@@ -293,7 +292,7 @@ The end result is the same as with `cloneElement`:
 </List>
 ```
 
-However, you can clearly trace where the `isHighlighted` value is coming from.
+Однако вы можете четко отследить, откуда берется значение `isHighlighted`.
 
 <Sandpack>
 
@@ -389,22 +388,21 @@ button {
 
 </Sandpack>
 
-This pattern is preferred to `cloneElement` because it is more explicit.
+Этот шаблон предпочтительнее `cloneElement`, так как он более явный.
 
 ---
 
-### Passing data through context {/*passing-data-through-context*/}
+### Передача данных через контекст {/*passing-data-through-context*/}
 
-Another alternative to `cloneElement` is to [pass data through context.](/learn/passing-data-deeply-with-context)
+Другой альтернативой `cloneElement` является [передача данных через контекст.](/learn/passing-data-deeply-with-context)
 
-
-For example, you can call [`createContext`](/reference/react/createContext) to define a `HighlightContext`:
+Например, вы можете вызвать [`createContext`](/reference/react/createContext) для определения `HighlightContext`:
 
 ```js
 export const HighlightContext = createContext(false);
 ```
 
-Your `List` component can wrap every item it renders into a `HighlightContext` provider:
+Ваш компонент `List` может обернуть каждый элемент, который он рендерит, в провайдер `HighlightContext`:
 
 ```js {8,10}
 export default function List({ items, renderItem }) {
@@ -421,7 +419,7 @@ export default function List({ items, renderItem }) {
       })}
 ```
 
-With this approach, `Row` does not need to receive an `isHighlighted` prop at all. Instead, it reads the context:
+При таком подходе `Row` вообще не нужно получать пропс `isHighlighted`. Вместо этого он читает контекст:
 
 ```js src/Row.js {2}
 export default function Row({ title }) {
@@ -429,7 +427,7 @@ export default function Row({ title }) {
   // ...
 ```
 
-This allows the calling component to not know or worry about passing `isHighlighted` to `<Row>`:
+Это позволяет вызывающему компоненту не знать и не беспокоиться о передаче `isHighlighted` в `<Row>`:
 
 ```js {4}
 <List
@@ -440,7 +438,7 @@ This allows the calling component to not know or worry about passing `isHighligh
 />
 ```
 
-Instead, `List` and `Row` coordinate the highlighting logic through context.
+Вместо этого `List` и `Row` координируют логику выделения через контекст.
 
 <Sandpack>
 
@@ -550,13 +548,13 @@ button {
 
 </Sandpack>
 
-[Learn more about passing data through context.](/reference/react/useContext#passing-data-deeply-into-the-tree)
+[Узнайте больше о передаче данных через контекст.](/reference/react/useContext#passing-data-deeply-into-the-tree)
 
 ---
 
-### Extracting logic into a custom Hook {/*extracting-logic-into-a-custom-hook*/}
+### Выделение логики в пользовательский хук {/*extracting-logic-into-a-custom-hook*/}
 
-Another approach you can try is to extract the "non-visual" logic into your own Hook, and use the information returned by your Hook to decide what to render. For example, you could write a `useList` custom Hook like this:
+Другой подход, который вы можете попробовать, — это выделить "невизуальную" логику в собственный хук и использовать информацию, возвращаемую вашим хуком, для принятия решения о том, что рендерить. Например, вы можете написать пользовательский хук `useList` следующим образом:
 
 ```js
 import { useState } from 'react';
@@ -575,7 +573,7 @@ export default function useList(items) {
 }
 ```
 
-Then you could use it like this:
+Затем вы можете использовать его так:
 
 ```js {2,9,13}
 export default function App() {
@@ -598,7 +596,7 @@ export default function App() {
 }
 ```
 
-The data flow is explicit, but the state is inside the `useList` custom Hook that you can use from any component:
+Поток данных явный, но состояние находится внутри пользовательского хука `useList`, который вы можете использовать из любого компонента:
 
 <Sandpack>
 
@@ -691,4 +689,4 @@ button {
 
 </Sandpack>
 
-This approach is particularly useful if you want to reuse this logic between different components.
+Этот подход особенно полезен, если вы хотите повторно использовать эту логику между различными компонентами.
