@@ -1,6 +1,7 @@
 ---
-title: Компилятор React
+title: React Compiler
 ---
+
 <Intro>
 Эта страница даст вам введение в React Compiler и расскажет, как успешно его попробовать.
 </Intro>
