@@ -1,14 +1,10 @@
 ---
 title: "План React 18"
-author: Andrew Clark, Brian Vaughn, Christine Abernathy, Dan Abramov, Rachel
-  Nabors, Rick Hanlon, Sebastian Markbage, and Seth Webster
+author: Andrew Clark, Brian Vaughn, Christine Abernathy, Dan Abramov, Rachel Nabors, Rick Hanlon, Sebastian Markbage, and Seth Webster
 date: 2021/06/08
-description: Команда React рада поделиться несколькими новостями. Мы начали
-  работу над релизом React 18, который станет нашей следующей основной версией.
-  Мы создали рабочую группу для подготовки сообщества к постепенному внедрению
-  новых функций в React 18. Мы опубликовали React 18 Alpha, чтобы авторы
-  библиотек могли попробовать его и дать обратную связь...
+description: Команда React рада поделиться несколькими новостями. Мы начали работу над релизом React 18, который станет нашей следующей основной версией. Мы создали рабочую группу для подготовки сообщества к постепенному внедрению новых функций в React 18. Мы опубликовали React 18 Alpha, чтобы авторы библиотек могли попробовать его и дать обратную связь...
 ---
+
 8 июня 2021 г. от [Эндрю Кларка](https://twitter.com/acdlite), [Брайана Вона](https://github.com/bvaughn), [Кристин Абернати](https://twitter.com/abernathyca), [Дэна Абрамова](https://bsky.app/profile/danabra.mov), [Рэйчел Наборс](https://twitter.com/rachelnabors), [Рика Хэнлона](https://twitter.com/rickhanlonii), [Себастьяна Маркбаге](https://twitter.com/sebmarkbage) и [Сэта Вебстера](https://twitter.com/sethwebster)
 
 ---
