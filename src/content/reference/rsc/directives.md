@@ -1,7 +1,6 @@
 ---
 title: Директивы
 ---
-
 <RSC>
 
 Директивы используются в [React Server Components](/reference/rsc/server-components).
