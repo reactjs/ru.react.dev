@@ -4,34 +4,34 @@ title: Reacting to Input with State
 
 <Intro>
 
-React provides a declarative way to manipulate the UI. Instead of manipulating individual pieces of the UI directly, you describe the different states that your component can be in, and switch between them in response to the user input. This is similar to how designers think about the UI.
+React предоставляет декларативный способ манипулирования пользовательским интерфейсом. Вместо того чтобы напрямую манипулировать отдельными частями интерфейса, вы описываете различные состояния, в которых может находиться ваш компонент, и переключаетесь между ними в ответ на действия пользователя. Это похоже на то, как дизайнеры думают о пользовательском интерфейсе.
 
 </Intro>
 
 <YouWillLearn>
 
-* How declarative UI programming differs from imperative UI programming
-* How to enumerate the different visual states your component can be in
-* How to trigger the changes between the different visual states from code
+* Чем декларативное программирование пользовательского интерфейса отличается от императивного
+* Как перечислить различные визуальные состояния, в которых может находиться ваш компонент
+* Как инициировать изменения между различными визуальными состояниями из кода
 
 </YouWillLearn>
 
-## How declarative UI compares to imperative {/*how-declarative-ui-compares-to-imperative*/}
+## Сравнение декларативного пользовательского интерфейса с императивным {/*how-declarative-ui-compares-to-imperative*/}
 
-When you design UI interactions, you probably think about how the UI *changes* in response to user actions. Consider a form that lets the user submit an answer:
+Когда вы проектируете пользовательские взаимодействия, вы, вероятно, думаете о том, как пользовательский интерфейс *изменяется* в ответ на действия пользователя. Рассмотрим форму, которая позволяет пользователю отправить ответ:
 
-* When you type something into the form, the "Submit" button **becomes enabled.**
-* When you press "Submit", both the form and the button **become disabled,** and a spinner **appears.**
-* If the network request succeeds, the form **gets hidden,** and the "Thank you" message **appears.**
-* If the network request fails, an error message **appears,** and the form **becomes enabled** again.
+* Когда вы что-то вводите в форму, кнопка "Submit" **становится активной.**
+* Когда вы нажимаете "Submit", форма и кнопка **становятся неактивными,** и **появляется** индикатор загрузки.
+* Если сетевой запрос успешен, форма **скрывается,** и **появляется** сообщение "Thank you".
+* Если сетевой запрос завершается ошибкой, **появляется** сообщение об ошибке, и форма **снова становится активной.**
 
-In **imperative programming,** the above corresponds directly to how you implement interaction. You have to write the exact instructions to manipulate the UI depending on what just happened. Here's another way to think about this: imagine riding next to someone in a car and telling them turn by turn where to go.
+В **императивном программировании** вышеизложенное напрямую соответствует тому, как вы реализуете взаимодействие. Вам нужно написать точные инструкции для манипулирования пользовательским интерфейсом в зависимости от того, что только что произошло. Вот другой способ взглянуть на это: представьте, что вы едете рядом с кем-то в машине и пошагово говорите ему, куда повернуть.
 
-<Illustration src="/images/docs/illustrations/i_imperative-ui-programming.png"  alt="In a car driven by an anxious-looking person representing JavaScript, a passenger orders the driver to execute a sequence of complicated turn by turn navigations." />
+<Illustration src="/images/docs/illustrations/i_imperative-ui-programming.png"  alt="В машине, управляемой человеком с тревожным выражением лица, представляющим JavaScript, пассажир приказывает водителю выполнить последовательность сложных пошаговых навигаций." />
 
-They don't know where you want to go, they just follow your commands. (And if you get the directions wrong, you end up in the wrong place!) It's called *imperative* because you have to "command" each element, from the spinner to the button, telling the computer *how* to update the UI.
+Он не знает, куда вы хотите поехать, он просто следует вашим командам. (И если вы дадите неверные указания, вы окажетесь не там, где нужно!) Это называется *императивным*, потому что вы должны "командовать" каждым элементом, от индикатора загрузки до кнопки, говоря компьютеру, *как* обновлять пользовательский интерфейс.
 
-In this example of imperative UI programming, the form is built *without* React. It only uses the browser [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model):
+В этом примере императивного программирования пользовательского интерфейса форма построена *без* React. Она использует только браузерный [DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model):
 
 <Sandpack>
 
@@ -81,7 +81,7 @@ function disable(el) {
 }
 
 function submitForm(answer) {
-  // Pretend it's hitting the network.
+  // Имитируем сетевой запрос.
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (answer.toLowerCase() === 'istanbul') {
@@ -131,37 +131,37 @@ body { font-family: sans-serif; margin: 20px; padding: 0; }
 
 </Sandpack>
 
-Manipulating the UI imperatively works well enough for isolated examples, but it gets exponentially more difficult to manage in more complex systems. Imagine updating a page full of different forms like this one. Adding a new UI element or a new interaction would require carefully checking all existing code to make sure you haven't introduced a bug (for example, forgetting to show or hide something).
+Манипулирование пользовательским интерфейсом императивно работает достаточно хорошо для изолированных примеров, но становится экспоненциально сложнее управлять в более сложных системах. Представьте себе обновление страницы, полной различных форм, подобных этой. Добавление нового элемента пользовательского интерфейса или нового взаимодействия потребует тщательной проверки всего существующего кода, чтобы убедиться, что вы не внесли ошибку (например, забыли что-то показать или скрыть).
 
-React was built to solve this problem.
+React был создан для решения этой проблемы.
 
-In React, you don't directly manipulate the UI--meaning you don't enable, disable, show, or hide components directly. Instead, you **declare what you want to show,** and React figures out how to update the UI. Think of getting into a taxi and telling the driver where you want to go instead of telling them exactly where to turn. It's the driver's job to get you there, and they might even know some shortcuts you haven't considered!
+В React вы не манипулируете пользовательским интерфейсом напрямую — то есть вы не включаете, не отключаете, не показываете и не скрываете компоненты напрямую. Вместо этого вы **объявляете, что хотите показать,** а React выясняет, как обновить пользовательский интерфейс. Представьте, что вы садитесь в такси и говорите водителю, куда вы хотите поехать, вместо того чтобы точно указывать ему, где повернуть. Задача водителя — доставить вас туда, и он, возможно, даже знает некоторые короткие пути, которые вы не учли!
 
-<Illustration src="/images/docs/illustrations/i_declarative-ui-programming.png" alt="In a car driven by React, a passenger asks to be taken to a specific place on the map. React figures out how to do that." />
+<Illustration src="/images/docs/illustrations/i_declarative-ui-programming.png" alt="В машине, управляемой React, пассажир просит отвезти его в определенное место на карте. React выясняет, как это сделать." />
 
-## Thinking about UI declaratively {/*thinking-about-ui-declaratively*/}
+## Думаем о пользовательском интерфейсе декларативно {/*thinking-about-ui-declaratively*/}
 
-You've seen how to implement a form imperatively above. To better understand how to think in React, you'll walk through reimplementing this UI in React below:
+Вы видели, как реализовать форму императивно выше. Чтобы лучше понять, как думать в React, вы пройдёте по переписыванию этого пользовательского интерфейса в React ниже:
 
-1. **Identify** your component's different visual states
-2. **Determine** what triggers those state changes
-3. **Represent** the state in memory using `useState`
-4. **Remove** any non-essential state variables
-5. **Connect** the event handlers to set the state
+1. **Определите** различные визуальные состояния вашего компонента
+2. **Определите**, что вызывает эти изменения состояния
+3. **Представьте** состояние в памяти с помощью `useState`
+4. **Удалите** все несущественные переменные состояния
+5. **Подключите** обработчики событий для установки состояния
 
-### Step 1: Identify your component's different visual states {/*step-1-identify-your-components-different-visual-states*/}
+### Шаг 1: Определите различные визуальные состояния вашего компонента {/*step-1-identify-your-components-different-visual-states*/}
 
-In computer science, you may hear about a ["state machine"](https://en.wikipedia.org/wiki/Finite-state_machine) being in one of several “states”. If you work with a designer, you may have seen mockups for different "visual states". React stands at the intersection of design and computer science, so both of these ideas are sources of inspiration.
+В информатике вы можете услышать, что "конечный автомат" находится в одном из нескольких "состояний". Если вы работаете с дизайнером, вы могли видеть макеты для различных "визуальных состояний". React находится на пересечении дизайна и информатики, поэтому обе эти идеи служат источником вдохновения.
 
-First, you need to visualize all the different "states" of the UI the user might see:
+Сначала вам нужно визуализировать все различные "состояния" пользовательского интерфейса, которые может увидеть пользователь:
 
-* **Empty**: Form has a disabled "Submit" button.
-* **Typing**: Form has an enabled "Submit" button.
-* **Submitting**: Form is completely disabled. Spinner is shown.
-* **Success**: "Thank you" message is shown instead of a form.
-* **Error**: Same as Typing state, but with an extra error message.
+*   **Пустое**: Форма имеет отключенную кнопку "Отправить".
+*   **Ввод**: Форма имеет включенную кнопку "Отправить".
+*   **Отправка**: Форма полностью отключена. Отображается индикатор загрузки.
+*   **Успех**: Вместо формы отображается сообщение "Спасибо".
+*   **Ошибка**: То же, что и состояние ввода, но с дополнительным сообщением об ошибке.
 
-Just like a designer, you'll want to "mock up" or create "mocks" for the different states before you add logic. For example, here is a mock for just the visual part of the form. This mock is controlled by a prop called `status` with a default value of `'empty'`:
+Как и дизайнер, вы захотите "создать макет" или "прототипы" для различных состояний, прежде чем добавлять логику. Например, вот макет только визуальной части формы. Этот макет управляется пропсом `status` со значением по умолчанию `'empty'`:
 
 <Sandpack>
 
@@ -192,7 +192,7 @@ export default function Form({
 
 </Sandpack>
 
-You could call that prop anything you like, the naming is not important. Try editing `status = 'empty'` to `status = 'success'` to see the success message appear. Mocking lets you quickly iterate on the UI before you wire up any logic. Here is a more fleshed out prototype of the same component, still "controlled" by the `status` prop:
+Вы можете назвать этот пропс как угодно, название не имеет значения. Попробуйте изменить `status = 'empty'` на `status = 'success'`, чтобы увидеть сообщение об успехе. Макеты позволяют быстро итерировать пользовательский интерфейс перед подключением какой-либо логики. Вот более проработанный прототип того же компонента, по-прежнему "управляемый" пропсом `status`:
 
 <Sandpack>
 
@@ -240,9 +240,9 @@ export default function Form({
 
 <DeepDive>
 
-#### Displaying many visual states at once {/*displaying-many-visual-states-at-once*/}
+#### Отображение множества визуальных состояний одновременно {/*displaying-many-visual-states-at-once*/}
 
-If a component has a lot of visual states, it can be convenient to show them all on one page:
+Если у компонента много визуальных состояний, может быть удобно отобразить их все на одной странице:
 
 <Sandpack>
 
@@ -307,61 +307,61 @@ body { margin: 0; }
 
 </Sandpack>
 
-Pages like this are often called "living styleguides" or "storybooks".
+Такие страницы часто называют "живыми руководствами по стилю" или "storybook".
 
 </DeepDive>
 
-### Step 2: Determine what triggers those state changes {/*step-2-determine-what-triggers-those-state-changes*/}
+### Шаг 2: Определите, что вызывает эти изменения состояния {/*step-2-determine-what-triggers-those-state-changes*/}
 
-You can trigger state updates in response to two kinds of inputs:
+Вы можете вызывать обновления состояния в ответ на два типа входных данных:
 
-* **Human inputs,** like clicking a button, typing in a field, navigating a link.
-* **Computer inputs,** like a network response arriving, a timeout completing, an image loading.
+*   **Человеческие вводы**, такие как нажатие кнопки, ввод в поле, переход по ссылке.
+*   **Компьютерные вводы**, такие как получение сетевого ответа, завершение тайм-аута, загрузка изображения.
 
 <IllustrationBlock>
-  <Illustration caption="Human inputs" alt="A finger." src="/images/docs/illustrations/i_inputs1.png" />
-  <Illustration caption="Computer inputs" alt="Ones and zeroes." src="/images/docs/illustrations/i_inputs2.png" />
+  <Illustration caption="Человеческие вводы" alt="Палец." src="/images/docs/illustrations/i_inputs1.png" />
+  <Illustration caption="Компьютерные вводы" alt="Единицы и нули." src="/images/docs/illustrations/i_inputs2.png" />
 </IllustrationBlock>
 
-In both cases, **you must set [state variables](/learn/state-a-components-memory#anatomy-of-usestate) to update the UI.** For the form you're developing, you will need to change state in response to a few different inputs:
+В обоих случаях **вы должны устанавливать [переменные состояния](/learn/state-a-components-memory#anatomy-of-usestate) для обновления пользовательского интерфейса.** Для формы, которую вы разрабатываете, вам потребуется изменять состояние в ответ на несколько различных входных данных:
 
-* **Changing the text input** (human) should switch it from the *Empty* state to the *Typing* state or back, depending on whether the text box is empty or not.
-* **Clicking the Submit button** (human) should switch it to the *Submitting* state.
-* **Successful network response** (computer) should switch it to the *Success* state.
-* **Failed network response** (computer) should switch it to the *Error* state with the matching error message.
+*   **Изменение текстового поля** (человеческий ввод) должно переключать его из состояния *Пустое* в состояние *Ввод* или обратно, в зависимости от того, пуст ли текстовый блок.
+*   **Нажатие кнопки "Отправить"** (человеческий ввод) должно переключать его в состояние *Отправка*.
+*   **Успешный сетевой ответ** (компьютерный ввод) должен переключать его в состояние *Успех*.
+*   **Неудачный сетевой ответ** (компьютерный ввод) должен переключать его в состояние *Ошибка* с соответствующим сообщением об ошибке.
 
 <Note>
 
-Notice that human inputs often require [event handlers](/learn/responding-to-events)!
+Обратите внимание, что человеческие вводы часто требуют [обработчиков событий](/learn/responding-to-events)!
 
 </Note>
 
-To help visualize this flow, try drawing each state on paper as a labeled circle, and each change between two states as an arrow. You can sketch out many flows this way and sort out bugs long before implementation.
+Чтобы помочь визуализировать этот поток, попробуйте нарисовать каждое состояние на бумаге в виде помеченного круга, а каждое изменение между двумя состояниями — в виде стрелки. Вы можете набросать множество потоков таким образом и устранить ошибки задолго до реализации.
 
 <DiagramGroup>
 
-<Diagram name="responding_to_input_flow" height={350} width={688} alt="Flow chart moving left to right with 5 nodes. The first node labeled 'empty' has one edge labeled 'start typing' connected to a node labeled 'typing'. That node has one edge labeled 'press submit' connected to a node labeled 'submitting', which has two edges. The left edge is labeled 'network error' connecting to a node labeled 'error'. The right edge is labeled 'network success' connecting to a node labeled 'success'.">
+<Diagram name="responding_to_input_flow" height={350} width={688} alt="Блок-схема, движущаяся слева направо, с 5 узлами. Первый узел с меткой 'empty' имеет один край с меткой 'start typing', ведущий к узлу с меткой 'typing'. Этот узел имеет один край с меткой 'press submit', ведущий к узлу с меткой 'submitting', который имеет два края. Левый край помечен как 'network error' и ведет к узлу с меткой 'error'. Правый край помечен как 'network success' и ведет к узлу с меткой 'success'.">
 
-Form states
+Состояния формы
 
 </Diagram>
 
 </DiagramGroup>
 
-### Step 3: Represent the state in memory with `useState` {/*step-3-represent-the-state-in-memory-with-usestate*/}
+### Шаг 3: Представьте состояние в памяти с помощью `useState` {/*step-3-represent-the-state-in-memory-with-usestate*/}
 
-Next you'll need to represent the visual states of your component in memory with [`useState`.](/reference/react/useState) Simplicity is key: each piece of state is a "moving piece", and **you want as few "moving pieces" as possible.** More complexity leads to more bugs!
+Далее вам нужно будет представить визуальные состояния вашего компонента в памяти с помощью [`useState`.](/reference/react/useState) Простота — ключ к успеху: каждое состояние — это "движущаяся часть", и **вам нужно как можно меньше "движущихся частей".** Большая сложность ведет к большему количеству ошибок!
 
-Start with the state that *absolutely must* be there. For example, you'll need to store the `answer` for the input, and the `error` (if it exists) to store the last error:
+Начните с состояния, которое *абсолютно необходимо*. Например, вам нужно будет сохранить `answer` для ввода и `error` (если он есть) для хранения последней ошибки:
 
 ```js
 const [answer, setAnswer] = useState('');
 const [error, setError] = useState(null);
 ```
 
-Then, you'll need a state variable representing which one of the visual states that you want to display. There's usually more than a single way to represent that in memory, so you'll need to experiment with it.
+Затем вам понадобится переменная состояния, представляющая, какое из визуальных состояний вы хотите отобразить. Обычно существует более одного способа представить это в памяти, поэтому вам нужно будет поэкспериментировать.
 
-If you struggle to think of the best way immediately, start by adding enough state that you're *definitely* sure that all the possible visual states are covered:
+Если вам трудно сразу придумать лучший способ, начните с добавления достаточного количества состояний, чтобы вы были *абсолютно уверены*, что все возможные визуальные состояния охвачены:
 
 ```js
 const [isEmpty, setIsEmpty] = useState(true);
@@ -371,19 +371,19 @@ const [isSuccess, setIsSuccess] = useState(false);
 const [isError, setIsError] = useState(false);
 ```
 
-Your first idea likely won't be the best, but that's ok--refactoring state is a part of the process!
+Ваша первая идея, вероятно, не будет лучшей, но это нормально — рефакторинг состояния является частью процесса!
 
-### Step 4: Remove any non-essential state variables {/*step-4-remove-any-non-essential-state-variables*/}
+### Шаг 4: Удалите все несущественные переменные состояния {/*step-4-remove-any-non-essential-state-variables*/}
 
-You want to avoid duplication in the state content so you're only tracking what is essential. Spending a little time on refactoring your state structure will make your components easier to understand, reduce duplication, and avoid unintended meanings. Your goal is to **prevent the cases where the state in memory doesn't represent any valid UI that you'd want a user to see.** (For example, you never want to show an error message and disable the input at the same time, or the user won't be able to correct the error!)
+Вы хотите избежать дублирования содержимого состояния, поэтому отслеживайте только самое необходимое. Небольшое время, потраченное на рефакторинг структуры состояния, сделает ваши компоненты более понятными, уменьшит дублирование и позволит избежать непреднамеченных значений. Ваша цель — **предотвратить случаи, когда состояние в памяти не представляет никакого допустимого пользовательского интерфейса, который вы хотели бы видеть.** (Например, вы никогда не хотите отображать сообщение об ошибке и одновременно отключать ввод, иначе пользователь не сможет исправить ошибку!)
 
-Here are some questions you can ask about your state variables:
+Вот несколько вопросов, которые вы можете задать о своих переменных состояния:
 
-* **Does this state cause a paradox?** For example, `isTyping` and `isSubmitting` can't both be `true`. A paradox usually means that the state is not constrained enough. There are four possible combinations of two booleans, but only three correspond to valid states. To remove the "impossible" state, you can combine these into a `status` that must be one of three values: `'typing'`, `'submitting'`, or `'success'`.
-* **Is the same information available in another state variable already?** Another paradox: `isEmpty` and `isTyping` can't be `true` at the same time. By making them separate state variables, you risk them going out of sync and causing bugs. Fortunately, you can remove `isEmpty` and instead check `answer.length === 0`.
-* **Can you get the same information from the inverse of another state variable?** `isError` is not needed because you can check `error !== null` instead.
+*   **Вызывает ли это состояние парадокс?** Например, `isTyping` и `isSubmitting` не могут быть оба `true`. Парадокс обычно означает, что состояние недостаточно ограничено. Существует четыре возможных комбинации двух булевых значений, но только три соответствуют допустимым состояниям. Чтобы устранить "невозможные" состояния, вы можете объединить их в `status`, который должен быть одним из трех значений: `'typing'`, `'submitting'` или `'success'`.
+*   **Существует ли та же информация в другой переменной состояния?** Еще один парадокс: `isEmpty` и `isTyping` не могут быть одновременно `true`. Делая их отдельными переменными состояния, вы рискуете их рассинхронизацией и возникновением ошибок. К счастью, вы можете удалить `isEmpty` и вместо этого проверить `answer.length === 0`.
+*   **Можно ли получить ту же информацию из инверсии другой переменной состояния?** `isError` не нужен, потому что вместо этого вы можете проверить `error !== null`.
 
-After this clean-up, you're left with 3 (down from 7!) *essential* state variables:
+После этой очистки у вас останется 3 (вместо 7!) *существенных* переменной состояния:
 
 ```js
 const [answer, setAnswer] = useState('');
@@ -391,19 +391,19 @@ const [error, setError] = useState(null);
 const [status, setStatus] = useState('typing'); // 'typing', 'submitting', or 'success'
 ```
 
-You know they are essential, because you can't remove any of them without breaking the functionality.
+Вы знаете, что они существенны, потому что не можете удалить ни одну из них, не нарушив функциональность.
 
 <DeepDive>
 
-#### Eliminating “impossible” states with a reducer {/*eliminating-impossible-states-with-a-reducer*/}
+#### Устранение «невозможных» состояний с помощью редьюсера {/*eliminating-impossible-states-with-a-reducer*/}
 
-These three variables are a good enough representation of this form's state. However, there are still some intermediate states that don't fully make sense. For example, a non-null `error` doesn't make sense when `status` is `'success'`. To model the state more precisely, you can [extract it into a reducer.](/learn/extracting-state-logic-into-a-reducer) Reducers let you unify multiple state variables into a single object and consolidate all the related logic!
+Эти три переменные являются достаточным представлением состояния этой формы. Однако все еще существуют некоторые промежуточные состояния, которые не совсем осмысленны. Например, ненулевая `error` не имеет смысла, когда `status` равен `'success'`. Чтобы более точно смоделировать состояние, вы можете [вынести его в редьюсер.](/learn/extracting-state-logic-into-a-reducer) Редьюсеры позволяют объединить несколько переменных состояния в один объект и консолидировать всю связанную логику!
 
 </DeepDive>
 
-### Step 5: Connect the event handlers to set state {/*step-5-connect-the-event-handlers-to-set-state*/}
+### Шаг 5: Подключение обработчиков событий для установки состояния {/*step-5-connect-the-event-handlers-to-set-state*/}
 
-Lastly, create event handlers that update the state. Below is the final form, with all event handlers wired up:
+Наконец, создайте обработчики событий, которые обновляют состояние. Ниже представлена финальная форма со всеми подключенными обработчиками событий:
 
 <Sandpack>
 
@@ -485,17 +485,17 @@ function submitForm(answer) {
 
 </Sandpack>
 
-Although this code is longer than the original imperative example, it is much less fragile. Expressing all interactions as state changes lets you later introduce new visual states without breaking existing ones. It also lets you change what should be displayed in each state without changing the logic of the interaction itself.
+Хотя этот код длиннее исходного императивного примера, он гораздо менее хрупок. Описание всех взаимодействий как изменений состояния позволяет в дальнейшем вводить новые визуальные состояния без нарушения существующих. Это также позволяет изменять то, что должно отображаться в каждом состоянии, не изменяя логику самого взаимодействия.
 
 <Recap>
 
-* Declarative programming means describing the UI for each visual state rather than micromanaging the UI (imperative).
-* When developing a component:
-  1. Identify all its visual states.
-  2. Determine the human and computer triggers for state changes.
-  3. Model the state with `useState`.
-  4. Remove non-essential state to avoid bugs and paradoxes.
-  5. Connect the event handlers to set state.
+* Декларативное программирование означает описание пользовательского интерфейса для каждого визуального состояния, а не микроуправление им (императивное).
+* При разработке компонента:
+  1. Определите все его визуальные состояния.
+  2. Определите триггеры (человеческие и компьютерные) для изменения состояния.
+  3. Смоделируйте состояние с помощью `useState`.
+  4. Удалите несущественное состояние, чтобы избежать ошибок и парадоксов.
+  5. Подключите обработчики событий для установки состояния.
 
 </Recap>
 
@@ -503,11 +503,11 @@ Although this code is longer than the original imperative example, it is much le
 
 <Challenges>
 
-#### Add and remove a CSS class {/*add-and-remove-a-css-class*/}
+#### Добавление и удаление CSS-класса {/*add-and-remove-a-css-class*/}
 
-Make it so that clicking on the picture *removes* the `background--active` CSS class from the outer `<div>`, but *adds* the `picture--active` class to the `<img>`. Clicking the background again should restore the original CSS classes.
+Сделайте так, чтобы при нажатии на изображение *удалялся* CSS-класс `background--active` из внешнего `<div>`, но *добавлялся* класс `picture--active` к `<img>`. Повторное нажатие на фон должно восстановить исходные CSS-классы.
 
-Visually, you should expect that clicking on the picture removes the purple background and highlights the picture border. Clicking outside the picture highlights the background, but removes the picture border highlight.
+Визуально вы должны увидеть, что при нажатии на изображение исчезает фиолетовый фон и выделяется рамка изображения. Повторное нажатие на фон снова выделяет фон, но убирает выделение рамки изображения.
 
 <Sandpack>
 
@@ -557,14 +557,14 @@ body { margin: 0; padding: 0; height: 250px; }
 
 <Solution>
 
-This component has two visual states: when the image is active, and when the image is inactive:
+Этот компонент имеет два визуальных состояния: когда изображение активно, и когда оно неактивно:
 
-* When the image is active, the CSS classes are `background` and `picture picture--active`.
-* When the image is inactive, the CSS classes are `background background--active` and `picture`.
+* Когда изображение активно, CSS-классы: `background` и `picture picture--active`.
+* Когда изображение неактивно, CSS-классы: `background background--active` и `picture`.
 
-A single boolean state variable is enough to remember whether the image is active. The original task was to remove or add CSS classes. However, in React you need to *describe* what you want to see rather than *manipulate* the UI elements. So you need to calculate both CSS classes based on the current state. You also need to [stop the propagation](/learn/responding-to-events#stopping-propagation) so that clicking the image doesn't register as a click on the background.
+Одной булевой переменной состояния достаточно, чтобы запомнить, активно ли изображение. Исходная задача заключалась в удалении или добавлении CSS-классов. Однако в React вам нужно *описать*, что вы хотите видеть, а не *манипулировать* элементами UI. Поэтому вам нужно рассчитать оба CSS-класса на основе текущего состояния. Вам также нужно [остановить распространение](/learn/responding-to-events#stopping-propagation), чтобы нажатие на изображение не регистрировалось как нажатие на фон.
 
-Verify that this version works by clicking the image and then outside of it:
+Проверьте, работает ли эта версия, нажав на изображение, а затем вне его:
 
 <Sandpack>
 
@@ -631,7 +631,7 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-Alternatively, you could return two separate chunks of JSX:
+В качестве альтернативы вы можете вернуть два отдельных блока JSX:
 
 <Sandpack>
 
@@ -698,13 +698,13 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-Keep in mind that if two different JSX chunks describe the same tree, their nesting (first `<div>` → first `<img>`) has to line up. Otherwise, toggling `isActive` would recreate the whole tree below and [reset its state.](/learn/preserving-and-resetting-state) This is why, if a similar JSX tree gets returned in both cases, it is better to write them as a single piece of JSX.
+Имейте в виду, что если два разных блока JSX описывают одно и то же дерево, их вложенность (первый `<div>` → первый `<img>`) должна совпадать. В противном случае переключение `isActive` приведет к воссозданию всего дерева ниже и [сбросу его состояния.](/learn/preserving-and-resetting-state) Поэтому, если в обоих случаях возвращается похожее дерево JSX, лучше написать его как единый элемент JSX.
 
 </Solution>
 
-#### Profile editor {/*profile-editor*/}
+#### Редактор профиля {/*profile-editor*/}
 
-Here is a small form implemented with plain JavaScript and DOM. Play with it to understand its behavior:
+Вот небольшая форма, реализованная с использованием обычного JavaScript и DOM. Поиграйте с ней, чтобы понять ее поведение:
 
 <Sandpack>
 
@@ -801,11 +801,11 @@ label { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-This form switches between two modes: in the editing mode, you see the inputs, and in the viewing mode, you only see the result. The button label changes between "Edit" and "Save" depending on the mode you're in. When you change the inputs, the welcome message at the bottom updates in real time.
+Эта форма переключается между двумя режимами: в режиме редактирования вы видите поля ввода, а в режиме просмотра — только результат. Метка кнопки меняется между «Edit» и «Save» в зависимости от режима. При изменении полей ввода приветственное сообщение внизу обновляется в реальном времени.
 
-Your task is to reimplement it in React in the sandbox below. For your convenience, the markup was already converted to JSX, but you'll need to make it show and hide the inputs like the original does.
+Ваша задача — переписать ее в React в песочнице ниже. Для вашего удобства разметка уже преобразована в JSX, но вам нужно будет сделать так, чтобы поля ввода отображались и скрывались, как в оригинале.
 
-Make sure that it updates the text at the bottom, too!
+Убедитесь, что текст внизу также обновляется!
 
 <Sandpack>
 
@@ -840,9 +840,9 @@ label { display: block; margin-bottom: 20px; }
 
 <Solution>
 
-You will need two state variables to hold the input values: `firstName` and `lastName`. You're also going to need an `isEditing` state variable that holds whether to display the inputs or not. You should _not_ need a `fullName` variable because the full name can always be calculated from the `firstName` and the `lastName`.
+Вам понадобятся две переменные состояния для хранения значений полей ввода: `firstName` и `lastName`. Вам также понадобится переменная состояния `isEditing`, которая будет хранить информацию о том, отображать ли поля ввода или нет. Вам _не_ понадобится переменная `fullName`, поскольку полное имя всегда можно вычислить из `firstName` и `lastName`.
 
-Finally, you should use [conditional rendering](/learn/conditional-rendering) to show or hide the inputs depending on `isEditing`.
+Наконец, вы должны использовать [условный рендеринг](/learn/conditional-rendering) для отображения или скрытия полей ввода в зависимости от `isEditing`.
 
 <Sandpack>
 
@@ -900,13 +900,13 @@ label { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-Compare this solution to the original imperative code. How are they different?
+Сравните это решение с исходным императивным кодом. Чем они отличаются?
 
 </Solution>
 
-#### Refactor the imperative solution without React {/*refactor-the-imperative-solution-without-react*/}
+#### Рефакторинг императивного решения без React {/*refactor-the-imperative-solution-without-react*/}
 
-Here is the original sandbox from the previous challenge, written imperatively without React:
+Вот исходная песочница из предыдущего задания, написанная императивно без React:
 
 <Sandpack>
 
@@ -1003,9 +1003,9 @@ label { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-Imagine React didn't exist. Can you refactor this code in a way that makes the logic less fragile and more similar to the React version? What would it look like if the state was explicit, like in React?
+Представьте, что React не существует. Можете ли вы переписать этот код таким образом, чтобы сделать логику менее хрупкой и более похожей на версию React? Как бы это выглядело, если бы состояние было явным, как в React?
 
-If you're struggling to think where to start, the stub below already has most of the structure in place. If you start here, fill in the missing logic in the `updateDOM` function. (Refer to the original code where needed.)
+Если вы испытываете трудности с тем, с чего начать, заглушка ниже уже содержит большую часть структуры. Если вы начнете отсюда, заполните недостающую логику в функции `updateDOM`. (При необходимости обратитесь к исходному коду.)
 
 <Sandpack>
 
@@ -1112,7 +1112,7 @@ label { display: block; margin-bottom: 20px; }
 
 <Solution>
 
-The missing logic included toggling the display of inputs and content, and updating the labels:
+Отсутствующая логика включала переключение отображения полей ввода и контента, а также обновление меток:
 
 <Sandpack>
 
@@ -1229,7 +1229,7 @@ label { display: block; margin-bottom: 20px; }
 
 </Sandpack>
 
-The `updateDOM` function you wrote shows what React does under the hood when you set the state. (However, React also avoids touching the DOM for properties that have not changed since the last time they were set.)
+Функция `updateDOM`, которую вы написали, показывает, что делает React под капотом при установке состояния. (Однако React также избегает взаимодействия с DOM для свойств, которые не изменились с момента их последнего установки.)
 
 </Solution>
 
