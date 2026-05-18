@@ -1,10 +1,9 @@
 ---
 title: PureComponent
 ---
-
 <Pitfall>
 
-Мы рекомендуем определять компоненты как функции, а не классы. [См. как мигрировать.](#alternatives)
+Мы рекомендуем определять компоненты как функции, а не как классы. [См. как выполнить миграцию.](#alternatives)
 
 </Pitfall>
 
@@ -42,7 +41,7 @@ class Greeting extends PureComponent {
 }
 ```
 
-`PureComponent` является подклассом `Component` и поддерживает [все API `Component`.](/reference/react/Component#reference) Наследование от `PureComponent` эквивалентно определению пользовательского метода [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate), который выполняет поверхностное сравнение пропсов и состояния.
+`PureComponent` является подклассом `Component` и поддерживает [все API `Component`.](/reference/react/Component#reference) Наследование `PureComponent` эквивалентно определению пользовательского метода [`shouldComponentUpdate`](/reference/react/Component#shouldcomponentupdate), который выполняет поверхностное сравнение пропсов и состояния.
 
 
 [См. больше примеров ниже.](#usage)
@@ -53,7 +52,7 @@ class Greeting extends PureComponent {
 
 ### Пропуск ненужных повторных рендеров для классовых компонентов {/*skipping-unnecessary-re-renders-for-class-components*/}
 
-React обычно повторно рендерит компонент всякий раз, когда его родительский компонент повторно рендерится. В качестве оптимизации вы можете создать компонент, который React не будет повторно рендерить, когда его родительский компонент повторно рендерится, при условии, что его новые пропсы и состояние совпадают со старыми пропсами и состоянием. [Классовые компоненты](/reference/react/Component) могут выбрать это поведение, наследуя `PureComponent`:
+React обычно повторно рендерит компонент всякий раз, когда рендерится его родитель. В качестве оптимизации вы можете создать компонент, который React не будет повторно рендерить, когда рендерится его родитель, при условии, что его новые пропсы и состояние совпадают со старыми пропсами и состоянием. [Классовые компоненты](/reference/react/Component) могут использовать это поведение, наследуя `PureComponent`:
 
 ```js {1}
 class Greeting extends PureComponent {
@@ -109,7 +108,7 @@ label {
 
 <Pitfall>
 
-Мы рекомендуем определять компоненты как функции, а не классы. [См. как мигрировать.](#alternatives)
+Мы рекомендуем определять компоненты как функции, а не как классы. [См. как выполнить миграцию.](#alternatives)
 
 </Pitfall>
 
@@ -161,7 +160,7 @@ label {
 
 </Sandpack>
 
-При [преобразовании этого компонента из класса в функцию](/reference/react/Component#alternatives) оберните его в [`memo`:](/reference/react/memo)
+Когда вы [преобразуете этот компонент из класса в функцию,](/reference/react/Component#alternatives) оберните его в [`memo`:](/reference/react/memo)
 
 <Sandpack>
 
