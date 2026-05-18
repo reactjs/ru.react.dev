@@ -2,36 +2,36 @@
 title: "React Labs: View Transitions, Activity, and more"
 author: Ricky Hanlon
 date: 2025/04/23
-description: In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and updates on other areas we're working on now.
+description: В публикациях React Labs мы пишем о проектах, находящихся в стадии активных исследований и разработок. В этой статье мы представляем две новые экспериментальные функции, готовые к тестированию сегодня, а также обновления по другим направлениям, над которыми мы сейчас работаем.
 ---
 
-April 23, 2025 by [Ricky Hanlon](https://twitter.com/rickhanlonii)
+23 апреля 2025 г. [Ricky Hanlon](https://twitter.com/rickhanlonii)
 
 ---
 
 <Intro>
 
-In React Labs posts, we write about projects in active research and development. In this post, we're sharing two new experimental features that are ready to try today, and updates on other areas we're working on now.
+В публикациях React Labs мы пишем о проектах, находящихся в активном исследовании и разработке. В этой публикации мы представляем две новые экспериментальные функции, готовые к тестированию, а также обновления по другим областям, над которыми мы работаем в настоящее время.
 
 </Intro>
 
 
 <Note>
 
-React Conf 2025 is scheduled for October 7–8 in Henderson, Nevada! 
+React Conf 2025 запланирована на 7–8 октября в Хендерсоне, штат Невада!
 
-We're looking for speakers to help us create talks about the features covered in this post. If you're interested in speaking at ReactConf, [please apply here](https://forms.reform.app/react-conf/call-for-speakers/) (no talk proposal required).
+Мы ищем докладчиков, которые помогут нам создать выступления о функциях, описанных в этой публикации. Если вы заинтересованы в выступлении на ReactConf, [пожалуйста, подайте заявку здесь](https://forms.reform.app/react-conf/call-for-speakers/) (предварительное предложение доклада не требуется).
 
-For more info on tickets, free streaming, sponsoring, and more, see [the React Conf website](https://conf.react.dev).
+Для получения дополнительной информации о билетах, бесплатной трансляции, спонсорстве и многом другом посетите [веб-сайт React Conf](https://conf.react.dev).
 
 </Note>
 
-Today, we're excited to release documentation for two new experimental features that are ready for testing:
+Сегодня мы рады опубликовать документацию для двух новых экспериментальных функций, готовых к тестированию:
 
 - [View Transitions](#view-transitions)
 - [Activity](#activity)
 
-We're also sharing updates on new features currently in development:
+Мы также делимся обновлениями о новых функциях, находящихся в разработке:
 - [React Performance Tracks](#react-performance-tracks)
 - [Compiler IDE Extension](#compiler-ide-extension)
 - [Automatic Effect Dependencies](#automatic-effect-dependencies)
@@ -40,57 +40,57 @@ We're also sharing updates on new features currently in development:
 
 ---
 
-# New Experimental Features {/*new-experimental-features*/}
+# Новые экспериментальные функции {/*new-experimental-features*/}
 
-View Transitions and Activity are now ready for testing in `react@experimental`. These features have been tested in production and are stable, but the final API may still change as we incorporate feedback.
+View Transitions и Activity теперь готовы к тестированию в `react@experimental`. Эти функции были протестированы в продакшене и являются стабильными, но окончательный API может измениться по мере внесения обратной связи.
 
-You can try them by upgrading React packages to the most recent experimental version:
+Вы можете попробовать их, обновив пакеты React до последней экспериментальной версии:
 
 - `react@experimental`
 - `react-dom@experimental`
 
-Read on to learn how to use these features in your app, or check out the newly published docs:
+Читайте дальше, чтобы узнать, как использовать эти функции в вашем приложении, или ознакомьтесь с недавно опубликованной документацией:
 
-- [`<ViewTransition>`](/reference/react/ViewTransition): A component that lets you activate an animation for a Transition.
-- [`addTransitionType`](/reference/react/addTransitionType): A function that allows you to specify the cause of a Transition.
-- [`<Activity>`](/reference/react/Activity): A component that lets you hide and show parts of the UI.
+- [`<ViewTransition>`](/reference/react/ViewTransition): Компонент, который позволяет активировать анимацию для перехода.
+- [`addTransitionType`](/reference/react/addTransitionType): Функция, которая позволяет указать причину перехода.
+- [`<Activity>`](/reference/react/Activity): Компонент, который позволяет скрывать и отображать части пользовательского интерфейса.
 
-## View Transitions {/*view-transitions*/}
+## Переходы между представлениями {/*view-transitions*/}
 
-React View Transitions are a new experimental feature that makes it easier to add animations to UI transitions in your app. Under-the-hood, these animations use the new [`startViewTransition`](https://developer.mozilla.org/en-US/docs/Web/API/Document/startViewTransition) API available in most modern browsers.
+Переходы между представлениями в React — это новая экспериментальная функция, которая упрощает добавление анимаций к переходам пользовательского интерфейса в вашем приложении. По сути, эти анимации используют новый API [`startViewTransition`](https://developer.mozilla.org/ru/docs/Web/API/Document/startViewTransition), доступный в большинстве современных браузеров.
 
-To opt-in to animating an element, wrap it in the new `<ViewTransition>` component:
+Чтобы включить анимацию элемента, оберните его в новый компонент `<ViewTransition>`:
 
 ```js
-// "what" to animate.
+// "Что" анимировать.
 <ViewTransition>
-  <div>animate me</div>
+  <div>Анимируй меня</div>
 </ViewTransition>
 ```
 
-This new component lets you declaratively define "what" to animate when an animation is activated. 
+Этот новый компонент позволяет декларативно определять, "что" анимировать при активации анимации.
 
-You can define "when" to animate by using one of these three triggers for a View Transition:
+Вы можете определить, "когда" анимировать, используя один из следующих трех триггеров для перехода между представлениями:
 
 ```js
-// "when" to animate.
+// "Когда" анимировать.
 
-// Transitions
+// Переходы
 startTransition(() => setState(...));
 
-// Deferred Values
+// Отложенные значения
 const deferred = useDeferredValue(value);
 
 // Suspense
 <Suspense fallback={<Fallback />}>
-  <div>Loading...</div>
+  <div>Загрузка...</div>
 </Suspense>
 ```
 
-By default, these animations use the [default CSS animations for View Transitions](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#customizing_your_animations) applied (typically a smooth cross-fade). You can use [view transition pseudo-selectors](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree) to define "how" the animation runs. For example, you can use `*` to change the default animation for all transitions:
+По умолчанию эти анимации используют [CSS-анимации по умолчанию для переходов между представлениями](https://developer.mozilla.org/ru/docs/Web/API/View_Transition_API/Using#customizing_your_animations) (обычно плавное перекрестное затухание). Вы можете использовать [псевдоселекторы переходов между представлениями](https://developer.mozilla.org/ru/docs/Web/API/View_Transition_API/Using#the_view_transition_pseudo-element_tree), чтобы определить, "как" выполняется анимация. Например, вы можете использовать `*`, чтобы изменить анимацию по умолчанию для всех переходов:
 
 ```
-// "how" to animate.
+// "Как" анимировать.
 ::view-transition-old(*) {
   animation: 300ms ease-out fade-out;
 }
@@ -99,16 +99,16 @@ By default, these animations use the [default CSS animations for View Transition
 }
 ```
 
-When the DOM updates due to an animation trigger&mdash;like `startTransition`, `useDeferredValue`, or a `Suspense` fallback switching to content&mdash;React will use [declarative heuristics](/reference/react/ViewTransition#viewtransition) to automatically determine which `<ViewTransition>` components to activate for the animation. The browser will then run the animation that's defined in CSS.
+Когда DOM обновляется из-за триггера анимации, такого как `startTransition`, `useDeferredValue` или переключение резервного варианта `Suspense` на контент, React будет использовать [декларативные эвристики](/reference/react/ViewTransition#viewtransition), чтобы автоматически определить, какие компоненты `<ViewTransition>` следует активировать для анимации. Затем браузер выполнит анимацию, определенную в CSS.
 
-If you're familiar with the browser's View Transition API and want to know how React supports it, check out [How does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs. 
+Если вы знакомы с API переходов между представлениями браузера и хотите узнать, как React его поддерживает, ознакомьтесь с разделом [Как работает `<ViewTransition>`](/reference/react/ViewTransition#how-does-viewtransition-work) в документации.
 
-In this post, let's take a look at a few examples of how to use View Transitions. 
+В этой статье мы рассмотрим несколько примеров использования переходов между представлениями.
 
-We'll start with this app, which doesn't animate any of the following interactions:
-- Click a video to view the details.
-- Click "back" to go back to the feed.
-- Type in the list to filter the videos.
+Мы начнем с этого приложения, которое не анимирует ни одно из следующих взаимодействий:
+- Нажмите на видео, чтобы просмотреть детали.
+- Нажмите "назад", чтобы вернуться к ленте.
+- Введите текст в списке, чтобы отфильтровать видео.
 
 <Sandpack>
 
@@ -118,7 +118,7 @@ import TalkDetails from './Details'; import Home from './Home'; import {useRoute
 export default function App() {
   const {url} = useRouter();
 
-  // 🚩This version doesn't include any animations yet
+  // 🚩Эта версия еще не включает никаких анимаций
   return url === '/' ? <Home /> : <TalkDetails />;
 }
 ```
@@ -164,12 +164,12 @@ export default function Details() {
             navigateBack("/");
           }}
         >
-          <ChevronLeft /> Back
+          <ChevronLeft /> Назад
         </div>
       }
     >
       <div className="details">
-        <Thumbnail video={video} large>
+        <Thumbnail video={video}>
           <VideoControls />
         </Thumbnail>
         <Suspense fallback={<VideoInfoFallback />}>
@@ -194,7 +194,7 @@ function SearchInput({ value, onChange }) {
   return (
     <form className="search" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor={id} className="sr-only">
-        Search
+        Поиск
       </label>
       <div className="search-input">
         <div className="search-icon">
@@ -203,7 +203,7 @@ function SearchInput({ value, onChange }) {
         <input
           type="text"
           id={id}
-          placeholder="Search"
+          placeholder="Поиск"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -234,11 +234,11 @@ export default function Home() {
   const [searchText, setSearchText] = useState("");
   const foundVideos = filterVideos(videos, searchText);
   return (
-    <Layout heading={<div className="fit">{count} Videos</div>}>
+    <Layout heading={<div className="fit">{count} Видео</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
       <div className="video-list">
         {foundVideos.length === 0 && (
-          <div className="no-results">No results</div>
+          <div className="no-results">Нет результатов</div>
         )}
         <div className="videos">
           {foundVideos.map((video) => (
@@ -396,8 +396,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// Хак, так как у нас нет реального бэкенда.
+// В отличие от локального состояния, это сохраняется при фильтрации видео.
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -406,7 +406,7 @@ export default function LikeButton({video}) {
   return (
     <button
       className={`like-button ${isLiked && 'liked'}`}
-      aria-label={isLiked ? 'Unsave' : 'Save'}
+      aria-label={isLiked ? 'Отменить сохранение' : 'Сохранить'}
       onClick={() => {
         const nextIsLiked = !isLiked;
         if (nextIsLiked) {
@@ -489,38 +489,38 @@ export function Video({ video }) {
 const videos = [
   {
     id: '1',
-    title: 'First video',
-    description: 'Video description',
+    title: 'Первое видео',
+    description: 'Описание видео',
     image: 'blue',
   },
   {
     id: '2',
-    title: 'Second video',
-    description: 'Video description',
+    title: 'Второе видео',
+    description: 'Описание видео',
     image: 'red',
   },
   {
     id: '3',
-    title: 'Third video',
-    description: 'Video description',
+    title: 'Третье видео',
+    description: 'Описание видео',
     image: 'green',
   },
   {
     id: '4',
-    title: 'Fourth video',
-    description: 'Video description',
+    title: 'Четвертое видео',
+    description: 'Описание видео',
     image: 'purple',
   },
   {
     id: '5',
-    title: 'Fifth video',
-    description: 'Video description',
+    title: 'Пятое видео',
+    description: 'Описание видео',
     image: 'yellow',
   },
   {
     id: '6',
-    title: 'Sixth video',
-    description: 'Video description',
+    title: 'Шестое видео',
+    description: 'Описание видео',
     image: 'gray',
   },
 ];
@@ -606,14 +606,14 @@ export function Router({ children }) {
     });
   }
   function navigate(url) {
-    // Update router state in transition.
+    // Обновляем состояние роутера в переходе.
     startTransition(() => {
       go(url);
     });
   }
 
   function navigateBack(url) {
-    // Update router state in transition.
+    // Обновляем состояние роутера в переходе.
     startTransition(() => {
       go(url);
     });
@@ -621,13 +621,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // Это не должно анимироваться, так как восстановление должно быть синхронным.
+      // Даже если это переход.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // Ничего не делаем. URL уже обновлен.
           },
         });
       });
@@ -656,8 +656,6 @@ export function Router({ children }) {
     </RouterContext>
   );
 }
-```
-
 ```css src/styles.css
 @font-face {
   font-family: Optimistic Text;
@@ -1264,17 +1262,17 @@ root.render(
 
 <Note>
 
-#### View Transitions do not replace CSS and JS driven animations {/*view-transitions-do-not-replace-css-and-js-driven-animations*/}
+#### View Transitions не заменяют анимации, управляемые CSS и JavaScript {/*view-transitions-do-not-replace-css-and-js-driven-animations*/}
 
-View Transitions are meant to be used for UI transitions such as navigation, expanding, opening, or re-ordering. They are not meant to replace all the animations in your app.
+View Transitions предназначены для переходов пользовательского интерфейса, таких как навигация, раскрытие, открытие или изменение порядка элементов. Они не предназначены для замены всех анимаций в вашем приложении.
 
-In our example app above, notice that there are already animations when you click the "like" button and in the Suspense fallback glimmer. These are good use cases for CSS animations because they are animating a specific element.
+В нашем примере приложения выше обратите внимание, что уже есть анимации при нажатии кнопки «лайк» и в мерцании запасного варианта Suspense. Это хорошие примеры использования CSS-анимаций, поскольку они анимируют конкретный элемент.
 
 </Note>
 
-### Animating navigations {/*animating-navigations*/}
+### Анимация переходов {/*animating-navigations*/}
 
-Our app includes a Suspense-enabled router, with [page transitions already marked as Transitions](/reference/react/useTransition#building-a-suspense-enabled-router), which means navigations are performed with `startTransition`:
+Наше приложение включает роутер с поддержкой Suspense, где [переходы между страницами уже отмечены как Transitions](/reference/react/useTransition#building-a-suspense-enabled-router), что означает, что переходы выполняются с помощью `startTransition`:
 
 ```js
 function navigate(url) {
@@ -1284,19 +1282,19 @@ function navigate(url) {
 }
 ```
 
-`startTransition` is a View Transition trigger, so we can add `<ViewTransition>` to animate between pages:
+`startTransition` является триггером для View Transitions, поэтому мы можем добавить `<ViewTransition>` для анимации между страницами:
 
 ```js
-// "what" to animate
+// "Что" анимировать
 <ViewTransition key={url}>
   {url === '/' ? <Home /> : <TalkDetails />}
 </ViewTransition>
 ```
 
-When the `url` changes, the `<ViewTransition>` and new route are rendered. Since the `<ViewTransition>` was updated inside of `startTransition`, the `<ViewTransition>` is activated for an animation.
+Когда `url` изменяется, рендерятся `<ViewTransition>` и новый маршрут. Поскольку `<ViewTransition>` был обновлен внутри `startTransition`, для него активируется анимация.
 
 
-By default, View Transitions include the browser default cross-fade animation. Adding this to our example, we now have a cross-fade whenever we navigate between pages: 
+По умолчанию View Transitions включают стандартную анимацию плавного перехода браузера. Добавив это в наш пример, мы получим плавный переход при каждом переходе между страницами:
 
 <Sandpack>
 
@@ -1306,8 +1304,8 @@ import {unstable_ViewTransition as ViewTransition} from 'react'; import Details 
 export default function App() {
   const {url} = useRouter();
   
-  // Use ViewTransition to animate between pages.
-  // No additional CSS needed by default.
+  // Используйте ViewTransition для анимации между страницами.
+  // Дополнительный CSS по умолчанию не требуется.
   return (
     <ViewTransition>
       {url === '/' ? <Home /> : <Details />}
@@ -1357,7 +1355,7 @@ export default function Details() {
             navigateBack("/");
           }}
         >
-          <ChevronLeft /> Back
+          <ChevronLeft /> Назад
         </div>
       }
     >
@@ -1387,7 +1385,7 @@ function SearchInput({ value, onChange }) {
   return (
     <form className="search" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor={id} className="sr-only">
-        Search
+        Поиск
       </label>
       <div className="search-input">
         <div className="search-icon">
@@ -1396,7 +1394,7 @@ function SearchInput({ value, onChange }) {
         <input
           type="text"
           id={id}
-          placeholder="Search"
+          placeholder="Поиск"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -1427,11 +1425,11 @@ export default function Home() {
   const [searchText, setSearchText] = useState("");
   const foundVideos = filterVideos(videos, searchText);
   return (
-    <Layout heading={<div className="fit">{count} Videos</div>}>
+    <Layout heading={<div className="fit">{count} Видео</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
       <div className="video-list">
         {foundVideos.length === 0 && (
-          <div className="no-results">No results</div>
+          <div className="no-results">Нет результатов</div>
         )}
         <div className="videos">
           {foundVideos.map((video) => (
@@ -1538,7 +1536,7 @@ export function Heart({liked, animate}) {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 5.184zm-.002 15.525c2.071-1.388 4.477-3.342 6.427-5.47C20.72 12.733 22 10.401 22 8.677c0-1.708-.466-2.855-1.087-3.55C20.316 4.459 19.392 4 18 4c-.726 0-1.63.364-2.5.9-.67.412-1.148.82-1.266.92-.03.025-.037.031-.019.014l-.013.013L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
+            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
             fill="currentColor"
           />
         )}
@@ -1577,8 +1575,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* Отключить ViewTransition для контента. */}
+      {/* Контент может определять свой собственный ViewTransition. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -1593,8 +1591,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// Хак, так как у нас нет реального бэкенда.
+// В отличие от локального состояния, это переживает фильтрацию видео.
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -1603,7 +1601,7 @@ export default function LikeButton({video}) {
   return (
     <button
       className={`like-button ${isLiked && 'liked'}`}
-      aria-label={isLiked ? 'Unsave' : 'Save'}
+      aria-label={isLiked ? 'Удалить из избранного' : 'Добавить в избранное'}
       onClick={() => {
         const nextIsLiked = !isLiked;
         if (nextIsLiked) {
@@ -1686,38 +1684,38 @@ export function Video({ video }) {
 const videos = [
   {
     id: '1',
-    title: 'First video',
-    description: 'Video description',
+    title: 'Первое видео',
+    description: 'Описание видео',
     image: 'blue',
   },
   {
     id: '2',
-    title: 'Second video',
-    description: 'Video description',
+    title: 'Второе видео',
+    description: 'Описание видео',
     image: 'red',
   },
   {
     id: '3',
-    title: 'Third video',
-    description: 'Video description',
+    title: 'Третье видео',
+    description: 'Описание видео',
     image: 'green',
   },
   {
     id: '4',
-    title: 'Fourth video',
-    description: 'Video description',
+    title: 'Четвертое видео',
+    description: 'Описание видео',
     image: 'purple',
   },
   {
     id: '5',
-    title: 'Fifth video',
-    description: 'Video description',
+    title: 'Пятое видео',
+    description: 'Описание видео',
     image: 'yellow',
   },
   {
     id: '6',
-    title: 'Sixth video',
-    description: 'Video description',
+    title: 'Шестое видео',
+    description: 'Описание видео',
     image: 'gray',
   },
 ];
@@ -1774,7 +1772,7 @@ export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
   
   function navigate(url) {
-    // Update router state in transition.
+    // Обновляем состояние роутера в рамках перехода.
     startTransition(() => {
       go(url);
     });
@@ -1807,13 +1805,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // Это не должно анимироваться, так как восстановление должно быть синхронным.
+      // Даже если это переход.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // Ничего не делаем. URL уже обновлен.
           },
         });
       });
@@ -1852,623 +1850,19 @@ export function useRouter() {
 export function useIsNavPending() {
   return use(RouterContext).isPending;
 }
-```
-
-```css src/styles.css hidden
-@font-face {
-  font-family: Optimistic Text;
-  src: url(https://react.dev/fonts/Optimistic_Text_W_Rg.woff2) format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Optimistic Text;
-  src: url(https://react.dev/fonts/Optimistic_Text_W_Md.woff2) format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Optimistic Text;
-  src: url(https://react.dev/fonts/Optimistic_Text_W_Bd.woff2) format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Optimistic Text;
-  src: url(https://react.dev/fonts/Optimistic_Text_W_Bd.woff2) format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background-image: url(https://react.dev/images/meta-gradient-dark.png);
-  background-size: 100%;
-  background-position: -100%;
-  background-color: rgb(64 71 86);
-  background-repeat: no-repeat;
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  font-family: Optimistic Text, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  padding: 10px 0 10px 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-}
-
-#root {
-  flex: 1 1;
-  height: auto;
-  background-color: #fff;
-  border-radius: 10px;
-  max-width: 450px;
-  min-height: 600px;
-  padding-bottom: 10px;
-}
-
-h1 {
-  margin-top: 0;
-  font-size: 22px;
-}
-
-h2 {
-  margin-top: 0;
-  font-size: 20px;
-}
-
-h3 {
-  margin-top: 0;
-  font-size: 18px;
-}
-
-h4 {
-  margin-top: 0;
-  font-size: 16px;
-}
-
-h5 {
-  margin-top: 0;
-  font-size: 14px;
-}
-
-h6 {
-  margin-top: 0;
-  font-size: 12px;
-}
-
-code {
-  font-size: 1.2em;
-}
-
-ul {
-  padding-inline-start: 20px;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.overflow-visible {
-  overflow: visible;
-}
-
-.visible {
-  overflow: visible;
-}
-
-.fit {
-  width: fit-content;
-}
-
-
-/* Layout */
-.page {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.top-hero {
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: conic-gradient(
-      from 90deg at -10% 100%,
-      #2b303b 0deg,
-      #2b303b 90deg,
-      #16181d 1turn
-  );
-}
-
-.bottom {
-  flex: 1;
-  overflow: auto;
-}
-
-.top-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0;
-  padding: 0 12px;
-  top: 0;
-  width: 100%;
-  height: 44px;
-  color: #23272f;
-  font-weight: 700;
-  font-size: 20px;
-  z-index: 100;
-  cursor: default;
-}
-
-.content {
-  padding: 0 12px;
-  margin-top: 4px;
-}
-
-
-.loader {
-  color: #23272f;
-  font-size: 3px;
-  width: 1em;
-  margin-right: 18px;
-  height: 1em;
-  border-radius: 50%;
-  position: relative;
-  text-indent: -9999em;
-  animation: loading-spinner 1.3s infinite linear;
-  animation-delay: 200ms;
-  transform: translateZ(0);
-}
-
-@keyframes loading-spinner {
-  0%,
-  100% {
-    box-shadow: 0 -3em 0 0.2em,
-    2em -2em 0 0em, 3em 0 0 -1em,
-    2em 2em 0 -1em, 0 3em 0 -1em,
-    -2em 2em 0 -1em, -3em 0 0 -1em,
-    -2em -2em 0 0;
-  }
-  12.5% {
-    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em,
-    3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em,
-    -2em 2em 0 -1em, -3em 0 0 -1em,
-    -2em -2em 0 -1em;
-  }
-  25% {
-    box-shadow: 0 -3em 0 -0.5em,
-    2em -2em 0 0, 3em 0 0 0.2em,
-    2em 2em 0 0, 0 3em 0 -1em,
-    -2em 2em 0 -1em, -3em 0 0 -1em,
-    -2em -2em 0 -1em;
-  }
-  37.5% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
-    3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em,
-    -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
-  }
-  50% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
-    3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em,
-    -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
-  }
-  62.5% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
-    3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0,
-    -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
-  }
-  75% {
-    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em,
-    3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
-    -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
-  }
-  87.5% {
-    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em,
-    3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
-    -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
-  }
-}
-
-/* LikeButton */
-.like-button {
-  outline-offset: 2px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  cursor: pointer;
-  border-radius: 9999px;
-  border: none;
-  outline: none 2px;
-  color: #5e687e;
-  background: none;
-}
-
-.like-button:focus {
-  color: #a6423a;
-  background-color: rgba(166, 66, 58, .05);
-}
-
-.like-button:active {
-  color: #a6423a;
-  background-color: rgba(166, 66, 58, .05);
-  transform: scaleX(0.95) scaleY(0.95);
-}
-
-.like-button:hover {
-  background-color: #f6f7f9;
-}
-
-.like-button.liked {
-  color: #a6423a;
-}
-
-/* Icons */
-@keyframes circle {
-  0% {
-    transform: scale(0);
-    stroke-width: 16px;
-  }
-
-  50% {
-    transform: scale(.5);
-    stroke-width: 16px;
-  }
-
-  to {
-    transform: scale(1);
-    stroke-width: 0;
-  }
-}
-
-.circle {
-  color: rgba(166, 66, 58, .5);
-  transform-origin: center;
-  transition-property: all;
-  transition-duration: .15s;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-}
-
-.circle.liked.animate {
-  animation: circle .3s forwards;
-}
-
-.heart {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.heart.liked {
-  transform-origin: center;
-  transition-property: all;
-  transition-duration: .15s;
-  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-}
-
-.heart.liked.animate {
-  animation: scale .35s ease-in-out forwards;
-}
-
-.control-icon {
-  color: hsla(0, 0%, 100%, .5);
-  filter:  drop-shadow(0 20px 13px rgba(0, 0, 0, .03)) drop-shadow(0 8px 5px rgba(0, 0, 0, .08));
-}
-
-.chevron-left {
-  margin-top: 2px;
-  rotate: 90deg;
-}
-
-
-/* Video */
-.thumbnail {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  display: flex;
-  overflow: hidden;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.5rem;
-  outline-offset: 2px;
-  width: 8rem;
-  vertical-align: middle;
-  background-color: #ffffff;
-  background-size: cover;
-  user-select: none;
-}
-
-.thumbnail.blue {
-  background-image: conic-gradient(at top right, #c76a15, #087ea4, #2b3491);
-}
-
-.thumbnail.red {
-  background-image: conic-gradient(at top right, #c76a15, #a6423a, #2b3491);
-}
-
-.thumbnail.green {
-  background-image: conic-gradient(at top right, #c76a15, #388f7f, #2b3491);
-}
-
-.thumbnail.purple {
-  background-image: conic-gradient(at top right, #c76a15, #575fb7, #2b3491);
-}
-
-.thumbnail.yellow {
-  background-image: conic-gradient(at top right, #c76a15, #FABD62, #2b3491);
-}
-
-.thumbnail.gray {
-  background-image: conic-gradient(at top right, #c76a15, #4E5769, #2b3491);
-}
-
-.video {
-  display: flex;
-  flex-direction: row;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.video .link {
-  display: flex;
-  flex-direction: row;
-  flex: 1 1 0;
-  gap: 0.125rem;
-  outline-offset: 4px;
-  cursor: pointer;
-}
-
-.video .info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 8px;
-  gap: 0.125rem;
-}
-
-.video .info:hover {
-  text-decoration: underline;
-}
-
-.video-title {
-  font-size: 15px;
-  line-height: 1.25;
-  font-weight: 700;
-  color: #23272f;
-}
-
-.video-description {
-  color: #5e687e;
-  font-size: 13px;
-}
-
-/* Details */
-.details .thumbnail {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  display: flex;
-  overflow: hidden;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.5rem;
-  outline-offset: 2px;
-  width: 100%;
-  vertical-align: middle;
-  background-color: #ffffff;
-  background-size: cover;
-  user-select: none;
-}
-
-.video-details-title {
-  margin-top: 8px;
-}
-
-.video-details-speaker {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px
-}
-
-.back {
-  display: flex;
-  align-items: center;
-  margin-left: -5px;
-  cursor: pointer;
-}
-
-.back:hover {
-  text-decoration: underline;
-}
-
-.info-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.25;
-  margin: 8px 0 0 0 ;
-}
-
-.info-description {
-  margin: 8px 0 0 0;
-}
-
-.controls {
-  cursor: pointer;
-}
-
-.fallback {
-  background: #f6f7f8 linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%) no-repeat;
-  background-size: 800px 104px;
-  display: block;
-  line-height: 1.25;
-  margin: 8px 0 0 0;
-  border-radius: 5px;
-  overflow: hidden;
-
-  animation: 1s linear 1s infinite shimmer;
-  animation-delay: 300ms;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: shimmer;
-  animation-timing-function: linear;
-}
-
-
-.fallback.title {
-  width: 130px;
-  height: 30px;
-
-}
-
-.fallback.description {
-  width: 150px;
-  height: 21px;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -468px 0;
-  }
-
-  100% {
-    background-position: 468px 0;
-  }
-}
-
-.search {
-  margin-bottom: 10px;
-}
-.search-input {
-  width: 100%;
-  position: relative;
-}
-
-.search-icon {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  inset-inline-start: 0;
-  display: flex;
-  align-items: center;
-  padding-inline-start: 1rem;
-  pointer-events: none;
-  color: #99a1b3;
-}
-
-.search-input input {
-  display: flex;
-  padding-inline-start: 2.75rem;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 100%;
-  text-align: start;
-  background-color: rgb(235 236 240);
-  outline: 2px solid transparent;
-  cursor: pointer;
-  border: none;
-  align-items: center;
-  color: rgb(35 39 47);
-  border-radius: 9999px;
-  vertical-align: middle;
-  font-size: 15px;
-}
-
-.search-input input:hover, .search-input input:active {
-  background-color: rgb(235 236 240/ 0.8);
-  color: rgb(35 39 47/ 0.8);
-}
-
-/* Home */
-.video-list {
-  position: relative;
-}
-
-.video-list .videos {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  overflow-y: auto;
-  height: 100%;
-}
-```
-
-```js src/index.js hidden
-import React, {StrictMode} from 'react';
-import {createRoot} from 'react-dom/client';
-import './styles.css';
-
-import App from './App';
-import {Router} from './router';
-
-const root = createRoot(document.getElementById('root'));
-root.render(
-  <StrictMode>
-    <Router>
-      <App />
-    </Router>
-  </StrictMode>
-);
-```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 </Sandpack>
 
-Since our router already updates the route using `startTransition`, this one line change to add `<ViewTransition>` activates with the default cross-fade animation. 
+Поскольку наш роутер уже обновляет маршрут с помощью `startTransition`, это однострочное изменение для добавления `<ViewTransition>` активирует анимацию перехода с перекрестным затуханием по умолчанию.
 
-If you're curious how this works, see the docs for [How does `<ViewTransition>` work?](/reference/react/ViewTransition#how-does-viewtransition-work)
+Если вам интересно, как это работает, ознакомьтесь с документацией [Как работает `<ViewTransition>`?](/reference/react/ViewTransition#how-does-viewtransition-work)
 
 <Note>
 
-#### Opting out of `<ViewTransition>` animations {/*opting-out-of-viewtransition-animations*/}
+#### Отключение анимаций `<ViewTransition>` {/*opting-out-of-viewtransition-animations*/}
 
-In this example, we're wrapping the root of the app in `<ViewTransition>` for simplicity, but this means that all transitions in the app will be animated, which can lead to unexpected animations. 
+В этом примере мы оборачиваем корень приложения в `<ViewTransition>` для простоты, но это означает, что все переходы в приложении будут анимированы, что может привести к неожиданным анимациям.
 
-To fix, we're wrapping route children with `"none"` so each page can control its own animation:
+Чтобы исправить это, мы оборачиваем дочерние элементы маршрутов значением `"none"`, чтобы каждая страница могла контролировать свою собственную анимацию:
 
 ```js
 // Layout.js
@@ -2477,17 +1871,17 @@ To fix, we're wrapping route children with `"none"` so each page can control its
 </ViewTransition>
 ```
 
-In practice, navigations should be done via "enter" and "exit" props, or by using Transition Types. 
+На практике навигация должна осуществляться с помощью пропсов "enter" и "exit" или с использованием типов переходов (Transition Types).
 
 </Note>
 
-### Customizing animations {/*customizing-animations*/}
+### Настройка анимаций {/*customizing-animations*/}
 
-By default, `<ViewTransition>` includes the default cross-fade from the browser.
+По умолчанию `<ViewTransition>` включает стандартное перекрестное затухание браузера.
 
-To customize animations, you can provide props to the `<ViewTransition>` component to specify which animations to use, based on [how the `<ViewTransition>` activates](/reference/react/ViewTransition#props).
+Чтобы настроить анимации, вы можете передать пропсы компоненту `<ViewTransition>`, чтобы указать, какие анимации использовать, в зависимости от [способа активации `<ViewTransition>`](/reference/react/ViewTransition#props).
 
-For example, we can slow down the `default` cross fade animation:
+Например, мы можем замедлить стандартное перекрестное затухание:
 
 ```js
 <ViewTransition default="slow-fade">
@@ -2495,7 +1889,7 @@ For example, we can slow down the `default` cross fade animation:
 </ViewTransition>
 ```
 
-And define `slow-fade` in CSS using [view transition classes](/reference/react/ViewTransition#view-transition-classes):
+И определить `slow-fade` в CSS, используя [классы переходов представления](/reference/react/ViewTransition#view-transition-classes):
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -2507,7 +1901,7 @@ And define `slow-fade` in CSS using [view transition classes](/reference/react/V
 }
 ```
 
-Now, the cross fade is slower:
+Теперь перекрестное затухание будет медленнее:
 
 <Sandpack>
 
@@ -2520,8 +1914,8 @@ import { useRouter } from "./router";
 export default function App() {
   const { url } = useRouter();
 
-  // Define a default animation of .slow-fade.
-  // See animations.css for the animation definiton.
+  // Определяем анимацию по умолчанию .slow-fade.
+  // См. animations.css для определения анимации.
   return (
     <ViewTransition default="slow-fade">
       {url === '/' ? <Home /> : <Details />}
@@ -2571,12 +1965,12 @@ export default function Details() {
             navigateBack("/");
           }}
         >
-          <ChevronLeft /> Back
+          <ChevronLeft /> Назад
         </div>
       }
     >
       <div className="details">
-        <Thumbnail video={video} large>
+        <Thumbnail video={video}>
           <VideoControls />
         </Thumbnail>
         <Suspense fallback={<VideoInfoFallback />}>
@@ -2601,7 +1995,7 @@ function SearchInput({ value, onChange }) {
   return (
     <form className="search" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor={id} className="sr-only">
-        Search
+        Поиск
       </label>
       <div className="search-input">
         <div className="search-icon">
@@ -2610,7 +2004,7 @@ function SearchInput({ value, onChange }) {
         <input
           type="text"
           id={id}
-          placeholder="Search"
+          placeholder="Поиск"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -2641,11 +2035,11 @@ export default function Home() {
   const [searchText, setSearchText] = useState("");
   const foundVideos = filterVideos(videos, searchText);
   return (
-    <Layout heading={<div className="fit">{count} Videos</div>}>
+    <Layout heading={<div className="fit">{count} Видео</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
       <div className="video-list">
         {foundVideos.length === 0 && (
-          <div className="no-results">No results</div>
+          <div className="no-results">Нет результатов</div>
         )}
         <div className="videos">
           {foundVideos.map((video) => (
@@ -2752,7 +2146,7 @@ export function Heart({liked, animate}) {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 5.184zm-.002 15.525c2.071-1.388 4.477-3.342 6.427-5.47C20.72 12.733 22 10.401 22 8.677c0-1.708-.466-2.855-1.087-3.55C20.316 4.459 19.392 4 18 4c-.726 0-1.63.364-2.5.9-.67.412-1.148.82-1.266.92-.03.025-.037.031-.019.014l-.013.013L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
+            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
             fill="currentColor"
           />
         )}
@@ -2791,8 +2185,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* Опт-аут из ViewTransition для контента. */}
+      {/* Контент может определять свой собственный ViewTransition. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -2807,8 +2201,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// Хак, так как у нас нет реального бэкенда.
+// В отличие от локального состояния, это переживает фильтрацию видео.
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -2817,7 +2211,7 @@ export default function LikeButton({video}) {
   return (
     <button
       className={`like-button ${isLiked && 'liked'}`}
-      aria-label={isLiked ? 'Unsave' : 'Save'}
+      aria-label={isLiked ? 'Отменить сохранение' : 'Сохранить'}
       onClick={() => {
         const nextIsLiked = !isLiked;
         if (nextIsLiked) {
@@ -2863,8 +2257,7 @@ export function Thumbnail({ video, children }) {
     <div
       aria-hidden="true"
       tabIndex={-1}
-      className={`thumbnail ${video.image}`}
-    >
+      className={`thumbnail ${video.image}`}>
       {children}
     </div>
   );
@@ -2900,38 +2293,38 @@ export function Video({ video }) {
 const videos = [
   {
     id: '1',
-    title: 'First video',
-    description: 'Video description',
+    title: 'Первое видео',
+    description: 'Описание видео',
     image: 'blue',
   },
   {
     id: '2',
-    title: 'Second video',
-    description: 'Video description',
+    title: 'Второе видео',
+    description: 'Описание видео',
     image: 'red',
   },
   {
     id: '3',
-    title: 'Third video',
-    description: 'Video description',
+    title: 'Третье видео',
+    description: 'Описание видео',
     image: 'green',
   },
   {
     id: '4',
-    title: 'Fourth video',
-    description: 'Video description',
+    title: 'Четвертое видео',
+    description: 'Описание видео',
     image: 'purple',
   },
   {
     id: '5',
-    title: 'Fifth video',
-    description: 'Video description',
+    title: 'Пятое видео',
+    description: 'Описание видео',
     image: 'yellow',
   },
   {
     id: '6',
-    title: 'Sixth video',
-    description: 'Video description',
+    title: 'Шестое видео',
+    description: 'Описание видео',
     image: 'gray',
   },
 ];
@@ -3017,14 +2410,14 @@ export function Router({ children }) {
     });
   }
   function navigate(url) {
-    // Update router state in transition.
+    // Обновляем состояние роутера в переходе.
     startTransition(() => {
       go(url);
     });
   }
 
   function navigateBack(url) {
-    // Update router state in transition.
+    // Обновляем состояние роутера в переходе.
     startTransition(() => {
       go(url);
     });
@@ -3032,13 +2425,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // Это не должно анимироваться, так как восстановление должно быть синхронным.
+      // Даже если это переход.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // Нет операции. URL уже обновлен.
           },
         });
       });
@@ -3068,7 +2461,6 @@ export function Router({ children }) {
   );
 }
 ```
-
 ```css src/styles.css hidden
 @font-face {
   font-family: Optimistic Text;
@@ -3248,6 +2640,7 @@ ul {
 }
 
 
+/* Loader */
 .loader {
   color: #23272f;
   font-size: 3px;
@@ -3686,13 +3079,13 @@ root.render(
 
 </Sandpack>
 
-See [Styling View Transitions](/reference/react/ViewTransition#styling-view-transitions) for a full guide on styling `<ViewTransition>`.
+См. [Стилизация переходов между представлениями](/reference/react/ViewTransition#styling-view-transitions) для полного руководства по стилизации `<ViewTransition>`.
 
-### Shared Element Transitions {/*shared-element-transitions*/}
+### Переходы между общими элементами {/*shared-element-transitions*/}
 
-When two pages include the same element, often you want to animate it from one page to the next.
+Когда две страницы содержат один и тот же элемент, часто хочется анимировать его переход с одной страницы на другую.
 
-To do this you can add a unique `name` to the `<ViewTransition>`:
+Для этого вы можете добавить уникальное `name` к `<ViewTransition>`:
 
 ```js
 <ViewTransition name={`video-${video.id}`}>
@@ -3700,7 +3093,7 @@ To do this you can add a unique `name` to the `<ViewTransition>`:
 </ViewTransition>
 ```
 
-Now the video thumbnail animates between the two pages:
+Теперь миниатюра видео будет анимироваться между двумя страницами:
 
 <Sandpack>
 
@@ -3713,9 +3106,9 @@ import { useRouter } from "./router";
 export default function App() {
   const { url } = useRouter();
 
-  // Keeping our default slow-fade.
-  // This allows the content not in the shared
-  // element transition to cross-fade.
+  // Сохраняем наш стандартный медленный переход.
+  // Это позволяет контенту, не участвующему в переходе между общими элементами,
+  // плавно переходить друг в друга.
   return (
     <ViewTransition default="slow-fade">
       {url === "/" ? <Home /> : <Details />}
@@ -3765,7 +3158,7 @@ export default function Details() {
             navigateBack("/");
           }}
         >
-          <ChevronLeft /> Back
+          <ChevronLeft /> Назад
         </div>
       }
     >
@@ -3795,7 +3188,7 @@ function SearchInput({ value, onChange }) {
   return (
     <form className="search" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor={id} className="sr-only">
-        Search
+        Поиск
       </label>
       <div className="search-input">
         <div className="search-icon">
@@ -3804,7 +3197,7 @@ function SearchInput({ value, onChange }) {
         <input
           type="text"
           id={id}
-          placeholder="Search"
+          placeholder="Поиск"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -3835,11 +3228,11 @@ export default function Home() {
   const [searchText, setSearchText] = useState("");
   const foundVideos = filterVideos(videos, searchText);
   return (
-    <Layout heading={<div className="fit">{count} Videos</div>}>
+    <Layout heading={<div className="fit">{count} Видео</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
       <div className="video-list">
         {foundVideos.length === 0 && (
-          <div className="no-results">No results</div>
+          <div className="no-results">Нет результатов</div>
         )}
         <div className="videos">
           {foundVideos.map((video) => (
@@ -3946,7 +3339,7 @@ export function Heart({liked, animate}) {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 5.184zm-.002 15.525c2.071-1.388 4.477-3.342 6.427-5.47C20.72 12.733 22 10.401 22 8.677c0-1.708-.466-2.855-1.087-3.55C20.316 4.459 19.392 4 18 4c-.726 0-1.63.364-2.5.9-.67.412-1.148.82-1.266.92-.03.025-.037.031-.019.014l-.013.013L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
+            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
             fill="currentColor"
           />
         )}
@@ -3985,8 +3378,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* Исключаем ViewTransition для контента. */}
+      {/* Контент может определять свой собственный ViewTransition. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -4001,8 +3394,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// Хак, так как у нас нет реального бэкенда.
+// В отличие от локального состояния, это сохраняется при фильтрации видео.
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -4011,7 +3404,7 @@ export default function LikeButton({video}) {
   return (
     <button
       className={`like-button ${isLiked && 'liked'}`}
-      aria-label={isLiked ? 'Unsave' : 'Save'}
+      aria-label={isLiked ? 'Убрать из избранного' : 'Добавить в избранное'}
       onClick={() => {
         const nextIsLiked = !isLiked;
         if (nextIsLiked) {
@@ -4032,8 +3425,8 @@ export default function LikeButton({video}) {
 import { useState, unstable_ViewTransition as ViewTransition } from "react"; import LikeButton from "./LikeButton"; import { useRouter } from "./router"; import { PauseIcon, PlayIcon } from "./Icons"; import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // Добавляем имя для анимации с помощью перехода между общими элементами.
+  // Используется стандартная анимация, дополнительный CSS не требуется.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -4094,38 +3487,38 @@ export function Video({ video }) {
 const videos = [
   {
     id: '1',
-    title: 'First video',
-    description: 'Video description',
+    title: 'Первое видео',
+    description: 'Описание видео',
     image: 'blue',
   },
   {
     id: '2',
-    title: 'Second video',
-    description: 'Video description',
+    title: 'Второе видео',
+    description: 'Описание видео',
     image: 'red',
   },
   {
     id: '3',
-    title: 'Third video',
-    description: 'Video description',
+    title: 'Третье видео',
+    description: 'Описание видео',
     image: 'green',
   },
   {
     id: '4',
-    title: 'Fourth video',
-    description: 'Video description',
+    title: 'Четвертое видео',
+    description: 'Описание видео',
     image: 'purple',
   },
   {
     id: '5',
-    title: 'Fifth video',
-    description: 'Video description',
+    title: 'Пятое видео',
+    description: 'Описание видео',
     image: 'yellow',
   },
   {
     id: '6',
-    title: 'Sixth video',
-    description: 'Video description',
+    title: 'Шестое видео',
+    description: 'Описание видео',
     image: 'gray',
   },
 ];
@@ -4211,14 +3604,14 @@ export function Router({ children }) {
     });
   }
   function navigate(url) {
-    // Update router state in transition.
+    // Обновляем состояние роутера в переходе.
     startTransition(() => {
       go(url);
     });
   }
 
   function navigateBack(url) {
-    // Update router state in transition.
+    // Обновляем состояние роутера в переходе.
     startTransition(() => {
       go(url);
     });
@@ -4226,13 +3619,13 @@ export function Router({ children }) {
 
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // Это не должно анимироваться, так как восстановление должно быть синхронным.
+      // Даже если это переход.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // Ничего не делаем. URL уже обновлен.
           },
         });
       });
@@ -4895,32 +4288,32 @@ root.render(
 
 </Sandpack>
 
-By default, React automatically generates a unique `name` for each element activated for a transition (see [How does `<ViewTransition>` work](/reference/react/ViewTransition#how-does-viewtransition-work)). When React sees a transition where a `<ViewTransition>` with a `name` is removed and a new `<ViewTransition>` with the same `name` is added, it will activate a shared element transition.
+По умолчанию React автоматически генерирует уникальное `name` для каждого элемента, активированного для перехода (см. [Как работает `<ViewTransition>`](/reference/react/ViewTransition#how-does-viewtransition-work)). Когда React обнаруживает переход, в котором удаляется `<ViewTransition>` с `name`, а затем добавляется новый `<ViewTransition>` с тем же `name`, он активирует переход с общим элементом.
 
-For more info, see the docs for [Animating a Shared Element](/reference/react/ViewTransition#animating-a-shared-element).
+Подробнее см. в документации [Анимация общего элемента](/reference/react/ViewTransition#animating-a-shared-element).
 
-### Animating based on cause {/*animating-based-on-cause*/}
+### Анимация в зависимости от причины {/*animating-based-on-cause*/}
 
-Sometimes, you may want elements to animate differently based on how it was triggered. For this use case, we've added a new API called `addTransitionType` to specify the cause of a transition:
+Иногда вам может понадобиться, чтобы элементы анимировались по-разному в зависимости от того, как было вызвано изменение. Для этого мы добавили новый API под названием `addTransitionType`, чтобы указать причину перехода:
 
 ```js {4,11}
 function navigate(url) {
   startTransition(() => {
-    // Transition type for the cause "nav forward"
+    // Тип перехода для причины "переход вперед"
     addTransitionType('nav-forward');
     go(url);
   });
 }
 function navigateBack(url) {
   startTransition(() => {
-    // Transition type for the cause "nav backward"
+    // Тип перехода для причины "переход назад"
     addTransitionType('nav-back');
     go(url);
   });
 }
 ```
 
-With transition types, you can provide custom animations via props to `<ViewTransition>`. Let's add a shared element transition to the header for "6 Videos" and "Back":
+С помощью типов переходов вы можете предоставлять пользовательские анимации через пропсы для `<ViewTransition>`. Давайте добавим переход с общим элементом для заголовка "6 Videos" и "Back":
 
 ```js {4,5}
 <ViewTransition
@@ -4933,31 +4326,31 @@ With transition types, you can provide custom animations via props to `<ViewTran
 </ViewTransition>
 ```
 
-Here we pass a `share` prop to define how to animate based on the transition type. When the share transition activates from `nav-forward`, the view transition class `slide-forward` is applied. When it's from `nav-back`, the `slide-back` animation is activated. Let's define these animations in CSS:
+Здесь мы передаем пропс `share`, чтобы определить, как анимировать в зависимости от типа перехода. Когда переход с общим элементом активируется из `nav-forward`, применяется класс перехода `slide-forward`. Когда он активируется из `nav-back`, активируется анимация `slide-back`. Определим эти анимации в CSS:
 
 ```css
 ::view-transition-old(.slide-forward) {
-    /* when sliding forward, the "old" page should slide out to left. */
+    /* при скольжении вперед, "старая" страница должна скользить влево. */
     animation: ...
 }
 
 ::view-transition-new(.slide-forward) {
-    /* when sliding forward, the "new" page should slide in from right. */
+    /* при скольжении вперед, "новая" страница должна скользить справа. */
     animation: ...
 }
 
 ::view-transition-old(.slide-back) {
-    /* when sliding back, the "old" page should slide out to right. */
+    /* при скольжении назад, "старая" страница должна скользить вправо. */
     animation: ...
 }
 
 ::view-transition-new(.slide-back) {
-    /* when sliding back, the "new" page should slide in from left. */
+    /* при скольжении назад, "новая" страница должна скользить слева. */
     animation: ...
 }
 ```
 
-Now we can animate the header along with thumbnail based on navigation type:
+Теперь мы можем анимировать заголовок вместе с миниатюрой в зависимости от типа навигации:
 
 <Sandpack>
 
@@ -4970,7 +4363,7 @@ import { useRouter } from "./router";
 export default function App() {
   const { url } = useRouter();
 
-  // Keeping our default slow-fade.
+  // Сохраняем наше стандартное медленное затухание.
   return (
     <ViewTransition default="slow-fade">
       {url === "/" ? <Home /> : <Details />}
@@ -5235,7 +4628,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* Пользовательские классы в зависимости от типа перехода. */}
           <ViewTransition
             name="nav"
             share={{
@@ -5247,8 +4640,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* Отключение ViewTransition для контента. */}
+      {/* Контент может определять свой собственный ViewTransition. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -5263,8 +4656,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// Хак, так как у нас на самом деле нет бэкенда.
+// В отличие от локального состояния, это переживает фильтрацию видео.
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -5298,8 +4691,8 @@ import { PauseIcon, PlayIcon } from "./Icons";
 import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // Добавляем имя для анимации с помощью перехода с общим элементом.
+  // Это использует стандартную анимацию, дополнительный CSS не требуется.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -5449,14 +4842,14 @@ export function Router({ children }) {
   
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // Тип перехода для причины "переход вперед"
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // Тип перехода для причины "переход назад"
       addTransitionType('nav-back');
       go(url);
     });
@@ -5476,13 +4869,13 @@ export function Router({ children }) {
   
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // Это не должно анимироваться, так как восстановление должно быть синхронным.
+      // Даже если это переход.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // Ничего не делаем. URL уже обновлен.
           },
         });
       });
@@ -5521,8 +4914,6 @@ export function useRouter() {
 export function useIsNavPending() {
   return use(RouterContext).isPending;
 }
-
-```
 
 ```css src/styles.css hidden
 @font-face {
@@ -6209,13 +5600,11 @@ root.render(
 }
 ```
 
-</Sandpack>
+### Анимация границ Suspense {/*animating-suspense-boundaries*/}
 
-### Animating Suspense Boundaries {/*animating-suspense-boundaries*/}
+Suspense также будет активировать View Transitions.
 
-Suspense will also activate View Transitions. 
-
-To animate the fallback to content, we can wrap `Suspense` with `<ViewTranstion>`:
+Чтобы анимировать переход от запасного варианта к контенту, мы можем обернуть `Suspense` в `<ViewTransition>`:
 
 ```js
 <ViewTransition>
@@ -6225,7 +5614,7 @@ To animate the fallback to content, we can wrap `Suspense` with `<ViewTranstion>
 </ViewTransition>
 ```
 
-By adding this, the fallback will cross-fade into the content. Click a video and see the video info animate in:
+Добавив это, запасной вариант будет плавно переходить в контент. Нажмите на видео и увидите, как информация о видео анимируется:
 
 <Sandpack>
 
@@ -6472,7 +5861,7 @@ export function Heart({liked, animate}) {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 5.184zm-.002 15.525c2.071-1.388 4.477-3.342 6.427-5.47C20.72 12.733 22 10.401 22 8.677c0-1.708-.466-2.855-1.087-3.55C20.316 4.459 19.392 4 18 4c-.726 0-1.63.364-2.5.9-.67.412-1.148.82-1.266.92-.03.025-.037.031-.019.014l-.013.013L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
+            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-.569 0-5.166 2.387-5.192 2.413L12 5.184zm-.002 15.525c2.071-1.388 4.477-3.342 6.427-5.47C20.72 12.733 22 10.401 22 8.677c0-1.708-.466-2.855-1.087-3.55C20.316 4.459 19.392 4 18 4c-.726 0-1.63.364-2.5.9-.67.412-1.148.82-1.266.92-.03.025-.037.031-.019.014l-.013.013L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
             fill="currentColor"
           />
         )}
@@ -6790,8 +6179,6 @@ export function useRouter() {
 export function useIsNavPending() {
   return use(RouterContext).isPending;
 }
-
-```
 
 ```css src/styles.css hidden
 @font-face {
@@ -7528,7 +6915,7 @@ We can also provide custom animations using an `exit` on the fallback, and `ente
 Here's how we'll define `slide-down` and `slide-up` with CSS:
 
 ```css {1, 6}
-::view-transition-old(.slide-down) { 
+::view-transition-old(.slide-down) {
   /* Slide the fallback down */
   animation: ...;
 }
@@ -7697,7 +7084,6 @@ export default function Home() {
     </Layout>
   );
 }
-
 ```
 
 ```js src/Icons.js hidden
@@ -7793,7 +7179,7 @@ export function Heart({liked, animate}) {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 5.184zm-.002 15.525c2.071-1.388 4.477-3.342 6.427-5.47C20.72 12.733 22 10.401 22 8.677c0-1.708-.466-2.855-1.087-3.55C20.316 4.459 19.392 4 18 4c-.726 0-1.63.364-2.5.9-.67.412-1.148.82-1.266.92-.03.025-.037.031-.019.014l-.013.013L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
+            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
             fill="currentColor"
           />
         )}
@@ -8111,7 +7497,6 @@ export function useRouter() {
 export function useIsNavPending() {
   return use(RouterContext).isPending;
 }
-
 ```
 
 ```css src/styles.css hidden
@@ -8831,9 +8216,9 @@ root.render(
 </Sandpack>
 
 
-### Animating Lists {/*animating-lists*/}
+### Анимация списков {/*animating-lists*/}
 
-You can also use `<ViewTransition>` to animate lists of items as they re-order, like in a searchable list of items:
+Вы также можете использовать `<ViewTransition>` для анимации списков элементов при их переупорядочивании, например, в списке с возможностью поиска:
 
 ```js {3,5}
 <div className="videos">
@@ -8845,7 +8230,7 @@ You can also use `<ViewTransition>` to animate lists of items as they re-order, 
 </div>
 ```
 
-To activate the ViewTransition, we can use `useDeferredValue`:
+Чтобы активировать ViewTransition, мы можем использовать `useDeferredValue`:
 
 ```js {2}
 const [searchText, setSearchText] = useState('');
@@ -8853,7 +8238,7 @@ const deferredSearchText = useDeferredValue(searchText);
 const filteredVideos = filterVideos(videos, deferredSearchText);
 ```
 
-Now the items animate as you type in the search bar:
+Теперь элементы анимируются по мере ввода текста в строке поиска:
 
 <Sandpack>
 
@@ -8866,7 +8251,7 @@ import { useRouter } from "./router";
 export default function App() {
   const { url } = useRouter();
 
-  // Default slow-fade animation.
+  // Анимация по умолчанию slow-fade.
   return (
     <ViewTransition default="slow-fade">
       {url === "/" ? <Home /> : <Details />}
@@ -8884,17 +8269,17 @@ import Layout from "./Layout";
 import { ChevronLeft } from "./Icons";
 
 function VideoDetails({id}) {
-  // Animate from Suspense fallback to content
+  // Анимация из запасного варианта Suspense в контент
   return (
     <Suspense
       fallback={
-        // Animate the fallback down.
+        // Анимация запасного варианта вниз.
         <ViewTransition exit="slide-down">
           <VideoInfoFallback />
         </ViewTransition>
       }
     >
-      {/* Animate the content up */}
+      {/* Анимация контента вверх */}
       <ViewTransition enter="slide-up">
         <VideoInfo id={id} />
       </ViewTransition>
@@ -8925,7 +8310,7 @@ export default function Details() {
             navigateBack("/");
           }}
         >
-          <ChevronLeft /> Back
+          <ChevronLeft /> Назад
         </div>
       }
     >
@@ -8954,21 +8339,21 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when") 
+  // Активация с помощью useDeferredValue ("когда") 
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
     <div className="video-list">
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what") 
+          // Анимация каждого элемента в списке ("что") 
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
         ))}
       </div>
       {filteredVideos.length === 0 && (
-        <div className="no-results">No results</div>
+        <div className="no-results">Нет результатов</div>
       )}
     </div>
   );
@@ -8980,7 +8365,7 @@ export default function Home() {
   const [searchText, setSearchText] = useState('');
   
   return (
-    <Layout heading={<div className="fit">{count} Videos</div>}>
+    <Layout heading={<div className="fit">{count} Видео</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
       <SearchList videos={videos} searchText={searchText} />
     </Layout>
@@ -8992,7 +8377,7 @@ function SearchInput({ value, onChange }) {
   return (
     <form className="search" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor={id} className="sr-only">
-        Search
+        Поиск
       </label>
       <div className="search-input">
         <div className="search-icon">
@@ -9001,7 +8386,7 @@ function SearchInput({ value, onChange }) {
         <input
           type="text"
           id={id}
-          placeholder="Search"
+          placeholder="Поиск"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -9120,7 +8505,7 @@ export function Heart({liked, animate}) {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 5.184zm-.002 15.525c2.071-1.388 4.477-3.342 6.427-5.47C20.72 12.733 22 10.401 22 8.677c0-1.708-.466-2.855-1.087-3.55C20.316 4.459 19.392 4 18 4c-.726 0-1.63.364-2.5.9-.67.412-1.148.82-1.266.92-.03.025-.037.031-.019.014l-.013.013L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
+            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
             fill="currentColor"
           />
         )}
@@ -9155,7 +8540,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* Пользовательские классы в зависимости от типа перехода. */}
           <ViewTransition
             name="nav"
             share={{
@@ -9167,8 +8552,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* Отключение ViewTransition для контента. */}
+      {/* Контент может определять свой собственный ViewTransition. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -9183,8 +8568,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// Хак, так как у нас нет реального бэкенда.
+// В отличие от локального состояния, это сохраняется при фильтрации видео.
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -9193,7 +8578,7 @@ export default function LikeButton({video}) {
   return (
     <button
       className={`like-button ${isLiked && 'liked'}`}
-      aria-label={isLiked ? 'Unsave' : 'Save'}
+      aria-label={isLiked ? 'Отменить сохранение' : 'Сохранить'}
       onClick={() => {
         const nextIsLiked = !isLiked;
         if (nextIsLiked) {
@@ -9218,8 +8603,8 @@ import { PauseIcon, PlayIcon } from "./Icons";
 import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // Добавьте имя для анимации с помощью перехода с общим элементом.
+  // Это использует анимацию по умолчанию, дополнительный CSS не требуется.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -9280,38 +8665,38 @@ export function Video({ video }) {
 const videos = [
   {
     id: '1',
-    title: 'First video',
-    description: 'Video description',
+    title: 'Первое видео',
+    description: 'Описание видео',
     image: 'blue',
   },
   {
     id: '2',
-    title: 'Second video',
-    description: 'Video description',
+    title: 'Второе видео',
+    description: 'Описание видео',
     image: 'red',
   },
   {
     id: '3',
-    title: 'Third video',
-    description: 'Video description',
+    title: 'Третье видео',
+    description: 'Описание видео',
     image: 'green',
   },
   {
     id: '4',
-    title: 'Fourth video',
-    description: 'Video description',
+    title: 'Четвертое видео',
+    description: 'Описание видео',
     image: 'purple',
   },
   {
     id: '5',
-    title: 'Fifth video',
-    description: 'Video description',
+    title: 'Пятое видео',
+    description: 'Описание видео',
     image: 'yellow',
   },
   {
     id: '6',
-    title: 'Sixth video',
-    description: 'Video description',
+    title: 'Шестое видео',
+    description: 'Описание видео',
     image: 'gray',
   },
 ];
@@ -9369,14 +8754,14 @@ export function Router({ children }) {
   const [routerState, setRouterState] = useState({pendingNav: () => {}, url: document.location.pathname});
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // Тип перехода для причины "переход вперед"
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // Тип перехода для причины "переход назад"
       addTransitionType('nav-back');
       go(url);
     });
@@ -9393,13 +8778,13 @@ export function Router({ children }) {
   
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // Это не должно анимироваться, так как восстановление должно быть синхронным.
+      // Даже если это переход.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // Ничего не делать. URL уже обновлен.
           },
         });
       });
@@ -9438,8 +8823,6 @@ export function useRouter() {
 export function useIsNavPending() {
   return use(RouterContext).isPending;
 }
-
-```
 
 ```css src/styles.css hidden
 @font-face {
@@ -10169,15 +9552,13 @@ root.render(
 }
 ```
 
-</Sandpack>
+## Финальный результат {/*final-result*/}
 
-### Final result {/*final-result*/}
+Добавив несколько компонентов `<ViewTransition>` и несколько строк CSS, мы смогли добавить все анимации, показанные выше, в финальный результат.
 
-By adding a few `<ViewTransition>` components and a few lines of CSS, we were able to add all the animations above into the final result.
+Мы с восторгом относимся к View Transitions и считаем, что они выведут на новый уровень приложения, которые вы сможете создавать. Они готовы к использованию уже сегодня в экспериментальном канале релизов React.
 
-We're excited about View Transitions and think they will level up the apps you're able to build. They're ready to start trying today in the experimental channel of React releases.
-
-Let's remove the slow fade, and take a look at the final result:
+Давайте уберём медленное затухание и посмотрим на финальный результат:
 
 <Sandpack>
 
@@ -10187,7 +9568,7 @@ import {unstable_ViewTransition as ViewTransition} from 'react'; import Details 
 export default function App() {
   const {url} = useRouter();
 
-  // Animate with a cross fade between pages.
+  // Анимируем с помощью перекрестного затухания между страницами.
   return (
     <ViewTransition key={url}>
       {url === '/' ? <Home /> : <Details />}
@@ -10197,20 +9578,20 @@ export default function App() {
 ```
 
 ```js src/Details.js
-import { use, Suspense, unstable_ViewTransition as ViewTransition } from "react"; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import { useRouter } from "./router"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
+import { use, Suspense, unstable_ViewTransition as ViewTransition } from "react"; import Details from './Details'; import Home from './Home'; import {useRouter} from './router'; import { fetchVideo, fetchVideoDetails } from "./data"; import { Thumbnail, VideoControls } from "./Videos"; import Layout from "./Layout"; import { ChevronLeft } from "./Icons";
 
 function VideoDetails({id}) {
-  // Animate from Suspense fallback to content
+  // Анимируем от запасного варианта Suspense к контенту
   return (
     <Suspense
       fallback={
-        // Animate the fallback down.
+        // Анимируем запасной вариант вниз.
         <ViewTransition exit="slide-down">
           <VideoInfoFallback />
         </ViewTransition>
       }
     >
-      {/* Animate the content up */}
+      {/* Анимируем контент вверх */}
       <ViewTransition enter="slide-up">
         <VideoInfo id={id} />
       </ViewTransition>
@@ -10241,7 +9622,7 @@ export default function Details() {
             navigateBack("/");
           }}
         >
-          <ChevronLeft /> Back
+          <ChevronLeft /> Назад
         </div>
       }
     >
@@ -10270,21 +9651,21 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when") 
+  // Активируем с помощью useDeferredValue ("когда") 
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
     <div className="video-list">
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what") 
+          // Анимируем каждый элемент в списке ("что") 
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
         ))}
       </div>
       {filteredVideos.length === 0 && (
-        <div className="no-results">No results</div>
+        <div className="no-results">Нет результатов</div>
       )}
     </div>
   );
@@ -10296,7 +9677,7 @@ export default function Home() {
   const [searchText, setSearchText] = useState('');
   
   return (
-    <Layout heading={<div className="fit">{count} Videos</div>}>
+    <Layout heading={<div className="fit">{count} Видео</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
       <SearchList videos={videos} searchText={searchText} />
     </Layout>
@@ -10308,7 +9689,7 @@ function SearchInput({ value, onChange }) {
   return (
     <form className="search" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor={id} className="sr-only">
-        Search
+        Поиск
       </label>
       <div className="search-input">
         <div className="search-icon">
@@ -10317,7 +9698,7 @@ function SearchInput({ value, onChange }) {
         <input
           type="text"
           id={id}
-          placeholder="Search"
+          placeholder="Поиск"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -10436,7 +9817,7 @@ export function Heart({liked, animate}) {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 5.184zm-.002 15.525c2.071-1.388 4.477-3.342 6.427-5.47C20.72 12.733 22 10.401 22 8.677c0-1.708-.466-2.855-1.087-3.55C20.316 4.459 19.392 4 18 4c-.726 0-1.63.364-2.5.9-.67.412-1.148.82-1.266.92-.03.025-.037.031-.019.014l-.013.013L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
+            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
             fill="currentColor"
           />
         )}
@@ -10470,7 +9851,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* Пользовательские классы в зависимости от типа перехода. */}
           <ViewTransition
             name="nav"
             share={{
@@ -10482,8 +9863,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* Отказ от ViewTransition для контента. */}
+      {/* Контент может определять свой собственный ViewTransition. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -10498,8 +9879,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// Хак, так как у нас нет реального бэкенда.
+// В отличие от локального состояния, это сохраняется при фильтрации видео.
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -10508,7 +9889,7 @@ export default function LikeButton({video}) {
   return (
     <button
       className={`like-button ${isLiked && 'liked'}`}
-      aria-label={isLiked ? 'Unsave' : 'Save'}
+      aria-label={isLiked ? 'Убрать из избранного' : 'Добавить в избранное'}
       onClick={() => {
         const nextIsLiked = !isLiked;
         if (nextIsLiked) {
@@ -10529,14 +9910,13 @@ export default function LikeButton({video}) {
 import { useState, unstable_ViewTransition as ViewTransition } from "react"; import LikeButton from "./LikeButton"; import { useRouter } from "./router"; import { PauseIcon, PlayIcon } from "./Icons"; import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
+  // Добавляем имя для анимации с помощью перехода с общим элементом.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
         aria-hidden="true"
         tabIndex={-1}
-        className={`thumbnail ${video.image}`}
-      >
+        className={`thumbnail ${video.image}`}>
         {children}
       </div>
     </ViewTransition>
@@ -10592,38 +9972,38 @@ export function Video({ video }) {
 const videos = [
   {
     id: '1',
-    title: 'First video',
-    description: 'Video description',
+    title: 'Первое видео',
+    description: 'Описание видео',
     image: 'blue',
   },
   {
     id: '2',
-    title: 'Second video',
-    description: 'Video description',
+    title: 'Второе видео',
+    description: 'Описание видео',
     image: 'red',
   },
   {
     id: '3',
-    title: 'Third video',
-    description: 'Video description',
+    title: 'Третье видео',
+    description: 'Описание видео',
     image: 'green',
   },
   {
     id: '4',
-    title: 'Fourth video',
-    description: 'Video description',
+    title: 'Четвертое видео',
+    description: 'Описание видео',
     image: 'purple',
   },
   {
     id: '5',
-    title: 'Fifth video',
-    description: 'Video description',
+    title: 'Пятое видео',
+    description: 'Описание видео',
     image: 'yellow',
   },
   {
     id: '6',
-    title: 'Sixth video',
-    description: 'Video description',
+    title: 'Шестое видео',
+    description: 'Описание видео',
     image: 'gray',
   },
 ];
@@ -10680,14 +10060,14 @@ export function Router({ children }) {
   const [isPending, startTransition] = useTransition();
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // Тип перехода для причины "nav forward"
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // Тип перехода для причины "nav backward"
       addTransitionType('nav-back');
       go(url);
     });
@@ -10706,13 +10086,13 @@ export function Router({ children }) {
   
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // Это не должно анимироваться, так как восстановление должно быть синхронным.
+      // Даже если это переход.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // Ничего не делаем. URL уже обновлен.
           },
         });
       });
@@ -10752,724 +10132,19 @@ export function useIsNavPending() {
   return use(RouterContext).isPending;
 }
 
-```
+Если вам интересно узнать больше о том, как они работают, ознакомьтесь с разделом [Как работает `<ViewTransition>`](/reference/react/ViewTransition#how-does-viewtransition-work) в документации.
 
-```css src/styles.css hidden
-@font-face {
-  font-family: Optimistic Text;
-  src: url(https://react.dev/fonts/Optimistic_Text_W_Rg.woff2) format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Optimistic Text;
-  src: url(https://react.dev/fonts/Optimistic_Text_W_Md.woff2) format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Optimistic Text;
-  src: url(https://react.dev/fonts/Optimistic_Text_W_Bd.woff2) format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: Optimistic Text;
-  src: url(https://react.dev/fonts/Optimistic_Text_W_Bd.woff2) format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  background-image: url(https://react.dev/images/meta-gradient-dark.png);
-  background-size: 100%;
-  background-position: -100%;
-  background-color: rgb(64 71 86);
-  background-repeat: no-repeat;
-  height: 100%;
-  width: 100%;
-}
-
-body {
-  font-family: Optimistic Text, -apple-system, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  padding: 10px 0 10px 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-}
-
-#root {
-  flex: 1 1;
-  height: auto;
-  background-color: #fff;
-  border-radius: 10px;
-  max-width: 450px;
-  min-height: 600px;
-  padding-bottom: 10px;
-}
-
-h1 {
-  margin-top: 0;
-  font-size: 22px;
-}
-
-h2 {
-  margin-top: 0;
-  font-size: 20px;
-}
-
-h3 {
-  margin-top: 0;
-  font-size: 18px;
-}
-
-h4 {
-  margin-top: 0;
-  font-size: 16px;
-}
-
-h5 {
-  margin-top: 0;
-  font-size: 14px;
-}
-
-h6 {
-  margin-top: 0;
-  font-size: 12px;
-}
-
-code {
-  font-size: 1.2em;
-}
-
-ul {
-  padding-inline-start: 20px;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.overflow-visible {
-  overflow: visible;
-}
-
-.visible {
-  overflow: visible;
-}
-
-.fit {
-  width: fit-content;
-}
-
-
-/* Layout */
-.page {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.top-hero {
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: conic-gradient(
-      from 90deg at -10% 100%,
-      #2b303b 0deg,
-      #2b303b 90deg,
-      #16181d 1turn
-  );
-}
-
-.bottom {
-  flex: 1;
-  overflow: auto;
-}
-
-.top-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0;
-  padding: 0 12px;
-  top: 0;
-  width: 100%;
-  height: 44px;
-  color: #23272f;
-  font-weight: 700;
-  font-size: 20px;
-  z-index: 100;
-  cursor: default;
-}
-
-.content {
-  padding: 0 12px;
-  margin-top: 4px;
-}
-
-
-.loader {
-  color: #23272f;
-  font-size: 3px;
-  width: 1em;
-  margin-right: 18px;
-  height: 1em;
-  border-radius: 50%;
-  position: relative;
-  text-indent: -9999em;
-  animation: loading-spinner 1.3s infinite linear;
-  animation-delay: 200ms;
-  transform: translateZ(0);
-}
-
-@keyframes loading-spinner {
-  0%,
-  100% {
-    box-shadow: 0 -3em 0 0.2em,
-    2em -2em 0 0em, 3em 0 0 -1em,
-    2em 2em 0 -1em, 0 3em 0 -1em,
-    -2em 2em 0 -1em, -3em 0 0 -1em,
-    -2em -2em 0 0;
-  }
-  12.5% {
-    box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em,
-    3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em,
-    -2em 2em 0 -1em, -3em 0 0 -1em,
-    -2em -2em 0 -1em;
-  }
-  25% {
-    box-shadow: 0 -3em 0 -0.5em,
-    2em -2em 0 0, 3em 0 0 0.2em,
-    2em 2em 0 0, 0 3em 0 -1em,
-    -2em 2em 0 -1em, -3em 0 0 -1em,
-    -2em -2em 0 -1em;
-  }
-  37.5% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
-    3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em,
-    -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
-  }
-  50% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
-    3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em,
-    -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
-  }
-  62.5% {
-    box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em,
-    3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0,
-    -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
-  }
-  75% {
-    box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em,
-    3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
-    -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
-  }
-  87.5% {
-    box-shadow: 0em -3em 0 0, 2em -2em 0 -1em,
-    3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em,
-    -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
-  }
-}
-
-/* LikeButton */
-.like-button {
-  outline-offset: 2px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  cursor: pointer;
-  border-radius: 9999px;
-  border: none;
-  outline: none 2px;
-  color: #5e687e;
-  background: none;
-}
-
-.like-button:focus {
-  color: #a6423a;
-  background-color: rgba(166, 66, 58, .05);
-}
-
-.like-button:active {
-  color: #a6423a;
-  background-color: rgba(166, 66, 58, .05);
-  transform: scaleX(0.95) scaleY(0.95);
-}
-
-.like-button:hover {
-  background-color: #f6f7f9;
-}
-
-.like-button.liked {
-  color: #a6423a;
-}
-
-/* Icons */
-@keyframes circle {
-  0% {
-    transform: scale(0);
-    stroke-width: 16px;
-  }
-
-  50% {
-    transform: scale(.5);
-    stroke-width: 16px;
-  }
-
-  to {
-    transform: scale(1);
-    stroke-width: 0;
-  }
-}
-
-.circle {
-  color: rgba(166, 66, 58, .5);
-  transform-origin: center;
-  transition-property: all;
-  transition-duration: .15s;
-  transition-timing-function: cubic-bezier(.4,0,.2,1);
-}
-
-.circle.liked.animate {
-  animation: circle .3s forwards;
-}
-
-.heart {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.heart.liked {
-  transform-origin: center;
-  transition-property: all;
-  transition-duration: .15s;
-  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
-}
-
-.heart.liked.animate {
-  animation: scale .35s ease-in-out forwards;
-}
-
-.control-icon {
-  color: hsla(0, 0%, 100%, .5);
-  filter:  drop-shadow(0 20px 13px rgba(0, 0, 0, .03)) drop-shadow(0 8px 5px rgba(0, 0, 0, .08));
-}
-
-.chevron-left {
-  margin-top: 2px;
-  rotate: 90deg;
-}
-
-
-/* Video */
-.thumbnail {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  display: flex;
-  overflow: hidden;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.5rem;
-  outline-offset: 2px;
-  width: 8rem;
-  vertical-align: middle;
-  background-color: #ffffff;
-  background-size: cover;
-  user-select: none;
-}
-
-.thumbnail.blue {
-  background-image: conic-gradient(at top right, #c76a15, #087ea4, #2b3491);
-}
-
-.thumbnail.red {
-  background-image: conic-gradient(at top right, #c76a15, #a6423a, #2b3491);
-}
-
-.thumbnail.green {
-  background-image: conic-gradient(at top right, #c76a15, #388f7f, #2b3491);
-}
-
-.thumbnail.purple {
-  background-image: conic-gradient(at top right, #c76a15, #575fb7, #2b3491);
-}
-
-.thumbnail.yellow {
-  background-image: conic-gradient(at top right, #c76a15, #FABD62, #2b3491);
-}
-
-.thumbnail.gray {
-  background-image: conic-gradient(at top right, #c76a15, #4E5769, #2b3491);
-}
-
-.video {
-  display: flex;
-  flex-direction: row;
-  gap: 0.75rem;
-  align-items: center;
-}
-
-.video .link {
-  display: flex;
-  flex-direction: row;
-  flex: 1 1 0;
-  gap: 0.125rem;
-  outline-offset: 4px;
-  cursor: pointer;
-}
-
-.video .info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 8px;
-  gap: 0.125rem;
-}
-
-.video .info:hover {
-  text-decoration: underline;
-}
-
-.video-title {
-  font-size: 15px;
-  line-height: 1.25;
-  font-weight: 700;
-  color: #23272f;
-}
-
-.video-description {
-  color: #5e687e;
-  font-size: 13px;
-}
-
-/* Details */
-.details .thumbnail {
-  position: relative;
-  aspect-ratio: 16 / 9;
-  display: flex;
-  overflow: hidden;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.5rem;
-  outline-offset: 2px;
-  width: 100%;
-  vertical-align: middle;
-  background-color: #ffffff;
-  background-size: cover;
-  user-select: none;
-}
-
-.video-details-title {
-  margin-top: 8px;
-}
-
-.video-details-speaker {
-  display: flex;
-  gap: 8px;
-  margin-top: 10px
-}
-
-.back {
-  display: flex;
-  align-items: center;
-  margin-left: -5px;
-  cursor: pointer;
-}
-
-.back:hover {
-  text-decoration: underline;
-}
-
-.info-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  line-height: 1.25;
-  margin: 8px 0 0 0 ;
-}
-
-.info-description {
-  margin: 8px 0 0 0;
-}
-
-.controls {
-  cursor: pointer;
-}
-
-.fallback {
-  background: #f6f7f8 linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%) no-repeat;
-  background-size: 800px 104px;
-  display: block;
-  line-height: 1.25;
-  margin: 8px 0 0 0;
-  border-radius: 5px;
-  overflow: hidden;
-
-  animation: 1s linear 1s infinite shimmer;
-  animation-delay: 300ms;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: shimmer;
-  animation-timing-function: linear;
-}
-
-
-.fallback.title {
-  width: 130px;
-  height: 30px;
-
-}
-
-.fallback.description {
-  width: 150px;
-  height: 21px;
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -468px 0;
-  }
-
-  100% {
-    background-position: 468px 0;
-  }
-}
-
-.search {
-  margin-bottom: 10px;
-}
-.search-input {
-  width: 100%;
-  position: relative;
-}
-
-.search-icon {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  inset-inline-start: 0;
-  display: flex;
-  align-items: center;
-  padding-inline-start: 1rem;
-  pointer-events: none;
-  color: #99a1b3;
-}
-
-.search-input input {
-  display: flex;
-  padding-inline-start: 2.75rem;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 100%;
-  text-align: start;
-  background-color: rgb(235 236 240);
-  outline: 2px solid transparent;
-  cursor: pointer;
-  border: none;
-  align-items: center;
-  color: rgb(35 39 47);
-  border-radius: 9999px;
-  vertical-align: middle;
-  font-size: 15px;
-}
-
-.search-input input:hover, .search-input input:active {
-  background-color: rgb(235 236 240/ 0.8);
-  color: rgb(35 39 47/ 0.8);
-}
-
-/* Home */
-.video-list {
-  position: relative;
-}
-
-.video-list .videos {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  overflow-y: auto;
-  height: 100%;
-}
-```
-
-
-```css src/animations.css
-/* Slide animations for Suspense the fallback down */
-::view-transition-old(.slide-down) {
-    animation: 150ms ease-out both fade-out, 150ms ease-out both slide-down;
-}
-
-::view-transition-new(.slide-up) {
-    animation: 210ms ease-in 150ms both fade-in, 400ms ease-in both slide-up;
-}
-
-/* Animations for view transition classed added by transition type */
-::view-transition-old(.slide-forward) {
-    /* when sliding forward, the "old" page should slide out to left. */
-    animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-    400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-left;
-}
-
-::view-transition-new(.slide-forward) {
-    /* when sliding forward, the "new" page should slide in from right. */
-    animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
-    400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-right;
-}
-
-::view-transition-old(.slide-back) {
-    /* when sliding back, the "old" page should slide out to right. */
-    animation: 150ms cubic-bezier(0.4, 0, 1, 1) both fade-out,
-    400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-to-right;
-}
-
-::view-transition-new(.slide-back) {
-    /* when sliding back, the "new" page should slide in from left. */
-    animation: 210ms cubic-bezier(0, 0, 0.2, 1) 150ms both fade-in,
-    400ms cubic-bezier(0.4, 0, 0.2, 1) both slide-from-left;
-}
-
-/* Keyframes to support our animations above. */
-@keyframes slide-up {
-    from {
-        transform: translateY(10px);
-    }
-    to {
-        transform: translateY(0);
-    }
-}
-
-@keyframes slide-down {
-    from {
-        transform: translateY(0);
-    }
-    to {
-        transform: translateY(10px);
-    }
-}
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-}
-
-@keyframes fade-out {
-    to {
-        opacity: 0;
-    }
-}
-
-@keyframes slide-to-right {
-    to {
-        transform: translateX(50px);
-    }
-}
-
-@keyframes slide-from-right {
-    from {
-        transform: translateX(50px);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-@keyframes slide-to-left {
-    to {
-        transform: translateX(-50px);
-    }
-}
-
-@keyframes slide-from-left {
-    from {
-        transform: translateX(-50px);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-```
-
-```js src/index.js hidden
-import React, {StrictMode} from 'react';
-import {createRoot} from 'react-dom/client';
-import './styles.css';
-import './animations.css';
-
-import App from './App';
-import {Router} from './router';
-
-const root = createRoot(document.getElementById('root'));
-root.render(
-  <StrictMode>
-    <Router>
-      <App />
-    </Router>
-  </StrictMode>
-);
-```
-
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
-</Sandpack>
-
-If you're curious to know more about how they work, check out [How Does `<ViewTransition>` Work](/reference/react/ViewTransition#how-does-viewtransition-work) in the docs.
-
-_For more background on how we built View Transitions, see: [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028), and [#32038](https://github.com/facebook/react/pull/32038) by [@sebmarkbage](https://twitter.com/sebmarkbage) (thanks Seb!)._
+_Для получения дополнительной информации о том, как мы реализовали View Transitions, см.: [#31975](https://github.com/facebook/react/pull/31975), [#32105](https://github.com/facebook/react/pull/32105), [#32041](https://github.com/facebook/react/pull/32041), [#32734](https://github.com/facebook/react/pull/32734), [#32797](https://github.com/facebook/react/pull/32797) [#31999](https://github.com/facebook/react/pull/31999), [#32031](https://github.com/facebook/react/pull/32031), [#32050](https://github.com/facebook/react/pull/32050), [#32820](https://github.com/facebook/react/pull/32820), [#32029](https://github.com/facebook/react/pull/32029), [#32028](https://github.com/facebook/react/pull/32028) и [#32038](https://github.com/facebook/react/pull/32038) от [@sebmarkbage](https://twitter.com/sebmarkbage) (спасибо, Себ!)._
 
 ---
 
-## Activity {/*activity*/}
+## Активность {/*activity*/}
 
-In [past](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [updates](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity), we shared that we were researching an API to allow components to be visually hidden and deprioritized, preserving UI state with reduced performance costs relative to unmounting or hiding with CSS.
+В [предыдущих](/blog/2022/06/15/react-labs-what-we-have-been-working-on-june-2022#offscreen) [обновлениях](/blog/2024/02/15/react-labs-what-we-have-been-working-on-february-2024#offscreen-renamed-to-activity) мы рассказывали об исследовании API, который позволял бы визуально скрывать компоненты и снижать их приоритет, сохраняя состояние пользовательского интерфейса с меньшими затратами производительности по сравнению с размонтированием или скрытием с помощью CSS.
 
-We're now ready to share the API and how it works, so you can start testing it in experimental React versions.
+Теперь мы готовы представить API и объяснить, как он работает, чтобы вы могли начать тестировать его в экспериментальных версиях React.
 
-`<Activity>` is a new component to hide and show parts of the UI:
+`<Activity>` — это новый компонент для скрытия и отображения частей пользовательского интерфейса:
 
 ```js [[1, 1, "'visible'"], [2, 1, "'hidden'"]]
 <Activity mode={isVisible ? 'visible' : 'hidden'}>
@@ -11477,25 +10152,25 @@ We're now ready to share the API and how it works, so you can start testing it i
 </Activity>
 ```
 
-When an Activity is <CodeStep step={1}>visible</CodeStep> it's rendered as normal. When an Activity is <CodeStep step={2}>hidden</CodeStep> it is unmounted, but will save its state and continue to render at a lower priority than anything visible on screen.
+Когда `<Activity>` <CodeStep step={1}>видим</CodeStep>, он отображается как обычно. Когда `<Activity>` <CodeStep step={2}>скрыт</CodeStep>, он размонтируется, но сохранит своё состояние и продолжит рендериться с более низким приоритетом, чем всё, что видно на экране.
 
-You can use `Activity` to save state for parts of the UI the user isn't using, or pre-render parts that a user is likely to use next.
+Вы можете использовать `Activity` для сохранения состояния частей пользовательского интерфейса, которые пользователь не использует в данный момент, или для предварительного рендеринга частей, которые пользователь, вероятно, будет использовать следующими.
 
-Let's look at some examples improving the View Transition examples above.
+Рассмотрим несколько примеров, улучшающих примеры переходов между представлениями, приведённые выше.
 
 <Note>
 
-**Effects don’t mount when an Activity is hidden.**
+**Эффекты не монтируются, когда `<Activity>` скрыт.**
 
-When an `<Activity>` is `hidden`, Effects are unmounted. Conceptually, the component is unmounted, but React saves the state for later.
+Когда `<Activity>` имеет значение `hidden`, эффекты размонтируются. Концептуально компонент размонтируется, но React сохраняет его состояние для последующего использования.
 
-In practice, this works as expected if you have followed the [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) guide. To eagerly find problematic Effects, we recommend adding [`<StrictMode>`](/reference/react/StrictMode) which will eagerly perform Activity unmounts and mounts to catch any unexpected side effects.
+На практике это работает ожидаемо, если вы следовали руководству [Вам может не понадобиться эффект](/learn/you-might-not-need-an-effect). Чтобы быстро выявлять проблемные эффекты, мы рекомендуем добавить [`<StrictMode>`](/reference/react/StrictMode), который будет принудительно выполнять размонтирование и монтирование `<Activity>`, чтобы выявить любые неожиданные побочные эффекты.
 
 </Note>
 
-### Restoring state with Activity {/*restoring-state-with-activity*/}
+### Восстановление состояния с помощью Activity {/*restoring-state-with-activity*/}
 
-When a user navigates away from a page, it's common to stop rendering the old page:
+Когда пользователь уходит со страницы, часто прекращают рендеринг старой страницы:
 
 ```js {6,7}
 function App() {
@@ -11510,9 +10185,9 @@ function App() {
 }
 ```
 
-However, this means if the user goes back to the old page, all of the previous state is lost. For example, if the `<Home />` page has an `<input>` field, when the user leaves the page the `<input>` is unmounted, and all of the text they had typed is lost.
+Однако это означает, что если пользователь вернется на старую страницу, всё предыдущее состояние будет потеряно. Например, если страница `<Home />` содержит поле `<input>`, то при уходе пользователя со страницы `<input>` будет размонтирован, и весь набранный текст будет потерян.
 
-Activity allows you to keep the state around as the user changes pages, so when they come back they can resume where they left off. This is done by wrapping part of the tree in `<Activity>` and toggling the `mode`:
+Activity позволяет сохранить состояние при смене страниц, чтобы пользователь мог продолжить с того места, где остановился. Это достигается путем оборачивания части дерева в `<Activity>` и переключения `mode`:
 
 ```js {6-8}
 function App() {
@@ -11529,9 +10204,9 @@ function App() {
 }
 ```
 
-With this change, we can improve on our View Transitions example above. Before, when you searched for a video, selected one, and returned, your search filter was lost. With Activity, your search filter is restored and you can pick up where you left off.
+С этим изменением мы можем улучшить наш предыдущий пример с View Transitions. Раньше, когда вы искали видео, выбирали его и возвращались, ваш фильтр поиска терялся. С Activity ваш фильтр поиска восстанавливается, и вы можете продолжить с того места, где остановились.
 
-Try searching for a video, selecting it, and clicking "back":
+Попробуйте поискать видео, выбрать его и нажать "назад":
 
 <Sandpack>
 
@@ -11542,9 +10217,9 @@ export default function App() {
   const { url } = useRouter();
   
   return (
-    // View Transitions know about Activity
+    // View Transitions знают об Activity
     <ViewTransition>
-      {/* Render Home in Activity so we don't lose state */}
+      {/* Рендерим Home в Activity, чтобы не потерять состояние */}
       <Activity mode={url === '/' ? 'visible' : 'hidden'}>
         <Home />
       </Activity>
@@ -11563,17 +10238,17 @@ import Layout from "./Layout";
 import { ChevronLeft } from "./Icons";
 
 function VideoDetails({id}) {
-  // Animate from Suspense fallback to content
+  // Анимация от запасного варианта Suspense к контенту
   return (
     <Suspense
       fallback={
-        // Animate the fallback down.
+        // Анимация запасного варианта вниз.
         <ViewTransition exit="slide-down">
           <VideoInfoFallback />
         </ViewTransition>
       }
     >
-      {/* Animate the content up */}
+      {/* Анимация контента вверх */}
       <ViewTransition enter="slide-up">
         <VideoInfo id={id} />
       </ViewTransition>
@@ -11604,12 +10279,12 @@ export default function Details() {
             navigateBack("/");
           }}
         >
-          <ChevronLeft /> Back
+          <ChevronLeft /> Назад
         </div>
       }
     >
       <div className="details">
-        <Thumbnail video={video} large>
+        <Thumbnail video={video}>
           <VideoControls />
         </Thumbnail>
         <VideoDetails id={video.id} />
@@ -11633,17 +10308,17 @@ function VideoInfo({ id }) {
 import { useId, useState, use, useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";import { Video } from "./Videos";import Layout from "./Layout";import { fetchVideos } from "./data";import { IconSearch } from "./Icons";
 
 function SearchList({searchText, videos}) {
-  // Activate with useDeferredValue ("when") 
+  // Активация с помощью useDeferredValue ("когда") 
   const deferredSearchText = useDeferredValue(searchText);
   const filteredVideos = filterVideos(videos, deferredSearchText);
   return (
     <div className="video-list">
       {filteredVideos.length === 0 && (
-        <div className="no-results">No results</div>
+        <div className="no-results">Нет результатов</div>
       )}
       <div className="videos">
         {filteredVideos.map((video) => (
-          // Animate each item in list ("what") 
+          // Анимация каждого элемента списка ("что") 
           <ViewTransition key={video.id}>
             <Video video={video} />
           </ViewTransition>
@@ -11659,7 +10334,7 @@ export default function Home() {
   const [searchText, setSearchText] = useState('');
   
   return (
-    <Layout heading={<div className="fit">{count} Videos</div>}>
+    <Layout heading={<div className="fit">{count} Видео</div>}>
       <SearchInput value={searchText} onChange={setSearchText} />
       <SearchList videos={videos} searchText={searchText} />
     </Layout>
@@ -11671,7 +10346,7 @@ function SearchInput({ value, onChange }) {
   return (
     <form className="search" onSubmit={(e) => e.preventDefault()}>
       <label htmlFor={id} className="sr-only">
-        Search
+        Поиск
       </label>
       <div className="search-input">
         <div className="search-icon">
@@ -11680,7 +10355,7 @@ function SearchInput({ value, onChange }) {
         <input
           type="text"
           id={id}
-          placeholder="Search"
+          placeholder="Поиск"
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
@@ -11799,7 +10474,7 @@ export function Heart({liked, animate}) {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 5.184zm-.002 15.525c2.071-1.388 4.477-3.342 6.427-5.47C20.72 12.733 22 10.401 22 8.677c0-1.708-.466-2.855-1.087-3.55C20.316 4.459 19.392 4 18 4c-.726 0-1.63.364-2.5.9-.67.412-1.148.82-1.266.92-.03.025-.037.031-.019.014l-.013.013L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
+            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
             fill="currentColor"
           />
         )}
@@ -11833,7 +10508,7 @@ export default function Page({ heading, children }) {
     <div className="page">
       <div className="top">
         <div className="top-nav">
-          {/* Custom classes based on transition type. */}
+          {/* Пользовательские классы в зависимости от типа перехода. */}
           <ViewTransition
             name="nav"
             share={{
@@ -11845,8 +10520,8 @@ export default function Page({ heading, children }) {
           {isPending && <span className="loader"></span>}
         </div>
       </div>
-      {/* Opt-out of ViewTransition for the content. */}
-      {/* Content can define it's own ViewTransition. */}
+      {/* Отключение ViewTransition для контента. */}
+      {/* Контент может определять свой собственный ViewTransition. */}
       <ViewTransition default="none">
         <div className="bottom">
           <div className="content">{children}</div>
@@ -11861,8 +10536,8 @@ export default function Page({ heading, children }) {
 import {useState} from 'react';
 import {Heart} from './Icons';
 
-// A hack since we don't actually have a backend.
-// Unlike local state, this survives videos being filtered.
+// Хак, так как у нас нет реального бэкенда.
+// В отличие от локального состояния, это переживает фильтрацию видео.
 const likedVideos = new Set();
 
 export default function LikeButton({video}) {
@@ -11871,7 +10546,7 @@ export default function LikeButton({video}) {
   return (
     <button
       className={`like-button ${isLiked && 'liked'}`}
-      aria-label={isLiked ? 'Unsave' : 'Save'}
+      aria-label={isLiked ? 'Убрать из избранного' : 'Добавить в избранное'}
       onClick={() => {
         const nextIsLiked = !isLiked;
         if (nextIsLiked) {
@@ -11896,8 +10571,8 @@ import { PauseIcon, PlayIcon } from "./Icons";
 import { startTransition } from "react";
 
 export function Thumbnail({ video, children }) {
-  // Add a name to animate with a shared element transition.
-  // This uses the default animation, no additional css needed.
+  // Добавляем имя для анимации с помощью перехода с общим элементом.
+  // Используется анимация по умолчанию, дополнительный CSS не требуется.
   return (
     <ViewTransition name={`video-${video.id}`}>
       <div
@@ -11958,38 +10633,38 @@ export function Video({ video }) {
 const videos = [
   {
     id: '1',
-    title: 'First video',
-    description: 'Video description',
+    title: 'Первое видео',
+    description: 'Описание видео',
     image: 'blue',
   },
   {
     id: '2',
-    title: 'Second video',
-    description: 'Video description',
+    title: 'Второе видео',
+    description: 'Описание видео',
     image: 'red',
   },
   {
     id: '3',
-    title: 'Third video',
-    description: 'Video description',
+    title: 'Третье видео',
+    description: 'Описание видео',
     image: 'green',
   },
   {
     id: '4',
-    title: 'Fourth video',
-    description: 'Video description',
+    title: 'Четвертое видео',
+    description: 'Описание видео',
     image: 'purple',
   },
   {
     id: '5',
-    title: 'Fifth video',
-    description: 'Video description',
+    title: 'Пятое видео',
+    description: 'Описание видео',
     image: 'yellow',
   },
   {
     id: '6',
-    title: 'Sixth video',
-    description: 'Video description',
+    title: 'Шестое видео',
+    description: 'Описание видео',
     image: 'gray',
   },
 ];
@@ -12047,14 +10722,14 @@ export function Router({ children }) {
   const [routerState, setRouterState] = useState({pendingNav: () => {}, url: document.location.pathname});
   function navigate(url) {
     startTransition(() => {
-      // Transition type for the cause "nav forward"
+      // Тип перехода для причины "переход вперед"
       addTransitionType('nav-forward');
       go(url);
     });
   }
   function navigateBack(url) {
     startTransition(() => {
-      // Transition type for the cause "nav backward"
+      // Тип перехода для причины "переход назад"
       addTransitionType('nav-back');
       go(url);
     });
@@ -12071,13 +10746,13 @@ export function Router({ children }) {
   
   useEffect(() => {
     function handlePopState() {
-      // This should not animate because restoration has to be synchronous.
-      // Even though it's a transition.
+      // Это не должно анимироваться, так как восстановление должно быть синхронным.
+      // Даже если это переход.
       startTransition(() => {
         setRouterState({
           url: document.location.pathname + document.location.search,
           pendingNav() {
-            // Noop. URL has already updated.
+            // Ничего не делаем. URL уже обновлен.
           },
         });
       });
@@ -12116,7 +10791,6 @@ export function useRouter() {
 export function useIsNavPending() {
   return use(RouterContext).isPending;
 }
-
 ```
 
 ```css src/styles.css hidden
@@ -12846,13 +11520,11 @@ root.render(
 }
 ```
 
-</Sandpack>
+### Предварительный рендеринг с помощью Activity {/*prerender-with-activity*/}
 
-### Pre-rendering with Activity {/*prerender-with-activity*/}
+Иногда вы можете захотеть заранее подготовить следующую часть пользовательского интерфейса, которую пользователь, вероятно, будет использовать, чтобы она была готова к моменту, когда он будет готов её использовать. Это особенно полезно, если следующий маршрут должен приостановиться в ожидании данных, необходимых для рендеринга, поскольку вы можете помочь обеспечить получение данных до того, как пользователь перейдёт на него.
 
-Sometimes, you may want to prepare the next part of the UI a user is likely to use ahead of time, so it's ready by the time they are ready to use it. This is especially useful if the next route needs to suspend on data it needs to render, because you can help ensure the data is already fetched before the user navigates.
-
-For example, our app currently needs to suspend to load the data for each video when you select one. We can improve this by rendering all of the pages in a hidden `<Activity>` until the user navigates:
+Например, наше приложение в настоящее время должно приостанавливаться для загрузки данных для каждого видео при его выборе. Мы можем улучшить это, отрендерив все страницы в скрытом `<Activity>` до тех пор, пока пользователь не перейдёт на них:
 
 ```js {2,5,8}
 <ViewTransition>
@@ -12868,12 +11540,12 @@ For example, our app currently needs to suspend to load the data for each video 
 <ViewTransition>
 ```
 
-With this update, if the content on the next page has time to pre-render, it will animate in without the Suspense fallback. Click a video, and notice that the video title and description on the Details page render immediately, without a fallback:
+С этим обновлением, если контент на следующей странице успеет предварительно отрендериться, он будет анимирован без резервного варианта Suspense. Нажмите на видео и заметьте, что заголовок и описание видео на странице Details отображаются немедленно, без резервного варианта:
 
 <Sandpack>
 
 ```js src/App.js
-import { unstable_ViewTransition as ViewTransition, unstable_Activity as Activity, use } from "react"; import Details from "./Details"; import Home from "./Home"; import { useRouter } from "./router"; import {fetchVideos} from './data'
+import { unstable_ViewTransition as ViewTransition, unstable_Activity as Activity, use } from "react"; import Details from "./Details"; import Home from "./Home"; import {useRouter} from "./router"; import {fetchVideos} from './data'
 
 export default function App() {
   const { url } = useRouter();
@@ -13137,7 +11809,7 @@ export function Heart({liked, animate}) {
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 5.184zm-.002 15.525c2.071-1.388 4.477-3.342 6.427-5.47C20.72 12.733 22 10.401 22 8.677c0-1.708-.466-2.855-1.087-3.55C20.316 4.459 19.392 4 18 4c-.726 0-1.63.364-2.5.9-.67.412-1.148.82-1.266.92-.03.025-.037.031-.019.014l-.013.013L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
+            d="m12 5.184-.808-.771-.004-.004C11.065 4.299 8.522 2.003 6 2.003c-3.736 0-6 2.558-6 6.677 0 4.47 5.471 9.848 10 13.079.602.43 1.187.82 1.74 1.167A.497.497 0 0 0 12 23v-.003c.09 0 .182-.026.26-.074C16.977 19.97 24 13.737 24 8.677 24 4.557 21.743 2 18 2c-2.569 0-5.166 2.387-5.192 2.413L12 7.949 9.832 5.88a10.08 10.08 0 0 0-1.33-.977C7.633 4.367 6.728 4.003 6 4.003c-1.388 0-2.312.459-2.91 1.128C2.466 5.826 2 6.974 2 8.68c0 1.726 1.28 4.058 3.575 6.563 1.948 2.127 4.352 4.078 6.423 5.466z"
             fill="currentColor"
           />
         )}
@@ -13454,8 +12126,6 @@ export function useRouter() {
 export function useIsNavPending() {
   return use(RouterContext).isPending;
 }
-
-```
 
 ```css src/styles.css hidden
 @font-face {
@@ -14184,47 +12854,45 @@ root.render(
 }
 ```
 
-</Sandpack>
+### Серверный рендеринг с Activity {/*server-side-rendering-with-activity*/}
 
-### Server-Side Rendering with Activity {/*server-side-rendering-with-activity*/}
+При использовании Activity на странице с серверным рендерингом (SSR) существуют дополнительные оптимизации.
 
-When using Activity on a page that uses server-side rendering (SSR), there are additional optimizations.
+Если часть страницы рендерится с `mode="hidden"`, она не будет включена в SSR-ответ. Вместо этого React запланирует клиентский рендеринг для содержимого внутри Activity, пока остальная часть страницы гидратируется, отдавая приоритет видимому контенту на экране.
 
-If part of the page is rendered with `mode="hidden"`, then it will not be included in the SSR response. Instead, React will schedule a client render for the content inside Activity while the rest of the page hydrates, prioritizing the visible content on screen.
+Для частей UI, отрендеренных с `mode="visible"`, React будет снижать приоритет гидратации содержимого внутри Activity, аналогично тому, как контент Suspense гидратируется с более низким приоритетом. Если пользователь взаимодействует со страницей, мы при необходимости отдадим приоритет гидратации внутри границы.
 
-For parts of the UI rendered with `mode="visible"`, React will de-prioritize hydration of content within Activity, similar to how Suspense content is hydrated at a lower priority. If the user interacts with the page, we'll prioritize hydration within the boundary if needed.
+Это продвинутые сценарии использования, но они демонстрируют дополнительные преимущества, учитываемые в Activity.
 
-These are advanced use cases, but they show the additional benefits considered with Activity.
+### Будущие режимы для Activity {/*future-modes-for-activity*/}
 
-### Future modes for Activity {/*future-modes-for-activity*/}
+В будущем мы можем добавить новые режимы для Activity.
 
-In the future, we may add more modes to Activity.
+Например, распространенный сценарий использования — рендеринг модального окна, где предыдущая «неактивная» страница видна за «активным» модальным окном. Режим «hidden» не подходит для этого сценария, поскольку он не видим и не включен в SSR.
 
-For example, a common use case is rendering a modal, where the previous "inactive" page is visible behind the "active" modal view. The "hidden" mode does not work for this use case because it's not visible and not included in SSR.
+Вместо этого мы рассматриваем новый режим, который будет сохранять контент видимым — и включенным в SSR — но будет держать его размонтированным и снижать приоритет обновлений. Этот режим также может потребовать «приостановки» обновлений DOM, поскольку может отвлекать наблюдение за обновлением фонового контента во время открытия модального окна.
 
-Instead, we're considering a new mode that would keep the content visible&mdash;and included in SSR&mdash;but keep it unmounted and de-prioritize updates. This mode may also need to "pause" DOM updates, since it can be distracting to see backgrounded content updating while a modal is open.
+Другой режим, который мы рассматриваем для Activity, — это возможность автоматически уничтожать состояние для скрытых Activity, если используется слишком много памяти. Поскольку компонент уже размонтирован, может быть предпочтительнее уничтожить состояние для наименее недавно использовавшихся скрытых частей приложения, чем потреблять слишком много ресурсов.
 
-Another mode we're considering for Activity is the ability to automatically destroy state for hidden Activities if there is too much memory being used. Since the component is already unmounted, it may be preferable to destroy state for the least recently used hidden parts of the app rather than consume too many resources.
-
-These are areas we're still exploring, and we'll share more as we make progress. For more information on what Activity includes today, [check out the docs](/reference/react/Activity).
+Это области, которые мы все еще исследуем, и мы поделимся дополнительной информацией по мере продвижения. Для получения дополнительной информации о том, что включает в себя Activity сегодня, [ознакомьтесь с документацией](/reference/react/Activity).
 
 ---
 
-# Features in development {/*features-in-development*/}
+# Функции в разработке {/*features-in-development*/}
 
-We're also developing features to help solve the common problems below. 
+Мы также разрабатываем функции, которые помогут решить перечисленные ниже распространенные проблемы.
 
-As we iterate on possible solutions, you may see some potential APIs we're testing being shared based on the PRs we are landing. Please keep in mind that as we try different ideas, we often change or remove different solutions after trying them out. 
+По мере итерации над возможными решениями вы можете увидеть некоторые потенциальные API, которые мы тестируем, на основе PR, которые мы принимаем. Пожалуйста, имейте в виду, что, пробуя разные идеи, мы часто изменяем или удаляем различные решения после их опробования.
 
-When the solutions we're working on are shared too early, it can create churn and confusion in the community. To balance being transparent and limiting confusion, we're sharing the problems we're currently developing solutions for, without sharing a particular solution we have in mind. 
+Когда решения, над которыми мы работаем, публикуются слишком рано, это может вызвать суматоху и путаницу в сообществе. Чтобы сбалансировать прозрачность и ограничить путаницу, мы делимся проблемами, для которых мы в настоящее время разрабатываем решения, не раскрывая конкретного решения, которое у нас есть на уме.
 
-As these features progress, we'll announce them on the blog with docs included so you can try them out. 
+По мере прогресса этих функций мы будем анонсировать их в блоге с включенной документацией, чтобы вы могли их опробовать. 
 
-## React Performance Tracks {/*react-performance-tracks*/}
+## Треки производительности React {/*react-performance-tracks*/}
 
-We're working on a new set of custom tracks to performance profilers using browser APIs that [allow adding custom tracks](https://developer.chrome.com/docs/devtools/performance/extension) to provide more information about the performance of your React app.
+Мы работаем над новым набором пользовательских треков для профилировщиков производительности с использованием API браузера, которые [позволяют добавлять пользовательские треки](https://developer.chrome.com/docs/devtools/performance/extension) для предоставления дополнительной информации о производительности вашего React-приложения.
 
-This feature is still in progress, so we're not ready to publish docs to fully release it as an experimental feature yet. You can get a sneak preview when using an experimental version of React, which will automatically add the performance tracks to profiles:
+Эта функция все еще находится в разработке, поэтому мы еще не готовы опубликовать документацию для ее полного выпуска в качестве экспериментальной функции. Вы можете получить предварительный просмотр при использовании экспериментальной версии React, которая автоматически добавит треки производительности в профили:
 
 <div style={{display: 'flex', justifyContent: 'center', marginBottom: '1rem'}}>
   <picture >
@@ -14237,53 +12905,53 @@ This feature is still in progress, so we're not ready to publish docs to fully r
   </picture>
 </div>
 
-There are a few known issues we plan to address such as performance, and the scheduler track not always "connecting" work across Suspended trees, so it's not quite ready to try. We're also still collecting feedback from early adopters to improve the design and usability of the tracks.
+Есть несколько известных проблем, которые мы планируем устранить, таких как производительность, и трек планировщика, который не всегда "соединяет" работу в подвешенных деревьях, поэтому он еще не готов к тестированию. Мы также продолжаем собирать отзывы от ранних пользователей для улучшения дизайна и удобства использования треков.
 
-Once we solve those issues, we'll publish experimental docs and share that it's ready to try.
+Как только мы решим эти проблемы, мы опубликуем экспериментальную документацию и сообщим, что ее можно попробовать.
 
 ---
 
-## Automatic Effect Dependencies {/*automatic-effect-dependencies*/}
+## Автоматические зависимости эффектов {/*automatic-effect-dependencies*/}
 
-When we released hooks, we had three motivations:
+Когда мы выпустили хуки, у нас было три мотивации:
 
-- **Sharing code between components**: hooks replaced patterns like render props and higher-order components to allow you to reuse stateful logic without changing your component hierarchy.
-- **Think in terms of function, not lifecycles**: hooks let you split one component into smaller functions based on what pieces are related (such as setting up a subscription or fetching data), rather than forcing a split based on lifecycle methods.
-- **Support ahead-of-time compilation**: hooks were designed to support ahead-of-time compilation with less pitfalls causing unintentional de-optimizations caused by lifecycle methods, and limitations of classes.
+- **Обмен кодом между компонентами**: хуки заменили паттерны, такие как render props и higher-order components, чтобы позволить вам повторно использовать логику состояния без изменения иерархии компонентов.
+- **Думать в терминах функций, а не жизненных циклов**: хуки позволяют разделить один компонент на меньшие функции в зависимости от того, какие части связаны (например, настройка подписки или получение данных), вместо того, чтобы принудительно разделять по методам жизненного цикла.
+- **Поддержка компиляции заранее**: хуки были разработаны для поддержки компиляции заранее с меньшим количеством подводных камней, вызывающих непреднамеренные деоптимизации, вызванные методами жизненного цикла и ограничениями классов.
 
-Since their release, hooks have been successful at *sharing code between components*. Hooks are now the favored way to share logic between components, and there are less use cases for render props and higher order components. Hooks have also been successful at supporting features like Fast Refresh that were not possible with class components. 
+С момента их выпуска хуки успешно используются для *обмена кодом между компонентами*. Хуки теперь являются предпочтительным способом обмена логикой между компонентами, и существует меньше сценариев использования render props и higher order components. Хуки также успешно поддерживают такие функции, как Fast Refresh, которые были невозможны с классовыми компонентами.
 
-### Effects can be hard {/*effects-can-be-hard*/}
+### Эффекты могут быть сложными {/*effects-can-be-hard*/}
 
-Unfortunately, some hooks are still hard to think in terms of function instead of lifecycles. Effects specifically are still hard to understand and are the most common pain point we hear from developers. Last year, we spent a significant amount of time researching how Effects were used, and how those use cases could be simplified and easier to understand.
+К сожалению, некоторые хуки по-прежнему сложно воспринимать в терминах функций, а не жизненных циклов. Эффекты, в частности, по-прежнему сложны для понимания и являются наиболее распространенной проблемой, о которой мы слышим от разработчиков. В прошлом году мы потратили значительное время на исследование того, как использовались эффекты, и как эти сценарии использования можно упростить и сделать более понятными.
 
-We found that often, the confusion is from using an Effect when you don't need to. The [You Might Not Need an Effect](/learn/you-might-not-need-an-effect) guide covers many cases for when Effects are not the right solution. However, even when an Effect is the right fit for a problem, Effects can still be harder to understand than class component lifecycles.
+Мы обнаружили, что часто путаница возникает из-за использования эффекта, когда он не нужен. Руководство [«Вам может не понадобиться эффект»](/learn/you-might-not-need-an-effect) охватывает многие случаи, когда эффекты не являются правильным решением. Однако, даже когда эффект подходит для решения проблемы, эффекты все равно могут быть сложнее для понимания, чем жизненные циклы классовых компонентов.
 
-We believe one of the reasons for confusion is that developers to think of Effects from the _component's_ perspective (like a lifecycle), instead of the _Effects_ point of view (what the Effect does).
+Мы считаем, что одна из причин путаницы заключается в том, что разработчики думают об эффектах с точки зрения _компонента_ (как о жизненном цикле), а не с точки зрения _эффектов_ (что делает эффект).
 
-Let's look at an example [from the docs](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective):
+Давайте рассмотрим пример [из документации](/learn/lifecycle-of-reactive-effects#thinking-from-the-effects-perspective):
 
 ```js
 useEffect(() => {
-  // Your Effect connected to the room specified with roomId...
+  // Ваш эффект, подключенный к комнате, указанной с помощью roomId...
   const connection = createConnection(serverUrl, roomId);
   connection.connect();
   return () => {
-    // ...until it disconnected
+    // ...до отключения
     connection.disconnect();
   };
 }, [roomId]);
 ```
 
-Many users would read this code as "on mount, connect to the roomId. whenever `roomId` changes, disconnect to the old room and re-create the connection". However, this is thinking from the component's lifecycle perspective, which means you will need to think of every component lifecycle state to write the Effect correctly. This can be difficult, so it's understandable that Effects seem harder than class lifecycles when using the component perspective.
+Многие пользователи прочитают этот код так: "при монтировании подключиться к roomId. всякий раз, когда `roomId` изменяется, отключиться от старой комнаты и пересоздать соединение". Однако это мышление с точки зрения жизненного цикла компонента, что означает, что вам придется учитывать каждое состояние жизненного цикла компонента, чтобы правильно написать эффект. Это может быть сложно, поэтому понятно, что эффекты кажутся сложнее классовых жизненных циклов при использовании перспективы компонента.
 
-### Effects without dependencies {/*effects-without-dependencies*/}
+### Эффекты без зависимостей {/*effects-without-dependencies*/}
 
-Instead, it's better to think from the Effect's perspective. The Effect doesn't know about the component lifecycles. It only describes how to start synchronization and how to stop it. When users think of Effects in this way, their Effects tend to be easier to write, and more resilient to being started and stopped as many times as is needed.
+Вместо этого лучше думать с точки зрения эффекта. Эффект не знает о жизненных циклах компонентов. Он только описывает, как начать синхронизацию и как ее остановить. Когда пользователи думают об эффектах таким образом, их эффекты, как правило, легче писать и они более устойчивы к запуску и остановке столько раз, сколько необходимо.
 
-We spent some time researching why Effects are thought of from the component perspective, and we think one of the reasons is the dependency array. Since you have to write it, it's right there and in your face reminding you of what you're "reacting" to and baiting you into the mental model of 'do this when these values change'.
+Мы провели некоторое время, исследуя, почему эффекты воспринимаются с точки зрения компонента, и мы думаем, что одна из причин — это массив зависимостей. Поскольку вам приходится его писать, он прямо перед вами и напоминает вам, от чего вы "реагируете", и подталкивает вас к ментальной модели "сделай это, когда эти значения изменятся".
 
-When we released hooks, we knew we could make them easier to use with ahead-of-time compilation. With the React Compiler, you're now able to avoid writing `useCallback` and `useMemo` yourself in most cases. For Effects, the compiler can insert the dependencies for you:
+Когда мы выпустили хуки, мы знали, что можем сделать их проще в использовании с помощью компиляции заранее. С React Compiler вы теперь можете избежать написания `useCallback` и `useMemo` самостоятельно в большинстве случаев. Для эффектов компилятор может вставить зависимости за вас:
 
 ```js
 useEffect(() => {
@@ -14292,67 +12960,67 @@ useEffect(() => {
   return () => {
     connection.disconnect();
   };
-}); // compiler inserted dependencies. 
+}); // зависимости вставлены компилятором.
 ```
 
-With this code, the React Compiler can infer the dependencies for you and insert them automatically so you don't need to see or write them. With features like [the IDE extension](#compiler-ide-extension) and [`useEffectEvent`](/reference/react/experimental_useEffectEvent), we can provide a CodeLens to show you what the Compiler inserted for times you need to debug, or to optimize by removing a dependency. This helps reinforce the correct mental model for writing Effects, which can run at any time to synchronize your component or hook's state with something else.
+С этим кодом React Compiler может вывести зависимости за вас и вставить их автоматически, чтобы вам не приходилось их видеть или писать. С такими функциями, как [расширение IDE](#compiler-ide-extension) и [`useEffectEvent`](/reference/react/experimental_useEffectEvent), мы можем предоставить CodeLens, чтобы показать вам, что компилятор вставил для случаев, когда вам нужно отладить или оптимизировать, удалив зависимость. Это помогает укрепить правильную ментальную модель для написания эффектов, которые могут запускаться в любое время для синхронизации состояния вашего компонента или хука с чем-то еще.
 
-Our hope is that automatically inserting dependencies is not only easier to write, but that it also makes them easier to understand by forcing you to think in terms of what the Effect does, and not in component lifecycles. 
-
----
-
-## Compiler IDE Extension {/*compiler-ide-extension*/}
-
-Earlier this week [we shared](/blog/2025/04/21/react-compiler-rc) the React Compiler release candidate, and we're working towards shipping the first SemVer stable version of the compiler in the coming months.
-
-We've also begun exploring ways to use the React Compiler to provide information that can improve understanding and debugging your code. One idea we've started exploring is a new experimental LSP-based React IDE extension powered by React Compiler, similar to the extension used in [Lauren Tan's React Conf talk](https://conf2024.react.dev/talks/5).
-
-Our idea is that we can use the compiler's static analysis to provide more information, suggestions, and optimization opportunities directly in your IDE. For example, we can provide diagnostics for code breaking the Rules of React, hovers to show if components and hooks were optimized by the compiler, or a CodeLens to see [automatically inserted Effect dependencies](#automatic-effect-dependencies).
-
-The IDE extension is still an early exploration, but we'll share our progress in future updates.
+Мы надеемся, что автоматическая вставка зависимостей не только упростит написание, но и сделает их более понятными, заставляя вас думать с точки зрения того, что делает эффект, а не о жизненных циклах компонентов.
 
 ---
 
-## Fragment Refs {/*fragment-refs*/}
+## Расширение IDE для компилятора {/*compiler-ide-extension*/}
 
-Many DOM APIs like those for event management, positioning, and focus are difficult to compose when writing with React. This often leads developers to reach for Effects, managing multiple Refs, by using APIs like `findDOMNode` (removed in React 19).
+Ранее на этой неделе [мы поделились](/blog/2025/04/21/react-compiler-rc) релиз-кандидатом React Compiler, и мы работаем над выпуском первой стабильной версии компилятора с семантической версией в ближайшие месяцы.
 
-We are exploring adding refs to Fragments that would point to a group of DOM elements, rather than just a single element. Our hope is that this will simplify managing multiple children and make it easier to write composable React code when calling DOM APIs.
+Мы также начали изучать способы использования React Compiler для предоставления информации, которая может улучшить понимание и отладку вашего кода. Одна из идей, которую мы начали исследовать, — это новое экспериментальное расширение IDE для React на основе LSP, работающее на React Compiler, аналогичное расширению, использованному в [докладе Лорен Тан на React Conf](https://conf2024.react.dev/talks/5).
 
-Fragment refs are still being researched. We'll share more when we're closer to having the final API finished.
+Наша идея заключается в том, что мы можем использовать статический анализ компилятора для предоставления большей информации, предложений и возможностей оптимизации непосредственно в вашей IDE. Например, мы можем предоставлять диагностику для кода, нарушающего Правила React, всплывающие подсказки, чтобы показать, были ли компоненты и хуки оптимизированы компилятором, или CodeLens, чтобы увидеть [автоматически вставленные зависимости эффектов](#automatic-effect-dependencies).
 
----
-
-## Gesture Animations {/*gesture-animations*/}
-
-We're also researching ways to enhance View Transitions to support gesture animations such as swiping to open a menu, or scroll through a photo carousel. 
-
-Gestures present new challenges for a few reasons:
-
-- **Gestures are continuous**: as you swipe the animation is tied to your finger placement time, rather than triggering and running to completion.
-- **Gestures don't complete**: when you release your finger gesture animations can run to completion, or revert to their original state (like when you only partially open a menu) depending on how far you go.
-- **Gestures invert old and new**: while you're animating, you want the page you are animating from to stay "alive" and interactive. This inverts the browser View Transition model where the "old" state is a snapshot and the "new" state is the live DOM.
-
-We believe we’ve found an approach that works well and may introduce a new API for triggering gesture transitions. For now, we're focused on shipping `<ViewTransition>`, and will revisit gestures afterward.
+Расширение IDE все еще находится на ранней стадии исследования, но мы будем делиться нашим прогрессом в будущих обновлениях.
 
 ---
 
-## Concurrent Stores {/*concurrent-stores*/}
+## Рефы для фрагментов {/*fragment-refs*/}
 
-When we released React 18 with concurrent rendering, we also released `useSyncExternalStore` so external store libraries that did not use React state or context could [support concurrent rendering](https://github.com/reactwg/react-18/discussions/70) by forcing a synchronous render when the store is updated.
+Многие API DOM, такие как API для управления событиями, позиционирования и фокуса, сложно комбинировать при написании с React. Это часто приводит к тому, что разработчики прибегают к эффектам, управляя несколькими рефами, используя такие API, как `findDOMNode` (удален в React 19).
 
-Using `useSyncExternalStore` comes at a cost though, since it forces a bail out from concurrent features like transitions, and forces existing content to show Suspense fallbacks.
+Мы исследуем возможность добавления рефов к фрагментам, которые будут указывать на группу DOM-элементов, а не только на один элемент. Мы надеемся, что это упростит управление несколькими дочерними элементами и облегчит написание композитного React-кода при вызове API DOM.
 
-Now that React 19 has shipped, we're revisiting this problem space to create a primitive to fully support concurrent external stores with the `use` API:
+Рефы для фрагментов все еще исследуются. Мы поделимся дополнительной информацией, когда будем ближе к завершению окончательного API.
+
+---
+
+## Анимации жестов {/*gesture-animations*/}
+
+Мы также исследуем способы улучшения View Transitions для поддержки анимаций жестов, таких как свайп для открытия меню или прокрутка фотогалереи.
+
+Жесты представляют новые проблемы по нескольким причинам:
+
+- **Жесты непрерывны**: во время свайпа анимация привязана ко времени размещения пальца, а не запускается и завершается.
+- **Жесты не завершаются**: когда вы отпускаете палец, анимации жестов могут завершиться или вернуться в исходное состояние (например, когда вы частично открываете меню) в зависимости от того, насколько далеко вы продвинулись.
+- **Жесты инвертируют старое и новое**: во время анимации вы хотите, чтобы страница, с которой вы анимируете, оставалась "живой" и интерактивной. Это инвертирует модель View Transition браузера, где "старое" состояние является снимком, а "новое" состояние — живым DOM.
+
+Мы считаем, что нашли подход, который хорошо работает, и можем представить новый API для запуска переходов жестов. Пока мы сосредоточены на выпуске `<ViewTransition>`, а затем вернемся к жестам.
+
+---
+
+## Конкурентные хранилища {/*concurrent-stores*/}
+
+Когда мы выпустили React 18 с конкурентным рендерингом, мы также выпустили `useSyncExternalStore`, чтобы внешние библиотеки хранилищ, которые не использовали состояние React или контекст, могли [поддерживать конкурентный рендеринг](https://github.com/reactwg/react-18/discussions/70), принудительно синхронизируя рендеринг при обновлении хранилища.
+
+Однако использование `useSyncExternalStore` имеет свою цену, поскольку оно принудительно выходит из конкурентных функций, таких как переходы, и заставляет существующий контент отображать резервные варианты Suspense.
+
+Теперь, когда React 19 выпущен, мы пересматриваем эту область проблем, чтобы создать примитив для полной поддержки конкурентных внешних хранилищ с помощью API `use`:
 
 ```js
 const value = use(store);
 ```
 
-Our goal is to allow external state to be read during render without tearing, and to work seamlessly with all of the concurrent features React offers. 
+Наша цель — позволить читать внешнее состояние во время рендеринга без разрывов и беспрепятственно работать со всеми конкурентными функциями, которые предлагает React.
 
-This research is still early. We'll share more, and what the new APIs will look like, when we're further along. 
+Это исследование все еще находится на ранней стадии. Мы поделимся дополнительной информацией и тем, как будут выглядеть новые API, когда продвинемся дальше.
 
 ---
 
-_Thanks to [Aurora Scharff](https://bsky.app/profile/aurorascharff.no), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Eli White](https://twitter.com/Eli_White), [Lauren Tan](https://bsky.app/profile/no.lol), [Luna Wei](https://github.com/lunaleaps), [Matt Carroll](https://twitter.com/mattcarrollcode), [Jack Pope](https://jackpope.me), [Jason Bonta](https://threads.net/someextent), [Jordan Brown](https://github.com/jbrown215), [Jordan Eldredge](https://bsky.app/profile/capt.dev), [Mofei Zhang](https://threads.net/z_mofei), [Sebastien Lorber](https://bsky.app/profile/sebastienlorber.com), [Sebastian Markbåge](https://bsky.app/profile/sebmarkbage.calyptus.eu), and [Tim Yung](https://github.com/yungsters) for reviewing this post._
+_Благодарим [Aurora Scharff](https://bsky.app/profile/aurorascharff.no), [Dan Abramov](https://bsky.app/profile/danabra.mov), [Eli White](https://twitter.com/Eli_White), [Lauren Tan](https://bsky.app/profile/no.lol), [Luna Wei](https://github.com/lunaleaps), [Matt Carroll](https://twitter.com/mattcarrollcode), [Jack Pope](https://jackpope.me), [Jason Bonta](https://threads.net/someextent), [Jordan Brown](https://github.com/jbrown215), [Jordan Eldredge](https://bsky.app/profile/capt.dev), [Mofei Zhang](https://threads.net/z_mofei), [Sebastien Lorber](https://bsky.app/profile/sebastienlorber.com), [Sebastian Markbåge](https://bsky.app/profile/sebmarkbage.calyptus.eu) и [Tim Yung](https://github.com/yungsters) за рецензирование этой публикации._
