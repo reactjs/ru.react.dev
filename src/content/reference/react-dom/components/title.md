@@ -1,6 +1,7 @@
 ---
-title: "React"
+title: "<title>"
 ---
+
 <Intro>
 
 Встроенный браузерный компонент [`<title>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title) позволяет задать заголовок документа.
