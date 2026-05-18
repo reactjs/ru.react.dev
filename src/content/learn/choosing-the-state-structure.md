@@ -1,53 +1,52 @@
 ---
-title: Choosing the State Structure
+title: Выбор структуры состояния
 ---
-
 <Intro>
 
-Structuring state well can make a difference between a component that is pleasant to modify and debug, and one that is a constant source of bugs. Here are some tips you should consider when structuring state.
+Правильная структура состояния может сделать компонент приятным для изменения и отладки, а может стать постоянным источником ошибок. Вот несколько советов, которые стоит учитывать при структурировании состояния.
 
 </Intro>
 
 <YouWillLearn>
 
-* When to use a single vs multiple state variables
-* What to avoid when organizing state
-* How to fix common issues with the state structure
+* Когда использовать одну переменную состояния против нескольких
+* Чего следует избегать при организации состояния
+* Как исправить распространенные проблемы со структурой состояния
 
 </YouWillLearn>
 
-## Principles for structuring state {/*principles-for-structuring-state*/}
+## Принципы структурирования состояния {/*principles-for-structuring-state*/}
 
-When you write a component that holds some state, you'll have to make choices about how many state variables to use and what the shape of their data should be. While it's possible to write correct programs even with a suboptimal state structure, there are a few principles that can guide you to make better choices:
+Когда вы пишете компонент, который хранит какое-либо состояние, вам придется выбирать, сколько переменных состояния использовать и какой формы должны быть их данные. Хотя можно писать корректные программы даже с неоптимальной структурой состояния, есть несколько принципов, которые помогут вам сделать лучший выбор:
 
-1. **Group related state.** If you always update two or more state variables at the same time, consider merging them into a single state variable.
-2. **Avoid contradictions in state.** When the state is structured in a way that several pieces of state may contradict and "disagree" with each other, you leave room for mistakes. Try to avoid this.
-3. **Avoid redundant state.** If you can calculate some information from the component's props or its existing state variables during rendering, you should not put that information into that component's state.
-4. **Avoid duplication in state.** When the same data is duplicated between multiple state variables, or within nested objects, it is difficult to keep them in sync. Reduce duplication when you can.
-5. **Avoid deeply nested state.** Deeply hierarchical state is not very convenient to update. When possible, prefer to structure state in a flat way.
+1. **Группируйте связанное состояние.** Если вы всегда обновляете две или более переменные состояния одновременно, рассмотрите возможность объединения их в одну переменную состояния.
+2. **Избегайте противоречий в состоянии.** Когда состояние структурировано таким образом, что несколько его частей могут противоречить друг другу и «не согласовываться», вы оставляете место для ошибок. Постарайтесь этого избежать.
+3. **Избегайте избыточного состояния.** Если вы можете вычислить некоторую информацию из пропсов компонента или его существующих переменных состояния во время рендеринга, вам не следует помещать эту информацию в состояние компонента.
+4. **Избегайте дублирования в состоянии.** Когда одни и те же данные дублируются между несколькими переменными состояния или внутри вложенных объектов, их трудно синхронизировать. Уменьшайте дублирование, когда это возможно.
+5. **Избегайте глубоко вложенного состояния.** Глубоко иерархическое состояние не очень удобно обновлять. По возможности предпочитайте плоскую структуру состояния.
 
-The goal behind these principles is to *make state easy to update without introducing mistakes*. Removing redundant and duplicate data from state helps ensure that all its pieces stay in sync. This is similar to how a database engineer might want to ["normalize" the database structure](https://docs.microsoft.com/en-us/office/troubleshoot/access/database-normalization-description) to reduce the chance of bugs. To paraphrase Albert Einstein, **"Make your state as simple as it can be--but no simpler."**
+Цель этих принципов — *сделать состояние легким для обновления без внесения ошибок*. Удаление избыточных и дублирующихся данных из состояния помогает гарантировать, что все его части остаются синхронизированными. Это похоже на то, как инженер баз данных может захотеть «нормализовать» структуру базы данных, чтобы уменьшить вероятность ошибок. Перефразируя Альберта Эйнштейна: **«Сделайте ваше состояние настолько простым, насколько это возможно, но не проще».**
 
-Now let's see how these principles apply in action.
+Теперь давайте посмотрим, как эти принципы применяются на практике.
 
-## Group related state {/*group-related-state*/}
+## Группируйте связанное состояние {/*group-related-state*/}
 
-You might sometimes be unsure between using a single or multiple state variables.
+Иногда вы можете не знать, использовать одну или несколько переменных состояния.
 
-Should you do this?
+Стоит ли делать так?
 
 ```js
 const [x, setX] = useState(0);
 const [y, setY] = useState(0);
 ```
 
-Or this?
+Или так?
 
 ```js
 const [position, setPosition] = useState({ x: 0, y: 0 });
 ```
 
-Technically, you can use either of these approaches. But **if some two state variables always change together, it might be a good idea to unify them into a single state variable.** Then you won't forget to always keep them in sync, like in this example where moving the cursor updates both coordinates of the red dot:
+Технически вы можете использовать любой из этих подходов. Но **если две переменные состояния всегда меняются вместе, возможно, стоит объединить их в одну переменную состояния.** Тогда вы не забудете всегда держать их синхронизированными, как в этом примере, где перемещение курсора обновляет обе координаты красной точки:
 
 <Sandpack>
 
@@ -93,17 +92,17 @@ body { margin: 0; padding: 0; height: 250px; }
 
 </Sandpack>
 
-Another case where you'll group data into an object or an array is when you don't know how many pieces of state you'll need. For example, it's helpful when you have a form where the user can add custom fields.
+Другой случай, когда вы будете группировать данные в объект или массив, — это когда вы не знаете, сколько частей состояния вам понадобится. Например, это полезно, когда у вас есть форма, где пользователь может добавлять пользовательские поля.
 
 <Pitfall>
 
-If your state variable is an object, remember that [you can't update only one field in it](/learn/updating-objects-in-state) without explicitly copying the other fields. For example, you can't do `setPosition({ x: 100 })` in the above example because it would not have the `y` property at all! Instead, if you wanted to set `x` alone, you would either do `setPosition({ ...position, x: 100 })`, or split them into two state variables and do `setX(100)`.
+Если ваша переменная состояния является объектом, помните, что [вы не можете обновить только одно поле в нем](/learn/updating-objects-in-state), не скопировав явно другие поля. Например, вы не можете сделать `setPosition({ x: 100 })` в приведенном выше примере, потому что в нем вообще не будет свойства `y`! Вместо этого, если вы хотите установить только `x`, вы либо сделаете `setPosition({ ...position, x: 100 })`, либо разделите их на две переменные состояния и сделаете `setX(100)`.
 
 </Pitfall>
 
-## Avoid contradictions in state {/*avoid-contradictions-in-state*/}
+## Избегайте противоречий в состоянии {/*avoid-contradictions-in-state*/}
 
-Here is a hotel feedback form with `isSending` and `isSent` state variables:
+Вот форма обратной связи для отеля с переменными состояния `isSending` и `isSent`:
 
 <Sandpack>
 
@@ -157,9 +156,9 @@ function sendMessage(text) {
 
 </Sandpack>
 
-While this code works, it leaves the door open for "impossible" states. For example, if you forget to call `setIsSent` and `setIsSending` together, you may end up in a situation where both `isSending` and `isSent` are `true` at the same time. The more complex your component is, the harder it is to understand what happened.
+Хотя этот код работает, он оставляет дверь открытой для «невозможных» состояний. Например, если вы забудете вызвать `setIsSent` и `setIsSending` вместе, вы можете оказаться в ситуации, когда и `isSending`, и `isSent` одновременно равны `true`. Чем сложнее ваш компонент, тем труднее понять, что произошло.
 
-**Since `isSending` and `isSent` should never be `true` at the same time, it is better to replace them with one `status` state variable that may take one of *three* valid states:** `'typing'` (initial), `'sending'`, and `'sent'`:
+**Поскольку `isSending` и `isSent` никогда не должны быть истинными одновременно, лучше заменить их одной переменной состояния `status`, которая может принимать одно из *трех* допустимых состояний:** `'typing'` (начальное), `'sending'` (отправка) и `'sent'` (отправлено):
 
 <Sandpack>
 
@@ -214,20 +213,20 @@ function sendMessage(text) {
 
 </Sandpack>
 
-You can still declare some constants for readability:
+Вы все еще можете объявить некоторые константы для удобочитаемости:
 
 ```js
 const isSending = status === 'sending';
 const isSent = status === 'sent';
 ```
 
-But they're not state variables, so you don't need to worry about them getting out of sync with each other.
+Но это не переменные состояния, поэтому вам не нужно беспокоиться о том, что они выйдут из синхронизации друг с другом.
 
-## Avoid redundant state {/*avoid-redundant-state*/}
+## Избегайте избыточного состояния {/*avoid-redundant-state*/}
 
-If you can calculate some information from the component's props or its existing state variables during rendering, you **should not** put that information into that component's state.
+Если вы можете вычислить некоторую информацию из пропсов компонента или его существующих переменных состояния во время рендеринга, вам **не следует** помещать эту информацию в состояние компонента.
 
-For example, take this form. It works, but can you find any redundant state in it?
+Например, возьмем эту форму. Она работает, но можете ли вы найти в ней избыточное состояние?
 
 <Sandpack>
 
@@ -280,9 +279,9 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-This form has three state variables: `firstName`, `lastName`, and `fullName`. However, `fullName` is redundant. **You can always calculate `fullName` from `firstName` and `lastName` during render, so remove it from state.**
+Эта форма имеет три переменные состояния: `firstName`, `lastName` и `fullName`. Однако `fullName` избыточен. **Вы всегда можете вычислить `fullName` из `firstName` и `lastName` во время рендеринга, поэтому удалите его из состояния.**
 
-This is how you can do it:
+Вот как вы можете это сделать:
 
 <Sandpack>
 
@@ -334,50 +333,50 @@ label { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-Here, `fullName` is *not* a state variable. Instead, it's calculated during render:
+Здесь `fullName` — это *не* переменная состояния. Вместо этого он вычисляется во время рендеринга:
 
 ```js
 const fullName = firstName + ' ' + lastName;
 ```
 
-As a result, the change handlers don't need to do anything special to update it. When you call `setFirstName` or `setLastName`, you trigger a re-render, and then the next `fullName` will be calculated from the fresh data.
+В результате обработчикам изменений не нужно делать ничего особенного, чтобы обновить его. Когда вы вызываете `setFirstName` или `setLastName`, вы запускаете повторный рендеринг, и затем следующий `fullName` будет вычислен из свежих данных.
 
 <DeepDive>
 
-#### Don't mirror props in state {/*don-t-mirror-props-in-state*/}
+#### Не дублируйте пропсы в состоянии {/*don-t-mirror-props-in-state*/}
 
-A common example of redundant state is code like this:
+Распространенный пример избыточного состояния — это такой код:
 
 ```js
 function Message({ messageColor }) {
   const [color, setColor] = useState(messageColor);
 ```
 
-Here, a `color` state variable is initialized to the `messageColor` prop. The problem is that **if the parent component passes a different value of `messageColor` later (for example, `'red'` instead of `'blue'`), the `color` *state variable* would not be updated!** The state is only initialized during the first render.
+Здесь переменная состояния `color` инициализируется пропсом `messageColor`. Проблема в том, что **если родительский компонент позже передаст другое значение `messageColor` (например, `'red'` вместо `'blue'`), переменная состояния `color` *не будет* обновлена!** Состояние инициализируется только во время первого рендеринга.
 
-This is why "mirroring" some prop in a state variable can lead to confusion. Instead, use the `messageColor` prop directly in your code. If you want to give it a shorter name, use a constant:
+Вот почему «отражение» пропса в переменной состояния может привести к путанице. Вместо этого используйте пропс `messageColor` напрямую в своем коде. Если вы хотите дать ему более короткое имя, используйте константу:
 
 ```js
 function Message({ messageColor }) {
   const color = messageColor;
 ```
 
-This way it won't get out of sync with the prop passed from the parent component.
+Таким образом, он не выйдет из синхронизации с пропсом, переданным от родительского компонента.
 
-"Mirroring" props into state only makes sense when you *want* to ignore all updates for a specific prop. By convention, start the prop name with `initial` or `default` to clarify that its new values are ignored:
+«Отражение» пропсов в состоянии имеет смысл только тогда, когда вы *хотите игнорировать все обновления* для конкретного пропса. По соглашению, начните имя пропса с `initial` или `default`, чтобы уточнить, что новые значения игнорируются:
 
 ```js
 function Message({ initialColor }) {
-  // The `color` state variable holds the *first* value of `initialColor`.
-  // Further changes to the `initialColor` prop are ignored.
+  // Переменная состояния `color` хранит *первое* значение `initialColor`.
+  // Дальнейшие изменения пропса `initialColor` игнорируются.
   const [color, setColor] = useState(initialColor);
 ```
 
 </DeepDive>
 
-## Avoid duplication in state {/*avoid-duplication-in-state*/}
+## Избегайте дублирования в состоянии {/*avoid-duplication-in-state*/}
 
-This menu list component lets you choose a single travel snack out of several:
+Этот компонент списка меню позволяет выбрать одну закуску для путешествия из нескольких:
 
 <Sandpack>
 
@@ -422,9 +421,9 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-Currently, it stores the selected item as an object in the `selectedItem` state variable. However, this is not great: **the contents of the `selectedItem` is the same object as one of the items inside the `items` list.** This means that the information about the item itself is duplicated in two places.
+В настоящее время он хранит выбранный элемент как объект в переменной состояния `selectedItem`. Однако это не очень хорошо: **содержимое `selectedItem` — это тот же объект, что и один из элементов внутри списка `items`.** Это означает, что информация о самом элементе дублируется в двух местах.
 
-Why is this a problem? Let's make each item editable:
+Почему это проблема? Давайте сделаем каждый элемент редактируемым:
 
 <Sandpack>
 
@@ -487,9 +486,9 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-Notice how if you first click "Choose" on an item and *then* edit it, **the input updates but the label at the bottom does not reflect the edits.** This is because you have duplicated state, and you forgot to update `selectedItem`.
+Обратите внимание, как если вы сначала нажмете «Choose» на элементе, а *затем* отредактируете его, **поле ввода обновится, но метка внизу не отразит правки.** Это потому, что у вас дублируется состояние, и вы забыли обновить `selectedItem`.
 
-Although you could update `selectedItem` too, an easier fix is to remove duplication. In this example, instead of a `selectedItem` object (which creates a duplication with objects inside `items`), you hold the `selectedId` in state, and *then* get the `selectedItem` by searching the `items` array for an item with that ID:
+Хотя вы могли бы обновить и `selectedItem`, более простое исправление — устранить дублирование. В этом примере вместо объекта `selectedItem` (который создает дублирование с объектами внутри `items`) вы храните `selectedId` в состоянии, а *затем* получаете `selectedItem`, ища в массиве `items` элемент с этим идентификатором:
 
 <Sandpack>
 
@@ -554,23 +553,23 @@ button { margin-top: 10px; }
 
 </Sandpack>
 
-The state used to be duplicated like this:
+Состояние раньше дублировалось так:
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
 * `selectedItem = {id: 0, title: 'pretzels'}`
 
-But after the change it's like this:
+Но после изменения оно выглядит так:
 
 * `items = [{ id: 0, title: 'pretzels'}, ...]`
 * `selectedId = 0`
 
-The duplication is gone, and you only keep the essential state!
+Дублирование устранено, и вы храните только необходимое состояние!
 
-Now if you edit the *selected* item, the message below will update immediately. This is because `setItems` triggers a re-render, and `items.find(...)` would find the item with the updated title. You didn't need to hold *the selected item* in state, because only the *selected ID* is essential. The rest could be calculated during render.
+Теперь, если вы отредактируете *выбранный* элемент, сообщение ниже обновится немедленно. Это потому, что `setItems` запускает повторный рендеринг, и `items.find(...)` найдет элемент с обновленным заголовком. Вам не нужно было хранить *выбранный элемент* в состоянии, потому что только *выбранный ID* является необходимым. Остальное можно было вычислить во время рендеринга.
 
-## Avoid deeply nested state {/*avoid-deeply-nested-state*/}
+## Избегайте глубоко вложенного состояния {/*avoid-deeply-nested-state*/}
 
-Imagine a travel plan consisting of planets, continents, and countries. You might be tempted to structure its state using nested objects and arrays, like in this example:
+Представьте план путешествия, состоящий из планет, континентов и стран. Вас может соблазнить структурировать состояние с помощью вложенных объектов и массивов, как в этом примере:
 
 <Sandpack>
 
@@ -812,11 +811,11 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-Now let's say you want to add a button to delete a place you've already visited. How would you go about it? [Updating nested state](/learn/updating-objects-in-state#updating-a-nested-object) involves making copies of objects all the way up from the part that changed. Deleting a deeply nested place would involve copying its entire parent place chain. Such code can be very verbose.
+Теперь предположим, вы хотите добавить кнопку для удаления места, которое вы уже посетили. Как это сделать? [Обновление вложенного состояния](/learn/updating-objects-in-state#updating-a-nested-object) включает в себя создание копий объектов на всем пути от измененной части до корня. Удаление глубоко вложенного места потребует копирования всей цепочки родительских мест. Такой код может быть очень многословным.
 
-**If the state is too nested to update easily, consider making it "flat".** Here is one way you can restructure this data. Instead of a tree-like structure where each `place` has an array of *its child places*, you can have each place hold an array of *its child place IDs*. Then store a mapping from each place ID to the corresponding place.
+**Если состояние слишком вложено для легкого обновления, рассмотрите возможность его "нормализации" (сделать "плоским").** Вот один из способов реструктурировать эти данные. Вместо древовидной структуры, где каждое `place` содержит массив *дочерних мест*, вы можете сделать так, чтобы каждое место содержало массив *идентификаторов дочерних мест*. Затем храните отображение каждого идентификатора места на соответствующее место.
 
-This data restructuring might remind you of seeing a database table:
+Эта реструктуризация данных может напомнить вам таблицу в базе данных:
 
 <Sandpack>
 
@@ -1118,14 +1117,14 @@ export const initialTravelPlan = {
 
 </Sandpack>
 
-**Now that the state is "flat" (also known as "normalized"), updating nested items becomes easier.**
+**Теперь, когда состояние "плоское" (также известное как "нормализованное"), обновление вложенных элементов становится проще.**
 
-In order to remove a place now, you only need to update two levels of state:
+Чтобы удалить место, вам нужно обновить только два уровня состояния:
 
-- The updated version of its *parent* place should exclude the removed ID from its `childIds` array.
-- The updated version of the root "table" object should include the updated version of the parent place.
+- Обновленная версия родительского места должна исключать удаленный ID из массива `childIds`.
+- Обновленная версия корневого объекта "таблицы" должна включать обновленную версию родительского места.
 
-Here is an example of how you could go about it:
+Вот пример того, как это можно сделать:
 
 <Sandpack>
 
@@ -1138,17 +1137,17 @@ export default function TravelPlan() {
 
   function handleComplete(parentId, childId) {
     const parent = plan[parentId];
-    // Create a new version of the parent place
-    // that doesn't include this child ID.
+    // Создаем новую версию родительского места,
+    // которая не включает этот дочерний ID.
     const nextParent = {
       ...parent,
       childIds: parent.childIds
         .filter(id => id !== childId)
     };
-    // Update the root state object...
+    // Обновляем корневой объект состояния...
     setPlan({
       ...plan,
-      // ...so that it has the updated parent.
+      // ...чтобы он содержал обновленное родительское место.
       [parentId]: nextParent
     });
   }
@@ -1458,13 +1457,13 @@ button { margin: 10px; }
 
 </Sandpack>
 
-You can nest state as much as you like, but making it "flat" can solve numerous problems. It makes state easier to update, and it helps ensure you don't have duplication in different parts of a nested object.
+Вы можете вкладывать состояние как угодно, но его "нормализация" (превращение в плоскую структуру) может решить множество проблем. Это упрощает обновление состояния и помогает избежать дублирования данных в различных частях вложенного объекта.
 
 <DeepDive>
 
-#### Improving memory usage {/*improving-memory-usage*/}
+#### Улучшение использования памяти {/*improving-memory-usage*/}
 
-Ideally, you would also remove the deleted items (and their children!) from the "table" object to improve memory usage. This version does that. It also [uses Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) to make the update logic more concise.
+В идеале, вы также должны удалить удаленные элементы (и их дочерние элементы!) из объекта "table", чтобы улучшить использование памяти. Эта версия делает именно это. Она также [использует Immer](/learn/updating-objects-in-state#write-concise-update-logic-with-immer) для упрощения логики обновления.
 
 <Sandpack>
 
@@ -1477,12 +1476,12 @@ export default function TravelPlan() {
 
   function handleComplete(parentId, childId) {
     updatePlan(draft => {
-      // Remove from the parent place's child IDs.
+      // Удалить из дочерних идентификаторов родительского места.
       const parent = draft[parentId];
       parent.childIds = parent.childIds
         .filter(id => id !== childId);
 
-      // Forget this place and all its subtree.
+      // Забыть это место и все его поддерево.
       deleteAllChildren(childId);
       function deleteAllChildren(id) {
         const place = draft[id];
@@ -1817,25 +1816,25 @@ button { margin: 10px; }
 
 </DeepDive>
 
-Sometimes, you can also reduce state nesting by moving some of the nested state into the child components. This works well for ephemeral UI state that doesn't need to be stored, like whether an item is hovered.
+Иногда вы также можете уменьшить вложенность состояния, переместив часть вложенного состояния в дочерние компоненты. Это хорошо работает для эфемерного состояния пользовательского интерфейса, которое не нужно хранить, например, находится ли элемент под наведением курсора.
 
 <Recap>
 
-* If two state variables always update together, consider merging them into one. 
-* Choose your state variables carefully to avoid creating "impossible" states.
-* Structure your state in a way that reduces the chances that you'll make a mistake updating it.
-* Avoid redundant and duplicate state so that you don't need to keep it in sync.
-* Don't put props *into* state unless you specifically want to prevent updates.
-* For UI patterns like selection, keep ID or index in state instead of the object itself.
-* If updating deeply nested state is complicated, try flattening it.
+* Если две переменные состояния всегда обновляются вместе, рассмотрите возможность их объединения в одну.
+* Тщательно выбирайте переменные состояния, чтобы избежать создания «невозможных» состояний.
+* Структурируйте свое состояние таким образом, чтобы уменьшить вероятность ошибки при его обновлении.
+* Избегайте избыточного и дублирующегося состояния, чтобы не приходилось синхронизировать его.
+* Не помещайте пропсы *в* состояние, если вы специально не хотите предотвратить обновления.
+* Для шаблонов пользовательского интерфейса, таких как выбор, вместо самого объекта храните в состоянии идентификатор или индекс.
+* Если обновление глубоко вложенного состояния сложно, попробуйте его «сплющить».
 
 </Recap>
 
 <Challenges>
 
-#### Fix a component that's not updating {/*fix-a-component-thats-not-updating*/}
+#### Исправьте компонент, который не обновляется {/*fix-a-component-thats-not-updating*/}
 
-This `Clock` component receives two props: `color` and `time`. When you select a different color in the select box, the `Clock` component receives a different `color` prop from its parent component. However, for some reason, the displayed color doesn't update. Why? Fix the problem.
+Этот компонент `Clock` получает два пропса: `color` и `time`. Когда вы выбираете другой цвет в выпадающем списке, компонент `Clock` получает другой пропс `color` от своего родительского компонента. Однако по какой-то причине отображаемый цвет не обновляется. Почему? Исправьте проблему.
 
 <Sandpack>
 
@@ -1890,7 +1889,7 @@ export default function App() {
 
 <Solution>
 
-The issue is that this component has `color` state initialized with the initial value of the `color` prop. But when the `color` prop changes, this does not affect the state variable! So they get out of sync. To fix this issue, remove the state variable altogether, and use the `color` prop directly.
+Проблема в том, что этот компонент имеет состояние `color`, инициализированное начальным значением пропса `color`. Но когда пропс `color` изменяется, это не влияет на переменную состояния! Таким образом, они выходят из синхронизации. Чтобы исправить эту проблему, полностью удалите переменную состояния и используйте пропс `color` напрямую.
 
 <Sandpack>
 
@@ -1942,7 +1941,7 @@ export default function App() {
 
 </Sandpack>
 
-Or, using the destructuring syntax:
+Или, используя синтаксис деструктуризации:
 
 <Sandpack>
 
@@ -1996,13 +1995,13 @@ export default function App() {
 
 </Solution>
 
-#### Fix a broken packing list {/*fix-a-broken-packing-list*/}
+#### Исправьте сломанный список покупок {/*fix-a-broken-packing-list*/}
 
-This packing list has a footer that shows how many items are packed, and how many items there are overall. It seems to work at first, but it is buggy. For example, if you mark an item as packed and then delete it, the counter will not be updated correctly. Fix the counter so that it's always correct.
+В этом списке покупок есть нижний колонтитул, который показывает, сколько элементов упаковано и сколько всего элементов. Сначала он кажется рабочим, но он содержит ошибки. Например, если вы отметите элемент как упакованный, а затем удалите его, счетчик не будет обновлен правильно. Исправьте счетчик, чтобы он всегда был правильным.
 
 <Hint>
 
-Is any state in this example redundant?
+Есть ли в этом примере избыточное состояние?
 
 </Hint>
 
@@ -2143,7 +2142,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-Although you could carefully change each event handler to update the `total` and `packed` counters correctly, the root problem is that these state variables exist at all. They are redundant because you can always calculate the number of items (packed or total) from the `items` array itself. Remove the redundant state to fix the bug:
+Хотя вы могли бы тщательно изменить каждый обработчик событий, чтобы он правильно обновлял счетчики `total` и `packed`, основная проблема заключается в том, что эти переменные состояния вообще существуют. Они избыточны, потому что вы всегда можете рассчитать количество элементов (упакованных или всего) из самого массива `items`. Удалите избыточное состояние, чтобы исправить ошибку:
 
 <Sandpack>
 
@@ -2276,15 +2275,15 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-Notice how the event handlers are only concerned with calling `setItems` after this change. The item counts are now calculated during the next render from `items`, so they are always up-to-date.
+Обратите внимание, что обработчики событий теперь отвечают только за вызов `setItems` после этого изменения. Количество элементов теперь рассчитывается во время следующего рендеринга из `items`, поэтому оно всегда актуально.
 
 </Solution>
 
-#### Fix the disappearing selection {/*fix-the-disappearing-selection*/}
+#### Исправьте исчезающий выбор {/*fix-the-disappearing-selection*/}
 
-There is a list of `letters` in state. When you hover or focus a particular letter, it gets highlighted. The currently highlighted letter is stored in the `highlightedLetter` state variable. You can "star" and "unstar" individual letters, which updates the `letters` array in state.
+Существует список `letters` в состоянии. Когда вы наводите курсор или фокусируетесь на определенной букве, она подсвечивается. Текущая подсвеченная буква хранится в переменной состояния `highlightedLetter`. Вы можете "звездить" и "раззвездить" отдельные буквы, что обновляет массив `letters` в состоянии.
 
-This code works, but there is a minor UI glitch. When you press "Star" or "Unstar", the highlighting disappears for a moment. However, it reappears as soon as you move your pointer or switch to another letter with keyboard. Why is this happening? Fix it so that the highlighting doesn't disappear after the button click.
+Этот код работает, но есть небольшой визуальный сбой. Когда вы нажимаете "Star" или "Unstar", подсветка на мгновение исчезает. Однако она снова появляется, как только вы перемещаете указатель или переключаетесь на другую букву с помощью клавиатуры. Почему это происходит? Исправьте это так, чтобы подсветка не исчезала после нажатия кнопки.
 
 <Sandpack>
 
@@ -2391,9 +2390,9 @@ li { border-radius: 5px; }
 
 <Solution>
 
-The problem is that you're holding the letter object in `highlightedLetter`. But you're also holding the same information in the `letters` array. So your state has duplication! When you update the `letters` array after the button click, you create a new letter object which is different from `highlightedLetter`. This is why `highlightedLetter === letter` check becomes `false`, and the highlight disappears. It reappears the next time you call `setHighlightedLetter` when the pointer moves.
+Проблема в том, что вы храните объект письма в `highlightedLetter`. Но вы также храните ту же информацию в массиве `letters`. Таким образом, ваше состояние имеет дублирование! Когда вы обновляете массив `letters` после нажатия кнопки, вы создаете новый объект письма, который отличается от `highlightedLetter`. Вот почему проверка `highlightedLetter === letter` становится `false`, и подсветка исчезает. Она снова появляется при следующем вызове `setHighlightedLetter` при перемещении указателя.
 
-To fix the issue, remove the duplication from state. Instead of storing *the letter itself* in two places, store the `highlightedId` instead. Then you can check `isHighlighted` for each letter with `letter.id === highlightedId`, which will work even if the `letter` object has changed since the last render.
+Чтобы исправить проблему, удалите дублирование из состояния. Вместо того чтобы хранить *само письмо* в двух местах, храните вместо этого `highlightedId`. Затем вы можете проверить `isHighlighted` для каждого письма с помощью `letter.id === highlightedId`, что будет работать, даже если объект `letter` изменился с момента последнего рендеринга.
 
 <Sandpack>
 
@@ -2500,15 +2499,15 @@ li { border-radius: 5px; }
 
 </Solution>
 
-#### Implement multiple selection {/*implement-multiple-selection*/}
+#### Реализуйте множественный выбор {/*implement-multiple-selection*/}
 
-In this example, each `Letter` has an `isSelected` prop and an `onToggle` handler that marks it as selected. This works, but the state is stored as a `selectedId` (either `null` or an ID), so only one letter can get selected at any given time.
+В этом примере каждый `Letter` имеет проп `isSelected` и обработчик `onToggle`, который помечает его как выбранный. Это работает, но состояние хранится как `selectedId` (либо `null`, либо ID), поэтому в любой момент времени может быть выбран только одно письмо.
 
-Change the state structure to support multiple selection. (How would you structure it? Think about this before writing the code.) Each checkbox should become independent from the others. Clicking a selected letter should uncheck it. Finally, the footer should show the correct number of the selected items.
+Измените структуру состояния для поддержки множественного выбора. (Как бы вы её структурировали? Подумайте об этом перед написанием кода.) Каждый чекбокс должен стать независимым от других. Нажатие на выбранное письмо должно снимать с него выбор. Наконец, внизу должен отображаться правильный подсчёт выбранных элементов.
 
 <Hint>
 
-Instead of a single selected ID, you might want to hold an array or a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) of selected IDs in state.
+Вместо одного выбранного ID вы можете хранить в состоянии массив или [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) выбранных ID.
 
 </Hint>
 
@@ -2609,7 +2608,7 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 <Solution>
 
-Instead of a single `selectedId`, keep a `selectedIds` *array* in state. For example, if you select the first and the last letter, it would contain `[0, 2]`. When nothing is selected, it would be an empty `[]` array:
+Вместо одного `selectedId` храните в состоянии массив `selectedIds`. Например, если вы выберете первое и последнее письмо, он будет содержать `[0, 2]`. Когда ничего не выбрано, это будет пустой массив `[]`:
 
 <Sandpack>
 
@@ -2715,9 +2714,9 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 </Sandpack>
 
-One minor downside of using an array is that for each item, you're calling `selectedIds.includes(letter.id)` to check whether it's selected. If the array is very large, this can become a performance problem because array search with [`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) takes linear time, and you're doing this search for each individual item.
+Небольшой недостаток использования массива заключается в том, что для каждого элемента вы вызываете `selectedIds.includes(letter.id)`, чтобы проверить, выбран ли он. Если массив очень большой, это может стать проблемой производительности, поскольку поиск в массиве с помощью [`includes()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/includes) занимает линейное время, и вы выполняете этот поиск для каждого отдельного элемента.
 
-To fix this, you can hold a [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) in state instead, which provides a fast [`has()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has) operation:
+Чтобы исправить это, вы можете хранить в состоянии [Set](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) вместо этого, который предоставляет быструю операцию [`has()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set/has):
 
 <Sandpack>
 
@@ -2820,9 +2819,9 @@ label { width: 100%; padding: 5px; display: inline-block; }
 
 </Sandpack>
 
-Now each item does a `selectedIds.has(letter.id)` check, which is very fast.
+Теперь каждый элемент выполняет проверку `selectedIds.has(letter.id)`, что очень быстро.
 
-Keep in mind that you [should not mutate objects in state](/learn/updating-objects-in-state), and that includes Sets, too. This is why the `handleToggle` function creates a *copy* of the Set first, and then updates that copy.
+Имейте в виду, что вы [не должны изменять объекты в состоянии](/learn/updating-objects-in-state), и это включает в себя и Sets. Вот почему функция `handleToggle` сначала создает *копию* Set, а затем обновляет эту копию.
 
 </Solution>
 
