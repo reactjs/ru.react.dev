@@ -2,14 +2,7 @@
 title: "React Canaries: Включение поэтапного развертывания функций за пределами Meta"
 author: Dan Abramov, Sophie Alpert, Rick Hanlon, Sebastian Markbage, and Andrew Clark
 date: 2023/05/03
-description: Мы хотим предложить сообществу React возможность использовать
-  отдельные новые возможности сразу после того, как их дизайн будет близок к
-  завершению, до их выпуска в стабильной версии — подобно тому, как Meta давно
-  использует самые передовые версии React внутри компании. Мы представляем новый
-  официально поддерживаемый [канал предварительных выпусков
-  Canary](/community/versioning-policy#canary-channel). Он позволяет тщательно
-  подобранным средам, таким как фреймворки, отделять внедрение отдельных функций
-  React от графика выпусков React.
+description: Мы хотим предложить сообществу React возможность использовать отдельные новые возможности сразу после того, как их дизайн будет близок к завершению, до их выпуска в стабильной версии — подобно тому, как Meta давно использует самые передовые версии React внутри компании. Мы представляем новый официально поддерживаемый [канал предварительных выпусков Canary](/community/versioning-policy#canary-channel). Он позволяет тщательно подобранным средам, таким как фреймворки, отделять внедрение отдельных функций React от графика выпусков React.
 ---
 3 мая 2023 г. от [Dan Abramov](https://bsky.app/profile/danabra.mov), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Sebastian Markbåge](https://twitter.com/sebmarkbage) и [Andrew Clark](https://twitter.com/acdlite)
 
