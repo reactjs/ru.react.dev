@@ -1,6 +1,7 @@
 ---
-title: использовать
+title: use
 ---
+
 <Intro>
 
 `use` — это API React, который позволяет читать значение ресурса, такого как [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) или [контекст](/learn/passing-data-deeply-with-context).
