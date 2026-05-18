@@ -1,42 +1,41 @@
 ---
-title: React Reference Overview
+title: Обзор справочника React
 ---
-
 <Intro>
 
-This section provides detailed reference documentation for working with React. For an introduction to React, please visit the [Learn](/learn) section.
+Этот раздел содержит подробную справочную документацию по работе с React. Для ознакомления с React посетите раздел [Learn](/learn).
 
 </Intro>
 
-The React reference documentation is broken down into functional subsections:
+Справочная документация React разделена на функциональные подразделы:
 
 ## React {/*react*/}
 
-Programmatic React features:
+Программные возможности React:
 
-* [Hooks](/reference/react/hooks) - Use different React features from your components.
-* [Components](/reference/react/components) - Built-in components that you can use in your JSX.
-* [APIs](/reference/react/apis) - APIs that are useful for defining components.
-* [Directives](/reference/rsc/directives) - Provide instructions to bundlers compatible with React Server Components.
+* [Hooks](/reference/react/hooks) - Используйте различные возможности React из ваших компонентов.
+* [Components](/reference/react/components) - Встроенные компоненты, которые вы можете использовать в своем JSX.
+* [APIs](/reference/react/apis) - API, полезные для определения компонентов.
+* [Directives](/reference/rsc/directives) - Предоставляют инструкции для сборщиков, совместимых с React Server Components.
 
 ## React DOM {/*react-dom*/}
 
-React-dom contains features that are only supported for web applications (which run in the browser DOM environment). This section is broken into the following:
+React-dom содержит функции, которые поддерживаются только для веб-приложений (работающих в среде браузерного DOM). Этот раздел разбит на следующие части:
 
-* [Hooks](/reference/react-dom/hooks) - Hooks for web applications which run in the browser DOM environment.
-* [Components](/reference/react-dom/components) - React supports all of the browser built-in HTML and SVG components.
-* [APIs](/reference/react-dom) - The `react-dom` package contains methods supported only in web applications.
-* [Client APIs](/reference/react-dom/client) - The `react-dom/client` APIs let you render React components on the client (in the browser).
-* [Server APIs](/reference/react-dom/server) - The `react-dom/server` APIs let you render React components to HTML on the server.
+* [Hooks](/reference/react-dom/hooks) - Хуки для веб-приложений, работающих в среде браузерного DOM.
+* [Components](/reference/react-dom/components) - React поддерживает все встроенные в браузер HTML и SVG компоненты.
+* [APIs](/reference/react-dom) - Пакет `react-dom` содержит методы, поддерживаемые только в веб-приложениях.
+* [Client APIs](/reference/react-dom/client) - API `react-dom/client` позволяют рендерить React-компоненты на клиенте (в браузере).
+* [Server APIs](/reference/react-dom/server) - API `react-dom/server` позволяют рендерить React-компоненты в HTML на сервере.
 
 ## Rules of React {/*rules-of-react*/}
 
-React has idioms — or rules — for how to express patterns in a way that is easy to understand and yields high-quality applications:
+React имеет идиомы — или правила — для выражения паттернов таким образом, чтобы их было легко понять и они приводили к созданию высококачественных приложений:
 
-* [Components and Hooks must be pure](/reference/rules/components-and-hooks-must-be-pure) – Purity makes your code easier to understand, debug, and allows React to automatically optimize your components and hooks correctly.
-* [React calls Components and Hooks](/reference/rules/react-calls-components-and-hooks) – React is responsible for rendering components and hooks when necessary to optimize the user experience.
-* [Rules of Hooks](/reference/rules/rules-of-hooks) – Hooks are defined using JavaScript functions, but they represent a special type of reusable UI logic with restrictions on where they can be called.
+* [Components and Hooks must be pure](/reference/rules/components-and-hooks-must-be-pure) – Чистота делает ваш код более понятным, облегчает отладку и позволяет React автоматически правильно оптимизировать ваши компоненты и хуки.
+* [React calls Components and Hooks](/reference/rules/react-calls-components-and-hooks) – React отвечает за рендеринг компонентов и хуков при необходимости для оптимизации пользовательского опыта.
+* [Rules of Hooks](/reference/rules/rules-of-hooks) – Хуки определяются с использованием функций JavaScript, но они представляют собой особый тип повторно используемой логики пользовательского интерфейса с ограничениями на то, где они могут быть вызваны.
 
 ## Legacy APIs {/*legacy-apis*/}
 
-* [Legacy APIs](/reference/react/legacy) - Exported from the `react` package, but not recommended for use in newly written code.
+* [Legacy APIs](/reference/react/legacy) - Экспортируются из пакета `react`, но не рекомендуются для использования в новом коде.
