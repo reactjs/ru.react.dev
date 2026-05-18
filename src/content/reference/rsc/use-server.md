@@ -2,12 +2,12 @@
 title: "'use server'"
 titleForTitleTag: "'use server' directive"
 ---
-```
 <RSC>
 
-`'use server'` предназначен для использования с [React Server Components](/reference/rsc/server-components).
+`'use server'` используется с [использованием React Server Components](/reference/rsc/server-components).
 
 </RSC>
+
 
 <Intro>
 
@@ -19,11 +19,11 @@ titleForTitleTag: "'use server' directive"
 
 ---
 
-## Ссылка {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `'use server'` {/*use-server*/}
 
-Добавьте `'use server'` в начало тела асинхронной функции, чтобы пометить функцию как вызываемую клиентом. Мы называем эти функции [_Server Functions_](/reference/rsc/server-functions).
+Добавьте `'use server'` в начало тела асинхронной функции, чтобы пометить её как доступную для вызова клиентом. Мы называем такие функции [_Server Functions_](/reference/rsc/server-functions).
 
 ```js {2}
 async function addToCart(data) {
@@ -32,28 +32,28 @@ async function addToCart(data) {
 }
 ```
 
-При вызове Server Function на клиенте будет выполнен сетевой запрос к серверу, который включает сериализованную копию любых переданных аргументов. Если Server Function возвращает значение, это значение будет сериализовано и возвращено клиенту.
+При вызове Server Function с клиента будет выполнен сетевой запрос на сервер, включающий сериализованную копию всех переданных аргументов. Если Server Function возвращает значение, это значение будет сериализовано и возвращено клиенту.
 
-Вместо того, чтобы по отдельности помечать функции с помощью `'use server'`, вы можете добавить директиву в начало файла, чтобы пометить все экспорты в этом файле как Server Functions, которые можно использовать где угодно, в том числе импортировать в клиентском коде.
+Вместо того чтобы помечать функции по отдельности с помощью `'use server'`, вы можете добавить директиву в начало файла, чтобы пометить все экспорты в этом файле как Server Functions, которые можно использовать где угодно, в том числе импортировать в клиентский код.
 
-#### Предостережения {/*caveats*/}
-* `'use server'` должна находиться в самом начале функции или модуля; выше любого другого кода, включая импорты (комментарии над директивами допустимы). Они должны быть написаны в одинарных или двойных кавычках, а не в обратных кавычках.
-* `'use server'` можно использовать только в серверных файлах. Полученные Server Functions можно передавать в Client Components через пропсы. См. поддерживаемые [типы для сериализации](#serializable-parameters-and-return-values).
-* Чтобы импортировать Server Functions из [клиентского кода](/reference/rsc/use-client), директиву необходимо использовать на уровне модуля.
-* Поскольку базовые сетевые вызовы всегда асинхронны, `'use server'` можно использовать только в асинхронных функциях.
-* Всегда относитесь к аргументам Server Functions как к ненадежному вводу и авторизуйте любые мутации. См. [соображения безопасности](#security).
-* Server Functions следует вызывать в [Transition](/reference/react/useTransition). Server Functions, переданные в [`<form action>`](/reference/react-dom/components/form#props) или [`formAction`](/reference/react-dom/components/input#props), будут автоматически вызываться в переходе.
-* Server Functions предназначены для мутаций, которые обновляют состояние на стороне сервера; они не рекомендуются для получения данных. Соответственно, фреймворки, реализующие Server Functions, обычно обрабатывают одно действие за раз и не имеют возможности кэшировать возвращаемое значение.
+#### Ограничения {/*caveats*/}
+* `'use server'` должна находиться в самом начале функции или модуля; выше любого другого кода, включая импорты (комментарии перед директивами допустимы). Она должна быть написана в одинарных или двойных кавычках, а не в обратных.
+* `'use server'` может использоваться только в серверных файлах. Полученные Server Functions могут быть переданы в Client Components через пропсы. См. поддерживаемые [типы для сериализации](#serializable-parameters-and-return-values).
+* Для импорта Server Functions из [клиентского кода](/reference/rsc/use-client) директива должна использоваться на уровне модуля.
+* Поскольку базовые сетевые вызовы всегда асинхронны, `'use server'` может использоваться только с асинхронными функциями.
+* Всегда относитесь к аргументам Server Functions как к недоверенным входным данным и авторизуйте любые мутации. См. [соображения безопасности](#security).
+* Server Functions должны вызываться в [Transition](/reference/react/useTransition). Server Functions, переданные в [`<form action>`](/reference/react-dom/components/form#props) или [`formAction`](/reference/react-dom/components/input#props), будут автоматически вызваны в переходе.
+* Server Functions предназначены для мутаций, обновляющих серверное состояние; они не рекомендуются для получения данных. Соответственно, фреймворки, реализующие Server Functions, обычно обрабатывают одно действие за раз и не имеют способа кэшировать возвращаемое значение.
 
 ### Соображения безопасности {/*security*/}
 
-Аргументы Server Functions полностью контролируются клиентом. В целях безопасности всегда относитесь к ним как к ненадежному вводу и обязательно проверяйте и экранируйте аргументы соответствующим образом.
+Аргументы для Server Functions полностью контролируются клиентом. В целях безопасности всегда относитесь к ним как к недоверенным входным данным и убедитесь, что вы валидируете и экранируете аргументы по мере необходимости.
 
-В любой Server Function обязательно проверяйте, разрешено ли вошедшему в систему пользователю выполнять это действие.
+В любой Server Function убедитесь, что вы проверяете, разрешено ли вошедшему в систему пользователю выполнять это действие.
 
 <Wip>
 
-Чтобы предотвратить отправку конфиденциальных данных из Server Function, существуют экспериментальные API для предотвращения передачи уникальных значений и объектов в клиентский код.
+Чтобы предотвратить отправку конфиденциальных данных из Server Function, существуют экспериментальные API для отслеживания (taint), предотвращающие передачу уникальных значений и объектов в клиентский код.
 
 См. [experimental_taintUniqueValue](/reference/react/experimental_taintUniqueValue) и [experimental_taintObjectReference](/reference/react/experimental_taintObjectReference).
 
@@ -63,7 +63,7 @@ async function addToCart(data) {
 
 Поскольку клиентский код вызывает Server Function по сети, любые переданные аргументы должны быть сериализуемыми.
 
-Вот поддерживаемые типы для аргументов Server Function:
+Вот поддерживаемые типы аргументов для Server Functions:
 
 * Примитивы
 	* [string](https://developer.mozilla.org/en-US/docs/Glossary/String)
@@ -81,25 +81,27 @@ async function addToCart(data) {
 	* [TypedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) и [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)
 * [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
 * Экземпляры [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)
-* Простые [объекты](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): созданные с помощью [инициализаторов объектов](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), со сериализуемыми свойствами
+* Простые [объекты](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object): созданные с помощью [инициализаторов объектов](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer), с сериализуемыми свойствами
 * Функции, которые являются Server Functions
 * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
-В частности, это не поддерживается:
+Примечательно, что не поддерживаются:
 * React-элементы или [JSX](/learn/writing-markup-with-jsx)
-* Функции, включая компонентные функции или любую другую функцию, которая не является Server Function
+* Функции, включая компонентные функции или любые другие функции, не являющиеся Server Functions
 * [Классы](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Classes_in_JavaScript)
-* Объекты, которые являются экземплярами любого класса (кроме встроенных, упомянутых выше) или объекты с [нулевым прототипом](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
+* Объекты, являющиеся экземплярами любого класса (кроме упомянутых встроенных) или объекты с [нулевым прототипом](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object#null-prototype_objects)
 * Символы, не зарегистрированные глобально, например `Symbol('my new symbol')`
-* События из обработчиков событий
+* События от обработчиков событий
+
 
 Поддерживаемые сериализуемые возвращаемые значения такие же, как [сериализуемые пропсы](/reference/rsc/use-client#passing-props-from-server-to-client-components) для граничного Client Component.
+
 
 ## Использование {/*usage*/}
 
 ### Server Functions в формах {/*server-functions-in-forms*/}
 
-Наиболее распространенным вариантом использования Server Functions будет вызов функций, которые мутируют данные. В браузере [HTML-элемент form](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) является традиционным подходом для отправки пользователем мутации. С помощью React Server Components React представляет первоклассную поддержку Server Functions в качестве Actions в [формах](/reference/react-dom/components/form).
+Наиболее распространенным сценарием использования Server Functions будет вызов функций, изменяющих данные. В браузере элемент [HTML-формы](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) является традиционным подходом для пользователя для отправки мутации. С React Server Components React вводит первоклассную поддержку Server Functions в качестве Actions в [формах](/reference/react-dom/components/form).
 
 Вот форма, которая позволяет пользователю запросить имя пользователя.
 
@@ -122,15 +124,15 @@ export default function App() {
 }
 ```
 
-В этом примере `requestUsername` — это Server Function, переданная в `<form>`. Когда пользователь отправляет эту форму, выполняется сетевой запрос к серверной функции `requestUsername`. При вызове Server Function в форме React предоставит <CodeStep step={1}>[FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData)</CodeStep> формы в качестве первого аргумента Server Function.
+В этом примере `requestUsername` — это Server Function, переданная в `<form>`. Когда пользователь отправляет эту форму, происходит сетевой запрос к серверной функции `requestUsername`. При вызове Server Function в форме React передаст [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) формы в качестве первого аргумента Server Function.
 
-Передавая Server Function в `action` формы, React может [прогрессивно улучшать](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) форму. Это означает, что формы можно отправлять до загрузки пакета JavaScript.
+Передавая Server Function в `action` формы, React может [постепенно улучшать](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) форму. Это означает, что формы могут быть отправлены до загрузки JavaScript-бандла.
 
 #### Обработка возвращаемых значений в формах {/*handling-return-values*/}
 
-В форме запроса имени пользователя может возникнуть вероятность того, что имя пользователя недоступно. `requestUsername` должен сообщить нам, если это не удастся.
+В форме запроса имени пользователя может возникнуть ситуация, когда имя пользователя недоступно. `requestUsername` должен сообщить нам, удалось ли это или нет.
 
-Чтобы обновить пользовательский интерфейс на основе результата Server Function, поддерживая при этом прогрессивное улучшение, используйте [`useActionState`](/reference/react/useActionState).
+Чтобы обновить UI на основе результата Server Function, поддерживая при этом постепенное улучшение, используйте [`useActionState`](/reference/react/useActionState).
 
 ```js
 // requestUsername.js
@@ -170,11 +172,11 @@ function UsernameForm() {
 
 Обратите внимание, что, как и большинство хуков, `useActionState` можно вызывать только в <CodeStep step={1}>[клиентском коде](/reference/rsc/use-client)</CodeStep>.
 
-### Вызов Server Function за пределами `<form>` {/*calling-a-server-function-outside-of-form*/}
+### Вызов Server Function вне `<form>` {/*calling-a-server-function-outside-of-form*/}
 
-Server Functions предоставляются серверными конечными точками и могут вызываться в любом месте клиентского кода.
+Server Functions — это серверные конечные точки, и их можно вызывать из любого места в клиентском коде.
 
-При использовании Server Function за пределами [формы](/reference/react-dom/components/form) вызовите Server Function в [Transition](/reference/react/useTransition), что позволит вам отображать индикатор загрузки, показывать [оптимистичные обновления состояния](/reference/react/useOptimistic) и обрабатывать непредвиденные ошибки. Формы автоматически обернут Server Functions в переходы.
+При использовании Server Function вне [формы](/reference/react-dom/components/form) вызывайте Server Function в [Transition](/reference/react/useTransition), что позволяет отображать индикатор загрузки, показывать [оптимистичные обновления состояния](/reference/react/useOptimistic) и обрабатывать неожиданные ошибки. Формы автоматически оборачивают Server Functions в переходы.
 
 ```js {9-12}
 import incrementLike from './actions';
@@ -211,5 +213,4 @@ export default async function incrementLike() {
 }
 ```
 
-Чтобы прочитать возвращаемое значение Server Function, вам нужно будет `await` promise, возвращенный.
-```
+Чтобы прочитать возвращаемое значение Server Function, вам нужно будет `await` вернуть обещание.
