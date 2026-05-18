@@ -1,6 +1,7 @@
 ---
-title: предварительный рендер
+title: prerender
 ---
+
 <Intro>
 
 `prerender` рендерит дерево React в статический HTML-строку с использованием [Web Stream](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API).
