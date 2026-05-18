@@ -1,6 +1,7 @@
 ---
-title: Участники документации
+title: Docs Contributors
 ---
+
 <Intro>
 
 Документация React написана и поддерживается [командой React](/community/team) и [внешними контрибьюторами.](https://github.com/reactjs/react.dev/graphs/contributors) На этой странице мы хотели бы поблагодарить нескольких человек, которые внесли значительный вклад в этот сайт.
