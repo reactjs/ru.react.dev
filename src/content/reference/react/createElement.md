@@ -1,10 +1,9 @@
 ---
 title: createElement
 ---
-
 <Intro>
 
-`createElement` lets you create a React element. It serves as an alternative to writing [JSX.](/learn/writing-markup-with-jsx)
+`createElement` позволяет создавать React-элементы. Это альтернатива написанию [JSX.](/learn/writing-markup-with-jsx)
 
 ```js
 const element = createElement(type, props, ...children)
@@ -16,11 +15,11 @@ const element = createElement(type, props, ...children)
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `createElement(type, props, ...children)` {/*createelement*/}
 
-Call `createElement` to create a React element with the given `type`, `props`, and `children`.
+Вызовите `createElement`, чтобы создать React-элемент с указанным `type`, `props` и `children`.
 
 ```js
 import { createElement } from 'react';
@@ -34,44 +33,44 @@ function Greeting({ name }) {
 }
 ```
 
-[See more examples below.](#usage)
+[См. больше примеров ниже.](#usage)
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-* `type`: The `type` argument must be a valid React component type. For example, it could be a tag name string (such as `'div'` or `'span'`), or a React component (a function, a class, or a special component like [`Fragment`](/reference/react/Fragment)).
+* `type`: Аргумент `type` должен быть допустимым типом React-компонента. Например, это может быть строка с именем тега (например, `'div'` или `'span'`) или React-компонент (функция, класс или специальный компонент, такой как [`Fragment`](/reference/react/Fragment)).
 
-* `props`: The `props` argument must either be an object or `null`. If you pass `null`, it will be treated the same as an empty object. React will create an element with props matching the `props` you have passed. Note that `ref` and `key` from your `props` object are special and will *not* be available as `element.props.ref` and `element.props.key` on the returned `element`. They will be available as `element.ref` and `element.key`.
+* `props`: Аргумент `props` должен быть объектом или `null`. Если вы передадите `null`, это будет равносильно передаче пустого объекта. React создаст элемент со свойствами, соответствующими переданным вами `props`. Обратите внимание, что `ref` и `key` из вашего объекта `props` являются специальными и *не* будут доступны как `element.props.ref` и `element.props.key` в возвращаемом `element`. Они будут доступны как `element.ref` и `element.key`.
 
-* **optional** `...children`: Zero or more child nodes. They can be any React nodes, including React elements, strings, numbers, [portals](/reference/react-dom/createPortal), empty nodes (`null`, `undefined`, `true`, and `false`), and arrays of React nodes.
+* **необязательный** `...children`: Ноль или более дочерних узлов. Это могут быть любые React-узлы, включая React-элементы, строки, числа, [порталы](/reference/react-dom/createPortal), пустые узлы (`null`, `undefined`, `true` и `false`) и массивы React-узлов.
 
-#### Returns {/*returns*/}
+#### Возвращает {/*returns*/}
 
-`createElement` returns a React element object with a few properties:
+`createElement` возвращает объект React-элемента с несколькими свойствами:
 
-* `type`: The `type` you have passed.
-* `props`: The `props` you have passed except for `ref` and `key`.
-* `ref`: The `ref` you have passed. If missing, `null`.
-* `key`: The `key` you have passed, coerced to a string. If missing, `null`.
+* `type`: Переданный вами `type`.
+* `props`: Переданные вами `props`, за исключением `ref` и `key`.
+* `ref`: Переданный вами `ref`. Если отсутствует, то `null`.
+* `key`: Переданный вами `key`, приведенный к строке. Если отсутствует, то `null`.
 
-Usually, you'll return the element from your component or make it a child of another element. Although you may read the element's properties, it's best to treat every element as opaque after it's created, and only render it.
+Обычно вы возвращаете элемент из своего компонента или делаете его дочерним элементом другого элемента. Хотя вы можете читать свойства элемента, лучше всего рассматривать каждый элемент как непрозрачный после его создания и только рендерить его.
 
-#### Caveats {/*caveats*/}
+#### Ограничения {/*caveats*/}
 
-* You must **treat React elements and their props as [immutable](https://en.wikipedia.org/wiki/Immutable_object)** and never change their contents after creation. In development, React will [freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) the returned element and its `props` property shallowly to enforce this.
+* Вы должны **рассматривать React-элементы и их `props` как [неизменяемые](https://en.wikipedia.org/wiki/Immutable_object)** и никогда не изменять их содержимое после создания. В режиме разработки React будет [замораживать](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze) возвращаемый элемент и его свойство `props` на верхнем уровне, чтобы обеспечить это.
 
-* When you use JSX, **you must start a tag with a capital letter to render your own custom component.** In other words, `<Something />` is equivalent to `createElement(Something)`, but `<something />` (lowercase) is equivalent to `createElement('something')` (note it's a string, so it will be treated as a built-in HTML tag).
+* Когда вы используете JSX, **вы должны начинать тег с заглавной буквы, чтобы рендерить собственный пользовательский компонент.** Другими словами, `<Something />` эквивалентно `createElement(Something)`, а `<something />` (строчная буква) эквивалентно `createElement('something')` (обратите внимание, что это строка, поэтому она будет рассматриваться как встроенный HTML-тег).
 
-* You should only **pass children as multiple arguments to `createElement` if they are all statically known,** like `createElement('h1', {}, child1, child2, child3)`. If your children are dynamic, pass the entire array as the third argument: `createElement('ul', {}, listItems)`. This ensures that React will [warn you about missing `key`s](/learn/rendering-lists#keeping-list-items-in-order-with-key) for any dynamic lists. For static lists this is not necessary because they never reorder.
+* Вы должны **передавать дочерние элементы в качестве нескольких аргументов `createElement` только в том случае, если они все статически известны,** например `createElement('h1', {}, child1, child2, child3)`. Если ваши дочерние элементы динамические, передайте весь массив в качестве третьего аргумента: `createElement('ul', {}, listItems)`. Это гарантирует, что React [предупредит вас об отсутствующих `key`](/learn/rendering-lists#keeping-list-items-in-order-with-key) для любых динамических списков. Для статических списков это не требуется, поскольку они никогда не переупорядочиваются.
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Creating an element without JSX {/*creating-an-element-without-jsx*/}
+### Создание элемента без JSX {/*creating-an-element-without-jsx*/}
 
-If you don't like [JSX](/learn/writing-markup-with-jsx) or can't use it in your project, you can use `createElement` as an alternative.
+Если вам не нравится [JSX](/learn/writing-markup-with-jsx) или вы не можете использовать его в своем проекте, вы можете использовать `createElement` в качестве альтернативы.
 
-To create an element without JSX, call `createElement` with some <CodeStep step={1}>type</CodeStep>, <CodeStep step={2}>props</CodeStep>, and <CodeStep step={3}>children</CodeStep>:
+Чтобы создать элемент без JSX, вызовите `createElement` с некоторым <CodeStep step={1}>типом</CodeStep>, <CodeStep step={2}>props</CodeStep> и <CodeStep step={3}>дочерними элементами</CodeStep>:
 
 ```js [[1, 5, "'h1'"], [2, 6, "{ className: 'greeting' }"], [3, 7, "'Hello ',"], [3, 8, "createElement('i', null, name),"], [3, 9, "'. Welcome!'"]]
 import { createElement } from 'react';
@@ -87,7 +86,7 @@ function Greeting({ name }) {
 }
 ```
 
-The <CodeStep step={3}>children</CodeStep> are optional, and you can pass as many as you need (the example above has three children). This code will display a `<h1>` header with a greeting. For comparison, here is the same example rewritten with JSX:
+<CodeStep step={3}>Дочерние элементы</CodeStep> необязательны, и вы можете передать столько, сколько вам нужно (в приведенном выше примере три дочерних элемента). Этот код отобразит заголовок `<h1>` с приветствием. Для сравнения, вот тот же пример, переписанный с использованием JSX:
 
 ```js [[1, 3, "h1"], [2, 3, "className=\\"greeting\\""], [3, 4, "Hello <i>{name}</i>. Welcome!"], [1, 5, "h1"]]
 function Greeting({ name }) {
@@ -99,7 +98,7 @@ function Greeting({ name }) {
 }
 ```
 
-To render your own React component, pass a function like `Greeting` as the <CodeStep step={1}>type</CodeStep> instead of a string like `'h1'`:
+Чтобы рендерить собственный React-компонент, передайте функцию, такую как `Greeting`, в качестве <CodeStep step={1}>типа</CodeStep> вместо строки, такой как `'h1'`:
 
 ```js [[1, 2, "Greeting"], [2, 2, "{ name: 'Taylor' }"]]
 export default function App() {
@@ -107,7 +106,7 @@ export default function App() {
 }
 ```
 
-With JSX, it would look like this:
+С JSX это выглядело бы так:
 
 ```js [[1, 2, "Greeting"], [2, 2, "name=\\"Taylor\\""]]
 export default function App() {
@@ -115,7 +114,7 @@ export default function App() {
 }
 ```
 
-Here is a complete example written with `createElement`:
+Вот полный пример, написанный с использованием `createElement`:
 
 <Sandpack>
 
@@ -149,7 +148,7 @@ export default function App() {
 
 </Sandpack>
 
-And here is the same example written using JSX:
+А вот тот же пример, написанный с использованием JSX:
 
 <Sandpack>
 
@@ -176,16 +175,16 @@ export default function App() {
 
 </Sandpack>
 
-Both coding styles are fine, so you can use whichever one you prefer for your project. The main benefit of using JSX compared to `createElement` is that it's easy to see which closing tag corresponds to which opening tag.
+Оба стиля кодирования приемлемы, поэтому вы можете использовать тот, который предпочитаете для своего проекта. Основное преимущество использования JSX по сравнению с `createElement` заключается в том, что легко увидеть, какой закрывающий тег соответствует какому открывающему тегу.
 
 <DeepDive>
 
-#### What is a React element, exactly? {/*what-is-a-react-element-exactly*/}
+#### Что такое React-элемент, собственно? {/*what-is-a-react-element-exactly*/}
 
-An element is a lightweight description of a piece of the user interface. For example, both `<Greeting name="Taylor" />` and `createElement(Greeting, { name: 'Taylor' })` produce an object like this:
+Элемент — это легковесное описание части пользовательского интерфейса. Например, и `<Greeting name="Taylor" />`, и `createElement(Greeting, { name: 'Taylor' })` создают объект, подобный этому:
 
 ```js
-// Slightly simplified
+// Немного упрощенно
 {
   type: Greeting,
   props: {
@@ -196,10 +195,10 @@ An element is a lightweight description of a piece of the user interface. For ex
 }
 ```
 
-**Note that creating this object does not render the `Greeting` component or create any DOM elements.**
+**Обратите внимание, что создание этого объекта не рендерит компонент `Greeting` и не создает никаких DOM-элементов.**
 
-A React element is more like a description--an instruction for React to later render the `Greeting` component. By returning this object from your `App` component, you tell React what to do next.
+React-элемент больше похож на описание — инструкцию для React, чтобы позже отрисовать компонент `Greeting`. Возвращая этот объект из вашего компонента `App`, вы сообщаете React, что делать дальше.
 
-Creating elements is extremely cheap so you don't need to try to optimize or avoid it.
+Создание элементов чрезвычайно дешево, поэтому вам не нужно пытаться оптимизировать или избегать этого.
 
 </DeepDive>
