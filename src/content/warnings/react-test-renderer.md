@@ -1,6 +1,7 @@
 ---
-title: Предупреждения об устаревании `react-test-renderer`
+title: react-test-renderer Deprecation Warnings
 ---
+
 ## Предупреждение ReactTestRenderer.create() {/*reacttestrenderercreate-warning*/}
 
 `react-test-renderer` устарел. Предупреждение будет появляться при каждом вызове `ReactTestRenderer.create()` или `ReactShallowRender.render()`. Пакет `react-test-renderer` останется доступным в NPM, но не будет поддерживаться и может перестать работать с новыми функциями React или изменениями во внутренних компонентах React.
