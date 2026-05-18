@@ -1,6 +1,7 @@
 ---
-title: "Общие компоненты (например, `<div>`)"
+title: "Common components (e.g. <div>)"
 ---
+
 <Intro>
 
 Все встроенные браузерные компоненты, такие как [`<div>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/div), поддерживают некоторые общие пропсы и события.
@@ -13,7 +14,7 @@ title: "Общие компоненты (например, `<div>`)"
 
 ## Справочник {/*reference*/}
 
-				### Общие компоненты (например, `<div>`) {/*common*/}
+### Общие компоненты (например, `<div>`) {/*common*/}
 
 ```js
 <div className="wrapper">Какой-то контент</div>
