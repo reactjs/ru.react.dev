@@ -1,32 +1,31 @@
 ---
-title: React Community
+title: Сообщество React
 ---
-
 <Intro>
 
-React has a community of millions of developers. On this page we've listed some React-related communities that you can be a part of; see the other pages in this section for additional online and in-person learning materials.
+У React есть сообщество, насчитывающее миллионы разработчиков. На этой странице мы перечислили некоторые сообщества, связанные с React, к которым вы можете присоединиться; другие онлайн- и офлайн-учебные материалы вы найдёте на других страницах этого раздела.
 
 </Intro>
 
-## Code of Conduct {/*code-of-conduct*/}
+## Кодекс поведения {/*code-of-conduct*/}
 
-Before participating in React's communities, [please read our Code of Conduct.](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) We have adopted the [Contributor Covenant](https://www.contributor-covenant.org/) and we expect that all community members adhere to the guidelines within.
+Прежде чем участвовать в сообществах React, [пожалуйста, ознакомьтесь с нашим Кодексом поведения.](https://github.com/facebook/react/blob/main/CODE_OF_CONDUCT.md) Мы приняли [Contributor Covenant](https://www.contributor-covenant.org/) и ожидаем, что все члены сообщества будут придерживаться изложенных в нём правил.
 
 ## Stack Overflow {/*stack-overflow*/}
 
-Stack Overflow is a popular forum to ask code-level questions or if you're stuck with a specific error. Read through the [existing questions](https://stackoverflow.com/questions/tagged/reactjs) tagged with **reactjs** or [ask your own](https://stackoverflow.com/questions/ask?tags=reactjs)!
+Stack Overflow — популярный форум для вопросов по коду или если вы столкнулись с конкретной ошибкой. Ознакомьтесь с [существующими вопросами](https://stackoverflow.com/questions/tagged/reactjs), помеченными тегом **reactjs**, или [задайте свой](https://stackoverflow.com/questions/ask?tags=reactjs)!
 
-## Popular Discussion Forums {/*popular-discussion-forums*/}
+## Популярные форумы для обсуждений {/*popular-discussion-forums*/}
 
-There are many online forums which are a great place for discussion about best practices and application architecture as well as the future of React. If you have an answerable code-level question, Stack Overflow is usually a better fit.
+Существует множество онлайн-форумов, которые являются отличным местом для обсуждения лучших практик и архитектуры приложений, а также будущего React. Если у вас есть вопрос по коду, на который можно ответить, Stack Overflow обычно подходит лучше.
 
-Each community consists of many thousands of React users.
+Каждое сообщество состоит из тысяч пользователей React.
 
-* [DEV's React community](https://dev.to/t/react)
-* [Hashnode's React community](https://hashnode.com/n/reactjs)
-* [Reactiflux online chat](https://discord.gg/reactiflux)
-* [Reddit's React community](https://www.reddit.com/r/reactjs/)
+* [Сообщество React на DEV](https://dev.to/t/react)
+* [Сообщество React на Hashnode](https://hashnode.com/n/reactjs)
+* [Онлайн-чат Reactiflux](https://discord.gg/reactiflux)
+* [Сообщество React на Reddit](https://www.reddit.com/r/reactjs/)
 
-## News {/*news*/}
+## Новости {/*news*/}
 
-For the latest news about React, [follow **@reactjs** on Twitter](https://twitter.com/reactjs), [**@react.dev** on Bluesky](https://bsky.app/profile/react.dev) and the [official React blog](/blog/) on this website.
+Последние новости о React вы можете найти, [подписавшись на **@reactjs** в Twitter](https://twitter.com/reactjs), [**@react.dev** в Bluesky](https://bsky.app/profile/react.dev) и читая [официальный блог React](/blog/) на этом сайте.
