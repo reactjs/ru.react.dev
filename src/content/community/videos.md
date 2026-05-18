@@ -1,7 +1,6 @@
 ---
 title: Видео React
 ---
-
 <Intro>
 
 Видео, посвященные обсуждению React и экосистемы React.
@@ -14,13 +13,13 @@ title: Видео React
 
 В этом докладе мы поделились нашим видением будущего React, начиная с React 18.
 
-Полный доклад от [Andrew Clark](https://twitter.com/acdlite), [Juan Tejada](https://twitter.com/_jstejada), [Lauren Tan](https://twitter.com/potetotes) и [Rick Hanlon](https://twitter.com/rickhanlonii) можно посмотреть здесь:
+Полный доклад от [Andrew Clark](https://twitter.com/acdlite), [Juan Tejada](https://twitter.com/_jstejada), [Lauren Tan](https://twitter.com/potetotes) и [Rick Hanlon](https://twitter.com/rickhanlonii) смотрите здесь:
 
 <YouTubeIframe src="https://www.youtube.com/embed/FZ0cG47msEk" title="YouTube video player" />
 
 ### React 18 для разработчиков приложений {/*react-18-for-application-developers*/}
 
-Демонстрацию обновления до React 18 можно посмотреть в докладе [Shruti Kapoor](https://twitter.com/shrutikapoor08) здесь:
+Демонстрацию обновления до React 18 смотрите в докладе [Shruti Kapoor](https://twitter.com/shrutikapoor08) здесь:
 
 <YouTubeIframe src="https://www.youtube.com/embed/ytudH8je5ko" title="YouTube video player" />
 
@@ -28,9 +27,9 @@ title: Видео React
 
 React 18 также включает улучшения производительности серверной отрисовки с использованием Suspense.
 
-Потоковая серверная отрисовка позволяет генерировать HTML из React-компонентов на сервере и передавать этот HTML пользователям. В React 18 вы можете использовать `Suspense` для разбиения вашего приложения на меньшие независимые части, которые могут передаваться независимо друг от друга, не блокируя остальную часть приложения. Это означает, что пользователи увидят ваш контент раньше и смогут начать взаимодействовать с ним гораздо быстрее.
+Потоковая серверная отрисовка позволяет генерировать HTML из React-компонентов на сервере и передавать этот HTML пользователям. В React 18 вы можете использовать `Suspense` для разбиения вашего приложения на меньшие независимые части, которые могут передаваться независимо друг от друга, не блокируя остальную часть приложения. Это означает, что пользователи увидят ваш контент раньше и смогут начать взаимодействовать с ним намного быстрее.
 
-Для более подробного изучения посмотрите доклад [Shaundai Person](https://twitter.com/shaundai) здесь:
+Подробности смотрите в докладе [Shaundai Person](https://twitter.com/shaundai) здесь:
 
 <YouTubeIframe src="https://www.youtube.com/embed/pj5N-Khihgc" title="YouTube video player" />
 
@@ -38,25 +37,25 @@ React 18 также включает улучшения производител
 
 Для React 18 мы создали нашу первую Рабочую группу для сотрудничества с группой экспертов, разработчиков, мейнтейнеров библиотек и преподавателей. Вместе мы работали над созданием нашей стратегии постепенного внедрения и усовершенствованием новых API, таких как `useId`, `useSyncExternalStore` и `useInsertionEffect`.
 
-Обзор этой работы можно посмотреть в докладе [Aakansha' Doshi](https://twitter.com/aakansha1216):
+Обзор этой работы смотрите в докладе [Aakansha' Doshi](https://twitter.com/aakansha1216):
 
 <YouTubeIframe src="https://www.youtube.com/embed/qn7gRClrC9U" title="YouTube video player" />
 
 ### Инструменты разработчика React {/*react-developer-tooling*/}
 
-Для поддержки новых функций в этом релизе мы также анонсировали недавно сформированную команду React DevTools и новый Timeline Profiler, чтобы помочь разработчикам отлаживать свои React-приложения.
+Для поддержки новых функций в этом релизе мы также анонсировали вновь сформированную команду React DevTools и новый Timeline Profiler, чтобы помочь разработчикам отлаживать свои React-приложения.
 
-Более подробную информацию и демонстрацию новых функций DevTools можно найти в докладе [Brian Vaughn](https://twitter.com/brian_d_vaughn):
+Более подробную информацию и демонстрацию новых функций DevTools смотрите в докладе [Brian Vaughn](https://twitter.com/brian_d_vaughn):
 
 <YouTubeIframe src="https://www.youtube.com/embed/oxDfrke8rZg" title="YouTube video player" />
 
 ### React без memo {/*react-without-memo*/}
 
-Заглядывая дальше в будущее, [Xuan Huang (黄玄)](https://twitter.com/Huxpro) поделился обновлением из исследований React Labs об автоматически мемоизирующем компиляторе. Посмотрите этот доклад для получения дополнительной информации и демонстрации прототипа компилятора:
+Заглядывая в будущее, [Xuan Huang (黄玄)](https://twitter.com/Huxpro) поделился обновлением из исследований React Labs об автоматически мемоизирующем компиляторе. Посмотрите этот доклад для получения дополнительной информации и демонстрации прототипа компилятора:
 
 <YouTubeIframe src="https://www.youtube.com/embed/lGEMwh32soc" title="YouTube video player" />
 
-### Документация React: Keynote {/*react-docs-keynote*/}
+### Доклад о документации React {/*react-docs-keynote*/}
 
 [Rachel Nabors](https://twitter.com/rachelnabors) открыла секцию докладов об обучении и дизайне с React докладом о наших инвестициях в новую документацию React ([теперь доступную на react.dev](/blog/2023/03/16/introducing-react-dev)):
 
@@ -85,7 +84,7 @@ React 18 также включает улучшения производител
 * Lyle Troxell: [UI tools for artists](https://youtu.be/b3l4WxipFsE).
 * Helen Lin: [Hydrogen + React 18](https://youtu.be/HS6vIYkSNks).
 
-## Более старые видео {/*older-videos*/}
+## Старые видео {/*older-videos*/}
 
 ### React Conf 2019 {/*react-conf-2019*/}
 
@@ -114,10 +113,10 @@ React 18 также включает улучшения производител
 
 ### Rethinking Best Practices {/*rethinking-best-practices*/}
 
-Доклад Пита Ханта на JSConf EU 2013 охватывает три темы: отказ от шаблонов в пользу создания представлений с помощью JavaScript, «перерисовка» всего приложения при изменении данных и легкая реализация DOM и событий — (2013 - 0ч30м).
+Доклад Пита Ханта на JSConf EU 2013 охватывает три темы: отказ от шаблонов в пользу создания представлений с помощью JavaScript, «повторный рендеринг» всего приложения при изменении данных и легкая реализация DOM и событий — (2013 — 0h30m).
 <YouTubeIframe title="Pete Hunt: React: Rethinking Best Practices - JSConf EU 2013" src="https://www.youtube-nocookie.com/embed/x7cQ3mrcKaY" />
 
 ### Introduction to React {/*introduction-to-react*/}
 
-Том Оккино и Джордан Уолк представляют React в Facebook Seattle — (2013 - 1ч20м).
+Том Оккино и Джордан Уолк представляют React в Facebook Seattle — (2013 — 1h20m).
 <YouTubeIframe title="Tom Occhino and Jordan Walke introduce React at Facebook Seattle" src="https://www.youtube-nocookie.com/embed/XxVg_s8xAms" />
