@@ -1,13 +1,12 @@
 ---
 meta: "<meta>"
 ---
-
 <Intro>
 
-The [built-in browser `<meta>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta) lets you add metadata to the document.
+Встроенный компонент браузера `<meta>` позволяет добавлять метаданные в документ.
 
 ```js
-<meta name="keywords" content="React, JavaScript, semantic markup, html" />
+<meta name="keywords" content="React, JavaScript, семантическая разметка, html" />
 ```
 
 </Intro>
@@ -16,51 +15,51 @@ The [built-in browser `<meta>` component](https://developer.mozilla.org/en-US/do
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `<meta>` {/*meta*/}
 
-To add document metadata, render the [built-in browser `<meta>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta). You can render `<meta>` from any component and React will always place the corresponding DOM element in the document head.
+Чтобы добавить метаданные документа, используйте встроенный компонент браузера `<meta>`. Вы можете рендерить `<meta>` из любого компонента, и React всегда поместит соответствующий DOM-элемент в `<head>` документа.
 
 ```js
-<meta name="keywords" content="React, JavaScript, semantic markup, html" />
+<meta name="keywords" content="React, JavaScript, семантическая разметка, html" />
 ```
 
-[See more examples below.](#usage)
+[См. больше примеров ниже.](#usage)
 
-#### Props {/*props*/}
+#### Пропсы {/*props*/}
 
-`<meta>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<meta>` поддерживает все [общие пропсы элементов.](/reference/react-dom/components/common#props)
 
-It should have *exactly one* of the following props: `name`, `httpEquiv`, `charset`, `itemProp`. The `<meta>` component does something different depending on which of these props is specified.
+Он должен иметь *ровно один* из следующих пропсов: `name`, `httpEquiv`, `charset`, `itemProp`. Компонент `<meta>` ведет себя по-разному в зависимости от того, какой из этих пропсов указан.
 
-* `name`: a string. Specifies the [kind of metadata](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name) to be attached to the document. 
-* `charset`: a string. Specifies the character set used by the document. The only valid value is `"utf-8"`.
-* `httpEquiv`: a string. Specifies a directive for processing the document.
-* `itemProp`: a string. Specifies metadata about a particular item within the document rather than the document as a whole.
-* `content`: a string. Specifies the metadata to be attached when used with the `name` or `itemProp` props or the behavior of the directive when used with the `httpEquiv` prop.
+* `name`: строка. Указывает [тип метаданных](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name), которые должны быть присоединены к документу.
+* `charset`: строка. Указывает набор символов, используемый документом. Единственное допустимое значение — `"utf-8"`.
+* `httpEquiv`: строка. Указывает директиву для обработки документа.
+* `itemProp`: строка. Указывает метаданные о конкретном элементе внутри документа, а не о документе в целом.
+* `content`: строка. Указывает метаданные, которые должны быть присоединены при использовании с пропсами `name` или `itemProp`, или поведение директивы при использовании с пропсом `httpEquiv`.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### Особое поведение рендеринга {/*special-rendering-behavior*/}
 
-React will always place the DOM element corresponding to the `<meta>` component within the document’s `<head>`, regardless of where in the React tree it is rendered. The `<head>` is the only valid place for `<meta>` to exist within the DOM, yet it’s convenient and keeps things composable if a component representing a specific page can render `<meta>` components itself. 
+React всегда будет помещать DOM-элемент, соответствующий компоненту `<meta>`, внутрь `<head>` документа, независимо от того, где в дереве React он был отрендерен. `<head>` — единственное допустимое место для `<meta>` в DOM, однако это удобно и сохраняет композиционность, если компонент, представляющий конкретную страницу, может сам рендерить компоненты `<meta>`.
 
-There is one exception to this: if `<meta>` has an [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop) prop, there is no special behavior, because in this case it doesn’t represent metadata about the document but rather metadata about a specific part of the page. 
+Есть одно исключение: если у `<meta>` есть пропс [`itemProp`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/itemprop), специального поведения нет, поскольку в этом случае он представляет метаданные не о документе, а о конкретной части страницы.
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Annotating the document with metadata {/*annotating-the-document-with-metadata*/}
+### Аннотирование документа метаданными {/*annotating-the-document-with-metadata*/}
 
-You can annotate the document with metadata such as keywords, a summary, or the author’s name. React will place this metadata within the document `<head>` regardless of where in the React tree it is rendered. 
+Вы можете аннотировать документ метаданными, такими как ключевые слова, краткое описание или имя автора. React поместит эти метаданные в `<head>` документа независимо от того, где в дереве React они были отрендерены.
 
 ```html
-<meta name="author" content="John Smith" />
-<meta name="keywords" content="React, JavaScript, semantic markup, html" />
-<meta name="description" content="API reference for the <meta> component in React DOM" />
+<meta name="author" content="Иван Иванов" />
+<meta name="keywords" content="React, JavaScript, семантическая разметка, html" />
+<meta name="description" content="Справочник API для компонента <meta> в React DOM" />
 ```
 
-You can render the `<meta>` component from any component. React will put a `<meta>` DOM node in the document `<head>`.
+Вы можете рендерить компонент `<meta>` из любого компонента. React поместит DOM-узел `<meta>` в `<head>` документа.
 
 <SandpackWithHTMLOutput>
 
@@ -71,8 +70,8 @@ export default function SiteMapPage() {
   return (
     <ShowRenderedHTML>
       <meta name="keywords" content="React" />
-      <meta name="description" content="A site map for the React website" />
-      <h1>Site Map</h1>
+      <meta name="description" content="Карта сайта для веб-сайта React" />
+      <h1>Карта сайта</h1>
       <p>...</p>
     </ShowRenderedHTML>
   );
@@ -81,14 +80,14 @@ export default function SiteMapPage() {
 
 </SandpackWithHTMLOutput>
 
-### Annotating specific items within the document with metadata {/*annotating-specific-items-within-the-document-with-metadata*/}
+### Аннотирование конкретных элементов в документе метаданными {/*annotating-specific-items-within-the-document-with-metadata*/}
 
-You can use the `<meta>` component with the `itemProp` prop to annotate specific items within the document with metadata. In this case, React will *not* place these annotations within the document `<head>` but will place them like any other React component. 
+Вы можете использовать компонент `<meta>` с пропсом `itemProp` для аннотирования конкретных элементов в документе метаданными. В этом случае React *не* будет помещать эти аннотации в `<head>` документа, а разместит их, как и любой другой компонент React.
 
 ```js
 <section itemScope>
-  <h3>Annotating specific items</h3>
-  <meta itemProp="description" content="API reference for using <meta> with itemProp" />
+  <h3>Аннотирование конкретных элементов</h3>
+  <meta itemProp="description" content="Справочник API для использования <meta> с itemProp" />
   <p>...</p>
 </section>
 ```
