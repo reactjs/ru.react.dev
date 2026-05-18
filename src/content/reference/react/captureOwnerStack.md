@@ -1,10 +1,9 @@
 ---
 title: captureOwnerStack
 ---
-
 <Intro>
 
-`captureOwnerStack` считывает текущий стек владельца (Owner Stack) в режиме разработки и возвращает его в виде строки, если он доступен.
+`captureOwnerStack` считывает текущий стек владельцев (Owner Stack) в режиме разработки и возвращает его в виде строки, если он доступен.
 
 ```js
 const stack = captureOwnerStack();
@@ -20,7 +19,7 @@ const stack = captureOwnerStack();
 
 ### `captureOwnerStack()` {/*captureownerstack*/}
 
-Вызовите `captureOwnerStack`, чтобы получить текущий стек владельца.
+Вызовите `captureOwnerStack`, чтобы получить текущий стек владельцев.
 
 ```js {5,5}
 import * as React from 'react';
@@ -37,27 +36,27 @@ function Component() {
 
 `captureOwnerStack` не принимает никаких параметров.
 
-#### Возвращаемое значение {/*returns*/}
+#### Возвращает {/*returns*/}
 
 `captureOwnerStack` возвращает `string | null`.
 
-Стеки владельца доступны в:
+Стеки владельцев доступны в:
 - Рендере компонента
 - Эффектах (например, `useEffect`)
 - Обработчиках событий React (например, `<button onClick={...} />`)
-- Обработчиках ошибок React ([Параметры React Root](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError` и `onUncaughtError`)
+- Обработчиках ошибок React ([параметры React Root](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError` и `onUncaughtError`)
 
-Если стек владельца недоступен, возвращается `null` (см. [Устранение неполадок: Стек владельца равен `null`](#the-owner-stack-is-null)).
+Если стек владельцев недоступен, возвращается `null` (см. [Устранение неполадок: Стек владельцев равен `null`](#the-owner-stack-is-null)).
 
 #### Ограничения {/*caveats*/}
 
-- Стеки владельца доступны только в режиме разработки. `captureOwnerStack` всегда будет возвращать `null` вне режима разработки.
+- Стеки владельцев доступны только в режиме разработки. `captureOwnerStack` всегда будет возвращать `null` вне режима разработки.
 
 <DeepDive>
 
-#### Стек владельца против стека компонентов {/*owner-stack-vs-component-stack*/}
+#### Стек владельцев против стека компонентов {/*owner-stack-vs-component-stack*/}
 
-Стек владельца отличается от стека компонентов, доступного в обработчиках ошибок React, таких как [`errorInfo.componentStack` в `onUncaughtError`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors).
+Стек владельцев отличается от стека компонентов, доступного в обработчиках ошибок React, таких как [`errorInfo.componentStack` в `onUncaughtError`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors).
 
 Рассмотрим следующий код:
 
@@ -106,10 +105,10 @@ import './styles.css';
 createRoot(document.createElement('div'), {
   onUncaughtError: (error, errorInfo) => {
     // Стеки выводятся в лог вместо прямого отображения в UI, чтобы
-    // подчеркнуть, что браузеры применяют sourcemaps к выведенным стекам.
+    // подчеркнуть, что браузеры применяют sourcemaps к логгируемым стекам.
     // Обратите внимание, что sourcemapping применяется только в реальной консоли браузера, а не
     // в поддельной, отображаемой на этой странице.
-    // Нажмите "fork", чтобы иметь возможность просмотреть стек с примененным sourcemapping в реальной консоли.
+    // Нажмите "fork", чтобы иметь возможность просмотреть стек с применением sourcemap в реальной консоли.
     console.log(errorInfo.componentStack);
     console.log(captureOwnerStack());
   },
@@ -148,17 +147,17 @@ at React.Suspense
 at App
 ```
 
-Однако стек владельца будет содержать только:
+Однако стек владельцев будет содержать только:
 
 ```
 at Component
 ```
 
-Ни `App`, ни DOM-компоненты (например, `fieldset`) не считаются владельцами в этом стеке, поскольку они не участвовали в «создании» узла, содержащего `SubComponent`. `App` и DOM-компоненты только перенаправляли узел. `App` просто отрендерил узел `children`, в отличие от `Component`, который создал узел, содержащий `SubComponent`, через `<SubComponent />`.
+Ни `App`, ни DOM-компоненты (например, `fieldset`) не считаются владельцами в этом стеке, поскольку они не способствовали "созданию" узла, содержащего `SubComponent`. `App` и DOM-компоненты только перенаправляли узел. `App` просто отрендерил узел `children`, в отличие от `Component`, который создал узел, содержащий `SubComponent`, через `<SubComponent />`.
 
 Ни `Navigation`, ни `legend` вообще не присутствуют в стеке, поскольку они являются лишь соседями узла, содержащего `<SubComponent />`.
 
-`SubComponent` опущен, потому что он уже является частью стека вызовов.
+`SubComponent` пропущен, потому что он уже является частью стека вызовов.
 
 </DeepDive>
 
@@ -183,7 +182,7 @@ console.error = function patchedConsoleError(...args) {
 };
 ```
 
-Если вы перехватываете вызовы <CodeStep step={1}>`console.error`</CodeStep>, чтобы отобразить их в оверлее ошибок, вы можете вызвать <CodeStep step={2}>`captureOwnerStack`</CodeStep>, чтобы включить стек владельца.
+Если вы перехватываете вызовы <CodeStep step={1}>`console.error`</CodeStep>, чтобы выделить их в оверлее ошибок, вы можете вызвать <CodeStep step={2}>`captureOwnerStack`</CodeStep>, чтобы включить стек владельцев.
 
 <Sandpack>
 
@@ -269,25 +268,25 @@ pre.nowrap {
 </head>
 <body>
 <!--
-  Error dialog in raw HTML
-  since an error in the React app may crash.
+  Диалог ошибок в сыром HTML,
+  поскольку ошибка в приложении React может привести к сбою.
 -->
 <div id="error-dialog" class="hidden">
-  <h1 id="error-title" class="text-red">Error</h1>
+  <h1 id="error-title" class="text-red">Ошибка</h1>
   <p>
     <pre id="error-body"></pre>
   </p>
-  <h2 class="-mb-20">Owner Stack:</h4>
+  <h2 class="-mb-20">Стек владельцев:</h4>
   <pre id="error-owner-stack" class="nowrap"></pre>
   <button
     id="error-close"
     class="mb-10"
     onclick="document.getElementById('error-dialog').classList.add('hidden')"
   >
-    Close
+    Закрыть
   </button>
 </div>
-<!-- This is the DOM node -->
+<!-- Это DOM-узел -->
 <div id="root"></div>
 </body>
 </html>
@@ -301,13 +300,13 @@ export function onConsoleError({ consoleMessage, ownerStack }) {
   const errorBody = document.getElementById("error-body");
   const errorOwnerStack = document.getElementById("error-owner-stack");
 
-  // Display console.error() message
+  // Отображение сообщения console.error()
   errorBody.innerText = consoleMessage;
 
-  // Display owner stack
+  // Отображение стека владельцев
   errorOwnerStack.innerText = ownerStack;
 
-  // Show the dialog
+  // Показать диалог
   errorDialog.classList.remove("hidden");
 }
 ```
@@ -324,8 +323,8 @@ console.error = function patchedConsoleError(...args) {
   originalConsoleError.apply(console, args);
   const ownerStack = captureOwnerStack();
   onConsoleError({
-    // Keep in mind that in a real application, console.error can be
-    // called with multiple arguments which you should account for.
+    // Имейте в виду, что в реальном приложении console.error может быть
+    // вызван с несколькими аргументами, которые следует учитывать.
     consoleMessage: args[0],
     ownerStack,
   });
@@ -349,11 +348,11 @@ export default function App() {
 
 ## Устранение неполадок {/*troubleshooting*/}
 
-### Стек владельца равен `null` {/*the-owner-stack-is-null*/}
+### Стек владельцев равен `null` {/*the-owner-stack-is-null*/}
 
-Вызов `captureOwnerStack` произошел вне функции, управляемой React, например, в колбэке `setTimeout`, после вызова `fetch` или в пользовательском обработчике событий DOM. Во время рендеринга, эффектов, обработчиков событий React и обработчиков ошибок React (например, `hydrateRoot#options.onCaughtError`) стеки владельца должны быть доступны.
+Вызов `captureOwnerStack` произошел вне функции, управляемой React, например, в колбэке `setTimeout`, после вызова `fetch` или в пользовательском обработчике событий DOM. Во время рендеринга, эффектов, обработчиков событий React и обработчиков ошибок React (например, `hydrateRoot#options.onCaughtError`) стеки владельцев должны быть доступны.
 
-В приведенном ниже примере нажатие на кнопку приведет к выводу пустого стека владельца, поскольку `captureOwnerStack` был вызван во время пользовательского обработчика событий DOM. Стек владельца должен быть захвачен раньше, например, путем перемещения вызова `captureOwnerStack` в тело эффекта.
+В приведенном ниже примере нажатие на кнопку приведет к выводу пустого стека владельцев, поскольку `captureOwnerStack` был вызван во время пользовательского обработчика событий DOM. Стек владельцев должен быть захвачен раньше, например, путем перемещения вызова `captureOwnerStack` в тело эффекта.
 <Sandpack>
 
 ```js
@@ -363,8 +362,8 @@ export default function App() {
   useEffect(() => {
     // Следует вызвать `captureOwnerStack` здесь.
     function handleEvent() {
-      // Вызов в пользовательском обработчике событий DOM — это слишком поздно.
-      // Стек владельца в этот момент будет равен `null`.
+      // Вызов в пользовательском обработчике событий DOM слишком поздний.
+      // Стек владельцев к этому моменту будет равен `null`.
       console.log('Owner Stack: ', captureOwnerStack());
     }
 
@@ -375,7 +374,7 @@ export default function App() {
     }
   })
 
-  return <button>Click me to see that Owner Stacks are not available in custom DOM event handlers</button>;
+  return <button>Нажмите меня, чтобы увидеть, что стеки владельцев недоступны в пользовательских обработчиках событий DOM</button>;
 }
 ```
 
@@ -383,7 +382,7 @@ export default function App() {
 
 ### `captureOwnerStack` недоступен {/*captureownerstack-is-not-available*/}
 
-`captureOwnerStack` экспортируется только в сборках для разработки. В продакшен-сборках он будет `undefined`. Если `captureOwnerStack` используется в файлах, которые собираются как для продакшена, так и для разработки, следует получать к нему доступ условно из импорта пространства имен.
+`captureOwnerStack` экспортируется только в сборках для разработки. В продакшен-сборках он будет равен `undefined`. Если `captureOwnerStack` используется в файлах, которые собираются как для продакшена, так и для разработки, следует получать к нему доступ условно из импорта пространства имен.
 
 ```js
 // Не используйте именованные импорты `captureOwnerStack` в файлах, которые собираются для разработки и продакшена.
