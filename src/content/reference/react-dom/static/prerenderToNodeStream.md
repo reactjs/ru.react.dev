@@ -1,10 +1,9 @@
 ---
 title: prerenderToNodeStream
 ---
-
 <Intro>
 
-`prerenderToNodeStream` рендерит React-дерево в статический HTML-строку с использованием [Node.js Stream.](https://nodejs.org/api/stream.html).
+`prerenderToNodeStream` рендерит дерево React в статический HTML-строку с использованием [Node.js Stream.](https://nodejs.org/api/stream.html).
 
 ```js
 const {prelude} = await prerenderToNodeStream(reactNode, options?)
@@ -16,7 +15,7 @@ const {prelude} = await prerenderToNodeStream(reactNode, options?)
 
 <Note>
 
-Этот API специфичен для Node.js. В средах с [Web Streams,](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) таких как Deno и современные серверные среды выполнения (edge runtimes), следует использовать [`prerender`](/reference/react-dom/static/prerender) вместо этого.
+Этот API специфичен для Node.js. Среды с [Web Streams,](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API) такими как Deno и современные серверные среды выполнения, должны использовать [`prerender`](/reference/react-dom/static/prerender) вместо этого.
 
 </Note>
 
@@ -48,24 +47,24 @@ app.use('/', async (request, response) => {
 
 #### Параметры {/*parameters*/}
 
-* `reactNode`: React-узел, который вы хотите отрендерить в HTML. Например, JSX-узел вроде `<App />`. Ожидается, что он будет представлять весь документ, поэтому компонент App должен рендерить тег `<html>`.
+* `reactNode`: Узел React, который вы хотите отрендерить в HTML. Например, JSX-узел вроде `<App />`. Ожидается, что он будет представлять весь документ, поэтому компонент App должен рендерить тег `<html>`.
 
 * **необязательный** `options`: Объект с опциями статической генерации.
   * **необязательный** `bootstrapScriptContent`: Если указано, эта строка будет помещена во встроенный тег `<script>`.
-  * **необязательный** `bootstrapScripts`: Массив URL-адресов в виде строк для тегов `<script>`, которые будут вставлены на страницу. Используйте это для включения `<script>`, который вызывает [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot) Пропустите это, если вы вообще не хотите запускать React на клиенте.
-  * **необязательный** `bootstrapModules`: Подобно `bootstrapScripts`, но вставляет [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) вместо этого.
-  * **необязательный** `identifierPrefix`: Строка-префикс, которую React использует для ID, сгенерированных [`useId`.](/reference/react/useId) Полезно для избежания конфликтов при использовании нескольких корней на одной странице. Должен быть тем же префиксом, что и переданный в [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot#parameters)
-  * **необязательный** `namespaceURI`: Строка с корневым [URI пространства имён](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris) для потока. По умолчанию используется обычный HTML. Передайте `'http://www.w3.org/2000/svg'` для SVG или `'http://www.w3.org/1998/Math/MathML'` для MathML.
-  * **необязательный** `onError`: Функция обратного вызова, которая срабатывает при любой ошибке на сервере, будь то [восстановимая](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell) или [невосстановимая.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell) По умолчанию вызывается только `console.error`. Если вы переопределите её для [логирования отчётов о сбоях,](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server) убедитесь, что вы по-прежнему вызываете `console.error`. Вы также можете использовать её для [установки кода состояния](/reference/react-dom/server/renderToPipeableStream#setting-the-status-code) до того, как будет выдан основной контент (shell).
-  * **необязательный** `progressiveChunkSize`: Количество байтов в чанке. [Подробнее о стандартном эвристическом подходе.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
+  * **необязательный** `bootstrapScripts`: Массив строковых URL-адресов для тегов `<script>`, которые будут выведены на странице. Используйте это для включения `<script>`, который вызывает [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot) Пропустите его, если вы вообще не хотите запускать React на клиенте.
+  * **необязательный** `bootstrapModules`: Подобно `bootstrapScripts`, но выводит [`<script type="module">`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) вместо этого.
+  * **необязательный** `identifierPrefix`: Строковый префикс, который React использует для ID, сгенерированных [`useId`.](/reference/react/useId) Полезно для избежания конфликтов при использовании нескольких корней на одной странице. Должен быть тем же префиксом, что и переданный [`hydrateRoot`.](/reference/react-dom/client/hydrateRoot#parameters)
+  * **необязательный** `namespaceURI`: Строка с корневым [URI пространства имён](https://developer.mozilla.org/en-US/docs/Web/API/Document/createElementNS#important_namespace_uris) для потока. По умолчанию — обычный HTML. Передайте `'http://www.w3.org/2000/svg'` для SVG или `'http://www.w3.org/1998/Math/MathML'` для MathML.
+  * **необязательный** `onError`: Обратный вызов, который срабатывает при любой ошибке на сервере, будь то [восстановимая](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-outside-the-shell) или [невосстановимая.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell) По умолчанию вызывается только `console.error`. Если вы переопределите его для [логирования отчётов о сбоях,](/reference/react-dom/server/renderToPipeableStream#logging-crashes-on-the-server) убедитесь, что вы всё равно вызываете `console.error`. Вы также можете использовать его для [настройки кода состояния](/reference/react-dom/server/renderToPipeableStream#setting-the-status-code) перед выводом оболочки.
+  * **необязательный** `progressiveChunkSize`: Количество байтов в чанке. [Подробнее о стандартной эвристике.](https://github.com/facebook/react/blob/14c2be8dac2d5482fda8a0906a31d239df8551fc/packages/react-server/src/ReactFizzServer.js#L210-L225)
   * **необязательный** `signal`: [Сигнал отмены (abort signal)](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal), который позволяет [отменить предварительный рендеринг](#aborting-prerendering) и рендерить остальное на клиенте.
 
 #### Возвращает {/*returns*/}
 
 `prerenderToNodeStream` возвращает Promise:
-- Если рендеринг успешен, Promise будет разрешён объектом, содержащим:
+- Если рендеринг успешен, Promise разрешится в объект, содержащий:
   - `prelude`: [Node.js Stream.](https://nodejs.org/api/stream.html) HTML. Вы можете использовать этот поток для отправки ответа по частям или прочитать весь поток в строку.
-- Если рендеринг не удался, Promise будет отклонён. [Используйте это для вывода запасного варианта основного контента (fallback shell).](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
+- Если рендеринг не удался, Promise будет отклонён. [Используйте это для вывода запасной оболочки.](/reference/react-dom/server/renderToPipeableStream#recovering-from-errors-inside-the-shell)
 
 #### Ограничения {/*caveats*/}
 
@@ -75,7 +74,7 @@ app.use('/', async (request, response) => {
 
 ### Когда следует использовать `prerenderToNodeStream`? {/*when-to-use-prerender*/}
 
-API статической генерации `prerenderToNodeStream` используется для статической серверной генерации (SSG). В отличие от `renderToString`, `prerenderToNodeStream` ждёт загрузки всех данных перед разрешением. Это делает его подходящим для генерации статического HTML для полной страницы, включая данные, которые необходимо получить с помощью Suspense. Для потоковой передачи контента по мере его загрузки используйте API потоковой серверной рендеринга (SSR), такой как [renderToReadableStream](/reference/react-dom/server/renderToReadableStream).
+API статического рендеринга `prerenderToNodeStream` используется для статической генерации сайта (SSG). В отличие от `renderToString`, `prerenderToNodeStream` ждет загрузки всех данных перед разрешением. Это делает его подходящим для генерации статического HTML для полной страницы, включая данные, которые необходимо получить с помощью Suspense. Для потоковой передачи контента по мере его загрузки используйте API потоковой передачи серверного рендеринга (SSR), такой как [renderToReadableStream](/reference/react-dom/server/renderToReadableStream).
 
 </Note>
 
@@ -83,9 +82,9 @@ API статической генерации `prerenderToNodeStream` испол
 
 ## Использование {/*usage*/}
 
-### Рендеринг React-дерева в поток статического HTML {/*rendering-a-react-tree-to-a-stream-of-static-html*/}
+### Рендеринг дерева React в поток статического HTML {/*rendering-a-react-tree-to-a-stream-of-static-html*/}
 
-Вызовите `prerenderToNodeStream` для рендеринга вашего React-дерева в статический HTML в [Node.js Stream.](https://nodejs.org/api/stream.html):
+Вызовите `prerenderToNodeStream` для рендеринга вашего дерева React в статический HTML в [Node.js Stream.](https://nodejs.org/api/stream.html):
 
 ```js [[1, 5, "<App />"], [2, 6, "['/main.js']"]]
 import { prerenderToNodeStream } from 'react-dom/static';
@@ -101,7 +100,7 @@ app.use('/', async (request, response) => {
 });
 ```
 
-Вместе с <CodeStep step={1}>корневым компонентом</CodeStep> вам нужно предоставить список <CodeStep step={2}>путей к bootstrap `<script>`</CodeStep>. Ваш корневой компонент должен возвращать **весь документ, включая корневой тег `<html>`.**
+Вместе с <CodeStep step={1}>корневым компонентом</CodeStep> вам нужно предоставить список <CodeStep step={2}>путей к скриптам инициализации</CodeStep>. Ваш корневой компонент должен возвращать **весь документ, включая корневой тег `<html>`.**
 
 Например, это может выглядеть так:
 
@@ -123,7 +122,7 @@ export default function App() {
 }
 ```
 
-React вставит [doctype](https://developer.mozilla.org/en-US/docs/Glossary/Doctype) и ваши <CodeStep step={2}>bootstrap `<script>` теги</CodeStep> в результирующий HTML-поток:
+React вставит [doctype](https://developer.mozilla.org/en-US/docs/Glossary/Doctype) и ваши <CodeStep step={2}>теги `<script>` для инициализации</CodeStep> в результирующий HTML-поток:
 
 ```html [[2, 5, "/main.js"]]
 <!DOCTYPE html>
@@ -133,7 +132,7 @@ React вставит [doctype](https://developer.mozilla.org/en-US/docs/Glossary
 <script src="/main.js" async=""></script>
 ```
 
-На клиенте ваш bootstrap-скрипт должен [гидрировать весь `document` вызовом `hydrateRoot`:](/reference/react-dom/client/hydrateRoot#hydrating-an-entire-document)
+На клиенте ваш скрипт инициализации должен [гидрировать весь `document` вызовом `hydrateRoot`:](/reference/react-dom/client/hydrateRoot#hydrating-an-entire-document)
 
 ```js [[1, 4, "<App />"]]
 import { hydrateRoot } from 'react-dom/client';
@@ -146,11 +145,11 @@ hydrateRoot(document, <App />);
 
 <DeepDive>
 
-#### Чтение путей к CSS и JS ресурсам из вывода сборки {/*reading-css-and-js-asset-paths-from-the-build-output*/}
+#### Чтение путей к CSS и JS файлам из вывода сборки {/*reading-css-and-js-asset-paths-from-the-build-output*/}
 
-Окончательные URL-адреса ресурсов (таких как файлы JavaScript и CSS) часто хешируются после сборки. Например, вместо `styles.css` вы можете получить `styles.123456.css`. Хеширование имён файлов статических ресурсов гарантирует, что каждая отдельная сборка одного и того же ресурса будет иметь другое имя файла. Это полезно, поскольку позволяет безопасно включить долгосрочное кеширование для статических ресурсов: файл с определённым именем никогда не изменит своё содержимое.
+Окончательные URL-адреса ресурсов (таких как файлы JavaScript и CSS) часто хешируются после сборки. Например, вместо `styles.css` вы можете получить `styles.123456.css`. Хеширование имён файлов статических ресурсов гарантирует, что каждая отдельная сборка одного и того же ресурса будет иметь другое имя файла. Это полезно, потому что позволяет безопасно включить долгосрочное кеширование для статических ресурсов: файл с определённым именем никогда не изменит своего содержимого.
 
-Однако, если вы не знаете URL-адреса ресурсов до завершения сборки, вы не сможете вставить их в исходный код. Например, жёсткое кодирование `"/styles.css"` в JSX, как было показано ранее, не сработает. Чтобы исключить их из вашего исходного кода, ваш корневой компонент может считывать реальные имена файлов из карты, передаваемой в качестве пропса:
+Однако, если вы не знаете URL-адреса ресурсов до завершения сборки, вы не сможете указать их в исходном коде. Например, жёсткое кодирование `"/styles.css"` в JSX, как было показано ранее, не сработает. Чтобы исключить их из вашего исходного кода, ваш корневой компонент может считывать реальные имена файлов из карты, передаваемой в качестве пропса:
 
 ```js {1,6}
 export default function App({ assetMap }) {
@@ -166,7 +165,7 @@ export default function App({ assetMap }) {
 }
 ```
 
-На сервере рендерите `<App assetMap={assetMap} />` и передайте вашу `assetMap` с URL-адресами ресурсов:
+На сервере рендерите `<App assetMap={assetMap} />` и передавайте вашу `assetMap` с URL-адресами ресурсов:
 
 ```js {1-5,8,9}
 // Вам нужно будет получить этот JSON из ваших инструментов сборки, например, прочитать его из вывода сборки.
@@ -185,7 +184,7 @@ app.use('/', async (request, response) => {
 });
 ```
 
-Поскольку ваш сервер теперь рендерит `<App assetMap={assetMap} />`, вам нужно рендерить его и на клиенте с `assetMap`, чтобы избежать ошибок гидратации. Вы можете сериализовать и передать `assetMap` клиенту следующим образом:
+Поскольку ваш сервер теперь рендерит `<App assetMap={assetMap} />`, вам также нужно будет рендерить его с `assetMap` на клиенте, чтобы избежать ошибок гидратации. Вы можете сериализовать и передать `assetMap` клиенту следующим образом:
 
 ```js {9-10}
 // Вам нужно будет получить этот JSON из ваших инструментов сборки.
@@ -221,7 +220,7 @@ hydrateRoot(document, <App assetMap={window.assetMap} />);
 
 ---
 
-### Рендеринг React-дерева в строку статического HTML {/*rendering-a-react-tree-to-a-string-of-static-html*/}
+### Рендеринг дерева React в строку статического HTML {/*rendering-a-react-tree-to-a-string-of-static-html*/}
 
 Вызовите `prerenderToNodeStream` для рендеринга вашего приложения в строку статического HTML:
 
@@ -244,13 +243,13 @@ async function renderToString() {
 }
 ```
 
-Это создаст первоначальный неинтерактивный HTML-вывод ваших React-компонентов. На клиенте вам нужно будет вызвать [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) для *гидратации* этого сгенерированного сервером HTML и его интерактивности.
+Это создаст начальный неинтерактивный HTML-вывод ваших компонентов React. На клиенте вам нужно будет вызвать [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) для *гидратации* этого сгенерированного сервером HTML и сделать его интерактивным.
 
 ---
 
 ### Ожидание загрузки всех данных {/*waiting-for-all-data-to-load*/}
 
-`prerenderToNodeStream` ждёт загрузки всех данных перед завершением генерации статического HTML и разрешением. Например, рассмотрим страницу профиля, которая отображает обложку, боковую панель с друзьями и фотографиями, а также список постов:
+`prerenderToNodeStream` ждет загрузки всех данных перед завершением генерации статического HTML и разрешением. Например, рассмотрим страницу профиля, которая отображает обложку, боковую панель с друзьями и фотографиями, а также список постов:
 
 ```js
 function ProfilePage() {
@@ -269,7 +268,7 @@ function ProfilePage() {
 }
 ```
 
-Представьте, что `<Posts />` нужно загрузить некоторые данные, что занимает некоторое время. В идеале вы бы хотели дождаться завершения загрузки постов, чтобы они были включены в HTML. Для этого вы можете использовать Suspense для приостановки загрузки данных, и `prerenderToNodeStream` будет ждать завершения приостановленного контента перед разрешением в статический HTML.
+Представьте, что `<Posts />` нужно загрузить некоторые данные, что занимает некоторое время. В идеале вы хотите дождаться завершения загрузки постов, чтобы они были включены в HTML. Для этого вы можете использовать Suspense для приостановки загрузки данных, и `prerenderToNodeStream` будет ждать завершения приостановленного контента перед разрешением в статический HTML.
 
 <Note>
 
@@ -281,7 +280,7 @@ function ProfilePage() {
 
 Suspense **не** обнаруживает, когда данные загружаются внутри Effect или обработчика событий.
 
-Точный способ загрузки данных в компоненте `Posts` выше зависит от вашего фреймворка. Если вы используете фреймворк, поддерживающий Suspense, вы найдёте подробности в его документации по получению данных.
+Точный способ загрузки данных в компоненте `Posts` выше зависит от вашего фреймворка. Если вы используете фреймворк, поддерживающий Suspense, вы найдете подробности в его документации по получению данных.
 
 Получение данных с поддержкой Suspense без использования структурированного фреймворка пока не поддерживается. Требования к реализации источника данных с поддержкой Suspense нестабильны и не документированы. Официальный API для интеграции источников данных с Suspense будет выпущен в будущей версии React.
 
@@ -291,7 +290,7 @@ Suspense **не** обнаруживает, когда данные загруж
 
 ### Отмена предварительного рендеринга {/*aborting-prerendering*/}
 
-Вы можете заставить предварительный рендеринг "сдаться" по истечении времени ожидания:
+Вы можете заставить предварительный рендеринг "сдаться" после истечения времени ожидания:
 
 ```js {2-5,11}
 async function renderToString() {
@@ -302,21 +301,21 @@ async function renderToString() {
 
   try {
     // prelude будет содержать весь HTML, который был предварительно отрендерен
-    // до того, как контроллер отменил операцию.
+    // до того, как контроллер был отменен.
     const {prelude} = await prerenderToNodeStream(<App />, {
       signal: controller.signal,
     });
     //...
 ```
 
-Любые границы Suspense с незавершёнными дочерними элементами будут включены в prelude в состоянии ожидания (fallback state).
+Любые границы Suspense с незавершенными дочерними элементами будут включены в prelude в состоянии отложенного отображения (fallback state).
 
 ---
 
 ## Устранение неполадок {/*troubleshooting*/}
 
-### Мой поток не начинается до тех пор, пока всё приложение не будет отрендерено {/*my-stream-doesnt-start-until-the-entire-app-is-rendered*/}
+### Мой поток не начинается, пока всё приложение не будет отрендерено {/*my-stream-doesnt-start-until-the-entire-app-is-rendered*/}
 
-Ответ `prerenderToNodeStream` ждёт завершения рендеринга всего приложения, включая ожидание разрешения всех границ Suspense, перед разрешением. Он предназначен для статической генерации сайтов (SSG) заранее и не поддерживает потоковую передачу большего контента по мере его загрузки.
+Ответ `prerenderToNodeStream` ждет завершения рендеринга всего приложения, включая ожидание разрешения всех границ Suspense, перед разрешением. Он предназначен для статической генерации сайта (SSG) заранее и не поддерживает потоковую передачу большего контента по мере его загрузки.
 
-Для потоковой передачи контента по мере его загрузки используйте API потоковой серверной рендеринга, такой как [renderToPipeableStream](/reference/react-dom/server/renderToPipeableStream).
+Для потоковой передачи контента по мере его загрузки используйте API потоковой передачи серверного рендеринга, такой как [renderToPipeableStream](/reference/react-dom/server/renderToPipeableStream).
