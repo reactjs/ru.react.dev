@@ -4,27 +4,27 @@ title: 'Reusing Logic with Custom Hooks'
 
 <Intro>
 
-React comes with several built-in Hooks like `useState`, `useContext`, and `useEffect`. Sometimes, you'll wish that there was a Hook for some more specific purpose: for example, to fetch data, to keep track of whether the user is online, or to connect to a chat room. You might not find these Hooks in React, but you can create your own Hooks for your application's needs.
+React поставляется с несколькими встроенными хуками, такими как `useState`, `useContext` и `useEffect`. Иногда вам может захотеться иметь хук для более специфической цели: например, для получения данных, отслеживания статуса пользователя (онлайн/офлайн) или подключения к чату. Возможно, вы не найдете таких хуков в React, но вы можете создавать свои собственные хуки для нужд вашего приложения.
 
 </Intro>
 
 <YouWillLearn>
 
-- What custom Hooks are, and how to write your own
-- How to reuse logic between components
-- How to name and structure your custom Hooks
-- When and why to extract custom Hooks
+- Что такое пользовательские хуки и как их писать
+- Как повторно использовать логику между компонентами
+- Как называть и структурировать пользовательские хуки
+- Когда и зачем извлекать пользовательские хуки
 
 </YouWillLearn>
 
-## Custom Hooks: Sharing logic between components {/*custom-hooks-sharing-logic-between-components*/}
+## Пользовательские хуки: Повторное использование логики между компонентами {/*custom-hooks-sharing-logic-between-components*/}
 
-Imagine you're developing an app that heavily relies on the network (as most apps do). You want to warn the user if their network connection has accidentally gone off while they were using your app. How would you go about it? It seems like you'll need two things in your component:
+Представьте, что вы разрабатываете приложение, которое сильно зависит от сети (как и большинство приложений). Вы хотите предупредить пользователя, если его сетевое соединение случайно отключилось во время использования вашего приложения. Как бы вы это сделали? Похоже, вам понадобятся две вещи в вашем компоненте:
 
-1. A piece of state that tracks whether the network is online.
-2. An Effect that subscribes to the global [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) and [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) events, and updates that state.
+1. Часть состояния, отслеживающая, находится ли сеть в сети.
+2. Эффект, который подписывается на глобальные события [`online`](https://developer.mozilla.org/en-US/docs/Web/API/Window/online_event) и [`offline`](https://developer.mozilla.org/en-US/docs/Web/API/Window/offline_event) и обновляет это состояние.
 
-This will keep your component [synchronized](/learn/synchronizing-with-effects) with the network status. You might start with something like this:
+Это позволит вашему компоненту [синхронизироваться](/learn/synchronizing-with-effects) со статусом сети. Вы можете начать с чего-то вроде этого:
 
 <Sandpack>
 
@@ -54,11 +54,11 @@ export default function StatusBar() {
 
 </Sandpack>
 
-Try turning your network on and off, and notice how this `StatusBar` updates in response to your actions.
+Попробуйте включить и выключить сеть и заметьте, как этот `StatusBar` обновляется в ответ на ваши действия.
 
-Now imagine you *also* want to use the same logic in a different component. You want to implement a Save button that will become disabled and show "Reconnecting..." instead of "Save" while the network is off.
+Теперь представьте, что вы *также* хотите использовать ту же логику в другом компоненте. Вы хотите реализовать кнопку «Сохранить», которая будет отключена и будет показывать «Переподключение...» вместо «Сохранить», пока сеть отключена.
 
-To start, you can copy and paste the `isOnline` state and the Effect into `SaveButton`:
+Для начала вы можете скопировать и вставить состояние `isOnline` и эффект в `SaveButton`:
 
 <Sandpack>
 
@@ -96,13 +96,13 @@ export default function SaveButton() {
 
 </Sandpack>
 
-Verify that, if you turn off the network, the button will change its appearance.
+Убедитесь, что если вы отключите сеть, кнопка изменит свой внешний вид.
 
-These two components work fine, but the duplication in logic between them is unfortunate. It seems like even though they have different *visual appearance,* you want to reuse the logic between them.
+Эти два компонента работают нормально, но дублирование логики между ними печально. Похоже, что, хотя у них и разный *визуальный вид*, вы хотите повторно использовать логику между ними.
 
-### Extracting your own custom Hook from a component {/*extracting-your-own-custom-hook-from-a-component*/}
+### Извлечение собственного пользовательского хука из компонента {/*extracting-your-own-custom-hook-from-a-component*/}
 
-Imagine for a moment that, similar to [`useState`](/reference/react/useState) and [`useEffect`](/reference/react/useEffect), there was a built-in `useOnlineStatus` Hook. Then both of these components could be simplified and you could remove the duplication between them:
+Представьте на мгновение, что, подобно [`useState`](/reference/react/useState) и [`useEffect`](/reference/react/useEffect), существует встроенный хук `useOnlineStatus`. Тогда оба этих компонента можно было бы упростить, и вы могли бы устранить дублирование между ними:
 
 ```js {2,7}
 function StatusBar() {
@@ -125,7 +125,7 @@ function SaveButton() {
 }
 ```
 
-Although there is no such built-in Hook, you can write it yourself. Declare a function called `useOnlineStatus` and move all the duplicated code into it from the components you wrote earlier:
+Хотя такого встроенного хука не существует, вы можете написать его сами. Объявите функцию с именем `useOnlineStatus` и переместите в нее весь дублирующийся код из ранее написанных вами компонентов:
 
 ```js {2-16}
 function useOnlineStatus() {
@@ -148,7 +148,7 @@ function useOnlineStatus() {
 }
 ```
 
-At the end of the function, return `isOnline`. This lets your components read that value:
+В конце функции верните `isOnline`. Это позволит вашим компонентам читать это значение:
 
 <Sandpack>
 
@@ -209,89 +209,89 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-Verify that switching the network on and off updates both components.
+Убедитесь, что переключение сети вкл/выкл обновляет оба компонента.
 
-Now your components don't have as much repetitive logic. **More importantly, the code inside them describes *what they want to do* (use the online status!) rather than *how to do it* (by subscribing to the browser events).**
+Теперь в ваших компонентах стало меньше повторяющейся логики. **Что еще более важно, код внутри них описывает *что они хотят делать* (использовать статус сети!), а не *как это сделать* (подписываясь на события браузера).**
 
-When you extract logic into custom Hooks, you can hide the gnarly details of how you deal with some external system or a browser API. The code of your components expresses your intent, not the implementation.
+Когда вы извлекаете логику в пользовательские хуки, вы можете скрыть сложные детали того, как вы работаете с некоторой внешней системой или API браузера. Код ваших компонентов выражает ваше намерение, а не реализацию.
 
-### Hook names always start with `use` {/*hook-names-always-start-with-use*/}
+### Имена хуков всегда начинаются с `use` {/*hook-names-always-start-with-use*/}
 
-React applications are built from components. Components are built from Hooks, whether built-in or custom. You'll likely often use custom Hooks created by others, but occasionally you might write one yourself!
+Приложения React строятся из компонентов. Компоненты строятся из хуков, как встроенных, так и пользовательских. Вы, вероятно, часто будете использовать пользовательские хуки, созданные другими, но иногда вы можете написать один сами!
 
-You must follow these naming conventions:
+Вы должны следовать этим соглашениям об именовании:
 
-1. **React component names must start with a capital letter,** like `StatusBar` and `SaveButton`. React components also need to return something that React knows how to display, like a piece of JSX.
-2. **Hook names must start with `use` followed by a capital letter,** like [`useState`](/reference/react/useState) (built-in) or `useOnlineStatus` (custom, like earlier on the page). Hooks may return arbitrary values.
+1. **Имена компонентов React должны начинаться с заглавной буквы,** как `StatusBar` и `SaveButton`. Компоненты React также должны возвращать что-то, что React знает, как отобразить, например, фрагмент JSX.
+2. **Имена хуков должны начинаться с `use`, за которым следует заглавная буква,** как [`useState`](/reference/react/useState) (встроенный) или `useOnlineStatus` (пользовательский, как показано ранее на странице). Хуки могут возвращать произвольные значения.
 
-This convention guarantees that you can always look at a component and know where its state, Effects, and other React features might "hide". For example, if you see a `getColor()` function call inside your component, you can be sure that it can't possibly contain React state inside because its name doesn't start with `use`. However, a function call like `useOnlineStatus()` will most likely contain calls to other Hooks inside!
+Это соглашение гарантирует, что вы всегда сможете взглянуть на компонент и понять, где могут «скрываться» его состояние, эффекты и другие функции React. Например, если вы видите вызов функции `getColor()` внутри вашего компонента, вы можете быть уверены, что она не может содержать состояние React, потому что ее имя не начинается с `use`. Однако вызов функции, такой как `useOnlineStatus()`, скорее всего, будет содержать вызовы других хуков!
 
 <Note>
 
-If your linter is [configured for React,](/learn/editor-setup#linting) it will enforce this naming convention. Scroll up to the sandbox above and rename `useOnlineStatus` to `getOnlineStatus`. Notice that the linter won't allow you to call `useState` or `useEffect` inside of it anymore. Only Hooks and components can call other Hooks!
+Если ваш линтер [настроен для React,](/learn/editor-setup#linting) он будет обеспечивать соблюдение этого соглашения об именовании. Прокрутите вверх до песочницы выше и переименуйте `useOnlineStatus` в `getOnlineStatus`. Обратите внимание, что линтер больше не позволит вам вызывать `useState` или `useEffect` внутри него. Только хуки и компоненты могут вызывать другие хуки!
 
 </Note>
 
 <DeepDive>
 
-#### Should all functions called during rendering start with the use prefix? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
+#### Должны ли все функции, вызываемые во время рендеринга, начинаться с префикса `use`? {/*should-all-functions-called-during-rendering-start-with-the-use-prefix*/}
 
-No. Functions that don't *call* Hooks don't need to *be* Hooks.
+Нет. Функции, которые *не вызывают* хуки, не должны *быть* хуками.
 
-If your function doesn't call any Hooks, avoid the `use` prefix. Instead, write it as a regular function *without* the `use` prefix. For example, `useSorted` below doesn't call Hooks, so call it `getSorted` instead:
+Если ваша функция не вызывает никаких хуков, избегайте префикса `use`. Вместо этого напишите ее как обычную функцию *без* префикса `use`. Например, `useSorted` ниже не вызывает хуков, поэтому назовите ее `getSorted` вместо этого:
 
 ```js
-// 🔴 Avoid: A Hook that doesn't use Hooks
+// 🔴 Избегать: Хук, который не использует хуки
 function useSorted(items) {
   return items.slice().sort();
 }
 
-// ✅ Good: A regular function that doesn't use Hooks
+// ✅ Хорошо: Обычная функция, которая не использует хуки
 function getSorted(items) {
   return items.slice().sort();
 }
 ```
 
-This ensures that your code can call this regular function anywhere, including conditions:
+Это гарантирует, что ваш код может вызывать эту обычную функцию где угодно, в том числе в условных выражениях:
 
 ```js
 function List({ items, shouldSort }) {
   let displayedItems = items;
   if (shouldSort) {
-    // ✅ It's ok to call getSorted() conditionally because it's not a Hook
+    // ✅ Можно вызывать getSorted() условно, потому что это не хук
     displayedItems = getSorted(items);
   }
   // ...
 }
 ```
 
-You should give `use` prefix to a function (and thus make it a Hook) if it uses at least one Hook inside of it:
+Вы должны дать префикс `use` функции (и, следовательно, сделать ее хуком), если она вызывает хотя бы один хук внутри себя:
 
 ```js
-// ✅ Good: A Hook that uses other Hooks
+// ✅ Хорошо: Хук, который использует другие хуки
 function useAuth() {
   return useContext(Auth);
 }
 ```
 
-Technically, this isn't enforced by React. In principle, you could make a Hook that doesn't call other Hooks. This is often confusing and limiting so it's best to avoid that pattern. However, there may be rare cases where it is helpful. For example, maybe your function doesn't use any Hooks right now, but you plan to add some Hook calls to it in the future. Then it makes sense to name it with the `use` prefix:
+Технически это не enforced React. В принципе, вы можете создать хук, который не вызывает других хуков. Это часто сбивает с толку и ограничивает, поэтому лучше избегать такого шаблона. Однако могут быть редкие случаи, когда это полезно. Например, возможно, ваша функция пока не использует никаких хуков, но вы планируете добавить в нее вызовы хуков в будущем. Тогда имеет смысл назвать ее с префиксом `use`:
 
 ```js {3-4}
-// ✅ Good: A Hook that will likely use some other Hooks later
+// ✅ Хорошо: Хук, который, вероятно, будет использовать другие хуки позже
 function useAuth() {
-  // TODO: Replace with this line when authentication is implemented:
+  // TODO: Заменить этой строкой, когда будет реализована аутентификация:
   // return useContext(Auth);
   return TEST_USER;
 }
 ```
 
-Then components won't be able to call it conditionally. This will become important when you actually add Hook calls inside. If you don't plan to use Hooks inside it (now or later), don't make it a Hook.
+Тогда компоненты не смогут вызывать ее условно. Это станет важным, когда вы фактически добавите вызовы хуков внутрь. Если вы не планируете использовать в ней хуки (сейчас или позже), не делайте ее хуком.
 
 </DeepDive>
 
-### Custom Hooks let you share stateful logic, not state itself {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
+### Пользовательские хуки позволяют совместно использовать логику с состоянием, а не само состояние {/*custom-hooks-let-you-share-stateful-logic-not-state-itself*/}
 
-In the earlier example, when you turned the network on and off, both components updated together. However, it's wrong to think that a single `isOnline` state variable is shared between them. Look at this code:
+В предыдущем примере, когда вы включали и выключали сеть, оба компонента обновлялись одновременно. Однако ошибочно полагать, что одна переменная состояния `isOnline` разделяется между ними. Рассмотрим этот код:
 
 ```js {2,7}
 function StatusBar() {
@@ -305,7 +305,7 @@ function SaveButton() {
 }
 ```
 
-It works the same way as before you extracted the duplication:
+Это работает так же, как и до извлечения дублирования:
 
 ```js {2-5,10-13}
 function StatusBar() {
@@ -325,9 +325,9 @@ function SaveButton() {
 }
 ```
 
-These are two completely independent state variables and Effects! They happened to have the same value at the same time because you synchronized them with the same external value (whether the network is on).
+Это две совершенно независимые переменные состояния и эффекты! Они случайно имели одинаковое значение в одно и то же время, потому что вы синхронизировали их с одним и тем же внешним значением (включена ли сеть).
 
-To better illustrate this, we'll need a different example. Consider this `Form` component:
+Чтобы лучше проиллюстрировать это, нам понадобится другой пример. Рассмотрим этот компонент `Form`:
 
 <Sandpack>
 
@@ -369,13 +369,13 @@ input { margin-left: 10px; }
 
 </Sandpack>
 
-There's some repetitive logic for each form field:
+Для каждого поля формы есть некоторая повторяющаяся логика:
 
-1. There's a piece of state (`firstName` and `lastName`).
-1. There's a change handler (`handleFirstNameChange` and `handleLastNameChange`).
-1. There's a piece of JSX that specifies the `value` and `onChange` attributes for that input.
+1. Есть часть состояния (`firstName` и `lastName`).
+1. Есть обработчик изменений (`handleFirstNameChange` и `handleLastNameChange`).
+1. Есть фрагмент JSX, который определяет атрибуты `value` и `onChange` для этого ввода.
 
-You can extract the repetitive logic into this `useFormInput` custom Hook:
+Вы можете извлечь повторяющуюся логику в этот пользовательский хук `useFormInput`:
 
 <Sandpack>
 
@@ -428,9 +428,9 @@ input { margin-left: 10px; }
 
 </Sandpack>
 
-Notice that it only declares *one* state variable called `value`.
+Обратите внимание, что он объявляет только *одну* переменную состояния под названием `value`.
 
-However, the `Form` component calls `useFormInput` *two times:*
+Однако компонент `Form` вызывает `useFormInput` *два раза*:
 
 ```js
 function Form() {
@@ -439,17 +439,17 @@ function Form() {
   // ...
 ```
 
-This is why it works like declaring two separate state variables!
+Вот почему это работает как объявление двух отдельных переменных состояния!
 
-**Custom Hooks let you share *stateful logic* but not *state itself.* Each call to a Hook is completely independent from every other call to the same Hook.** This is why the two sandboxes above are completely equivalent. If you'd like, scroll back up and compare them. The behavior before and after extracting a custom Hook is identical.
+**Пользовательские хуки позволяют совместно использовать *логику с состоянием*, но не *само состояние*. Каждый вызов хука полностью независим от любого другого вызова того же хука.** Вот почему два приведенных выше песочницы полностью эквивалентны. Если хотите, прокрутите вверх и сравните их. Поведение до и после извлечения пользовательского хука идентично.
 
-When you need to share the state itself between multiple components, [lift it up and pass it down](/learn/sharing-state-between-components) instead.
+Когда вам нужно совместно использовать само состояние между несколькими компонентами, [поднимите его вверх и передайте вниз](/learn/sharing-state-between-components) вместо этого.
 
-## Passing reactive values between Hooks {/*passing-reactive-values-between-hooks*/}
+## Передача реактивных значений между хуками {/*passing-reactive-values-between-hooks*/}
 
-The code inside your custom Hooks will re-run during every re-render of your component. This is why, like components, custom Hooks [need to be pure.](/learn/keeping-components-pure) Think of custom Hooks' code as part of your component's body!
+Код внутри ваших пользовательских хуков будет перезапускаться при каждом повторном рендеринге вашего компонента. Именно поэтому, как и компоненты, пользовательские хуки [должны быть чистыми.](/learn/keeping-components-pure) Считайте код пользовательских хуков частью тела вашего компонента!
 
-Because custom Hooks re-render together with your component, they always receive the latest props and state. To see what this means, consider this chat room example. Change the server URL or the chat room:
+Поскольку пользовательские хуки перезапускаются вместе с вашим компонентом, они всегда получают последние пропсы и состояние. Чтобы увидеть, что это значит, рассмотрите пример чат-комнаты. Измените URL сервера или чат-комнату:
 
 <Sandpack>
 
@@ -599,9 +599,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-When you change `serverUrl` or `roomId`, the Effect ["reacts" to your changes](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) and re-synchronizes. You can tell by the console messages that the chat re-connects every time that you change your Effect's dependencies.
+Когда вы изменяете `serverUrl` или `roomId`, эффект ["реагирует" на ваши изменения](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) и повторно синхронизируется. Вы можете увидеть по сообщениям в консоли, что чат переподключается каждый раз, когда вы изменяете зависимости вашего эффекта.
 
-Now move the Effect's code into a custom Hook:
+Теперь переместите код эффекта в пользовательский хук:
 
 ```js {2-13}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -620,7 +620,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-This lets your `ChatRoom` component call your custom Hook without worrying about how it works inside:
+Это позволяет вашему компоненту `ChatRoom` вызывать ваш пользовательский хук, не беспокоясь о том, как он работает внутри:
 
 ```js {4-7}
 export default function ChatRoom({ roomId }) {
@@ -643,9 +643,9 @@ export default function ChatRoom({ roomId }) {
 }
 ```
 
-This looks much simpler! (But it does the same thing.)
+Это выглядит намного проще! (Но делает то же самое.)
 
-Notice that the logic *still responds* to prop and state changes. Try editing the server URL or the selected room:
+Обратите внимание, что логика *по-прежнему реагирует* на изменения пропсов и состояния. Попробуйте отредактировать URL сервера или выбрать другую комнату:
 
 <Sandpack>
 
@@ -807,7 +807,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice how you're taking the return value of one Hook:
+Обратите внимание, как вы берете возвращаемое значение одного хука:
 
 ```js {2}
 export default function ChatRoom({ roomId }) {
@@ -820,7 +820,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-and passing it as an input to another Hook:
+и передаете его как входное значение другому хуку:
 
 ```js {6}
 export default function ChatRoom({ roomId }) {
@@ -833,17 +833,17 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-Every time your `ChatRoom` component re-renders, it passes the latest `roomId` and `serverUrl` to your Hook. This is why your Effect re-connects to the chat whenever their values are different after a re-render. (If you ever worked with audio or video processing software, chaining Hooks like this might remind you of chaining visual or audio effects. It's as if the output of `useState` "feeds into" the input of the `useChatRoom`.)
+Каждый раз, когда ваш компонент `ChatRoom` повторно рендерится, он передает последний `roomId` и `serverUrl` вашему хуку. Вот почему ваш эффект переподключается к чату всякий раз, когда их значения отличаются после повторного рендеринга. (Если вы когда-либо работали с программным обеспечением для обработки аудио или видео, цепочка хуков, подобная этой, может напомнить вам цепочку визуальных или аудиоэффектов. Как будто вывод `useState` "поступает" во входные данные `useChatRoom`.)
 
-### Passing event handlers to custom Hooks {/*passing-event-handlers-to-custom-hooks*/}
+### Передача обработчиков событий в пользовательские хуки {/*passing-event-handlers-to-custom-hooks*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+Этот раздел описывает **экспериментальный API, который еще не был выпущен** в стабильной версии React.
 
 </Wip>
 
-As you start using `useChatRoom` in more components, you might want to let components customize its behavior. For example, currently, the logic for what to do when a message arrives is hardcoded inside the Hook:
+Когда вы начнете использовать `useChatRoom` в большем количестве компонентов, вы, возможно, захотите позволить компонентам настраивать его поведение. Например, в настоящее время логика того, что делать при получении сообщения, жестко закодирована внутри хука:
 
 ```js {9-11}
 export function useChatRoom({ serverUrl, roomId }) {
@@ -862,7 +862,7 @@ export function useChatRoom({ serverUrl, roomId }) {
 }
 ```
 
-Let's say you want to move this logic back to your component:
+Допустим, вы хотите переместить эту логику обратно в ваш компонент:
 
 ```js {7-9}
 export default function ChatRoom({ roomId }) {
@@ -878,7 +878,7 @@ export default function ChatRoom({ roomId }) {
   // ...
 ```
 
-To make this work, change your custom Hook to take `onReceiveMessage` as one of its named options:
+Чтобы это заработало, измените ваш пользовательский хук так, чтобы он принимал `onReceiveMessage` как одну из своих именованных опций:
 
 ```js {1,10,13}
 export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
@@ -893,13 +893,13 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
       onReceiveMessage(msg);
     });
     return () => connection.disconnect();
-  }, [roomId, serverUrl, onReceiveMessage]); // ✅ All dependencies declared
+  }, [roomId, serverUrl, onReceiveMessage]); // ✅ Все зависимости объявлены
 }
 ```
 
-This will work, but there's one more improvement you can do when your custom Hook accepts event handlers.
+Это будет работать, но есть еще одно улучшение, которое вы можете сделать, когда ваш пользовательский хук принимает обработчики событий.
 
-Adding a dependency on `onReceiveMessage` is not ideal because it will cause the chat to re-connect every time the component re-renders. [Wrap this event handler into an Effect Event to remove it from the dependencies:](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
+Добавление зависимости от `onReceiveMessage` не является идеальным, потому что это приведет к повторному подключению чата каждый раз, когда компонент повторно рендерится. [Оберните этот обработчик событий в Event Effect, чтобы удалить его из зависимостей:](/learn/removing-effect-dependencies#wrapping-an-event-handler-from-the-props)
 
 ```js {1,4,5,15,18}
 import { useEffect, useEffectEvent } from 'react';
@@ -919,11 +919,11 @@ export function useChatRoom({ serverUrl, roomId, onReceiveMessage }) {
       onMessage(msg);
     });
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ All dependencies declared
+  }, [roomId, serverUrl]); // ✅ Все зависимости объявлены
 }
 ```
 
-Now the chat won't re-connect every time that the `ChatRoom` component re-renders. Here is a fully working demo of passing an event handler to a custom Hook that you can play with:
+Теперь чат не будет переподключаться каждый раз, когда компонент `ChatRoom` повторно рендерится. Вот полностью рабочая демонстрация передачи обработчика событий в пользовательский хук, с которой вы можете поиграть:
 
 <Sandpack>
 
@@ -1091,20 +1091,20 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Notice how you no longer need to know *how* `useChatRoom` works in order to use it. You could add it to any other component, pass any other options, and it would work the same way. That's the power of custom Hooks.
+Обратите внимание, что вам больше не нужно знать, *как* работает `useChatRoom`, чтобы использовать его. Вы можете добавить его в любой другой компонент, передать любые другие опции, и он будет работать одинаково. В этом и заключается сила пользовательских хуков.
 
-## When to use custom Hooks {/*when-to-use-custom-hooks*/}
+## Когда использовать пользовательские хуки {/*when-to-use-custom-hooks*/}
 
-You don't need to extract a custom Hook for every little duplicated bit of code. Some duplication is fine. For example, extracting a `useFormInput` Hook to wrap a single `useState` call like earlier is probably unnecessary.
+Вам не нужно извлекать пользовательский хук для каждого мелкого дублирующегося фрагмента кода. Некоторое дублирование — это нормально. Например, извлечение хука `useFormInput` для обертывания одного вызова `useState`, как показано ранее, вероятно, излишне.
 
-However, whenever you write an Effect, consider whether it would be clearer to also wrap it in a custom Hook. [You shouldn't need Effects very often,](/learn/you-might-not-need-an-effect) so if you're writing one, it means that you need to "step outside React" to synchronize with some external system or to do something that React doesn't have a built-in API for. Wrapping it into a custom Hook lets you precisely communicate your intent and how the data flows through it.
+Однако, когда вы пишете эффект, подумайте, не будет ли понятнее обернуть его в пользовательский хук. [Эффекты вам не понадобятся очень часто](/learn/you-might-not-need-an-effect), поэтому, если вы пишете один, это означает, что вам нужно «выйти за пределы React», чтобы синхронизироваться с некоторой внешней системой или сделать что-то, для чего в React нет встроенного API. Обертывание его в пользовательский хук позволяет точно передать ваше намерение и то, как данные через него проходят.
 
-For example, consider a `ShippingForm` component that displays two dropdowns: one shows the list of cities, and another shows the list of areas in the selected city. You might start with some code that looks like this:
+Например, рассмотрим компонент `ShippingForm`, который отображает два выпадающих списка: один показывает список городов, а другой — список районов в выбранном городе. Вы можете начать с кода, который выглядит примерно так:
 
 ```js {3-16,20-35}
 function ShippingForm({ country }) {
   const [cities, setCities] = useState(null);
-  // This Effect fetches cities for a country
+  // Этот эффект загружает города для страны
   useEffect(() => {
     let ignore = false;
     fetch(`/api/cities?country=${country}`)
@@ -1121,7 +1121,7 @@ function ShippingForm({ country }) {
 
   const [city, setCity] = useState(null);
   const [areas, setAreas] = useState(null);
-  // This Effect fetches areas for the selected city
+  // Этот эффект загружает районы для выбранного города
   useEffect(() => {
     if (city) {
       let ignore = false;
@@ -1139,9 +1139,10 @@ function ShippingForm({ country }) {
   }, [city]);
 
   // ...
+}
 ```
 
-Although this code is quite repetitive, [it's correct to keep these Effects separate from each other.](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things) They synchronize two different things, so you shouldn't merge them into one Effect. Instead, you can simplify the `ShippingForm` component above by extracting the common logic between them into your own `useData` Hook:
+Хотя этот код довольно повторяется, [правильно держать эти эффекты отдельно друг от друга.](/learn/removing-effect-dependencies#is-your-effect-doing-several-unrelated-things) Они синхронизируют две разные вещи, поэтому вам не следует объединять их в один эффект. Вместо этого вы можете упростить приведенный выше компонент `ShippingForm`, извлекши общую логику между ними в ваш собственный хук `useData`:
 
 ```js {2-18}
 function useData(url) {
@@ -1165,7 +1166,7 @@ function useData(url) {
 }
 ```
 
-Now you can replace both Effects in the `ShippingForm` components with calls to `useData`:
+Теперь вы можете заменить оба эффекта в компонентах `ShippingForm` вызовами `useData`:
 
 ```js {2,4}
 function ShippingForm({ country }) {
@@ -1173,41 +1174,42 @@ function ShippingForm({ country }) {
   const [city, setCity] = useState(null);
   const areas = useData(city ? `/api/areas?city=${city}` : null);
   // ...
+}
 ```
 
-Extracting a custom Hook makes the data flow explicit. You feed the `url` in and you get the `data` out. By "hiding" your Effect inside `useData`, you also prevent someone working on the `ShippingForm` component from adding [unnecessary dependencies](/learn/removing-effect-dependencies) to it. With time, most of your app's Effects will be in custom Hooks.
+Извлечение пользовательского хука делает поток данных явным. Вы передаете `url` и получаете `data`. «Скрывая» ваш эффект внутри `useData`, вы также предотвращаете добавление [ненужных зависимостей](/learn/removing-effect-dependencies) в него кем-то, кто работает над компонентом `ShippingForm`. Со временем большинство эффектов вашего приложения будут находиться в пользовательских хуках.
 
 <DeepDive>
 
-#### Keep your custom Hooks focused on concrete high-level use cases {/*keep-your-custom-hooks-focused-on-concrete-high-level-use-cases*/}
+#### Держите ваши пользовательские хуки сфокусированными на конкретных высокоуровневых сценариях использования {/*keep-your-custom-hooks-focused-on-concrete-high-level-use-cases*/}
 
-Start by choosing your custom Hook's name. If you struggle to pick a clear name, it might mean that your Effect is too coupled to the rest of your component's logic, and is not yet ready to be extracted.
+Начните с выбора имени для вашего пользовательского хука. Если вам трудно подобрать понятное имя, это может означать, что ваш эффект слишком сильно связан с остальной логикой вашего компонента и еще не готов к извлечению.
 
-Ideally, your custom Hook's name should be clear enough that even a person who doesn't write code often could have a good guess about what your custom Hook does, what it takes, and what it returns:
+В идеале имя вашего пользовательского хука должно быть достаточно понятным, чтобы даже человек, который не часто пишет код, мог примерно догадаться, что делает ваш пользовательский хук, что он принимает и что возвращает:
 
 * ✅ `useData(url)`
 * ✅ `useImpressionLog(eventName, extraData)`
 * ✅ `useChatRoom(options)`
 
-When you synchronize with an external system, your custom Hook name may be more technical and use jargon specific to that system. It's good as long as it would be clear to a person familiar with that system:
+Когда вы синхронизируетесь с внешней системой, имя вашего пользовательского хука может быть более техническим и использовать жаргон, специфичный для этой системы. Это хорошо, если это будет понятно человеку, знакомому с этой системой:
 
 * ✅ `useMediaQuery(query)`
 * ✅ `useSocket(url)`
 * ✅ `useIntersectionObserver(ref, options)`
 
-**Keep custom Hooks focused on concrete high-level use cases.** Avoid creating and using custom "lifecycle" Hooks that act as alternatives and convenience wrappers for the `useEffect` API itself:
+**Держите пользовательские хуки сфокусированными на конкретных высокоуровневых сценариях использования.** Избегайте создания и использования пользовательских хуков «жизненного цикла», которые действуют как альтернативы и удобные обертки для самого API `useEffect`:
 
 * 🔴 `useMount(fn)`
 * 🔴 `useEffectOnce(fn)`
 * 🔴 `useUpdateEffect(fn)`
 
-For example, this `useMount` Hook tries to ensure some code only runs "on mount":
+Например, этот хук `useMount` пытается гарантировать, что некоторый код выполняется только «при монтировании»:
 
 ```js {4-5,14-15}
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // 🔴 Avoid: using custom "lifecycle" Hooks
+  // 🔴 Избегайте: использования пользовательских хуков «жизненного цикла»
   useMount(() => {
     const connection = createConnection({ roomId, serverUrl });
     connection.connect();
@@ -1217,23 +1219,23 @@ function ChatRoom({ roomId }) {
   // ...
 }
 
-// 🔴 Avoid: creating custom "lifecycle" Hooks
+// 🔴 Избегайте: создания пользовательских хуков «жизненного цикла»
 function useMount(fn) {
   useEffect(() => {
     fn();
-  }, []); // 🔴 React Hook useEffect has a missing dependency: 'fn'
+  }, []); // 🔴 React Hook useEffect имеет отсутствующую зависимость: 'fn'
 }
 ```
 
-**Custom "lifecycle" Hooks like `useMount` don't fit well into the React paradigm.** For example, this code example has a mistake (it doesn't "react" to `roomId` or `serverUrl` changes), but the linter won't warn you about it because the linter only checks direct `useEffect` calls. It won't know about your Hook.
+**Пользовательские хуки «жизненного цикла», такие как `useMount`, плохо вписываются в парадигму React.** Например, в этом примере кода есть ошибка (он не «реагирует» на изменения `roomId` или `serverUrl`), но линтер не предупредит вас об этом, потому что линтер проверяет только прямые вызовы `useEffect`. Он не будет знать о вашем хуке.
 
-If you're writing an Effect, start by using the React API directly:
+Если вы пишете эффект, начните с прямого использования API React:
 
 ```js
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // ✅ Good: two raw Effects separated by purpose
+  // ✅ Хорошо: два необработанных эффекта, разделенных по назначению
 
   useEffect(() => {
     const connection = createConnection({ serverUrl, roomId });
@@ -1249,28 +1251,28 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Then, you can (but don't have to) extract custom Hooks for different high-level use cases:
+Затем вы можете (но не обязаны) извлекать пользовательские хуки для различных высокоуровневых сценариев использования:
 
 ```js
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
 
-  // ✅ Great: custom Hooks named after their purpose
+  // ✅ Отлично: пользовательские хуки, названные по их назначению
   useChatRoom({ serverUrl, roomId });
   useImpressionLog('visit_chat', { roomId });
   // ...
 }
 ```
 
-**A good custom Hook makes the calling code more declarative by constraining what it does.** For example, `useChatRoom(options)` can only connect to the chat room, while `useImpressionLog(eventName, extraData)` can only send an impression log to the analytics. If your custom Hook API doesn't constrain the use cases and is very abstract, in the long run it's likely to introduce more problems than it solves.
+**Хороший пользовательский хук делает вызывающий код более декларативным, ограничивая то, что он делает.** Например, `useChatRoom(options)` может только подключаться к чат-комнате, а `useImpressionLog(eventName, extraData)` может только отправлять лог впечатлений в аналитику. Если API вашего пользовательского хука не ограничивает сценарии использования и является очень абстрактным, в долгосрочной перспективе он, вероятно, принесет больше проблем, чем решит.
 
 </DeepDive>
 
-### Custom Hooks help you migrate to better patterns {/*custom-hooks-help-you-migrate-to-better-patterns*/}
+### Пользовательские хуки помогают мигрировать на лучшие паттерны {/*custom-hooks-help-you-migrate-to-better-patterns*/}
 
-Effects are an ["escape hatch"](/learn/escape-hatches): you use them when you need to "step outside React" and when there is no better built-in solution for your use case. With time, the React team's goal is to reduce the number of the Effects in your app to the minimum by providing more specific solutions to more specific problems. Wrapping your Effects in custom Hooks makes it easier to upgrade your code when these solutions become available.
+Эффекты — это «[лазейка](/learn/escape-hatches)»: вы используете их, когда вам нужно «выйти за пределы React» и когда нет лучшего встроенного решения для вашего сценария использования. Со временем цель команды React — свести к минимуму количество эффектов в вашем приложении, предоставляя более конкретные решения для более конкретных проблем. Обертывание ваших эффектов в пользовательские хуки упрощает обновление вашего кода, когда эти решения становятся доступными.
 
-Let's return to this example:
+Вернемся к этому примеру:
 
 <Sandpack>
 
@@ -1331,9 +1333,9 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-In the above example, `useOnlineStatus` is implemented with a pair of [`useState`](/reference/react/useState) and [`useEffect`.](/reference/react/useEffect) However, this isn't the best possible solution. There is a number of edge cases it doesn't consider. For example, it assumes that when the component mounts, `isOnline` is already `true`, but this may be wrong if the network already went offline. You can use the browser [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) API to check for that, but using it directly would not work on the server for generating the initial HTML. In short, this code could be improved.
+В приведенном выше примере `useOnlineStatus` реализован с помощью пары [`useState`](/reference/react/useState) и [`useEffect`.](/reference/react/useEffect) Однако это не лучшее возможное решение. Существует ряд крайних случаев, которые он не учитывает. Например, он предполагает, что при монтировании компонента `isOnline` уже равно `true`, но это может быть неверно, если сеть уже отключилась. Вы можете использовать браузерный API [`navigator.onLine`](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/onLine) для проверки этого, но его прямое использование не сработает на сервере для генерации начального HTML. Короче говоря, этот код можно улучшить.
 
-React includes a dedicated API called [`useSyncExternalStore`](/reference/react/useSyncExternalStore) which takes care of all of these problems for you. Here is your `useOnlineStatus` Hook, rewritten to take advantage of this new API:
+React включает специальный API под названием [`useSyncExternalStore`](/reference/react/useSyncExternalStore), который решает все эти проблемы за вас. Вот ваш хук `useOnlineStatus`, переписанный с использованием этого нового API:
 
 <Sandpack>
 
@@ -1384,8 +1386,8 @@ function subscribe(callback) {
 export function useOnlineStatus() {
   return useSyncExternalStore(
     subscribe,
-    () => navigator.onLine, // How to get the value on the client
-    () => true // How to get the value on the server
+    () => navigator.onLine, // Как получить значение на клиенте
+    () => true // Как получить значение на сервере
   );
 }
 
@@ -1393,7 +1395,7 @@ export function useOnlineStatus() {
 
 </Sandpack>
 
-Notice how **you didn't need to change any of the components** to make this migration:
+Обратите внимание, что вам **не пришлось менять ни один из компонентов**, чтобы выполнить эту миграцию:
 
 ```js {2,7}
 function StatusBar() {
@@ -1407,22 +1409,22 @@ function SaveButton() {
 }
 ```
 
-This is another reason for why wrapping Effects in custom Hooks is often beneficial:
+Это еще одна причина, по которой обертывание эффектов в пользовательские хуки часто бывает полезным:
 
-1. You make the data flow to and from your Effects very explicit.
-2. You let your components focus on the intent rather than on the exact implementation of your Effects.
-3. When React adds new features, you can remove those Effects without changing any of your components.
+1. Вы делаете поток данных к вашим эффектам и от них очень явным.
+2. Вы позволяете вашим компонентам сосредоточиться на намерении, а не на точной реализации ваших эффектов.
+3. Когда React добавляет новые функции, вы можете удалить эти эффекты, не изменяя ни один из ваших компонентов.
 
-Similar to a [design system,](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) you might find it helpful to start extracting common idioms from your app's components into custom Hooks. This will keep your components' code focused on the intent, and let you avoid writing raw Effects very often. Many excellent custom Hooks are maintained by the React community.
+Подобно [дизайн-системе,](https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969) вы можете обнаружить, что полезно начать извлекать общие идиомы из компонентов вашего приложения в пользовательские хуки. Это позволит вашим компонентам сосредоточиться на намерении и избежать частого написания необработанных эффектов. Многие отличные пользовательские хуки поддерживаются сообществом React.
 
 <DeepDive>
 
-#### Will React provide any built-in solution for data fetching? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
+#### Предоставит ли React какое-либо встроенное решение для получения данных? {/*will-react-provide-any-built-in-solution-for-data-fetching*/}
 
-We're still working out the details, but we expect that in the future, you'll write data fetching like this:
+Мы все еще прорабатываем детали, но ожидаем, что в будущем вы будете писать получение данных так:
 
 ```js {1,4,6}
-import { use } from 'react'; // Not available yet!
+import { use } from 'react'; // Пока недоступно!
 
 function ShippingForm({ country }) {
   const cities = use(fetch(`/api/cities?country=${country}`));
@@ -1431,13 +1433,13 @@ function ShippingForm({ country }) {
   // ...
 ```
 
-If you use custom Hooks like `useData` above in your app, it will require fewer changes to migrate to the eventually recommended approach than if you write raw Effects in every component manually. However, the old approach will still work fine, so if you feel happy writing raw Effects, you can continue to do that.
+Если вы используете в своем приложении пользовательские хуки, такие как `useData` выше, для миграции на в конечном итоге рекомендуемый подход потребуется меньше изменений, чем если бы вы писали необработанные эффекты в каждом компоненте вручную. Однако старый подход все равно будет работать нормально, поэтому, если вы довольны написанием необработанных эффектов, вы можете продолжать это делать.
 
 </DeepDive>
 
-### There is more than one way to do it {/*there-is-more-than-one-way-to-do-it*/}
+### Существует несколько способов сделать это {/*there-is-more-than-one-way-to-do-it*/}
 
-Let's say you want to implement a fade-in animation *from scratch* using the browser [`requestAnimationFrame`](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) API. You might start with an Effect that sets up an animation loop. During each frame of the animation, you could change the opacity of the DOM node you [hold in a ref](/learn/manipulating-the-dom-with-refs) until it reaches `1`. Your code might start like this:
+Допустим, вы хотите реализовать анимацию плавного появления *с нуля*, используя браузерный API [`requestAnimationFrame`](https://developer.mozilla.org/ru/docs/Web/API/window/requestAnimationFrame). Вы можете начать с эффекта, который настраивает цикл анимации. Во время каждого кадра анимации вы можете изменять прозрачность DOM-узла, который [хранится в рефе](/learn/manipulating-the-dom-with-refs), пока она не достигнет `1`. Ваш код может выглядеть так:
 
 <Sandpack>
 
@@ -1459,7 +1461,7 @@ function Welcome() {
       const progress = Math.min(timePassed / duration, 1);
       onProgress(progress);
       if (progress < 1) {
-        // We still have more frames to paint
+        // Нам нужно отрисовать еще кадры
         frameId = requestAnimationFrame(onFrame);
       }
     }
@@ -1496,7 +1498,7 @@ export default function App() {
   return (
     <>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Remove' : 'Show'}
+        {show ? 'Удалить' : 'Показать'}
       </button>
       <hr />
       {show && <Welcome />}
@@ -1520,7 +1522,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-To make the component more readable, you might extract the logic into a `useFadeIn` custom Hook:
+Чтобы сделать компонент более читаемым, вы можете вынести логику в пользовательский хук `useFadeIn`:
 
 <Sandpack>
 
@@ -1545,7 +1547,7 @@ export default function App() {
   return (
     <>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Remove' : 'Show'}
+        {show ? 'Удалить' : 'Показать'}
       </button>
       <hr />
       {show && <Welcome />}
@@ -1569,7 +1571,7 @@ export function useFadeIn(ref, duration) {
       const progress = Math.min(timePassed / duration, 1);
       onProgress(progress);
       if (progress < 1) {
-        // We still have more frames to paint
+        // Нам нужно отрисовать еще кадры
         frameId = requestAnimationFrame(onFrame);
       }
     }
@@ -1611,7 +1613,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-You could keep the `useFadeIn` code as is, but you could also refactor it more. For example, you could extract the logic for setting up the animation loop out of `useFadeIn` into a custom `useAnimationLoop` Hook:
+Вы можете оставить код `useFadeIn` как есть, но вы также можете провести дальнейшую рефакторизацию. Например, вы можете вынести логику настройки цикла анимации из `useFadeIn` в отдельный пользовательский хук `useAnimationLoop`:
 
 <Sandpack>
 
@@ -1636,7 +1638,7 @@ export default function App() {
   return (
     <>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Remove' : 'Show'}
+        {show ? 'Удалить' : 'Показать'}
       </button>
       <hr />
       {show && <Welcome />}
@@ -1715,7 +1717,7 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-However, you didn't *have to* do that. As with regular functions, ultimately you decide where to draw the boundaries between different parts of your code. You could also take a very different approach. Instead of keeping the logic in the Effect, you could move most of the imperative logic inside a JavaScript [class:](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+Однако, вам *не обязательно* было это делать. Как и в случае с обычными функциями, в конечном итоге вы сами решаете, где проводить границы между различными частями вашего кода. Вы также могли бы выбрать совершенно другой подход. Вместо того чтобы хранить логику в эффекте, вы могли бы переместить большую часть императивной логики внутрь JavaScript [класса:](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Classes)
 
 <Sandpack>
 
@@ -1740,7 +1742,7 @@ export default function App() {
   return (
     <>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Remove' : 'Show'}
+        {show ? 'Удалить' : 'Показать'}
       </button>
       <hr />
       {show && <Welcome />}
@@ -1782,7 +1784,7 @@ export class FadeInAnimation {
     if (progress === 1) {
       this.stop();
     } else {
-      // We still have more frames to paint
+      // Нам нужно отрисовать еще кадры
       this.frameId = requestAnimationFrame(() => this.onFrame());
     }
   }
@@ -1813,9 +1815,9 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Effects let you connect React to external systems. The more coordination between Effects is needed (for example, to chain multiple animations), the more it makes sense to extract that logic out of Effects and Hooks *completely* like in the sandbox above. Then, the code you extracted *becomes* the "external system". This lets your Effects stay simple because they only need to send messages to the system you've moved outside React.
+Эффекты позволяют вам связывать React с внешними системами. Чем больше координации между эффектами требуется (например, для цепочки нескольких анимаций), тем разумнее полностью вынести эту логику из эффектов и хуков, как в примере выше. Тогда код, который вы вынесли, *становится* «внешней системой». Это позволяет вашим эффектам оставаться простыми, поскольку им нужно только отправлять сообщения системе, которую вы переместили за пределы React.
 
-The examples above assume that the fade-in logic needs to be written in JavaScript. However, this particular fade-in animation is both simpler and much more efficient to implement with a plain [CSS Animation:](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations)
+Приведенные примеры предполагают, что логика плавного появления должна быть написана на JavaScript. Однако, эта конкретная анимация плавного появления является как более простой, так и гораздо более эффективной для реализации с помощью обычной [CSS-анимации:](https://developer.mozilla.org/ru/docs/Web/CSS/CSS_Animations/Using_CSS_animations)
 
 <Sandpack>
 
@@ -1836,7 +1838,7 @@ export default function App() {
   return (
     <>
       <button onClick={() => setShow(!show)}>
-        {show ? 'Remove' : 'Show'}
+        {show ? 'Удалить' : 'Показать'}
       </button>
       <hr />
       {show && <Welcome />}
@@ -1870,27 +1872,27 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Sometimes, you don't even need a Hook!
+Иногда вам даже не нужен хук!
 
 <Recap>
 
-- Custom Hooks let you share logic between components.
-- Custom Hooks must be named starting with `use` followed by a capital letter.
-- Custom Hooks only share stateful logic, not state itself.
-- You can pass reactive values from one Hook to another, and they stay up-to-date.
-- All Hooks re-run every time your component re-renders.
-- The code of your custom Hooks should be pure, like your component's code.
-- Wrap event handlers received by custom Hooks into Effect Events.
-- Don't create custom Hooks like `useMount`. Keep their purpose specific.
-- It's up to you how and where to choose the boundaries of your code.
+- Пользовательские хуки позволяют вам совместно использовать логику между компонентами.
+- Пользовательские хуки должны называться, начиная с `use`, за которым следует заглавная буква.
+- Пользовательские хуки разделяют только логику состояния, но не само состояние.
+- Вы можете передавать реактивные значения от одного хука к другому, и они будут оставаться актуальными.
+- Все хуки перезапускаются при каждом перерендере вашего компонента.
+- Код ваших пользовательских хуков должен быть чистым, как и код вашего компонента.
+- Оборачивайте обработчики событий, полученные пользовательскими хуками, в Хуки событий.
+- Не создавайте пользовательские хуки вроде `useMount`. Сохраняйте их назначение конкретным.
+- Вы сами решаете, как и где выбирать границы вашего кода.
 
 </Recap>
 
 <Challenges>
 
-#### Extract a `useCounter` Hook {/*extract-a-usecounter-hook*/}
+#### Извлеките хук `useCounter` {/*extract-a-usecounter-hook*/}
 
-This component uses a state variable and an Effect to display a number that increments every second. Extract this logic into a custom Hook called `useCounter`. Your goal is to make the `Counter` component implementation look exactly like this:
+Этот компонент использует переменную состояния и эффект для отображения числа, которое увеличивается каждую секунду. Извлеките эту логику в пользовательский хук под названием `useCounter`. Ваша цель — добиться того, чтобы реализация компонента `Counter` выглядела точно так:
 
 ```js
 export default function Counter() {
@@ -1899,7 +1901,7 @@ export default function Counter() {
 }
 ```
 
-You'll need to write your custom Hook in `useCounter.js` and import it into the `App.js` file.
+Вам нужно будет написать свой пользовательский хук в `useCounter.js` и импортировать его в файл `App.js`.
 
 <Sandpack>
 
@@ -1919,14 +1921,14 @@ export default function Counter() {
 ```
 
 ```js src/useCounter.js
-// Write your custom Hook in this file!
+// Напишите свой пользовательский хук здесь!
 ```
 
 </Sandpack>
 
 <Solution>
 
-Your code should look like this:
+Ваш код должен выглядеть так:
 
 <Sandpack>
 
@@ -1956,13 +1958,13 @@ export function useCounter() {
 
 </Sandpack>
 
-Notice that `App.js` doesn't need to import `useState` or `useEffect` anymore.
+Обратите внимание, что `App.js` больше не нужно импортировать `useState` или `useEffect`.
 
 </Solution>
 
-#### Make the counter delay configurable {/*make-the-counter-delay-configurable*/}
+#### Сделайте задержку счетчика настраиваемой {/*make-the-counter-delay-configurable*/}
 
-In this example, there is a `delay` state variable controlled by a slider, but its value is not used. Pass the `delay` value to your custom `useCounter` Hook, and change the `useCounter` Hook to use the passed `delay` instead of hardcoding `1000` ms.
+В этом примере есть переменная состояния `delay`, управляемая ползунком, но ее значение не используется. Передайте значение `delay` вашему пользовательскому хуку `useCounter` и измените хук `useCounter` так, чтобы он использовал переданный `delay` вместо жестко закодированного значения `1000` мс.
 
 <Sandpack>
 
@@ -1976,7 +1978,7 @@ export default function Counter() {
   return (
     <>
       <label>
-        Tick duration: {delay} ms
+        Длительность тика: {delay} мс
         <br />
         <input
           type="range"
@@ -1987,7 +1989,7 @@ export default function Counter() {
         />
       </label>
       <hr />
-      <h1>Ticks: {count}</h1>
+      <h1>Тиков: {count}</h1>
     </>
   );
 }
@@ -2012,7 +2014,7 @@ export function useCounter() {
 
 <Solution>
 
-Pass the `delay` to your Hook with `useCounter(delay)`. Then, inside the Hook, use `delay` instead of the hardcoded `1000` value. You'll need to add `delay` to your Effect's dependencies. This ensures that a change in `delay` will reset the interval.
+Передайте `delay` в хук с помощью `useCounter(delay)`. Затем, внутри хука, используйте `delay` вместо жестко закодированного значения `1000`. Вам нужно будет добавить `delay` в зависимости вашего эффекта. Это гарантирует, что изменение `delay` сбросит интервал.
 
 <Sandpack>
 
@@ -2026,7 +2028,7 @@ export default function Counter() {
   return (
     <>
       <label>
-        Tick duration: {delay} ms
+        Длительность тика: {delay} мс
         <br />
         <input
           type="range"
@@ -2037,7 +2039,7 @@ export default function Counter() {
         />
       </label>
       <hr />
-      <h1>Ticks: {count}</h1>
+      <h1>Тиков: {count}</h1>
     </>
   );
 }
@@ -2062,9 +2064,9 @@ export function useCounter(delay) {
 
 </Solution>
 
-#### Extract `useInterval` out of `useCounter` {/*extract-useinterval-out-of-usecounter*/}
+#### Извлеките `useInterval` из `useCounter` {/*extract-useinterval-out-of-usecounter*/}
 
-Currently, your `useCounter` Hook does two things. It sets up an interval, and it also increments a state variable on every interval tick. Split out the logic that sets up the interval into a separate Hook called `useInterval`. It should take two arguments: the `onTick` callback, and the `delay`. After this change, your `useCounter` implementation should look like this:
+В настоящее время ваш хук `useCounter` делает две вещи. Он настраивает интервал и также увеличивает переменную состояния при каждом тике интервала. Разделите логику настройки интервала на отдельный хук под названием `useInterval`. Он должен принимать два аргумента: колбэк `onTick` и `delay`. После этого изменения реализация вашего `useCounter` должна выглядеть так:
 
 ```js
 export function useCounter(delay) {
@@ -2076,7 +2078,7 @@ export function useCounter(delay) {
 }
 ```
 
-Write `useInterval` in the `useInterval.js` file and import it into the `useCounter.js` file.
+Напишите `useInterval` в файле `useInterval.js` и импортируйте его в файл `useCounter.js`.
 
 <Sandpack>
 
@@ -2105,14 +2107,14 @@ export function useCounter(delay) {
 ```
 
 ```js src/useInterval.js
-// Write your Hook here!
+// Напишите свой хук здесь!
 ```
 
 </Sandpack>
 
 <Solution>
 
-The logic inside `useInterval` should set up and clear the interval. It doesn't need to do anything else.
+Логика внутри `useInterval` должна настраивать и очищать интервал. Ей не нужно делать ничего другого.
 
 <Sandpack>
 
@@ -2151,17 +2153,17 @@ export function useInterval(onTick, delay) {
 
 </Sandpack>
 
-Note that there is a bit of a problem with this solution, which you'll solve in the next challenge.
+Обратите внимание, что в этом решении есть небольшая проблема, которую вы решите в следующем задании.
 
 </Solution>
 
-#### Fix a resetting interval {/*fix-a-resetting-interval*/}
+#### Исправьте сбрасывающийся интервал {/*fix-a-resetting-interval*/}
 
-In this example, there are *two* separate intervals.
+В этом примере есть *два* отдельных интервала.
 
-The `App` component calls `useCounter`, which calls `useInterval` to update the counter every second. But the `App` component *also* calls `useInterval` to randomly update the page background color every two seconds.
+Компонент `App` вызывает `useCounter`, который вызывает `useInterval` для обновления счетчика каждую секунду. Но компонент `App` *также* вызывает `useInterval` для случайного обновления цвета фона страницы каждые две секунды.
 
-For some reason, the callback that updates the page background never runs. Add some logs inside `useInterval`:
+По какой-то причине колбэк, обновляющий цвет фона страницы, никогда не выполняется. Добавьте несколько логов внутрь `useInterval`:
 
 ```js {2,5}
   useEffect(() => {
@@ -2174,13 +2176,13 @@ For some reason, the callback that updates the page background never runs. Add s
   }, [onTick, delay]);
 ```
 
-Do the logs match what you expect to happen? If some of your Effects seem to re-synchronize unnecessarily, can you guess which dependency is causing that to happen? Is there some way to [remove that dependency](/learn/removing-effect-dependencies) from your Effect?
+Соответствуют ли логи тому, что вы ожидаете увидеть? Если некоторые из ваших эффектов, кажется, повторно синхронизируются без необходимости, можете ли вы предположить, какая зависимость вызывает это? Есть ли какой-нибудь способ [удалить эту зависимость](/learn/removing-effect-dependencies) из вашего эффекта?
 
-After you fix the issue, you should expect the page background to update every two seconds.
+После исправления проблемы вы должны ожидать, что цвет фона страницы будет обновляться каждые две секунды.
 
 <Hint>
 
-It looks like your `useInterval` Hook accepts an event listener as an argument. Can you think of some way to wrap that event listener so that it doesn't need to be a dependency of your Effect?
+Похоже, ваш хук `useInterval` принимает в качестве аргумента обработчик событий. Можете ли вы придумать способ обернуть этот обработчик событий так, чтобы он не требовал зависимости от вашего эффекта?
 
 </Hint>
 
@@ -2249,11 +2251,11 @@ export function useInterval(onTick, delay) {
 
 <Solution>
 
-Inside `useInterval`, wrap the tick callback into an Effect Event, as you did [earlier on this page.](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks)
+Внутри `useInterval` оберните колбэк тика в Хук события, как вы делали [ранее на этой странице.](/learn/reusing-logic-with-custom-hooks#passing-event-handlers-to-custom-hooks)
 
-This will allow you to omit `onTick` from dependencies of your Effect. The Effect won't re-synchronize on every re-render of the component, so the page background color change interval won't get reset every second before it has a chance to fire.
+Это позволит вам опустить `onTick` из зависимостей вашего эффекта. Эффект не будет повторно синхронизироваться при каждом перерендере компонента, поэтому интервал изменения цвета фона страницы не будет сбрасываться каждую секунду до того, как он успеет сработать.
 
-With this change, both intervals work as expected and don't interfere with each other:
+С этим изменением оба интервала работают как положено и не мешают друг другу:
 
 <Sandpack>
 
@@ -2320,21 +2322,21 @@ export function useInterval(callback, delay) {
 
 </Solution>
 
-#### Implement a staggering movement {/*implement-a-staggering-movement*/}
+#### Реализуйте эффект «догоняющей» анимации {/*implement-a-staggering-movement*/}
 
-In this example, the `usePointerPosition()` Hook tracks the current pointer position. Try moving your cursor or your finger over the preview area and see the red dot follow your movement. Its position is saved in the `pos1` variable.
+В этом примере хук `usePointerPosition()` отслеживает текущее положение указателя. Попробуйте переместить курсор или палец по области предварительного просмотра, и вы увидите, как красная точка следует за вашим движением. Её положение сохраняется в переменной `pos1`.
 
-In fact, there are five (!) different red dots being rendered. You don't see them because currently they all appear at the same position. This is what you need to fix. What you want to implement instead is a "staggered" movement: each dot should "follow" the previous dot's path. For example, if you quickly move your cursor, the first dot should follow it immediately, the second dot should follow the first dot with a small delay, the third dot should follow the second dot, and so on.
+На самом деле отрисовывается пять (!) разных красных точек. Вы их не видите, потому что в данный момент все они находятся в одном и том же положении. Это то, что вам нужно исправить. Вместо этого вы хотите реализовать «догоняющую» анимацию: каждая точка должна «следовать» за траекторией предыдущей точки. Например, если вы быстро переместите курсор, первая точка должна немедленно последовать за ним, вторая точка должна следовать за первой с небольшой задержкой, третья точка должна следовать за второй и так далее.
 
-You need to implement the `useDelayedValue` custom Hook. Its current implementation returns the `value` provided to it. Instead, you want to return the value back from `delay` milliseconds ago. You might need some state and an Effect to do this.
+Вам нужно реализовать пользовательский хук `useDelayedValue`. Его текущая реализация возвращает значение `value`, переданное ему. Вместо этого вы хотите возвращать значение, полученное `delay` миллисекунд назад. Вам может понадобиться некоторое состояние и эффект для этого.
 
-After you implement `useDelayedValue`, you should see the dots move following one another.
+После того как вы реализуете `useDelayedValue`, вы увидите, как точки движутся, следуя друг за другом.
 
 <Hint>
 
-You'll need to store the `delayedValue` as a state variable inside your custom Hook. When the `value` changes, you'll want to run an Effect. This Effect should update `delayedValue` after the `delay`. You might find it helpful to call `setTimeout`.
+Вам нужно будет сохранить `delayedValue` как переменную состояния внутри вашего пользовательского хука. Когда `value` изменится, вы захотите запустить эффект. Этот эффект должен обновить `delayedValue` через `delay` миллисекунд. Вам может быть полезно вызвать `setTimeout`.
 
-Does this Effect need cleanup? Why or why not?
+Нужна ли этому эффекту очистка? Почему да или почему нет?
 
 </Hint>
 
@@ -2407,7 +2409,7 @@ body { min-height: 300px; }
 
 <Solution>
 
-Here is a working version. You keep the `delayedValue` as a state variable. When `value` updates, your Effect schedules a timeout to update the `delayedValue`. This is why the `delayedValue` always "lags behind" the actual `value`.
+Вот рабочая версия. Вы сохраняете `delayedValue` как переменную состояния. Когда `value` обновляется, ваш эффект планирует тайм-аут для обновления `delayedValue`. Именно поэтому `delayedValue` всегда «отстает» от фактического `value`.
 
 <Sandpack>
 
@@ -2484,7 +2486,7 @@ body { min-height: 300px; }
 
 </Sandpack>
 
-Note that this Effect *does not* need cleanup. If you called `clearTimeout` in the cleanup function, then each time the `value` changes, it would reset the already scheduled timeout. To keep the movement continuous, you want all the timeouts to fire.
+Обратите внимание, что этому эффекту *не* нужна очистка. Если бы вы вызвали `clearTimeout` в функции очистки, то каждый раз, когда `value` изменяется, он сбрасывал бы уже запланированный тайм-аут. Чтобы движение было непрерывным, вы хотите, чтобы все тайм-ауты срабатывали.
 
 </Solution>
 
