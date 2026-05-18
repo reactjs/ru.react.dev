@@ -1,9 +1,10 @@
 ---
-title: "Компилятор React RC"
+title: "React Compiler RC"
 author: Lauren Tan and Mofei Zhang
 date: 2025/04/21
 description: Сегодня мы выпускаем первый Release Candidate (RC) компилятора.
 ---
+
 21 апреля 2025 г. от [Lauren Tan](https://x.com/potetotes) и [Mofei Zhang](https://x.com/zmofei).
 
 ---
