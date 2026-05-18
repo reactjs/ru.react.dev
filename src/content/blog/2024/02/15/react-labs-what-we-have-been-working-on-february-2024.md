@@ -2,10 +2,9 @@
 title: "React Labs: Над чем мы работали — Февраль 2024"
 author: Joseph Savona, Ricky Hanlon, Andrew Clark, Matt Carroll, and Dan Abramov
 date: 2024/02/15
-description: В публикациях React Labs мы пишем о проектах, находящихся в стадии
-  активных исследований и разработок. С момента нашего последнего обновления мы
-  добились значительного прогресса и хотели бы поделиться им.
+description: В публикациях React Labs мы пишем о проектах, находящихся в стадии активных исследований и разработок. С момента нашего последнего обновления мы добились значительного прогресса и хотели бы поделиться им.
 ---
+
 15 февраля 2024 г. [Joseph Savona](https://twitter.com/en_JS), [Ricky Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), [Matt Carroll](https://twitter.com/mattcarrollcode) и [Dan Abramov](https://bsky.app/profile/danabra.mov).
 
 ---
