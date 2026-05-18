@@ -2,10 +2,9 @@
 title: "React Server Components с нулевым размером бандла"
 author: Dan Abramov, Lauren Tan, Joseph Savona, and Sebastian Markbage
 date: 2020/12/21
-description: 2020 год был долгим. Поскольку он подходит к концу, мы хотели
-  поделиться специальным праздничным обновлением о наших исследованиях в области
-  React Server Components с нулевым размером бандла.
+description: 2020 год был долгим. Поскольку он подходит к концу, мы хотели поделиться специальным праздничным обновлением о наших исследованиях в области React Server Components с нулевым размером бандла.
 ---
+
 21 декабря 2020 г. от [Дэна Абрамова (Dan Abramov)](https://bsky.app/profile/danabra.mov), [Лорен Тан (Lauren Tan)](https://twitter.com/potetotes), [Джозефа Савоны (Joseph Savona)](https://twitter.com/en_JS) и [Себастьяна Маркбаге (Sebastian Markbåge)](https://twitter.com/sebmarkbage)
 
 ---
