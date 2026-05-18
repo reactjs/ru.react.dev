@@ -1,6 +1,7 @@
 ---
-title: "Встроенные API React"
+title: "Built-in React APIs"
 ---
+
 <Intro>
 
 В дополнение к [хукам](/reference/react) и [компонентам](/reference/react/components), пакет `react` экспортирует несколько других API, полезных для определения компонентов. Эта страница перечисляет все остальные современные API React.
