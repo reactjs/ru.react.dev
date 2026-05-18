@@ -1,10 +1,9 @@
 ---
 title: captureOwnerStack
 ---
-
 <Intro>
 
-`captureOwnerStack` reads the current Owner Stack in development and returns it as a string if available.
+`captureOwnerStack` считывает текущий стек владельцев (Owner Stack) в режиме разработки и возвращает его в виде строки, если он доступен.
 
 ```js
 const stack = captureOwnerStack();
@@ -16,11 +15,11 @@ const stack = captureOwnerStack();
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `captureOwnerStack()` {/*captureownerstack*/}
 
-Call `captureOwnerStack` to get the current Owner Stack.
+Вызовите `captureOwnerStack`, чтобы получить текущий стек владельцев.
 
 ```js {5,5}
 import * as React from 'react';
@@ -33,33 +32,33 @@ function Component() {
 }
 ```
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-`captureOwnerStack` does not take any parameters.
+`captureOwnerStack` не принимает никаких параметров.
 
-#### Returns {/*returns*/}
+#### Возвращает {/*returns*/}
 
-`captureOwnerStack` returns `string | null`.
+`captureOwnerStack` возвращает `string | null`.
 
-Owner Stacks are available in
-- Component render
-- Effects (e.g. `useEffect`)
-- React's event handlers (e.g. `<button onClick={...} />`)
-- React error handlers ([React Root options](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError`, and `onUncaughtError`)
+Стеки владельцев доступны в:
+- Рендере компонента
+- Эффектах (например, `useEffect`)
+- Обработчиках событий React (например, `<button onClick={...} />`)
+- Обработчиках ошибок React ([параметры React Root](/reference/react-dom/client/createRoot#parameters) `onCaughtError`, `onRecoverableError` и `onUncaughtError`)
 
-If no Owner Stack is available, `null` is returned (see [Troubleshooting: The Owner Stack is `null`](#the-owner-stack-is-null)).
+Если стек владельцев недоступен, возвращается `null` (см. [Устранение неполадок: Стек владельцев равен `null`](#the-owner-stack-is-null)).
 
-#### Caveats {/*caveats*/}
+#### Ограничения {/*caveats*/}
 
-- Owner Stacks are only available in development. `captureOwnerStack` will always return `null` outside of development.
+- Стеки владельцев доступны только в режиме разработки. `captureOwnerStack` всегда будет возвращать `null` вне режима разработки.
 
 <DeepDive>
 
-#### Owner Stack vs Component Stack {/*owner-stack-vs-component-stack*/}
+#### Стек владельцев против стека компонентов {/*owner-stack-vs-component-stack*/}
 
-The Owner Stack is different from the Component Stack available in React error handlers like [`errorInfo.componentStack` in `onUncaughtError`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors).
+Стек владельцев отличается от стека компонентов, доступного в обработчиках ошибок React, таких как [`errorInfo.componentStack` в `onUncaughtError`](/reference/react-dom/client/hydrateRoot#show-a-dialog-for-uncaught-errors).
 
-For example, consider the following code:
+Рассмотрим следующий код:
 
 <Sandpack>
 
@@ -105,11 +104,11 @@ import './styles.css';
 
 createRoot(document.createElement('div'), {
   onUncaughtError: (error, errorInfo) => {
-    // The stacks are logged instead of showing them in the UI directly to
-    // highlight that browsers will apply sourcemaps to the logged stacks.
-    // Note that sourcemapping is only applied in the real browser console not
-    // in the fake one displayed on this page.
-    // Press "fork" to be able to view the sourcemapped stack in a real console.
+    // Стеки выводятся в лог вместо прямого отображения в UI, чтобы
+    // подчеркнуть, что браузеры применяют sourcemaps к логгируемым стекам.
+    // Обратите внимание, что sourcemapping применяется только в реальной консоли браузера, а не
+    // в поддельной, отображаемой на этой странице.
+    // Нажмите "fork", чтобы иметь возможность просмотреть стек с применением sourcemap в реальной консоли.
     console.log(errorInfo.componentStack);
     console.log(captureOwnerStack());
   },
@@ -136,8 +135,8 @@ createRoot(document.createElement('div'), {
 
 </Sandpack>
 
-`SubComponent` would throw an error.
-The Component Stack of that error would be
+`SubComponent` вызовет ошибку.
+Стек компонентов этой ошибки будет выглядеть так:
 
 ```
 at SubComponent
@@ -148,23 +147,23 @@ at React.Suspense
 at App
 ```
 
-However, the Owner Stack would only read
+Однако стек владельцев будет содержать только:
 
 ```
 at Component
 ```
 
-Neither `App` nor the DOM components (e.g. `fieldset`) are considered Owners in this Stack since they didn't contribute to "creating" the node containing `SubComponent`. `App` and DOM components only forwarded the node. `App` just rendered the `children` node as opposed to `Component` which created a node containing `SubComponent` via `<SubComponent />`.
+Ни `App`, ни DOM-компоненты (например, `fieldset`) не считаются владельцами в этом стеке, поскольку они не способствовали "созданию" узла, содержащего `SubComponent`. `App` и DOM-компоненты только перенаправляли узел. `App` просто отрендерил узел `children`, в отличие от `Component`, который создал узел, содержащий `SubComponent`, через `<SubComponent />`.
 
-Neither `Navigation` nor `legend` are in the stack at all since it's only a sibling to a node containing `<SubComponent />`.
+Ни `Navigation`, ни `legend` вообще не присутствуют в стеке, поскольку они являются лишь соседями узла, содержащего `<SubComponent />`.
 
-`SubComponent` is omitted because it's already part of the callstack.
+`SubComponent` пропущен, потому что он уже является частью стека вызовов.
 
 </DeepDive>
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Enhance a custom error overlay {/*enhance-a-custom-error-overlay*/}
+### Улучшение пользовательского оверлея ошибок {/*enhance-a-custom-error-overlay*/}
 
 ```js [[1, 5, "console.error"], [4, 7, "captureOwnerStack"]]
 import { captureOwnerStack } from "react";
@@ -175,15 +174,15 @@ console.error = function patchedConsoleError(...args) {
   originalConsoleError.apply(console, args);
   const ownerStack = captureOwnerStack();
   onConsoleError({
-    // Keep in mind that in a real application, console.error can be
-    // called with multiple arguments which you should account for.
+    // Имейте в виду, что в реальном приложении console.error может быть
+    // вызван с несколькими аргументами, которые следует учитывать.
     consoleMessage: args[0],
     ownerStack,
   });
 };
 ```
 
-If you intercept <CodeStep step={1}>`console.error`</CodeStep> calls to highlight them in an error overlay, you can call <CodeStep step={2}>`captureOwnerStack`</CodeStep> to include the Owner Stack.
+Если вы перехватываете вызовы <CodeStep step={1}>`console.error`</CodeStep>, чтобы выделить их в оверлее ошибок, вы можете вызвать <CodeStep step={2}>`captureOwnerStack`</CodeStep>, чтобы включить стек владельцев.
 
 <Sandpack>
 
@@ -269,25 +268,25 @@ pre.nowrap {
 </head>
 <body>
 <!--
-  Error dialog in raw HTML
-  since an error in the React app may crash.
+  Диалог ошибок в сыром HTML,
+  поскольку ошибка в приложении React может привести к сбою.
 -->
 <div id="error-dialog" class="hidden">
-  <h1 id="error-title" class="text-red">Error</h1>
+  <h1 id="error-title" class="text-red">Ошибка</h1>
   <p>
     <pre id="error-body"></pre>
   </p>
-  <h2 class="-mb-20">Owner Stack:</h4>
+  <h2 class="-mb-20">Стек владельцев:</h4>
   <pre id="error-owner-stack" class="nowrap"></pre>
   <button
     id="error-close"
     class="mb-10"
     onclick="document.getElementById('error-dialog').classList.add('hidden')"
   >
-    Close
+    Закрыть
   </button>
 </div>
-<!-- This is the DOM node -->
+<!-- Это DOM-узел -->
 <div id="root"></div>
 </body>
 </html>
@@ -301,13 +300,13 @@ export function onConsoleError({ consoleMessage, ownerStack }) {
   const errorBody = document.getElementById("error-body");
   const errorOwnerStack = document.getElementById("error-owner-stack");
 
-  // Display console.error() message
+  // Отображение сообщения console.error()
   errorBody.innerText = consoleMessage;
 
-  // Display owner stack
+  // Отображение стека владельцев
   errorOwnerStack.innerText = ownerStack;
 
-  // Show the dialog
+  // Показать диалог
   errorDialog.classList.remove("hidden");
 }
 ```
@@ -324,8 +323,8 @@ console.error = function patchedConsoleError(...args) {
   originalConsoleError.apply(console, args);
   const ownerStack = captureOwnerStack();
   onConsoleError({
-    // Keep in mind that in a real application, console.error can be
-    // called with multiple arguments which you should account for.
+    // Имейте в виду, что в реальном приложении console.error может быть
+    // вызван с несколькими аргументами, которые следует учитывать.
     consoleMessage: args[0],
     ownerStack,
   });
@@ -347,13 +346,13 @@ export default function App() {
 
 </Sandpack>
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
-### The Owner Stack is `null` {/*the-owner-stack-is-null*/}
+### Стек владельцев равен `null` {/*the-owner-stack-is-null*/}
 
-The call of `captureOwnerStack` happened outside of a React controlled function e.g. in a `setTimeout` callback, after a `fetch` call or in a custom DOM event handler. During render, Effects, React event handlers, and React error handlers (e.g. `hydrateRoot#options.onCaughtError`) Owner Stacks should be available.
+Вызов `captureOwnerStack` произошел вне функции, управляемой React, например, в колбэке `setTimeout`, после вызова `fetch` или в пользовательском обработчике событий DOM. Во время рендеринга, эффектов, обработчиков событий React и обработчиков ошибок React (например, `hydrateRoot#options.onCaughtError`) стеки владельцев должны быть доступны.
 
-In the example below, clicking the button will log an empty Owner Stack because `captureOwnerStack` was called during a custom DOM event handler. The Owner Stack must be captured earlier e.g. by moving the call of `captureOwnerStack` into the Effect body.
+В приведенном ниже примере нажатие на кнопку приведет к выводу пустого стека владельцев, поскольку `captureOwnerStack` был вызван во время пользовательского обработчика событий DOM. Стек владельцев должен быть захвачен раньше, например, путем перемещения вызова `captureOwnerStack` в тело эффекта.
 <Sandpack>
 
 ```js
@@ -361,10 +360,10 @@ import {captureOwnerStack, useEffect} from 'react';
 
 export default function App() {
   useEffect(() => {
-    // Should call `captureOwnerStack` here.
+    // Следует вызвать `captureOwnerStack` здесь.
     function handleEvent() {
-      // Calling it in a custom DOM event handler is too late.
-      // The Owner Stack will be `null` at this point.
+      // Вызов в пользовательском обработчике событий DOM слишком поздний.
+      // Стек владельцев к этому моменту будет равен `null`.
       console.log('Owner Stack: ', captureOwnerStack());
     }
 
@@ -375,20 +374,20 @@ export default function App() {
     }
   })
 
-  return <button>Click me to see that Owner Stacks are not available in custom DOM event handlers</button>;
+  return <button>Нажмите меня, чтобы увидеть, что стеки владельцев недоступны в пользовательских обработчиках событий DOM</button>;
 }
 ```
 
 </Sandpack>
 
-### `captureOwnerStack` is not available {/*captureownerstack-is-not-available*/}
+### `captureOwnerStack` недоступен {/*captureownerstack-is-not-available*/}
 
-`captureOwnerStack` is only exported in development builds. It will be `undefined` in production builds. If `captureOwnerStack` is used in files that are bundled for production and development, you should conditionally access it from a namespace import.
+`captureOwnerStack` экспортируется только в сборках для разработки. В продакшен-сборках он будет равен `undefined`. Если `captureOwnerStack` используется в файлах, которые собираются как для продакшена, так и для разработки, следует получать к нему доступ условно из импорта пространства имен.
 
 ```js
-// Don't use named imports of `captureOwnerStack` in files that are bundled for development and production.
+// Не используйте именованные импорты `captureOwnerStack` в файлах, которые собираются для разработки и продакшена.
 import {captureOwnerStack} from 'react';
-// Use a namespace import instead and access `captureOwnerStack` conditionally.
+// Вместо этого используйте импорт пространства имен и обращайтесь к `captureOwnerStack` условно.
 import * as React from 'react';
 
 if (process.env.NODE_ENV !== 'production') {
