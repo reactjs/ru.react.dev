@@ -4,23 +4,23 @@ title: 'Removing Effect Dependencies'
 
 <Intro>
 
-When you write an Effect, the linter will verify that you've included every reactive value (like props and state) that the Effect reads in the list of your Effect's dependencies. This ensures that your Effect remains synchronized with the latest props and state of your component. Unnecessary dependencies may cause your Effect to run too often, or even create an infinite loop. Follow this guide to review and remove unnecessary dependencies from your Effects.
+Когда вы пишете Effect, линтер проверяет, включили ли вы все реактивные значения (например, пропсы и состояние), которые Effect читает, в список зависимостей вашего Effect. Это гарантирует, что ваш Effect остается синхронизированным с последними пропсами и состоянием вашего компонента. Ненужные зависимости могут привести к тому, что ваш Effect будет выполняться слишком часто или даже создаст бесконечный цикл. Следуйте этому руководству, чтобы просмотреть и удалить ненужные зависимости из ваших Effects.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to fix infinite Effect dependency loops
-- What to do when you want to remove a dependency
-- How to read a value from your Effect without "reacting" to it
-- How and why to avoid object and function dependencies
-- Why suppressing the dependency linter is dangerous, and what to do instead
+- Как исправить бесконечные циклы зависимостей Effect
+- Что делать, когда вы хотите удалить зависимость
+- Как читать значение из вашего Effect, не "реагируя" на него
+- Как и почему следует избегать объектных и функциональных зависимостей
+- Почему подавление линтера зависимостей опасно и что делать вместо этого
 
 </YouWillLearn>
 
-## Dependencies should match the code {/*dependencies-should-match-the-code*/}
+## Зависимости должны соответствовать коду {/*dependencies-should-match-the-code*/}
 
-When you write an Effect, you first specify how to [start and stop](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect) whatever you want your Effect to be doing:
+Когда вы пишете Effect, вы сначала определяете, как [начать и остановить](/learn/lifecycle-of-reactive-effects#the-lifecycle-of-an-effect) выполнение того, что вы хотите, чтобы ваш Effect делал:
 
 ```js {5-7}
 const serverUrl = 'https://localhost:1234';
@@ -34,7 +34,7 @@ function ChatRoom({ roomId }) {
 }
 ```
 
-Then, if you leave the Effect dependencies empty (`[]`), the linter will suggest the correct dependencies:
+Затем, если вы оставите зависимости Effect пустыми (`[]`), линтер предложит правильные зависимости:
 
 <Sandpack>
 
@@ -49,7 +49,7 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // <-- Fix the mistake here!
+  }, []); // <-- Исправьте ошибку здесь!
   return <h1>Welcome to the {roomId} room!</h1>;
 }
 
@@ -96,7 +96,7 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-Fill them in according to what the linter says:
+Заполните их в соответствии с тем, что говорит линтер:
 
 ```js {6}
 function ChatRoom({ roomId }) {
@@ -104,12 +104,12 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ Все зависимости объявлены
   // ...
 }
 ```
 
-[Effects "react" to reactive values.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) Since `roomId` is a reactive value (it can change due to a re-render), the linter verifies that you've specified it as a dependency. If `roomId` receives a different value, React will re-synchronize your Effect. This ensures that the chat stays connected to the selected room and "reacts" to the dropdown:
+[Effects "реагируют" на реактивные значения.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) Поскольку `roomId` является реактивным значением (оно может изменяться из-за повторного рендеринга), линтер проверяет, указали ли вы его в качестве зависимости. Если `roomId` получит другое значение, React повторно синхронизирует ваш Effect. Это гарантирует, что чат останется подключенным к выбранной комнате и будет "реагировать" на выпадающий список:
 
 <Sandpack>
 
@@ -171,24 +171,24 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-### To remove a dependency, prove that it's not a dependency {/*to-remove-a-dependency-prove-that-its-not-a-dependency*/}
+### Чтобы удалить зависимость, докажите, что она не является зависимостью {/*to-remove-a-dependency-prove-that-its-not-a-dependency*/}
 
-Notice that you can't "choose" the dependencies of your Effect. Every <CodeStep step={2}>reactive value</CodeStep> used by your Effect's code must be declared in your dependency list. The dependency list is determined by the surrounding code:
+Обратите внимание, что вы не можете "выбирать" зависимости вашего Effect. Каждое <CodeStep step={2}>реактивное значение</CodeStep>, используемое кодом вашего Effect, должно быть объявлено в вашем списке зависимостей. Список зависимостей определяется окружающим кодом:
 
 ```js [[2, 3, "roomId"], [2, 5, "roomId"], [2, 8, "roomId"]]
 const serverUrl = 'https://localhost:1234';
 
-function ChatRoom({ roomId }) { // This is a reactive value
+function ChatRoom({ roomId }) { // Это реактивное значение
   useEffect(() => {
-    const connection = createConnection(serverUrl, roomId); // This Effect reads that reactive value
+    const connection = createConnection(serverUrl, roomId); // Этот Effect читает это реактивное значение
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ So you must specify that reactive value as a dependency of your Effect
+  }, [roomId]); // ✅ Поэтому вы должны указать это реактивное значение как зависимость вашего Effect
   // ...
 }
 ```
 
-[Reactive values](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) include props and all variables and functions declared directly inside of your component. Since `roomId` is a reactive value, you can't remove it from the dependency list. The linter wouldn't allow it:
+[Реактивные значения](/learn/lifecycle-of-reactive-effects#all-variables-declared-in-the-component-body-are-reactive) включают пропсы и все переменные и функции, объявленные непосредственно внутри вашего компонента. Поскольку `roomId` является реактивным значением, вы не можете удалить его из списка зависимостей. Линтер не позволит этого:
 
 ```js {8}
 const serverUrl = 'https://localhost:1234';
@@ -198,30 +198,30 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // 🔴 React Hook useEffect has a missing dependency: 'roomId'
+  }, []); // 🔴 React Hook useEffect имеет отсутствующую зависимость: 'roomId'
   // ...
 }
 ```
 
-And the linter would be right! Since `roomId` may change over time, this would introduce a bug in your code.
+И линтер будет прав! Поскольку `roomId` может меняться со временем, это приведет к ошибке в вашем коде.
 
-**To remove a dependency, "prove" to the linter that it *doesn't need* to be a dependency.** For example, you can move `roomId` out of your component to prove that it's not reactive and won't change on re-renders:
+**Чтобы удалить зависимость, "докажите" линтеру, что она *не нуждается* в том, чтобы быть зависимостью.** Например, вы можете вынести `roomId` из вашего компонента, чтобы доказать, что он не реактивный и не изменится при повторных рендерингах:
 
 ```js {2,9}
 const serverUrl = 'https://localhost:1234';
-const roomId = 'music'; // Not a reactive value anymore
+const roomId = 'music'; // Больше не реактивное значение
 
 function ChatRoom() {
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ Все зависимости объявлены
   // ...
 }
 ```
 
-Now that `roomId` is not a reactive value (and can't change on a re-render), it doesn't need to be a dependency:
+Теперь, поскольку `roomId` не является реактивным значением (и не может измениться при повторном рендеринге), оно не нуждается в том, чтобы быть зависимостью:
 
 <Sandpack>
 
@@ -263,43 +263,43 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-This is why you could now specify an [empty (`[]`) dependency list.](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) Your Effect *really doesn't* depend on any reactive value anymore, so it *really doesn't* need to re-run when any of the component's props or state change.
+Вот почему вы теперь можете указать [пустой (`[]`) список зависимостей.](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) Ваш Effect *действительно* не зависит ни от одного реактивного значения, поэтому он *действительно* не нуждается в повторном запуске при изменении любого из пропсов или состояния компонента.
 
-### To change the dependencies, change the code {/*to-change-the-dependencies-change-the-code*/}
+### Чтобы изменить зависимости, измените код {/*to-change-the-dependencies-change-the-code*/}
 
-You might have noticed a pattern in your workflow:
+Вы могли заметить закономерность в своем рабочем процессе:
 
-1. First, you **change the code** of your Effect or how your reactive values are declared.
-2. Then, you follow the linter and adjust the dependencies to **match the code you have changed.**
-3. If you're not happy with the list of dependencies, you **go back to the first step** (and change the code again).
+1. Сначала вы **изменяете код** вашего Effect или способ объявления ваших реактивных значений.
+2. Затем вы следуете за линтером и корректируете зависимости, чтобы они **соответствовали измененному вами коду.**
+3. Если вас не устраивает список зависимостей, вы **возвращаетесь к первому шагу** (и снова изменяете код).
 
-The last part is important. **If you want to change the dependencies, change the surrounding code first.** You can think of the dependency list as [a list of all the reactive values used by your Effect's code.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) You don't *choose* what to put on that list. The list *describes* your code. To change the dependency list, change the code.
+Последняя часть важна. **Если вы хотите изменить зависимости, сначала измените окружающий код.** Вы можете рассматривать список зависимостей как [список всех реактивных значений, используемых кодом вашего Effect.](/learn/lifecycle-of-reactive-effects#react-verifies-that-you-specified-every-reactive-value-as-a-dependency) Вы не *выбираете*, что поместить в этот список. Список *описывает* ваш код. Чтобы изменить список зависимостей, измените код.
 
-This might feel like solving an equation. You might start with a goal (for example, to remove a dependency), and you need to "find" the code matching that goal. Not everyone finds solving equations fun, and the same thing could be said about writing Effects! Luckily, there is a list of common recipes that you can try below.
+Это может показаться решением уравнения. Вы можете начать с цели (например, удалить зависимость), и вам нужно будет "найти" код, соответствующий этой цели. Не всем нравится решать уравнения, и то же самое можно сказать о написании Effects! К счастью, ниже приведен список распространенных рецептов, которые вы можете попробовать.
 
 <Pitfall>
 
-If you have an existing codebase, you might have some Effects that suppress the linter like this:
+Если у вас есть существующая кодовая база, у вас могут быть некоторые Effects, которые подавляют линтер следующим образом:
 
 ```js {3-4}
 useEffect(() => {
   // ...
-  // 🔴 Avoid suppressing the linter like this:
+  // 🔴 Избегайте подавления линтера таким образом:
   // eslint-ignore-next-line react-hooks/exhaustive-deps
 }, []);
 ```
 
-**When dependencies don't match the code, there is a very high risk of introducing bugs.** By suppressing the linter, you "lie" to React about the values your Effect depends on.
+**Когда зависимости не соответствуют коду, существует очень высокий риск внесения ошибок.** Подавляя линтер, вы "лжете" React о значениях, от которых зависит ваш Effect.
 
-Instead, use the techniques below.
+Вместо этого используйте приведенные ниже методы.
 
 </Pitfall>
 
 <DeepDive>
 
-#### Why is suppressing the dependency linter so dangerous? {/*why-is-suppressing-the-dependency-linter-so-dangerous*/}
+#### Почему подавление линтера зависимостей так опасно? {/*why-is-suppressing-the-dependency-linter-so-dangerous*/}
 
-Suppressing the linter leads to very unintuitive bugs that are hard to find and fix. Here's one example:
+Подавление линтера приводит к очень неинтуитивным ошибкам, которые трудно найти и исправить. Вот один пример:
 
 <Sandpack>
 
@@ -348,31 +348,31 @@ button { margin: 10px; }
 
 </Sandpack>
 
-Let's say that you wanted to run the Effect "only on mount". You've read that [empty (`[]`) dependencies](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) do that, so you've decided to ignore the linter, and forcefully specified `[]` as the dependencies.
+Допустим, вы хотели запустить Effect "только при монтировании". Вы прочитали, что [пустые зависимости (`[]`)](/learn/lifecycle-of-reactive-effects#what-an-effect-with-empty-dependencies-means) делают это, поэтому вы решили проигнорировать линтер и принудительно указали `[]` в качестве зависимостей.
 
-This counter was supposed to increment every second by the amount configurable with the two buttons. However, since you "lied" to React that this Effect doesn't depend on anything, React forever keeps using the `onTick` function from the initial render. [During that render,](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` was `0` and `increment` was `1`. This is why `onTick` from that render always calls `setCount(0 + 1)` every second, and you always see `1`. Bugs like this are harder to fix when they're spread across multiple components.
+Этот счетчик должен был увеличиваться каждую секунду на величину, настраиваемую двумя кнопками. Однако, поскольку вы "солгал" React, что этот Effect ни от чего не зависит, React навсегда сохраняет использование функции `onTick` из первоначального рендеринга. [Во время этого рендеринга,](/learn/state-as-a-snapshot#rendering-takes-a-snapshot-in-time) `count` был `0`, а `increment` был `1`. Вот почему `onTick` из этого рендеринга каждую секунду вызывает `setCount(0 + 1)`, и вы всегда видите `1`. Ошибки, подобные этой, труднее исправить, когда они распределены по нескольким компонентам.
 
-There's always a better solution than ignoring the linter! To fix this code, you need to add `onTick` to the dependency list. (To ensure the interval is only setup once, [make `onTick` an Effect Event.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events))
+Всегда есть лучшее решение, чем игнорировать линтер! Чтобы исправить этот код, вам нужно добавить `onTick` в список зависимостей. (Чтобы гарантировать, что интервал будет установлен только один раз, [сделайте `onTick` событием Effect.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events))
 
-**We recommend treating the dependency lint error as a compilation error. If you don't suppress it, you will never see bugs like this.** The rest of this page documents the alternatives for this and other cases.
+**Мы рекомендуем относиться к ошибке линтера зависимостей как к ошибке компиляции. Если вы не будете ее подавлять, вы никогда не увидите подобных ошибок.** Остальная часть этой страницы документирует альтернативы для этого и других случаев.
 
 </DeepDive>
 
-## Removing unnecessary dependencies {/*removing-unnecessary-dependencies*/}
+## Удаление ненужных зависимостей {/*removing-unnecessary-dependencies*/}
 
-Every time you adjust the Effect's dependencies to reflect the code, look at the dependency list. Does it make sense for the Effect to re-run when any of these dependencies change? Sometimes, the answer is "no":
+Каждый раз, когда вы корректируете зависимости Effect, чтобы они отражали код, взгляните на список зависимостей. Имеет ли смысл повторное выполнение Effect при изменении любой из этих зависимостей? Иногда ответ — «нет»:
 
-* You might want to re-execute *different parts* of your Effect under different conditions.
-* You might want to only read the *latest value* of some dependency instead of "reacting" to its changes.
-* A dependency may change too often *unintentionally* because it's an object or a function.
+* Вы можете захотеть повторно выполнить *различные части* вашего Effect при разных условиях.
+* Вы можете захотеть только прочитать *последнее значение* некоторой зависимости, вместо того чтобы «реагировать» на её изменения.
+* Зависимость может меняться слишком часто *непреднамеренно*, потому что это объект или функция.
 
-To find the right solution, you'll need to answer a few questions about your Effect. Let's walk through them.
+Чтобы найти правильное решение, вам нужно будет ответить на несколько вопросов о вашем Effect. Давайте пройдемся по ним.
 
-### Should this code move to an event handler? {/*should-this-code-move-to-an-event-handler*/}
+### Следует ли переместить этот код в обработчик события? {/*should-this-code-move-to-an-event-handler*/}
 
-The first thing you should think about is whether this code should be an Effect at all.
+Первое, о чем следует подумать, — это должен ли этот код вообще быть Effect.
 
-Imagine a form. On submit, you set the `submitted` state variable to `true`. You need to send a POST request and show a notification. You've put this logic inside an Effect that "reacts" to `submitted` being `true`:
+Представьте форму. При отправке вы устанавливаете переменную состояния `submitted` в `true`. Вам нужно отправить POST-запрос и показать уведомление. Вы поместили эту логику внутрь Effect, который «реагирует» на `submitted` равное `true`:
 
 ```js {6-8}
 function Form() {
@@ -380,7 +380,7 @@ function Form() {
 
   useEffect(() => {
     if (submitted) {
-      // 🔴 Avoid: Event-specific logic inside an Effect
+      // 🔴 Избегайте: Логика, специфичная для события, внутри Effect
       post('/api/register');
       showNotification('Successfully registered!');
     }
@@ -394,7 +394,7 @@ function Form() {
 }
 ```
 
-Later, you want to style the notification message according to the current theme, so you read the current theme. Since `theme` is declared in the component body, it is a reactive value, so you add it as a dependency:
+Позже вы хотите стилизовать сообщение уведомления в соответствии с текущей темой, поэтому вы читаете текущую тему. Поскольку `theme` объявлена в теле компонента, это реактивное значение, поэтому вы добавляете ее в зависимости:
 
 ```js {3,9,11}
 function Form() {
@@ -403,11 +403,11 @@ function Form() {
 
   useEffect(() => {
     if (submitted) {
-      // 🔴 Avoid: Event-specific logic inside an Effect
+      // 🔴 Избегайте: Логика, специфичная для события, внутри Effect
       post('/api/register');
       showNotification('Successfully registered!', theme);
     }
-  }, [submitted, theme]); // ✅ All dependencies declared
+  }, [submitted, theme]); // ✅ Все зависимости объявлены
 
   function handleSubmit() {
     setSubmitted(true);
@@ -417,16 +417,16 @@ function Form() {
 }
 ```
 
-By doing this, you've introduced a bug. Imagine you submit the form first and then switch between Dark and Light themes. The `theme` will change, the Effect will re-run, and so it will display the same notification again!
+Сделав это, вы внесли ошибку. Представьте, что вы сначала отправляете форму, а затем переключаетесь между темными и светлыми темами. `theme` изменится, Effect повторно выполнится, и поэтому он снова отобразит то же уведомление!
 
-**The problem here is that this shouldn't be an Effect in the first place.** You want to send this POST request and show the notification in response to *submitting the form,* which is a particular interaction. To run some code in response to particular interaction, put that logic directly into the corresponding event handler:
+**Проблема здесь в том, что это вообще не должно быть Effect.** Вы хотите отправить этот POST-запрос и показать уведомление в ответ на *отправку формы*, что является конкретным взаимодействием. Чтобы выполнить какой-либо код в ответ на конкретное взаимодействие, поместите эту логику непосредственно в соответствующий обработчик события:
 
 ```js {6-7}
 function Form() {
   const theme = useContext(ThemeContext);
 
   function handleSubmit() {
-    // ✅ Good: Event-specific logic is called from event handlers
+    // ✅ Хорошо: Логика, специфичная для события, вызывается из обработчиков событий
     post('/api/register');
     showNotification('Successfully registered!', theme);
   }  
@@ -435,13 +435,13 @@ function Form() {
 }
 ```
 
-Now that the code is in an event handler, it's not reactive--so it will only run when the user submits the form. Read more about [choosing between event handlers and Effects](/learn/separating-events-from-effects#reactive-values-and-reactive-logic) and [how to delete unnecessary Effects.](/learn/you-might-not-need-an-effect)
+Теперь, когда код находится в обработчике события, он не является реактивным — он будет выполняться только тогда, когда пользователь отправляет форму. Читайте больше о [выборе между обработчиками событий и Effects](/learn/separating-events-from-effects#reactive-values-and-reactive-logic) и о [том, как удалить ненужные Effects.](/learn/you-might-not-need-an-effect)
 
-### Is your Effect doing several unrelated things? {/*is-your-effect-doing-several-unrelated-things*/}
+### Ваш Effect выполняет несколько несвязанных действий? {/*is-your-effect-doing-several-unrelated-things*/}
 
-The next question you should ask yourself is whether your Effect is doing several unrelated things.
+Следующий вопрос, который вы должны себе задать, — выполняет ли ваш Effect несколько несвязанных действий.
 
-Imagine you're creating a shipping form where the user needs to choose their city and area. You fetch the list of `cities` from the server according to the selected `country` to show them in a dropdown:
+Представьте, что вы создаете форму доставки, где пользователю нужно выбрать город и район. Вы получаете список `cities` с сервера в соответствии с выбранной `country`, чтобы показать их в выпадающем списке:
 
 ```js
 function ShippingForm({ country }) {
@@ -460,14 +460,14 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country]); // ✅ All dependencies declared
+  }, [country]); // ✅ Все зависимости объявлены
 
   // ...
 ```
 
-This is a good example of [fetching data in an Effect.](/learn/you-might-not-need-an-effect#fetching-data) You are synchronizing the `cities` state with the network according to the `country` prop. You can't do this in an event handler because you need to fetch as soon as `ShippingForm` is displayed and whenever the `country` changes (no matter which interaction causes it).
+Это хороший пример [получения данных в Effect.](/learn/you-might-not-need-an-effect#fetching-data) Вы синхронизируете состояние `cities` с сетью в соответствии с пропом `country`. Вы не можете сделать это в обработчике события, потому что вам нужно получать данные, как только `ShippingForm` отобразится, и всякий раз, когда `country` изменится (независимо от того, какое взаимодействие это вызвало).
 
-Now let's say you're adding a second select box for city areas, which should fetch the `areas` for the currently selected `city`. You might start by adding a second `fetch` call for the list of areas inside the same Effect:
+Теперь предположим, вы добавляете второй выпадающий список для районов города, который должен получать `areas` для текущего выбранного `city`. Вы можете начать с добавления второго вызова `fetch` для списка районов в тот же Effect:
 
 ```js {15-24,28}
 function ShippingForm({ country }) {
@@ -484,7 +484,7 @@ function ShippingForm({ country }) {
           setCities(json);
         }
       });
-    // 🔴 Avoid: A single Effect synchronizes two independent processes
+    // 🔴 Избегайте: Единый Effect синхронизирует два независимых процесса
     if (city) {
       fetch(`/api/areas?city=${city}`)
         .then(response => response.json())
@@ -497,19 +497,19 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country, city]); // ✅ All dependencies declared
+  }, [country, city]); // ✅ Все зависимости объявлены
 
   // ...
 ```
 
-However, since the Effect now uses the `city` state variable, you've had to add `city` to the list of dependencies. That, in turn, introduced a problem: when the user selects a different city, the Effect will re-run and call `fetchCities(country)`. As a result, you will be unnecessarily refetching the list of cities many times.
+Однако, поскольку Effect теперь использует переменную состояния `city`, вам пришлось добавить `city` в список зависимостей. Это, в свою очередь, привело к проблеме: когда пользователь выбирает другой город, Effect повторно выполнится и вызовет `fetchCities(country)`. В результате вы будете ненужно много раз перезапрашивать список городов.
 
-**The problem with this code is that you're synchronizing two different unrelated things:**
+**Проблема этого кода в том, что вы синхронизируете две разные несвязанные вещи:**
 
-1. You want to synchronize the `cities` state to the network based on the `country` prop.
-1. You want to synchronize the `areas` state to the network based on the `city` state.
+1. Вы хотите синхронизировать состояние `cities` с сетью на основе пропа `country`.
+1. Вы хотите синхронизировать состояние `areas` с сетью на основе состояния `city`.
 
-Split the logic into two Effects, each of which reacts to the prop that it needs to synchronize with:
+Разделите логику на два Effect, каждый из которых реагирует на проп, с которым он должен синхронизироваться:
 
 ```js {19-33}
 function ShippingForm({ country }) {
@@ -526,7 +526,7 @@ function ShippingForm({ country }) {
     return () => {
       ignore = true;
     };
-  }, [country]); // ✅ All dependencies declared
+  }, [country]); // ✅ Все зависимости объявлены
 
   const [city, setCity] = useState(null);
   const [areas, setAreas] = useState(null);
@@ -544,18 +544,18 @@ function ShippingForm({ country }) {
         ignore = true;
       };
     }
-  }, [city]); // ✅ All dependencies declared
+  }, [city]); // ✅ Все зависимости объявлены
 
   // ...
 ```
 
-Now the first Effect only re-runs if the `country` changes, while the second Effect re-runs when the `city` changes. You've separated them by purpose: two different things are synchronized by two separate Effects. Two separate Effects have two separate dependency lists, so they won't trigger each other unintentionally.
+Теперь первый Effect повторно выполняется только в том случае, если `country` изменится, а второй Effect повторно выполняется при изменении `city`. Вы разделили их по назначению: две разные вещи синхронизируются двумя отдельными Effect. Два отдельных Effect имеют два отдельных списка зависимостей, поэтому они не будут непреднамеренно вызывать друг друга.
 
-The final code is longer than the original, but splitting these Effects is still correct. [Each Effect should represent an independent synchronization process.](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process) In this example, deleting one Effect doesn't break the other Effect's logic. This means they *synchronize different things,* and it's good to split them up. If you're concerned about duplication, you can improve this code by [extracting repetitive logic into a custom Hook.](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)
+Итоговый код длиннее исходного, но разделение этих Effect все равно является правильным. [Каждый Effect должен представлять собой независимый процесс синхронизации.](/learn/lifecycle-of-reactive-effects#each-effect-represents-a-separate-synchronization-process) В этом примере удаление одного Effect не нарушает логику другого Effect. Это означает, что они *синхронизируют разные вещи*, и их хорошо разделить. Если вас беспокоит дублирование, вы можете улучшить этот код, [извлекши повторяющуюся логику в пользовательский хук.](/learn/reusing-logic-with-custom-hooks#when-to-use-custom-hooks)
 
-### Are you reading some state to calculate the next state? {/*are-you-reading-some-state-to-calculate-the-next-state*/}
+### Вы читаете некоторое состояние для вычисления следующего состояния? {/*are-you-reading-some-state-to-calculate-the-next-state*/}
 
-This Effect updates the `messages` state variable with a newly created array every time a new message arrives:
+Этот Effect обновляет переменную состояния `messages` новым созданным массивом каждый раз, когда приходит новое сообщение:
 
 ```js {2,6-8}
 function ChatRoom({ roomId }) {
@@ -569,7 +569,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-It uses the `messages` variable to [create a new array](/learn/updating-arrays-in-state) starting with all the existing messages and adds the new message at the end. However, since `messages` is a reactive value read by an Effect, it must be a dependency:
+Он использует переменную `messages` для [создания нового массива](/learn/updating-arrays-in-state), начиная со всех существующих сообщений и добавляя новое сообщение в конец. Однако, поскольку `messages` является реактивным значением, считываемым Effect, оно должно быть зависимостью:
 
 ```js {7,10}
 function ChatRoom({ roomId }) {
@@ -581,15 +581,15 @@ function ChatRoom({ roomId }) {
       setMessages([...messages, receivedMessage]);
     });
     return () => connection.disconnect();
-  }, [roomId, messages]); // ✅ All dependencies declared
+  }, [roomId, messages]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-And making `messages` a dependency introduces a problem.
+И добавление `messages` в зависимости создает проблему.
 
-Every time you receive a message, `setMessages()` causes the component to re-render with a new `messages` array that includes the received message. However, since this Effect now depends on `messages`, this will *also* re-synchronize the Effect. So every new message will make the chat re-connect. The user would not like that!
+Каждый раз, когда вы получаете сообщение, `setMessages()` вызывает повторный рендеринг компонента с новым массивом `messages`, который включает полученное сообщение. Однако, поскольку этот Effect теперь зависит от `messages`, это *также* повторно синхронизирует Effect. Таким образом, каждое новое сообщение приведет к повторному подключению чата. Пользователю это не понравится!
 
-To fix the issue, don't read `messages` inside the Effect. Instead, pass an [updater function](/reference/react/useState#updating-state-based-on-the-previous-state) to `setMessages`:
+Чтобы исправить проблему, не читайте `messages` внутри Effect. Вместо этого передайте [функцию обновления](/reference/react/useState#updating-state-based-on-the-previous-state) в `setMessages`:
 
 ```js {7,10}
 function ChatRoom({ roomId }) {
@@ -601,21 +601,21 @@ function ChatRoom({ roomId }) {
       setMessages(msgs => [...msgs, receivedMessage]);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-**Notice how your Effect does not read the `messages` variable at all now.** You only need to pass an updater function like `msgs => [...msgs, receivedMessage]`. React [puts your updater function in a queue](/learn/queueing-a-series-of-state-updates) and will provide the `msgs` argument to it during the next render. This is why the Effect itself doesn't need to depend on `messages` anymore. As a result of this fix, receiving a chat message will no longer make the chat re-connect.
+**Обратите внимание, что ваш Effect теперь вообще не читает переменную `messages`.** Вам нужно только передать функцию обновления, такую как `msgs => [...msgs, receivedMessage]`. React [помещает вашу функцию обновления в очередь](/learn/queueing-a-series-of-state-updates) и предоставит ей аргумент `msgs` во время следующего рендеринга. Вот почему сам Effect больше не должен зависеть от `messages`. В результате этого исправления получение сообщения чата больше не приведет к повторному подключению чата.
 
-### Do you want to read a value without "reacting" to its changes? {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
+### Вы хотите прочитать значение, не «реагируя» на его изменения? {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
 
 <Wip>
 
-This section describes an **experimental API that has not yet been released** in a stable version of React.
+Этот раздел описывает **экспериментальный API, который еще не был выпущен** в стабильной версии React.
 
 </Wip>
 
-Suppose that you want to play a sound when the user receives a new message unless `isMuted` is `true`:
+Предположим, вы хотите воспроизвести звук при получении пользователем нового сообщения, если только `isMuted` не равно `true`:
 
 ```js {3,10-12}
 function ChatRoom({ roomId }) {
@@ -634,7 +634,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-Since your Effect now uses `isMuted` in its code, you have to add it to the dependencies:
+Поскольку ваш Effect теперь использует `isMuted` в своем коде, вам придется добавить его в зависимости:
 
 ```js {10,15}
 function ChatRoom({ roomId }) {
@@ -651,13 +651,13 @@ function ChatRoom({ roomId }) {
       }
     });
     return () => connection.disconnect();
-  }, [roomId, isMuted]); // ✅ All dependencies declared
+  }, [roomId, isMuted]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-The problem is that every time `isMuted` changes (for example, when the user presses the "Muted" toggle), the Effect will re-synchronize, and reconnect to the chat. This is not the desired user experience! (In this example, even disabling the linter would not work--if you do that, `isMuted` would get "stuck" with its old value.)
+Проблема в том, что каждый раз, когда `isMuted` изменяется (например, когда пользователь нажимает переключатель «Отключить звук»), Effect будет повторно синхронизироваться и переподключаться к чату. Это нежелательный пользовательский опыт! (В этом примере даже отключение линтера не помогло бы — если вы это сделаете, `isMuted` «застрянет» со своим старым значением.)
 
-To solve this problem, you need to extract the logic that shouldn't be reactive out of the Effect. You don't want this Effect to "react" to the changes in `isMuted`. [Move this non-reactive piece of logic into an Effect Event:](/learn/separating-events-from-effects#declaring-an-effect-event)
+Чтобы решить эту проблему, вам нужно извлечь логику, которая не должна быть реактивной, из Effect. Вы не хотите, чтобы этот Effect «реагировал» на изменения `isMuted`. [Переместите эту нереактивную часть логики в событие Effect:](/learn/separating-events-from-effects#declaring-an-effect-event)
 
 ```js {1,7-12,18,21}
 import { useState, useEffect, useEffectEvent } from 'react';
@@ -680,15 +680,15 @@ function ChatRoom({ roomId }) {
       onMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-Effect Events let you split an Effect into reactive parts (which should "react" to reactive values like `roomId` and their changes) and non-reactive parts (which only read their latest values, like `onMessage` reads `isMuted`). **Now that you read `isMuted` inside an Effect Event, it doesn't need to be a dependency of your Effect.** As a result, the chat won't re-connect when you toggle the "Muted" setting on and off, solving the original issue!
+События Effect позволяют разделить Effect на реактивные части (которые должны «реагировать» на реактивные значения, такие как `roomId`, и их изменения) и нереактивные части (которые только считывают свои последние значения, такие как `onMessage` считывает `isMuted`). **Теперь, когда вы считываете `isMuted` внутри события Effect, оно не должно быть зависимостью вашего Effect.** В результате чат не будет переподключаться при включении и выключении настройки «Отключить звук», решая исходную проблему!
 
-#### Wrapping an event handler from the props {/*wrapping-an-event-handler-from-the-props*/}
+#### Обертывание обработчика события из пропсов {/*wrapping-an-event-handler-from-the-props*/}
 
-You might run into a similar problem when your component receives an event handler as a prop:
+Вы можете столкнуться с похожей проблемой, когда ваш компонент получает обработчик события в виде пропа:
 
 ```js {1,8,11}
 function ChatRoom({ roomId, onReceiveMessage }) {
@@ -701,11 +701,11 @@ function ChatRoom({ roomId, onReceiveMessage }) {
       onReceiveMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId, onReceiveMessage]); // ✅ All dependencies declared
+  }, [roomId, onReceiveMessage]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-Suppose that the parent component passes a *different* `onReceiveMessage` function on every render:
+Предположим, родительский компонент передает *разную* функцию `onReceiveMessage` при каждом рендеринге:
 
 ```js {3-5}
 <ChatRoom
@@ -716,7 +716,7 @@ Suppose that the parent component passes a *different* `onReceiveMessage` functi
 />
 ```
 
-Since `onReceiveMessage` is a dependency, it would cause the Effect to re-synchronize after every parent re-render. This would make it re-connect to the chat. To solve this, wrap the call in an Effect Event:
+Поскольку `onReceiveMessage` является зависимостью, это вызовет повторную синхронизацию Effect после каждого рендеринга родителя. Это приведет к повторному подключению к чату. Чтобы решить эту проблему, оберните вызов в событие Effect:
 
 ```js {4-6,12,15}
 function ChatRoom({ roomId, onReceiveMessage }) {
@@ -733,17 +733,17 @@ function ChatRoom({ roomId, onReceiveMessage }) {
       onMessage(receivedMessage);
     });
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-Effect Events aren't reactive, so you don't need to specify them as dependencies. As a result, the chat will no longer re-connect even if the parent component passes a function that's different on every re-render.
+События Effect не являются реактивными, поэтому вам не нужно указывать их как зависимости. В результате чат больше не будет переподключаться, даже если родительский компонент передает функцию, которая отличается при каждом повторном рендеринге.
 
-#### Separating reactive and non-reactive code {/*separating-reactive-and-non-reactive-code*/}
+#### Разделение реактивного и нереактивного кода {/*separating-reactive-and-non-reactive-code*/}
 
-In this example, you want to log a visit every time `roomId` changes. You want to include the current `notificationCount` with every log, but you *don't* want a change to `notificationCount` to trigger a log event.
+В этом примере вы хотите регистрировать посещение каждый раз, когда `roomId` изменяется. Вы хотите включить текущее значение `notificationCount` в каждый лог, но вы *не* хотите, чтобы изменение `notificationCount` вызывало событие лога.
 
-The solution is again to split out the non-reactive code into an Effect Event:
+Решение снова заключается в том, чтобы выделить нереактивный код в событие Effect:
 
 ```js {2-4,7}
 function Chat({ roomId, notificationCount }) {
@@ -753,16 +753,16 @@ function Chat({ roomId, notificationCount }) {
 
   useEffect(() => {
     onVisit(roomId);
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ Все зависимости объявлены
   // ...
 }
 ```
 
-You want your logic to be reactive with regards to `roomId`, so you read `roomId` inside of your Effect. However, you don't want a change to `notificationCount` to log an extra visit, so you read `notificationCount` inside of the Effect Event. [Learn more about reading the latest props and state from Effects using Effect Events.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
+Вы хотите, чтобы ваша логика была реактивной по отношению к `roomId`, поэтому вы считываете `roomId` внутри вашего Effect. Однако вы не хотите, чтобы изменение `notificationCount` регистрировало дополнительное посещение, поэтому вы считываете `notificationCount` внутри события Effect. [Узнайте больше о чтении последних пропсов и состояния из Effects с помощью событий Effect.](/learn/separating-events-from-effects#reading-latest-props-and-state-with-effect-events)
 
-### Does some reactive value change unintentionally? {/*does-some-reactive-value-change-unintentionally*/}
+### Непреднамеренное изменение реактивного значения? {/*does-some-reactive-value-change-unintentionally*/}
 
-Sometimes, you *do* want your Effect to "react" to a certain value, but that value changes more often than you'd like--and might not reflect any actual change from the user's perspective. For example, let's say that you create an `options` object in the body of your component, and then read that object from inside of your Effect:
+Иногда вы *хотите*, чтобы ваш эффект «реагировал» на определённое значение, но это значение меняется чаще, чем вам хотелось бы, и может не отражать реальных изменений с точки зрения пользователя. Например, предположим, вы создаёте объект `options` в теле вашего компонента, а затем читаете этот объект внутри вашего эффекта:
 
 ```js {3-6,9}
 function ChatRoom({ roomId }) {
@@ -778,7 +778,7 @@ function ChatRoom({ roomId }) {
     // ...
 ```
 
-This object is declared in the component body, so it's a [reactive value.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) When you read a reactive value like this inside an Effect, you declare it as a dependency. This ensures your Effect "reacts" to its changes:
+Этот объект объявлен в теле компонента, поэтому он является [реактивным значением.](/learn/lifecycle-of-reactive-effects#effects-react-to-reactive-values) Когда вы читаете реактивное значение таким образом внутри эффекта, вы объявляете его как зависимость. Это гарантирует, что ваш эффект будет «реагировать» на его изменения:
 
 ```js {3,6}
   // ...
@@ -786,11 +786,11 @@ This object is declared in the component body, so it's a [reactive value.](/lear
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ All dependencies declared
+  }, [options]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-It is important to declare it as a dependency! This ensures, for example, that if the `roomId` changes, your Effect will re-connect to the chat with the new `options`. However, there is also a problem with the code above. To see it, try typing into the input in the sandbox below, and watch what happens in the console:
+Важно объявить его как зависимость! Это гарантирует, например, что если `roomId` изменится, ваш эффект переподключится к чату с новыми `options`. Однако в приведённом выше коде есть и проблема. Чтобы увидеть её, попробуйте ввести текст в поле ввода в песочнице ниже и посмотрите, что происходит в консоли:
 
 <Sandpack>
 
@@ -803,7 +803,7 @@ const serverUrl = 'https://localhost:1234';
 function ChatRoom({ roomId }) {
   const [message, setMessage] = useState('');
 
-  // Temporarily disable the linter to demonstrate the problem
+  // Временно отключим линтер, чтобы продемонстрировать проблему
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const options = {
     serverUrl: serverUrl,
@@ -848,7 +848,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // Реальная реализация действительно подключится к серверу
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -867,30 +867,30 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-In the sandbox above, the input only updates the `message` state variable. From the user's perspective, this should not affect the chat connection. However, every time you update the `message`, your component re-renders. When your component re-renders, the code inside of it runs again from scratch.
+В песочнице выше поле ввода обновляет только переменную состояния `message`. С точки зрения пользователя, это не должно влиять на подключение к чату. Однако каждый раз, когда вы обновляете `message`, ваш компонент перерисовывается. Когда ваш компонент перерисовывается, код внутри него выполняется снова с самого начала.
 
-A new `options` object is created from scratch on every re-render of the `ChatRoom` component. React sees that the `options` object is a *different object* from the `options` object created during the last render. This is why it re-synchronizes your Effect (which depends on `options`), and the chat re-connects as you type.
+При каждом повторном рендеринге компонента `ChatRoom` заново создаётся новый объект `options`. React видит, что объект `options` — это *другой объект*, отличный от объекта `options`, созданного во время последнего рендеринга. Именно поэтому он повторно синхронизирует ваш эффект (который зависит от `options`), и чат переподключается по мере ввода текста.
 
-**This problem only affects objects and functions. In JavaScript, each newly created object and function is considered distinct from all the others. It doesn't matter that the contents inside of them may be the same!**
+**Эта проблема затрагивает только объекты и функции. В JavaScript каждый вновь созданный объект и функция считаются отличными от всех остальных. Неважно, что их содержимое может быть одинаковым!**
 
 ```js {7-8}
-// During the first render
+// Во время первого рендеринга
 const options1 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
-// During the next render
+// Во время следующего рендеринга
 const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 
-// These are two different objects!
+// Это два разных объекта!
 console.log(Object.is(options1, options2)); // false
 ```
 
-**Object and function dependencies can make your Effect re-synchronize more often than you need.** 
+**Зависимости объектов и функций могут заставлять ваш эффект повторно синхронизироваться чаще, чем вам нужно.**
 
-This is why, whenever possible, you should try to avoid objects and functions as your Effect's dependencies. Instead, try moving them outside the component, inside the Effect, or extracting primitive values out of them.
+Вот почему, когда это возможно, вам следует избегать объектов и функций в качестве зависимостей вашего эффекта. Вместо этого попробуйте вынести их за пределы компонента, внутрь эффекта или извлечь из них примитивные значения.
 
-#### Move static objects and functions outside your component {/*move-static-objects-and-functions-outside-your-component*/}
+#### Вынести статические объекты и функции за пределы компонента {/*move-static-objects-and-functions-outside-your-component*/}
 
-If the object does not depend on any props and state, you can move that object outside your component:
+Если объект не зависит от каких-либо пропсов и состояния, вы можете вынести этот объект за пределы вашего компонента:
 
 ```js {1-4,13}
 const options = {
@@ -905,13 +905,13 @@ function ChatRoom() {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ Все зависимости объявлены
   // ...
 ```
 
-This way, you *prove* to the linter that it's not reactive. It can't change as a result of a re-render, so it doesn't need to be a dependency. Now re-rendering `ChatRoom` won't cause your Effect to re-synchronize.
+Таким образом, вы *доказываете* линтеру, что это не реактивное значение. Оно не может измениться в результате повторного рендеринга, поэтому ему не нужно быть зависимостью. Теперь повторный рендеринг `ChatRoom` не вызовет повторную синхронизацию вашего эффекта.
 
-This works for functions too:
+Это работает и для функций:
 
 ```js {1-6,12}
 function createOptions() {
@@ -929,15 +929,15 @@ function ChatRoom() {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, []); // ✅ All dependencies declared
+  }, []); // ✅ Все зависимости объявлены
   // ...
 ```
 
-Since `createOptions` is declared outside your component, it's not a reactive value. This is why it doesn't need to be specified in your Effect's dependencies, and why it won't ever cause your Effect to re-synchronize.
+Поскольку `createOptions` объявлена вне вашего компонента, это не реактивное значение. Вот почему его не нужно указывать в зависимостях вашего эффекта, и почему оно никогда не вызовет повторную синхронизацию вашего эффекта.
 
-#### Move dynamic objects and functions inside your Effect {/*move-dynamic-objects-and-functions-inside-your-effect*/}
+#### Перенести динамические объекты и функции внутрь вашего эффекта {/*move-dynamic-objects-and-functions-inside-your-effect*/}
 
-If your object depends on some reactive value that may change as a result of a re-render, like a `roomId` prop, you can't pull it *outside* your component. You can, however, move its creation *inside* of your Effect's code:
+Если ваш объект зависит от какого-либо реактивного значения, которое может измениться в результате повторного рендеринга, например, проп `roomId`, вы не можете вынести его *за пределы* вашего компонента. Однако вы можете переместить его создание *внутрь* кода вашего эффекта:
 
 ```js {7-10,11,14}
 const serverUrl = 'https://localhost:1234';
@@ -953,24 +953,24 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-Now that `options` is declared inside of your Effect, it is no longer a dependency of your Effect. Instead, the only reactive value used by your Effect is `roomId`. Since `roomId` is not an object or function, you can be sure that it won't be *unintentionally* different. In JavaScript, numbers and strings are compared by their content:
+Теперь, когда `options` объявлен внутри вашего эффекта, он больше не является зависимостью вашего эффекта. Вместо этого единственным реактивным значением, используемым вашим эффектом, является `roomId`. Поскольку `roomId` не является объектом или функцией, вы можете быть уверены, что он не будет *непреднамеренно* отличаться. В JavaScript числа и строки сравниваются по их содержимому:
 
 ```js {7-8}
-// During the first render
+// Во время первого рендеринга
 const roomId1 = 'music';
 
-// During the next render
+// Во время следующего рендеринга
 const roomId2 = 'music';
 
-// These two strings are the same!
+// Эти две строки одинаковы!
 console.log(Object.is(roomId1, roomId2)); // true
 ```
 
-Thanks to this fix, the chat no longer re-connects if you edit the input:
+Благодаря этому исправлению чат больше не переподключается, если вы редактируете поле ввода:
 
 <Sandpack>
 
@@ -1025,7 +1025,7 @@ export default function App() {
 
 ```js src/chat.js
 export function createConnection({ serverUrl, roomId }) {
-  // A real implementation would actually connect to the server
+  // Реальная реализация действительно подключится к серверу
   return {
     connect() {
       console.log('✅ Connecting to "' + roomId + '" room at ' + serverUrl + '...');
@@ -1044,9 +1044,9 @@ button { margin-left: 10px; }
 
 </Sandpack>
 
-However, it *does* re-connect when you change the `roomId` dropdown, as you would expect.
+Однако он *переподключается*, когда вы меняете выпадающий список `roomId`, как и ожидалось.
 
-This works for functions, too:
+Это работает и для функций:
 
 ```js {7-12,14}
 const serverUrl = 'https://localhost:1234';
@@ -1066,15 +1066,15 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId]); // ✅ All dependencies declared
+  }, [roomId]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-You can write your own functions to group pieces of logic inside your Effect. As long as you also declare them *inside* your Effect, they're not reactive values, and so they don't need to be dependencies of your Effect.
+Вы можете писать свои собственные функции для группировки фрагментов логики внутри вашего эффекта. Пока вы также объявляете их *внутри* вашего эффекта, они не являются реактивными значениями, и поэтому им не нужно быть зависимостями вашего эффекта.
 
-#### Read primitive values from objects {/*read-primitive-values-from-objects*/}
+#### Чтение примитивных значений из объектов {/*read-primitive-values-from-objects*/}
 
-Sometimes, you may receive an object from props:
+Иногда вы можете получать объект из пропсов:
 
 ```js {1,5,8}
 function ChatRoom({ options }) {
@@ -1084,11 +1084,11 @@ function ChatRoom({ options }) {
     const connection = createConnection(options);
     connection.connect();
     return () => connection.disconnect();
-  }, [options]); // ✅ All dependencies declared
+  }, [options]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-The risk here is that the parent component will create the object during rendering:
+Риск здесь в том, что родительский компонент будет создавать объект во время рендеринга:
 
 ```js {3-6}
 <ChatRoom
@@ -1100,7 +1100,7 @@ The risk here is that the parent component will create the object during renderi
 />
 ```
 
-This would cause your Effect to re-connect every time the parent component re-renders. To fix this, read information from the object *outside* the Effect, and avoid having object and function dependencies:
+Это приведёт к тому, что ваш эффект будет переподключаться при каждом повторном рендеринге родительского компонента. Чтобы исправить это, читайте информацию из объекта *вне* эффекта и избегайте зависимостей объектов и функций:
 
 ```js {4,7-8,12}
 function ChatRoom({ options }) {
@@ -1114,15 +1114,15 @@ function ChatRoom({ options }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ All dependencies declared
+  }, [roomId, serverUrl]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-The logic gets a little repetitive (you read some values from an object outside an Effect, and then create an object with the same values inside the Effect). But it makes it very explicit what information your Effect *actually* depends on. If an object is re-created unintentionally by the parent component, the chat would not re-connect. However, if `options.roomId` or `options.serverUrl` really are different, the chat would re-connect.
+Логика становится немного повторяющейся (вы читаете некоторые значения из объекта вне эффекта, а затем создаёте объект с теми же значениями внутри эффекта). Но это делает очень явным, от какой информации ваш эффект *действительно* зависит. Если объект непреднамеренно воссоздаётся родительским компонентом, чат не будет переподключаться. Однако, если `options.roomId` или `options.serverUrl` действительно отличаются, чат переподключится.
 
-#### Calculate primitive values from functions {/*calculate-primitive-values-from-functions*/}
+#### Вычисление примитивных значений из функций {/*calculate-primitive-values-from-functions*/}
 
-The same approach can work for functions. For example, suppose the parent component passes a function:
+Тот же подход может работать и для функций. Например, предположим, родительский компонент передаёт функцию:
 
 ```js {3-8}
 <ChatRoom
@@ -1136,7 +1136,7 @@ The same approach can work for functions. For example, suppose the parent compon
 />
 ```
 
-To avoid making it a dependency (and causing it to re-connect on re-renders), call it outside the Effect. This gives you the `roomId` and `serverUrl` values that aren't objects, and that you can read from inside your Effect:
+Чтобы избежать её включения в зависимости (и, следовательно, повторных переподключений при рендерингах), вызовите её вне эффекта. Это даст вам значения `roomId` и `serverUrl`, которые не являются объектами и которые вы можете читать внутри вашего эффекта:
 
 ```js {1,4}
 function ChatRoom({ getOptions }) {
@@ -1150,36 +1150,36 @@ function ChatRoom({ getOptions }) {
     });
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, serverUrl]); // ✅ All dependencies declared
+  }, [roomId, serverUrl]); // ✅ Все зависимости объявлены
   // ...
 ```
 
-This only works for [pure](/learn/keeping-components-pure) functions because they are safe to call during rendering. If your function is an event handler, but you don't want its changes to re-synchronize your Effect, [wrap it into an Effect Event instead.](#do-you-want-to-read-a-value-without-reacting-to-its-changes)
+Это работает только для [чистых](/learn/keeping-components-pure) функций, поскольку их безопасно вызывать во время рендеринга. Если ваша функция является обработчиком событий, но вы не хотите, чтобы её изменения повторно синхронизировали ваш эффект, [вместо этого оберните её в Effect Event.](#do-you-want-to-read-a-value-without-reacting-to-its-changes)
 
 <Recap>
 
-- Dependencies should always match the code.
-- When you're not happy with your dependencies, what you need to edit is the code.
-- Suppressing the linter leads to very confusing bugs, and you should always avoid it.
-- To remove a dependency, you need to "prove" to the linter that it's not necessary.
-- If some code should run in response to a specific interaction, move that code to an event handler.
-- If different parts of your Effect should re-run for different reasons, split it into several Effects.
-- If you want to update some state based on the previous state, pass an updater function.
-- If you want to read the latest value without "reacting" it, extract an Effect Event from your Effect.
-- In JavaScript, objects and functions are considered different if they were created at different times.
-- Try to avoid object and function dependencies. Move them outside the component or inside the Effect.
+- Зависимости всегда должны соответствовать коду.
+- Когда вы недовольны своими зависимостями, вам нужно редактировать код.
+- Подавление линтера приводит к очень запутанным ошибкам, и вам всегда следует его избегать.
+- Чтобы удалить зависимость, вам нужно «доказать» линтеру, что она не нужна.
+- Если какой-то код должен выполняться в ответ на определённое взаимодействие, переместите этот код в обработчик событий.
+- Если разные части вашего эффекта должны перезапускаться по разным причинам, разделите его на несколько эффектов.
+- Если вы хотите обновить какое-то состояние на основе предыдущего состояния, передайте функцию-обновитель.
+- Если вы хотите прочитать последнее значение, не «реагируя» на него, извлеките Effect Event из вашего эффекта.
+- В JavaScript объекты и функции считаются разными, если они были созданы в разное время.
+- Старайтесь избегать зависимостей объектов и функций. Переместите их за пределы компонента или внутрь эффекта.
 
 </Recap>
 
 <Challenges>
 
-#### Fix a resetting interval {/*fix-a-resetting-interval*/}
+#### Исправить сбрасываемый интервал {/*fix-a-resetting-interval*/}
 
-This Effect sets up an interval that ticks every second. You've noticed something strange happening: it seems like the interval gets destroyed and re-created every time it ticks. Fix the code so that the interval doesn't get constantly re-created.
+Этот эффект настраивает интервал, который срабатывает каждую секунду. Вы заметили что-то странное: кажется, что интервал уничтожается и воссоздаётся каждый раз, когда срабатывает. Исправьте код так, чтобы интервал не воссоздавался постоянно.
 
 <Hint>
 
-It seems like this Effect's code depends on `count`. Is there some way to not need this dependency? There should be a way to update the `count` state based on its previous value without adding a dependency on that value.
+Кажется, что код этого эффекта зависит от `count`. Есть ли способ не нуждаться в этой зависимости? Должен быть способ обновить состояние `count` на основе его предыдущего значения, не добавляя зависимость от этого значения.
 
 </Hint>
 
@@ -1211,9 +1211,9 @@ export default function Timer() {
 
 <Solution>
 
-You want to update the `count` state to be `count + 1` from inside the Effect. However, this makes your Effect depend on `count`, which changes with every tick, and that's why your interval gets re-created on every tick.
+Вы хотите обновить состояние `count` до `count + 1` изнутри эффекта. Однако это делает ваш эффект зависимым от `count`, который меняется с каждым тиком, и именно поэтому ваш интервал воссоздаётся при каждом тике.
 
-To solve this, use the [updater function](/reference/react/useState#updating-state-based-on-the-previous-state) and write `setCount(c => c + 1)` instead of `setCount(count + 1)`:
+Чтобы решить эту проблему, используйте [функцию-обновитель](/reference/react/useState#updating-state-based-on-the-previous-state) и напишите `setCount(c => c + 1)` вместо `setCount(count + 1)`:
 
 <Sandpack>
 
@@ -1241,19 +1241,19 @@ export default function Timer() {
 
 </Sandpack>
 
-Instead of reading `count` inside the Effect, you pass a `c => c + 1` instruction ("increment this number!") to React. React will apply it on the next render. And since you don't need to read the value of `count` inside your Effect anymore, you can keep your Effect's dependencies empty (`[]`). This prevents your Effect from re-creating the interval on every tick.
+Вместо чтения `count` внутри эффекта вы передаёте инструкцию `c => c + 1` («увеличить это число!») React. React применит её при следующем рендеринге. И поскольку вам больше не нужно читать значение `count` внутри вашего эффекта, вы можете оставить зависимости вашего эффекта пустыми (`[]`). Это предотвращает воссоздание интервала вашим эффектом при каждом тике.
 
 </Solution>
 
-#### Fix a retriggering animation {/*fix-a-retriggering-animation*/}
+#### Исправить повторно запускаемую анимацию {/*fix-a-retriggering-animation*/}
 
-In this example, when you press "Show", a welcome message fades in. The animation takes a second. When you press "Remove", the welcome message immediately disappears. The logic for the fade-in animation is implemented in the `animation.js` file as plain JavaScript [animation loop.](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) You don't need to change that logic. You can treat it as a third-party library. Your Effect creates an instance of `FadeInAnimation` for the DOM node, and then calls `start(duration)` or `stop()` to control the animation. The `duration` is controlled by a slider. Adjust the slider and see how the animation changes.
+В этом примере при нажатии «Show» появляется приветственное сообщение, которое плавно появляется в течение секунды. При нажатии «Remove» приветственное сообщение немедленно исчезает. Логика анимации появления реализована в файле `animation.js` как обычный JavaScript [цикл анимации.](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) Вам не нужно менять эту логику. Вы можете рассматривать её как стороннюю библиотеку. Ваш эффект создаёт экземпляр `FadeInAnimation` для DOM-узла, а затем вызывает `start(duration)` или `stop()` для управления анимацией. `duration` контролируется ползунком. Настройте ползунок и посмотрите, как меняется анимация.
 
-This code already works, but there is something you want to change. Currently, when you move the slider that controls the `duration` state variable, it retriggers the animation. Change the behavior so that the Effect does not "react" to the `duration` variable. When you press "Show", the Effect should use the current `duration` on the slider. However, moving the slider itself should not by itself retrigger the animation.
+Этот код уже работает, но есть кое-что, что вы хотите изменить. В настоящее время при перемещении ползунка, который управляет переменной состояния `duration`, анимация запускается повторно. Измените поведение так, чтобы эффект не «реагировал» на переменную `duration`. При нажатии «Show» эффект должен использовать текущее значение `duration` на ползунке. Однако само перемещение ползунка не должно запускать анимацию повторно.
 
 <Hint>
 
-Is there a line of code inside the Effect that should not be reactive? How can you move non-reactive code out of the Effect?
+Есть ли строка кода внутри эффекта, которая не должна быть реактивной? Как вы можете вынести нереактивный код из эффекта?
 
 </Hint>
 
@@ -1382,7 +1382,7 @@ html, body { min-height: 300px; }
 
 <Solution>
 
-Your Effect needs to read the latest value of `duration`, but you don't want it to "react" to changes in `duration`. You use `duration` to start the animation, but starting animation isn't reactive. Extract the non-reactive line of code into an Effect Event, and call that function from your Effect.
+Вашему эффекту необходимо считывать последнее значение `duration`, но вы не хотите, чтобы он «реагировал» на изменения `duration`. Вы используете `duration` для запуска анимации, но запуск анимации не является реактивным. Вынесите нереактивную строку кода в Effect Event и вызовите эту функцию из вашего эффекта.
 
 <Sandpack>
 
@@ -1505,19 +1505,19 @@ html, body { min-height: 300px; }
 
 </Sandpack>
 
-Effect Events like `onAppear` are not reactive, so you can read `duration` inside without retriggering the animation.
+Effect Events, такие как `onAppear`, не являются реактивными, поэтому вы можете читать `duration` внутри них, не вызывая повторный запуск анимации.
 
 </Solution>
 
-#### Fix a reconnecting chat {/*fix-a-reconnecting-chat*/}
+#### Исправьте переподключающийся чат {/*fix-a-reconnecting-chat*/}
 
-In this example, every time you press "Toggle theme", the chat re-connects. Why does this happen? Fix the mistake so that the chat re-connects only when you edit the Server URL or choose a different chat room.
+В этом примере чат переподключается каждый раз, когда вы нажимаете «Переключить тему». Почему это происходит? Исправьте ошибку так, чтобы чат переподключался только при изменении URL сервера или выборе другой комнаты чата.
 
-Treat `chat.js` as an external third-party library: you can consult it to check its API, but don't edit it.
+Считайте `chat.js` внешней сторонней библиотекой: вы можете обращаться к ней для проверки её API, но не редактируйте её.
 
 <Hint>
 
-There's more than one way to fix this, but ultimately you want to avoid having an object as your dependency.
+Существует несколько способов исправить это, но в конечном итоге вам следует избегать использования объекта в качестве зависимости.
 
 </Hint>
 
@@ -1611,9 +1611,9 @@ label, button { display: block; margin-bottom: 5px; }
 
 <Solution>
 
-Your Effect is re-running because it depends on the `options` object. Objects can be re-created unintentionally, you should try to avoid them as dependencies of your Effects whenever possible.
+Ваш Effect перезапускается, потому что он зависит от объекта `options`. Объекты могут быть созданы заново непреднамеренно, поэтому вам следует избегать их в качестве зависимостей ваших Effects, когда это возможно.
 
-The least invasive fix is to read `roomId` and `serverUrl` right outside the Effect, and then make the Effect depend on those primitive values (which can't change unintentionally). Inside the Effect, create an object and pass it to `createConnection`:
+Наименее инвазивное исправление — это извлечь `roomId` и `serverUrl` непосредственно перед Effect и сделать Effect зависимым от этих примитивных значений (которые не могут быть изменены непреднамеренно). Внутри Effect создайте объект и передайте его в `createConnection`:
 
 <Sandpack>
 
@@ -1707,7 +1707,7 @@ label, button { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-It would be even better to replace the object `options` prop with the more specific `roomId` and `serverUrl` props:
+Было бы еще лучше заменить объект `options` на более конкретные пропсы `roomId` и `serverUrl`:
 
 <Sandpack>
 
@@ -1798,25 +1798,25 @@ label, button { display: block; margin-bottom: 5px; }
 
 </Sandpack>
 
-Sticking to primitive props where possible makes it easier to optimize your components later.
+Использование примитивных пропсов, где это возможно, упрощает последующую оптимизацию компонентов.
 
 </Solution>
 
-#### Fix a reconnecting chat, again {/*fix-a-reconnecting-chat-again*/}
+#### Снова исправьте переподключающийся чат {/*fix-a-reconnecting-chat-again*/}
 
-This example connects to the chat either with or without encryption. Toggle the checkbox and notice the different messages in the console when the encryption is on and off. Try changing the room. Then, try toggling the theme. When you're connected to a chat room, you will receive new messages every few seconds. Verify that their color matches the theme you've picked.
+Этот пример подключается к чату с шифрованием или без него. Переключите флажок и обратите внимание на разные сообщения в консоли при включенном и выключенном шифровании. Попробуйте сменить комнату. Затем попробуйте переключить тему. Когда вы подключены к комнате чата, вы будете получать новые сообщения каждые несколько секунд. Убедитесь, что их цвет соответствует выбранной вами теме.
 
-In this example, the chat re-connects every time you try to change the theme. Fix this. After the fix, changing the theme should not re-connect the chat, but toggling encryption settings or changing the room should re-connect.
+В этом примере чат переподключается каждый раз, когда вы пытаетесь сменить тему. Исправьте это. После исправления смена темы не должна вызывать переподключение чата, но переключение настроек шифрования или смена комнаты должны вызывать переподключение.
 
-Don't change any code in `chat.js`. Other than that, you can change any code as long as it results in the same behavior. For example, you may find it helpful to change which props are being passed down.
+Не меняйте код в `chat.js`. В остальном вы можете менять любой код, если это приведет к такому же поведению. Например, вам может быть полезно изменить передаваемые пропсы.
 
 <Hint>
 
-You're passing down two functions: `onMessage` and `createConnection`. Both of them are created from scratch every time `App` re-renders. They are considered to be new values every time, which is why they re-trigger your Effect.
+Вы передаете две функции: `onMessage` и `createConnection`. Обе они создаются заново при каждом рендере `App`. Они считаются новыми значениями каждый раз, поэтому они повторно запускают ваш Effect.
 
-One of these functions is an event handler. Do you know some way to call an event handler an Effect without "reacting" to the new values of the event handler function? That would come in handy!
+Одну из этих функций можно обработать с помощью `useEffectEvent`. Есть ли способ вызвать обработчик событий в Effect без "реакции" на новые значения функции обработчика? Это было бы полезно!
 
-Another of these functions only exists to pass some state to an imported API method. Is this function really necessary? What is the essential information that's being passed down? You might need to move some imports from `App.js` to `ChatRoom.js`.
+Другая из этих функций существует только для передачи некоторой информации в метод импортируемого API. Действительно ли эта функция необходима? Какая основная информация передается? Возможно, вам придется переместить некоторые импорты из `App.js` в `ChatRoom.js`.
 
 </Hint>
 
@@ -2031,11 +2031,11 @@ label, button { display: block; margin-bottom: 5px; }
 
 <Solution>
 
-There's more than one correct way to solve this, but here is one possible solution.
+Существует несколько правильных способов решения этой проблемы, но вот один из возможных.
 
-In the original example, toggling the theme caused different `onMessage` and `createConnection` functions to be created and passed down. Since the Effect depended on these functions, the chat would re-connect every time you toggle the theme.
+В исходном примере переключение темы приводило к созданию и передаче разных функций `onMessage` и `createConnection`. Поскольку Effect зависел от этих функций, чат переподключался каждый раз при переключении темы.
 
-To fix the problem with `onMessage`, you needed to wrap it into an Effect Event:
+Чтобы исправить проблему с `onMessage`, вам нужно было обернуть ее в Effect Event:
 
 ```js {1,2,6}
 export default function ChatRoom({ roomId, createConnection, onMessage }) {
@@ -2047,9 +2047,9 @@ export default function ChatRoom({ roomId, createConnection, onMessage }) {
     // ...
 ```
 
-Unlike the `onMessage` prop, the `onReceiveMessage` Effect Event is not reactive. This is why it doesn't need to be a dependency of your Effect. As a result, changes to `onMessage` won't cause the chat to re-connect.
+В отличие от пропса `onMessage`, Effect Event `onReceiveMessage` не является реактивным. Поэтому он не должен быть зависимостью вашего Effect. В результате изменения `onMessage` не вызовут переподключение чата.
 
-You can't do the same with `createConnection` because it *should* be reactive. You *want* the Effect to re-trigger if the user switches between an encrypted and an unencryption connection, or if the user switches the current room. However, because `createConnection` is a function, you can't check whether the information it reads has *actually* changed or not. To solve this, instead of passing `createConnection` down from the `App` component, pass the raw `roomId` and `isEncrypted` values:
+Вы не можете сделать то же самое с `createConnection`, потому что он *должен* быть реактивным. Вы *хотите*, чтобы Effect перезапускался, если пользователь переключается между зашифрованным и незашифрованным соединением, или если пользователь меняет текущую комнату. Однако, поскольку `createConnection` является функцией, вы не можете проверить, изменилась ли информация, которую она читает, *фактически*. Чтобы решить эту проблему, вместо передачи `createConnection` из компонента `App`, передайте необработанные значения `roomId` и `isEncrypted`:
 
 ```js {2-3}
       <ChatRoom
@@ -2061,7 +2061,7 @@ You can't do the same with `createConnection` because it *should* be reactive. Y
       />
 ```
 
-Now you can move the `createConnection` function *inside* the Effect instead of passing it down from the `App`:
+Теперь вы можете переместить функцию `createConnection` *внутрь* Effect вместо передачи ее из компонента `App`:
 
 ```js {1-4,6,10-20}
 import {
@@ -2087,19 +2087,19 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) {
     // ...
 ```
 
-After these two changes, your Effect no longer depends on any function values:
+После этих двух изменений ваш Effect больше не зависит от значений функций:
 
 ```js {1,8,10,21}
-export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reactive values
-  const onReceiveMessage = useEffectEvent(onMessage); // Not reactive
+export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Реактивные значения
+  const onReceiveMessage = useEffectEvent(onMessage); // Не реактивное
 
   useEffect(() => {
     function createConnection() {
       const options = {
         serverUrl: 'https://localhost:1234',
-        roomId: roomId // Reading a reactive value
+        roomId: roomId // Чтение реактивного значения
       };
-      if (isEncrypted) { // Reading a reactive value
+      if (isEncrypted) { // Чтение реактивного значения
         return createEncryptedConnection(options);
       } else {
         return createUnencryptedConnection(options);
@@ -2110,10 +2110,10 @@ export default function ChatRoom({ roomId, isEncrypted, onMessage }) { // Reacti
     connection.on('message', (msg) => onReceiveMessage(msg));
     connection.connect();
     return () => connection.disconnect();
-  }, [roomId, isEncrypted]); // ✅ All dependencies declared
+  }, [roomId, isEncrypted]); // ✅ Все зависимости объявлены
 ```
 
-As a result, the chat re-connects only when something meaningful (`roomId` or `isEncrypted`) changes:
+В результате чат переподключается только тогда, когда изменяется что-то значимое (`roomId` или `isEncrypted`):
 
 <Sandpack>
 
