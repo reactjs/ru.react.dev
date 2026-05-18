@@ -1,16 +1,15 @@
 ---
-title: Server React DOM APIs
+title: API React DOM для сервера
 ---
-
 <Intro>
 
-API `react-dom/server` позволяют вам выполнять серверный рендеринг React-компонентов в HTML. Эти API используются только на сервере на верхнем уровне вашего приложения для генерации начального HTML. [Фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks) может вызывать их за вас. Большинству ваших компонентов не нужно их импортировать или использовать.
+API `react-dom/server` позволяют выполнять рендеринг React-компонентов на стороне сервера в HTML. Эти API используются только на сервере на верхнем уровне вашего приложения для генерации начального HTML. [Фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks) может вызывать их за вас. Большинству ваших компонентов не нужно их импортировать или использовать.
 
 </Intro>
 
 ---
 
-## Server APIs для Node.js Streams {/*server-apis-for-nodejs-streams*/}
+## Server APIs for Node.js Streams {/*server-apis-for-nodejs-streams*/}
 
 Эти методы доступны только в средах с [Node.js Streams:](https://nodejs.org/api/stream.html)
 
@@ -18,7 +17,7 @@ API `react-dom/server` позволяют вам выполнять сервер
 
 ---
 
-## Server APIs для Web Streams {/*server-apis-for-web-streams*/}
+## Server APIs for Web Streams {/*server-apis-for-web-streams*/}
 
 Эти методы доступны только в средах с [Web Streams](https://developer.mozilla.org/en-US/docs/Web/API/Streams_API), которые включают браузеры, Deno и некоторые современные edge-среды выполнения:
 
@@ -26,7 +25,7 @@ API `react-dom/server` позволяют вам выполнять сервер
 
 ---
 
-## Устаревшие Server APIs для сред без потоковой передачи {/*legacy-server-apis-for-non-streaming-environments*/}
+## Legacy Server APIs for non-streaming environments {/*legacy-server-apis-for-non-streaming-environments*/}
 
 Эти методы можно использовать в средах, которые не поддерживают потоки:
 
