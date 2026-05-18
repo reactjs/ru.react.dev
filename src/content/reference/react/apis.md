@@ -4,28 +4,28 @@ title: "Built-in React APIs"
 
 <Intro>
 
-In addition to [Hooks](/reference/react) and [Components](/reference/react/components), the `react` package exports a few other APIs that are useful for defining components. This page lists all the remaining modern React APIs.
+В дополнение к [хукам](/reference/react) и [компонентам](/reference/react/components), пакет `react` экспортирует несколько других API, полезных для определения компонентов. Эта страница перечисляет все остальные современные API React.
 
 </Intro>
 
 ---
 
-* [`createContext`](/reference/react/createContext) lets you define and provide context to the child components. Used with [`useContext`.](/reference/react/useContext)
-* [`forwardRef`](/reference/react/forwardRef) lets your component expose a DOM node as a ref to the parent. Used with [`useRef`.](/reference/react/useRef)
-* [`lazy`](/reference/react/lazy) lets you defer loading a component's code until it's rendered for the first time.
-* [`memo`](/reference/react/memo) lets your component skip re-renders with same props. Used with [`useMemo`](/reference/react/useMemo) and [`useCallback`.](/reference/react/useCallback)
-* [`startTransition`](/reference/react/startTransition) lets you mark a state update as non-urgent. Similar to [`useTransition`.](/reference/react/useTransition)
-* [`act`](/reference/react/act) lets you wrap renders and interactions in tests to ensure updates have processed before making assertions.
+* [`createContext`](/reference/react/createContext) позволяет вам определять и предоставлять контекст дочерним компонентам. Используется с [`useContext`.](/reference/react/useContext)
+* [`forwardRef`](/reference/react/forwardRef) позволяет вашему компоненту предоставлять DOM-узел в качестве рефа родительскому. Используется с [`useRef`.](/reference/react/useRef)
+* [`lazy`](/reference/react/lazy) позволяет отложить загрузку кода компонента до его первого рендеринга.
+* [`memo`](/reference/react/memo) позволяет вашему компоненту пропускать повторные рендеры с теми же пропсами. Используется с [`useMemo`](/reference/react/useMemo) и [`useCallback`.](/reference/react/useCallback)
+* [`startTransition`](/reference/react/startTransition) позволяет пометить обновление состояния как не срочное. Аналогично [`useTransition`.](/reference/react/useTransition)
+* [`act`](/reference/react/act) позволяет обернуть рендеры и взаимодействия в тестах, чтобы гарантировать обработку обновлений перед проверками.
 
 ---
 
-## Resource APIs {/*resource-apis*/}
+## API ресурсов {/*resource-apis*/}
 
-*Resources* can be accessed by a component without having them as part of their state. For example, a component can read a message from a Promise or read styling information from a context.
+К *ресурсам* компонент может получить доступ, не имея их в своем состоянии. Например, компонент может прочитать сообщение из Promise или информацию о стилях из контекста.
 
-To read a value from a resource, use this API:
+Чтобы прочитать значение из ресурса, используйте этот API:
 
-* [`use`](/reference/react/use) lets you read the value of a resource like a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) or [context](/learn/passing-data-deeply-with-context).
+* [`use`](/reference/react/use) позволяет вам прочитать значение ресурса, такого как [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) или [контекст](/learn/passing-data-deeply-with-context).
 ```js
 function MessageComponent({ messagePromise }) {
   const message = use(messagePromise);
