@@ -2,24 +2,23 @@
 title: unstable_addTransitionType
 version: experimental
 ---
-
 <Experimental>
 
-**This API is experimental and is not available in a stable version of React yet.**
+**Этот API является экспериментальным и пока недоступен в стабильной версии React.**
 
-You can try it by upgrading React packages to the most recent experimental version:
+Вы можете попробовать его, обновив пакеты React до последней экспериментальной версии:
 
 - `react@experimental`
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-Experimental versions of React may contain bugs. Don't use them in production.
+Экспериментальные версии React могут содержать ошибки. Не используйте их в продакшене.
 
 </Experimental>
 
 <Intro>
 
-`unstable_addTransitionType` lets you specify the cause of a transition.
+`unstable_addTransitionType` позволяет указать причину перехода.
 
 
 ```js
@@ -35,30 +34,30 @@ startTransition(() => {
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `addTransitionType` {/*addtransitiontype*/}
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-- `type`: The type of transition to add. This can be any string.
+- `type`: Тип перехода для добавления. Может быть любой строкой.
 
-#### Returns {/*returns*/}
+#### Возвращаемое значение {/*returns*/}
 
-`startTransition` does not return anything.
+`startTransition` ничего не возвращает.
 
-#### Caveats {/*caveats*/}
+#### Особенности {/*caveats*/}
 
-- If multiple transitions are combined, all Transition Types are collected. You can also add more than one type to a Transition.
-- Transition Types are reset after each commit. This means a `<Suspense>` fallback will associate the types after a `startTransition`, but revealing the content does not.
+- Если объединено несколько переходов, собираются все типы переходов. Вы также можете добавить более одного типа к переходу.
+- Типы переходов сбрасываются после каждого коммита. Это означает, что запасной вариант `<Suspense>` будет ассоциировать типы после `startTransition`, но раскрытие содержимого — нет.
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Adding the cause of a transition {/*adding-the-cause-of-a-transition*/}
+### Добавление причины перехода {/*adding-the-cause-of-a-transition*/}
 
-Call `addTransitionType` inside of `startTransition` to indicate the cause of a transition:
+Вызовите `addTransitionType` внутри `startTransition`, чтобы указать причину перехода:
 
 ``` [[1, 6, "unstable_addTransitionType"], [2, 5, "startTransition", [3, 6, "'submit-click'"]]
 import { startTransition, unstable_addTransitionType } from 'react';
@@ -76,22 +75,22 @@ function Submit({action) {
 
 ```
 
-When you call <CodeStep step={1}>addTransitionType</CodeStep> inside the scope of <CodeStep step={2}>startTransition</CodeStep>, React will associate <CodeStep step={3}>submit-click</CodeStep> as one of the causes for the Transition.
+Когда вы вызываете <CodeStep step={1}>addTransitionType</CodeStep> в области видимости <CodeStep step={2}>startTransition</CodeStep>, React будет ассоциировать <CodeStep step={3}>submit-click</CodeStep> как одну из причин перехода.
 
-Currently, Transition Types can be used to customize different animations based on what caused the Transition. You have three different ways to choose from for how to use them:
+В настоящее время типы переходов могут использоваться для настройки различных анимаций в зависимости от того, что вызвало переход. У вас есть три варианта выбора того, как их использовать:
 
-- [Customize animations using browser view transition types](#customize-animations-using-browser-view-transition-types)
-- [Customize animations using `View Transition` Class](#customize-animations-using-view-transition-class)
-- [Customize animations using `ViewTransition` events](#customize-animations-using-viewtransition-events) 
+- [Настройка анимаций с использованием типов переходов браузера](#customize-animations-using-browser-view-transition-types)
+- [Настройка анимаций с использованием класса `View Transition`](#customize-animations-using-view-transition-class)
+- [Настройка анимаций с использованием событий `ViewTransition`](#customize-animations-using-viewtransition-events)
 
-In the future, we plan to support more use cases for using the cause of a transition.
+В будущем мы планируем поддерживать больше сценариев использования причины перехода.
 
 ---
-### Customize animations using browser view transition types {/*customize-animations-using-browser-view-transition-types*/}
+### Настройка анимаций с использованием типов переходов браузера {/*customize-animations-using-browser-view-transition-types*/}
 
-When a [`ViewTransition`](/reference/react/ViewTransition) activates from a transition, React adds all the Transition Types as browser [view transition types](https://www.w3.org/TR/css-view-transitions-2/#active-view-transition-pseudo-examples) to the element.
+Когда [`ViewTransition`](/reference/react/ViewTransition) активируется из перехода, React добавляет все типы переходов в качестве браузерных [типов переходов представления](https://www.w3.org/TR/css-view-transitions-2/#active-view-transition-pseudo-examples) к элементу.
 
-This allows you to customize different animations based on CSS scopes:
+Это позволяет настраивать различные анимации на основе CSS-областей:
 
 ```js [11]
 function Component() {
@@ -118,9 +117,9 @@ startTransition(() => {
 
 ---
 
-### Customize animations using `View Transition` Class {/*customize-animations-using-view-transition-class*/}
+### Настройка анимаций с использованием класса `View Transition` {/*customize-animations-using-view-transition-class*/}
 
-You can customize animations for an activated `ViewTransition` based on type by passing an object to the View Transition Class:
+Вы можете настраивать анимации для активированного `ViewTransition` на основе типа, передавая объект в класс View Transition:
 
 ```js
 function Component() {
@@ -140,9 +139,9 @@ startTransition(() => {
 });
 ```
 
-If multiple types match, then they're joined together. If no types match then the special "default" entry is used instead. If any type has the value "none" then that wins and the ViewTransition is disabled (not assigned a name).
+Если совпадает несколько типов, они объединяются. Если типы не совпадают, используется специальная запись "default". Если какой-либо тип имеет значение "none", то он имеет приоритет, и ViewTransition отключается (не получает имени).
 
-These can be combined with enter/exit/update/layout/share props to match based on kind of trigger and Transition Type.
+Их можно комбинировать со свойствами enter/exit/update/layout/share для сопоставления на основе типа триггера и типа перехода.
 
 ```js
 <ViewTransition enter={{
@@ -157,9 +156,9 @@ exit={{
 
 ---
 
-### Customize animations using `ViewTransition` events {/*customize-animations-using-viewtransition-events*/}
+### Настройка анимаций с использованием событий `ViewTransition` {/*customize-animations-using-viewtransition-events*/}
 
-You can imperatively customize animations for an activated `ViewTransition` based on type using View Transition events:
+Вы можете императивно настраивать анимации для активированного `ViewTransition` на основе типа, используя события View Transition:
 
 ```
 <ViewTransition onUpdate={(inst, types) => {
@@ -173,10 +172,10 @@ You can imperatively customize animations for an activated `ViewTransition` base
 }}>
 ```
 
-This allows you to pick different imperative Animations based on the cause.
+Это позволяет выбирать различные императивные анимации в зависимости от причины.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
 ### TODO {/*todo2*/}
