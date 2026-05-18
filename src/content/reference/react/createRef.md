@@ -1,10 +1,9 @@
 ---
 title: createRef
 ---
-
 <Pitfall>
 
-`createRef` в основном используется для [классовых компонентов.](/reference/react/Component) Функциональные компоненты обычно используют [`useRef`](/reference/react/useRef) вместо этого.
+`createRef` в основном используется для [классовых компонентов](/reference/react/Component). Функциональные компоненты обычно вместо этого используют [`useRef`](/reference/react/useRef).
 
 </Pitfall>
 
@@ -29,7 +28,7 @@ class MyInput extends Component {
 
 ### `createRef()` {/*createref*/}
 
-Вызовите `createRef`, чтобы объявить [реф](/learn/referencing-values-with-refs) внутри [классового компонента.](/reference/react/Component)
+Вызовите `createRef` для объявления [рефа](/learn/referencing-values-with-refs) внутри [классового компонента.](/reference/react/Component)
 
 ```js
 import { createRef, Component } from 'react';
@@ -46,16 +45,16 @@ class MyComponent extends Component {
 
 `createRef` не принимает параметров.
 
-#### Возвращает {/*returns*/}
+#### Возвращаемое значение {/*returns*/}
 
 `createRef` возвращает объект с одним свойством:
 
-* `current`: Изначально установлено в `null`. Вы можете изменить это значение позже. Если вы передадите реф-объект React как атрибут `ref` узлу JSX, React установит его свойство `current`.
+* `current`: Изначально установлено в `null`. Позже вы можете установить его в другое значение. Если вы передадите реф-объект в React как атрибут `ref` узлу JSX, React установит его свойство `current`.
 
-#### Ограничения {/*caveats*/}
+#### Особенности {/*caveats*/}
 
-* `createRef` всегда возвращает *различный* объект. Это эквивалентно написанию `{ current: null }` самостоятельно.
-* В функциональном компоненте вам, вероятно, понадобится [`useRef`](/reference/react/useRef) вместо этого, который всегда возвращает один и тот же объект.
+* `createRef` всегда возвращает *разный* объект. Это эквивалентно написанию `{ current: null }` самостоятельно.
+* В функциональном компоненте вы, вероятно, захотите использовать [`useRef`](/reference/react/useRef) вместо этого, который всегда возвращает один и тот же объект.
 * `const ref = useRef()` эквивалентно `const [ref, _] = useState(() => createRef(null))`.
 
 ---
@@ -107,7 +106,7 @@ export default class Form extends Component {
 
 <Pitfall>
 
-`createRef` в основном используется для [классовых компонентов.](/reference/react/Component) Функциональные компоненты обычно используют [`useRef`](/reference/react/useRef) вместо этого.
+`createRef` в основном используется для [классовых компонентов](/reference/react/Component). Функциональные компоненты обычно вместо этого используют [`useRef`](/reference/react/useRef).
 
 </Pitfall>
 
