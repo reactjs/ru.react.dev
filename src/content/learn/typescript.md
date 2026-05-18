@@ -1,7 +1,8 @@
 ---
-title: С использованием TypeScript
+title: Using TypeScript
 re: https://github.com/reactjs/react.dev/issues/5960
 ---
+
 <Intro>
 
 TypeScript — популярный способ добавления определений типов в кодовые базы JavaScript. Из коробки TypeScript [поддерживает JSX](/learn/writing-markup-with-jsx), а полную поддержку React Web можно получить, добавив [`@types/react`](https://www.npmjs.com/package/@types/react) и [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) в ваш проект.
