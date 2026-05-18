@@ -1,6 +1,7 @@
 ---
-title: Видео React
+title: React Videos
 ---
+
 <Intro>
 
 Видео, посвященные обсуждению React и экосистемы React.
