@@ -5,53 +5,53 @@ re: https://github.com/reactjs/react.dev/issues/5960
 
 <Intro>
 
-TypeScript is a popular way to add type definitions to JavaScript codebases. Out of the box, TypeScript [supports JSX](/learn/writing-markup-with-jsx) and you can get full React Web support by adding [`@types/react`](https://www.npmjs.com/package/@types/react) and [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) to your project.
+TypeScript — популярный способ добавления определений типов в кодовые базы JavaScript. Из коробки TypeScript [поддерживает JSX](/learn/writing-markup-with-jsx), а полную поддержку React Web можно получить, добавив [`@types/react`](https://www.npmjs.com/package/@types/react) и [`@types/react-dom`](https://www.npmjs.com/package/@types/react-dom) в ваш проект.
 
 </Intro>
 
 <YouWillLearn>
 
-* [TypeScript with React Components](/learn/typescript#typescript-with-react-components)
-* [Examples of typing with Hooks](/learn/typescript#example-hooks)
-* [Common types from `@types/react`](/learn/typescript/#useful-types)
-* [Further learning locations](/learn/typescript/#further-learning)
+* [TypeScript с компонентами React](/learn/typescript#typescript-with-react-components)
+* [Примеры типизации с хуками](/learn/typescript#example-hooks)
+* [Общие типы из `@types/react`](/learn/typescript/#useful-types)
+* [Дополнительные ресурсы для изучения](/learn/typescript/#further-learning)
 
 </YouWillLearn>
 
-## Installation {/*installation*/}
+## Установка {/*installation*/}
 
-All [production-grade React frameworks](/learn/start-a-new-react-project#production-grade-react-frameworks) offer support for using TypeScript. Follow the framework specific guide for installation:
+Все [фреймворки React для продакшена](/learn/start-a-new-react-project#production-grade-react-frameworks) предлагают поддержку использования TypeScript. Следуйте руководству для конкретного фреймворка по установке:
 
 - [Next.js](https://nextjs.org/docs/app/building-your-application/configuring/typescript)
 - [Remix](https://remix.run/docs/en/1.19.2/guides/typescript)
 - [Gatsby](https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/)
 - [Expo](https://docs.expo.dev/guides/typescript/)
 
-### Adding TypeScript to an existing React project {/*adding-typescript-to-an-existing-react-project*/}
+### Добавление TypeScript в существующий проект React {/*adding-typescript-to-an-existing-react-project*/}
 
-To install the latest version of React's type definitions:
+Чтобы установить последнюю версию определений типов React:
 
 <TerminalBlock>
 npm install @types/react @types/react-dom
 </TerminalBlock>
 
-The following compiler options need to be set in your `tsconfig.json`:
+Следующие параметры компилятора необходимо установить в вашем `tsconfig.json`:
 
-1. `dom` must be included in [`lib`](https://www.typescriptlang.org/tsconfig/#lib) (Note: If no `lib` option is specified, `dom` is included by default).
-1. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) must be set to one of the valid options. `preserve` should suffice for most applications.
-  If you're publishing a library, consult the [`jsx` documentation](https://www.typescriptlang.org/tsconfig/#jsx) on what value to choose.
+1. `dom` должен быть включен в [`lib`](https://www.typescriptlang.org/tsconfig/#lib) (Примечание: Если опция `lib` не указана, `dom` включается по умолчанию).
+1. [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) должен быть установлен в одно из допустимых значений. `preserve` должно быть достаточно для большинства приложений.
+  Если вы публикуете библиотеку, обратитесь к документации по [`jsx`](https://www.typescriptlang.org/tsconfig/#jsx) относительно выбора значения.
 
-## TypeScript with React Components {/*typescript-with-react-components*/}
+## TypeScript с компонентами React {/*typescript-with-react-components*/}
 
 <Note>
 
-Every file containing JSX must use the `.tsx` file extension. This is a TypeScript-specific extension that tells TypeScript that this file contains JSX.
+Каждый файл, содержащий JSX, должен использовать расширение файла `.tsx`. Это специфичное для TypeScript расширение, которое сообщает TypeScript, что этот файл содержит JSX.
 
 </Note>
 
-Writing TypeScript with React is very similar to writing JavaScript with React. The key difference when working with a component is that you can provide types for your component's props. These types can be used for correctness checking and providing inline documentation in editors.
+Написание TypeScript с React очень похоже на написание JavaScript с React. Ключевое отличие при работе с компонентом заключается в том, что вы можете предоставлять типы для пропсов вашего компонента. Эти типы могут использоваться для проверки корректности и предоставления встроенной документации в редакторах.
 
-Taking the [`MyButton` component](/learn#components) from the [Quick Start](/learn) guide, we can add a type describing the `title` for the button:
+Взяв компонент [`MyButton`](/learn#components) из руководства [Быстрый старт](/learn), мы можем добавить тип, описывающий `title` для кнопки:
 
 <Sandpack>
 
@@ -80,11 +80,11 @@ export default App = AppTSX;
 
  <Note>
 
-These sandboxes can handle TypeScript code, but they do not run the type-checker. This means you can amend the TypeScript sandboxes to learn, but you won't get any type errors or warnings. To get type-checking, you can use the [TypeScript Playground](https://www.typescriptlang.org/play) or use a more fully-featured online sandbox.
+Эти песочницы могут обрабатывать код TypeScript, но они не запускают проверку типов. Это означает, что вы можете изменять песочницы TypeScript для обучения, но не получите никаких ошибок или предупреждений типов. Чтобы получить проверку типов, вы можете использовать [TypeScript Playground](https://www.typescript.org/play) или более полнофункциональную онлайн-песочницу.
 
 </Note>
 
-This inline syntax is the simplest way to provide types for a component, though once you start to have a few fields to describe it can become unwieldy. Instead, you can use an `interface` or `type` to describe the component's props:
+Этот синтаксис внутри строки — самый простой способ предоставления типов для компонента, хотя, как только у вас появится несколько полей для описания, это может стать громоздким. Вместо этого вы можете использовать `interface` или `type` для описания пропсов компонента:
 
 <Sandpack>
 
@@ -119,32 +119,32 @@ export default App = AppTSX;
 
 </Sandpack>
 
-The type describing your component's props can be as simple or as complex as you need, though they should be an object type described with either a `type` or `interface`. You can learn about how TypeScript describes objects in [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html) but you may also be interested in using [Union Types](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types) to describe a prop that can be one of a few different types and the [Creating Types from Types](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) guide for more advanced use cases.
+Тип, описывающий пропсы вашего компонента, может быть простым или сложным, насколько вам нужно, хотя он должен быть объектным типом, описанным с помощью `type` или `interface`. Вы можете узнать, как TypeScript описывает объекты, в разделе [Object Types](https://www.typescript.org/docs/handbook/2/objects.html), но вас также могут заинтересовать [Union Types](https://www.typescript.org/docs/handbook/2/everyday-types.html#union-types) для описания пропса, который может быть одним из нескольких разных типов, и руководство [Creating Types from Types](https://www.typescript.org/docs/handbook/2/types-from-types.html) для более продвинутых сценариев использования.
 
 
-## Example Hooks {/*example-hooks*/}
+## Примеры хуков {/*example-hooks*/}
 
-The type definitions from `@types/react` include types for the built-in Hooks, so you can use them in your components without any additional setup. They are built to take into account the code you write in your component, so you will get [inferred types](https://www.typescriptlang.org/docs/handbook/type-inference.html) a lot of the time and ideally do not need to handle the minutiae of providing the types. 
+Определения типов из `@types/react` включают типы для встроенных хуков, поэтому вы можете использовать их в своих компонентах без дополнительной настройки. Они созданы с учетом кода, который вы пишете в своем компоненте, поэтому во многих случаях вы будете получать [выведенные типы](https://www.typescript.org/docs/handbook/type-inference.html) и в идеале вам не нужно будет заниматься мелочами предоставления типов.
 
-However, we can look at a few examples of how to provide types for Hooks.
+Однако давайте рассмотрим несколько примеров того, как предоставлять типы для хуков.
 
 ### `useState` {/*typing-usestate*/}
 
-The [`useState` Hook](/reference/react/useState) will re-use the value passed in as the initial state to determine what the type of the value should be. For example:
+Хук [`useState`](/reference/react/useState) будет повторно использовать значение, переданное в качестве начального состояния, для определения типа значения. Например:
 
 ```ts
-// Infer the type as "boolean"
+// Вывести тип как "boolean"
 const [enabled, setEnabled] = useState(false);
 ```
 
-This will assign the type of `boolean` to `enabled`, and `setEnabled` will be a function accepting either a `boolean` argument, or a function that returns a `boolean`. If you want to explicitly provide a type for the state, you can do so by providing a type argument to the `useState` call:
+Это присвоит тип `boolean` переменной `enabled`, а `setEnabled` будет функцией, принимающей либо аргумент типа `boolean`, либо функцию, возвращающую `boolean`. Если вы хотите явно указать тип для состояния, вы можете сделать это, предоставив аргумент типа вызову `useState`:
 
-```ts 
-// Explicitly set the type to "boolean"
+```ts
+// Явно установить тип как "boolean"
 const [enabled, setEnabled] = useState<boolean>(false);
 ```
 
-This isn't very useful in this case, but a common case where you may want to provide a type is when you have a union type. For example, `status` here can be one of a few different strings:
+В данном случае это не очень полезно, но распространенный случай, когда вам может понадобиться предоставить тип, — это когда у вас есть объединяющий тип. Например, `status` здесь может быть одной из нескольких разных строк:
 
 ```ts
 type Status = "idle" | "loading" | "success" | "error";
@@ -152,7 +152,7 @@ type Status = "idle" | "loading" | "success" | "error";
 const [status, setStatus] = useState<Status>("idle");
 ```
 
-Or, as recommended in [Principles for structuring state](/learn/choosing-the-state-structure#principles-for-structuring-state), you can group related state as an object and describe the different possibilities via object types:
+Или, как рекомендуется в [Принципах структурирования состояния](/learn/choosing-the-state-structure#principles-for-structuring-state), вы можете сгруппировать связанное состояние как объект и описать различные возможности с помощью объектных типов:
 
 ```ts
 type RequestState =
@@ -166,7 +166,7 @@ const [requestState, setRequestState] = useState<RequestState>({ status: 'idle' 
 
 ### `useReducer` {/*typing-usereducer*/}
 
-The [`useReducer` Hook](/reference/react/useReducer) is a more complex Hook that takes a reducer function and an initial state. The types for the reducer function are inferred from the initial state. You can optionally provide a type argument to the `useReducer` call to provide a type for the state, but it is often better to set the type on the initial state instead:
+Хук [`useReducer`](/reference/react/useReducer) — это более сложный хук, который принимает функцию-редьюсер и начальное состояние. Типы для функции-редьюсера выводятся из начального состояния. Вы можете опционально предоставить аргумент типа вызову `useReducer` для предоставления типа состояния, но часто лучше вместо этого установить тип для начального состояния:
 
 <Sandpack>
 
@@ -174,7 +174,7 @@ The [`useReducer` Hook](/reference/react/useReducer) is a more complex Hook that
 import {useReducer} from 'react';
 
 interface State {
-   count: number 
+   count: number
 };
 
 type CounterAction =
@@ -221,14 +221,14 @@ export default App = AppTSX;
 </Sandpack>
 
 
-We are using TypeScript in a few key places:
+Мы используем TypeScript в нескольких ключевых местах:
 
- - `interface State` describes the shape of the reducer's state.
- - `type CounterAction` describes the different actions which can be dispatched to the reducer.
- - `const initialState: State` provides a type for the initial state, and also the type which is used by `useReducer` by default.
- - `stateReducer(state: State, action: CounterAction): State` sets the types for the reducer function's arguments and return value.
+ - `interface State` описывает структуру состояния редьюсера.
+ - `type CounterAction` описывает различные действия, которые могут быть отправлены редьюсеру.
+ - `const initialState: State` предоставляет тип для начального состояния, а также тип, который используется `useReducer` по умолчанию.
+ - `stateReducer(state: State, action: CounterAction): State` устанавливает типы для аргументов и возвращаемого значения функции-редьюсера.
 
-A more explicit alternative to setting the type on `initialState` is to provide a type argument to `useReducer`:
+Более явной альтернативой установке типа для `initialState` является предоставление аргумента типа для `useReducer`:
 
 ```ts
 import { stateReducer, State } from './your-reducer-implementation';
@@ -242,9 +242,9 @@ export default function App() {
 
 ### `useContext` {/*typing-usecontext*/}
 
-The [`useContext` Hook](/reference/react/useContext) is a technique for passing data down the component tree without having to pass props through components. It is used by creating a provider component and often by creating a Hook to consume the value in a child component.
+Хук [`useContext`](/reference/react/useContext) — это техника передачи данных вниз по дереву компонентов без необходимости передавать пропсы через компоненты. Он используется путем создания компонента-провайдера и часто путем создания хука для потребления значения в дочернем компоненте.
 
-The type of the value provided by the context is inferred from the value passed to the `createContext` call:
+Тип значения, предоставляемого контекстом, выводится из значения, переданного вызову `createContext`:
 
 <Sandpack>
 
@@ -284,22 +284,22 @@ export default App = AppTSX;
 
 </Sandpack>
 
-This technique works when you have a default value which makes sense - but there are occasionally cases when you do not, and in those cases `null` can feel reasonable as a default value. However, to allow the type-system to understand your code, you need to explicitly set `ContextShape | null` on the `createContext`. 
+Этот метод работает, когда у вас есть значение по умолчанию, которое имеет смысл — но иногда бывают случаи, когда его нет, и в этих случаях `null` может показаться разумным в качестве значения по умолчанию. Однако, чтобы система типов понимала ваш код, вам нужно явно установить `ContextShape | null` для `createContext`.
 
-This causes the issue that you need to eliminate the `| null` in the type for context consumers. Our recommendation is to have the Hook do a runtime check for it's existence and throw an error when not present:
+Это вызывает проблему, заключающуюся в том, что вам нужно устранить `| null` в типе для потребителей контекста. Наша рекомендация — использовать хук для проверки во время выполнения на его существование и выбрасывать ошибку, когда он не присутствует:
 
 ```js {5, 16-20}
 import { createContext, useContext, useState, useMemo } from 'react';
 
-// This is a simpler example, but you can imagine a more complex object here
+// Это более простой пример, но вы можете представить здесь более сложный объект
 type ComplexObject = {
   kind: string
 };
 
-// The context is created with `| null` in the type, to accurately reflect the default value.
+// Контекст создается с `| null` в типе, чтобы точно отразить значение по умолчанию.
 const Context = createContext<ComplexObject | null>(null);
 
-// The `| null` will be removed via the check in the Hook.
+// `| null` будет удален через проверку в хуке.
 const useGetComplexObject = () => {
   const object = useContext(Context);
   if (!object) { throw new Error("useGetComplexObject must be used within a Provider") }
@@ -329,17 +329,17 @@ function MyComponent() {
 
 ### `useMemo` {/*typing-usememo*/}
 
-The [`useMemo`](/reference/react/useMemo) Hooks will create/re-access a memorized value from a function call, re-running the function only when dependencies passed as the 2nd parameter are changed. The result of calling the Hook is inferred from the return value from the function in the first parameter. You can be more explicit by providing a type argument to the Hook.
+Хук [`useMemo`](/reference/react/useMemo) создает/повторно получает доступ к запомненному значению из вызова функции, повторно запуская функцию только при изменении зависимостей, переданных в качестве второго параметра. Результат вызова хука выводится из возвращаемого значения функции в первом параметре. Вы можете быть более явными, предоставив аргумент типа для хука.
 
 ```ts
-// The type of visibleTodos is inferred from the return value of filterTodos
+// Тип visibleTodos выводится из возвращаемого значения filterTodos
 const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
 ```
 
 
 ### `useCallback` {/*typing-usecallback*/}
 
-The [`useCallback`](/reference/react/useCallback) provide a stable reference to a function as long as the dependencies passed into the second parameter are the same. Like `useMemo`, the function's type is inferred from the return value of the function in the first parameter, and you can be more explicit by providing a type argument to the Hook.
+Хук [`useCallback`](/reference/react/useCallback) предоставляет стабильную ссылку на функцию до тех пор, пока зависимости, переданные во второй параметр, остаются прежними. Как и `useMemo`, тип функции выводится из возвращаемого значения функции в первом параметре, и вы можете быть более явными, предоставив аргумент типа для хука.
 
 
 ```ts
@@ -348,9 +348,9 @@ const handleClick = useCallback(() => {
 }, [todos]);
 ```
 
-When working in TypeScript strict mode `useCallback` requires adding types for the parameters in your callback. This is because the type of the callback is inferred from the return value of the function, and without parameters the type cannot be fully understood.
+При работе в строгом режиме TypeScript `useCallback` требует добавления типов для параметров в вашем колбэке. Это связано с тем, что тип колбэка выводится из возвращаемого значения функции, и без параметров тип не может быть полностью понят.
 
-Depending on your code-style preferences, you could use the `*EventHandler` functions from the React types to provide the type for the event handler at the same time as defining the callback: 
+В зависимости от ваших предпочтений в стиле кода, вы можете использовать функции `*EventHandler` из типов React для предоставления типа для обработчика событий одновременно с определением колбэка:
 
 ```ts
 import { useState, useCallback } from 'react';
@@ -361,7 +361,7 @@ export default function Form() {
   const handleChange = useCallback<React.ChangeEventHandler<HTMLInputElement>>((event) => {
     setValue(event.currentTarget.value);
   }, [setValue])
-  
+
   return (
     <>
       <input value={value} onChange={handleChange} />
@@ -371,13 +371,13 @@ export default function Form() {
 }
 ```
 
-## Useful Types {/*useful-types*/}
+## Полезные типы {/*useful-types*/}
 
-There is quite an expansive set of types which come from the `@types/react` package, it is worth a read when you feel comfortable with how React and TypeScript interact. You can find them [in React's folder in DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts). We will cover a few of the more common types here.
+Пакет `@types/react` содержит довольно обширный набор типов, стоит ознакомиться с ним, когда вы почувствуете себя уверенно во взаимодействии React и TypeScript. Вы можете найти их [в папке React в DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/index.d.ts). Здесь мы рассмотрим несколько наиболее распространенных типов.
 
-### DOM Events {/*typing-dom-events*/}
+### DOM События {/*typing-dom-events*/}
 
-When working with DOM events in React, the type of the event can often be inferred from the event handler. However, when you want to extract a function to be passed to an event handler, you will need to explicitly set the type of the event.
+При работе с DOM-событиями в React тип события часто может быть выведен из обработчика событий. Однако, когда вы хотите выделить функцию для передачи в обработчик событий, вам нужно будет явно указать тип события.
 
 <Sandpack>
 
@@ -407,15 +407,15 @@ export default App = AppTSX;
 
 </Sandpack>
 
-There are many types of events provided in the React types - the full list can be found [here](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373) which is based on the [most popular events from the DOM](https://developer.mozilla.org/en-US/docs/Web/Events).
+В типах React предоставляется множество типов событий — полный список можно найти [здесь](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/b580df54c0819ec9df62b0835a315dd48b8594a9/types/react/index.d.ts#L1247C1-L1373), который основан на [наиболее популярных событиях DOM](https://developer.mozilla.org/en-US/docs/Web/Events).
 
-When determining the type you are looking for you can first look at the hover information for the event handler you are using, which will show the type of the event.
+При определении нужного типа вы можете сначала посмотреть информацию при наведении на используемый обработчик событий, которая покажет тип события.
 
-If you need to use an event that is not included in this list, you can use the `React.SyntheticEvent` type, which is the base type for all events.
+Если вам нужно использовать событие, которое не включено в этот список, вы можете использовать тип `React.SyntheticEvent`, который является базовым типом для всех событий.
 
 ### Children {/*typing-children*/}
 
-There are two common paths to describing the children of a component. The first is to use the `React.ReactNode` type, which is a union of all the possible types that can be passed as children in JSX:
+Существует два распространенных способа описания дочерних элементов компонента. Первый — использовать тип `React.ReactNode`, который является объединением всех возможных типов, которые могут быть переданы в качестве дочерних элементов в JSX:
 
 ```ts
 interface ModalRendererProps {
@@ -424,7 +424,7 @@ interface ModalRendererProps {
 }
 ```
 
-This is a very broad definition of children. The second is to use the `React.ReactElement` type, which is only JSX elements and not JavaScript primitives like strings or numbers:
+Это очень широкое определение дочерних элементов. Второй — использовать тип `React.ReactElement`, который представляет собой только JSX-элементы, а не примитивы JavaScript, такие как строки или числа:
 
 ```ts
 interface ModalRendererProps {
@@ -433,13 +433,13 @@ interface ModalRendererProps {
 }
 ```
 
-Note, that you cannot use TypeScript to describe that the children are a certain type of JSX elements, so you cannot use the type-system to describe a component which only accepts `<li>` children. 
+Обратите внимание, что вы не можете использовать TypeScript для описания того, что дочерние элементы являются определенным типом JSX-элементов, поэтому вы не можете использовать систему типов для описания компонента, который принимает только дочерние элементы `<li>`.
 
-You can see an example of both `React.ReactNode` and `React.ReactElement` with the type-checker in [this TypeScript playground](https://www.typescriptlang.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA).
+Вы можете увидеть примеры как `React.ReactNode`, так и `React.ReactElement` с проверкой типов в [этой песочнице TypeScript](https://www.typescript.org/play?#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wChSB6CxYmAOmXRgDkIATJOdNJMGAZzgwAFpxAR+8YADswAVwGkZMJFEzpOjDKw4AFHGEEBvUnDhphwADZsi0gFw0mDWjqQBuUgF9yaCNMlENzgAXjgACjADfkctFnYkfQhDAEpQgD44AB42YAA3dKMo5P46C2tbJGkvLIpcgt9-QLi3AEEwMFCItJDMrPTTbIQ3dKywdIB5aU4kKyQQKpha8drhhIGzLLWODbNs3b3s8YAxKBQAcwXpAThMaGWDvbH0gFloGbmrgQfBzYpd1YjQZbEYARkB6zMwO2SHSAAlZlYIBCdtCRkZpHIrFYahQYQD8UYYFA5EhcfjyGYqHAXnJAsIUHlOOUbHYhMIIHJzsI0Qk4P9SLUBuRqXEXEwAKKfRZcNA8PiCfxWACecAAUgBlAAacFm80W-CU11U6h4TgwUv11yShjgJjMLMqDnN9Dilq+nh8pD8AXgCHdMrCkWisVoAet0R6fXqhWKhjKllZVVxMcavpd4Zg7U6Qaj+2hmdG4zeRF10uu-Aeq0LBfLMEe-V+T2L7zLVu+FBWLdLeq+lc7DYFf39deFVOotMCACNOCh1dq219a+30uC8YWoZsRyuEdjkevR8uvoVMdjyTWt4WiSSydXD4NqZP4AymeZE072ZzuUeZQKheQgA).
 
 ### Style Props {/*typing-style-props*/}
 
-When using inline styles in React, you can use `React.CSSProperties` to describe the object passed to the `style` prop. This type is a union of all the possible CSS properties, and is a good way to ensure you are passing valid CSS properties to the `style` prop, and to get auto-complete in your editor.
+При использовании встроенных стилей в React вы можете использовать `React.CSSProperties` для описания объекта, переданного в пропс `style`. Этот тип является объединением всех возможных CSS-свойств и является хорошим способом убедиться, что вы передаете допустимые CSS-свойства в пропс `style`, а также получить автодополнение в вашем редакторе.
 
 ```ts
 interface MyComponentProps {
@@ -447,17 +447,17 @@ interface MyComponentProps {
 }
 ```
 
-## Further learning {/*further-learning*/}
+## Дополнительное обучение {/*further-learning*/}
 
-This guide has covered the basics of using TypeScript with React, but there is a lot more to learn.
-Individual API pages on the docs may contain more in-depth documentation on how to use them with TypeScript.
+Это руководство охватило основы использования TypeScript с React, но есть еще много чего узнать.
+Отдельные страницы API в документации могут содержать более подробную документацию о том, как использовать их с TypeScript.
 
-We recommend the following resources:
+Мы рекомендуем следующие ресурсы:
 
- - [The TypeScript handbook](https://www.typescriptlang.org/docs/handbook/) is the official documentation for TypeScript, and covers most key language features.
+ - [Справочник по TypeScript](https://www.typescriptlang.org/docs/handbook/) — это официальная документация по TypeScript, охватывающая большинство ключевых возможностей языка.
 
- - [The TypeScript release notes](https://devblogs.microsoft.com/typescript/) cover new features in depth.
+ - [Заметки о выпуске TypeScript](https://devblogs.microsoft.com/typescript/) подробно освещают новые возможности.
 
- - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) is a community-maintained cheatsheet for using TypeScript with React, covering a lot of useful edge cases and providing more breadth than this document.
+ - [React TypeScript Cheatsheet](https://react-typescript-cheatsheet.netlify.app/) — это поддерживаемый сообществом справочник по использованию TypeScript с React, охватывающий множество полезных крайних случаев и предоставляющий более широкое освещение, чем этот документ.
 
- - [TypeScript Community Discord](https://discord.com/invite/typescript) is a great place to ask questions and get help with TypeScript and React issues.
+ - [TypeScript Community Discord](https://discord.com/invite/typescript) — отличное место, чтобы задавать вопросы и получать помощь по проблемам с TypeScript и React.
