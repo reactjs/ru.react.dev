@@ -2,51 +2,51 @@
 title: "React Labs: What We've Been Working On – February 2024"
 author: Joseph Savona, Ricky Hanlon, Andrew Clark, Matt Carroll, and Dan Abramov
 date: 2024/02/15
-description: In React Labs posts, we write about projects in active research and development. We’ve made significant progress since our last update, and we’d like to share our progress.
+description: В публикациях React Labs мы пишем о проектах, находящихся в стадии активных исследований и разработок. С момента нашего последнего обновления мы добились значительного прогресса и хотели бы поделиться им.
 ---
 
-February 15, 2024 by [Joseph Savona](https://twitter.com/en_JS), [Ricky Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), [Matt Carroll](https://twitter.com/mattcarrollcode), and [Dan Abramov](https://bsky.app/profile/danabra.mov).
+15 февраля 2024 г. [Joseph Savona](https://twitter.com/en_JS), [Ricky Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), [Matt Carroll](https://twitter.com/mattcarrollcode) и [Dan Abramov](https://bsky.app/profile/danabra.mov).
 
 ---
 
 <Intro>
 
-In React Labs posts, we write about projects in active research and development. We’ve made significant progress since our [last update](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023), and we’d like to share our progress.
+В постах React Labs мы пишем о проектах, находящихся в активной стадии исследований и разработок. Мы добились значительного прогресса с момента нашего [последнего обновления](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023), и мы хотели бы поделиться нашим прогрессом.
 
 </Intro>
 
 <Note>
 
-React Conf 2024 is scheduled for May 15–16 in Henderson, Nevada! If you’re interested in attending React Conf in person, you can [sign up for the ticket lottery](https://forms.reform.app/bLaLeE/react-conf-2024-ticket-lottery/1aRQLK) until February 28th. 
+React Conf 2024 запланирована на 15–16 мая в Хендерсоне, Невада! Если вы заинтересованы в посещении React Conf лично, вы можете [зарегистрироваться для участия в лотерее билетов](https://forms.reform.app/bLaLeE/react-conf-2024-ticket-lottery/1aRQLK) до 28 февраля.
 
-For more info on tickets, free streaming, sponsoring, and more, see [the React Conf website](https://conf.react.dev).
+Для получения дополнительной информации о билетах, бесплатной трансляции, спонсорстве и многом другом посетите [сайт React Conf](https://conf.react.dev).
 
 </Note>
 
 ---
 
-## React Compiler {/*react-compiler*/}
+## Компилятор React {/*react-compiler*/}
 
-React Compiler is no longer a research project: the compiler now powers instagram.com in production, and we are working to ship the compiler across additional surfaces at Meta and to prepare the first open source release.
+Компилятор React больше не является исследовательским проектом: компилятор теперь обеспечивает работу instagram.com в продакшене, и мы работаем над внедрением компилятора на других поверхностях в Meta и подготовкой первого релиза с открытым исходным кодом.
 
-As discussed in our [previous post](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-optimizing-compiler), React can *sometimes* re-render too much when state changes. Since the early days of React our solution for such cases has been manual memoization. In our current APIs, this means applying the [`useMemo`](/reference/react/useMemo), [`useCallback`](/reference/react/useCallback), and [`memo`](/reference/react/memo) APIs to manually tune how much React re-renders on state changes. But manual memoization is a compromise. It clutters up our code, is easy to get wrong, and requires extra work to keep up to date.
+Как обсуждалось в нашем [предыдущем посте](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-optimizing-compiler), React *иногда* может излишне перерисовывать интерфейс при изменении состояния. С самых ранних дней React нашим решением для таких случаев была ручная мемоизация. В наших текущих API это означает применение [`useMemo`](/reference/react/useMemo), [`useCallback`](/reference/react/useCallback) и [`memo`](/reference/react/memo) для ручной настройки того, насколько React перерисовывает интерфейс при изменении состояния. Но ручная мемоизация — это компромисс. Она загромождает наш код, её легко сделать неправильно, и она требует дополнительных усилий для поддержания в актуальном состоянии.
 
-Manual memoization is a reasonable compromise, but we weren’t satisfied. Our vision is for React to *automatically* re-render just the right parts of the UI when state changes, *without compromising on React’s core mental model*. We believe that React’s approach — UI as a simple function of state, with standard JavaScript values and idioms — is a key part of why React has been approachable for so many developers. That’s why we’ve invested in building an optimizing compiler for React.
+Ручная мемоизация — разумный компромисс, но мы не были удовлетворены. Наше видение состоит в том, чтобы React *автоматически* перерисовывал только нужные части интерфейса при изменении состояния, *не жертвуя основной ментальной моделью React*. Мы считаем, что подход React — UI как простая функция состояния, со стандартными значениями и идиомами JavaScript — является ключевой частью того, почему React был доступен для стольких разработчиков. Именно поэтому мы инвестировали в создание оптимизирующего компилятора для React.
 
-JavaScript is a notoriously challenging language to optimize, thanks to its loose rules and dynamic nature. React Compiler is able to compile code safely by modeling both the rules of JavaScript *and* the “rules of React”. For example, React components must be idempotent — returning the same value given the same inputs — and can’t mutate props or state values. These rules limit what developers can do and help to carve out a safe space for the compiler to optimize.
+JavaScript — это печально известная сложная для оптимизации язык, благодаря своим свободным правилам и динамической природе. Компилятор React способен безопасно компилировать код, моделируя как правила JavaScript, так и «правила React». Например, компоненты React должны быть идемпотентными — возвращать одно и то же значение при одинаковых входных данных — и не могут изменять пропсы или значения состояния. Эти правила ограничивают то, что могут делать разработчики, и помогают создать безопасное пространство для оптимизации компилятором.
 
-Of course, we understand that developers sometimes bend the rules a bit, and our goal is to make React Compiler work out of the box on as much code as possible. The compiler attempts to detect when code doesn’t strictly follow React’s rules and will either compile the code where safe or skip compilation if it isn’t safe. We’re testing against Meta’s large and varied codebase in order to help validate this approach.
+Конечно, мы понимаем, что разработчики иногда немного нарушают правила, и наша цель — сделать так, чтобы Компилятор React работал «из коробки» с как можно большим количеством кода. Компилятор пытается обнаружить, когда код не строго следует правилам React, и либо компилирует код там, где это безопасно, либо пропускает компиляцию, если это небезопасно. Мы тестируем на большой и разнообразной кодовой базе Meta, чтобы помочь проверить этот подход.
 
-For developers who are curious about making sure their code follows React’s rules, we recommend [enabling Strict Mode](/reference/react/StrictMode) and [configuring React’s ESLint plugin](/learn/editor-setup#linting). These tools can help to catch subtle bugs in your React code, improving the quality of your applications today, and future-proofs your applications for upcoming features such as React Compiler. We are also working on consolidated documentation of the rules of React and updates to our ESLint plugin to help teams understand and apply these rules to create more robust apps.
+Разработчикам, которые хотят убедиться, что их код соответствует правилам React, мы рекомендуем [включить Strict Mode](/reference/react/StrictMode) и [настроить ESLint-плагин React](/learn/editor-setup#linting). Эти инструменты могут помочь выявить тонкие ошибки в вашем коде React, улучшая качество ваших приложений сегодня и подготавливая их к будущим функциям, таким как Компилятор React. Мы также работаем над унифицированной документацией правил React и обновлениями нашего ESLint-плагина, чтобы помочь командам понять и применять эти правила для создания более надежных приложений.
 
-To see the compiler in action, you can check out our [talk from last fall](https://www.youtube.com/watch?v=qOQClO3g8-Y). At the time of the talk, we had early experimental data from trying React Compiler on one page of instagram.com. Since then, we shipped the compiler to production across instagram.com. We’ve also expanded our team to accelerate the rollout to additional surfaces at Meta and to open source. We’re excited about the path ahead and will have more to share in the coming months.
+Чтобы увидеть компилятор в действии, вы можете посмотреть наш [доклад с прошлого осени](https://www.youtube.com/watch?v=qOQClO3g8-Y). На момент доклада у нас были ранние экспериментальные данные о попытке использования Компилятора React на одной странице instagram.com. С тех пор мы внедрили компилятор в продакшен на всем instagram.com. Мы также расширили нашу команду, чтобы ускорить внедрение на других поверхностях в Meta и для открытия исходного кода. Мы воодушевлены предстоящим путем и поделимся большим количеством информации в ближайшие месяцы.
 
-## Actions {/*actions*/}
+## Действия {/*actions*/}
 
 
-We [previously shared](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components) that we were exploring solutions for sending data from the client to the server with Server Actions, so that you can execute database mutations and implement forms. During development of Server Actions, we extended these APIs to support data handling in client-only applications as well.
+Мы [ранее делились](/blog/2023/03/22/react-labs-what-we-have-been-working-on-march-2023#react-server-components), что исследовали решения для отправки данных с клиента на сервер с помощью Server Actions, чтобы вы могли выполнять мутации базы данных и реализовывать формы. Во время разработки Server Actions мы расширили эти API для поддержки обработки данных и в клиентских приложениях.
 
-We refer to this broader collection of features as simply "Actions". Actions allow you to pass a function to DOM elements such as [`<form/>`](/reference/react-dom/components/form):
+Мы называем эту более широкую коллекцию функций просто «Действиями» (Actions). Действия позволяют передавать функцию в DOM-элементы, такие как [`<form/>`](/reference/react-dom/components/form):
 
 ```js
 <form action={search}>
@@ -55,66 +55,66 @@ We refer to this broader collection of features as simply "Actions". Actions all
 </form>
 ```
 
-The `action` function can operate synchronously or asynchronously. You can define them on the client side using standard JavaScript or on the server with the  [`'use server'`](/reference/rsc/use-server) directive. When using an action, React will manage the life cycle of the data submission for you, providing hooks like [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), and [`useActionState`](/reference/react/useActionState) to access the current state and response of the form action.
+Функция `action` может работать синхронно или асинхронно. Вы можете определить их на стороне клиента, используя стандартный JavaScript, или на сервере с помощью директивы [`'use server'`](/reference/rsc/use-server). При использовании действия React будет управлять жизненным циклом отправки данных за вас, предоставляя хуки, такие как [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) и [`useActionState`](/reference/react/useActionState), для доступа к текущему состоянию и ответу действия формы.
 
-By default, Actions are submitted within a [transition](/reference/react/useTransition), keeping the current page interactive while the action is processing. Since Actions support async functions, we've also added the ability to use `async/await` in transitions. This allows you to show pending UI with the `isPending` state of a transition when an async request like `fetch` starts, and show the pending UI all the way through the update being applied. 
+По умолчанию Действия отправляются в рамках [перехода](/reference/react/useTransition), сохраняя текущую страницу интерактивной во время обработки действия. Поскольку Действия поддерживают асинхронные функции, мы также добавили возможность использовать `async/await` в переходах. Это позволяет вам отображать ожидающий UI с состоянием `isPending` перехода при начале асинхронного запроса, такого как `fetch`, и отображать ожидающий UI вплоть до применения обновления.
 
-Alongside Actions, we're introducing a feature named [`useOptimistic`](/reference/react/useOptimistic) for managing optimistic state updates. With this hook, you can apply temporary updates that are automatically reverted once the final state commits. For Actions, this allows you to optimistically set the final state of the data on the client, assuming the submission is successful, and revert to the value for data received from the server. It works using regular `async`/`await`, so it works the same whether you're using `fetch` on the client, or a Server Action from the server.
+Наряду с Действиями мы представляем функцию под названием [`useOptimistic`](/reference/react/useOptimistic) для управления оптимистичными обновлениями состояния. С помощью этого хука вы можете применять временные обновления, которые автоматически отменяются после фиксации окончательного состояния. Для Действий это позволяет оптимистично установить конечное состояние данных на клиенте, предполагая успешную отправку, и вернуться к значению для данных, полученных с сервера. Это работает с использованием обычного `async`/`await`, поэтому работает одинаково, независимо от того, используете ли вы `fetch` на клиенте или Server Action с сервера.
 
-Library authors can implement custom `action={fn}` props in their own components with `useTransition`. Our intent is for libraries to adopt the Actions pattern when designing their component APIs, to provide a consistent experience for React developers. For example, if your library provides a `<Calendar onSelect={eventHandler}>` component, consider also exposing a `<Calendar selectAction={action}>` API, too.
+Авторы библиотек могут реализовать пользовательские пропсы `action={fn}` в своих компонентах с помощью `useTransition`. Наше намерение состоит в том, чтобы библиотеки принимали паттерн Действий при проектировании своих API компонентов, чтобы обеспечить согласованный опыт для разработчиков React. Например, если ваша библиотека предоставляет компонент `<Calendar onSelect={eventHandler}>`, рассмотрите возможность также предоставления API `<Calendar selectAction={action}>`.
 
-While we initially focused on Server Actions for client-server data transfer, our philosophy for React is to provide the same programming model across all platforms and environments. When possible, if we introduce a feature on the client, we aim to make it also work on the server, and vice versa. This philosophy allows us to create a single set of APIs that work no matter where your app runs, making it easier to upgrade to different environments later. 
+Хотя изначально мы сосредоточились на Server Actions для передачи данных между клиентом и сервером, наша философия React заключается в предоставлении единой модели программирования для всех платформ и сред. По возможности, если мы вводим функцию на клиенте, мы стремимся сделать так, чтобы она работала и на сервере, и наоборот. Эта философия позволяет нам создать единый набор API, которые работают независимо от того, где работает ваше приложение, что упрощает обновление до различных сред в будущем.
 
-Actions are now available in the Canary channel and will ship in the next release of React.
+Действия теперь доступны в канале Canary и будут выпущены в следующем релизе React.
 
-## New Features in React Canary {/*new-features-in-react-canary*/}
+## Новые возможности в React Canary {/*new-features-in-react-canary*/}
 
-We introduced [React Canaries](/blog/2023/05/03/react-canaries) as an option to adopt individual new stable features as soon as their design is close to final, before they’re released in a stable semver version. 
+Мы представили [React Canaries](/blog/2023/05/03/react-canaries) как опцию для принятия отдельных новых стабильных функций, как только их дизайн будет близок к завершению, до их выпуска в стабильной версии semver.
 
-Canaries are a change to the way we develop React. Previously, features would be researched and built privately inside of Meta, so users would only see the final polished product when released to Stable. With Canaries, we’re building in public with the help of the community to finalize features we share in the React Labs blog series. This means you hear about new features sooner, as they’re being finalized instead of after they’re complete.
+Canaries — это изменение в том, как мы разрабатываем React. Ранее функции исследовались и разрабатывались в частном порядке внутри Meta, поэтому пользователи видели только окончательный отполированный продукт при его выпуске в Stable. С Canaries мы разрабатываем публично с помощью сообщества, чтобы завершить функции, которыми мы делимся в серии блогов React Labs. Это означает, что вы узнаете о новых функциях раньше, когда они будут завершаться, а не после того, как они будут готовы.
 
-React Server Components, Asset Loading, Document Metadata, and Actions have all landed in the React Canary, and we've added docs for these features on react.dev:
+React Server Components, Asset Loading, Document Metadata и Actions были добавлены в React Canary, и мы добавили документацию для этих функций на react.dev:
 
-- **Directives**: [`"use client"`](/reference/rsc/use-client) and [`"use server"`](/reference/rsc/use-server) are bundler features designed for full-stack React frameworks. They mark the "split points" between the two environments: `"use client"` instructs the bundler to generate a `<script>` tag (like [Astro Islands](https://docs.astro.build/en/concepts/islands/#creating-an-island)), while `"use server"` tells the bundler to generate a POST endpoint (like [tRPC Mutations](https://trpc.io/docs/concepts)). Together, they let you write reusable components that compose client-side interactivity with the related server-side logic.
+- **Директивы**: [`"use client"`](/reference/rsc/use-client) и [`"use server"`](/reference/rsc/use-server) — это функции бандлера, предназначенные для полнофункциональных фреймворков React. Они обозначают «точки разделения» между двумя средами: `"use client"` инструктирует бандлер сгенерировать тег `<script>` (как [Astro Islands](https://docs.astro.build/en/concepts/islands/#creating-an-island)), а `"use server"` указывает бандлеру сгенерировать конечную точку POST (как [tRPC Mutations](https://trpc.io/docs/concepts)). Вместе они позволяют писать повторно используемые компоненты, которые объединяют клиентскую интерактивность с соответствующей серверной логикой.
 
-- **Document Metadata**: we added built-in support for rendering [`<title>`](/reference/react-dom/components/title), [`<meta>`](/reference/react-dom/components/meta), and metadata [`<link>`](/reference/react-dom/components/link) tags anywhere in your component tree. These work the same way in all environments, including fully client-side code, SSR, and RSC. This provides built-in support for features pioneered by libraries like [React Helmet](https://github.com/nfl/react-helmet).
+- **Метаданные документа**: мы добавили встроенную поддержку для рендеринга тегов [`<title>`](/reference/react-dom/components/title), [`<meta>`](/reference/react-dom/components/meta) и метаданных [`<link>`](/reference/react-dom/components/link) в любом месте вашего дерева компонентов. Они работают одинаково во всех средах, включая полностью клиентский код, SSR и RSC. Это обеспечивает встроенную поддержку функций, впервые реализованных такими библиотеками, как [React Helmet](https://github.com/nfl/react-helmet).
 
-- **Asset Loading**: we integrated Suspense with the loading lifecycle of resources such as stylesheets, fonts, and scripts so that React takes them into account to determine whether the content in elements like [`<style>`](/reference/react-dom/components/style), [`<link>`](/reference/react-dom/components/link), and [`<script>`](/reference/react-dom/components/script) are ready to be displayed. We’ve also added new [Resource Loading APIs](/reference/react-dom#resource-preloading-apis) like `preload` and `preinit` to provide greater control for when a resource should load and initialize.
+- **Загрузка ресурсов**: мы интегрировали Suspense с жизненным циклом загрузки таких ресурсов, как таблицы стилей, шрифты и скрипты, чтобы React учитывал их при определении того, готовы ли к отображению содержимое в таких элементах, как [`<style>`](/reference/react-dom/components/style), [`<link>`](/reference/react-dom/components/link) и [`<script>`](/reference/react-dom/components/script). Мы также добавили новые [API загрузки ресурсов](/reference/react-dom#resource-preloading-apis), такие как `preload` и `preinit`, чтобы обеспечить больший контроль над тем, когда ресурс должен загружаться и инициализироваться.
 
-- **Actions**: As shared above, we've added Actions to manage sending data from the client to the server. You can add `action` to elements like [`<form/>`](/reference/react-dom/components/form), access the status with [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), handle the result with [`useActionState`](/reference/react/useActionState), and optimistically update the UI with [`useOptimistic`](/reference/react/useOptimistic).
+- **Действия**: Как упоминалось выше, мы добавили Действия для управления отправкой данных с клиента на сервер. Вы можете добавить `action` к элементам, таким как [`<form/>`](/reference/react-dom/components/form), получить доступ к статусу с помощью [`useFormStatus`](/reference/react-dom/hooks/useFormStatus), обработать результат с помощью [`useActionState`](/reference/react/useActionState) и оптимистично обновить UI с помощью [`useOptimistic`](/reference/react/useOptimistic).
 
-Since all of these features work together, it’s difficult to release them in the Stable channel individually. Releasing Actions without the complementary hooks for accessing form states would limit the practical usability of Actions. Introducing React Server Components without integrating Server Actions would complicate modifying data on the server. 
+Поскольку все эти функции работают вместе, их сложно выпускать по отдельности в стабильном канале. Выпуск Действий без дополнительных хуков для доступа к состояниям форм ограничил бы практическую применимость Действий. Внедрение React Server Components без интеграции Server Actions усложнило бы изменение данных на сервере.
 
-Before we can release a set of features to the Stable channel, we need to ensure they work cohesively and developers have everything they need to use them in production. React Canaries allow us to develop these features individually, and release the stable APIs incrementally until the entire feature set is complete.
+Прежде чем мы сможем выпустить набор функций в стабильном канале, нам нужно убедиться, что они работают согласованно, и у разработчиков есть все необходимое для их использования в продакшене. React Canaries позволяют нам разрабатывать эти функции по отдельности и постепенно выпускать стабильные API до тех пор, пока весь набор функций не будет завершен.
 
-The current set of features in React Canary are complete and ready to release.
+Текущий набор функций в React Canary завершен и готов к выпуску.
 
-## The Next Major Version of React {/*the-next-major-version-of-react*/}
+## Следующая основная версия React {/*the-next-major-version-of-react*/}
 
-After a couple of years of iteration, `react@canary` is now ready to ship to `react@latest`. The new features mentioned above are compatible with any environment your app runs in, providing everything needed for production use. Since Asset Loading and Document Metadata may be a breaking change for some apps, the next version of React will be a major version: **React 19**.
+После нескольких лет итераций `react@canary` теперь готов к выпуску в `react@latest`. Новые функции, упомянутые выше, совместимы с любой средой, в которой работает ваше приложение, и предоставляют все необходимое для производственного использования. Поскольку загрузка ресурсов и метаданные документа могут быть обратно несовместимы для некоторых приложений, следующая версия React будет основной: **React 19**.
 
-There’s still more to be done to prepare for release. In React 19, we’re also adding long-requested improvements which require breaking changes like support for Web Components. Our focus now is to land these changes, prepare for release, finalize docs for new features, and publish announcements for what’s included.
+Предстоит еще много работы для подготовки к выпуску. В React 19 мы также добавляем давно запрашиваемые улучшения, требующие обратно несовместимых изменений, такие как поддержка Web Components. Сейчас мы сосредоточены на внедрении этих изменений, подготовке к выпуску, завершении документации для новых функций и публикации анонсов того, что включено.
 
-We’ll share more information about everything React 19 includes, how to adopt the new client features, and how to build support for React Server Components in the coming months.
+В ближайшие месяцы мы поделимся дополнительной информацией обо всем, что входит в React 19, о том, как внедрить новые клиентские функции, и о том, как обеспечить поддержку React Server Components.
 
-## Offscreen (renamed to Activity). {/*offscreen-renamed-to-activity*/}
+## Offscreen (переименовано в Activity). {/*offscreen-renamed-to-activity*/}
 
-Since our last update, we’ve renamed a capability we’re researching from “Offscreen” to “Activity”. The name “Offscreen” implied that it only applied to parts of the app that were not visible, but while researching the feature we realized that it’s possible for parts of the app to be visible and inactive, such as content behind a modal. The new name more closely reflects the behavior of marking certain parts of the app “active” or “inactive”.
+С момента нашего последнего обновления мы переименовали возможность, которую исследуем, из «Offscreen» в «Activity». Название «Offscreen» подразумевало, что оно применимо только к частям приложения, которые не были видны, но во время исследования функции мы поняли, что части приложения могут быть видимыми и неактивными, например, контент за модальным окном. Новое название точнее отражает поведение маркировки определенных частей приложения как «активных» или «неактивных».
 
-Activity is still under research and our remaining work is to finalize the primitives that are exposed to library developers. We’ve deprioritized this area while we focus on shipping features that are more complete.
+Activity все еще находится в стадии исследования, и наша оставшаяся работа заключается в завершении примитивов, которые предоставляются разработчикам библиотек. Мы снизили приоритет этой области, пока сосредоточены на выпуске более полных функций.
 
 * * *
 
-In addition to this update, our team has presented at conferences and made appearances on podcasts to speak more on our work and answer questions.
+В дополнение к этому обновлению наша команда выступала на конференциях и появлялась в подкастах, чтобы больше рассказать о нашей работе и ответить на вопросы.
 
-- [Sathya Gunasekaran](/community/team#sathya-gunasekaran) spoke about the React Compiler at the [React India](https://www.youtube.com/watch?v=kjOacmVsLSE) conference
+- [Sathya Gunasekaran](/community/team#sathya-gunasekaran) рассказал о Компиляторе React на конференции [React India](https://www.youtube.com/watch?v=kjOacmVsLSE).
 
-- [Dan Abramov](/community/team#dan-abramov) gave a talk at [RemixConf](https://www.youtube.com/watch?v=zMf_xeGPn6s) titled “React from Another Dimension” which explores an alternative history of how React Server Components and Actions could have been created
+- [Dan Abramov](/community/team#dan-abramov) выступил на [RemixConf](https://www.youtube.com/watch?v=zMf_xeGPn6s) с докладом под названием «React from Another Dimension», который исследует альтернативную историю создания React Server Components и Actions.
 
-- [Dan Abramov](/community/team#dan-abramov) was interviewed on [the Changelog’s JS Party podcast](https://changelog.com/jsparty/311) about React Server Components
+- [Dan Abramov](/community/team#dan-abramov) дал интервью подкасту [The Changelog’s JS Party](https://changelog.com/jsparty/311) о React Server Components.
 
-- [Matt Carroll](/community/team#matt-carroll) was interviewed on the [Front-End Fire podcast](https://www.buzzsprout.com/2226499/14462424-interview-the-two-reacts-with-rachel-nabors-evan-bacon-and-matt-carroll) where he discussed [The Two Reacts](https://overreacted.io/the-two-reacts/)
+- [Matt Carroll](/community/team#matt-carroll) дал интервью подкасту [Front-End Fire](https://www.buzzsprout.com/2226499/14462424-interview-the-two-reacts-with-rachel-nabors-evan-bacon-and-matt-carroll), где он обсуждал [The Two Reacts](https://overreacted.io/the-two-reacts/).
 
-Thanks [Lauren Tan](https://twitter.com/potetotes), [Sophie Alpert](https://twitter.com/sophiebits), [Jason Bonta](https://threads.net/someextent), [Eli White](https://twitter.com/Eli_White), and [Sathya Gunasekaran](https://twitter.com/_gsathya) for reviewing this post.
+Спасибо [Lauren Tan](https://twitter.com/potetotes), [Sophie Alpert](https://twitter.com/sophiebits), [Jason Bonta](https://threads.net/someextent), [Eli White](https://twitter.com/Eli_White) и [Sathya Gunasekaran](https://twitter.com/_gsathya) за рецензирование этого поста.
 
-Thanks for reading, and [see you at React Conf](https://conf.react.dev/)!
+Спасибо за чтение, и [до встречи на React Conf](https://conf.react.dev/)!
