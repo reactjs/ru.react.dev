@@ -2,24 +2,23 @@
 title: <ViewTransition>
 version: experimental
 ---
-
 <Experimental>
 
-**This API is experimental and is not available in a stable version of React yet.**
+**Этот API является экспериментальным и пока недоступен в стабильной версии React.**
 
-You can try it by upgrading React packages to the most recent experimental version:
+Вы можете попробовать его, обновив пакеты React до последней экспериментальной версии:
 
 - `react@experimental`
 - `react-dom@experimental`
 - `eslint-plugin-react-hooks@experimental`
 
-Experimental versions of React may contain bugs. Don't use them in production.
+Экспериментальные версии React могут содержать ошибки. Не используйте их в продакшене.
 
 </Experimental>
 
 <Intro>
 
-`<ViewTransition>` lets you animate elements that update inside a Transition.
+`<ViewTransition>` позволяет анимировать элементы, которые обновляются внутри [Transition](/reference/react/useTransition).
 
 
 ```js
@@ -36,97 +35,97 @@ import {unstable_ViewTransition as ViewTransition} from 'react';
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `<ViewTransition>` {/*viewtransition*/}
 
-Wrap elements in `<ViewTransition>` to animate them when they update inside a [Transition](/reference/react/useTransition). React uses the following heuristics to determine if a View Transition activates for an animation:
+Оберните элементы в `<ViewTransition>`, чтобы анимировать их при обновлении внутри [Transition](/reference/react/useTransition). React использует следующие эвристики для определения, активируется ли View Transition для анимации:
 
-- `enter`: If a `ViewTransition` itself gets inserted in this Transition, then this will activate.
-- `exit`: If a `ViewTransition` itself gets deleted in this Transition, then this will activate.
-- `update`: If a `ViewTransition` has any DOM mutations inside it that React is doing (such as a prop changing) or if the `ViewTransition` boundary itself changes size or position due to an immediate sibling. If there are nested` ViewTransition` then the mutation applies to them and not the parent.
-- `share`: If a named `ViewTransition` is inside a deleted subtree and another named `ViewTransition` with the same name is part of an inserted subtree in the same Transition, they form a Shared Element Transition, and it animates from the deleted one to the inserted one.
+- `enter`: Если сам `ViewTransition` вставляется в этот Transition, то он активируется.
+- `exit`: Если сам `ViewTransition` удаляется в этом Transition, то он активируется.
+- `update`: Если `ViewTransition` содержит DOM-мутации, выполняемые React (например, изменение пропса), или если граница `ViewTransition` изменяет размер или положение из-за непосредственного соседа. Если есть вложенные `ViewTransition`, то мутация применяется к ним, а не к родительскому элементу.
+- `share`: Если именованный `ViewTransition` находится во вложенном поддереве, а другой именованный `ViewTransition` с тем же именем является частью вставленного поддерева в том же Transition, они образуют Shared Element Transition и анимируются от удаленного к вставленному.
 
-By default, `<ViewTransition>` animates with a smooth cross-fade (the browser default view transition). You can customize the animation by providing a [View Transition Class](#view-transition-class) to the `<ViewTransition>` component. You can  customize animations for each kind of trigger (see [Styling View Transitions](#styling-view-transitions)).
+По умолчанию `<ViewTransition>` анимируется с помощью плавного перекрестного затухания (стандартный переход представления браузера). Вы можете настроить анимацию, предоставив [View Transition Class](#view-transition-class) компоненту `<ViewTransition>`. Вы можете настроить анимацию для каждого типа триггера (см. [Стилизация View Transitions](#styling-view-transitions)).
 
 <DeepDive>
 
-#### How does `<ViewTransition>` work? {/*how-does-viewtransition-work*/}
+#### Как работает `<ViewTransition>`? {/*how-does-viewtransition-work*/}
 
-Under the hood, React applies `view-transition-name` to inline styles of the nearest DOM node nested inside the `<ViewTransition>` component. If there are multiple sibling DOM nodes like `<ViewTransition><div /><div /></ViewTransition>` then React adds a suffix to the name to make each unique but conceptually they're part of the same one. React doesn't apply these eagerly but only at the time that boundary should participate in an animation.
+Под капотом React применяет `view-transition-name` к инлайн-стилям ближайшего DOM-узла, вложенного в компонент `<ViewTransition>`. Если есть несколько соседних DOM-узлов, таких как `<ViewTransition><div /><div /></ViewTransition>`, React добавляет суффикс к имени, чтобы сделать каждый уникальным, но концептуально они являются частью одного и того же. React не применяет их немедленно, а только в тот момент, когда граница должна участвовать в анимации.
 
-React automatically calls `startViewTransition` itself behind the scenes so you should never do that yourself. In fact, if you have something else on the page running a ViewTransition React will interrupt it. So it's recommended that you use React itself to coordinate these. If you had other ways of trigger ViewTransitions in the past, we recommend that you migrate to the built-in way.
+React автоматически вызывает `startViewTransition` сам, поэтому вам никогда не следует делать это самостоятельно. Фактически, если что-то другое на странице запускает ViewTransition, React прервет его. Поэтому рекомендуется использовать сам React для координации этих действий. Если у вас были другие способы запуска ViewTransitions в прошлом, мы рекомендуем перейти на встроенный способ.
 
-If there are other React ViewTransitions already running then React will wait for them to finish before starting the next one. However, importantly if there are multiple updates happening while the first one is running, those will all be batched into one. If you start A->B. Then in the meantime you get an update to go to C and then D. When the first A->B animation finishes the next one will animate from B->D.
+Если другие React ViewTransitions уже запущены, React дождется их завершения, прежде чем начать следующий. Однако важно отметить, что если во время выполнения первого происходит несколько обновлений, все они будут сгруппированы в одно. Если вы запускаете A->B. Затем в это время происходит обновление до C, а затем до D. Когда первая анимация A->B завершится, следующая будет анимирована от B->D.
 
-The `getSnapshotBeforeUpdate` life-cycle will be called before `startViewTransition` and some `view-transition-name` will update at the same time.
+Метод жизненного цикла `getSnapshotBeforeUpdate` будет вызван перед `startViewTransition`, и некоторые `view-transition-name` будут обновлены одновременно.
 
-Then React calls `startViewTransition`. Inside the `updateCallback`, React will:
+Затем React вызывает `startViewTransition`. Внутри `updateCallback` React:
 
-- Apply its mutations to the DOM and invoke useInsertionEffects.
-- Wait for fonts to load.
-- Call componentDidMount, componentDidUpdate, useLayoutEffect and refs.
-- Wait for any pending Navigation to finish.
-- Then React will measure any changes to the layout to see which boundaries will need to animate.
+- Применяет мутации к DOM и вызывает useInsertionEffects.
+- Ждет загрузки шрифтов.
+- Вызывает componentDidMount, componentDidUpdate, useLayoutEffect и refs.
+- Ждет завершения любой ожидающей навигации.
+- Затем React измерит любые изменения в макете, чтобы определить, какие границы потребуют анимации.
 
-After the ready Promise of the `startViewTransition` is resolved, React will then revert the `view-transition-name`. Then React will invoke the `onEnter`, `onExit`, `onUpdate` and `onShare` callbacks to allow for manual programmatic control over the Animations. This will be after the built-in default ones have already been computed.
+После разрешения промиса `startViewTransition` React отменит `view-transition-name`. Затем React вызовет колбэки `onEnter`, `onExit`, `onUpdate` и `onShare`, чтобы разрешить ручное программное управление анимациями. Это произойдет после того, как будут вычислены встроенные стандартные анимации.
 
-If a `flushSync` happens to get in the middle of this sequence, then React will skip the Transition since it relies on being able to complete synchronously.
+Если `flushSync` произойдет в середине этой последовательности, React пропустит Transition, поскольку он зависит от возможности синхронного завершения.
 
-After the finished Promise of the `startViewTransition` is resolved, React will then invoke `useEffect`. This prevents those from interfering with the performance of the Animation. However, this is not a guarantee because if another `setState` happens while the Animation is running it'll still have to invoke the `useEffect` earlier to preserve the sequential guarantees.
+После разрешения промиса завершения `startViewTransition` React вызовет `useEffect`. Это предотвращает их вмешательство в производительность анимации. Однако это не гарантия, потому что если другой `setState` произойдет во время выполнения анимации, он все равно должен будет вызвать `useEffect` раньше, чтобы сохранить последовательные гарантии.
 
 </DeepDive>
 
-#### Props {/*props*/}
+#### Пропсы {/*props*/}
 
-By default, `<ViewTransition>` animates with a smooth cross-fade. You can customize the animation, or specify a shared element transition, with these props:
+По умолчанию `<ViewTransition>` анимируется с помощью плавного перекрестного затухания. Вы можете настроить анимацию или указать переход общих элементов с помощью этих пропсов:
 
-* **optional** `enter`: A string or object. The [View Transition Class](#view-transition-class) to apply when enter is activated.
-* **optional** `exit`: A string or object. The [View Transition Class](#view-transition-class) to apply when exit is activated.
-* **optional** `update`: A string or object. The [View Transition Class](#view-transition-class) to apply when an update is activated.
-* **optional** `share`: A string or object. The [View Transition Class](#view-transition-class) to apply when a shared element is activated.
-* **optional** `default`: A string or object. The [View Transition Class](#view-transition-class) used when no other matching activation prop is found. 
-* **optional** `name`: A string or object. The name of the View Transition used for shared element transitions. If not provided, React will use a unique name for each View Transition to prevent unexpected animations.
+* **optional** `enter`: Строка или объект. [View Transition Class](#view-transition-class), применяемый при активации `enter`.
+* **optional** `exit`: Строка или объект. [View Transition Class](#view-transition-class), применяемый при активации `exit`.
+* **optional** `update`: Строка или объект. [View Transition Class](#view-transition-class), применяемый при активации `update`.
+* **optional** `share`: Строка или объект. [View Transition Class](#view-transition-class), применяемый при активации общего элемента.
+* **optional** `default`: Строка или объект. [View Transition Class](#view-transition-class), используемый, когда не найден другой соответствующий проп активации.
+* **optional** `name`: Строка или объект. Имя View Transition, используемое для переходов общих элементов. Если не указано, React будет использовать уникальное имя для каждого View Transition, чтобы предотвратить неожиданные анимации.
 
-#### Callback {/*events*/}
+#### Колбэки {/*events*/}
 
-These callbacks allow you to adjust the animation imperatively using the [animate](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate) APIs:
+Эти колбэки позволяют вам настраивать анимацию императивно с помощью API [animate](https://developer.mozilla.org/en-US/docs/Web/API/Element/animate):
 
-* **optional** `onEnter`: A function. React calls `onEnter` after an "enter" animation.
-* **optional** `onExit`: A function. React calls `onExit` after an "exit" animation.
-* **optional** `onShare`:  A function. React calls `onShare` after a "share" animation.
-* **optional** `onUpdate`:  A function. React calls `onUpdate` after an "update" animation.
+* **optional** `onEnter`: Функция. React вызывает `onEnter` после анимации "enter".
+* **optional** `onExit`: Функция. React вызывает `onExit` после анимации "exit".
+* **optional** `onShare`: Функция. React вызывает `onShare` после анимации "share".
+* **optional** `onUpdate`: Функция. React вызывает `onUpdate` после анимации "update".
 
-Each callback receives as arguments:
-- `element`: The DOM element that was animated.
-- `types`: The [Transition Types](/reference/react/addTransitionType) included in the animation.
+Каждый колбэк получает в качестве аргументов:
+- `element`: DOM-элемент, который был анимирован.
+- `types`: [Transition Types](/reference/react/addTransitionType), включенные в анимацию.
 
 ### View Transition Class {/*view-transition-class*/}
 
-The View Transition Class is the CSS class name(s) applied by React during the transition when the ViewTransition activates. It can be a string or an object.
-- `string`: the `class` added on the child elements when activated. If `'none'` is provided, no class will be added.
-- `object`: the class added on the child elements will be the key matching View Transition type added with `addTransitionType`. The object can also specify a `default` to use if no matching type is found.
+View Transition Class — это имя(имена) CSS-класса, применяемое React во время перехода при активации ViewTransition. Это может быть строка или объект.
+- `string`: `class`, добавленный к дочерним элементам при активации. Если указано `'none'`, класс не будет добавлен.
+- `object`: класс, добавленный к дочерним элементам, будет соответствовать ключу типа View Transition, добавленного с помощью `addTransitionType`. Объект также может указывать `default` для использования, если соответствующий тип не найден.
 
-The value `'none'` can be used to prevent a View Transition from activating for a specific trigger.
+Значение `'none'` может быть использовано для предотвращения активации View Transition для определенного триггера.
 
-### Styling View Transitions {/*styling-view-transitions*/}
+### Стилизация View Transitions {/*styling-view-transitions*/}
 
 <Note>
 
-In many early examples of View Transitions around the web, you'll have seen using a [`view-transition-name`](https://developer.mozilla.org/en-US/docs/Web/CSS/view-transition-name) and then style it using `::view-transition-...(my-name)` selectors. We don't recommend that for styling. Instead, we normally recommend using a View Transition Class instead.
+Во многих ранних примерах View Transitions в интернете вы видели использование [`view-transition-name`](https://developer.mozilla.org/en-US/docs/Web/CSS/view-transition-name) с последующей стилизацией с помощью селекторов `::view-transition-...(my-name)`. Мы не рекомендуем такой подход для стилизации. Вместо этого мы обычно рекомендуем использовать View Transition Class.
 
 </Note>
 
-To customize the animation for a `<ViewTransition>` you can provide a View Transition Class to one of the activation props. The View Transition Class is a CSS class name that React applies to the child elements when the ViewTransition activates.
+Чтобы настроить анимацию для `<ViewTransition>`, вы можете предоставить View Transition Class одному из пропсов активации. View Transition Class — это имя CSS-класса, которое React применяет к дочерним элементам при активации ViewTransition.
 
-For example, to customize an "enter" animation, provide a class name to the `enter` prop:
+Например, чтобы настроить анимацию "enter", предоставьте имя класса пропсу `enter`:
 
 
 ```js
 <ViewTransition enter="slide-in">
 ```
 
-When the `<ViewTransition>` activates an "enter" animation, React will add the class name `slide-in`. Then you can refer to this class using [view transition pseudo selectors](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API#pseudo-elements) to build reusable animations:
+Когда `<ViewTransition>` активирует анимацию "enter", React добавит имя класса `slide-in`. Затем вы можете ссылаться на этот класс с помощью [псевдоселекторов View Transition](https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API#pseudo-elements) для создания многоразовых анимаций:
 
 ```css
 ::view-transition-group(.slide-in) {
@@ -139,23 +138,23 @@ When the `<ViewTransition>` activates an "enter" animation, React will add the c
 
 }
 ```
-In the future, CSS libraries may add built-in animations using View Transition Classes to make this easier to use.
+В будущем CSS-библиотеки могут добавлять встроенные анимации, используя View Transition Classes, чтобы упростить их использование.
 
-#### Caveats {/*caveats*/}
+#### Оговорки {/*caveats*/}
 
-- By default, `setState` updates immediately and does not activate `<ViewTransition>`, only updates wrapped in a [Transition](/reference/react/useTransition). You can also use [`<Suspense>`](/reference/react/Suspense) to opt-in to a Transition to [reveal content](/link-to-suspense-below).
-- `<ViewTransition>` creates an image that can be moved around, scaled and cross-faded. Unlike Layout Animations you may have seen in React Native or Motion, this means that not every individual Element inside of it animates its position. This can lead to better performance and a more continuous feeling, smooth animation compared to animating every individual piece. However, it can also lose continuity in things that should be moving by themselves. So you might have to add more `<ViewTransition>` boundaries manually as a result.
-- Many users may prefer not having animations on the page. React doesn't automatically disable animations for this case. We recommend that using the `@media (prefers-reduced-motion)` media query to disable animations or tone them down based on user preference. In the future, CSS libraries may have this built-in to their presets.
-- Currently, `<ViewTransition>` only works in the DOM. We're working on adding support for React Native and other platforms.
+- По умолчанию `setState` обновляется немедленно и не активирует `<ViewTransition>`, только обновления, обернутые в [Transition](/reference/react/useTransition). Вы также можете использовать [`<Suspense>`](/reference/react/Suspense) для выбора Transition для [отображения контента](/link-to-suspense-below).
+- `<ViewTransition>` создает изображение, которое можно перемещать, масштабировать и перекрестно затушевывать. В отличие от Layout Animations, которые вы могли видеть в React Native или Motion, это означает, что не каждый отдельный элемент внутри него анимирует свое положение. Это может привести к лучшей производительности и более непрерывному, плавному ощущению по сравнению с анимацией каждого отдельного элемента. Однако это также может привести к потере непрерывности в вещах, которые должны двигаться сами по себе. Поэтому вам, возможно, придется вручную добавлять больше границ `<ViewTransition>`.
+- Многие пользователи могут предпочесть отсутствие анимации на странице. React автоматически не отключает анимацию для этого случая. Мы рекомендуем использовать медиа-запрос `@media (prefers-reduced-motion)` для отключения анимации или ее смягчения в зависимости от предпочтений пользователя. В будущем CSS-библиотеки могут иметь это встроенным в свои пресеты.
+- В настоящее время `<ViewTransition>` работает только в DOM. Мы работаем над добавлением поддержки React Native и других платформ.
 
 ---
 
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Animating an element on enter/exit {/*animating-an-element-on-enter*/}
+### Анимация элемента при входе/выходе {/*animating-an-element-on-enter*/}
 
-Enter/Exit Transitions trigger when a `<ViewTransition>` is added or removed by a component in a transition:
+Переходы входа/выхода срабатывают, когда `<ViewTransition>` добавляется или удаляется компонентом в рамках перехода:
 
 ```js
 function Child() {
@@ -171,9 +170,9 @@ function Parent() {
 }
 ```
 
-When `setShow` is called, `show` switches to `true` and the `Child` component is rendered. When `setShow` is called inside `startTransition`, and `Child` renders a `ViewTransition` before any other DOM nodes, an `enter` animation is triggered. 
+Когда вызывается `setShow`, `show` переключается на `true`, и компонент `Child` рендерится. Когда `Child` рендерит `ViewTransition` перед любыми другими DOM-узлами, срабатывает анимация `enter`.
 
-When `show` switches back to `false`, an `exit` animation is triggered.
+Когда `show` переключается обратно на `false`, срабатывает анимация `exit`.
 
 <Sandpack>
 
@@ -348,7 +347,7 @@ button:hover {
 
 <Pitfall>
 
-`<ViewTransition>` only activates if it is placed before any DOM node. If `Child` instead looked like this, no animation would trigger:
+`<ViewTransition>` активируется только в том случае, если он расположен перед любым DOM-узлом. Если бы `Child` выглядел так, анимация не сработала бы:
 
 ```js [3, 5]
 function Component() {
@@ -363,9 +362,9 @@ function Component() {
 </Pitfall>
 
 ---
-### Animating a shared element {/*animating-a-shared-element*/}
+### Анимация общего элемента {/*animating-a-shared-element*/}
 
-Normally, we don't recommend assigning a name to a `<ViewTransition>` and instead let React assign it an automatic name. The reason you might want to assign a name is to animate between completely different components when one tree unmounts and another tree mounts at the same time. To preserve continuity.
+Обычно мы не рекомендуем присваивать имя `<ViewTransition>` и вместо этого позволяем React присваивать ему автоматическое имя. Причина, по которой вы можете захотеть присвоить имя, — это анимировать переход между совершенно разными компонентами, когда одно дерево размонтируется, а другое монтируется одновременно. Для сохранения непрерывности.
 
 ```js
 <ViewTransition name={UNIQUE_NAME}>
@@ -373,11 +372,11 @@ Normally, we don't recommend assigning a name to a `<ViewTransition>` and instea
 </ViewTransition>
 ```
 
-When one tree unmounts and another mounts, if there's a pair where the same name exists in the unmounting tree and the mounting tree, they trigger the "share" animation on both. It animates from the unmounting side to the mounting side.
+Когда одно дерево размонтируется, а другое монтируется, если существует пара с одинаковым именем в размонтируемом дереве и монтируемом дереве, это инициирует анимацию "совместного использования" на обоих. Она анимируется от размонтируемой стороны к монтируемой.
 
-Unlike an exit/enter animation this can be deeply inside the deleted/mounted tree. If a `<ViewTransition>` would also be eligible for exit/enter, then the "share" animation takes precedence.
+В отличие от анимации выхода/входа, это может быть глубоко внутри удаляемого/смонтированного дерева. Если `<ViewTransition>` также будет подходить для выхода/входа, то анимация "совместного использования" имеет приоритет.
 
-If Transition first unmounts one side and then leads to a `<Suspense>` fallback being shown before eventually the new name being mounted, then no shared element transition happens.
+Если переход сначала размонтирует одну сторону, а затем приводит к отображению запасного варианта `<Suspense>` перед тем, как в конечном итоге будет смонтировано новое имя, то переход общего элемента не происходит.
 
 <Sandpack>
 
@@ -594,17 +593,17 @@ button:hover {
 
 <Note>
 
-If either the mounted or unmounted side of a pair is outside the viewport, then no pair is formed. This ensures that it doesn't fly in or out of the viewport when something is scrolled. Instead it's treated as a regular enter/exit by itself.
+Если одна из сторон пары (смонтированная или размонтированная) находится за пределами области просмотра, то пара не формируется. Это гарантирует, что она не вылетит из области просмотра при прокрутке. Вместо этого она обрабатывается как обычный вход/выход сама по себе.
 
-This does not happen if the same Component instance changes position, which triggers an "update". Those animate regardless if one position is outside the viewport.
+Это не происходит, если один и тот же экземпляр компонента меняет положение, что вызывает "обновление". Такие элементы анимируются независимо от того, находится ли одна из позиций за пределами области просмотра.
 
-There's currently a quirk where if a deeply nested unmounted `<ViewTransition>` is inside the viewport but the mounted side is not within the viewport, then the unmounted side animates as its own "exit" animation even if it's deeply nested instead of as part of the parent animation.
+В настоящее время существует особенность: если глубоко вложенный размонтированный `<ViewTransition>` находится в пределах области просмотра, но смонтированная сторона находится за ее пределами, то размонтированная сторона анимируется как собственный "выход", даже если она глубоко вложена, а не как часть анимации родителя.
 
 </Note>
 
 <Pitfall>
 
-It's important that there's only one thing with the same name mounted at a time in the entire app. Therefore it's important to use unique namespaces for the name to avoid conflicts. To ensure you can do this you might want to add a constant in a separate module that you import.
+Важно, чтобы в приложении одновременно был смонтирован только один элемент с одинаковым именем. Поэтому важно использовать уникальные пространства имен для имени, чтобы избежать конфликтов. Чтобы гарантировать это, вы можете добавить константу в отдельный модуль, который вы импортируете.
 
 ```js
 export const MY_NAME = "my-globally-unique-name";
@@ -618,16 +617,16 @@ import {MY_NAME} from './shared-name';
 
 ---
 
-### Animating reorder of items in a list {/*animating-reorder-of-items-in-a-list*/}
+### Анимация переупорядочивания элементов в списке {/*animating-reorder-of-items-in-a-list*/}
 
 
 ```js
 items.map(item => <Component key={item.id} item={item} />)
 ```
 
-When reordering a list, without updating the content, the "update" animation triggers on each `<ViewTransition>` in the list if they're outside a DOM node. Similar to enter/exit animations.
+При переупорядочивании списка без обновления содержимого анимация "обновления" срабатывает для каждого `<ViewTransition>` в списке, если они находятся вне DOM-узла. Аналогично анимациям входа/выхода.
 
-This means that this will trigger the animation on this `<ViewTransition>`:
+Это означает, что это вызовет анимацию для этого `<ViewTransition>`:
 
 ```js
 function Component() {
@@ -831,14 +830,14 @@ button:hover {
 
 </Sandpack>
 
-However, this wouldn't animate each individual item:
+Однако это не будет анимировать каждый отдельный элемент:
 
 ```js
 function Component() {
   return <div><ViewTransition>...</ViewTransition></div>;
 }
 ```
-Instead, any parent `<ViewTransition>` would cross-fade. If there is no parent `<ViewTransition>` then there's no animation in that case.
+Вместо этого любой родительский `<ViewTransition>` будет плавно переходить. Если родительского `<ViewTransition>` нет, то в этом случае анимации не будет.
 
 <Sandpack>
 
@@ -1035,35 +1034,35 @@ button:hover {
 
 </Sandpack>
 
-This means you might want to avoid wrapper elements in lists where you want to allow the Component to control its own reorder animation:
+Это означает, что вы можете захотеть избежать обертывающих элементов в списках, где вы хотите позволить компоненту управлять собственной анимацией переупорядочивания:
 
 ```
 items.map(item => <div><Component key={item.id} item={item} /></div>)
 ```
 
-The above rule also applies if one of the items updates to resize, which then causes the siblings to resize, it'll also animate its sibling `<ViewTransition>` but only if they're immediate siblings.
+Вышеуказанное правило также применяется, если один из элементов обновляется, чтобы изменить размер, что затем вызывает изменение размера соседних элементов; это также будет анимировать соседний `<ViewTransition>`, но только если они являются непосредственными соседями.
 
-This means that during an update, which causes a lot of re-layout, it doesn't individually animate every `<ViewTransition>` on the page. That would lead to a lot of noisy animations which distracts from the actual change. Therefore React is more conservative about when an individual animation triggers.
+Это означает, что во время обновления, вызывающего множество перерасчетов макета, React не анимирует индивидуально каждый `<ViewTransition>` на странице. Это привело бы к большому количеству шумных анимаций, отвлекающих от фактического изменения. Поэтому React более консервативен в отношении того, когда срабатывает индивидуальная анимация.
 
 <Pitfall>
 
-It's important to properly use keys to preserve identity when reordering lists. It might seem like you could use "name", shared element transitions, to animate reorders but that would not trigger if one side was outside the viewport. To animate a reorder you often want to show that it went to a position outside the viewport.
+Важно правильно использовать ключи для сохранения идентичности при переупорядочивании списков. Может показаться, что вы можете использовать "имя", совместное использование элементов для анимации переупорядочивания, но это не сработает, если одна сторона находится за пределами области просмотра. Чтобы анимировать переупорядочивание, вы часто хотите показать, что оно переместилось в положение за пределами области просмотра.
 
 </Pitfall>
 
 ---
 
-### Animating from Suspense content {/*animating-from-suspense-content*/}
+### Анимация контента из Suspense {/*animating-from-suspense-content*/}
 
-Just like any Transition, React waits for data and new CSS (`<link rel="stylesheet" precedence="...">`) before running the animation. In addition to this, ViewTransitions also wait up to 500ms for new fonts to load before starting the animation to avoid them flickering in later. For the same reason, an image wrapped in ViewTransition will wait for the image to load.
+Как и любая другая анимация перехода (Transition), React ожидает загрузки данных и новых CSS (`<link rel="stylesheet" precedence="...">`) перед запуском анимации. Кроме того, ViewTransitions также ожидают до 500 мс загрузки новых шрифтов перед началом анимации, чтобы избежать их мерцания. По той же причине изображение, обёрнутое в ViewTransition, будет ждать загрузки изображения.
 
-If it's inside a new Suspense boundary instance, then the fallback is shown first. After the Suspense boundary fully loads, it triggers the `<ViewTransition>` to animate the reveal to the content.
+Если контент находится внутри нового экземпляра Suspense boundary, сначала отображается резервный вариант (fallback). После полной загрузки Suspense boundary запускается `<ViewTransition>` для анимации отображения контента.
 
-Currently, this only happens for client-side Transition. In the future, this will also animate Suspense boundary for streaming SSR when content from the server suspends during the initial load.
+В настоящее время это происходит только для клиентских переходов (client-side Transition). В будущем это также будет применяться для анимации Suspense boundary при потоковой передаче SSR, когда контент с сервера приостанавливается во время начальной загрузки.
 
-There are two ways to animate Suspense boundaries depending on where you place the `<ViewTransition>`:
+Существует два способа анимировать Suspense boundary в зависимости от того, где вы размещаете `<ViewTransition>`:
 
-Update:
+Обновление:
 
 ```
 <ViewTransition>
@@ -1072,7 +1071,7 @@ Update:
   </Suspense>
 </ViewTransition>
 ```
-In this scenario when the content goes from A to B, it'll be treated as an "update" and apply that class if appropriate. Both A and B will get the same view-transition-name and therefore they're acting as a cross-fade by default.
+В этом сценарии, когда контент переходит от A к B, он будет рассматриваться как «обновление» и, при необходимости, будет применена соответствующая CSS-классификация. Оба A и B получат одинаковое имя `view-transition-name` и, следовательно, по умолчанию будут действовать как плавное затухание (cross-fade).
 
 <Sandpack>
 
@@ -1300,7 +1299,7 @@ button:hover {
 
 </Sandpack>
 
-Enter/Exit:
+Вход/Выход:
 
 ```
 <Suspense fallback={<ViewTransition><A /></ViewTransition>}>
@@ -1308,16 +1307,16 @@ Enter/Exit:
 </Suspense>
 ```
 
-In this scenario, these are two separate ViewTransition instances each with their own `view-transition-name`. This will be treated as an "exit" of the `<A>` and an "enter" of the `<B>`.
+В этом сценарии это два отдельных экземпляра ViewTransition, каждый со своим `view-transition-name`. Это будет рассматриваться как «выход» из `<A>` и «вход» в `<B>`.
 
-You can achieve different effects depending on where you choose to place the `<ViewTransition>` boundary.
+Вы можете добиться различных эффектов в зависимости от того, где вы размещаете границу `<ViewTransition>`.
 
 ---
-### Opting-out of an animation {/*opting-out-of-an-animation*/}
+### Отключение анимации {/*opting-out-of-an-animation*/}
 
-Sometimes you're wrapping a large existing component, like a whole page, and you want to animate some updates, such as changing the theme. However, you don't want it to opt-in all updates inside the whole page to cross-fade when they're updating. Especially if you're incrementally adding more animations.
+Иногда вы оборачиваете большой существующий компонент, например, целую страницу, и хотите анимировать некоторые обновления, такие как изменение темы. Однако вы не хотите, чтобы все обновления внутри всей страницы автоматически получали эффект плавного затухания (cross-fade) при их изменении. Особенно если вы постепенно добавляете больше анимаций.
 
-You can use the class "none" to opt-out of an animation. By wrapping your children in a "none" you can disable animations for updates to them while the parent still triggers.
+Вы можете использовать класс "none" для отключения анимации. Обернув дочерние элементы в "none", вы можете отключить анимацию для их обновлений, в то время как родительский элемент по-прежнему будет запускать анимацию.
 
 ```js
 <ViewTransition>
@@ -1329,17 +1328,17 @@ You can use the class "none" to opt-out of an animation. By wrapping your childr
 </ViewTransition>
 ```
 
-This will only animate if the theme changes and not if only the children update. The children can still opt-in again with their own `<ViewTransition>` but at least it's manual again.
+Это анимирует только изменение темы, а не только обновление дочерних элементов. Дочерние элементы по-прежнему могут снова включить анимацию с помощью собственного `<ViewTransition>`, но, по крайней мере, это будет сделано вручную.
 
 ---
 
-### Customizing animations {/*customizing-animations*/}
+### Настройка анимаций {/*customizing-animations*/}
 
-By default, `<ViewTransition>` includes the default cross-fade from the browser.
+По умолчанию `<ViewTransition>` включает стандартное плавное затухание (cross-fade) из браузера.
 
-To customize animations, you can provide props to the `<ViewTransition>` component to specify which animations to use, based on how the `<ViewTransition>` activates.
+Чтобы настроить анимации, вы можете передать пропсы компоненту `<ViewTransition>`, чтобы указать, какие анимации использовать, в зависимости от того, как активируется `<ViewTransition>`.
 
-For example, we can slow down the default cross fade animation:
+Например, мы можем замедлить стандартное плавное затухание:
 
 ```js
 <ViewTransition default="slow-fade">
@@ -1347,7 +1346,7 @@ For example, we can slow down the default cross fade animation:
 </ViewTransition>
 ```
 
-And define slow-fade in CSS using view transition classes:
+И определить `slow-fade` в CSS с помощью классов view transition:
 
 ```css
 ::view-transition-old(.slow-fade) {
@@ -1538,7 +1537,7 @@ button:hover {
 
 </Sandpack>
 
-In addition to setting the `default`, you can also provide configurations for `enter`, `exit`, `update`, and `share` animations.
+Помимо установки `default`, вы также можете предоставить конфигурации для анимаций `enter`, `exit`, `update` и `share`.
 
 <Sandpack>
 
@@ -1790,10 +1789,10 @@ button:hover {
 
 </Sandpack>
 
-### Customizing animations with types {/*customizing-animations-with-types*/}
-You can use the [`addTransitionType`](/reference/react/addTransitionType) API to add a class name to the child elements when a specific transition type is activated for a specific activation trigger. This allows you to customize the animation for each type of transition.
+### Настройка анимаций с помощью типов {/*customizing-animations-with-types*/}
+Вы можете использовать API [`addTransitionType`](/reference/react/addTransitionType) для добавления имени класса к дочерним элементам при активации определенного типа перехода для конкретного триггера активации. Это позволяет настроить анимацию для каждого типа перехода.
 
-For example, to customize the animation for all forward and backward navigations:
+Например, чтобы настроить анимацию для всех прямых и обратных навигаций:
 
 ```js
 <ViewTransition default={{
@@ -1803,15 +1802,15 @@ For example, to customize the animation for all forward and backward navigations
   <div>...</div>
 </ViewTransition>
  
-// in your router:
+// в вашем роутере:
 startTransition(() => {
   addTransitionType('navigation-' + navigationType);
 });
 ```
 
-When the ViewTransition activates a "navigation-back" animation, React will add the class name "slide-right". When the ViewTransition activates a "navigation-forward" animation, React will add the class name "slide-left".
+Когда ViewTransition активирует анимацию "navigation-back", React добавит имя класса "slide-right". Когда ViewTransition активирует анимацию "navigation-forward", React добавит имя класса "slide-left".
 
-In the future, routers and other libraries may add support for standard view-transition types and styles.
+В будущем роутеры и другие библиотеки могут добавить поддержку стандартных типов и стилей view-transition.
 
 <Sandpack>
 
@@ -2119,19 +2118,19 @@ button:hover {
 
 </Sandpack>
 
-### Building View Transition enabled routers {/*building-view-transition-enabled-routers*/}
+### Создание роутеров с поддержкой View Transition {/*building-view-transition-enabled-routers*/}
 
-React waits for any pending Navigation to finish to ensure that scroll restoration happens within the animation. If the Navigation is blocked on React, your router must unblock in `useLayoutEffect` since `useEffect` would lead to a deadlock.
+React ожидает завершения любых ожидающих навигаций (Navigation), чтобы гарантировать, что восстановление прокрутки (scroll restoration) происходит в рамках анимации. Если навигация заблокирована в React, ваш роутер должен разблокировать ее в `useLayoutEffect`, поскольку `useEffect` приведет к взаимоблокировке (deadlock).
 
-If a `startTransition` is started from the legacy popstate event, such as during a "back"-navigation then it must finish synchronously to ensure scroll and form restoration works correctly. This is in conflict with running a View Transition animation. Therefore, React will skip animations from popstate. Therefore animations won't run for the back button. You can fix this by upgrading your router to use the Navigation API.
+Если `startTransition` запускается из устаревшего события popstate, например, во время навигации "назад" (back-navigation), то он должен завершиться синхронно, чтобы обеспечить правильное восстановление прокрутки и форм. Это противоречит выполнению анимации View Transition. Поэтому React будет пропускать анимации из popstate. Следовательно, анимации не будут выполняться для кнопки "назад". Вы можете исправить это, обновив свой роутер для использования Navigation API.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
-### My `<ViewTransition>` is not activating {/*my-viewtransition-is-not-activating*/}
+### Мой `<ViewTransition>` не активируется {/*my-viewtransition-is-not-activating*/}
 
-`<ViewTransition>` only activates if it is placed is before any DOM node:
+`<ViewTransition>` активируется только в том случае, если он расположен перед любым DOM-узлом:
 
 ```js [3, 5]
 function Component() {
@@ -2143,9 +2142,9 @@ function Component() {
 }
 ```
 
-To fix, ensure that the `<ViewTransition>` comes before any other DOM nodes:
+Чтобы исправить это, убедитесь, что `<ViewTransition>` находится перед любыми другими DOM-узлами:
 
-```js [3, 5] 
+```js [3, 5]
 function Component() {
   return (
     <ViewTransition>
@@ -2155,14 +2154,13 @@ function Component() {
 }
 ```
 
-### I'm getting an error "There are two `<ViewTransition name=%s>` components with the same name mounted at the same time." {/*two-viewtransition-with-same-name*/}
+### Я получаю ошибку "Одновременно смонтировано два компонента `<ViewTransition name=%s>` с одинаковым именем." {/*two-viewtransition-with-same-name*/}
 
-This error occurs when two `<ViewTransition>` components with the same `name` are mounted at the same time:
-
+Эта ошибка возникает, когда два компонента `<ViewTransition>` с одинаковым `name` монтируются одновременно:
 
 ```js [3]
 function Item() {
-  // 🚩 All items will get the same "name".
+  // 🚩 Все элементы получат одно и то же "имя".
   return <ViewTransition name="item">...</ViewTransition>;
 }
 
@@ -2175,12 +2173,12 @@ function ItemList({items}) {
 }
 ```
 
-This will cause the View Transition to error. In development, React detects this issue to surface it and logs two errors:
+Это приведет к ошибке при переходе между представлениями. В режиме разработки React обнаруживает эту проблему, чтобы сообщить о ней, и выводит две ошибки:
 
 <ConsoleBlockMulti>
 <ConsoleLogLine level="error">
 
-There are two `<ViewTransition name=%s>` components with the same name mounted at the same time. This is not supported and will cause View Transitions to error. Try to use a more unique name e.g. by using a namespace prefix and adding the id of an item to the name.
+Одновременно смонтировано два компонента `<ViewTransition name=%s>` с одинаковым именем. Это не поддерживается и приведет к ошибке переходов между представлениями. Попробуйте использовать более уникальное имя, например, используя префикс пространства имен и добавив идентификатор элемента к имени.
 {'    '}at Item
 {'    '}at ItemList
 
@@ -2188,18 +2186,18 @@ There are two `<ViewTransition name=%s>` components with the same name mounted a
 
 <ConsoleLogLine level="error">
 
-The existing `<ViewTransition name=%s>` duplicate has this stack trace.
+Существующий дубликат `<ViewTransition name=%s>` имеет следующий стек вызовов.
 {'    '}at Item
 {'    '}at ItemList
 
 </ConsoleLogLine>
 </ConsoleBlockMulti>
 
-To fix, ensure that there's only one `<ViewTransition>` with the same name mounted at a time in the entire app by ensuring the `name` is unique, or adding an `id` to the name:
+Чтобы исправить это, убедитесь, что одновременно в приложении смонтирован только один `<ViewTransition>` с одинаковым именем, обеспечив уникальность `name` или добавив `id` к имени:
 
 ```js [3]
 function Item({id}) {
-  // ✅ All items will get the same "name".
+  // ✅ Все элементы получат одно и то же "имя".
   return <ViewTransition name={`item-${id}`}>...</ViewTransition>;
 }
 
