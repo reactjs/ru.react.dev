@@ -1,10 +1,9 @@
 ---
 style: "<style>"
 ---
-
 <Intro>
 
-The [built-in browser `<style>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) lets you add inline CSS stylesheets to your document.
+[Встроенный компонент `<style>` браузера](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style) позволяет добавлять встроенные CSS-таблицы стилей в ваш документ.
 
 ```js
 <style>{` p { color: red; } `}</style>
@@ -16,58 +15,58 @@ The [built-in browser `<style>` component](https://developer.mozilla.org/en-US/d
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `<style>` {/*style*/}
 
-To add inline styles to your document, render the [built-in browser `<style>` component](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style). You can render `<style>` from any component and React will [in certain cases](#special-rendering-behavior) place the corresponding DOM element in the document head and de-duplicate identical styles.
+Чтобы добавить встроенные стили в ваш документ, используйте [встроенный компонент `<style>` браузера](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style). Вы можете рендерить `<style>` из любого компонента, и React [в определённых случаях](#special-rendering-behavior) поместит соответствующий DOM-элемент в `<head>` документа и будет дедуплицировать идентичные стили.
 
 ```js
 <style>{` p { color: red; } `}</style>
 ```
 
-[See more examples below.](#usage)
+[См. больше примеров ниже.](#usage)
 
 #### Props {/*props*/}
 
-`<style>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<style>` поддерживает все [общие атрибуты элемента.](/reference/react-dom/components/common#props)
 
-* `children`: a string, required. The contents of the stylesheet.
-* `precedence`: a string. Tells React where to rank the `<style>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other. React will infer that precedence values it discovers first are "lower" and precedence values it discovers later are "higher". Many style systems can work fine using a single precedence value because style rules are atomic. Stylesheets with the same precedence go together whether they are `<link>` or inline `<style>` tags or loaded using [`preinit`](/reference/react-dom/preinit) functions.
-* `href`: a string. Allows React to [de-duplicate styles](#special-rendering-behavior) that have the same `href`.
-* `media`: a string. Restricts the stylesheet to a certain [media query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries).
-* `nonce`: a string. A cryptographic [nonce to allow the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy.
-* `title`: a string. Specifies the name of an [alternative stylesheet](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
+* `children`: строка, обязательный. Содержимое таблицы стилей.
+* `precedence`: строка. Указывает React, какое место занять DOM-узлу `<style>` относительно других в `<head>` документа, что определяет, какая таблица стилей может переопределить другую. React будет выводить, что значения `precedence`, обнаруженные первыми, являются «ниже», а значения `precedence`, обнаруженные позже, — «выше». Многие системы стилей могут нормально работать с одним значением `precedence`, поскольку правила стилей атомарны. Таблицы стилей с одинаковым `precedence` объединяются, независимо от того, являются ли они тегами `<link>`, встроенными тегами `<style>` или загружены с помощью функций [`preinit`](/reference/react-dom/preinit).
+* `href`: строка. Позволяет React [дедуплицировать стили](#special-rendering-behavior), имеющие одинаковый `href`.
+* `media`: строка. Ограничивает таблицу стилей определённым [медиа-запросом](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries).
+* `nonce`: строка. Криптографический [nonce для разрешения ресурса](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) при использовании строгой политики безопасности контента (Content Security Policy).
+* `title`: строка. Указывает имя [альтернативной таблицы стилей](https://developer.mozilla.org/en-US/docs/Web/CSS/Alternative_style_sheets).
 
-Props that are **not recommended** for use with React:
+Props, которые **не рекомендуются** для использования с React:
 
-* `blocking`: a string. If set to `"render"`, instructs the browser not to render the page until the stylesheet is loaded. React provides more fine-grained control using Suspense.
+* `blocking`: строка. Если установлено значение `"render"`, браузеру предписывается не отображать страницу до загрузки таблицы стилей. React предоставляет более детальный контроль с помощью Suspense.
 
-#### Special rendering behavior {/*special-rendering-behavior*/}
+#### Особое поведение рендеринга {/*special-rendering-behavior*/}
 
-React can move `<style>` components to the document's `<head>`, de-duplicate identical stylesheets, and [suspend](/reference/react/Suspense) while the stylesheet is loading.
+React может перемещать компоненты `<style>` в `<head>` документа, дедуплицировать идентичные таблицы стилей и [приостанавливать рендеринг](/reference/react/Suspense) во время загрузки таблицы стилей.
 
-To opt into this behavior, provide the `href` and `precedence` props. React will de-duplicate styles if they have the same `href`. The precedence prop tells React where to rank the `<style>` DOM node relative to others in the document `<head>`, which determines which stylesheet can override the other.
+Чтобы использовать это поведение, предоставьте props `href` и `precedence`. React будет дедуплицировать стили, если они имеют одинаковый `href`. Prop `precedence` указывает React, какое место занять DOM-узлу `<style>` относительно других в `<head>` документа, что определяет, какая таблица стилей может переопределить другую.
 
-This special treatment comes with two caveats:
+Это особое обращение имеет два нюанса:
 
-* React will ignore changes to props after the style has been rendered. (React will issue a warning in development if this happens.)
-* React will drop all extraneous props when using the `precedence` prop (beyond `href` and `precedence`).
-* React may leave the style in the DOM even after the component that rendered it has been unmounted.
+* React будет игнорировать изменения props после рендеринга стиля. (React выдаст предупреждение в режиме разработки, если это произойдёт.)
+* React отбросит все лишние props при использовании prop `precedence` (кроме `href` и `precedence`).
+* React может оставить стиль в DOM даже после того, как компонент, который его рендерил, будет размонтирован.
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Rendering an inline CSS stylesheet {/*rendering-an-inline-css-stylesheet*/}
+### Рендеринг встроенной CSS-таблицы стилей {/*rendering-an-inline-css-stylesheet*/}
 
-If a component depends on certain CSS styles in order to be displayed correctly, you can render an inline stylesheet within the component.
+Если компонент зависит от определённых CSS-стилей для корректного отображения, вы можете рендерить встроенную таблицу стилей внутри компонента.
 
-The `href` prop should uniquely identify the stylesheet, because React will de-duplicate stylesheets that have the same `href`.
-If you supply a `precedence` prop, React will reorder inline stylesheets based on the order these values appear in the component tree.
+Prop `href` должен однозначно идентифицировать таблицу стилей, поскольку React будет дедуплицировать таблицы стилей с одинаковым `href`.
+Если вы укажете prop `precedence`, React переупорядочит встроенные таблицы стилей в соответствии с порядком появления этих значений в дереве компонентов.
 
-Inline stylesheets will not trigger Suspense boundaries while they're loading.
-Even if they load async resources like fonts or images.
+Встроенные таблицы стилей не будут вызывать границы Suspense во время загрузки.
+Даже если они загружают асинхронные ресурсы, такие как шрифты или изображения.
 
 <SandpackWithHTMLOutput>
 
