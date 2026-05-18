@@ -1,10 +1,9 @@
 <Intro>
 
-In the minified production build of React, we avoid sending down full error messages in order to reduce the number of bytes sent over the wire.
+В минифицированной сборке React для продакшена мы избегаем отправки полных сообщений об ошибках, чтобы уменьшить количество байтов, передаваемых по сети.
 
 </Intro>
 
+Мы настоятельно рекомендуем использовать сборку для разработки локально при отладке вашего приложения, поскольку она отслеживает дополнительную отладочную информацию и предоставляет полезные предупреждения о потенциальных проблемах в ваших приложениях. Однако, если вы столкнетесь с исключением при использовании сборки для продакшена, сообщение об ошибке будет содержать только ссылку на документацию по этой ошибке.
 
-We highly recommend using the development build locally when debugging your app since it tracks additional debug info and provides helpful warnings about potential problems in your apps, but if you encounter an exception while using the production build, the error message will include just a link to the docs for the error.
-
-For an example, see: [https://react.dev/errors/149](/errors/421).
+В качестве примера см.: https://react.dev/errors/149
