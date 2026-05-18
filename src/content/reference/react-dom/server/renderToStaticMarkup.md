@@ -1,7 +1,6 @@
 ---
 title: renderToStaticMarkup
 ---
-
 <Intro>
 
 `renderToStaticMarkup` рендерит неинтерактивное React-дерево в HTML-строку.
@@ -20,7 +19,7 @@ const html = renderToStaticMarkup(reactNode, options?)
 
 ### `renderToStaticMarkup(reactNode, options?)` {/*rendertostaticmarkup*/}
 
-На сервере вызовите `renderToStaticMarkup` для рендеринга вашего приложения в HTML.
+На сервере вызовите `renderToStaticMarkup`, чтобы отрендерить ваше приложение в HTML.
 
 ```js
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -30,13 +29,13 @@ const html = renderToStaticMarkup(<Page />);
 
 Это создаст неинтерактивный HTML-вывод ваших React-компонентов.
 
-[См. больше примеров ниже.](#usage)
+[Смотрите больше примеров ниже.](#usage)
 
 #### Параметры {/*parameters*/}
 
 * `reactNode`: React-узел, который вы хотите отрендерить в HTML. Например, JSX-узел вроде `<Page />`.
 * **необязательный** `options`: Объект для серверного рендеринга.
-  * **необязательный** `identifierPrefix`: Строковый префикс, который React использует для ID, сгенерированных [`useId`.](/reference/react/useId) Полезно для избежания конфликтов при использовании нескольких корней на одной странице.
+  * **необязательный** `identifierPrefix`: Строковый префикс, который React использует для ID, сгенерированных [`useId`.](/reference/react/useId) Полезно для избежания конфликтов при использовании нескольких корневых элементов на одной странице.
 
 #### Возвращает {/*returns*/}
 
@@ -44,7 +43,7 @@ HTML-строку.
 
 #### Ограничения {/*caveats*/}
 
-* Вывод `renderToStaticMarkup` не может быть гидрирован.
+* Вывод `renderToStaticMarkup` не может быть гидратирован.
 
 * `renderToStaticMarkup` имеет ограниченную поддержку Suspense. Если компонент приостанавливается, `renderToStaticMarkup` немедленно отправляет его запасной вариант в виде HTML.
 
@@ -56,7 +55,7 @@ HTML-строку.
 
 ### Рендеринг неинтерактивного React-дерева в HTML-строку {/*rendering-a-non-interactive-react-tree-as-html-to-a-string*/}
 
-Вызовите `renderToStaticMarkup` для рендеринга вашего приложения в HTML-строку, которую вы можете отправить с ответом сервера:
+Вызовите `renderToStaticMarkup`, чтобы отрендерить ваше приложение в HTML-строку, которую вы можете отправить с ответом сервера:
 
 ```js {5-6}
 import { renderToStaticMarkup } from 'react-dom/server';
@@ -72,7 +71,7 @@ app.use('/', (request, response) => {
 
 <Pitfall>
 
-Этот метод рендерит **неинтерактивный HTML, который нельзя гидрировать.** Это полезно, если вы хотите использовать React как простой генератор статических страниц или если вы рендерите полностью статический контент, например, электронные письма.
+Этот метод рендерит **неинтерактивный HTML, который нельзя гидратировать.** Это полезно, если вы хотите использовать React как простой генератор статических страниц или если вы рендерите полностью статический контент, например, электронные письма.
 
 Интерактивные приложения должны использовать [`renderToString`](/reference/react-dom/server/renderToString) на сервере и [`hydrateRoot`](/reference/react-dom/client/hydrateRoot) на клиенте.
 
