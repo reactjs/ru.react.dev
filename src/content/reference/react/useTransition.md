@@ -1,10 +1,9 @@
 ---
 title: useTransition
 ---
-
 <Intro>
 
-`useTransition` — это React Hook, который позволяет отображать часть пользовательского интерфейса в фоновом режиме.
+`useTransition` — это хук React, который позволяет рендерить часть пользовательского интерфейса в фоновом режиме.
 
 ```js
 const [isPending, startTransition] = useTransition()
@@ -16,11 +15,11 @@ const [isPending, startTransition] = useTransition()
 
 ---
 
-## Ссылка {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `useTransition()` {/*usetransition*/}
 
-Вызовите `useTransition` на верхнем уровне вашего компонента, чтобы пометить некоторые обновления состояния как Transitions.
+Вызовите `useTransition` на верхнем уровне вашего компонента, чтобы пометить некоторые обновления состояния как переходы (Transitions).
 
 ```js
 import { useTransition } from 'react';
@@ -37,18 +36,18 @@ function TabContainer() {
 
 `useTransition` не принимает никаких параметров.
 
-#### Возвращает {/*returns*/}
+#### Возвращаемое значение {/*returns*/}
 
-`useTransition` возвращает массив ровно с двумя элементами:
+`useTransition` возвращает массив из двух элементов:
 
-1. Флаг `isPending`, который сообщает, есть ли ожидающая Transition.
-2. Функция [`startTransition`](#starttransition), которая позволяет помечать обновления как Transition.
+1. Флаг `isPending`, который сообщает, есть ли ожидающий переход.
+2. Функция [`startTransition`](#starttransition), которая позволяет пометить обновления как переход.
 
 ---
 
 ### `startTransition(action)` {/*starttransition*/}
 
-Функция `startTransition`, возвращаемая `useTransition`, позволяет помечать обновление как Transition.
+Функция `startTransition`, возвращаемая `useTransition`, позволяет пометить обновление как переход.
 
 ```js {6,8}
 function TabContainer() {
@@ -65,9 +64,9 @@ function TabContainer() {
 ```
 
 <Note>
-#### Функции, вызываемые в `startTransition`, называются «Действиями». {/*functions-called-in-starttransition-are-called-actions*/}
+#### Функции, вызываемые в `startTransition`, называются «действиями» (Actions). {/*functions-called-in-starttransition-are-called-actions*/}
 
-Функция, передаваемая в `startTransition`, называется «Действием». По соглашению, любой обратный вызов, вызываемый внутри `startTransition` (например, обратный вызов prop), должен называться `action` или включать суффикс «Action»:
+Функция, передаваемая в `startTransition`, называется «действием» (Action). По соглашению, любой колбэк, вызываемый внутри `startTransition` (например, колбэк-проп), должен называться `action` или иметь суффикс "Action":
 
 ```js {1,9}
 function SubmitButton({ submitAction }) {
@@ -91,38 +90,39 @@ function SubmitButton({ submitAction }) {
 
 </Note>
 
+
+
 #### Параметры {/*starttransition-parameters*/}
 
-* `action`: Функция, которая обновляет некоторое состояние, вызывая одну или несколько [`set` функций](/reference/react/useState#setstate). React вызывает `action` немедленно без параметров и помечает все обновления состояния, запланированные синхронно во время вызова функции `action`, как Transitions. Любые асинхронные вызовы, ожидаемые в `action`, будут включены в Transition, но в настоящее время требуют оборачивания любых `set` функций после `await` в дополнительный `startTransition` (см. [Устранение неполадок](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). Обновления состояния, помеченные как Transitions, будут [неблокирующими](#marking-a-state-update-as-a-non-blocking-transition) и [не будут отображать нежелательные индикаторы загрузки](#preventing-unwanted-loading-indicators).
+* `action`: Функция, которая обновляет некоторое состояние, вызывая одну или несколько [`set`-функций](/reference/react/useState#setstate). React немедленно вызывает `action` без параметров и помечает все обновления состояния, запланированные синхронно во время вызова функции `action`, как переходы. Любые асинхронные вызовы, ожидание которых происходит в `action`, будут включены в переход, но в настоящее время требуют обертывания любых `set`-функций после `await` в дополнительный `startTransition` (см. [Устранение неполадок](#react-doesnt-treat-my-state-update-after-await-as-a-transition)). Обновления состояния, помеченные как переходы, будут [неблокирующими](#marking-a-state-update-as-a-non-blocking-transition) и [не будут отображать нежелательные индикаторы загрузки](#preventing-unwanted-loading-indicators).
 
-#### Возвращает {/*starttransition-returns*/}
+#### Возвращаемое значение {/*starttransition-returns*/}
 
 `startTransition` ничего не возвращает.
 
-#### Предостережения {/*starttransition-caveats*/}
+#### Ограничения {/*starttransition-caveats*/}
 
-* `useTransition` — это Hook, поэтому его можно вызывать только внутри компонентов или пользовательских Hooks. Если вам нужно запустить Transition в другом месте (например, из библиотеки данных), вместо этого вызовите автономный [`startTransition`](/reference/react/startTransition).
+* `useTransition` — это хук, поэтому его можно вызывать только внутри компонентов или пользовательских хуков. Если вам нужно начать переход где-то еще (например, из библиотеки данных), вместо этого вызовите автономный [`startTransition`](/reference/react/startTransition).
 
-* Вы можете обернуть обновление в Transition, только если у вас есть доступ к `set` функции этого состояния. Если вы хотите запустить Transition в ответ на какой-либо prop или значение пользовательского Hook, попробуйте вместо этого [`useDeferredValue`](/reference/react/useDeferredValue).
+* Вы можете обернуть обновление в переход только в том случае, если у вас есть доступ к `set`-функции этого состояния. Если вы хотите начать переход в ответ на какой-либо проп или значение пользовательского хука, вместо этого попробуйте [`useDeferredValue`](/reference/react/useDeferredValue).
 
-* Функция, которую вы передаете в `startTransition`, вызывается немедленно, помечая все обновления состояния, которые происходят во время ее выполнения, как Transitions. Если вы попытаетесь выполнить обновления состояния в `setTimeout`, например, они не будут помечены как Transitions.
+* Функция, которую вы передаете в `startTransition`, вызывается немедленно, помечая все обновления состояния, которые происходят во время ее выполнения, как переходы. Если вы попытаетесь выполнить обновления состояния в `setTimeout`, например, они не будут помечены как переходы.
 
-* Вы должны обернуть любые обновления состояния после любых асинхронных запросов в другой `startTransition`, чтобы пометить их как Transitions. Это известное ограничение, которое мы исправим в будущем (см. [Устранение неполадок](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
+* Любые обновления состояния после асинхронных запросов должны быть обернуты в другой `startTransition`, чтобы пометить их как переходы. Это известное ограничение, которое мы исправим в будущем (см. [Устранение неполадок](#react-doesnt-treat-my-state-update-after-await-as-a-transition)).
 
-* Функция `startTransition` имеет стабильную идентичность, поэтому вы часто будете видеть, что она опущена из зависимостей Effect, но включение ее не приведет к срабатыванию Effect. Если линтер позволяет вам опустить зависимость без ошибок, это безопасно. [Узнайте больше об удалении зависимостей Effect.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
+* Функция `startTransition` имеет стабильную идентичность, поэтому вы часто увидите, что она опущена из зависимостей эффекта, но ее включение не приведет к срабатыванию эффекта. Если линтер позволяет вам опустить зависимость без ошибок, это безопасно. [Узнайте больше об удалении зависимостей эффекта.](/learn/removing-effect-dependencies#move-dynamic-objects-and-functions-inside-your-effect)
 
-* Обновление состояния, помеченное как Transition, будет прервано другими обновлениями состояния. Например, если вы обновляете компонент диаграммы внутри Transition, но затем начинаете печатать в поле ввода, пока диаграмма находится в середине повторного рендеринга, React перезапустит работу по рендерингу компонента диаграммы после обработки обновления ввода.
+* Обновление состояния, помеченное как переход, будет прервано другими обновлениями состояния. Например, если вы обновляете компонент диаграммы внутри перехода, а затем начинаете вводить текст в поле ввода, пока диаграмма находится в середине повторного рендеринга, React перезапустит работу по рендерингу компонента диаграммы после обработки обновления ввода.
 
-* Обновления Transition нельзя использовать для управления текстовыми полями ввода.
+* Переходы нельзя использовать для управления текстовыми полями ввода.
 
-* Если есть несколько текущих Transitions, React в настоящее время объединяет их вместе. Это ограничение, которое может быть удалено в будущей версии.
-
+* Если существует несколько одновременных переходов, React в настоящее время группирует их вместе. Это ограничение может быть снято в будущих версиях.
 
 ## Использование {/*usage*/}
 
 ### Выполнение неблокирующих обновлений с помощью Actions {/*perform-non-blocking-updates-with-actions*/}
 
-Вызовите `useTransition` в верхней части вашего компонента, чтобы создать Actions, и получить доступ к состоянию ожидания:
+Вызовите `useTransition` в верхней части вашего компонента, чтобы создать Actions и получить доступ к состоянию ожидания:
 
 ```js [[1, 4, "isPending"], [2, 4, "startTransition"]]
 import {useState, useTransition} from 'react';
@@ -133,10 +133,10 @@ function CheckoutForm() {
 }
 ```
 
-`useTransition` возвращает массив ровно с двумя элементами:
+`useTransition` возвращает массив ровно из двух элементов:
 
-1.  <CodeStep step={1}>Флаг `isPending`</CodeStep>, который сообщает, есть ли ожидающий Transition.
-2.  <CodeStep step={2}>Функция `startTransition`</CodeStep>, которая позволяет вам создать Action.
+1. Флаг <CodeStep step={1}>`isPending`</CodeStep>, который сообщает вам, есть ли ожидающий Transition.
+2. Функция <CodeStep step={2}>`startTransition`</CodeStep>, которая позволяет вам создавать Action.
 
 Чтобы запустить Transition, передайте функцию в `startTransition` следующим образом:
 
@@ -160,17 +160,17 @@ function CheckoutForm() {
 }
 ```
 
-Функция, переданная в `startTransition`, называется «Action». Вы можете обновлять состояние и (опционально) выполнять побочные эффекты внутри Action, и работа будет выполняться в фоновом режиме, не блокируя взаимодействия пользователя на странице. Transition может включать несколько Actions, и пока Transition выполняется, ваш UI остается отзывчивым. Например, если пользователь нажимает на вкладку, но затем передумывает и нажимает на другую вкладку, второй клик будет обработан немедленно, не дожидаясь завершения первого обновления.
+Функция, переданная в `startTransition`, называется "Action". Вы можете обновлять состояние и (опционально) выполнять побочные эффекты внутри Action, и работа будет выполнена в фоновом режиме, не блокируя взаимодействие пользователя на странице. Transition может включать несколько Actions, и пока Transition выполняется, ваш UI остается отзывчивым. Например, если пользователь нажимает на вкладку, но затем передумывает и нажимает на другую вкладку, второе нажатие будет немедленно обработано без ожидания завершения первого обновления.
 
-Чтобы предоставить пользователю обратную связь о выполняющихся Transitions, состояние `isPending` переключается в `true` при первом вызове `startTransition` и остается `true`, пока все Actions не завершатся и конечное состояние не будет показано пользователю. Transitions гарантируют завершение побочных эффектов в Actions, чтобы [предотвратить нежелательные индикаторы загрузки](#preventing-unwanted-loading-indicators), и вы можете предоставить немедленную обратную связь, пока Transition выполняется, с помощью `useOptimistic`.
+Чтобы предоставить пользователю обратную связь о выполняющихся Transitions, состояние `isPending` переключается на `true` при первом вызове `startTransition` и остается `true` до тех пор, пока все Actions не завершатся и конечное состояние не будет показано пользователю. Transitions гарантируют, что побочные эффекты в Actions завершатся, чтобы [предотвратить нежелательные индикаторы загрузки](#preventing-unwanted-loading-indicators), и вы можете предоставить немедленную обратную связь во время выполнения Transition с помощью `useOptimistic`.
 
 <Recipes titleText="Разница между Actions и обычной обработкой событий">
 
 #### Обновление количества в Action {/*updating-the-quantity-in-an-action*/}
 
-В этом примере функция `updateQuantity` имитирует запрос к серверу для обновления количества товара в корзине. Эта функция *искусственно замедлена*, чтобы выполнение запроса занимало не менее секунды.
+В этом примере функция `updateQuantity` имитирует запрос к серверу для обновления количества товара в корзине. Эта функция *искусственно замедлена*, так что для завершения запроса требуется не менее одной секунды.
 
-Обновите количество несколько раз быстро. Обратите внимание, что состояние ожидания «Total» отображается, пока выполняются какие-либо запросы, и «Total» обновляется только после завершения последнего запроса. Поскольку обновление находится в Action, «quantity» может продолжать обновляться, пока выполняется запрос.
+Быстро обновите количество несколько раз. Обратите внимание, что ожидающее состояние "Total" отображается во время выполнения любых запросов, а "Total" обновляется только после завершения последнего запроса. Поскольку обновление находится в Action, "quantity" может продолжать обновляться во время выполнения запроса.
 
 <Sandpack>
 
@@ -200,8 +200,8 @@ export default function App({}) {
   const [isPending, startTransition] = useTransition();
 
   const updateQuantityAction = async newQuantity => {
-    // To access the pending state of a transition,
-    // call startTransition again.
+    // Чтобы получить доступ к состоянию ожидания transition,
+    // вызовите startTransition снова.
     startTransition(async () => {
       const savedQuantity = await updateQuantity(newQuantity);
       startTransition(() => {
@@ -226,7 +226,7 @@ import { startTransition } from "react";
 
 export default function Item({action}) {
   function handleChange(event) {
-    // To expose an action prop, await the callback in startTransition.
+    // Чтобы предоставить action как prop, ожидайте callback в startTransition.
     startTransition(async () => {
       await action(event.target.value);
     })
@@ -267,7 +267,7 @@ export default function Total({quantity, isPending}) {
 ```js src/api.js
 export async function updateQuantity(newQuantity) {
   return new Promise((resolve, reject) => {
-    // Simulate a slow network request.
+    // Имитация медленного сетевого запроса.
     setTimeout(() => {
       resolve(newQuantity);
     }, 2000);
@@ -304,22 +304,22 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-Это базовый пример, демонстрирующий работу Actions, но этот пример не обрабатывает запросы, завершающиеся не по порядку. При многократном обновлении количества возможно, что предыдущие запросы завершатся после более поздних запросов, что приведет к обновлению количества не по порядку. Это известное ограничение, которое мы исправим в будущем (см. [Устранение неполадок](#my-state-updates-in-transitions-are-out-of-order) ниже).
+Это базовый пример, демонстрирующий работу Actions, но он не обрабатывает запросы, завершающиеся не по порядку. При многократном обновлении количества возможно, что предыдущие запросы завершатся после более поздних, что приведет к обновлению количества не по порядку. Это известное ограничение, которое мы исправим в будущем (см. [Устранение неполадок](#my-state-updates-in-transitions-are-out-of-order) ниже).
 
-Для распространенных вариантов использования React предоставляет встроенные абстракции, такие как:
+Для распространенных сценариев использования React предоставляет встроенные абстракции, такие как:
 - [`useActionState`](/reference/react/useActionState)
-- [Действия `<form>`](/reference/react-dom/components/form)
+- [Actions `<form>`](/reference/react-dom/components/form)
 - [Server Functions](/reference/rsc/server-functions)
 
-Эти решения обрабатывают порядок запросов за вас. При использовании Transitions для создания собственных пользовательских хуков или библиотек, которые управляют переходами асинхронного состояния, у вас больше контроля над порядком запросов, но вы должны обрабатывать его самостоятельно.
+Эти решения обрабатывают порядок запросов за вас. При использовании Transitions для создания собственных пользовательских хуков или библиотек, управляющих асинхронными переходами состояния, вы имеете больший контроль над порядком запросов, но должны обрабатывать его самостоятельно.
 
 <Solution />
 
 #### Обновление количества без Action {/*updating-the-users-name-without-an-action*/}
 
-В этом примере функция `updateQuantity` также имитирует запрос к серверу для обновления количества товара в корзине. Эта функция *искусственно замедлена*, чтобы выполнение запроса занимало не менее секунды.
+В этом примере функция `updateQuantity` также имитирует запрос к серверу для обновления количества товара в корзине. Эта функция *искусственно замедлена*, так что для завершения запроса требуется не менее одной секунды.
 
-Обновите количество несколько раз быстро. Обратите внимание, что состояние ожидания «Total» отображается, пока выполняются какие-либо запросы, но «Total» обновляется несколько раз для каждого нажатия «quantity»:
+Быстро обновите количество несколько раз. Обратите внимание, что ожидающее состояние "Total" отображается во время выполнения любого запроса, но "Total" обновляется несколько раз при каждом нажатии на "quantity":
 
 <Sandpack>
 
@@ -349,7 +349,7 @@ export default function App({}) {
   const [isPending, setIsPending] = useState(false);
 
   const onUpdateQuantity = async newQuantity => {
-    // Manually set the isPending State.
+    // Вручную установите состояние isPending.
     setIsPending(true);
     const savedQuantity = await updateQuantity(newQuantity);
     setIsPending(false);
@@ -409,7 +409,7 @@ export default function Total({quantity, isPending}) {
 ```js src/api.js
 export async function updateQuantity(newQuantity) {
   return new Promise((resolve, reject) => {
-    // Simulate a slow network request.
+    // Имитация медленного сетевого запроса.
     setTimeout(() => {
       resolve(newQuantity);
     }, 2000);
@@ -446,7 +446,7 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-Общим решением этой проблемы является предотвращение внесения изменений пользователем, пока количество обновляется:
+Распространенным решением этой проблемы является запрет пользователю вносить изменения во время обновления количества:
 
 <Sandpack>
 
@@ -466,7 +466,7 @@ export async function updateQuantity(newQuantity) {
 ```
 
 ```js src/App.js
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { updateQuantity } from "./api";
 import Item from "./Item";
 import Total from "./Total";
@@ -477,7 +477,7 @@ export default function App({}) {
 
   const onUpdateQuantity = async event => {
     const newQuantity = event.target.value;
-    // Manually set the isPending state.
+    // Вручную установите состояние isPending.
     setIsPending(true);
     const savedQuantity = await updateQuantity(newQuantity);
     setIsPending(false);
@@ -535,7 +535,7 @@ export default function Total({quantity, isPending}) {
 ```js src/api.js
 export async function updateQuantity(newQuantity) {
   return new Promise((resolve, reject) => {
-    // Simulate a slow network request.
+    // Имитация медленного сетевого запроса.
     setTimeout(() => {
       resolve(newQuantity);
     }, 2000);
@@ -572,14 +572,17 @@ export async function updateQuantity(newQuantity) {
 
 </Sandpack>
 
-Это решение делает приложение медленным, потому что пользователь должен ждать каждый раз, когда он обновляет количество. Можно вручную добавить более сложную обработку, чтобы позволить пользователю взаимодействовать с UI, пока количество обновляется, но Actions обрабатывают этот случай с помощью простого встроенного API.
+Это решение делает приложение медленным, потому что пользователю приходится ждать каждый раз при обновлении количества. Можно добавить более сложную обработку вручную, чтобы позволить пользователю взаимодействовать с UI во время обновления количества, но Actions обрабатывают этот случай с помощью простого встроенного API.
 
 <Solution />
 
+</Recipes>
+
+---
 
 ### Предоставление пропса `action` из компонентов {/*exposing-action-props-from-components*/}
 
-Вы можете предоставить пропс `action` из компонента, чтобы разрешить родительскому компоненту вызывать Action.
+Вы можете предоставить пропс `action` из компонента, чтобы родительский компонент мог вызывать Action.
 
 Например, этот компонент `TabButton` оборачивает свою логику `onClick` в пропс `action`:
 
@@ -592,8 +595,8 @@ export default function TabButton({ action, children, isActive }) {
   return (
     <button onClick={() => {
       startTransition(async () => {
-        // await the action that's passed in.
-        // This allows it to be either sync or async. 
+        // await action, который передан.
+        // Это позволяет ему быть как синхронным, так и асинхронным. 
         await action();
       });
     }}>
@@ -603,7 +606,7 @@ export default function TabButton({ action, children, isActive }) {
 }
 ```
 
-Поскольку родительский компонент обновляет своё состояние внутри `action`, это обновление состояния помечается как Transition. Это означает, что вы можете нажать на «Posts», а затем сразу нажать «Contact», и это не блокирует взаимодействие с пользователем:
+Поскольку родительский компонент обновляет свое состояние внутри `action`, это обновление состояния помечается как Transition. Это означает, что вы можете нажать на "Posts", а затем немедленно нажать на "Contact", и это не заблокирует взаимодействие пользователя:
 
 <Sandpack>
 
@@ -659,8 +662,8 @@ export default function TabButton({ action, children, isActive }) {
   return (
     <button onClick={async () => {
       startTransition(async () => {
-        // await the action that's passed in.
-        // This allows it to be either sync or async. 
+        // await action, который передан.
+        // Это позволяет ему быть как синхронным, так и асинхронным. 
         await action();
       });
     }}>
@@ -682,7 +685,7 @@ export default function AboutTab() {
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
-  // Log once. The actual slowdown is inside SlowPost.
+  // Логируется один раз. Реальное замедление находится внутри SlowPost.
   console.log('[ARTIFICIALLY SLOW] Rendering 500 <SlowPost />');
 
   let items = [];
@@ -699,7 +702,7 @@ const PostsTab = memo(function PostsTab() {
 function SlowPost({ index }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // Do nothing for 1 ms per item to emulate extremely slow code
+    // Ничего не делаем в течение 1 мс на элемент, чтобы имитировать чрезвычайно медленный код
   }
 
   return (
@@ -738,17 +741,17 @@ b { display: inline-block; margin-right: 10px; }
 
 <Note>
 
-При предоставлении пропса `action` из компонента, вы должны `await` его внутри transition.
+При предоставлении пропса `action` из компонента вы должны `await` его внутри transition.
 
-Это позволяет колбэку `action` быть синхронным или асинхронным, не требуя дополнительного `startTransition` для оборачивания `await` в action.
+Это позволяет колбэку `action` быть синхронным или асинхронным без необходимости дополнительного `startTransition` для обертывания `await` в action.
 
 </Note>
 
 ---
 
-### Отображение визуального состояния ожидания {/*displaying-a-pending-visual-state*/}
+### Отображение ожидающего визуального состояния {/*displaying-a-pending-visual-state*/}
 
-Вы можете использовать логическое значение `isPending`, возвращаемое `useTransition`, чтобы указать пользователю, что Transition выполняется. Например, кнопка вкладки может иметь специальное визуальное состояние «ожидание»:
+Вы можете использовать булево значение `isPending`, возвращаемое `useTransition`, чтобы указать пользователю, что Transition выполняется. Например, кнопка вкладки может иметь специальное визуальное состояние "pending":
 
 ```js {4-6}
 function TabButton({ action, children, isActive }) {
@@ -760,7 +763,7 @@ function TabButton({ action, children, isActive }) {
   // ...
 ```
 
-Обратите внимание, как нажатие «Posts» теперь ощущается более отзывчивым, потому что сама кнопка вкладки обновляется сразу:
+Обратите внимание, как нажатие на "Posts" теперь ощущается более отзывчивым, потому что сама кнопка вкладки обновляется немедленно:
 
 <Sandpack>
 
@@ -837,7 +840,7 @@ export default function AboutTab() {
 import { memo } from 'react';
 
 const PostsTab = memo(function PostsTab() {
-  // Log once. The actual slowdown is inside SlowPost.
+  // Логируется один раз. Реальное замедление находится внутри SlowPost.
   console.log('[ARTIFICIALLY SLOW] Rendering 500 <SlowPost />');
 
   let items = [];
@@ -854,7 +857,7 @@ const PostsTab = memo(function PostsTab() {
 function SlowPost({ index }) {
   let startTime = performance.now();
   while (performance.now() - startTime < 1) {
-    // Do nothing for 1 ms per item to emulate extremely slow code
+    // Ничего не делаем в течение 1 мс на элемент, чтобы имитировать чрезвычайно медленный код
   }
 
   return (
@@ -895,7 +898,7 @@ b { display: inline-block; margin-right: 10px; }
 
 ### Предотвращение нежелательных индикаторов загрузки {/*preventing-unwanted-loading-indicators*/}
 
-В этом примере компонент `PostsTab` получает некоторые данные, используя [use](/reference/react/use). Когда вы нажимаете вкладку «Posts», компонент `PostsTab` *приостанавливает* выполнение, вызывая появление ближайшего запасного варианта загрузки:
+В этом примере компонент `PostsTab` получает данные с помощью [use](/reference/react/use). Когда вы нажимаете на вкладку «Posts», компонент `PostsTab` *приостанавливается*, вызывая появление ближайшего запасного варианта загрузки:
 
 <Sandpack>
 
@@ -1049,9 +1052,9 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-Скрытие всего контейнера вкладок для отображения индикатора загрузки приводит к неприятному пользовательскому опыту. Если добавить `useTransition` в `TabButton`, можно вместо этого отображать состояние ожидания в кнопке вкладки.
+Скрытие всего контейнера вкладок для отображения индикатора загрузки приводит к резкому ухудшению пользовательского опыта. Если добавить `useTransition` в `TabButton`, вместо этого можно отображать ожидающее состояние в кнопке вкладки.
 
-Обратите внимание, что нажатие «Posts» больше не заменяет весь контейнер вкладок спиннером:
+Обратите внимание, что при нажатии на «Posts» контейнер вкладок больше не заменяется индикатором загрузки:
 
 <Sandpack>
 
@@ -1213,20 +1216,19 @@ b { display: inline-block; margin-right: 10px; }
 
 </Sandpack>
 
-[Подробнее об использовании Transitions с Suspense.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
+[Подробнее об использовании переходов с Suspense.](/reference/react/Suspense#preventing-already-revealed-content-from-hiding)
 
 <Note>
 
-Transitions только «ждут» достаточно долго, чтобы избежать скрытия *уже отображенного* контента (например, контейнера вкладок). Если бы у вкладки Posts была [вложенная граница `<Suspense>`](/reference/react/Suspense#revealing-nested-content-as-it-loads), Transition не стала бы «ждать» ее.
+Переходы "ждут" достаточно долго, чтобы не скрывать уже *отображенный* контент (например, контейнер вкладок). Если бы вкладка «Posts» имела [вложенный `<Suspense>`-границу](/reference/react/Suspense#revealing-nested-content-as-it-loads), переход не стал бы её "ждать".
 
 </Note>
 
 ---
 
+### Создание маршрутизатора с поддержкой Suspense {/*building-a-suspense-enabled-router*/}
 
-### Создание роутера с поддержкой Suspense {/*building-a-suspense-enabled-router*/}
-
-Если вы создаёте фреймворк React или роутер, мы рекомендуем помечать переходы по страницам как Transitions.
+Если вы создаете фреймворк React или маршрутизатор, мы рекомендуем помечать переходы между страницами как Транзакции (Transitions).
 
 ```js {3,6,8}
 function Router() {
@@ -1241,13 +1243,13 @@ function Router() {
   // ...
 ```
 
-Это рекомендуется по трём причинам:
+Это рекомендуется по трем причинам:
 
-- [Transitions можно прервать,](#marking-a-state-update-as-a-non-blocking-transition) что позволяет пользователю уйти, не дожидаясь завершения перерендера.
-- [Transitions предотвращают нежелательные индикаторы загрузки,](#preventing-unwanted-loading-indicators) что позволяет пользователю избежать резких скачков при навигации.
-- [Transitions ждут завершения всех ожидающих действий,](#perform-non-blocking-updates-with-actions) что позволяет пользователю дождаться завершения побочных эффектов, прежде чем будет показана новая страница.
+- [Переходы можно прервать](#marking-a-state-update-as-a-non-blocking-transition), что позволяет пользователю кликнуть в другом месте, не дожидаясь завершения повторного рендеринга.
+- [Переходы предотвращают появление нежелательных индикаторов загрузки](#preventing-unwanted-loading-indicators), что позволяет пользователю избежать резких скачков при навигации.
+- [Переходы ждут завершения всех ожидающих действий](#perform-non-blocking-updates-with-actions), что позволяет пользователю дождаться завершения побочных эффектов перед отображением новой страницы.
 
-Вот упрощённый пример роутера, использующего Transitions для навигации.
+Вот упрощенный пример маршрутизатора, использующего переходы для навигации.
 
 <Sandpack>
 
@@ -1548,15 +1550,15 @@ main {
 
 <Note>
 
-Ожидается, что роутеры с [поддержкой Suspense](/reference/react/Suspense) по умолчанию будут оборачивать обновления навигации в Transitions.
+Маршрутизаторы с поддержкой [Suspense](/reference/react/Suspense) по умолчанию должны оборачивать обновления навигации в переходы (Transitions).
 
 </Note>
 
 ---
 
-### Отображение ошибки пользователям с помощью предохранителя {/*displaying-an-error-to-users-with-error-boundary*/}
+### Отображение ошибки пользователю с помощью предохранителя ошибок {/*displaying-an-error-to-users-with-error-boundary*/}
 
-Если функция, переданная в `startTransition`, выдаёт ошибку, вы можете отобразить ошибку пользователю с помощью [предохранителя](/reference/react/Component#catching-rendering-errors-with-an-error-boundary). Чтобы использовать предохранитель, оберните компонент, в котором вы вызываете `useTransition`, в предохранитель. Как только функция, переданная в `startTransition`, выдаст ошибку, будет отображён fallback для предохранителя.
+Если функция, переданная в `startTransition`, вызывает ошибку, вы можете отобразить ошибку пользователю с помощью [предохранителя ошибок](/reference/react/Component#catching-rendering-errors-an-error-boundary). Чтобы использовать предохранитель ошибок, оберните компонент, в котором вы вызываете `useTransition`, в предохранитель ошибок. Как только функция, переданная в `startTransition`, вызовет ошибку, будет отображен запасной вариант предохранителя ошибок.
 
 <Sandpack>
 
@@ -1638,15 +1640,15 @@ root.render(
 
 ## Устранение неполадок {/*troubleshooting*/}
 
-### Обновление input в Transition не работает {/*updating-an-input-in-a-transition-doesnt-work*/}
+### Обновление поля ввода в Transition не работает {/*updating-an-input-in-a-transition-doesnt-work*/}
 
-Вы не можете использовать Transition для переменной состояния, которая управляет input:
+Вы не можете использовать Transition для переменной состояния, которая управляет полем ввода:
 
 ```js {4,10}
 const [text, setText] = useState('');
 // ...
 function handleChange(e) {
-  // ❌ Нельзя использовать Transitions для управляемого состояния input
+  // ❌ Нельзя использовать Transitions для управляемого состояния ввода
   startTransition(() => {
     setText(e.target.value);
   });
@@ -1655,16 +1657,16 @@ function handleChange(e) {
 return <input value={text} onChange={handleChange} />;
 ```
 
-Это связано с тем, что Transitions являются неблокирующими, но обновление input в ответ на событие изменения должно происходить синхронно. Если вы хотите запустить Transition в ответ на ввод текста, у вас есть два варианта:
+Это связано с тем, что Transitions не блокируют основной поток, а обновление поля ввода в ответ на событие изменения должно происходить синхронно. Если вы хотите запустить Transition в ответ на ввод текста, у вас есть два варианта:
 
-1.  Вы можете объявить две отдельные переменные состояния: одну для состояния input (которая всегда обновляется синхронно) и одну, которую вы будете обновлять в Transition. Это позволит вам управлять input, используя синхронное состояние, и передавать переменную состояния Transition (которая будет «отставать» от input) в остальную часть вашей логики рендеринга.
-2.  В качестве альтернативы, вы можете иметь одну переменную состояния и добавить [`useDeferredValue`](/reference/react/useDeferredValue), которая будет «отставать» от реального значения. Она будет запускать неблокирующие перерендеринги, чтобы автоматически «догнать» новое значение.
+1.  Вы можете объявить две отдельные переменные состояния: одну для состояния поля ввода (которая всегда обновляется синхронно) и одну, которую вы будете обновлять в Transition. Это позволит вам управлять полем ввода с помощью синхронного состояния и передавать переменную состояния Transition (которая будет "отставать" от поля ввода) остальной части вашей логики рендеринга.
+2.  В качестве альтернативы вы можете использовать одну переменную состояния и добавить [`useDeferredValue`](/reference/react/useDeferredValue), которая будет "отставать" от реального значения. Она будет автоматически запускать неблокирующие повторные рендеры, чтобы "догнать" новое значение.
 
 ---
 
-### React не обрабатывает мое обновление состояния как Transition {/*react-doesnt-treat-my-state-update-as-a-transition*/}
+### React не считает мое обновление состояния Transition {/*react-doesnt-treat-my-state-update-as-a-transition*/}
 
-Когда вы оборачиваете обновление состояния в Transition, убедитесь, что это происходит *во время* вызова `startTransition`:
+Когда вы оборачиваете обновление состояния в Transition, убедитесь, что оно происходит *во время* вызова `startTransition`:
 
 ```js
 startTransition(() => {
@@ -1673,7 +1675,7 @@ startTransition(() => {
 });
 ```
 
-Функция, которую вы передаете в `startTransition`, должна быть синхронной. Вы не можете пометить обновление как Transition следующим образом:
+Функция, которую вы передаете в `startTransition`, должна быть синхронной. Вы не можете пометить обновление как Transition таким образом:
 
 ```js
 startTransition(() => {
@@ -1697,9 +1699,9 @@ setTimeout(() => {
 
 ---
 
-### React не обрабатывает мое обновление состояния после `await` как Transition {/*react-doesnt-treat-my-state-update-after-await-as-a-transition*/}
+### React не считает мое обновление состояния после `await` Transition {/*react-doesnt-treat-my-state-update-after-await-as-a-transition*/}
 
-Когда вы используете `await` внутри функции `startTransition`, обновления состояния, которые происходят после `await`, не помечаются как Transitions. Вы должны обернуть обновления состояния после каждого `await` в вызов `startTransition`:
+Когда вы используете `await` внутри функции `startTransition`, обновления состояния, происходящие после `await`, не помечаются как Transitions. Вы должны обернуть обновления состояния после каждого `await` в вызов `startTransition`:
 
 ```js
 startTransition(async () => {
@@ -1709,25 +1711,25 @@ startTransition(async () => {
 });
 ```
 
-Однако, это работает вместо этого:
+Однако, вот как это работает:
 
 ```js
 startTransition(async () => {
   await someAsyncFunction();
-  // ✅ Использование startTransition *после* await
+  // ✅ Используется startTransition *после* await
   startTransition(() => {
     setPage('/about');
   });
 });
 ```
 
-Это ограничение JavaScript из-за того, что React теряет область видимости асинхронного контекста. В будущем, когда [AsyncContext](https://github.com/tc39/proposal-async-context) станет доступен, это ограничение будет снято.
+Это ограничение JavaScript, поскольку React теряет контекст асинхронной области выполнения. В будущем, когда [AsyncContext](https://github.com/tc39/proposal-async-context) станет доступен, это ограничение будет снято.
 
 ---
 
-### Я хочу вызвать `useTransition` извне компонента {/*i-want-to-call-usetransition-from-outside-a-component*/}
+### Я хочу вызвать `useTransition` вне компонента {/*i-want-to-call-usetransition-from-outside-a-component*/}
 
-Вы не можете вызвать `useTransition` вне компонента, потому что это Hook. В этом случае используйте вместо этого автономный метод [`startTransition`](/reference/react/startTransition). Он работает так же, но не предоставляет индикатор `isPending`.
+Вы не можете вызывать `useTransition` вне компонента, потому что это Хук. В этом случае вместо этого используйте отдельный метод [`startTransition`](/reference/react/startTransition). Он работает так же, но не предоставляет индикатор `isPending`.
 
 ---
 
@@ -1744,7 +1746,7 @@ startTransition(() => {
 console.log(3);
 ```
 
-**Ожидается, что он выведет 1, 2, 3.** Функция, которую вы передаете в `startTransition`, не задерживается. В отличие от браузерного `setTimeout`, она не запускает обратный вызов позже. React выполняет вашу функцию немедленно, но любые обновления состояния, запланированные *во время ее выполнения*, помечаются как Transitions. Вы можете представить, что это работает так:
+**Ожидается вывод 1, 2, 3.** Функция, которую вы передаете в `startTransition`, не задерживается. В отличие от браузерного `setTimeout`, она не выполняет колбэк позже. React выполняет вашу функцию немедленно, но любые обновления состояния, запланированные *во время ее выполнения*, помечаются как Transitions. Вы можете представить, что это работает так:
 
 ```js
 // Упрощенная версия того, как работает React
@@ -1766,13 +1768,13 @@ function setState() {
 }
 ```
 
-### Мои обновления состояния в Transitions выполняются не по порядку {/*my-state-updates-in-transitions-are-out-of-order*/}
+### Мои обновления состояния в Transitions идут не по порядку {/*my-state-updates-in-transitions-are-out-of-order*/}
 
 Если вы используете `await` внутри `startTransition`, вы можете увидеть, что обновления происходят не по порядку.
 
-В этом примере функция `updateQuantity` имитирует запрос к серверу для обновления количества товара в корзине. Эта функция *искусственно возвращает каждый второй запрос после предыдущего*, чтобы имитировать гонки для сетевых запросов.
+В этом примере функция `updateQuantity` имитирует запрос к серверу для обновления количества товара в корзине. Эта функция *искусственно возвращает каждый второй запрос после предыдущего*, чтобы имитировать гонки условий для сетевых запросов.
 
-Попробуйте обновить количество один раз, а затем быстро обновить его несколько раз. Вы можете увидеть неверную общую сумму:
+Попробуйте обновить количество один раз, а затем быстро обновите его несколько раз. Вы можете увидеть неправильную общую сумму:
 
 <Sandpack>
 
@@ -1800,14 +1802,14 @@ import Total from "./Total";
 export default function App({}) {
   const [quantity, setQuantity] = useState(1);
   const [isPending, startTransition] = useTransition();
-  // Store the actual quantity in separate state to show the mismatch.
+  // Храним фактическое количество в отдельном состоянии, чтобы показать несоответствие.
   const [clientQuantity, setClientQuantity] = useState(1);
   
   const updateQuantityAction = newQuantity => {
     setClientQuantity(newQuantity);
 
-    // Access the pending state of the transition,
-    // by wrapping in startTransition again.
+    // Получаем доступ к состоянию ожидания перехода,
+    // оборачивая его снова в startTransition.
     startTransition(async () => {
       const savedQuantity = await updateQuantity(newQuantity);
       startTransition(() => {
@@ -1833,7 +1835,7 @@ import {startTransition} from 'react';
 
 export default function Item({action}) {
   function handleChange(e) {
-    // Update the quantity in an Action.
+    // Обновляем количество в Действии.
     startTransition(async () => {
       await action(e.target.value);
     });
@@ -1866,13 +1868,13 @@ export default function Total({ clientQuantity, savedQuantity, isPending }) {
       <div>
         <div>
           {isPending
-            ? "🌀 Обновление..."
+            ? "🌀 Updating..."
             : `${intl.format(savedQuantity * 9999)}`}
         </div>
         <div className="error">
           {!isPending &&
             clientQuantity !== savedQuantity &&
-            `Неверная общая сумма, ожидается: ${intl.format(clientQuantity * 9999)}`}
+            `Wrong total, expected: ${intl.format(clientQuantity * 9999)}`}
         </div>
       </div>
     </div>
@@ -1889,7 +1891,7 @@ export async function updateQuantity(newName) {
       setTimeout(() => {
         firstRequest = true;
         resolve(newName);
-        // Simulate every other request being slower
+        // Имитируем, что каждый второй запрос выполняется медленнее
       }, 1000);
     } else {
       setTimeout(() => {
@@ -1939,11 +1941,13 @@ export async function updateQuantity(newName) {
 
 </Sandpack>
 
-При многократном нажатии возможно, что предыдущие запросы завершатся после более поздних запросов. Когда это происходит, React в настоящее время не имеет возможности узнать предполагаемый порядок. Это связано с тем, что обновления запланированы асинхронно, и React теряет контекст порядка через асинхронную границу.
 
-Это ожидаемо, потому что Actions внутри Transition не гарантируют порядок выполнения. Для распространенных вариантов использования React предоставляет абстракции более высокого уровня, такие как [`useActionState`](/reference/react/useActionState) и действия [`<form>`](/reference/react-dom/components/form), которые обрабатывают упорядочение за вас. Для расширенных вариантов использования вам потребуется реализовать собственную очередь и логику прерывания для обработки этого.
+При многократных кликах предыдущие запросы могут завершиться позже, чем последующие. Когда это происходит, React в настоящее время не имеет способа узнать предполагаемый порядок. Это связано с тем, что обновления планируются асинхронно, и React теряет контекст порядка при пересечении асинхронной границы.
 
-Пример обработки порядка выполнения `useActionState`:
+Это ожидаемо, поскольку Действия внутри Transition не гарантируют порядок выполнения. Для распространенных сценариев использования React предоставляет более высокоуровневые абстракции, такие как [`useActionState`](/reference/react/useActionState) и действия [`<form>`](/reference/react-dom/components/form), которые обрабатывают порядок за вас. Для продвинутых сценариев использования вам потребуется реализовать собственную логику постановки в очередь и отмены для обработки этого.
+
+
+Пример обработки порядка выполнения с помощью `useActionState`:
 
 <Sandpack>
 
@@ -1969,15 +1973,15 @@ import Item from "./Item";
 import Total from "./Total";
 
 export default function App({}) {
-  // Store the actual quantity in separate state to show the mismatch.
+  // Храним фактическое количество в отдельном состоянии, чтобы показать несоответствие.
   const [clientQuantity, setClientQuantity] = useState(1);
   const [quantity, updateQuantityAction, isPending] = useActionState(
     async (prevState, payload) => {
       setClientQuantity(payload);
       const savedQuantity = await updateQuantity(payload);
-      return savedQuantity; // Return the new quantity to update the state
+      return savedQuantity; // Возвращаем новое количество для обновления состояния
     },
-    1 // Initial quantity
+    1 // Начальное количество
   );
 
   return (
@@ -1997,7 +2001,7 @@ import {startTransition} from 'react';
 
 export default function Item({action}) {
   function handleChange(e) {
-    // Update the quantity in an Action.
+    // Обновляем количество в Действии.
     startTransition(() => {
       action(e.target.value);
     });
@@ -2030,13 +2034,13 @@ export default function Total({ clientQuantity, savedQuantity, isPending }) {
       <div>
         <div>
           {isPending
-            ? "🌀 Обновление..."
+            ? "🌀 Updating..."
             : `${intl.format(savedQuantity * 9999)}`}
         </div>
         <div className="error">
           {!isPending &&
             clientQuantity !== savedQuantity &&
-            `Неверная общая сумма, ожидается: ${intl.format(clientQuantity * 9999)}`}
+            `Wrong total, expected: ${intl.format(clientQuantity * 9999)}`}
         </div>
       </div>
     </div>
@@ -2053,7 +2057,7 @@ export async function updateQuantity(newName) {
       setTimeout(() => {
         firstRequest = true;
         resolve(newName);
-        // Simulate every other request being slower
+        // Имитируем, что каждый второй запрос выполняется медленнее
       }, 1000);
     } else {
       setTimeout(() => {
