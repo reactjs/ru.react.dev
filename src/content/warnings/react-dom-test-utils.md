@@ -1,6 +1,7 @@
 ---
-title: Предупреждения об устаревании react-dom/test-utils
+title: react-dom/test-utils Deprecation Warnings
 ---
+
 ## Предупреждение ReactDOMTestUtils.act {/*reactdomtestutilsact-warning*/}
 
 `act` из `react-dom/test-utils` устарел и заменён на `act` из `react`.
