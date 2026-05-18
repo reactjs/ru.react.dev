@@ -1,10 +1,9 @@
 ---
-title: "`<input>`"
+title: "<input>"
 ---
-```html
 <Intro>
 
-Встроенный [компонент `<input>` браузера](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input) позволяет отображать различные виды полей ввода формы.
+Встроенный браузерный компонент [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input) позволяет отображать различные типы полей ввода формы.
 
 ```js
 <input />
@@ -20,7 +19,7 @@ title: "`<input>`"
 
 ### `<input>` {/*input*/}
 
-Чтобы отобразить поле ввода, отрендерите [встроенный компонент `<input>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input) браузера.
+Чтобы отобразить поле ввода, используйте встроенный браузерный компонент [`<input>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
 
 ```js
 <input name="myInput" />
@@ -32,70 +31,70 @@ title: "`<input>`"
 
 `<input>` поддерживает все [общие пропсы элементов.](/reference/react-dom/components/common#props)
 
-- [`formAction`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#formaction): Строка или функция. Переопределяет родительский `<form action>` для `type="submit"` и `type="image"`. Когда URL передается в `action`, форма будет вести себя как стандартная HTML-форма. Когда функция передается в `formAction`, функция будет обрабатывать отправку формы. См. [`<form action>`](/reference/react-dom/components/form#props).
+- [`formAction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction): Строка или функция. Переопределяет `action` родительского `<form>` для `type="submit"` и `type="image"`. Когда URL передается в `action`, форма ведет себя как стандартная HTML-форма. Когда функция передается в `formAction`, функция обрабатывает отправку формы. См. [`<form action>`](/reference/react-dom/components/form#props).
 
 Вы можете [сделать поле ввода управляемым](#controlling-an-input-with-a-state-variable), передав один из этих пропсов:
 
-* [`checked`](https://developer.mozilla.org/ru/docs/Web/API/HTMLInputElement#checked): Логическое значение. Для флажка или переключателя определяет, выбран ли он.
-* [`value`](https://developer.mozilla.org/ru/docs/Web/API/HTMLInputElement#value): Строка. Для текстового поля ввода управляет его текстом. (Для переключателя указывает данные формы.)
+* [`checked`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#checked): Булево значение. Для флажка или переключателя контролирует, выбран ли он.
+* [`value`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#value): Строка. Для текстового поля ввода контролирует его текст. (Для переключателя указывает его данные формы.)
 
-Когда вы передаете любой из них, вы также должны передать обработчик `onChange`, который обновляет переданное значение.
+Когда вы передаете одно из них, вы также должны передать обработчик `onChange`, который обновляет переданное значение.
 
 Эти пропсы `<input>` актуальны только для неуправляемых полей ввода:
 
-* [`defaultChecked`](https://developer.mozilla.org/ru/docs/Web/API/HTMLInputElement#defaultChecked): Логическое значение. Указывает [начальное значение](#providing-an-initial-value-for-an-input) для полей ввода `type="checkbox"` и `type="radio"`.
-* [`defaultValue`](https://developer.mozilla.org/ru/docs/Web/API/HTMLInputElement#defaultValue): Строка. Указывает [начальное значение](#providing-an-initial-value-for-an-input) для текстового поля ввода.
+* [`defaultChecked`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#defaultChecked): Булево значение. Задает [начальное значение](#providing-an-initial-value-for-an-input) для полей ввода `type="checkbox"` и `type="radio"`.
+* [`defaultValue`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement#defaultValue): Строка. Задает [начальное значение](#providing-an-initial-value-for-an-input) для текстового поля ввода.
 
 Эти пропсы `<input>` актуальны как для неуправляемых, так и для управляемых полей ввода:
 
-* [`accept`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#accept): Строка. Указывает, какие типы файлов принимаются полем ввода `type="file"`.
-* [`alt`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#alt): Строка. Указывает альтернативный текст изображения для поля ввода `type="image"`.
-* [`capture`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#capture): Строка. Указывает носитель (микрофон, видео или камеру), захватываемый полем ввода `type="file"`.
-* [`autoComplete`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#autocomplete): Строка. Указывает одно из возможных [поведений автозаполнения.](https://developer.mozilla.org/ru/docs/Web/HTML/Attributes/autocomplete#values)
-* [`autoFocus`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#autofocus): Логическое значение. Если `true`, React сфокусирует элемент при монтировании.
-* [`dirname`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#dirname): Строка. Указывает имя поля формы для направленности элемента.
-* [`disabled`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#disabled): Логическое значение. Если `true`, поле ввода не будет интерактивным и будет отображаться тусклым.
+* [`accept`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#accept): Строка. Указывает, какие типы файлов принимаются полем ввода `type="file"`.
+* [`alt`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#alt): Строка. Указывает альтернативный текст изображения для поля ввода `type="image"`.
+* [`capture`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#capture): Строка. Указывает медиа (микрофон, видео или камеру), захватываемое полем ввода `type="file"`.
+* [`autoComplete`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#autocomplete): Строка. Указывает одно из возможных [поведений автозаполнения.](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#values)
+* [`autoFocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#autofocus): Булево значение. Если `true`, React сфокусируется на элементе при монтировании.
+* [`dirname`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#dirname): Строка. Указывает имя поля формы для направления элемента.
+* [`disabled`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#disabled): Булево значение. Если `true`, поле ввода не будет интерактивным и будет отображаться затемненным.
 * `children`: `<input>` не принимает дочерние элементы.
-* [`form`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#form): Строка. Указывает `id` `<form>`, к которой принадлежит это поле ввода. Если опущено, это ближайшая родительская форма.
-* [`formAction`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#formaction): Строка. Переопределяет родительский `<form action>` для `type="submit"` и `type="image"`.
-* [`formEnctype`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#formenctype): Строка. Переопределяет родительский `<form enctype>` для `type="submit"` и `type="image"`.
-* [`formMethod`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#formmethod): Строка. Переопределяет родительский `<form method>` для `type="submit"` и `type="image"`.
-* [`formNoValidate`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#formnovalidate): Строка. Переопределяет родительский `<form noValidate>` для `type="submit"` и `type="image"`.
-* [`formTarget`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#formtarget): Строка. Переопределяет родительский `<form target>` для `type="submit"` и `type="image"`.
-* [`height`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#height): Строка. Указывает высоту изображения для `type="image"`.
-* [`list`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#list): Строка. Указывает `id` `<datalist>` с параметрами автозаполнения.
-* [`max`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#max): Число. Указывает максимальное значение числовых и datetime полей ввода.
-* [`maxLength`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#maxlength): Число. Указывает максимальную длину текста и других полей ввода.
-* [`min`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#min): Число. Указывает минимальное значение числовых и datetime полей ввода.
-* [`minLength`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#minlength): Число. Указывает минимальную длину текста и других полей ввода.
-* [`multiple`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#multiple): Логическое значение. Указывает, разрешено ли несколько значений для `<type="file"` и `type="email"`.
-* [`name`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#name): Строка. Указывает имя для этого поля ввода, которое [отправляется с формой.](#reading-the-input-values-when-submitting-a-form)
-* `onChange`: Функция [`Event` handler](/reference/react-dom/components/common#event-handler). Требуется для [управляемых полей ввода.](#controlling-an-input-with-a-state-variable) Срабатывает сразу, когда значение поля ввода изменяется пользователем (например, срабатывает при каждом нажатии клавиши). Ведет себя как [событие `input` браузера.](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/input_event)
-* `onChangeCapture`: Версия `onChange`, которая срабатывает на [фазе захвата.](/learn/responding-to-events#capture-phase-events)
-* [`onInput`](https://developer.mozilla.org/ru/docs/Web/API/HTMLElement/input_event): Функция [`Event` handler](/reference/react-dom/components/common#event-handler). Срабатывает сразу, когда значение изменяется пользователем. По историческим причинам в React принято использовать `onChange` вместо него, который работает аналогично.
-* `onInputCapture`: Версия `onInput`, которая срабатывает на [фазе захвата.](/learn/responding-to-events#capture-phase-events)
-* [`onInvalid`](https://developer.mozilla.org/ru/docs/Web/API/HTMLInputElement/invalid_event): Функция [`Event` handler](/reference/react-dom/components/common#event-handler). Срабатывает, если поле ввода не проходит проверку при отправке формы. В отличие от встроенного события `invalid`, событие React `onInvalid` всплывает.
-* `onInvalidCapture`: Версия `onInvalid`, которая срабатывает на [фазе захвата.](/learn/responding-to-events#capture-phase-events)
-* [`onSelect`](https://developer.mozilla.org/ru/docs/Web/API/HTMLInputElement/select_event): Функция [`Event` handler](/reference/react-dom/components/common#event-handler). Срабатывает после изменения выделения внутри `<input>`. React расширяет событие `onSelect`, чтобы оно также срабатывало для пустого выделения и при редактировании (что может повлиять на выделение).
-* `onSelectCapture`: Версия `onSelect`, которая срабатывает на [фазе захвата.](/learn/responding-to-events#capture-phase-events)
-* [`pattern`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#pattern): Строка. Указывает шаблон, которому должно соответствовать `value`.
-* [`placeholder`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#placeholder): Строка. Отображается тусклым цветом, когда значение поля ввода пусто.
-* [`readOnly`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#readonly): Логическое значение. Если `true`, поле ввода не редактируется пользователем.
-* [`required`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#required): Логическое значение. Если `true`, значение должно быть предоставлено для отправки формы.
-* [`size`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#size): Число. Аналогично установке ширины, но единица измерения зависит от элемента управления.
-* [`src`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#src): Строка. Указывает источник изображения для поля ввода `type="image"`.
-* [`step`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#step): Положительное число или строка `'any'`. Указывает расстояние между допустимыми значениями.
-* [`type`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#type): Строка. Один из [типов ввода.](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#input_types)
-* [`width`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#width): Строка. Указывает ширину изображения для поля ввода `type="image"`.
+* [`form`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#form): Строка. Указывает `id` формы `<form>`, к которой принадлежит это поле ввода. Если опущено, это ближайшая родительская форма.
+* [`formAction`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formaction): Строка. Переопределяет `action` родительской `<form>` для `type="submit"` и `type="image"`.
+* [`formEnctype`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formenctype): Строка. Переопределяет `enctype` родительской `<form>` для `type="submit"` и `type="image"`.
+* [`formMethod`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formmethod): Строка. Переопределяет `method` родительской `<form>` для `type="submit"` и `type="image"`.
+* [`formNoValidate`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formnovalidate): Строка. Переопределяет `noValidate` родительской `<form>` для `type="submit"` и `type="image"`.
+* [`formTarget`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#formtarget): Строка. Переопределяет `target` родительской `<form>` для `type="submit"` и `type="image"`.
+* [`height`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#height): Строка. Указывает высоту изображения для `type="image"`.
+* [`list`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#list): Строка. Указывает `id` `<datalist>` с вариантами автозаполнения.
+* [`max`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#max): Число. Указывает максимальное значение для числовых и временных полей ввода.
+* [`maxLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#maxlength): Число. Указывает максимальную длину текста и других полей ввода.
+* [`min`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#min): Число. Указывает минимальное значение для числовых и временных полей ввода.
+* [`minLength`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#minlength): Число. Указывает минимальную длину текста и других полей ввода.
+* [`multiple`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#multiple): Булево значение. Указывает, разрешены ли множественные значения для `<type="file"` и `type="email"`.
+* [`name`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#name): Строка. Указывает имя для этого поля ввода, которое [отправляется с формой.](#reading-the-input-values-when-submitting-a-form)
+* `onChange`: Обработчик [`Event`](/reference/react-dom/components/common#event-handler). Обязателен для [управляемых полей ввода.](#controlling-an-input-with-a-state-variable) Срабатывает немедленно при изменении значения поля ввода пользователем (например, срабатывает при каждом нажатии клавиши). Работает аналогично браузерному событию [`input`.](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event)
+* `onChangeCapture`: Версия `onChange`, которая срабатывает в [фазе захвата.](/learn/responding-to-events#capture-phase-events)
+* [`onInput`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event): Обработчик [`Event`](/reference/react-dom/components/common#event-handler). Срабатывает немедленно при изменении значения пользователем. По историческим причинам в React идиоматично использовать `onChange`, который работает аналогично.
+* `onInputCapture`: Версия `onInput`, которая срабатывает в [фазе захвата.](/learn/responding-to-events#capture-phase-events)
+* [`onInvalid`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/invalid_event): Обработчик [`Event`](/reference/react-dom/components/common#event-handler). Срабатывает, если поле ввода не проходит проверку при отправке формы. В отличие от встроенного события `invalid`, событие React `onInvalid` всплывает.
+* `onInvalidCapture`: Версия `onInvalid`, которая срабатывает в [фазе захвата.](/learn/responding-to-events#capture-phase-events)
+* [`onSelect`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/select_event): Обработчик [`Event`](/reference/react-dom/components/common#event-handler). Срабатывает после изменения выделения внутри `<input>`. React расширяет событие `onSelect`, чтобы оно срабатывало также для пустого выделения и при редактировании (что может повлиять на выделение).
+* `onSelectCapture`: Версия `onSelect`, которая срабатывает в [фазе захвата.](/learn/responding-to-events#capture-phase-events)
+* [`pattern`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#pattern): Строка. Указывает шаблон, которому должно соответствовать `value`.
+* [`placeholder`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#placeholder): Строка. Отображается приглушенным цветом, когда значение поля ввода пустое.
+* [`readOnly`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#readonly): Булево значение. Если `true`, поле ввода не редактируется пользователем.
+* [`required`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#required): Булево значение. Если `true`, значение должно быть предоставлено для отправки формы.
+* [`size`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#size): Число. Аналогично установке ширины, но единица измерения зависит от элемента управления.
+* [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#src): Строка. Указывает источник изображения для поля ввода `type="image"`.
+* [`step`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#step): Положительное число или строка `'any'`. Указывает расстояние между допустимыми значениями.
+* [`type`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#type): Строка. Один из [типов ввода.](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)
+* [`width`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#width): Строка. Указывает ширину изображения для поля ввода `type="image"`.
 
-#### Предостережения {/*caveats*/}
+#### Особенности {/*caveats*/}
 
 - Флажки требуют `checked` (или `defaultChecked`), а не `value` (или `defaultValue`).
-- Если текстовое поле ввода получает строковый проп `value`, оно будет [рассматриваться как управляемое.](#controlling-an-input-with-a-state-variable)
-- Если флажок или переключатель получает логический проп `checked`, он будет [рассматриваться как управляемый.](#controlling-an-input-with-a-state-variable)
+- Если текстовое поле ввода получает строковый пропс `value`, оно будет [считаться управляемым.](#controlling-an-input-with-a-state-variable)
+- Если флажок или переключатель получает булев пропс `checked`, он будет [считаться управляемым.](#controlling-an-input-with-a-state-variable)
 - Поле ввода не может быть одновременно управляемым и неуправляемым.
-- Поле ввода не может переключаться между управляемым и неуправляемым в течение своего жизненного цикла.
-- Каждому управляемому полю ввода требуется обработчик события `onChange`, который синхронно обновляет его базовое значение.
+- Поле ввода не может переключаться между управляемым и неуправляемым состоянием в течение своего жизненного цикла.
+- Каждое управляемое поле ввода требует обработчика события `onChange`, который синхронно обновляет его базовое значение.
 
 ---
 
@@ -103,7 +102,7 @@ title: "`<input>`"
 
 ### Отображение полей ввода разных типов {/*displaying-inputs-of-different-types*/}
 
-Чтобы отобразить поле ввода, отрендерите компонент `<input>`. По умолчанию это будет текстовое поле ввода. Вы можете передать `type="checkbox"` для флажка, `type="radio"` для переключателя [или один из других типов ввода.](https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#input_types)
+Чтобы отобразить поле ввода, используйте компонент `<input>`. По умолчанию это будет текстовое поле. Вы можете передать `type="checkbox"` для флажка, `type="radio"` для переключателя, [или один из других типов ввода.](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types)
 
 <Sandpack>
 
@@ -150,9 +149,9 @@ input { margin: 5px; }
 
 ### Предоставление метки для поля ввода {/*providing-a-label-for-an-input*/}
 
-Обычно вы будете помещать каждый `<input>` внутрь тега [`<label>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/label). Это сообщает браузеру, что эта метка связана с этим полем ввода. Когда пользователь нажимает на метку, браузер автоматически фокусирует поле ввода. Это также важно для доступности: программа чтения с экрана объявит заголовок метки, когда пользователь сфокусирует связанное поле ввода.
+Обычно вы помещаете каждое `<input>` внутрь тега [`<label>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label). Это сообщает браузеру, что эта метка связана с этим полем ввода. Когда пользователь нажимает на метку, браузер автоматически фокусируется на поле ввода. Это также важно для доступности: программа чтения с экрана объявит текст метки, когда пользователь сфокусируется на связанном поле ввода.
 
-Если вы не можете вложить `<input>` в `<label>`, свяжите их, передав один и тот же ID в `<input id>` и [`<label htmlFor>`.](https://developer.mozilla.org/ru/docs/Web/API/HTMLLabelElement/htmlFor) Чтобы избежать конфликтов между несколькими экземплярами одного компонента, сгенерируйте такой ID с помощью [`useId`.](/reference/react/useId)
+Если вы не можете вложить `<input>` в `<label>`, свяжите их, передав одинаковый `id` в `<input id>` и [`<label htmlFor>`.](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/htmlFor) Чтобы избежать конфликтов между несколькими экземплярами одного компонента, сгенерируйте такой `id` с помощью [`useId`.](/reference/react/useId)
 
 <Sandpack>
 
@@ -185,7 +184,7 @@ input { margin: 5px; }
 
 ### Предоставление начального значения для поля ввода {/*providing-an-initial-value-for-an-input*/}
 
-При необходимости вы можете указать начальное значение для любого поля ввода. Передайте его как строку `defaultValue` для текстовых полей ввода. Флажки и переключатели должны указывать начальное значение с помощью логического значения `defaultChecked`.
+Вы можете опционально указать начальное значение для любого поля ввода. Передайте его как строку `defaultValue` для текстовых полей ввода. Флажки и переключатели должны указывать начальное значение с помощью булева значения `defaultChecked` вместо этого.
 
 <Sandpack>
 
@@ -212,7 +211,7 @@ export default function MyForm() {
             type="radio"
             name="myRadio"
             value="option2"
-            defaultChecked={true} 
+            defaultChecked={true}
           />
           Option 2
         </label>
@@ -237,7 +236,7 @@ input { margin: 5px; }
 
 ### Чтение значений полей ввода при отправке формы {/*reading-the-input-values-when-submitting-a-form*/}
 
-Добавьте [`<form>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/form) вокруг ваших полей ввода с [`<button type="submit">`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/button) внутри. Он вызовет ваш обработчик события `<form onSubmit>`. По умолчанию браузер отправит данные формы на текущий URL и обновит страницу. Вы можете переопределить это поведение, вызвав `e.preventDefault()`. Прочитайте данные формы с помощью [`new FormData(e.target)`](https://developer.mozilla.org/ru/docs/Web/API/FormData).
+Добавьте [`<form>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form) вокруг ваших полей ввода с [`<button type="submit">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) внутри. Это вызовет ваш обработчик события `<form onSubmit>`. По умолчанию браузер отправит данные формы на текущий URL и обновит страницу. Вы можете переопределить это поведение, вызвав `e.preventDefault()`. Прочитайте данные формы с помощью [`new FormData(e.target)`](https://developer.mozilla.org/en-US/docs/Web/API/FormData).
 <Sandpack>
 
 ```js
@@ -291,13 +290,13 @@ input { margin: 5px; }
 
 <Note>
 
-Присвойте `name` каждому `<input>`, например `<input name="firstName" defaultValue="Taylor" />`. Указанное вами `name` будет использоваться в качестве ключа в данных формы, например `{ firstName: "Taylor" }`.
+Присвойте каждому `<input>` атрибут `name`, например `<input name="firstName" defaultValue="Taylor" />`. Указанное вами имя будет использоваться как ключ в данных формы, например `{ firstName: "Taylor" }`.
 
 </Note>
 
 <Pitfall>
 
-По умолчанию `<button>` внутри `<form>` без атрибута `type` отправит ее. Это может быть неожиданностью! Если у вас есть собственный пользовательский React-компонент `Button`, рассмотрите возможность использования [`<button type="button">`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/button) вместо `<button>` (без типа). Затем, чтобы быть явным, используйте `<button type="submit">` для кнопок, которые *должны* отправлять форму.
+По умолчанию `<button>` внутри `<form>` без атрибута `type` будет отправлять его. Это может быть неожиданно! Если у вас есть собственный компонент React `Button`, рассмотрите возможность использования [`<button type="button">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button) вместо `<button>` (без типа). Затем, чтобы быть явным, используйте `<button type="submit">` для кнопок, которые *должны* отправлять форму.
 
 </Pitfall>
 
@@ -305,9 +304,9 @@ input { margin: 5px; }
 
 ### Управление полем ввода с помощью переменной состояния {/*controlling-an-input-with-a-state-variable*/}
 
-Поле ввода, такое как `<input />`, является *неуправляемым*. Даже если вы [передаете начальное значение](#providing-an-initial-value-for-an-input), например `<input defaultValue="Initial text" />`, ваш JSX только указывает начальное значение. Он не управляет тем, каким должно быть значение прямо сейчас.
+Поле ввода, такое как `<input />`, является *неуправляемым*. Даже если вы [передаете начальное значение](#providing-an-initial-value-for-an-input), например `<input defaultValue="Initial text" />`, ваш JSX указывает только начальное значение. Он не контролирует, каким должно быть значение прямо сейчас.
 
-**Чтобы отобразить _управляемое_ поле ввода, передайте ему проп `value` (или `checked` для флажков и переключателей).** React заставит поле ввода всегда иметь переданное вами `value`. Обычно вы делаете это, объявляя [переменную состояния:](/reference/react/useState)
+**Чтобы отобразить _управляемое_ поле ввода, передайте ему пропс `value` (или `checked` для флажков и переключателей).** React заставит поле ввода всегда иметь значение `value`, которое вы передали. Обычно это делается путем объявления [переменной состояния:](/reference/react/useState)
 
 ```js {2,6,7}
 function Form() {
@@ -315,14 +314,14 @@ function Form() {
   // ...
   return (
     <input
-      value={firstName} // ...заставьте значение поля ввода соответствовать переменной состояния...
-      onChange={e => setFirstName(e.target.value)} // ... и обновляйте переменную состояния при любых изменениях!
+      value={firstName} // ...принудительно установите значение поля ввода в соответствии с переменной состояния...
+      onChange={e => setFirstName(e.target.value)} // ...и обновляйте переменную состояния при каждом редактировании!
     />
   );
 }
 ```
 
-Управляемое поле ввода имеет смысл, если вам все равно нужно состояние — например, чтобы перерендерить ваш пользовательский интерфейс при каждом изменении:
+Управляемое поле ввода имеет смысл, если вам в любом случае нужно состояние — например, чтобы перерисовывать пользовательский интерфейс при каждом редактировании:
 
 ```js {2,9}
 function Form() {
@@ -337,7 +336,7 @@ function Form() {
       ...
 ```
 
-Это также полезно, если вы хотите предложить несколько способов настройки состояния ввода (например, нажатием кнопки):
+Это также полезно, если вы хотите предложить несколько способов настройки состояния поля ввода (например, нажав кнопку):
 
 ```js {3-4,10-11,14}
 function Form() {
@@ -358,7 +357,7 @@ function Form() {
         </button>
 ```
 
-`value`, которое вы передаете управляемым компонентам, не должно быть `undefined` или `null`. Если вам нужно, чтобы начальное значение было пустым (например, в поле `firstName` ниже), инициализируйте переменную состояния пустой строкой (`''`).
+Значение `value`, которое вы передаете управляемым компонентам, не должно быть `undefined` или `null`. Если вам нужно, чтобы начальное значение было пустым (как в поле `firstName` ниже), инициализируйте переменную состояния пустой строкой (`''`).
 
 <Sandpack>
 
@@ -410,17 +409,17 @@ p { font-weight: bold; }
 
 <Pitfall>
 
-**Если вы передаете `value` без `onChange`, в поле ввода будет невозможно что-либо ввести.** Когда вы управляете полем ввода, передавая ему какое-либо `value`, вы *заставляете* его всегда иметь переданное вами значение. Поэтому, если вы передаете переменную состояния как `value`, но забываете синхронно обновить эту переменную состояния во время обработчика события `onChange`, React вернет поле ввода после каждого нажатия клавиши обратно к указанному вами `value`.
+**Если вы передаете `value` без `onChange`, вводить текст в поле будет невозможно.** Когда вы управляете полем ввода, передавая ему какое-либо `value`, вы *принудительно* заставляете его всегда иметь значение, которое вы передали. Поэтому, если вы передаете переменную состояния как `value`, но забываете синхронно обновлять эту переменную состояния во время обработчика события `onChange`, React откатит поле ввода после каждого нажатия клавиши к значению, которое вы указали.
 
 </Pitfall>
 
 ---
 
-### Оптимизация перерендеринга при каждом нажатии клавиши {/*optimizing-re-rendering-on-every-keystroke*/}
+### Оптимизация перерисовки при каждом нажатии клавиши {/*optimizing-re-rendering-on-every-keystroke*/}
 
-Когда вы используете управляемое поле ввода, вы устанавливаете состояние при каждом нажатии клавиши. Если компонент, содержащий ваше состояние, перерендеривает большое дерево, это может замедлиться. Есть несколько способов оптимизировать производительность перерендеринга.
+Когда вы используете управляемое поле ввода, вы устанавливаете состояние при каждом нажатии клавиши. Если компонент, содержащий ваше состояние, перерисовывает большое дерево, это может замедлить работу. Есть несколько способов оптимизировать производительность перерисовки.
 
-Например, предположим, что вы начинаете с формы, которая перерендеривает все содержимое страницы при каждом нажатии клавиши:
+Например, предположим, вы начинаете с формы, которая перерисовывает все содержимое страницы при каждом нажатии клавиши:
 
 ```js {5-8}
 function App() {
@@ -436,7 +435,7 @@ function App() {
 }
 ```
 
-Поскольку `<PageContent />` не зависит от состояния ввода, вы можете переместить состояние ввода в свой собственный компонент:
+Поскольку `<PageContent />` не зависит от состояния поля ввода, вы можете переместить состояние поля ввода в собственный компонент:
 
 ```js {4,10-17}
 function App() {
@@ -458,15 +457,15 @@ function SignupForm() {
 }
 ```
 
-Это значительно повышает производительность, потому что теперь только `SignupForm` перерендеривается при каждом нажатии клавиши.
+Это значительно улучшает производительность, потому что теперь только `SignupForm` перерисовывается при каждом нажатии клавиши.
 
-Если невозможно избежать перерендеринга (например, если `PageContent` зависит от значения поля поиска), [`useDeferredValue`](/reference/react/useDeferredValue#deferring-re-rendering-for-a-part-of-the-ui) позволяет вам поддерживать отзывчивость управляемого поля ввода даже в середине большого перерендеринга.
+Если нет возможности избежать перерисовки (например, если `PageContent` зависит от значения поля ввода поиска), [`useDeferredValue`](/reference/react/useDeferredValue#deferring-re-rendering-for-a-part-of-the-ui) позволяет сохранить управляемое поле ввода отзывчивым даже во время большой перерисовки.
 
 ---
 
 ## Устранение неполадок {/*troubleshooting*/}
 
-### Мое текстовое поле ввода не обновляется, когда я что-то ввожу {/*my-text-input-doesnt-update-when-i-type-into-it*/}
+### Мое текстовое поле ввода не обновляется при вводе текста {/*my-text-input-doesnt-update-when-i-type-into-it*/}
 
 Если вы отображаете поле ввода с `value`, но без `onChange`, вы увидите ошибку в консоли:
 
@@ -477,11 +476,11 @@ function SignupForm() {
 
 <ConsoleBlock level="error">
 
-Вы предоставили проп `value` полю формы без обработчика `onChange`. Это отобразит поле только для чтения. Если поле должно быть изменяемым, используйте `defaultValue`. В противном случае установите либо `onChange`, либо `readOnly`.
+You provided a `value` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultValue`. Otherwise, set either `onChange` or `readOnly`.
 
 </ConsoleBlock>
 
-Как предполагает сообщение об ошибке, если вы просто хотели [указать *начальное* значение,](#providing-an-initial-value-for-an-input) передайте вместо этого `defaultValue`:
+Как предполагает сообщение об ошибке, если вы хотели только [указать *начальное* значение,](#providing-an-initial-value-for-an-input) вместо этого передайте `defaultValue`:
 
 ```js
 // ✅ Good: uncontrolled input with an initial value
@@ -495,7 +494,7 @@ function SignupForm() {
 <input value={something} onChange={e => setSomething(e.target.value)} />
 ```
 
-Если значение намеренно доступно только для чтения, добавьте проп `readOnly`, чтобы подавить ошибку:
+Если значение намеренно только для чтения, добавьте пропс `readOnly`, чтобы подавить ошибку:
 
 ```js
 // ✅ Good: readonly controlled input without on change
@@ -504,7 +503,7 @@ function SignupForm() {
 
 ---
 
-### Мой флажок не обновляется, когда я нажимаю на него {/*my-checkbox-doesnt-update-when-i-click-on-it*/}
+### Мой флажок не обновляется при нажатии на него {/*my-checkbox-doesnt-update-when-i-click-on-it*/}
 
 Если вы отображаете флажок с `checked`, но без `onChange`, вы увидите ошибку в консоли:
 
@@ -515,11 +514,11 @@ function SignupForm() {
 
 <ConsoleBlock level="error">
 
-Вы предоставили проп `checked` полю формы без обработчика `onChange`. Это отобразит поле только для чтения. Если поле должно быть изменяемым, используйте `defaultChecked`. В противном случае установите либо `onChange`, либо `readOnly`.
+You provided a `checked` prop to a form field without an `onChange` handler. This will render a read-only field. If the field should be mutable use `defaultChecked`. Otherwise, set either `onChange` or `readOnly`.
 
 </ConsoleBlock>
 
-Как предполагает сообщение об ошибке, если вы просто хотели [указать *начальное* значение,](#providing-an-initial-value-for-an-input) передайте вместо этого `defaultChecked`:
+Как предполагает сообщение об ошибке, если вы хотели только [указать *начальное* значение,](#providing-an-initial-value-for-an-input) вместо этого передайте `defaultChecked`:
 
 ```js
 // ✅ Good: uncontrolled checkbox with an initial value
@@ -539,7 +538,7 @@ function SignupForm() {
 
 </Pitfall>
 
-Если флажок намеренно доступен только для чтения, добавьте проп `readOnly`, чтобы подавить ошибку:
+Если флажок намеренно только для чтения, добавьте пропс `readOnly`, чтобы подавить ошибку:
 
 ```js
 // ✅ Good: readonly controlled input without on change
@@ -548,11 +547,11 @@ function SignupForm() {
 
 ---
 
-### Мой курсор в поле ввода перескакивает в начало при каждом нажатии клавиши {/*my-input-caret-jumps-to-the-beginning-on-every-keystroke*/}
+### Курсор моего поля ввода прыгает в начало при каждом нажатии клавиши {/*my-input-caret-jumps-to-the-beginning-on-every-keystroke*/}
 
-Если вы [управляете полем ввода,](#controlling-an-input-with-a-state-variable) вы должны обновить его переменную состояния до значения поля ввода из DOM во время `onChange`.
+Если вы [управляете полем ввода,](#controlling-an-input-with-a-state-variable) вы должны синхронно обновлять переменную состояния значением поля ввода из DOM во время `onChange`.
 
-Вы не можете обновить его до чего-либо, кроме `e.target.value` (или `e.target.checked` для флажков):
+Вы не можете обновить его чем-то, кроме `e.target.value` (или `e.target.checked` для флажков):
 
 ```js
 function handleChange(e) {
@@ -561,7 +560,7 @@ function handleChange(e) {
 }
 ```
 
-Вы также не можете обновить его асинхронно:
+Вы также не можете обновлять его асинхронно:
 
 ```js
 function handleChange(e) {
@@ -572,7 +571,7 @@ function handleChange(e) {
 }
 ```
 
-Чтобы исправить свой код, обновите его синхронно до `e.target.value`:
+Чтобы исправить ваш код, обновите его синхронно до `e.target.value`:
 
 ```js
 function handleChange(e) {
@@ -581,17 +580,17 @@ function handleChange(e) {
 }
 ```
 
-Если это не решит проблему, возможно, поле ввода удаляется и повторно добавляется из DOM при каждом нажатии клавиши. Это может произойти, если вы случайно [сбрасываете состояние](/learn/preserving-and-resetting-state) при каждом перерендеринге, например, если поле ввода или один из его родителей всегда получает другой атрибут `key` или если вы вкладываете определения функций компонентов (что не поддерживается и приводит к тому, что «внутренний» компонент всегда считается другим деревом).
+Если это не решает проблему, возможно, поле ввода удаляется и повторно добавляется из DOM при каждом нажатии клавиши. Это может произойти, если вы случайно [сбрасываете состояние](/learn/preserving-and-resetting-state) при каждой перерисовке, например, если полю ввода или одному из его родительских элементов всегда присваивается другой атрибут `key`, или если вы вкладываете определения функций компонентов (что не поддерживается и приводит к тому, что "внутренний" компонент всегда считается другим деревом).
 
 ---
 
-### Я получаю ошибку: «Компонент изменяет неуправляемый ввод, чтобы он стал управляемым» {/*im-getting-an-error-a-component-is-changing-an-uncontrolled-input-to-be-controlled*/}
+### Я получаю ошибку: "Компонент изменяет неуправляемое поле ввода, делая его управляемым" {/*im-getting-an-error-a-component-is-changing-an-uncontrolled-input-to-be-controlled*/}
 
-Если вы предоставляете `value` компоненту, он должен оставаться строкой на протяжении всего своего жизненного цикла.
 
-Вы не можете сначала передать `value={undefined}`, а затем передать `value="some string"`, потому что React не будет знать, хотите ли вы, чтобы компонент был неуправляемым или управляемым. Управляемый компонент всегда должен получать строковое `value`, а не `null` или `undefined`.
+Если вы передаете `value` компоненту, оно должно оставаться строкой на протяжении всего его жизненного цикла.
 
-Если ваше `value` поступает из API или переменной состояния, оно может быть инициализировано как `null` или `undefined`. В этом случае либо установите его изначально пустой строкой (`''`), либо передайте `value={someValue ?? ''}`, чтобы убедиться, что `value` является строкой.
+Вы не можете сначала передать `value={undefined}`, а затем передать `value="some string"`, потому что React не будет знать, хотите ли вы, чтобы компонент был неуправляемым или управляемым. Управляемый компонент всегда должен получать строковое значение `value`, а не `null` или `undefined`.
 
-Аналогично, если вы передаете `checked` флажку, убедитесь, что он всегда является логическим значением.
-```
+Если ваше значение `value` поступает из API или переменной состояния, оно может быть инициализировано как `null` или `undefined`. В этом случае либо установите его в пустую строку (`''`) изначально, либо передайте `value={someValue ?? ''}`, чтобы гарантировать, что `value` является строкой.
+
+Аналогично, если вы передаете `checked` флажку, убедитесь, что это всегда булево значение.
