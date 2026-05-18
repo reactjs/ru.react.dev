@@ -1,5 +1,5 @@
 ---
-title: кеш
+title: cache
 canary: true
 ---
 <RSC>
