@@ -1,6 +1,7 @@
 ---
-title: Компоненты сервера
+title: Server Components
 ---
+
 <RSC>
 
 Server Components используются в [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
