@@ -1,5 +1,5 @@
 ---
-title: "React Server Components с нулевым размером бандла"
+title: "Introducing Zero-Bundle-Size React Server Components"
 author: Dan Abramov, Lauren Tan, Joseph Savona, and Sebastian Markbage
 date: 2020/12/21
 description: 2020 год был долгим. Поскольку он подходит к концу, мы хотели поделиться специальным праздничным обновлением о наших исследованиях в области React Server Components с нулевым размером бандла.
