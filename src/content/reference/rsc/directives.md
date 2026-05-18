@@ -4,19 +4,19 @@ title: Directives
 
 <RSC>
 
-Directives are for use in [React Server Components](/reference/rsc/server-components).
+Директивы используются в [React Server Components](/reference/rsc/server-components).
 
 </RSC>
 
 <Intro>
 
-Directives provide instructions to [bundlers compatible with React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
+Директивы предоставляют инструкции [сборщикам, совместимым с React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
 
 </Intro>
 
 ---
 
-## Source code directives {/*source-code-directives*/}
+## Директивы исходного кода {/*source-code-directives*/}
 
-* [`'use client'`](/reference/rsc/use-client) lets you mark what code runs on the client.
-* [`'use server'`](/reference/rsc/use-server) marks server-side functions that can be called from client-side code.
+* [`'use client'`](/reference/rsc/use-client) позволяет вам помечать код, который выполняется на клиенте.
+* [`'use server'`](/reference/rsc/use-server) помечает серверные функции, которые можно вызывать из клиентского кода.
