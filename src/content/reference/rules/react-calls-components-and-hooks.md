@@ -3,84 +3,83 @@ title: React calls Components and Hooks
 ---
 
 <Intro>
-React is responsible for rendering components and Hooks when necessary to optimize the user experience. It is declarative: you tell React what to render in your component’s logic, and React will figure out how best to display it to your user.
+React отвечает за рендеринг компонентов и хуков при необходимости для оптимизации пользовательского опыта. Он декларативен: вы говорите React, что рендерить в логике вашего компонента, а React сам определит, как лучше всего это отобразить вашему пользователю.
 </Intro>
 
 <InlineToc />
 
 ---
 
-## Never call component functions directly {/*never-call-component-functions-directly*/}
-Components should only be used in JSX. Don't call them as regular functions. React should call it.
+## Никогда не вызывайте функции компонентов напрямую {/*never-call-component-functions-directly*/}
+Компоненты следует использовать только в JSX. Не вызывайте их как обычные функции. React должен вызывать их.
 
-React must decide when your component function is called [during rendering](/reference/rules/components-and-hooks-must-be-pure#how-does-react-run-your-code). In React, you do this using JSX.
+React должен решать, когда ваша функция компонента вызывается [во время рендеринга](/reference/rules/components-and-hooks-must-be-pure#how-does-react-run-your-code). В React вы делаете это с помощью JSX.
 
 ```js {2}
 function BlogPost() {
-  return <Layout><Article /></Layout>; // ✅ Good: Only use components in JSX
+  return <Layout><Article /></Layout>; // ✅ Хорошо: Используйте компоненты только в JSX
 }
 ```
 
 ```js {2}
 function BlogPost() {
-  return <Layout>{Article()}</Layout>; // 🔴 Bad: Never call them directly
+  return <Layout>{Article()}</Layout>; // 🔴 Плохо: Никогда не вызывайте их напрямую
 }
 ```
 
-If a component contains Hooks, it's easy to violate the [Rules of Hooks](/reference/rules/rules-of-hooks) when components are called directly in a loop or conditionally.
+Если компонент содержит хуки, легко нарушить [Правила хуков](/reference/rules/rules-of-hooks), когда компоненты вызываются напрямую в цикле или условно.
 
-Letting React orchestrate rendering also allows a number of benefits:
+Позволяя React управлять рендерингом, вы также получаете ряд преимуществ:
 
-* **Components become more than functions.** React can augment them with features like _local state_ through Hooks that are tied to the component's identity in the tree.
-* **Component types participate in reconciliation.** By letting React call your components, you also tell it more about the conceptual structure of your tree. For example, when you move from rendering `<Feed>` to the `<Profile>` page, React won’t attempt to re-use them.
-* **React can enhance your user experience.** For example, it can let the browser do some work between component calls so that re-rendering a large component tree doesn’t block the main thread.
-* **A better debugging story.** If components are first-class citizens that the library is aware of, we can build rich developer tools for introspection in development.
-* **More efficient reconciliation.** React can decide exactly which components in the tree need re-rendering and skip over the ones that don't. That makes your app faster and more snappy.
+*   **Компоненты становятся больше, чем просто функции.** React может расширять их функциями, такими как _локальное состояние_, с помощью хуков, которые привязаны к идентичности компонента в дереве.
+*   **Типы компонентов участвуют в согласовании.** Позволяя React вызывать ваши компоненты, вы также сообщаете ему больше о концептуальной структуре вашего дерева. Например, когда вы переходите от рендеринга `<Feed>` к странице `<Profile>`, React не будет пытаться повторно использовать их.
+*   **React может улучшить ваш пользовательский опыт.** Например, он может позволить браузеру выполнять некоторую работу между вызовами компонентов, чтобы повторный рендеринг большого дерева компонентов не блокировал основной поток.
+*   **Лучшая история отладки.** Если компоненты являются первоклассными объектами, о которых знает библиотека, мы можем создавать богатые инструменты разработчика для интроспекции во время разработки.
+*   **Более эффективное согласование.** React может точно определить, какие компоненты в дереве нуждаются в повторном рендеринге, и пропустить те, которые не нуждаются. Это делает ваше приложение быстрее и отзывчивее.
 
 ---
 
-## Never pass around Hooks as regular values {/*never-pass-around-hooks-as-regular-values*/}
+## Никогда не передавайте хуки как обычные значения {/*never-pass-around-hooks-as-regular-values*/}
 
-Hooks should only be called inside of components or Hooks. Never pass it around as a regular value.
+Хуки следует вызывать только внутри компонентов или других хуков. Никогда не передавайте их как обычные значения.
 
-Hooks allow you to augment a component with React features. They should always be called as a function, and never passed around as a regular value. This enables _local reasoning_, or the ability for developers to understand everything a component can do by looking at that component in isolation.
+Хуки позволяют расширять компонент функциями React. Их следует всегда вызывать как функцию и никогда не передавать как обычное значение. Это обеспечивает _локальное понимание_ (local reasoning), то есть возможность для разработчиков понять все, что может делать компонент, просто взглянув на этот компонент в изоляции.
 
-Breaking this rule will cause React to not automatically optimize your component.
+Нарушение этого правила приведет к тому, что React не сможет автоматически оптимизировать ваш компонент.
 
-### Don't dynamically mutate a Hook {/*dont-dynamically-mutate-a-hook*/}
+### Не изменяйте хук динамически {/*dont-dynamically-mutate-a-hook*/}
 
-Hooks should be as "static" as possible. This means you shouldn't dynamically mutate them. For example, this means you shouldn't write higher order Hooks:
+Хуки должны быть максимально «статичными». Это означает, что вы не должны динамически изменять их. Например, это означает, что вы не должны писать хуки высшего порядка:
 
 ```js {2}
 function ChatInput() {
-  const useDataWithLogging = withLogging(useData); // 🔴 Bad: don't write higher order Hooks
-  const data = useDataWithLogging();
+  const useDataWithLogging = withLogging(useData); // 🔴 Плохо: не пишите хуки высшего порядка
 }
 ```
 
-Hooks should be immutable and not be mutated. Instead of mutating a Hook dynamically, create a static version of the Hook with the desired functionality.
+Хуки должны быть неизменяемыми и не должны изменяться. Вместо динамического изменения хука создайте статическую версию хука с желаемой функциональностью.
 
 ```js {2,6}
 function ChatInput() {
-  const data = useDataWithLogging(); // ✅ Good: Create a new version of the Hook
+  const data = useDataWithLogging(); // ✅ Хорошо: Создайте новую версию хука
 }
 
 function useDataWithLogging() {
-  // ... Create a new version of the Hook and inline the logic here
+  // ... Создайте новую версию хука и встройте логику здесь
 }
 ```
 
-### Don't dynamically use Hooks {/*dont-dynamically-use-hooks*/}
+### Не используйте хуки динамически {/*dont-dynamically-use-hooks*/}
 
-Hooks should also not be dynamically used: for example, instead of doing dependency injection in a component by passing a Hook as a value:
+Хуки также не следует использовать динамически: например, вместо внедрения зависимостей в компонент путем передачи хука в качестве значения:
 
 ```js {2}
 function ChatInput() {
-  return <Button useData={useDataWithLogging} /> // 🔴 Bad: don't pass Hooks as props
+  return <Button useData={useDataWithLogging} /> // 🔴 Плохо: не передавайте хуки как пропсы
 }
 ```
 
-You should always inline the call of the Hook into that component and handle any logic in there.
+Вы всегда должны встраивать вызов хука в этот компонент и обрабатывать всю логику внутри него.
 
 ```js {6}
 function ChatInput() {
@@ -88,14 +87,13 @@ function ChatInput() {
 }
 
 function Button() {
-  const data = useDataWithLogging(); // ✅ Good: Use the Hook directly
+  const data = useDataWithLogging(); // ✅ Хорошо: Используйте хук напрямую
 }
 
 function useDataWithLogging() {
-  // If there's any conditional logic to change the Hook's behavior, it should be inlined into
-  // the Hook
+  // Если есть какая-либо условная логика для изменения поведения хука, она должна быть встроена в
+  // хук
 }
 ```
 
-This way, `<Button />` is much easier to understand and debug. When Hooks are used in dynamic ways, it increases the complexity of your app greatly and inhibits local reasoning, making your team less productive in the long term. It also makes it easier to accidentally break the [Rules of Hooks](/reference/rules/rules-of-hooks) that Hooks should not be called conditionally. If you find yourself needing to mock components for tests, it's better to mock the server instead to respond with canned data. If possible, it's also usually more effective to test your app with end-to-end tests.
-
+Таким образом, `<Button />` гораздо проще понять и отладить. Когда хуки используются динамически, это значительно увеличивает сложность вашего приложения и препятствует локальному пониманию, что в долгосрочной перспективе снижает продуктивность вашей команды. Это также облегчает случайное нарушение [Правил хуков](/reference/rules/rules-of-hooks), согласно которым хуки не должны вызываться условно. Если вам приходится мокать компоненты для тестов, лучше мокать сервер, чтобы он отвечал фиктивными данными. Если возможно, обычно эффективнее тестировать ваше приложение с помощью сквозных тестов (end-to-end tests).
