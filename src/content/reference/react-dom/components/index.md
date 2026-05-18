@@ -1,10 +1,9 @@
 ---
 title: "Компоненты React DOM"
 ---
-
 <Intro>
 
-React поддерживает все встроенные в браузер компоненты [HTML](https://developer.mozilla.org/ru/docs/Web/HTML/Element) и [SVG](https://developer.mozilla.org/ru/docs/Web/SVG/Element).
+React поддерживает все встроенные в браузеры [HTML](https://developer.mozilla.org/ru/docs/Web/HTML/Element) и [SVG](https://developer.mozilla.org/ru/docs/Web/SVG/Element) компоненты.
 
 </Intro>
 
@@ -12,29 +11,29 @@ React поддерживает все встроенные в браузер к�
 
 ## Общие компоненты {/*common-components*/}
 
-Все встроенные компоненты браузера поддерживают некоторые пропсы и события.
+Все встроенные браузерные компоненты поддерживают некоторые пропсы и события.
 
 * [Общие компоненты (например, `<div>`)](/reference/react-dom/components/common)
 
-Это включает в себя специфичные для React пропсы, такие как `ref` и `dangerouslySetInnerHTML`.
+Сюда входят специфичные для React пропсы, такие как `ref` и `dangerouslySetInnerHTML`.
 
 ---
 
 ## Компоненты форм {/*form-components*/}
 
-Эти встроенные компоненты браузера принимают ввод пользователя:
+Эти встроенные браузерные компоненты принимают ввод от пользователя:
 
 * [`<input>`](/reference/react-dom/components/input)
 * [`<select>`](/reference/react-dom/components/select)
 * [`<textarea>`](/reference/react-dom/components/textarea)
 
-Они особенные в React, потому что передача им пропа `value` делает их *[управляемыми.](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)*
+Они особенны в React тем, что передача им пропса `value` делает их *[управляемыми.](/reference/react-dom/components/input#controlling-an-input-with-a-state-variable)*
 
 ---
 
 ## Компоненты ресурсов и метаданных {/*resource-and-metadata-components*/}
 
-Эти встроенные компоненты браузера позволяют загружать внешние ресурсы или аннотировать документ метаданными:
+Эти встроенные браузерные компоненты позволяют загружать внешние ресурсы или аннотировать документ метаданными:
 
 * [`<link>`](/reference/react-dom/components/link)
 * [`<meta>`](/reference/react-dom/components/meta)
@@ -42,13 +41,13 @@ React поддерживает все встроенные в браузер к�
 * [`<style>`](/reference/react-dom/components/style)
 * [`<title>`](/reference/react-dom/components/title)
 
-Они особенные в React, потому что React может отображать их в заголовке документа, приостанавливать работу во время загрузки ресурсов и выполнять другие действия, которые описаны на справочной странице для каждого конкретного компонента.
+Они особенны в React тем, что React может рендерить их в `<head>` документа, приостанавливаться во время загрузки ресурсов и выполнять другие действия, описанные на странице справки для каждого конкретного компонента.
 
 ---
 
 ## Все HTML-компоненты {/*all-html-components*/}
 
-React поддерживает все встроенные HTML-компоненты браузера. Это включает в себя:
+React поддерживает все встроенные браузерные HTML-компоненты. Сюда входят:
 
 * [`<aside>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/aside)
 * [`<audio>`](https://developer.mozilla.org/ru/docs/Web/HTML/Element/audio)
@@ -154,7 +153,7 @@ React поддерживает все встроенные HTML-компонен
 
 <Note>
 
-Подобно [стандарту DOM,](https://developer.mozilla.org/ru/docs/Web/API/Document_Object_Model) React использует соглашение `camelCase` для названий пропсов. Например, вы будете писать `tabIndex` вместо `tabindex`. Вы можете преобразовать существующий HTML в JSX с помощью [онлайн-конвертера.](https://transform.tools/html-to-jsx)
+Подобно [стандарту DOM,](https://developer.mozilla.org/ru/docs/Web/API/Document_Object_Model) React использует конвенцию `camelCase` для имен пропсов. Например, вы будете писать `tabIndex` вместо `tabindex`. Вы можете преобразовать существующий HTML в JSX с помощью [онлайн-конвертера.](https://transform.tools/html-to-jsx)
 
 </Note>
 
@@ -162,18 +161,18 @@ React поддерживает все встроенные HTML-компонен
 
 ### Пользовательские HTML-элементы {/*custom-html-elements*/}
 
-Если вы отображаете тег с дефисом, например `<my-element>`, React предположит, что вы хотите отобразить [пользовательский HTML-элемент.](https://developer.mozilla.org/ru/docs/Web/Web_Components/Using_custom_elements) В React отображение пользовательских элементов работает иначе, чем отображение встроенных тегов браузера:
+Если вы рендерите тег с дефисом, например `<my-element>`, React будет считать, что вы хотите отрендерить [пользовательский HTML-элемент.](https://developer.mozilla.org/ru/docs/Web/Web_Components/Using_custom_elements) В React рендеринг пользовательских элементов работает иначе, чем рендеринг встроенных браузерных тегов:
 
 - Все пропсы пользовательских элементов сериализуются в строки и всегда устанавливаются с использованием атрибутов.
 - Пользовательские элементы принимают `class` вместо `className` и `for` вместо `htmlFor`.
 
-Если вы отображаете встроенный HTML-элемент браузера с атрибутом [`is`](https://developer.mozilla.org/ru/docs/Web/HTML/Global_attributes/is), он также будет рассматриваться как пользовательский элемент.
+Если вы рендерите встроенный браузерный HTML-элемент с атрибутом [`is`](https://developer.mozilla.org/ru/docs/Web/HTML/Global_attributes/is), он также будет рассматриваться как пользовательский элемент.
 
 <Note>
 
 [Будущая версия React будет включать более полную поддержку пользовательских элементов.](https://github.com/facebook/react/issues/11347#issuecomment-1122275286)
 
-Вы можете попробовать это, обновив пакеты React до самой последней экспериментальной версии:
+Вы можете попробовать её, обновив пакеты React до последней экспериментальной версии:
 
 - `react@experimental`
 - `react-dom@experimental`
@@ -185,7 +184,7 @@ React поддерживает все встроенные HTML-компонен
 
 ## Все SVG-компоненты {/*all-svg-components*/}
 
-React поддерживает все встроенные SVG-компоненты браузера. Это включает в себя:
+React поддерживает все встроенные браузерные SVG-компоненты. Сюда входят:
 
 * [`<a>`](https://developer.mozilla.org/ru/docs/Web/SVG/Element/a)
 * [`<animate>`](https://developer.mozilla.org/ru/docs/Web/SVG/Element/animate)
@@ -256,9 +255,9 @@ React поддерживает все встроенные SVG-компонен�
 
 <Note>
 
-Аналогично [стандарту DOM](https://developer.mozilla.org/ru/docs/Web/API/Document_Object_Model), React использует соглашение `camelCase` для имён пропсов. Например, вы будете писать `tabIndex` вместо `tabindex`. Вы можете преобразовать существующий SVG в JSX с помощью [онлайн-конвертера](https://transform.tools/).
+Подобно [стандарту DOM,](https://developer.mozilla.org/ru/docs/Web/API/Document_Object_Model) React использует конвенцию `camelCase` для имен пропсов. Например, вы будете писать `tabIndex` вместо `tabindex`. Вы можете преобразовать существующий SVG в JSX с помощью [онлайн-конвертера.](https://transform.tools/)
 
-Атрибуты с пространством имён также должны быть записаны без двоеточия:
+Атрибуты с пространствами имен также должны быть написаны без двоеточия:
 
 * `xlink:actuate` становится `xlinkActuate`.
 * `xlink:arcrole` становится `xlinkArcrole`.
