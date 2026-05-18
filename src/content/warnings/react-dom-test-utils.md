@@ -1,10 +1,9 @@
 ---
-title: react-dom/test-utils Предупреждения об устаревании
+title: Предупреждения об устаревании react-dom/test-utils
 ---
+## Предупреждение ReactDOMTestUtils.act {/*reactdomtestutilsact-warning*/}
 
-## Предупреждение ReactDOMTestUtils.act() {/*reactdomtestutilsact-warning*/}
-
-`act` из `react-dom/test-utils` устарел и заменен на `act` из `react`.
+`act` из `react-dom/test-utils` устарел и заменён на `act` из `react`.
 
 До:
 
@@ -68,7 +67,7 @@ fireEvent.click(element);
 
 Имейте в виду, что `fireEvent` вызывает реальное событие на элементе, а не просто синтетически вызывает обработчик события.
 
-### Список всех удаленных API {/*list-of-all-removed-apis-list-of-all-removed-apis*/}
+### Список всех удалённых API {/*list-of-all-removed-apis-list-of-all-removed-apis*/}
 
 - `mockComponent()`
 - `isElement()`
