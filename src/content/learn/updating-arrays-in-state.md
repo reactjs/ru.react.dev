@@ -4,49 +4,49 @@ title: Updating Arrays in State
 
 <Intro>
 
-Arrays are mutable in JavaScript, but you should treat them as immutable when you store them in state. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array.
+Массивы в JavaScript изменяемы, но в состоянии React вы должны относиться к ним как к неизменяемым. Как и с объектами, когда вы хотите обновить массив в состоянии, вам нужно создать новый массив (или скопировать существующий), а затем установить состояние, используя новый массив.
 
 </Intro>
 
 <YouWillLearn>
 
-- How to add, remove, or change items in an array in React state
-- How to update an object inside of an array
-- How to make array copying less repetitive with Immer
+- Как добавлять, удалять или изменять элементы в массиве в состоянии React
+- Как обновлять объект внутри массива
+- Как сделать копирование массивов менее повторяющимся с помощью Immer
 
 </YouWillLearn>
 
-## Updating arrays without mutation {/*updating-arrays-without-mutation*/}
+## Обновление массивов без мутации {/*updating-arrays-without-mutation*/}
 
-In JavaScript, arrays are just another kind of object. [Like with objects](/learn/updating-objects-in-state), **you should treat arrays in React state as read-only.** This means that you shouldn't reassign items inside an array like `arr[0] = 'bird'`, and you also shouldn't use methods that mutate the array, such as `push()` and `pop()`.
+В JavaScript массивы — это просто другой тип объектов. [Как и с объектами](/learn/updating-objects-in-state), **в состоянии React вы должны рассматривать массивы как доступные только для чтения.** Это означает, что вы не должны переназначать элементы внутри массива, например `arr[0] = 'bird'`, и также не следует использовать методы, которые изменяют массив, такие как `push()` и `pop()`.
 
-Instead, every time you want to update an array, you'll want to pass a *new* array to your state setting function. To do that, you can create a new array from the original array in your state by calling its non-mutating methods like `filter()` and `map()`. Then you can set your state to the resulting new array.
+Вместо этого, каждый раз, когда вы хотите обновить массив, вам нужно передать *новый* массив в функцию установки состояния. Для этого вы можете создать новый массив из исходного массива в вашем состоянии, вызвав его неизменяющие методы, такие как `filter()` и `map()`. Затем вы можете установить состояние, используя полученный новый массив.
 
-Here is a reference table of common array operations. When dealing with arrays inside React state, you will need to avoid the methods in the left column, and instead prefer the methods in the right column:
+Вот справочная таблица для распространенных операций с массивами. При работе с массивами в состоянии React вам нужно избегать методов из левой колонки и вместо этого предпочитать методы из правой колонки:
 
-|           | avoid (mutates the array)           | prefer (returns a new array)                                        |
+|           | избегать (изменяет массив)           | предпочитать (возвращает новый массив)                                        |
 | --------- | ----------------------------------- | ------------------------------------------------------------------- |
-| adding    | `push`, `unshift`                   | `concat`, `[...arr]` spread syntax ([example](#adding-to-an-array)) |
-| removing  | `pop`, `shift`, `splice`            | `filter`, `slice` ([example](#removing-from-an-array))              |
-| replacing | `splice`, `arr[i] = ...` assignment | `map` ([example](#replacing-items-in-an-array))                     |
-| sorting   | `reverse`, `sort`                   | copy the array first ([example](#making-other-changes-to-an-array)) |
+| добавление    | `push`, `unshift`                   | `concat`, синтаксис `...` spread ([пример](#adding-to-an-array)) |
+| удаление  | `pop`, `shift`, `splice`            | `filter`, `slice` ([пример](#removing-from-an-array))              |
+| замена | `splice`, присваивание `arr[i] = ...` | `map` ([пример](#replacing-items-in-an-array))                     |
+| сортировка   | `reverse`, `sort`                   | сначала скопировать массив ([пример](#making-other-changes-to-an-array)) |
 
-Alternatively, you can [use Immer](#write-concise-update-logic-with-immer) which lets you use methods from both columns.
+Альтернативно, вы можете [использовать Immer](#write-concise-update-logic-with-immer), который позволяет использовать методы из обеих колонок.
 
 <Pitfall>
 
-Unfortunately, [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) and [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) are named similarly but are very different:
+К сожалению, [`slice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) и [`splice`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) похожи по названию, но очень разные:
 
-* `slice` lets you copy an array or a part of it.
-* `splice` **mutates** the array (to insert or delete items).
+* `slice` позволяет скопировать массив или его часть.
+* `splice` **изменяет** массив (для вставки или удаления элементов).
 
-In React, you will be using `slice` (no `p`!) a lot more often because you don't want to mutate objects or arrays in state. [Updating Objects](/learn/updating-objects-in-state) explains what mutation is and why it's not recommended for state.
+В React вы будете гораздо чаще использовать `slice` (без `p`!), потому что вы не хотите изменять объекты или массивы в состоянии. [Обновление объектов](/learn/updating-objects-in-state) объясняет, что такое мутация и почему она не рекомендуется для состояния.
 
 </Pitfall>
 
-### Adding to an array {/*adding-to-an-array*/}
+### Добавление в массив {/*adding-to-an-array*/}
 
-`push()` will mutate an array, which you don't want:
+`push()` изменяет массив, чего вы не хотите:
 
 <Sandpack>
 
@@ -88,18 +88,18 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-Instead, create a *new* array which contains the existing items *and* a new item at the end. There are multiple ways to do this, but the easiest one is to use the `...` [array spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_array_literals) syntax:
+Вместо этого создайте *новый* массив, который содержит существующие элементы *и* новый элемент в конце. Есть несколько способов сделать это, но самый простой — использовать синтаксис `...` [spread для массивов](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax#spread_in_array_literals):
 
 ```js
-setArtists( // Replace the state
-  [ // with a new array
-    ...artists, // that contains all the old items
-    { id: nextId++, name: name } // and one new item at the end
+setArtists( // Заменить состояние
+  [ // новым массивом
+    ...artists, // который содержит все старые элементы
+    { id: nextId++, name: name } // и один новый элемент в конце
   ]
 );
 ```
 
-Now it works correctly:
+Теперь это работает правильно:
 
 <Sandpack>
 
@@ -141,20 +141,20 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-The array spread syntax also lets you prepend an item by placing it *before* the original `...artists`:
+Синтаксис spread для массивов также позволяет добавить элемент в начало, поместив его *перед* исходным `...artists`:
 
 ```js
 setArtists([
   { id: nextId++, name: name },
-  ...artists // Put old items at the end
+  ...artists // Поместить старые элементы в конец
 ]);
 ```
 
-In this way, spread can do the job of both `push()` by adding to the end of an array and `unshift()` by adding to the beginning of an array. Try it in the sandbox above!
+Таким образом, spread может выполнять работу как `push()` (добавление в конец массива), так и `unshift()` (добавление в начало массива). Попробуйте это в песочнице выше!
 
-### Removing from an array {/*removing-from-an-array*/}
+### Удаление из массива {/*removing-from-an-array*/}
 
-The easiest way to remove an item from an array is to *filter it out*. In other words, you will produce a new array that will not contain that item. To do this, use the `filter` method, for example:
+Самый простой способ удалить элемент из массива — это *отфильтровать* его. Другими словами, вы создадите новый массив, который не будет содержать этот элемент. Для этого используйте метод `filter`, например:
 
 <Sandpack>
 
@@ -198,7 +198,7 @@ export default function List() {
 
 </Sandpack>
 
-Click the "Delete" button a few times, and look at its click handler.
+Нажмите кнопку "Delete" несколько раз и посмотрите на ее обработчик клика.
 
 ```js
 setArtists(
@@ -206,13 +206,13 @@ setArtists(
 );
 ```
 
-Here, `artists.filter(a => a.id !== artist.id)` means "create an array that consists of those `artists` whose IDs are different from `artist.id`". In other words, each artist's "Delete" button will filter _that_ artist out of the array, and then request a re-render with the resulting array. Note that `filter` does not modify the original array.
+Здесь `artists.filter(a => a.id !== artist.id)` означает "создать массив, состоящий из тех `artists`, чьи ID отличаются от `artist.id`". Другими словами, кнопка "Delete" каждого художника будет фильтровать *этого* художника из массива, а затем запрашивать перерисовку с полученным массивом. Обратите внимание, что `filter` не изменяет исходный массив.
 
-### Transforming an array {/*transforming-an-array*/}
+### Преобразование массива {/*transforming-an-array*/}
 
-If you want to change some or all items of the array, you can use `map()` to create a **new** array. The function you will pass to `map` can decide what to do with each item, based on its data or its index (or both).
+Если вы хотите изменить некоторые или все элементы массива, вы можете использовать `map()` для создания **нового** массива. Функция, которую вы передадите в `map`, может решать, что делать с каждым элементом, основываясь на его данных или его индексе (или обоих).
 
-In this example, an array holds coordinates of two circles and a square. When you press the button, it moves only the circles down by 50 pixels. It does this by producing a new array of data using `map()`:
+В этом примере массив содержит координаты двух кругов и квадрата. Когда вы нажимаете кнопку, она перемещает только круги вниз на 50 пикселей. Для этого создается новый массив данных с помощью `map()`:
 
 <Sandpack>
 
@@ -233,17 +233,17 @@ export default function ShapeEditor() {
   function handleClick() {
     const nextShapes = shapes.map(shape => {
       if (shape.type === 'square') {
-        // No change
+        // Без изменений
         return shape;
       } else {
-        // Return a new circle 50px below
+        // Возвращаем новый круг на 50px ниже
         return {
           ...shape,
           y: shape.y + 50,
         };
       }
     });
-    // Re-render with the new array
+    // Перерисовываем с новым массивом
     setShapes(nextShapes);
   }
 
@@ -278,11 +278,11 @@ body { height: 300px; }
 
 </Sandpack>
 
-### Replacing items in an array {/*replacing-items-in-an-array*/}
+### Замена элементов в массиве {/*replacing-items-in-an-array*/}
 
-It is particularly common to want to replace one or more items in an array. Assignments like `arr[0] = 'bird'` are mutating the original array, so instead you'll want to use `map` for this as well.
+Часто возникает необходимость заменить один или несколько элементов в массиве. Присваивания типа `arr[0] = 'bird'` изменяют исходный массив, поэтому вместо этого вам также следует использовать `map`.
 
-To replace an item, create a new array with `map`. Inside your `map` call, you will receive the item index as the second argument. Use it to decide whether to return the original item (the first argument) or something else:
+Чтобы заменить элемент, создайте новый массив с помощью `map`. Внутри вашего вызова `map` вы получите индекс элемента в качестве второго аргумента. Используйте его, чтобы решить, возвращать ли исходный элемент (первый аргумент) или что-то другое:
 
 <Sandpack>
 
@@ -301,10 +301,10 @@ export default function CounterList() {
   function handleIncrementClick(index) {
     const nextCounters = counters.map((c, i) => {
       if (i === index) {
-        // Increment the clicked counter
+        // Увеличиваем нажатый счетчик
         return c + 1;
       } else {
-        // The rest haven't changed
+        // Остальные не изменились
         return c;
       }
     });
@@ -332,11 +332,11 @@ button { margin: 5px; }
 
 </Sandpack>
 
-### Inserting into an array {/*inserting-into-an-array*/}
+### Вставка в массив {/*inserting-into-an-array*/}
 
-Sometimes, you may want to insert an item at a particular position that's neither at the beginning nor at the end. To do this, you can use the `...` array spread syntax together with the `slice()` method. The `slice()` method lets you cut a "slice" of the array. To insert an item, you will create an array that spreads the slice _before_ the insertion point, then the new item, and then the rest of the original array.
+Иногда вам может понадобиться вставить элемент в определенную позицию, которая не является ни началом, ни концом. Для этого вы можете использовать синтаксис `...` spread для массивов вместе с методом `slice()`. Метод `slice()` позволяет вырезать "срез" массива. Чтобы вставить элемент, вы создадите массив, который распространяет срез *до* точки вставки, затем новый элемент, а затем остальную часть исходного массива.
 
-In this example, the Insert button always inserts at the index `1`:
+В этом примере кнопка "Insert" всегда вставляет элемент в индекс `1`:
 
 <Sandpack>
 
@@ -357,13 +357,13 @@ export default function List() {
   );
 
   function handleClick() {
-    const insertAt = 1; // Could be any index
+    const insertAt = 1; // Может быть любым индексом
     const nextArtists = [
-      // Items before the insertion point:
+      // Элементы до точки вставки:
       ...artists.slice(0, insertAt),
-      // New item:
+      // Новый элемент:
       { id: nextId++, name: name },
-      // Items after the insertion point:
+      // Элементы после точки вставки:
       ...artists.slice(insertAt)
     ];
     setArtists(nextArtists);
@@ -396,13 +396,13 @@ button { margin-left: 5px; }
 
 </Sandpack>
 
-### Making other changes to an array {/*making-other-changes-to-an-array*/}
+### Внесение других изменений в массив {/*making-other-changes-to-an-array*/}
 
-There are some things you can't do with the spread syntax and non-mutating methods like `map()` and `filter()` alone. For example, you may want to reverse or sort an array. The JavaScript `reverse()` and `sort()` methods are mutating the original array, so you can't use them directly.
+Есть некоторые вещи, которые вы не можете сделать с помощью синтаксиса spread и неизменяющих методов, таких как `map()` и `filter()` по отдельности. Например, вы можете захотеть перевернуть или отсортировать массив. Методы JavaScript `reverse()` и `sort()` изменяют исходный массив, поэтому вы не можете использовать их напрямую.
 
-**However, you can copy the array first, and then make changes to it.**
+**Однако вы можете сначала скопировать массив, а затем внести в него изменения.**
 
-For example:
+Например:
 
 <Sandpack>
 
@@ -441,25 +441,25 @@ export default function List() {
 
 </Sandpack>
 
-Here, you use the `[...list]` spread syntax to create a copy of the original array first. Now that you have a copy, you can use mutating methods like `nextList.reverse()` or `nextList.sort()`, or even assign individual items with `nextList[0] = "something"`.
+Здесь вы используете синтаксис spread `[...list]` для создания копии исходного массива. Теперь, когда у вас есть копия, вы можете использовать изменяющие методы, такие как `nextList.reverse()` или `nextList.sort()`, или даже присваивать отдельные элементы с помощью `nextList[0] = "something"`.
 
-However, **even if you copy an array, you can't mutate existing items _inside_ of it directly.** This is because copying is shallow--the new array will contain the same items as the original one. So if you modify an object inside the copied array, you are mutating the existing state. For example, code like this is a problem.
+Однако, **даже если вы копируете массив, вы не можете напрямую изменять существующие элементы _внутри_ него.** Это потому, что копирование является поверхностным — новый массив будет содержать те же элементы, что и исходный. Поэтому, если вы изменяете объект внутри скопированного массива, вы изменяете существующее состояние. Например, такой код является проблемой.
 
 ```js
 const nextList = [...list];
-nextList[0].seen = true; // Problem: mutates list[0]
+nextList[0].seen = true; // Проблема: изменяет list[0]
 setList(nextList);
 ```
 
-Although `nextList` and `list` are two different arrays, **`nextList[0]` and `list[0]` point to the same object.** So by changing `nextList[0].seen`, you are also changing `list[0].seen`. This is a state mutation, which you should avoid! You can solve this issue in a similar way to [updating nested JavaScript objects](/learn/updating-objects-in-state#updating-a-nested-object)--by copying individual items you want to change instead of mutating them. Here's how.
+Хотя `nextList` и `list` — это два разных массива, **`nextList[0]` и `list[0]` указывают на один и тот же объект.** Поэтому, изменяя `nextList[0].seen`, вы также изменяете `list[0].seen`. Это мутация состояния, которой следует избегать! Вы можете решить эту проблему аналогично [обновлению вложенных объектов JavaScript](/learn/updating-objects-in-state#updating-a-nested-object) — копируя отдельные элементы, которые вы хотите изменить, вместо их мутации. Вот как.
 
-## Updating objects inside arrays {/*updating-objects-inside-arrays*/}
+## Обновление объектов в массивах {/*updating-objects-inside-arrays*/}
 
-Objects are not _really_ located "inside" arrays. They might appear to be "inside" in code, but each object in an array is a separate value, to which the array "points". This is why you need to be careful when changing nested fields like `list[0]`. Another person's artwork list may point to the same element of the array!
+Объекты на самом деле не находятся «внутри» массивов. Они могут выглядеть так в коде, но каждый объект в массиве — это отдельное значение, на которое «указывает» массив. Именно поэтому нужно быть осторожным при изменении вложенных полей, таких как `list[0]`. Список произведений искусства другого пользователя может указывать на тот же элемент массива!
 
-**When updating nested state, you need to create copies from the point where you want to update, and all the way up to the top level.** Let's see how this works.
+**При обновлении вложенного состояния необходимо создавать копии, начиная с точки обновления и до самого верхнего уровня.** Давайте посмотрим, как это работает.
 
-In this example, two separate artwork lists have the same initial state. They are supposed to be isolated, but because of a mutation, their state is accidentally shared, and checking a box in one list affects the other list:
+В этом примере два отдельных списка произведений искусства имеют одинаковое начальное состояние. Они должны быть изолированы, но из-за мутации их состояние случайно становится общим, и установка флажка в одном списке влияет на другой список:
 
 <Sandpack>
 
@@ -539,34 +539,34 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-The problem is in code like this:
+Проблема заключается в коде вида:
 
 ```js
 const myNextList = [...myList];
 const artwork = myNextList.find(a => a.id === artworkId);
-artwork.seen = nextSeen; // Problem: mutates an existing item
+artwork.seen = nextSeen; // Проблема: мутирует существующий элемент
 setMyList(myNextList);
 ```
 
-Although the `myNextList` array itself is new, the *items themselves* are the same as in the original `myList` array. So changing `artwork.seen` changes the *original* artwork item. That artwork item is also in `yourList`, which causes the bug. Bugs like this can be difficult to think about, but thankfully they disappear if you avoid mutating state.
+Хотя массив `myNextList` является новым, сами *элементы* те же, что и в исходном массиве `myList`. Поэтому изменение `artwork.seen` изменяет *исходный* элемент произведения искусства. Этот элемент произведения искусства также находится в `yourList`, что вызывает ошибку. Такие ошибки могут быть сложны для понимания, но, к счастью, они исчезают, если избегать мутации состояния.
 
-**You can use `map` to substitute an old item with its updated version without mutation.**
+**Вы можете использовать `map` для замены старого элемента его обновленной версией без мутации.**
 
 ```js
 setMyList(myList.map(artwork => {
   if (artwork.id === artworkId) {
-    // Create a *new* object with changes
+    // Создайте *новый* объект с изменениями
     return { ...artwork, seen: nextSeen };
   } else {
-    // No changes
+    // Изменений нет
     return artwork;
   }
 }));
 ```
 
-Here, `...` is the object spread syntax used to [create a copy of an object.](/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax)
+Здесь `...` — это синтаксис деструктуризации объекта, используемый для [создания копии объекта.](/learn/updating-objects-in-state#copying-objects-with-the-spread-syntax)
 
-With this approach, none of the existing state items are being mutated, and the bug is fixed:
+При таком подходе ни один из существующих элементов состояния не мутирует, и ошибка исправлена:
 
 <Sandpack>
 
@@ -589,10 +589,10 @@ export default function BucketList() {
   function handleToggleMyList(artworkId, nextSeen) {
     setMyList(myList.map(artwork => {
       if (artwork.id === artworkId) {
-        // Create a *new* object with changes
+        // Создайте *новый* объект с изменениями
         return { ...artwork, seen: nextSeen };
       } else {
-        // No changes
+        // Изменений нет
         return artwork;
       }
     }));
@@ -601,10 +601,10 @@ export default function BucketList() {
   function handleToggleYourList(artworkId, nextSeen) {
     setYourList(yourList.map(artwork => {
       if (artwork.id === artworkId) {
-        // Create a *new* object with changes
+        // Создайте *новый* объект с изменениями
         return { ...artwork, seen: nextSeen };
       } else {
-        // No changes
+        // Изменений нет
         return artwork;
       }
     }));
@@ -652,16 +652,16 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-In general, **you should only mutate objects that you have just created.** If you were inserting a *new* artwork, you could mutate it, but if you're dealing with something that's already in state, you need to make a copy.
+В целом, **вы должны мутировать только те объекты, которые вы только что создали.** Если бы вы добавляли новое произведение искусства, вы могли бы его мутировать, но если вы работаете с чем-то, что уже есть в состоянии, вам нужно создать копию.
 
-### Write concise update logic with Immer {/*write-concise-update-logic-with-immer*/}
+### Напишите лаконичную логику обновления с Immer {/*write-concise-update-logic-with-immer*/}
 
-Updating nested arrays without mutation can get a little bit repetitive. [Just as with objects](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
+Обновление вложенных массивов без мутации может быть немного утомительным. [Так же, как и с объектами](/learn/updating-objects-in-state#write-concise-update-logic-with-immer):
 
-- Generally, you shouldn't need to update state more than a couple of levels deep. If your state objects are very deep, you might want to [restructure them differently](/learn/choosing-the-state-structure#avoid-deeply-nested-state) so that they are flat.
-- If you don't want to change your state structure, you might prefer to use [Immer](https://github.com/immerjs/use-immer), which lets you write using the convenient but mutating syntax and takes care of producing the copies for you.
+- Как правило, вам не нужно обновлять состояние более чем на пару уровней вглубь. Если ваши объекты состояния очень глубокие, вы можете [переструктурировать их иначе](/learn/choosing-the-state-structure#avoid-deeply-nested-state), чтобы они были плоскими.
+- Если вы не хотите менять структуру состояния, вы можете предпочесть использовать [Immer](https://github.com/immerjs/use-immer), который позволяет вам писать с удобным, но мутирующим синтаксисом и сам позаботится о создании копий.
 
-Here is the Art Bucket List example rewritten with Immer:
+Вот пример «Списка желаний» (Art Bucket List), переписанный с Immer:
 
 <Sandpack>
 
@@ -762,7 +762,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-Note how with Immer, **mutation like `artwork.seen = nextSeen` is now okay:**
+Обратите внимание, что с Immer **мутация, такая как `artwork.seen = nextSeen`, теперь допустима:**
 
 ```js
 updateMyTodos(draft => {
@@ -771,17 +771,17 @@ updateMyTodos(draft => {
 });
 ```
 
-This is because you're not mutating the _original_ state, but you're mutating a special `draft` object provided by Immer. Similarly, you can apply mutating methods like `push()` and `pop()` to the content of the `draft`.
+Это связано с тем, что вы мутируете не _исходное_ состояние, а специальный объект `draft`, предоставляемый Immer. Аналогично, вы можете применять мутирующие методы, такие как `push()` и `pop()`, к содержимому `draft`.
 
-Behind the scenes, Immer always constructs the next state from scratch according to the changes that you've done to the `draft`. This keeps your event handlers very concise without ever mutating state.
+За кулисами Immer всегда создает новое состояние с нуля на основе изменений, которые вы внесли в `draft`. Это делает ваши обработчики событий очень лаконичными, никогда не мутируя состояние.
 
 <Recap>
 
-- You can put arrays into state, but you can't change them.
-- Instead of mutating an array, create a *new* version of it, and update the state to it.
-- You can use the `[...arr, newItem]` array spread syntax to create arrays with new items.
-- You can use `filter()` and `map()` to create new arrays with filtered or transformed items.
-- You can use Immer to keep your code concise.
+- Вы можете помещать массивы в состояние, но не можете их изменять.
+- Вместо мутации массива создайте его *новую* версию и обновите состояние ею.
+- Вы можете использовать синтаксис spread-оператора `[...arr, newItem]` для создания массивов с новыми элементами.
+- Вы можете использовать `filter()` и `map()` для создания новых массивов с отфильтрованными или преобразованными элементами.
+- Вы можете использовать Immer, чтобы ваш код оставался лаконичным.
 
 </Recap>
 
@@ -789,9 +789,9 @@ Behind the scenes, Immer always constructs the next state from scratch according
 
 <Challenges>
 
-#### Update an item in the shopping cart {/*update-an-item-in-the-shopping-cart*/}
+#### Обновите товар в корзине {/*update-an-item-in-the-shopping-cart*/}
 
-Fill in the `handleIncreaseClick` logic so that pressing "+" increases the corresponding number:
+Заполните логику `handleIncreaseClick` так, чтобы нажатие "+" увеличивало соответствующее число:
 
 <Sandpack>
 
@@ -849,7 +849,7 @@ button { margin: 5px; }
 
 <Solution>
 
-You can use the `map` function to create a new array, and then use the `...` object spread syntax to create a copy of the changed object for the new array:
+Вы можете использовать функцию `map` для создания нового массива, а затем синтаксис spread-оператора `{...}` для создания копии измененного объекта для нового массива:
 
 <Sandpack>
 
@@ -916,9 +916,9 @@ button { margin: 5px; }
 
 </Solution>
 
-#### Remove an item from the shopping cart {/*remove-an-item-from-the-shopping-cart*/}
+#### Удалите товар из корзины {/*remove-an-item-from-the-shopping-cart*/}
 
-This shopping cart has a working "+" button, but the "–" button doesn't do anything. You need to add an event handler to it so that pressing it decreases the `count` of the corresponding product. If you press "–" when the count is 1, the product should automatically get removed from the cart. Make sure it never shows 0.
+В этой корзине есть рабочий кнопка "+", но кнопка "–" ничего не делает. Вам нужно добавить ей обработчик событий, чтобы нажатие на нее уменьшало `count` соответствующего товара. Если нажать "–" при значении count равном 1, товар должен автоматически удалиться из корзины. Убедитесь, что счетчик никогда не показывает 0.
 
 <Sandpack>
 
@@ -988,7 +988,7 @@ button { margin: 5px; }
 
 <Solution>
 
-You can first use `map` to produce a new array, and then `filter` to remove products with a `count` set to `0`:
+Вы можете сначала использовать `map` для создания нового массива, а затем `filter` для удаления товаров с `count`, равным `0`:
 
 <Sandpack>
 
@@ -1077,9 +1077,9 @@ button { margin: 5px; }
 
 </Solution>
 
-#### Fix the mutations using non-mutative methods {/*fix-the-mutations-using-non-mutative-methods*/}
+#### Исправьте мутации с помощью не мутирующих методов {/*fix-the-mutations-using-non-mutative-methods*/}
 
-In this example, all of the event handlers in `App.js` use mutation. As a result, editing and deleting todos doesn't work. Rewrite `handleAddTodo`, `handleChangeTodo`, and `handleDeleteTodo` to use the non-mutative methods:
+В этом примере все обработчики событий в `App.js` используют мутацию. В результате редактирование и удаление задач не работает. Перепишите `handleAddTodo`, `handleChangeTodo` и `handleDeleteTodo`, чтобы использовать не мутирующие методы:
 
 <Sandpack>
 
@@ -1242,7 +1242,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-In `handleAddTodo`, you can use the array spread syntax. In `handleChangeTodo`, you can create a new array with `map`. In `handleDeleteTodo`, you can create a new array with `filter`. Now the list works correctly:
+В `handleAddTodo` вы можете использовать синтаксис spread-оператора для массивов. В `handleChangeTodo` вы можете создать новый массив с помощью `map`. В `handleDeleteTodo` вы можете создать новый массив с помощью `filter`. Теперь список работает правильно:
 
 <Sandpack>
 
@@ -1410,9 +1410,9 @@ ul, li { margin: 0; padding: 0; }
 </Solution>
 
 
-#### Fix the mutations using Immer {/*fix-the-mutations-using-immer*/}
+#### Исправьте мутации с помощью Immer {/*fix-the-mutations-using-immer*/}
 
-This is the same example as in the previous challenge. This time, fix the mutations by using Immer. For your convenience, `useImmer` is already imported, so you need to change the `todos` state variable to use it.
+Это тот же пример, что и в предыдущем задании. На этот раз исправьте мутации с помощью Immer. Для вашего удобства `useImmer` уже импортирован, поэтому вам нужно изменить переменную состояния `todos`, чтобы использовать его.
 
 <Sandpack>
 
@@ -1594,7 +1594,7 @@ ul, li { margin: 0; padding: 0; }
 
 <Solution>
 
-With Immer, you can write code in the mutative fashion, as long as you're only mutating parts of the `draft` that Immer gives you. Here, all mutations are performed on the `draft` so the code works:
+С Immer вы можете писать код в мутативном стиле, пока вы мутируете только части `draft`, которые Immer вам предоставляет. Здесь все мутации выполняются на `draft`, поэтому код работает:
 
 <Sandpack>
 
@@ -1780,9 +1780,9 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-You can also mix and match the mutative and non-mutative approaches with Immer.
+Вы также можете смешивать мутативный и немутативный подходы с Immer.
 
-For example, in this version `handleAddTodo` is implemented by mutating the Immer `draft`, while `handleChangeTodo` and `handleDeleteTodo` use the non-mutative `map` and `filter` methods:
+Например, в этой версии `handleAddTodo` реализован путем мутации Immer `draft`, в то время как `handleChangeTodo` и `handleDeleteTodo` используют немутативные методы `map` и `filter`:
 
 <Sandpack>
 
@@ -1965,7 +1965,7 @@ ul, li { margin: 0; padding: 0; }
 
 </Sandpack>
 
-With Immer, you can pick the style that feels the most natural for each separate case.
+С Immer вы можете выбрать стиль, который кажется вам наиболее естественным для каждого отдельного случая.
 
 </Solution>
 
