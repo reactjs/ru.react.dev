@@ -4,27 +4,27 @@ title: Adding Interactivity
 
 <Intro>
 
-Some things on the screen update in response to user input. For example, clicking an image gallery switches the active image. In React, data that changes over time is called *state.* You can add state to any component, and update it as needed. In this chapter, you'll learn how to write components that handle interactions, update their state, and display different output over time.
+Некоторые элементы на экране обновляются в ответ на ввод пользователя. Например, нажатие на галерею изображений переключает активное изображение. В React данные, которые изменяются со временем, называются *состоянием* (state). Вы можете добавить состояние в любой компонент и обновлять его по мере необходимости. В этой главе вы узнаете, как писать компоненты, которые обрабатывают взаимодействия, обновляют свое состояние и отображают различный вывод со временем.
 
 </Intro>
 
 <YouWillLearn isChapter={true}>
 
-* [How to handle user-initiated events](/learn/responding-to-events)
-* [How to make components "remember" information with state](/learn/state-a-components-memory)
-* [How React updates the UI in two phases](/learn/render-and-commit)
-* [Why state doesn't update right after you change it](/learn/state-as-a-snapshot)
-* [How to queue multiple state updates](/learn/queueing-a-series-of-state-updates)
-* [How to update an object in state](/learn/updating-objects-in-state)
-* [How to update an array in state](/learn/updating-arrays-in-state)
+* [Как обрабатывать события, инициированные пользователем](/learn/responding-to-events)
+* [Как заставить компоненты "помнить" информацию с помощью состояния](/learn/state-a-components-memory)
+* [Как React обновляет пользовательский интерфейс в две фазы](/learn/render-and-commit)
+* [Почему состояние не обновляется сразу после его изменения](/learn/state-as-a-snapshot)
+* [Как ставить в очередь несколько обновлений состояния](/learn/queueing-a-series-of-state-updates)
+* [Как обновлять объект в состоянии](/learn/updating-objects-in-state)
+* [Как обновлять массив в состоянии](/learn/updating-arrays-in-state)
 
 </YouWillLearn>
 
-## Responding to events {/*responding-to-events*/}
+## Обработка событий {/*responding-to-events*/}
 
-React lets you add *event handlers* to your JSX. Event handlers are your own functions that will be triggered in response to user interactions like clicking, hovering, focusing on form inputs, and so on.
+React позволяет добавлять *обработчики событий* (event handlers) в ваш JSX. Обработчики событий — это ваши собственные функции, которые будут вызываться в ответ на действия пользователя, такие как клики, наведение курсора, фокусировка на полях ввода и так далее.
 
-Built-in components like `<button>` only support built-in browser events like `onClick`. However, you can also create your own components, and give their event handler props any application-specific names that you like.
+Встроенные компоненты, такие как `<button>`, поддерживают только встроенные события браузера, например `onClick`. Однако вы можете создавать и свои собственные компоненты и давать их пропсам обработчиков событий любые имена, специфичные для вашего приложения.
 
 <Sandpack>
 
@@ -68,22 +68,22 @@ button { margin-right: 10px; }
 
 <LearnMore path="/learn/responding-to-events">
 
-Read **[Responding to Events](/learn/responding-to-events)** to learn how to add event handlers.
+Прочтите **[Обработка событий](/learn/responding-to-events)**, чтобы узнать, как добавлять обработчики событий.
 
 </LearnMore>
 
-## State: a component's memory {/*state-a-components-memory*/}
+## Состояние: память компонента {/*state-a-components-memory*/}
 
-Components often need to change what's on the screen as a result of an interaction. Typing into the form should update the input field, clicking "next" on an image carousel should change which image is displayed, clicking "buy" puts a product in the shopping cart. Components need to "remember" things: the current input value, the current image, the shopping cart. In React, this kind of component-specific memory is called *state.*
+Компонентам часто нужно изменять то, что отображается на экране, в результате взаимодействия. Ввод текста в форму должен обновлять поле ввода, нажатие кнопки "далее" в карусели изображений должно изменять отображаемое изображение, нажатие кнопки "купить" добавляет товар в корзину. Компонентам нужно "помнить" вещи: текущее значение ввода, текущее изображение, содержимое корзины. В React такая специфичная для компонента память называется *состоянием* (state).
 
-You can add state to a component with a [`useState`](/reference/react/useState) Hook. *Hooks* are special functions that let your components use React features (state is one of those features). The `useState` Hook lets you declare a state variable. It takes the initial state and returns a pair of values: the current state, and a state setter function that lets you update it.
+Вы можете добавить состояние в компонент с помощью хука [`useState`](/reference/react/useState). *Хуки* — это специальные функции, которые позволяют вашим компонентам использовать возможности React (состояние — одна из таких возможностей). Хук `useState` позволяет объявить переменную состояния. Он принимает начальное состояние и возвращает пару значений: текущее состояние и функцию для установки состояния, которая позволяет его обновлять.
 
 ```js
 const [index, setIndex] = useState(0);
 const [showMore, setShowMore] = useState(false);
 ```
 
-Here is how an image gallery uses and updates state on click:
+Вот как галерея изображений использует и обновляет состояние при клике:
 
 <Sandpack>
 
@@ -229,19 +229,19 @@ button {
 
 <LearnMore path="/learn/state-a-components-memory">
 
-Read **[State: A Component's Memory](/learn/state-a-components-memory)** to learn how to remember a value and update it on interaction.
+Прочтите **[Состояние: память компонента](/learn/state-a-components-memory)**, чтобы узнать, как запоминать значение и обновлять его при взаимодействии.
 
 </LearnMore>
 
-## Render and commit {/*render-and-commit*/}
+## Рендер и коммит {/*render-and-commit*/}
 
-Before your components are displayed on the screen, they must be rendered by React. Understanding the steps in this process will help you think about how your code executes and explain its behavior.
+Прежде чем ваши компоненты будут отображены на экране, они должны быть отрендерены React. Понимание шагов этого процесса поможет вам разобраться, как выполняется ваш код, и объяснить его поведение.
 
-Imagine that your components are cooks in the kitchen, assembling tasty dishes from ingredients. In this scenario, React is the waiter who puts in requests from customers and brings them their orders. This process of requesting and serving UI has three steps:
+Представьте, что ваши компоненты — это повара на кухне, готовящие вкусные блюда из ингредиентов. В этом сценарии React — это официант, который принимает заказы от клиентов и доставляет им их блюда. Этот процесс запроса и подачи пользовательского интерфейса состоит из трех шагов:
 
-1. **Triggering** a render (delivering the diner's order to the kitchen)
-2. **Rendering** the component (preparing the order in the kitchen)
-3. **Committing** to the DOM (placing the order on the table)
+1. **Запуск** рендера (доставка заказа клиента на кухню)
+2. **Рендер** компонента (приготовление заказа на кухне)
+3. **Коммит** в DOM (подача заказа клиенту за столик)
 
 <IllustrationBlock sequential>
   <Illustration caption="Trigger" alt="React as a server in a restaurant, fetching orders from the users and delivering them to the Component Kitchen." src="/images/docs/illustrations/i_render-and-commit1.png" />
@@ -251,21 +251,21 @@ Imagine that your components are cooks in the kitchen, assembling tasty dishes f
 
 <LearnMore path="/learn/render-and-commit">
 
-Read **[Render and Commit](/learn/render-and-commit)** to learn the lifecycle of a UI update.
+Прочтите **[Рендер и коммит](/learn/render-and-commit)**, чтобы узнать о жизненном цикле обновления пользовательского интерфейса.
 
 </LearnMore>
 
-## State as a snapshot {/*state-as-a-snapshot*/}
+## Состояние как снимок {/*state-as-a-snapshot*/}
 
-Unlike regular JavaScript variables, React state behaves more like a snapshot. Setting it does not change the state variable you already have, but instead triggers a re-render. This can be surprising at first!
+В отличие от обычных переменных JavaScript, состояние React ведет себя скорее как снимок. Его установка не изменяет уже существующую переменную состояния, а вместо этого запускает повторный рендер. Это может быть неожиданно на первый взгляд!
 
 ```js
 console.log(count);  // 0
-setCount(count + 1); // Request a re-render with 1
-console.log(count);  // Still 0!
+setCount(count + 1); // Запрос повторного рендера с 1
+console.log(count);  // Все еще 0!
 ```
 
-This behavior helps you avoid subtle bugs. Here is a little chat app. Try to guess what happens if you press "Send" first and *then* change the recipient to Bob. Whose name will appear in the `alert` five seconds later?
+Такое поведение помогает избежать тонких ошибок. Вот небольшое приложение для чата. Попробуйте угадать, что произойдет, если сначала нажать "Send", а *затем* сменить получателя на Bob. Чье имя появится в `alert` через пять секунд?
 
 <Sandpack>
 
@@ -314,13 +314,13 @@ label, textarea { margin-bottom: 10px; display: block; }
 
 <LearnMore path="/learn/state-as-a-snapshot">
 
-Read **[State as a Snapshot](/learn/state-as-a-snapshot)** to learn why state appears "fixed" and unchanging inside the event handlers.
+Прочтите **[Состояние как снимок](/learn/state-as-a-snapshot)**, чтобы узнать, почему состояние кажется "фиксированным" и неизменным внутри обработчиков событий.
 
 </LearnMore>
 
-## Queueing a series of state updates {/*queueing-a-series-of-state-updates*/}
+## Постановка в очередь серии обновлений состояния {/*queueing-a-series-of-state-updates*/}
 
-This component is buggy: clicking "+3" increments the score only once.
+Этот компонент содержит ошибку: нажатие "+3" увеличивает счет только один раз.
 
 <Sandpack>
 
@@ -354,7 +354,7 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 </Sandpack>
 
-[State as a Snapshot](/learn/state-as-a-snapshot) explains why this is happening. Setting state requests a new re-render, but does not change it in the already running code. So `score` continues to be `0` right after you call `setScore(score + 1)`.
+[Состояние как снимок](/learn/state-as-a-snapshot) объясняет, почему это происходит. Установка состояния запрашивает новый рендер, но не изменяет его в уже выполняющемся коде. Поэтому `score` остается `0` сразу после вызова `setScore(score + 1)`.
 
 ```js
 console.log(score);  // 0
@@ -366,7 +366,7 @@ setScore(score + 1); // setScore(0 + 1);
 console.log(score);  // 0
 ```
 
-You can fix this by passing an *updater function* when setting state. Notice how replacing `setScore(score + 1)` with `setScore(s => s + 1)` fixes the "+3" button. This lets you queue multiple state updates.
+Вы можете исправить это, передав *функцию обновления* при установке состояния. Обратите внимание, как замена `setScore(score + 1)` на `setScore(s => s + 1)` исправляет кнопку "+3". Это позволяет ставить в очередь несколько обновлений состояния.
 
 <Sandpack>
 
@@ -402,15 +402,15 @@ button { display: inline-block; margin: 10px; font-size: 20px; }
 
 <LearnMore path="/learn/queueing-a-series-of-state-updates">
 
-Read **[Queueing a Series of State Updates](/learn/queueing-a-series-of-state-updates)** to learn how to queue a sequence of state updates.
+Прочтите **[Постановка в очередь серии обновлений состояния](/learn/queueing-a-series-of-state-updates)**, чтобы узнать, как ставить в очередь последовательность обновлений состояния.
 
 </LearnMore>
 
-## Updating objects in state {/*updating-objects-in-state*/}
+## Обновление объектов в состоянии {/*updating-objects-in-state*/}
 
-State can hold any kind of JavaScript value, including objects. But you shouldn't change objects and arrays that you hold in the React state directly. Instead, when you want to update an object and array, you need to create a new one (or make a copy of an existing one), and then update the state to use that copy.
+Состояние может содержать любые типы значений JavaScript, включая объекты. Но вы не должны изменять объекты и массивы, которые хранятся в состоянии React, напрямую. Вместо этого, когда вы хотите обновить объект или массив, вам нужно создать новый (или сделать копию существующего), а затем обновить состояние, чтобы использовать эту копию.
 
-Usually, you will use the `...` spread syntax to copy objects and arrays that you want to change. For example, updating a nested object could look like this:
+Обычно вы будете использовать синтаксис `...` (spread syntax) для копирования объектов и массивов, которые вы хотите изменить. Например, обновление вложенного объекта может выглядеть так:
 
 <Sandpack>
 
@@ -518,7 +518,7 @@ img { width: 200px; height: 200px; }
 
 </Sandpack>
 
-If copying objects in code gets tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code:
+Если копирование объектов в коде становится утомительным, вы можете использовать библиотеку, такую как [Immer](https://github.com/immerjs/use-immer), чтобы уменьшить повторяющийся код:
 
 <Sandpack>
 
@@ -633,13 +633,13 @@ img { width: 200px; height: 200px; }
 
 <LearnMore path="/learn/updating-objects-in-state">
 
-Read **[Updating Objects in State](/learn/updating-objects-in-state)** to learn how to update objects correctly.
+Прочтите **[Обновление объектов в состоянии](/learn/updating-objects-in-state)**, чтобы узнать, как правильно обновлять объекты.
 
 </LearnMore>
 
-## Updating arrays in state {/*updating-arrays-in-state*/}
+## Обновление массивов в состоянии {/*updating-arrays-in-state*/}
 
-Arrays are another type of mutable JavaScript objects you can store in state and should treat as read-only. Just like with objects, when you want to update an array stored in state, you need to create a new one (or make a copy of an existing one), and then set state to use the new array:
+Массивы — это еще один тип изменяемых объектов JavaScript, которые можно хранить в состоянии и которые следует рассматривать как доступные только для чтения. Как и в случае с объектами, когда вы хотите обновить массив, хранящийся в состоянии, вам нужно создать новый (или сделать копию существующего), а затем установить состояние, чтобы использовать новый массив:
 
 <Sandpack>
 
@@ -705,7 +705,7 @@ function ItemList({ artworks, onToggle }) {
 
 </Sandpack>
 
-If copying arrays in code gets tedious, you can use a library like [Immer](https://github.com/immerjs/use-immer) to reduce repetitive code:
+Если копирование массивов в коде становится утомительным, вы можете использовать библиотеку, такую как [Immer](https://github.com/immerjs/use-immer), чтобы уменьшить повторяющийся код:
 
 <Sandpack>
 
@@ -789,12 +789,12 @@ function ItemList({ artworks, onToggle }) {
 
 <LearnMore path="/learn/updating-arrays-in-state">
 
-Read **[Updating Arrays in State](/learn/updating-arrays-in-state)** to learn how to update arrays correctly.
+Прочтите **[Обновление массивов в состоянии](/learn/updating-arrays-in-state)**, чтобы узнать, как правильно обновлять массивы.
 
 </LearnMore>
 
-## What's next? {/*whats-next*/}
+## Что дальше? {/*whats-next*/}
 
-Head over to [Responding to Events](/learn/responding-to-events) to start reading this chapter page by page!
+Перейдите к [Обработка событий](/learn/responding-to-events), чтобы начать читать эту главу по страницам!
 
-Or, if you're already familiar with these topics, why not read about [Managing State](/learn/managing-state)?
+Или, если вы уже знакомы с этими темами, почему бы не прочитать о [Управлении состоянием](/learn/managing-state)?
