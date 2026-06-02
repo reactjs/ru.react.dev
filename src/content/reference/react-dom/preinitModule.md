@@ -4,13 +4,13 @@ title: preinitModule
 
 <Note>
 
-[React-based frameworks](/learn/start-a-new-react-project) frequently handle resource loading for you, so you might not have to call this API yourself. Consult your framework's documentation for details.
+[Фреймворки на основе React](/learn/start-a-new-react-project) часто обрабатывают загрузку ресурсов за вас, поэтому вам может не понадобиться вызывать этот API самостоятельно. Обратитесь к документации вашего фреймворка для получения подробной информации.
 
 </Note>
 
 <Intro>
 
-`preinitModule` lets you eagerly fetch and evaluate an ESM module.
+`preinitModule` позволяет предварительно загрузить и выполнить ESM-модуль.
 
 ```js
 preinitModule("https://example.com/module.js", {as: "script"});
@@ -22,11 +22,11 @@ preinitModule("https://example.com/module.js", {as: "script"});
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `preinitModule(href, options)` {/*preinitmodule*/}
 
-To preinit an ESM module, call the `preinitModule` function from `react-dom`.
+Чтобы предварительно загрузить ESM-модуль, вызовите функцию `preinitModule` из `react-dom`.
 
 ```js
 import { preinitModule } from 'react-dom';
@@ -38,36 +38,36 @@ function AppRoot() {
 
 ```
 
-[See more examples below.](#usage)
+[См. больше примеров ниже.](#usage)
 
-The `preinitModule` function provides the browser with a hint that it should start downloading and executing the given module, which can save time. Modules that you `preinit` are executed when they finish downloading.
+Функция `preinitModule` даёт браузеру подсказку о том, что он должен начать загрузку и выполнение указанного модуля, что может сэкономить время. Модули, которые вы предварительно загружаете с помощью `preinit`, выполняются по завершении загрузки.
 
-#### Parameters {/*parameters*/}
+#### Параметры {/*parameters*/}
 
-* `href`: a string. The URL of the module you want to download and execute.
-* `options`: an object. It contains the following properties:
-  *  `as`: a required string. It must be `'script'`.
-  *  `crossOrigin`: a string. The [CORS policy](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) to use. Its possible values are `anonymous` and `use-credentials`.
-  *  `integrity`: a string. A cryptographic hash of the module, to [verify its authenticity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
-  *  `nonce`: a string. A cryptographic [nonce to allow the module](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) when using a strict Content Security Policy. 
+* `href`: строка. URL модуля, который вы хотите загрузить и выполнить.
+* `options`: объект. Содержит следующие свойства:
+  *  `as`: обязательная строка. Должна быть `'script'`.
+  *  `crossOrigin`: строка. [Политика CORS](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin), которую следует использовать. Возможные значения: `anonymous` и `use-credentials`.
+  *  `integrity`: строка. Криптографический хэш модуля для [проверки его подлинности](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity).
+  *  `nonce`: строка. Криптографический [nonce для разрешения модуля](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/nonce) при использовании строгой политики безопасности контента (Content Security Policy).
 
-#### Returns {/*returns*/}
+#### Возвращаемое значение {/*returns*/}
 
-`preinitModule` returns nothing.
+`preinitModule` ничего не возвращает.
 
-#### Caveats {/*caveats*/}
+#### Особенности {/*caveats*/}
 
-* Multiple calls to `preinitModule` with the same `href` have the same effect as a single call.
-* In the browser, you can call `preinitModule` in any situation: while rendering a component, in an Effect, in an event handler, and so on.
-* In server-side rendering or when rendering Server Components, `preinitModule` only has an effect if you call it while rendering a component or in an async context originating from rendering a component. Any other calls will be ignored.
+* Многократные вызовы `preinitModule` с одинаковым `href` имеют тот же эффект, что и один вызов.
+* В браузере вы можете вызывать `preinitModule` в любой ситуации: во время рендеринга компонента, в эффекте, в обработчике событий и т. д.
+* При рендеринге на стороне сервера (server-side rendering) или при рендеринге серверных компонентов `preinitModule` имеет эффект только в том случае, если вы вызываете его во время рендеринга компонента или в асинхронном контексте, происходящем из рендеринга компонента. Любые другие вызовы будут проигнорированы.
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Preloading when rendering {/*preloading-when-rendering*/}
+### Предварительная загрузка во время рендеринга {/*preloading-when-rendering*/}
 
-Call `preinitModule` when rendering a component if you know that it or its children will use a specific module and you're OK with the module being evaluated and thereby taking effect immediately upon being downloaded.
+Вызывайте `preinitModule` во время рендеринга компонента, если вы знаете, что он или его дочерние компоненты будут использовать определённый модуль, и вас устраивает, что модуль будет выполнен и, следовательно, вступит в силу немедленно после загрузки.
 
 ```js
 import { preinitModule } from 'react-dom';
@@ -78,11 +78,11 @@ function AppRoot() {
 }
 ```
 
-If you want the browser to download the module but not to execute it right away, use [`preloadModule`](/reference/react-dom/preloadModule) instead. If you want to preinit a script that isn't an ESM module, use [`preinit`](/reference/react-dom/preinit).
+Если вы хотите, чтобы браузер загрузил модуль, но не выполнял его сразу, вместо этого используйте [`preloadModule`](/reference/react-dom/preloadModule). Если вы хотите предварительно загрузить скрипт, который не является ESM-модулем, используйте [`preinit`](/reference/react-dom/preinit).
 
-### Preloading in an event handler {/*preloading-in-an-event-handler*/}
+### Предварительная загрузка в обработчике событий {/*preloading-in-an-event-handler*/}
 
-Call `preinitModule` in an event handler before transitioning to a page or state where the module will be needed. This gets the process started earlier than if you call it during the rendering of the new page or state.
+Вызывайте `preinitModule` в обработчике событий перед переходом на страницу или в состояние, где модуль будет необходим. Это позволит начать процесс раньше, чем если бы вы вызвали его во время рендеринга новой страницы или состояния.
 
 ```js
 import { preinitModule } from 'react-dom';
