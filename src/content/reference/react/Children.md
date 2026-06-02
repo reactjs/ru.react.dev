@@ -4,13 +4,13 @@ title: Children
 
 <Pitfall>
 
-Using `Children` is uncommon and can lead to fragile code. [See common alternatives.](#alternatives)
+Использование `Children` встречается редко и может привести к хрупкому коду. [См. распространенные альтернативы.](#alternatives)
 
 </Pitfall>
 
 <Intro>
 
-`Children` lets you manipulate and transform the JSX you received as the [`children` prop.](/learn/passing-props-to-a-component#passing-jsx-as-children)
+`Children` позволяет вам манипулировать и трансформировать JSX, полученный как [`children` prop.](/learn/passing-props-to-a-component#passing-jsx-as-children)
 
 ```js
 const mappedChildren = Children.map(children, child =>
@@ -27,11 +27,11 @@ const mappedChildren = Children.map(children, child =>
 
 ---
 
-## Reference {/*reference*/}
+## Справочник {/*reference*/}
 
 ### `Children.count(children)` {/*children-count*/}
 
-Call `Children.count(children)` to count the number of children in the `children` data structure.
+Вызовите `Children.count(children)`, чтобы посчитать количество дочерних элементов в структуре данных `children`.
 
 ```js src/RowList.js active
 import { Children } from 'react';
@@ -46,25 +46,25 @@ function RowList({ children }) {
 }
 ```
 
-[See more examples below.](#counting-children)
+[См. больше примеров ниже.](#counting-children)
 
-#### Parameters {/*children-count-parameters*/}
+#### Параметры {/*children-count-parameters*/}
 
-* `children`: The value of the [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children) received by your component.
+* `children`: Значение [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children), полученное вашим компонентом.
 
-#### Returns {/*children-count-returns*/}
+#### Возвращает {/*children-count-returns*/}
 
-The number of nodes inside these `children`.
+Количество узлов внутри этих `children`.
 
-#### Caveats {/*children-count-caveats*/}
+#### Ограничения {/*children-count-caveats*/}
 
-- Empty nodes (`null`, `undefined`, and Booleans), strings, numbers, and [React elements](/reference/react/createElement) count as individual nodes. Arrays don't count as individual nodes, but their children do. **The traversal does not go deeper than React elements:** they don't get rendered, and their children aren't traversed. [Fragments](/reference/react/Fragment) don't get traversed.
+- Пустые узлы (`null`, `undefined` и булевы значения), строки, числа и [React-элементы](/reference/react/createElement) считаются отдельными узлами. Массивы не считаются отдельными узлами, но их дочерние элементы считаются. **Обход не идет глубже React-элементов:** они не рендерятся, и их дочерние элементы не обходятся. [Фрагменты](/reference/react/Fragment) не обходятся.
 
 ---
 
 ### `Children.forEach(children, fn, thisArg?)` {/*children-foreach*/}
 
-Call `Children.forEach(children, fn, thisArg?)` to run some code for each child in the `children` data structure.
+Вызовите `Children.forEach(children, fn, thisArg?)`, чтобы выполнить некоторый код для каждого дочернего элемента в структуре данных `children`.
 
 ```js src/RowList.js active
 import { Children } from 'react';
@@ -78,27 +78,27 @@ function SeparatorList({ children }) {
   // ...
 ```
 
-[See more examples below.](#running-some-code-for-each-child)
+[См. больше примеров ниже.](#running-some-code-for-each-child)
 
-#### Parameters {/*children-foreach-parameters*/}
+#### Параметры {/*children-foreach-parameters*/}
 
-* `children`: The value of the [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children) received by your component.
-* `fn`: The function you want to run for each child, similar to the [array `forEach` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) callback. It will be called with the child as the first argument and its index as the second argument. The index starts at `0` and increments on each call.
-* **optional** `thisArg`: The [`this` value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) with which the `fn` function should be called. If omitted, it's `undefined`.
+* `children`: Значение [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children), полученное вашим компонентом.
+* `fn`: Функция, которую вы хотите выполнить для каждого дочернего элемента, аналогично колбэку [метода `forEach` массива](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach). Она будет вызвана с дочерним элементом в качестве первого аргумента и его индексом в качестве второго. Индекс начинается с `0` и увеличивается при каждом вызове.
+* **необязательный** `thisArg`: [`this` значение](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), с которым будет вызвана функция `fn`. Если опущено, то `undefined`.
 
-#### Returns {/*children-foreach-returns*/}
+#### Возвращает {/*children-foreach-returns*/}
 
-`Children.forEach` returns `undefined`.
+`Children.forEach` возвращает `undefined`.
 
-#### Caveats {/*children-foreach-caveats*/}
+#### Ограничения {/*children-foreach-caveats*/}
 
-- Empty nodes (`null`, `undefined`, and Booleans), strings, numbers, and [React elements](/reference/react/createElement) count as individual nodes. Arrays don't count as individual nodes, but their children do. **The traversal does not go deeper than React elements:** they don't get rendered, and their children aren't traversed. [Fragments](/reference/react/Fragment) don't get traversed.
+- Пустые узлы (`null`, `undefined` и булевы значения), строки, числа и [React-элементы](/reference/react/createElement) считаются отдельными узлами. Массивы не считаются отдельными узлами, но их дочерние элементы считаются. **Обход не идет глубже React-элементов:** они не рендерятся, и их дочерние элементы не обходятся. [Фрагменты](/reference/react/Fragment) не обходятся.
 
 ---
 
 ### `Children.map(children, fn, thisArg?)` {/*children-map*/}
 
-Call `Children.map(children, fn, thisArg?)` to map or transform each child in the `children` data structure.
+Вызовите `Children.map(children, fn, thisArg?)`, чтобы отобразить или трансформировать каждый дочерний элемент в структуре данных `children`.
 
 ```js src/RowList.js active
 import { Children } from 'react';
@@ -116,32 +116,32 @@ function RowList({ children }) {
 }
 ```
 
-[See more examples below.](#transforming-children)
+[См. больше примеров ниже.](#transforming-children)
 
-#### Parameters {/*children-map-parameters*/}
+#### Параметры {/*children-map-parameters*/}
 
-* `children`: The value of the [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children) received by your component.
-* `fn`: The mapping function, similar to the [array `map` method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) callback. It will be called with the child as the first argument and its index as the second argument. The index starts at `0` and increments on each call. You need to return a React node from this function. This may be an empty node (`null`, `undefined`, or a Boolean), a string, a number, a React element, or an array of other React nodes.
-* **optional** `thisArg`: The [`this` value](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this) with which the `fn` function should be called. If omitted, it's `undefined`.
+* `children`: Значение [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children), полученное вашим компонентом.
+* `fn`: Функция отображения, аналогичная колбэку [метода `map` массива](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map). Она будет вызвана с дочерним элементом в качестве первого аргумента и его индексом в качестве второго. Индекс начинается с `0` и увеличивается при каждом вызове. Вы должны вернуть React-узел из этой функции. Это может быть пустой узел (`null`, `undefined` или булево значение), строка, число, React-элемент или массив других React-узлов.
+* **необязательный** `thisArg`: [`this` значение](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this), с которым будет вызвана функция `fn`. Если опущено, то `undefined`.
 
-#### Returns {/*children-map-returns*/}
+#### Возвращает {/*children-map-returns*/}
 
-If `children` is `null` or `undefined`, returns the same value.
+Если `children` равно `null` или `undefined`, возвращает то же значение.
 
-Otherwise, returns a flat array consisting of the nodes you've returned from the `fn` function. The returned array will contain all nodes you returned except for `null` and `undefined`.
+В противном случае возвращает плоский массив, состоящий из узлов, которые вы вернули из функции `fn`. Возвращаемый массив будет содержать все возвращенные вами узлы, кроме `null` и `undefined`.
 
-#### Caveats {/*children-map-caveats*/}
+#### Ограничения {/*children-map-caveats*/}
 
-- Empty nodes (`null`, `undefined`, and Booleans), strings, numbers, and [React elements](/reference/react/createElement) count as individual nodes. Arrays don't count as individual nodes, but their children do. **The traversal does not go deeper than React elements:** they don't get rendered, and their children aren't traversed. [Fragments](/reference/react/Fragment) don't get traversed.
+- Пустые узлы (`null`, `undefined` и булевы значения), строки, числа и [React-элементы](/reference/react/createElement) считаются отдельными узлами. Массивы не считаются отдельными узлами, но их дочерние элементы считаются. **Обход не идет глубже React-элементов:** они не рендерятся, и их дочерние элементы не обходятся. [Фрагменты](/reference/react/Fragment) не обходятся.
 
-- If you return an element or an array of elements with keys from `fn`, **the returned elements' keys will be automatically combined with the key of the corresponding original item from `children`.** When you return multiple elements from `fn` in an array, their keys only need to be unique locally amongst each other.
+- Если вы возвращаете элемент или массив элементов с ключами из `fn`, **ключи возвращаемых элементов будут автоматически объединены с ключом соответствующего исходного элемента из `children`.** Когда вы возвращаете несколько элементов из `fn` в массиве, их ключи должны быть уникальны только локально среди них самих.
 
 ---
 
 ### `Children.only(children)` {/*children-only*/}
 
 
-Call `Children.only(children)` to assert that `children` represent a single React element.
+Вызовите `Children.only(children)`, чтобы убедиться, что `children` представляет собой один React-элемент.
 
 ```js
 function Box({ children }) {
@@ -149,25 +149,41 @@ function Box({ children }) {
   // ...
 ```
 
-#### Parameters {/*children-only-parameters*/}
+#### Параметры {/*children-only-parameters*/}
 
-* `children`: The value of the [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children) received by your component.
+* `children`: Значение [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children), полученное вашим компонентом.
 
-#### Returns {/*children-only-returns*/}
+#### Возвращает {/*children-only-returns*/}
 
-If `children` [is a valid element,](/reference/react/isValidElement) returns that element.
+Если `children` [является допустимым элементом,](/reference/react/isValidElement) возвращает этот элемент.
 
-Otherwise, throws an error.
+В противном случае выбрасывает ошибку.
 
-#### Caveats {/*children-only-caveats*/}
+#### Ограничения {/*children-only-caveats*/}
 
-- This method always **throws if you pass an array (such as the return value of `Children.map`) as `children`.** In other words, it enforces that `children` is a single React element, not that it's an array with a single element.
+- Этот метод всегда **выбрасывает ошибку, если вы передаете массив (например, результат `Children.map`) в качестве `children`.** Другими словами, он гарантирует, что `children` является одним React-элементом, а не массивом с одним элементом.
 
 ---
 
 ### `Children.toArray(children)` {/*children-toarray*/}
 
-Call `Children.toArray(children)` to create an array out of the `children` data structure.
+Вызовите `Children.toArray(children)`, чтобы преобразовать структуру данных `children` в обычный JavaScript-массив. Это позволит вам манипулировать массивом с помощью встроенных методов массива, таких как [`filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) или [`reverse`.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)
+
+<Sandpack>
+
+```js
+import ReversedList from './ReversedList.js';
+
+export default function App() {
+  return (
+    <ReversedList>
+      <p>This is the first item.</p>
+      <p>This is the second item.</p>
+      <p>This is the third item.</p>
+    </ReversedList>
+  );
+}
+```
 
 ```js src/ReversedList.js active
 import { Children } from 'react';
@@ -178,25 +194,27 @@ export default function ReversedList({ children }) {
   // ...
 ```
 
-#### Parameters {/*children-toarray-parameters*/}
+</Sandpack>
 
-* `children`: The value of the [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children) received by your component.
+#### Параметры {/*children-toarray-parameters*/}
 
-#### Returns {/*children-toarray-returns*/}
+* `children`: Значение [`children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children), полученное вашим компонентом.
 
-Returns a flat array of elements in `children`.
+#### Возвращает {/*children-toarray-returns*/}
 
-#### Caveats {/*children-toarray-caveats*/}
+Возвращает плоский массив элементов из `children`.
 
-- Empty nodes (`null`, `undefined`, and Booleans) will be omitted in the returned array. **The returned elements' keys will be calculated from the original elements' keys and their level of nesting and position.** This ensures that flattening the array does not introduce changes in behavior.
+#### Ограничения {/*children-toarray-caveats*/}
+
+- Пустые узлы (`null`, `undefined` и булевы значения) будут опущены в возвращаемом массиве. **Ключи возвращаемых элементов будут вычислены из ключей исходных элементов, их уровня вложенности и позиции.** Это гарантирует, что при сглаживании массива не произойдет изменений в поведении.
 
 ---
 
-## Usage {/*usage*/}
+## Использование {/*usage*/}
 
-### Transforming children {/*transforming-children*/}
+### Трансформация дочерних элементов {/*transforming-children*/}
 
-To transform the children JSX that your component [receives as the `children` prop,](/learn/passing-props-to-a-component#passing-jsx-as-children) call `Children.map`:
+Чтобы трансформировать JSX-дочерние элементы, которые ваш компонент [получает как `children` prop,](/learn/passing-props-to-a-component#passing-jsx-as-children) вызовите `Children.map`:
 
 ```js {6,10}
 import { Children } from 'react';
@@ -214,7 +232,7 @@ function RowList({ children }) {
 }
 ```
 
-In the example above, the `RowList` wraps every child it receives into a `<div className="Row">` container. For example, let's say the parent component passes three `<p>` tags as the `children` prop to `RowList`:
+В приведенном выше примере `RowList` оборачивает каждый полученный дочерний элемент в контейнер `<div className="Row">`. Например, предположим, что родительский компонент передает три тега `<p>` как `children` prop в `RowList`:
 
 ```js
 <RowList>
@@ -224,7 +242,7 @@ In the example above, the `RowList` wraps every child it receives into a `<div c
 </RowList>
 ```
 
-Then, with the `RowList` implementation above, the final rendered result will look like this:
+Затем, с реализацией `RowList` выше, окончательный отрендеренный результат будет выглядеть так:
 
 ```js
 <div className="RowList">
@@ -240,7 +258,7 @@ Then, with the `RowList` implementation above, the final rendered result will lo
 </div>
 ```
 
-`Children.map` is similar to [to transforming arrays with `map()`.](/learn/rendering-lists) The difference is that the `children` data structure is considered *opaque.* This means that even if it's sometimes an array, you should not assume it's an array or any other particular data type. This is why you should use `Children.map` if you need to transform it.
+`Children.map` похож на [трансформацию массивов с помощью `map()`.](/learn/rendering-lists) Разница в том, что структура данных `children` считается *непрозрачной*. Это означает, что даже если она иногда является массивом, вы не должны предполагать, что это массив или какой-либо другой конкретный тип данных. Вот почему вы должны использовать `Children.map`, если вам нужно ее трансформировать.
 
 <Sandpack>
 
@@ -293,24 +311,24 @@ export default function RowList({ children }) {
 
 <DeepDive>
 
-#### Why is the children prop not always an array? {/*why-is-the-children-prop-not-always-an-array*/}
+#### Почему `children` prop не всегда является массивом? {/*why-is-the-children-prop-not-always-an-array*/}
 
-In React, the `children` prop is considered an *opaque* data structure. This means that you shouldn't rely on how it is structured. To transform, filter, or count children, you should use the `Children` methods.
+В React `children` prop считается *непрозрачной* структурой данных. Это означает, что вы не должны полагаться на ее структуру. Для трансформации, фильтрации или подсчета дочерних элементов следует использовать методы `Children`.
 
-In practice, the `children` data structure is often represented as an array internally. However, if there is only a single child, then React won't create an extra array since this would lead to unnecessary memory overhead. As long as you use the `Children` methods instead of directly introspecting the `children` prop, your code will not break even if React changes how the data structure is actually implemented.
+На практике структура данных `children` часто представляется внутри как массив. Однако, если существует только один дочерний элемент, React не будет создавать дополнительный массив, так как это приведет к ненужным накладным расходам на память. Пока вы используете методы `Children` вместо прямого анализа `children` prop, ваш код не сломается, даже если React изменит способ фактической реализации структуры данных.
 
-Even when `children` is an array, `Children.map` has useful special behavior. For example, `Children.map` combines the [keys](/learn/rendering-lists#keeping-list-items-in-order-with-key) on the returned elements with the keys on the `children` you've passed to it. This ensures the original JSX children don't "lose" keys even if they get wrapped like in the example above.
+Даже когда `children` является массивом, `Children.map` имеет полезное особое поведение. Например, `Children.map` объединяет [ключи](/learn/rendering-lists#keeping-list-items-in-order-with-key) в возвращаемых элементах с ключами в `children`, которые вы ему передали. Это гарантирует, что исходные JSX-дочерние элементы не "потеряют" ключи, даже если они будут обернуты, как в приведенном выше примере.
 
 </DeepDive>
 
 <Pitfall>
 
-The `children` data structure **does not include rendered output** of the components you pass as JSX. In the example below, the `children` received by the `RowList` only contains two items rather than three:
+Структура данных `children` **не включает отрендеренный вывод** компонентов, которые вы передаете как JSX. В приведенном ниже примере `children`, полученные `RowList`, содержат только два элемента вместо трех:
 
 1. `<p>This is the first item.</p>`
 2. `<MoreRows />`
 
-This is why only two row wrappers are generated in this example:
+Вот почему в этом примере генерируются только два обертывания строк:
 
 <Sandpack>
 
@@ -369,15 +387,15 @@ export default function RowList({ children }) {
 
 </Sandpack>
 
-**There is no way to get the rendered output of an inner component** like `<MoreRows />` when manipulating `children`. This is why [it's usually better to use one of the alternative solutions.](#alternatives)
+**Нет способа получить отрендеренный вывод внутреннего компонента**, такого как `<MoreRows />`, при манипулировании `children`. Вот почему [обычно лучше использовать одно из альтернативных решений.](#alternatives)
 
 </Pitfall>
 
 ---
 
-### Running some code for each child {/*running-some-code-for-each-child*/}
+### Выполнение кода для каждого дочернего элемента {/*running-some-code-for-each-child*/}
 
-Call `Children.forEach` to iterate over each child in the `children` data structure. It does not return any value and is similar to the [array `forEach` method.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) You can use it to run custom logic like constructing your own array.
+Вызовите `Children.forEach`, чтобы перебрать каждый дочерний элемент в структуре данных `children`. Он не возвращает никакого значения и похож на [метод `forEach` массива.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) Вы можете использовать его для выполнения пользовательской логики, например, для построения собственного массива.
 
 <Sandpack>
 
@@ -413,15 +431,15 @@ export default function SeparatorList({ children }) {
 
 <Pitfall>
 
-As mentioned earlier, there is no way to get the rendered output of an inner component when manipulating `children`. This is why [it's usually better to use one of the alternative solutions.](#alternatives)
+Как упоминалось ранее, нет способа получить отрендеренный вывод внутреннего компонента при манипулировании `children`. Вот почему [обычно лучше использовать одно из альтернативных решений.](#alternatives)
 
 </Pitfall>
 
 ---
 
-### Counting children {/*counting-children*/}
+### Подсчет дочерних элементов {/*counting-children*/}
 
-Call `Children.count(children)` to calculate the number of children.
+Вызовите `Children.count(children)`, чтобы рассчитать количество дочерних элементов.
 
 <Sandpack>
 
@@ -484,15 +502,15 @@ export default function RowList({ children }) {
 
 <Pitfall>
 
-As mentioned earlier, there is no way to get the rendered output of an inner component when manipulating `children`. This is why [it's usually better to use one of the alternative solutions.](#alternatives)
+Как упоминалось ранее, нет способа получить отрендеренный вывод внутреннего компонента при манипулировании `children`. Вот почему [обычно лучше использовать одно из альтернативных решений.](#alternatives)
 
 </Pitfall>
 
 ---
 
-### Converting children to an array {/*converting-children-to-an-array*/}
+### Преобразование дочерних элементов в массив {/*converting-children-to-an-array*/}
 
-Call `Children.toArray(children)` to turn the `children` data structure into a regular JavaScript array. This lets you manipulate the array with built-in array methods like [`filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort), or [`reverse`.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) 
+Вызовите `Children.toArray(children)`, чтобы преобразовать структуру данных `children` в обычный JavaScript-массив. Это позволит вам манипулировать массивом с помощью встроенных методов массива, таких как [`filter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter), [`sort`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) или [`reverse`.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse)
 
 <Sandpack>
 
@@ -516,39 +534,38 @@ import { Children } from 'react';
 export default function ReversedList({ children }) {
   const result = Children.toArray(children);
   result.reverse();
-  return result;
-}
+  // ...
 ```
 
 </Sandpack>
 
 <Pitfall>
 
-As mentioned earlier, there is no way to get the rendered output of an inner component when manipulating `children`. This is why [it's usually better to use one of the alternative solutions.](#alternatives)
+Как упоминалось ранее, нет способа получить отрендеренный вывод внутреннего компонента при манипулировании `children`. Вот почему [обычно лучше использовать одно из альтернативных решений.](#alternatives)
 
 </Pitfall>
 
 ---
 
-## Alternatives {/*alternatives*/}
+## Альтернативы {/*alternatives*/}
 
 <Note>
 
-This section describes alternatives to the `Children` API (with capital `C`) that's imported like this:
+В этом разделе описываются альтернативы API `Children` (с большой буквы `C`), который импортируется так:
 
 ```js
 import { Children } from 'react';
 ```
 
-Don't confuse it with [using the `children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children) (lowercase `c`), which is good and encouraged.
+Не путайте его с [использованием `children` prop](/learn/passing-props-to-a-component#passing-jsx-as-children) (строчная `c`), которое является хорошей и рекомендуемой практикой.
 
 </Note>
 
-### Exposing multiple components {/*exposing-multiple-components*/}
+### Экспорт нескольких компонентов {/*exposing-multiple-components*/}
 
-Manipulating children with the `Children` methods often leads to fragile code. When you pass children to a component in JSX, you don't usually expect the component to manipulate or transform the individual children.
+Манипулирование дочерними элементами с помощью методов `Children` часто приводит к хрупкому коду. Когда вы передаете дочерние элементы компоненту в JSX, вы обычно не ожидаете, что компонент будет манипулировать или трансформировать отдельные дочерние элементы.
 
-When you can, try to avoid using the `Children` methods. For example, if you want every child of `RowList` to be wrapped in `<div className="Row">`, export a `Row` component, and manually wrap every row into it like this:
+Когда это возможно, старайтесь избегать использования методов `Children`. Например, если вы хотите, чтобы каждый дочерний элемент `RowList` был обернут в `<div className="Row">`, экспортируйте компонент `Row` и вручную оборачивайте каждую строку в него, как показано ниже:
 
 <Sandpack>
 
@@ -607,7 +624,7 @@ export function Row({ children }) {
 
 </Sandpack>
 
-Unlike using `Children.map`, this approach does not wrap every child automatically. **However, this approach has a significant benefit compared to the [earlier example with `Children.map`](#transforming-children) because it works even if you keep extracting more components.** For example, it still works if you extract your own `MoreRows` component:
+В отличие от использования `Children.map`, этот подход не оборачивает каждый дочерний элемент автоматически. **Однако этот подход имеет существенное преимущество по сравнению с [предыдущим примером с `Children.map`](#transforming-children), поскольку он работает даже при извлечении большего количества компонентов.** Например, он по-прежнему работает, если вы извлечете собственный компонент `MoreRows`:
 
 <Sandpack>
 
@@ -674,13 +691,13 @@ export function Row({ children }) {
 
 </Sandpack>
 
-This wouldn't work with `Children.map` because it would "see" `<MoreRows />` as a single child (and a single row).
+Это не сработало бы с `Children.map`, потому что он "видел" бы `<MoreRows />` как один дочерний элемент (и одну строку).
 
 ---
 
-### Accepting an array of objects as a prop {/*accepting-an-array-of-objects-as-a-prop*/}
+### Принятие массива объектов в качестве prop {/*accepting-an-array-of-objects-as-a-prop*/}
 
-You can also explicitly pass an array as a prop. For example, this `RowList` accepts a `rows` array as a prop:
+Вы также можете явно передать массив в качестве prop. Например, этот `RowList` принимает массив `rows` в качестве prop:
 
 <Sandpack>
 
@@ -729,9 +746,9 @@ export function RowList({ rows }) {
 
 </Sandpack>
 
-Since `rows` is a regular JavaScript array, the `RowList` component can use built-in array methods like [`map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) on it.
+Поскольку `rows` является обычным JavaScript-массивом, компонент `RowList` может использовать встроенные методы массива, такие как [`map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map).
 
-This pattern is especially useful when you want to be able to pass more information as structured data together with children. In the below example, the `TabSwitcher` component receives an array of objects as the `tabs` prop:
+Этот шаблон особенно полезен, когда вы хотите иметь возможность передавать больше информации в виде структурированных данных вместе с дочерними элементами. В приведенном ниже примере компонент `TabSwitcher` принимает массив объектов в качестве prop `tabs`:
 
 <Sandpack>
 
@@ -789,13 +806,13 @@ export default function TabSwitcher({ tabs }) {
 
 </Sandpack>
 
-Unlike passing the children as JSX, this approach lets you associate some extra data like `header` with each item. Because you are working with the `tabs` directly, and it is an array, you do not need the `Children` methods.
+В отличие от передачи дочерних элементов в виде JSX, этот подход позволяет ассоциировать дополнительную информацию, такую как `header`, с каждым элементом. Поскольку вы работаете непосредственно с `tabs`, и это массив, вам не нужны методы `Children`.
 
 ---
 
-### Calling a render prop to customize rendering {/*calling-a-render-prop-to-customize-rendering*/}
+### Вызов render prop для настройки рендеринга {/*calling-a-render-prop-to-customize-rendering*/}
 
-Instead of producing JSX for every single item, you can also pass a function that returns JSX, and call that function when necessary. In this example, the `App` component passes a `renderContent` function to the `TabSwitcher` component. The `TabSwitcher` component calls `renderContent` only for the selected tab:
+Вместо того чтобы генерировать JSX для каждого отдельного элемента, вы также можете передать функцию, возвращающую JSX, и вызывать ее при необходимости. В этом примере компонент `App` передает функцию `renderContent` компоненту `TabSwitcher`. Компонент `TabSwitcher` вызывает `renderContent` только для выбранной вкладки:
 
 <Sandpack>
 
@@ -844,9 +861,9 @@ export default function TabSwitcher({ tabIds, getHeader, renderContent }) {
 
 </Sandpack>
 
-A prop like `renderContent` is called a *render prop* because it is a prop that specifies how to render a piece of the user interface. However, there is nothing special about it: it is a regular prop which happens to be a function.
+Такой prop, как `renderContent`, называется *render prop*, потому что это prop, который определяет, как отобразить часть пользовательского интерфейса. Однако в нем нет ничего особенного: это обычный prop, который является функцией.
 
-Render props are functions, so you can pass information to them. For example, this `RowList` component passes the `id` and the `index` of each row to the `renderRow` render prop, which uses `index` to highlight even rows:
+Render props — это функции, поэтому вы можете передавать им информацию. Например, этот компонент `RowList` передает `id` и `index` каждой строки в render prop `renderRow`, который использует `index` для выделения четных строк:
 
 <Sandpack>
 
@@ -927,23 +944,23 @@ export function Row({ children, isHighlighted }) {
 
 </Sandpack>
 
-This is another example of how parent and child components can cooperate without manipulating the children.
+Это еще один пример того, как родительские и дочерние компоненты могут взаимодействовать без манипулирования дочерними элементами.
 
 ---
 
-## Troubleshooting {/*troubleshooting*/}
+## Устранение неполадок {/*troubleshooting*/}
 
-### I pass a custom component, but the `Children` methods don't show its render result {/*i-pass-a-custom-component-but-the-children-methods-dont-show-its-render-result*/}
+### Я передаю пользовательский компонент, но методы `Children` не показывают результат его рендеринга {/*i-pass-a-custom-component-but-the-children-methods-dont-show-its-render-result*/}
 
-Suppose you pass two children to `RowList` like this:
+Предположим, вы передаёте два дочерних элемента в `RowList` следующим образом:
 
 ```js
 <RowList>
-  <p>First item</p>
+  <p>Первый элемент</p>
   <MoreRows />
 </RowList>
 ```
 
-If you do `Children.count(children)` inside `RowList`, you will get `2`. Even if `MoreRows` renders 10 different items, or if it returns `null`, `Children.count(children)` will still be `2`. From the `RowList`'s perspective, it only "sees" the JSX it has received. It does not "see" the internals of the `MoreRows` component.
+Если вы выполните `Children.count(children)` внутри `RowList`, вы получите `2`. Даже если `MoreRows` отрендерит 10 различных элементов или вернёт `null`, `Children.count(children)` всё равно будет `2`. С точки зрения `RowList`, он "видит" только JSX, который получил. Он не "видит" внутреннее содержимое компонента `MoreRows`.
 
-The limitation makes it hard to extract a component. This is why [alternatives](#alternatives) are preferred to using `Children`.
+Это ограничение затрудняет извлечение компонента. Вот почему [альтернативы](#alternatives) предпочтительнее использования `Children`.
