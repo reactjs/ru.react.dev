@@ -2,37 +2,37 @@
 title: Unknown Prop Warning
 ---
 
-The unknown-prop warning will fire if you attempt to render a DOM element with a prop that is not recognized by React as a legal DOM attribute/property. You should ensure that your DOM elements do not have spurious props floating around.
+Предупреждение об неизвестном пропе возникнет, если вы попытаетесь отрендерить DOM-элемент с пропом, который React не распознаёт как допустимый DOM-атрибут/свойство. Вы должны убедиться, что в ваших DOM-элементах нет лишних пропов.
 
-There are a couple of likely reasons this warning could be appearing:
+Есть несколько вероятных причин появления этого предупреждения:
 
-1. Are you using `{...props}` or `cloneElement(element, props)`? When copying props to a child component, you should ensure that you are not accidentally forwarding props that were intended only for the parent component. See common fixes for this problem below.
+1. Используете ли вы `{...props}` или `cloneElement(element, props)`? При копировании пропов в дочерний компонент убедитесь, что вы случайно не передаёте пропы, предназначенные только для родительского компонента. См. распространённые исправления этой проблемы ниже.
 
-2. You are using a non-standard DOM attribute on a native DOM node, perhaps to represent custom data. If you are trying to attach custom data to a standard DOM element, consider using a custom data attribute as described [on MDN](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_data_attributes).
+2. Вы используете нестандартный DOM-атрибут в нативном DOM-узле, возможно, для представления пользовательских данных. Если вы пытаетесь прикрепить пользовательские данные к стандартному DOM-элементу, рассмотрите использование пользовательского атрибута данных, как описано [на MDN](https://developer.mozilla.org/ru/docs/Web/Guide/HTML/Using_data_attributes).
 
-3. React does not yet recognize the attribute you specified. This will likely be fixed in a future version of React. React will allow you to pass it without a warning if you write the attribute name lowercase.
+3. React ещё не распознаёт указанный вами атрибут. Вероятно, это будет исправлено в будущей версии React. React позволит вам передать его без предупреждения, если вы напишете имя атрибута в нижнем регистре.
 
-4. You are using a React component without an upper case, for example `<myButton />`. React interprets it as a DOM tag because React JSX transform uses the upper vs. lower case convention to distinguish between user-defined components and DOM tags. For your own React components, use PascalCase. For example, write `<MyButton />` instead of `<myButton />`.
+4. Вы используете React-компонент без заглавной буквы, например `<myButton />`. React интерпретирует его как DOM-тег, потому что трансформация JSX в React использует соглашение о верхнем и нижнем регистре для различения пользовательских компонентов и DOM-тегов. Для ваших собственных React-компонентов используйте PascalCase. Например, пишите `<MyButton />` вместо `<myButton />`.
 
 ---
 
-If you get this warning because you pass props like `{...props}`, your parent component needs to "consume" any prop that is intended for the parent component and not intended for the child component. Example:
+Если вы получаете это предупреждение из-за передачи пропов вроде `{...props}`, ваш родительский компонент должен «потребить» любой проп, который предназначен для родительского компонента и не предназначен для дочернего. Пример:
 
-**Bad:** Unexpected `layout` prop is forwarded to the `div` tag.
+**Плохо:** Неожиданный проп `layout` передаётся тегу `div`.
 
 ```js
 function MyDiv(props) {
   if (props.layout === 'horizontal') {
-    // BAD! Because you know for sure "layout" is not a prop that <div> understands.
+    // ПЛОХО! Потому что вы точно знаете, что "layout" — это не проп, который понимает <div>.
     return <div {...props} style={getHorizontalStyle()} />
   } else {
-    // BAD! Because you know for sure "layout" is not a prop that <div> understands.
+    // ПЛОХО! Потому что вы точно знаете, что "layout" — это не проп, который понимает <div>.
     return <div {...props} style={getVerticalStyle()} />
   }
 }
 ```
 
-**Good:** The spread syntax can be used to pull variables off props, and put the remaining props into a variable.
+**Хорошо:** Оператор расширения можно использовать для извлечения переменных из пропов и помещения оставшихся пропов в переменную.
 
 ```js
 function MyDiv(props) {
@@ -45,7 +45,7 @@ function MyDiv(props) {
 }
 ```
 
-**Good:** You can also assign the props to a new object and delete the keys that you're using from the new object. Be sure not to delete the props from the original `this.props` object, since that object should be considered immutable.
+**Хорошо:** Вы также можете присвоить пропы новому объекту и удалить ключи, которые вы используете, из нового объекта. Убедитесь, что вы не удаляете пропы из исходного объекта `this.props`, поскольку этот объект следует считать неизменяемым.
 
 ```js
 function MyDiv(props) {
