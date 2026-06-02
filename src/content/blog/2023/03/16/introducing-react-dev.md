@@ -2,61 +2,61 @@
 title: "Introducing react.dev"
 author: Dan Abramov and Rachel Nabors
 date: 2023/03/16
-description: Today we are thrilled to launch react.dev, the new home for React and its documentation. In this post, we would like to give you a tour of the new site.
+description: Сегодня мы рады представить react.dev — новый дом для React и его документации. В этой статье мы хотим провести вас по новому сайту.
 ---
 
-March 16, 2023 by [Dan Abramov](https://bsky.app/profile/danabra.mov) and [Rachel Nabors](https://twitter.com/rachelnabors)
+16 марта 2023 г. [Дэн Абрамов](https://bsky.app/profile/danabra.mov) и [Рэйчел Наборс](https://twitter.com/rachelnabors)
 
 ---
 
 <Intro>
 
-Today we are thrilled to launch [react.dev](https://react.dev), the new home for React and its documentation. In this post, we would like to give you a tour of the new site.
+Сегодня мы рады представить [react.dev](https://react.dev) — новый дом для React и его документации. В этом посте мы хотим провести вас по новому сайту.
 
 </Intro>
 
 ---
 
-## tl;dr {/*tldr*/}
+## Краткое содержание {/*tldr*/}
 
-* The new React site ([react.dev](https://react.dev)) teaches modern React with function components and Hooks.
-* We've included diagrams, illustrations, challenges, and over 600 new interactive examples.
-* The previous React documentation site has now moved to [legacy.reactjs.org](https://legacy.reactjs.org).
+* Новый сайт React ([react.dev](https://react.dev)) обучает современному React с использованием функциональных компонентов и хуков.
+* Мы включили диаграммы, иллюстрации, задания и более 600 новых интерактивных примеров.
+* Предыдущий сайт документации React теперь переехал на [legacy.reactjs.org](https://legacy.reactjs.org).
 
-## New site, new domain, new homepage {/*new-site-new-domain-new-homepage*/}
+## Новый сайт, новый домен, новая главная страница {/*new-site-new-domain-new-homepage*/}
 
-First, a little bit of housekeeping.
+Сначала немного организационных моментов.
 
-To celebrate the launch of the new docs and, more importantly, to clearly separate the old and the new content, we've moved to the shorter [react.dev](https://react.dev) domain. The old [reactjs.org](https://reactjs.org) domain will now redirect here.
+В честь запуска новой документации и, что более важно, для четкого разделения старого и нового контента, мы переехали на более короткий домен [react.dev](https://react.dev). Старый домен [reactjs.org](https://reactjs.org) теперь будет перенаправлять сюда.
 
-The old React docs are now archived at [legacy.reactjs.org](https://legacy.reactjs.org). All existing links to the old content will automatically redirect there to avoid "breaking the web", but the legacy site will not get many more updates.
+Старая документация React теперь заархивирована по адресу [legacy.reactjs.org](https://legacy.reactjs.org). Все существующие ссылки на старый контент будут автоматически перенаправляться туда, чтобы избежать "сломанных ссылок", но устаревший сайт больше не будет получать обновлений.
 
-Believe it or not, React will soon be ten years old. In JavaScript years, it's like a whole century! We've [refreshed the React homepage](https://react.dev) to reflect why we think React is a great way to create user interfaces today, and updated the getting started guides to more prominently mention modern React-based frameworks.
+Хотите верьте, хотите нет, но React скоро исполнится десять лет. По меркам JavaScript — это целое столетие! Мы [обновили главную страницу React](https://react.dev), чтобы отразить, почему мы считаем React отличным инструментом для создания пользовательских интерфейсов сегодня, и обновили руководства по началу работы, чтобы более заметно упомянуть современные фреймворки на базе React.
 
-If you haven't seen the new homepage yet, check it out!
+Если вы еще не видели новую главную страницу, обязательно загляните!
 
-## Going all-in on modern React with Hooks {/*going-all-in-on-modern-react-with-hooks*/}
+## Полный переход на современный React с хуками {/*going-all-in-on-modern-react-with-hooks*/}
 
-When we released React Hooks in 2018, the Hooks docs assumed the reader is familiar with class components. This helped the community adopt Hooks very swiftly, but after a while the old docs failed to serve the new readers. New readers had to learn React twice: once with class components and then once again with Hooks.
+Когда мы выпустили React Hooks в 2018 году, документация по хукам предполагала, что читатель знаком с классовыми компонентами. Это помогло сообществу очень быстро принять хуки, но со временем старая документация перестала быть полезной для новых читателей. Новым читателям приходилось изучать React дважды: сначала с классовыми компонентами, а затем снова с хуками.
 
-**The new docs teach React with Hooks from the beginning.** The docs are divided in two main sections:
+**Новая документация обучает React с хуками с самого начала.** Документация разделена на два основных раздела:
 
-* **[Learn React](/learn)** is a self-paced course that teaches React from scratch.
-* **[API Reference](/reference)** provides the details and usage examples for every React API.
+* **[Изучение React](/learn)** — это самостоятельный курс, который обучает React с нуля.
+* **[Справочник по API](/reference)** — содержит подробности и примеры использования каждого API React.
 
-Let's have a closer look at what you can find in each section.
+Давайте подробнее рассмотрим, что вы найдете в каждом разделе.
 
 <Note>
 
-There are still a few rare class component use cases that do not yet have a Hook-based equivalent. Class components remain supported, and are documented in the [Legacy API](/reference/react/legacy) section of the new site.
+Существуют редкие случаи использования классовых компонентов, для которых пока нет эквивалента на хуках. Классовые компоненты по-прежнему поддерживаются и документированы в разделе [Устаревший API](/reference/react/legacy) нового сайта.
 
 </Note>
 
-## Quick start {/*quick-start*/}
+## Быстрый старт {/*quick-start*/}
 
-The Learn section begins with the [Quick Start](/learn) page. It is a short introductory tour of React. It introduces the syntax for concepts like components, props, and state, but doesn't go into much detail on how to use them.
+Раздел "Изучение" начинается со страницы [Быстрый старт](/learn). Это краткий вводный тур по React. Он знакомит с синтаксисом таких концепций, как компоненты, пропсы и состояние, но не вдается в подробности их использования.
 
-If you like to learn by doing, we recommend checking out the [Tic-Tac-Toe Tutorial](/learn/tutorial-tic-tac-toe) next. It walks you through building a little game with React, while teaching the skills you'll use every day. Here's what you'll build:
+Если вы предпочитаете учиться на практике, мы рекомендуем ознакомиться с [Учебником по крестикам-ноликам](/learn/tutorial-tic-tac-toe). Он проведет вас через процесс создания небольшой игры с помощью React, обучая навыкам, которые вы будете использовать каждый день. Вот что вы построите:
 
 <Sandpack>
 
@@ -225,43 +225,43 @@ body {
 
 </Sandpack>
 
-We'd also like to highlight [Thinking in React](/learn/thinking-in-react)—that's the tutorial that made React "click" for many of us. **We've updated both of these classic tutorials to use function components and Hooks,** so they're as good as new.
+Мы также хотели бы выделить [Мышление в React](/learn/thinking-in-react) — это учебник, который помог многим из нас "щелкнуть" с React. **Мы обновили оба этих классических учебника, чтобы они использовали функциональные компоненты и хуки**, так что они теперь как новые.
 
 <Note>
 
-The example above is a *sandbox*. We've added a lot of sandboxes—over 600!—everywhere throughout the site. You can edit any sandbox, or press "Fork" in the upper right corner to open it in a separate tab. Sandboxes let you quickly play with the React APIs, explore your ideas, and check your understanding.
+Приведенный выше пример — это *песочница*. Мы добавили множество песочниц — более 600! — по всему сайту. Вы можете редактировать любую песочницу или нажать "Fork" в правом верхнем углу, чтобы открыть ее в отдельной вкладке. Песочницы позволяют быстро экспериментировать с API React, исследовать свои идеи и проверять свое понимание.
 
 </Note>
 
-## Learn React step by step {/*learn-react-step-by-step*/}
+## Изучение React шаг за шагом {/*learn-react-step-by-step*/}
 
-We'd like everyone in the world to have an equal opportunity to learn React for free on their own.
+Мы хотим, чтобы каждый человек в мире имел равные возможности бесплатно изучать React самостоятельно.
 
-This is why the Learn section is organized like a self-paced course split into chapters. The first two chapters describe the fundamentals of React. If you're new to React, or want to refresh it in your memory, start here:
+Именно поэтому раздел "Изучение" организован как самостоятельный курс, разделенный на главы. Первые две главы описывают основы React. Если вы новичок в React или хотите освежить свои знания, начните здесь:
 
-- **[Describing the UI](/learn/describing-the-ui)** teaches how to display information with components.
-- **[Adding Interactivity](/learn/adding-interactivity)** teaches how to update the screen in response to user input.
+- **[Описание пользовательского интерфейса](/learn/describing-the-ui)** учит отображать информацию с помощью компонентов.
+- **[Добавление интерактивности](/learn/adding-interactivity)** учит обновлять экран в ответ на ввод пользователя.
 
-The next two chapters are more advanced, and will give you a deeper insight into the trickier parts:
+Следующие две главы более продвинутые и дадут вам более глубокое понимание сложных моментов:
 
-- **[Managing State](/learn/managing-state)** teaches how to organize your logic as your app grows in complexity.
-- **[Escape Hatches](/learn/escape-hatches)** teaches how you can "step outside" React, and when it makes most sense to do so.
+- **[Управление состоянием](/learn/managing-state)** учит организовывать логику по мере усложнения приложения.
+- **[Лазейки](/learn/escape-hatches)** учит, как можно "выйти" из React и когда это наиболее целесообразно.
 
-Every chapter consists of several related pages. Most of these pages teach a specific skill or a technique—for example, [Writing Markup with JSX](/learn/writing-markup-with-jsx), [Updating Objects in State](/learn/updating-objects-in-state), or [Sharing State Between Components](/learn/sharing-state-between-components). Some of the pages focus on explaining an idea—like [Render and Commit](/learn/render-and-commit), or [State as a Snapshot](/learn/state-as-a-snapshot). And there are a few, like [You Might Not Need an Effect](/learn/you-might-not-need-an-effect), that share our suggestions based on what we've learned over these years.
+Каждая глава состоит из нескольких связанных страниц. Большинство этих страниц обучают конкретному навыку или технике — например, [Написание разметки с помощью JSX](/learn/writing-markup-with-jsx), [Обновление объектов в состоянии](/learn/updating-objects-in-state) или [Обмен состоянием между компонентами](/learn/sharing-state-between-components). Некоторые страницы посвящены объяснению идеи — например, [Рендер и коммит](/learn/render-and-commit) или [Состояние как снимок](/learn/state-as-a-snapshot). И есть несколько, например [Вам может не понадобиться эффект](/learn/you-might-not-need-an-effect), которые содержат наши рекомендации, основанные на нашем многолетнем опыте.
 
-You don't have to read these chapters as a sequence. Who has the time for this?! But you could. Pages in the Learn section only rely on concepts introduced by the earlier pages. If you want to read it like a book, go for it!
+Вам не обязательно читать эти главы последовательно. У кого есть на это время?! Но вы можете. Страницы в разделе "Изучение" опираются только на концепции, представленные на предыдущих страницах. Если вы хотите прочитать их как книгу, пожалуйста!
 
-### Check your understanding with challenges {/*check-your-understanding-with-challenges*/}
+### Проверяйте свое понимание с помощью заданий {/*check-your-understanding-with-challenges*/}
 
-Most pages in the Learn section end with a few challenges to check your understanding. For example, here are a few challenges from the page about [Conditional Rendering](/learn/conditional-rendering#challenges).
+Большинство страниц в разделе "Изучение" заканчиваются несколькими заданиями для проверки вашего понимания. Например, вот несколько заданий со страницы о [Условном рендеринге](/learn/conditional-rendering#challenges).
 
-You don't have to solve them right now! Unless you *really* want to.
+Вам не обязательно решать их прямо сейчас! Если только вы *действительно* не хотите.
 
 <Challenges noTitle={true}>
 
-#### Show an icon for incomplete items with `? :` {/*show-an-icon-for-incomplete-items-with--*/}
+#### Отображение значка для незавершенных элементов с помощью `? :` {/*show-an-icon-for-incomplete-items-with--*/}
 
-Use the conditional operator (`cond ? a : b`) to render a ❌ if `isPacked` isn’t `true`.
+Используйте условный оператор (`cond ? a : b`), чтобы отобразить ❌, если `isPacked` не равно `true`.
 
 <Sandpack>
 
@@ -277,19 +277,19 @@ function Item({ name, isPacked }) {
 export default function PackingList() {
   return (
     <section>
-      <h1>Sally Ride's Packing List</h1>
+      <h1>Список вещей Салли Райд</h1>
       <ul>
         <Item 
           isPacked={true} 
-          name="Space suit" 
+          name="Космический костюм" 
         />
         <Item 
           isPacked={true} 
-          name="Helmet with a golden leaf" 
+          name="Шлем с золотым листом" 
         />
         <Item 
           isPacked={false} 
-          name="Photo of Tam" 
+          name="Фотография Тэм" 
         />
       </ul>
     </section>
@@ -315,19 +315,19 @@ function Item({ name, isPacked }) {
 export default function PackingList() {
   return (
     <section>
-      <h1>Sally Ride's Packing List</h1>
+      <h1>Список вещей Салли Райд</h1>
       <ul>
         <Item 
           isPacked={true} 
-          name="Space suit" 
+          name="Космический костюм" 
         />
         <Item 
           isPacked={true} 
-          name="Helmet with a golden leaf" 
+          name="Шлем с золотым листом" 
         />
         <Item 
           isPacked={false} 
-          name="Photo of Tam" 
+          name="Фотография Тэм" 
         />
       </ul>
     </section>
@@ -339,15 +339,15 @@ export default function PackingList() {
 
 </Solution>
 
-#### Show the item importance with `&&` {/*show-the-item-importance-with-*/}
+#### Отображение важности элемента с помощью `&&` {/*show-the-item-importance-with-*/}
 
-In this example, each `Item` receives a numerical `importance` prop. Use the `&&` operator to render "_(Importance: X)_" in italics, but only for items that have non-zero importance. Your item list should end up looking like this:
+В этом примере каждый `Item` получает числовой проп `importance`. Используйте оператор `&&`, чтобы отобразить `_(Важность: X)_` курсивом, но только для элементов с ненулевой важностью. Ваш список элементов должен выглядеть следующим образом:
 
-* Space suit _(Importance: 9)_
-* Helmet with a golden leaf
-* Photo of Tam _(Importance: 6)_
+* Космический костюм _(Важность: 9)_
+* Шлем с золотым листом
+* Фотография Тэм _(Важность: 6)_
 
-Don't forget to add a space between the two labels!
+Не забудьте добавить пробел между двумя метками!
 
 <Sandpack>
 
@@ -363,19 +363,19 @@ function Item({ name, importance }) {
 export default function PackingList() {
   return (
     <section>
-      <h1>Sally Ride's Packing List</h1>
+      <h1>Список вещей Салли Райд</h1>
       <ul>
         <Item 
           importance={9} 
-          name="Space suit" 
+          name="Космический костюм" 
         />
         <Item 
           importance={0} 
-          name="Helmet with a golden leaf" 
+          name="Шлем с золотым листом" 
         />
         <Item 
           importance={6} 
-          name="Photo of Tam" 
+          name="Фотография Тэм" 
         />
       </ul>
     </section>
@@ -387,7 +387,7 @@ export default function PackingList() {
 
 <Solution>
 
-This should do the trick:
+Это должно сработать:
 
 <Sandpack>
 
@@ -398,7 +398,7 @@ function Item({ name, importance }) {
       {name}
       {importance > 0 && ' '}
       {importance > 0 &&
-        <i>(Importance: {importance})</i>
+        <i>(Важность: {importance})</i>
       }
     </li>
   );
@@ -407,19 +407,19 @@ function Item({ name, importance }) {
 export default function PackingList() {
   return (
     <section>
-      <h1>Sally Ride's Packing List</h1>
+      <h1>Список вещей Салли Райд</h1>
       <ul>
         <Item 
           importance={9} 
-          name="Space suit" 
+          name="Космический костюм" 
         />
         <Item 
           importance={0} 
-          name="Helmet with a golden leaf" 
+          name="Шлем с золотым листом" 
         />
         <Item 
           importance={6} 
-          name="Photo of Tam" 
+          name="Фотография Тэм" 
         />
       </ul>
     </section>
@@ -429,53 +429,53 @@ export default function PackingList() {
 
 </Sandpack>
 
-Note that you must write `importance > 0 && ...` rather than `importance && ...` so that if the `importance` is `0`, `0` isn't rendered as the result!
+Обратите внимание, что вы должны написать `importance > 0 && ...`, а не `importance && ...`, чтобы, если `importance` равно `0`, результатом не было отображение `0`!
 
-In this solution, two separate conditions are used to insert a space between then name and the importance label. Alternatively, you could use a Fragment with a leading space: `importance > 0 && <> <i>...</i></>` or add a space immediately inside the `<i>`:  `importance > 0 && <i> ...</i>`.
+В этом решении используются два отдельных условия для вставки пробела между именем и меткой важности. В качестве альтернативы вы можете использовать фрагмент с ведущим пробелом: `importance > 0 && <> <i>...</i></>` или добавить пробел непосредственно внутрь `<i>`: `importance > 0 && <i> ...</i>`.
 
 </Solution>
 
 </Challenges>
 
-Notice the "Show solution" button in the left bottom corner. It's handy if you want to check yourself!
+Обратите внимание на кнопку "Показать решение" в левом нижнем углу. Она полезна, если вы хотите проверить себя!
 
-### Build an intuition with diagrams and illustrations {/*build-an-intuition-with-diagrams-and-illustrations*/}
+### Развивайте интуицию с помощью диаграмм и иллюстраций {/*build-an-intuition-with-diagrams-and-illustrations*/}
 
-When we couldn't figure out how to explain something with code and words alone, we've added diagrams that help provide some intuition. For example, here is one of the diagrams from [Preserving and Resetting State](/learn/preserving-and-resetting-state):
+Когда мы не могли объяснить что-то только с помощью кода и слов, мы добавляли диаграммы, которые помогают развить интуицию. Например, вот одна из диаграмм из раздела [Сохранение и сброс состояния](/learn/preserving-and-resetting-state):
 
-<Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="Diagram with three sections, with an arrow transitioning each section in between. The first section contains a React component labeled 'div' with a single child labeled 'section', which has a single child labeled 'Counter' containing a state bubble labeled 'count' with value 3. The middle section has the same 'div' parent, but the child components have now been deleted, indicated by a yellow 'proof' image. The third section has the same 'div' parent again, now with a new child labeled 'div', highlighted in yellow, also with a new child labeled 'Counter' containing a state bubble labeled 'count' with value 0, all highlighted in yellow.">
+<Diagram name="preserving_state_diff_same_pt1" height={350} width={794} alt="Диаграмма с тремя секциями, со стрелкой, переходящей между каждой секцией. Первая секция содержит React-компонент с меткой 'div' и единственным дочерним элементом с меткой 'section', который имеет единственный дочерний элемент с меткой 'Counter', содержащий пузырек состояния с меткой 'count' и значением 3. Средняя секция имеет тот же родительский 'div', но дочерние компоненты теперь удалены, что обозначено желтым изображением 'доказательства'. Третья секция снова имеет тот же родительский 'div', теперь с новым дочерним элементом с меткой 'div', выделенным желтым цветом, также с новым дочерним элементом с меткой 'Counter', содержащим пузырек состояния с меткой 'count' и значением 0, все выделено желтым цветом.">
 
-When `section` changes to `div`, the `section` is deleted and the new `div` is added
+Когда `section` меняется на `div`, `section` удаляется, а новый `div` добавляется
 
 </Diagram>
 
-You'll also see some illustrations throughout the docs--here's one of the [browser painting the screen](/learn/render-and-commit#epilogue-browser-paint):
+Вы также увидите иллюстрации по всей документации — вот одна из них, изображающая [браузер, рисующий экран](/learn/render-and-commit#epilogue-browser-paint):
 
-<Illustration alt="A browser painting 'still life with card element'." src="/images/docs/illustrations/i_browser-paint.png" />
+<Illustration alt="Браузер рисует 'натюрморт с элементом карточки'." src="/images/docs/illustrations/i_browser-paint.png" />
 
-We've confirmed with the browser vendors that this depiction is 100% scientifically accurate.
+Мы подтвердили с производителями браузеров, что это изображение на 100% научно точно.
 
-## A new, detailed API Reference {/*a-new-detailed-api-reference*/}
+## Новый, подробный справочник по API {/*a-new-detailed-api-reference*/}
 
-In the [API Reference](/reference/react), every React API now has a dedicated page. This includes all kinds of APIs:
+В [Справочнике по API](/reference/react) каждый API React теперь имеет свою страницу. Это включает все типы API:
 
-- Built-in Hooks like [`useState`](/reference/react/useState).
-- Built-in components like [`<Suspense>`](/reference/react/Suspense).
-- Built-in browser components like [`<input>`](/reference/react-dom/components/input).
-- Framework-oriented APIs like [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream).
-- Other React APIs like [`memo`](/reference/react/memo).
+- Встроенные хуки, такие как [`useState`](/reference/react/useState).
+- Встроенные компоненты, такие как [`<Suspense>`](/reference/react/Suspense).
+- Встроенные браузерные компоненты, такие как [`<input>`](/reference/react-dom/components/input).
+- API, ориентированные на фреймворки, такие как [`renderToPipeableStream`](/reference/react-dom/server/renderToReadableStream).
+- Другие API React, такие как [`memo`](/reference/react/memo).
 
-You'll notice that every API page is split into at least two segments: *Reference* and *Usage*.
+Вы заметите, что каждая страница API разделена как минимум на два сегмента: *Справочник* и *Использование*.
 
-[Reference](/reference/react/useState#reference) describes the formal API signature by listing its arguments and return values. It's concise, but it can feel a bit abstract if you're not familiar with that API. It describes what an API does, but not how to use it.
+[Справочник](/reference/react/useState#reference) описывает формальную сигнатуру API, перечисляя его аргументы и возвращаемые значения. Он краток, но может показаться несколько абстрактным, если вы не знакомы с этим API. Он описывает, что делает API, но не как его использовать.
 
-[Usage](/reference/react/useState#usage) shows why and how you would use this API in practice, like a colleague or a friend might explain. It shows the **canonical scenarios for how each API was meant to be used by the React team.** We've added color-coded snippets, examples of using different APIs together, and recipes that you can copy and paste from:
+[Использование](/reference/react/useState#usage) показывает, почему и как вы будете использовать этот API на практике, как мог бы объяснить коллега или друг. Он показывает **канонические сценарии использования каждого API командой React.** Мы добавили фрагменты кода, выделенные цветом, примеры использования различных API вместе и рецепты, которые вы можете скопировать и вставить:
 
-<Recipes titleText="Basic useState examples" titleId="examples-basic">
+<Recipes titleText="Базовые примеры useState" titleId="examples-basic">
 
-#### Counter (number) {/*counter-number*/}
+#### Счетчик (число) {/*counter-number*/}
 
-In this example, the `count` state variable holds a number. Clicking the button increments it.
+В этом примере переменная состояния `count` хранит число. Нажатие кнопки увеличивает его.
 
 <Sandpack>
 
@@ -501,9 +501,9 @@ export default function Counter() {
 
 <Solution />
 
-#### Text field (string) {/*text-field-string*/}
+#### Поле ввода (строка) {/*text-field-string*/}
 
-In this example, the `text` state variable holds a string. When you type, `handleChange` reads the latest input value from the browser input DOM element, and calls `setText` to update the state. This allows you to display the current `text` below.
+В этом примере переменная состояния `text` хранит строку. Когда вы печатаете, `handleChange` считывает последнее значение из поля ввода браузера и вызывает `setText` для обновления состояния. Это позволяет отображать текущий `text` ниже.
 
 <Sandpack>
 
@@ -533,9 +533,9 @@ export default function MyInput() {
 
 <Solution />
 
-#### Checkbox (boolean) {/*checkbox-boolean*/}
+#### Флажок (булево значение) {/*checkbox-boolean*/}
 
-In this example, the `liked` state variable holds a boolean. When you click the input, `setLiked` updates the `liked` state variable with whether the browser checkbox input is checked. The `liked` variable is used to render the text below the checkbox.
+В этом примере переменная состояния `liked` хранит булево значение. Когда вы нажимаете на поле ввода, `setLiked` обновляет переменную состояния `liked` в зависимости от того, установлен ли флажок в браузере. Переменная `liked` используется для отображения текста под флажком.
 
 <Sandpack>
 
@@ -569,9 +569,9 @@ export default function MyCheckbox() {
 
 <Solution />
 
-#### Form (two variables) {/*form-two-variables*/}
+#### Форма (две переменные) {/*form-two-variables*/}
 
-You can declare more than one state variable in the same component. Each state variable is completely independent.
+Вы можете объявить несколько переменных состояния в одном компоненте. Каждая переменная состояния полностью независима.
 
 <Sandpack>
 
@@ -607,42 +607,42 @@ button { display: block; margin-top: 10px; }
 
 </Recipes>
 
-Some API pages also include [Troubleshooting](/reference/react/useEffect#troubleshooting) (for common problems) and [Alternatives](/reference/react-dom/findDOMNode#alternatives) (for deprecated APIs).
+Некоторые страницы API также включают [Устранение неполадок](/reference/react/useEffect#troubleshooting) (для распространенных проблем) и [Альтернативы](/reference/react-dom/findDOMNode#alternatives) (для устаревших API).
 
-We hope that this approach will make the API reference useful not only as a way to look up an argument, but as a way to see all the different things you can do with any given API—and how it connects to the other ones.
+Мы надеемся, что такой подход сделает справочник по API полезным не только для поиска аргументов, но и для того, чтобы увидеть все возможности, которые предоставляет любой данный API, и как он связан с другими.
 
-## What's next? {/*whats-next*/}
+## Что дальше? {/*whats-next*/}
 
-That's a wrap for our little tour! Have a look around the new website, see what you like or don't like, and keep the feedback coming in our [issue tracker](https://github.com/reactjs/react.dev/issues).
+На этом наш небольшой тур подходит к концу! Ознакомьтесь с новым сайтом, посмотрите, что вам нравится или не нравится, и продолжайте оставлять отзывы в нашем [трекере задач](https://github.com/reactjs/react.dev/issues).
 
-We acknowledge this project has taken a long time to ship. We wanted to maintain a high quality bar that the React community deserves. While writing these docs and creating all of the examples, we found mistakes in some of our own explanations, bugs in React, and even gaps in the React design that we are now working to address. We hope that the new documentation will help us hold React itself to a higher bar in the future.
+Мы признаем, что этот проект занял много времени. Мы хотели поддерживать высокий уровень качества, которого заслуживает сообщество React. При написании этой документации и создании всех примеров мы обнаружили ошибки в наших собственных объяснениях, ошибки в React и даже пробелы в дизайне React, над устранением которых мы сейчас работаем. Мы надеемся, что новая документация поможет нам в будущем поддерживать более высокий уровень качества самого React.
 
-We've heard many of your requests to expand the content and functionality of the website, for example:
+Мы услышали многие ваши просьбы расширить контент и функциональность сайта, например:
 
-- Providing a TypeScript version for all examples;
-- Creating the updated performance, testing, and accessibility guides;
-- Documenting React Server Components independently from the frameworks that support them;
-- Working with our international community to get the new docs translated;
-- Adding missing features to the new website (for example, RSS for this blog).
+- Предоставление версии TypeScript для всех примеров;
+- Создание обновленных руководств по производительности, тестированию и доступности;
+- Документирование React Server Components независимо от фреймворков, которые их поддерживают;
+- Работа с нашим международным сообществом для перевода новой документации;
+- Добавление недостающих функций на новый сайт (например, RSS для этого блога).
 
-Now that [react.dev](https://react.dev/) is out, we will be able to shift our focus from "catching up" with the third-party React educational resources to adding new information and further improving our new website.
+Теперь, когда [react.dev](https://react.dev/) запущен, мы сможем переключить наше внимание с "догоняния" сторонних образовательных ресурсов по React на добавление новой информации и дальнейшее улучшение нашего нового сайта.
 
-We think there's never been a better time to learn React.
+Мы считаем, что никогда не было лучшего времени для изучения React.
 
-## Who worked on this? {/*who-worked-on-this*/}
+## Кто работал над этим? {/*who-worked-on-this*/}
 
-On the React team, [Rachel Nabors](https://twitter.com/rachelnabors/) led the project (and provided the illustrations), and [Dan Abramov](https://bsky.app/profile/danabra.mov) designed the curriculum. They co-authored most of the content together as well.
+В команде React [Рэйчел Наборс](https://twitter.com/rachelnabors/) руководила проектом (и предоставила иллюстрации), а [Дэн Абрамов](https://bsky.app/profile/danabra.mov) разработал учебную программу. Они также совместно написали большую часть контента.
 
-Of course, no project this large happens in isolation. We have a lot of people to thank!
+Конечно, такой большой проект не делается в одиночку. Нам есть кого поблагодарить!
 
-[Sylwia Vargas](https://twitter.com/SylwiaVargas) overhauled our examples to go beyond "foo/bar/baz" and kittens, and feature scientists, artists and cities from around the world. [Maggie Appleton](https://twitter.com/Mappletons) turned our doodles into a clear diagram system.
+[Сильвия Варгас](https://twitter.com/SylwiaVargas) переработала наши примеры, чтобы они выходили за рамки "foo/bar/baz" и котят, и включали ученых, художников и города со всего мира. [Мэгги Эпплтон](https://twitter.com/Mappletons) превратила наши наброски в понятную систему диаграмм.
 
-Thanks to [David McCabe](https://twitter.com/mcc_abe), [Sophie Alpert](https://twitter.com/sophiebits), [Rick Hanlon](https://twitter.com/rickhanlonii), [Andrew Clark](https://twitter.com/acdlite), and [Matt Carroll](https://twitter.com/mattcarrollcode) for additional writing contributions. We'd also like to thank [Natalia Tepluhina](https://twitter.com/n_tepluhina) and [Sebastian Markbåge](https://twitter.com/sebmarkbage) for their ideas and feedback.
+Спасибо [Дэвиду МакКейбу](https://twitter.com/mcc_abe), [Софи Алперт](https://twitter.com/sophiebits), [Рику Хэнлону](https://twitter.com/rickhanlonii), [Эндрю Кларку](https://twitter.com/acdlite) и [Мэтту Кэрроллу](https://twitter.com/mattcarrollcode) за дополнительные письменные материалы. Мы также хотели бы поблагодарить [Наталию Теплухину](https://twitter.com/n_tepluhina) и [Себастьяна Маркбэге](https://twitter.com/sebmarkbage) за их идеи и отзывы.
 
-Thanks to [Dan Lebowitz](https://twitter.com/lebo) for the site design and [Razvan Gradinar](https://dribbble.com/GradinarRazvan) for the sandbox design.
+Спасибо [Дэну Лебовицу](https://twitter.com/lebo) за дизайн сайта и [Развану Грэдинару](https://dribbble.com/GradinarRazvan) за дизайн песочницы.
 
-On the development front, thanks to [Jared Palmer](https://twitter.com/jaredpalmer) for prototype development. Thanks to [Dane Grant](https://twitter.com/danecando) and [Dustin Goodman](https://twitter.com/dustinsgoodman) from [ThisDotLabs](https://www.thisdot.co/) for their support on UI development. Thanks to [Ives van Hoorne](https://twitter.com/CompuIves), [Alex Moldovan](https://twitter.com/alexnmoldovan), [Jasper De Moor](https://twitter.com/JasperDeMoor), and [Danilo Woznica](https://twitter.com/danilowoz) from [CodeSandbox](https://codesandbox.io/) for their work with sandbox integration. Thanks to [Rick Hanlon](https://twitter.com/rickhanlonii) for spot development and design work, finessing our colors and finer details. Thanks to [Harish Kumar](https://www.strek.in/) and [Luna Ruan](https://twitter.com/lunaruan) for adding new features to the site and helping maintain it.
+В разработке спасибо [Джареду Палмеру](https://twitter.com/jaredpalmer) за разработку прототипа. Спасибо [Дэйну Гранту](https://twitter.com/danecando) и [Дастину Гудману](https://twitter.com/dustinsgoodman) из [ThisDotLabs](https://www.thisdot.co/) за поддержку в разработке пользовательского интерфейса. Спасибо [Ивсу ван Хорну](https://twitter.com/CompuIves), [Алексу Молдовану](https://twitter.com/alexnmoldovan), [Джасперу Де Муру](https://twitter.com/JasperDeMoor) и [Данило Вожнице](https://twitter.com/danilowoz) из [CodeSandbox](https://codesandbox.io/) за их работу по интеграции песочниц. Спасибо [Рику Хэнлону](https://twitter.com/rickhanlonii) за спорадическую разработку и дизайн, доводку наших цветов и мелких деталей. Спасибо [Харишу Кумару](https://www.strek.in/) и [Луне Руан](https://twitter.com/lunaruan) за добавление новых функций на сайт и помощь в его поддержке.
 
-Huge thanks to the folks who volunteered their time to participate in the alpha and beta testing program. Your enthusiasm and invaluable feedback helped us shape these docs. A special shout out to our beta tester, [Debbie O'Brien](https://twitter.com/debs_obrien), who gave a talk about her experience using the React docs at React Conf 2021.
+Огромное спасибо тем, кто добровольно участвовал в программе альфа- и бета-тестирования. Ваш энтузиазм и бесценные отзывы помогли нам сформировать эту документацию. Особая благодарность нашему бета-тестеру, [Дебби О'Брайен](https://twitter.com/debs_obrien), которая выступила с докладом о своем опыте использования документации React на React Conf 2021.
 
-Finally, thanks to the React community for being the inspiration behind this effort. You are the reason we do this, and we hope that the new docs will help you use React to build any user interface that you want.
+Наконец, спасибо сообществу React за то, что оно стало источником вдохновения для этой работы. Вы — причина, по которой мы это делаем, и мы надеемся, что новая документация поможет вам использовать React для создания любого пользовательского интерфейса, который вы захотите.
