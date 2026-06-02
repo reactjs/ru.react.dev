@@ -4,20 +4,20 @@ title: "Built-in React Hooks"
 
 <Intro>
 
-*Hooks* let you use different React features from your components. You can either use the built-in Hooks or combine them to build your own. This page lists all built-in Hooks in React.
+*Хуки* позволяют использовать различные возможности React в ваших компонентах. Вы можете использовать встроенные хуки или комбинировать их для создания собственных. На этой странице перечислены все встроенные хуки React.
 
 </Intro>
 
 ---
 
-## State Hooks {/*state-hooks*/}
+## Хуки состояния {/*state-hooks*/}
 
-*State* lets a component ["remember" information like user input.](/learn/state-a-components-memory) For example, a form component can use state to store the input value, while an image gallery component can use state to store the selected image index.
+*Состояние* позволяет компоненту ["запоминать" информацию, такую как ввод пользователя.](/learn/state-a-components-memory) Например, компонент формы может использовать состояние для хранения введенного значения, а компонент галереи изображений — для хранения индекса выбранного изображения.
 
-To add state to a component, use one of these Hooks:
+Чтобы добавить состояние в компонент, используйте один из этих хуков:
 
-* [`useState`](/reference/react/useState) declares a state variable that you can update directly.
-* [`useReducer`](/reference/react/useReducer) declares a state variable with the update logic inside a [reducer function.](/learn/extracting-state-logic-into-a-reducer)
+* [`useState`](/reference/react/useState) объявляет переменную состояния, которую вы можете обновлять напрямую.
+* [`useReducer`](/reference/react/useReducer) объявляет переменную состояния с логикой обновления внутри [функции-редьюсера.](/learn/extracting-state-logic-into-a-reducer)
 
 ```js
 function ImageGallery() {
@@ -27,11 +27,11 @@ function ImageGallery() {
 
 ---
 
-## Context Hooks {/*context-hooks*/}
+## Хуки контекста {/*context-hooks*/}
 
-*Context* lets a component [receive information from distant parents without passing it as props.](/learn/passing-props-to-a-component) For example, your app's top-level component can pass the current UI theme to all components below, no matter how deep.
+*Контекст* позволяет компоненту [получать информацию от удаленных родительских компонентов, не передавая ее через пропсы.](/learn/passing-props-to-a-component) Например, компонент верхнего уровня вашего приложения может передавать текущую тему интерфейса всем компонентам ниже, независимо от их глубины.
 
-* [`useContext`](/reference/react/useContext) reads and subscribes to a context.
+* [`useContext`](/reference/react/useContext) считывает контекст и подписывается на него.
 
 ```js
 function Button() {
@@ -41,12 +41,12 @@ function Button() {
 
 ---
 
-## Ref Hooks {/*ref-hooks*/}
+## Хуки рефов {/*ref-hooks*/}
 
-*Refs* let a component [hold some information that isn't used for rendering,](/learn/referencing-values-with-refs) like a DOM node or a timeout ID. Unlike with state, updating a ref does not re-render your component. Refs are an "escape hatch" from the React paradigm. They are useful when you need to work with non-React systems, such as the built-in browser APIs.
+*Рефы* позволяют компоненту [хранить некоторую информацию, которая не используется для рендеринга,](/learn/referencing-values-with-refs) например, DOM-узел или идентификатор таймера. В отличие от состояния, обновление рефа не вызывает повторный рендеринг компонента. Рефы являются "лазейкой" из парадигмы React. Они полезны, когда вам нужно работать с внешними системами, такими как встроенные API браузера.
 
-* [`useRef`](/reference/react/useRef) declares a ref. You can hold any value in it, but most often it's used to hold a DOM node.
-* [`useImperativeHandle`](/reference/react/useImperativeHandle) lets you customize the ref exposed by your component. This is rarely used.
+* [`useRef`](/reference/react/useRef) объявляет реф. Вы можете хранить в нем любое значение, но чаще всего он используется для хранения DOM-узла.
+* [`useImperativeHandle`](/reference/react/useImperativeHandle) позволяет настроить реф, предоставляемый вашим компонентом. Это используется редко.
 
 ```js
 function Form() {
@@ -56,11 +56,11 @@ function Form() {
 
 ---
 
-## Effect Hooks {/*effect-hooks*/}
+## Хуки эффектов {/*effect-hooks*/}
 
-*Effects* let a component [connect to and synchronize with external systems.](/learn/synchronizing-with-effects) This includes dealing with network, browser DOM, animations, widgets written using a different UI library, and other non-React code.
+*Эффекты* позволяют компоненту [подключаться к внешним системам и синхронизироваться с ними.](/learn/synchronizing-with-effects) Это включает работу с сетью, DOM браузера, анимациями, виджетами, написанными с использованием другой библиотеки пользовательского интерфейса, и другим кодом, не относящимся к React.
 
-* [`useEffect`](/reference/react/useEffect) connects a component to an external system.
+* [`useEffect`](/reference/react/useEffect) подключает компонент к внешней системе.
 
 ```js
 function ChatRoom({ roomId }) {
@@ -72,23 +72,23 @@ function ChatRoom({ roomId }) {
   // ...
 ```
 
-Effects are an "escape hatch" from the React paradigm. Don't use Effects to orchestrate the data flow of your application. If you're not interacting with an external system, [you might not need an Effect.](/learn/you-might-not-need-an-effect)
+Эффекты являются "лазейкой" из парадигмы React. Не используйте эффекты для управления потоком данных вашего приложения. Если вы не взаимодействуете с внешней системой, [вам может не понадобиться эффект.](/learn/you-might-not-need-an-effect)
 
-There are two rarely used variations of `useEffect` with differences in timing:
+Существуют две редко используемые вариации `useEffect` с различиями во времени выполнения:
 
-* [`useLayoutEffect`](/reference/react/useLayoutEffect) fires before the browser repaints the screen. You can measure layout here.
-* [`useInsertionEffect`](/reference/react/useInsertionEffect) fires before React makes changes to the DOM. Libraries can insert dynamic CSS here.
+* [`useLayoutEffect`](/reference/react/useLayoutEffect) срабатывает до того, как браузер перерисует экран. Здесь вы можете измерять разметку.
+* [`useInsertionEffect`](/reference/react/useInsertionEffect) срабатывает до того, как React внесет изменения в DOM. Библиотеки могут вставлять динамические CSS здесь.
 
 ---
 
-## Performance Hooks {/*performance-hooks*/}
+## Хуки производительности {/*performance-hooks*/}
 
-A common way to optimize re-rendering performance is to skip unnecessary work. For example, you can tell React to reuse a cached calculation or to skip a re-render if the data has not changed since the previous render.
+Распространенный способ оптимизации производительности повторного рендеринга — пропуск ненужных вычислений. Например, вы можете указать React повторно использовать кэшированный результат вычислений или пропустить повторный рендеринг, если данные не изменились с момента предыдущего рендеринга.
 
-To skip calculations and unnecessary re-rendering, use one of these Hooks:
+Чтобы пропустить вычисления и ненужный повторный рендеринг, используйте один из этих хуков:
 
-- [`useMemo`](/reference/react/useMemo) lets you cache the result of an expensive calculation.
-- [`useCallback`](/reference/react/useCallback) lets you cache a function definition before passing it down to an optimized component.
+- [`useMemo`](/reference/react/useMemo) позволяет кэшировать результат дорогостоящего вычисления.
+- [`useCallback`](/reference/react/useCallback) позволяет кэшировать определение функции перед передачей ее оптимизированному компоненту.
 
 ```js
 function TodoList({ todos, tab, theme }) {
@@ -97,26 +97,26 @@ function TodoList({ todos, tab, theme }) {
 }
 ```
 
-Sometimes, you can't skip re-rendering because the screen actually needs to update. In that case, you can improve performance by separating blocking updates that must be synchronous (like typing into an input) from non-blocking updates which don't need to block the user interface (like updating a chart).
+Иногда вы не можете пропустить повторный рендеринг, потому что экран действительно нуждается в обновлении. В этом случае вы можете повысить производительность, разделяя блокирующие обновления, которые должны быть синхронными (например, ввод в поле), и неблокирующие обновления, которые не должны блокировать пользовательский интерфейс (например, обновление диаграммы).
 
-To prioritize rendering, use one of these Hooks:
+Чтобы приоритизировать рендеринг, используйте один из этих хуков:
 
-- [`useTransition`](/reference/react/useTransition) lets you mark a state transition as non-blocking and allow other updates to interrupt it.
-- [`useDeferredValue`](/reference/react/useDeferredValue) lets you defer updating a non-critical part of the UI and let other parts update first.
-
----
-
-## Other Hooks {/*other-hooks*/}
-
-These Hooks are mostly useful to library authors and aren't commonly used in the application code.
-
-- [`useDebugValue`](/reference/react/useDebugValue) lets you customize the label React DevTools displays for your custom Hook.
-- [`useId`](/reference/react/useId) lets a component associate a unique ID with itself. Typically used with accessibility APIs.
-- [`useSyncExternalStore`](/reference/react/useSyncExternalStore) lets a component subscribe to an external store.
-* [`useActionState`](/reference/react/useActionState) allows you to manage state of actions.
+- [`useTransition`](/reference/react/useTransition) позволяет пометить переход состояния как неблокирующий и разрешить другим обновлениям прерывать его.
+- [`useDeferredValue`](/reference/react/useDeferredValue) позволяет отложить обновление некритической части пользовательского интерфейса и позволить другим частям обновиться первыми.
 
 ---
 
-## Your own Hooks {/*your-own-hooks*/}
+## Другие хуки {/*other-hooks*/}
 
-You can also [define your own custom Hooks](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component) as JavaScript functions.
+Эти хуки в основном полезны авторам библиотек и редко используются в коде приложений.
+
+- [`useDebugValue`](/reference/react/useDebugValue) позволяет настроить метку, которую React DevTools отображает для вашего пользовательского хука.
+- [`useId`](/reference/react/useId) позволяет компоненту связать с собой уникальный идентификатор. Обычно используется с API доступности.
+- [`useSyncExternalStore`](/reference/react/useSyncExternalStore) позволяет компоненту подписываться на внешний источник данных.
+* [`useActionState`](/reference/react/useActionState) позволяет управлять состоянием действий.
+
+---
+
+## Ваши собственные хуки {/*your-own-hooks*/}
+
+Вы также можете [определить свои собственные пользовательские хуки](/learn/reusing-logic-with-custom-hooks#extracting-your-own-custom-hook-from-a-component) в виде функций JavaScript.
