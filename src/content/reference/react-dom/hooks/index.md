@@ -4,17 +4,17 @@ title: "Built-in React DOM Hooks"
 
 <Intro>
 
-The `react-dom` package contains Hooks that are only supported for web applications (which run in the browser DOM environment). These Hooks are not supported in non-browser environments like iOS, Android, or Windows applications. If you are looking for Hooks that are supported in web browsers *and other environments* see [the React Hooks page](/reference/react). This page lists all the Hooks in the `react-dom` package.
+Пакет `react-dom` содержит хуки, которые поддерживаются только в веб-приложениях (работающих в среде браузерного DOM). Эти хуки не поддерживаются в небраузерных средах, таких как приложения для iOS, Android или Windows. Если вы ищете хуки, которые поддерживаются в веб-браузерах *и других средах*, см. [страницу Хуки React](/reference/react). На этой странице перечислены все хуки в пакете `react-dom`.
 
 </Intro>
 
 ---
 
-## Form Hooks {/*form-hooks*/}
+## Хуки для форм {/*form-hooks*/}
 
-*Forms* let you create interactive controls for submitting information.  To manage forms in your components, use one of these Hooks:
+*Формы* позволяют создавать интерактивные элементы для отправки информации. Для управления формами в ваших компонентах используйте один из следующих хуков:
 
-* [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) allows you to make updates to the UI based on the status of a form.
+* [`useFormStatus`](/reference/react-dom/hooks/useFormStatus) позволяет обновлять пользовательский интерфейс на основе статуса формы.
 
 ```js
 function Form({ action }) {
