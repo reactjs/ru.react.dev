@@ -63,8 +63,13 @@ title: Ваш первый компонент
 export default function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/MK3eW3Am.jpg"
       alt="Кэтрин Джонсон"
+=======
+      src="https://react.dev/images/docs/scientists/MK3eW3Am.jpg"
+      alt="Katherine Johnson"
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   )
 }
@@ -99,7 +104,11 @@ React-компоненты — это обычные JavaScript функции, 
 Оператор `return` можно записать в одну строку, как в этом компоненте:
 
 ```js
+<<<<<<< HEAD
 return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Кэтрин Джонсон" />;
+=======
+return <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />;
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 ```
 
 Но если вся ваша разметка не находится на той же строке, что и ключевое слово `return`, то вы должны обернуть её в пару скобок:
@@ -107,7 +116,11 @@ return <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Кэтрин Джонс�
 ```js
 return (
   <div>
+<<<<<<< HEAD
     <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Кэтрин Джонсон" />
+=======
+    <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
   </div>
 );
 ```
@@ -128,8 +141,13 @@ return (
 function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/MK3eW3As.jpg"
       alt="Кэтрин Джонсон"
+=======
+      src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
+      alt="Katherine Johnson"
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -163,10 +181,17 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 ```html
 <section>
+<<<<<<< HEAD
   <h1>Изумительные учёные</h1>
   <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Кэтрин Джонсон" />
   <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Кэтрин Джонсон" />
   <img src="https://i.imgur.com/MK3eW3As.jpg" alt="Кэтрин Джонсон" />
+=======
+  <h1>Amazing scientists</h1>
+  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
+  <img src="https://react.dev/images/docs/scientists/MK3eW3As.jpg" alt="Katherine Johnson" />
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 </section>
 ```
 
@@ -215,7 +240,11 @@ function Profile() {
 
 Большинство React-приложений используют компоненты повсюду. Это означает, что вы будете использовать компоненты не только для переиспользуемых элементов, таких как кнопки, но также для более крупных элементов: боковых панелей, списков и в конечном итоге, целых страниц! Компоненты — это удобный способ организации кода UI и разметки, даже если некоторые из них используются только один раз.
 
+<<<<<<< HEAD
 [Фреймворки на основе React](/learn/start-a-new-react-project) пошли ещё дальше. Вместо того, чтобы использовать пустой файл HTML и позволять React "захватывать" управление страницей с помощью JavaScript, они *также* автоматически генерируют HTML из ваших React-компонентов. Это позволяет вашему приложению показывать часть контента до того, как загрузится JavaScript код.
+=======
+[React-based frameworks](/learn/creating-a-react-app) take this a step further. Instead of using an empty HTML file and letting React "take over" managing the page with JavaScript, they *also* generate the HTML automatically from your React components. This allows your app to show some content before the JavaScript code loads.
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 
 Тем не менее, многие веб-сайты используют React только для [добавления интерактивности на существующие HTML-страницы.](/learn/add-react-to-an-existing-project#using-react-for-a-part-of-your-existing-page) У них есть множество корневых компонентов вместо одного для всей страницы. Вы можете брать от React столько, сколько вам нужно.
 
@@ -248,8 +277,13 @@ function Profile() {
 function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/lICfvbD.jpg"
       alt="Аклилу Лемма"
+=======
+      src="https://react.dev/images/docs/scientists/lICfvbD.jpg"
+      alt="Aklilu Lemma"
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -273,8 +307,13 @@ img { height: 181px; }
 export default function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/lICfvbD.jpg"
       alt="Аклилу Лемма"
+=======
+      src="https://react.dev/images/docs/scientists/lICfvbD.jpg"
+      alt="Aklilu Lemma"
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -306,7 +345,11 @@ img { height: 181px; }
 ```js
 export default function Profile() {
   return
+<<<<<<< HEAD
     <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="Кацуко Сарухаси" />;
+=======
+    <img src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 }
 ```
 
@@ -324,7 +367,11 @@ img { height: 180px; }
 
 ```js
 export default function Profile() {
+<<<<<<< HEAD
   return <img src="https://i.imgur.com/jA8hHMpm.jpg" alt="Кацуко Сарухаси" />;
+=======
+  return <img src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg" alt="Katsuko Saruhashi" />;
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
 }
 ```
 
@@ -341,9 +388,15 @@ img { height: 180px; }
 ```js
 export default function Profile() {
   return (
+<<<<<<< HEAD
     <img 
       src="https://i.imgur.com/jA8hHMpm.jpg" 
       alt="Кацуко Сарухаси" 
+=======
+    <img
+      src="https://react.dev/images/docs/scientists/jA8hHMpm.jpg"
+      alt="Katsuko Saruhashi"
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -367,8 +420,13 @@ img { height: 180px; }
 function profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/QIrZWGIs.jpg"
       alt="Алан Л. Харт"
+=======
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
@@ -403,8 +461,13 @@ img { margin: 0 10px 10px 0; height: 90px; }
 function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/QIrZWGIs.jpg"
       alt="Алан Л. Харт"
+=======
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+>>>>>>> 6ec61348646040795fdaa9de14a9bec603260f87
     />
   );
 }
