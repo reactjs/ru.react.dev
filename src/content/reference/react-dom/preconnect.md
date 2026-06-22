@@ -34,7 +34,11 @@ function AppRoot() {
 
 [См. больше примеров ниже.](#usage)
 
+<<<<<<< HEAD
 Функция `preconnect` подсказывает браузеру, что стоит заранее установить соединение с указанным сервером. Если браузер воспользуется этой подсказкой, это может ускорить загрузку ресурсов.
+=======
+The `preconnect` function provides the browser with a hint that it should open a connection to the given server. If the browser chooses to do so, this can speed up the loading of resources from that server.
+>>>>>>> 8bb31acb86bf68fa33d97dd0f1b834dfa71e2b1a
 
 #### Параметры {/*parameters*/}
 
