@@ -37,9 +37,15 @@ JSON API возвращает данные, которые выглядят та
 
 Вы можете подходить к разбиению дизайна на компоненты по-разному, основываясь на вашем опыте:
 
+<<<<<<< HEAD
 * **Программирование** -- используйте тот же подход, как при решении создать простую функцию или целый объект. Можно применить [принцип единственной ответственности:](https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF_%D0%B5%D0%B4%D0%B8%D0%BD%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B9_%D0%BE%D1%82%D0%B2%D0%B5%D1%82%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D1%81%D1%82%D0%B8) каждый компонент должен заниматься какой-то одной задачей. Если функциональность компонента увеличивается с течением времени, его следует разбить на более мелкие подкомпоненты.
 * **CSS** -- подумайте, для чего бы вы сделали селекторы класса. (Помните, что компоненты не настолько узкие.)
 * **Дизайн** -- подумайте, как бы вы организовали слои дизайна.
+=======
+* **Programming**--use the same techniques for deciding if you should create a new function or object. One such technique is the [separation of concerns](https://en.wikipedia.org/wiki/Separation_of_concerns), that is, a component should ideally only be concerned with one thing. If it ends up growing, it should be decomposed into smaller subcomponents.
+* **CSS**--consider what you would make class selectors for. (However, components are a bit less granular.)
+* **Design**--consider how you would organize the design's layers.
+>>>>>>> 8bb31acb86bf68fa33d97dd0f1b834dfa71e2b1a
 
 Хорошая структура у JSON часто уже отражает структуру компонентов на вашем UI. Это происходит из-за того, что у UI и модели данных часто похожая информационная архитектура. Разбейте UI на компоненты, каждый из которых отображает часть модели данных.
 
@@ -228,10 +234,17 @@ td {
 
 Пройдёмся по каждому из них ещё раз:
 
+<<<<<<< HEAD
 1. Исходный список товаров **передаётся через пропсы, так что не нужно хранить его в состоянии.** 
 2. Поисковый запрос изменяется со временем, и его нельзя вычислить из других данных, так что он вполне сойдёт за состояние.
 3. Значение чекбокса изменяется со временем, и его нельзя вычислить из других данных, так что его стоит хранить в состоянии.
 4. Отфильтрованный список товаров **не является состоянием, так как его можно вычислить,** отфильтровав оригинальный список с помощью поискового запроса и значения чекбокса.
+=======
+1. The original list of products is **passed in as props, so it's not state.**
+2. The search text seems to be state since it changes over time and can't be computed from anything.
+3. The value of the checkbox seems to be state since it changes over time and can't be computed from anything.
+4. The filtered list of products **isn't state because it can be computed** by taking the original list of products and filtering it according to the search text and value of the checkbox.
+>>>>>>> 8bb31acb86bf68fa33d97dd0f1b834dfa71e2b1a
 
 Получается, что только поисковой запрос и значение чекбокса являются состояниями! Отличная работа!
 
@@ -265,6 +278,7 @@ td {
 
 Давайте разберём их с помощью нашей стратегии:
 
+<<<<<<< HEAD
 1. **Определите компоненты, которые используют состояния:**
     * `ProductTable` фильтрует список товаров, основываясь на состояниях (поисковой запрос и значение чекбокса). 
     * `SearchBar` отображает состояния (поисковой запрос и значение чекбокса).
@@ -272,23 +286,32 @@ td {
 3. **Определите, где будет находиться состояние**: Мы будем хранить текст фильтра и значение чекбокса в `FilterableProductTable`.
 
 Итак, значения состояний будут находиться в `FilterableProductTable`. 
+=======
+1. **Identify components that use state:**
+    * `ProductTable` needs to filter the product list based on that state (search text and checkbox value).
+    * `SearchBar` needs to display that state (search text and checkbox value).
+2. **Find their common parent:** The first parent component both components share is `FilterableProductTable`.
+3. **Decide where the state lives**: We'll keep the filter text and checked state values in `FilterableProductTable`.
+
+So the state values will live in `FilterableProductTable`.
+>>>>>>> 8bb31acb86bf68fa33d97dd0f1b834dfa71e2b1a
 
 Добавьте состояние в компонент при помощи [хука `useState()`.](/reference/react/useState) Хуки -- это особые функции, с помощью которых вы можете "подцепиться" к React. Добавьте две переменные состояния в начало `FilterableProductTable` и укажите их начальное значение:
 
 ```js
 function FilterableProductTable({ products }) {
   const [filterText, setFilterText] = useState('');
-  const [inStockOnly, setInStockOnly] = useState(false);  
+  const [inStockOnly, setInStockOnly] = useState(false);
 ```
 
 После этого передайте `filterText` и `inStockOnly` в компоненты `ProductTable` и `SearchBar` как пропсы:
 
 ```js
 <div>
-  <SearchBar 
-    filterText={filterText} 
+  <SearchBar
+    filterText={filterText}
     inStockOnly={inStockOnly} />
-  <ProductTable 
+  <ProductTable
     products={products}
     filterText={filterText}
     inStockOnly={inStockOnly} />
@@ -308,10 +331,10 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
+      <SearchBar
+        filterText={filterText}
         inStockOnly={inStockOnly} />
-      <ProductTable 
+      <ProductTable
         products={products}
         filterText={filterText}
         inStockOnly={inStockOnly} />
@@ -389,13 +412,13 @@ function ProductTable({ products, filterText, inStockOnly }) {
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} 
+      <input
+        type="text"
+        value={filterText}
         placeholder="Search..."/>
       <label>
-        <input 
-          type="checkbox" 
+        <input
+          type="checkbox"
           checked={inStockOnly} />
         {' '}
         Показывать только товар в наличии
@@ -451,9 +474,9 @@ You provided a \`value\` prop to a form field without an \`onChange\` handler. T
 function SearchBar({ filterText, inStockOnly }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} 
+      <input
+        type="text"
+        value={filterText}
         placeholder="Search..."/>
 ```
 
@@ -462,7 +485,11 @@ function SearchBar({ filterText, inStockOnly }) {
 
 ## Шаг 5: Добавьте обратный поток данных {/*step-5-add-inverse-data-flow*/}
 
+<<<<<<< HEAD
 Сейчас ваше приложение рендерится, основываясь  на пропсах и состоянии, передающихся вниз по иерархии. Однако для того, чтобы состояние менялось от пользовательского ввода, вам надо обеспечить поток данных в обратную сторону: компоненты формы в самом низу иерархии должны обновлять состояние в `FilterableProductTable`. 
+=======
+Currently your app renders correctly with props and state flowing down the hierarchy. But to change the state according to user input, you will need to support data flowing the other way: the form components deep in the hierarchy need to update the state in `FilterableProductTable`.
+>>>>>>> 8bb31acb86bf68fa33d97dd0f1b834dfa71e2b1a
 
 Поток данных в React однонаправленный. Из-за этого требуется немного больше кода, чем с двусторонней привязкой данных. Если вы попытаетесь ввести текст в поле поиска или установить флажок в чекбоксе в примере выше, то увидите, что React игнорирует любой ввод. Так и должно быть. Когда вы написали `<input value={filterText} />`, вы приравняли значение пропа `value` в `input` к состоянию `filterText`, которое передаётся из `FilterableProductTable`. Так как состояние `filterText` не задано, поле ввода никогда не изменится.
 
@@ -475,8 +502,8 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
+      <SearchBar
+        filterText={filterText}
         inStockOnly={inStockOnly}
         onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
@@ -519,13 +546,13 @@ function FilterableProductTable({ products }) {
 
   return (
     <div>
-      <SearchBar 
-        filterText={filterText} 
-        inStockOnly={inStockOnly} 
-        onFilterTextChange={setFilterText} 
+      <SearchBar
+        filterText={filterText}
+        inStockOnly={inStockOnly}
+        onFilterTextChange={setFilterText}
         onInStockOnlyChange={setInStockOnly} />
-      <ProductTable 
-        products={products} 
+      <ProductTable
+        products={products}
         filterText={filterText}
         inStockOnly={inStockOnly} />
     </div>
@@ -607,14 +634,14 @@ function SearchBar({
 }) {
   return (
     <form>
-      <input 
-        type="text" 
-        value={filterText} placeholder="Search..." 
+      <input
+        type="text"
+        value={filterText} placeholder="Search..."
         onChange={(e) => onFilterTextChange(e.target.value)} />
       <label>
-        <input 
-          type="checkbox" 
-          checked={inStockOnly} 
+        <input
+          type="checkbox"
+          checked={inStockOnly}
           onChange={(e) => onInStockOnlyChange(e.target.checked)} />
         {' '}
         Показывать только товар в наличии
