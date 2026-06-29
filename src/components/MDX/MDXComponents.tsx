@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
@@ -19,7 +26,7 @@ import BlogCard from './BlogCard';
 import Link from './Link';
 import {PackageImport} from './PackageImport';
 import Recap from './Recap';
-import Sandpack from './Sandpack';
+import {SandpackClient as Sandpack, SandpackRSC} from './Sandpack';
 import SandpackWithHTMLOutput from './SandpackWithHTMLOutput';
 import Diagram from './Diagram';
 import DiagramGroup from './DiagramGroup';
@@ -37,6 +44,7 @@ import {finishedTranslations} from 'utils/finishedTranslations';
 
 import ErrorDecoder from './ErrorDecoder';
 import {IconCanary} from '../Icon/IconCanary';
+import {IconExperimental} from 'components/Icon/IconExperimental';
 
 function CodeStep({children, step}: {children: any; step: number}) {
   return (
@@ -98,6 +106,10 @@ const Canary = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="canary">{children}</ExpandableCallout>
 );
 
+const RC = ({children}: {children: React.ReactNode}) => (
+  <ExpandableCallout type="rc">{children}</ExpandableCallout>
+);
+
 const Experimental = ({children}: {children: React.ReactNode}) => (
   <ExpandableCallout type="experimental">{children}</ExpandableCallout>
 );
@@ -130,7 +142,7 @@ const ExperimentalBadge = ({title}: {title: string}) => (
     className={
       'text-base font-display px-1 py-0.5 font-bold bg-gray-10 dark:bg-gray-60 text-gray-60 dark:text-gray-10 rounded'
     }>
-    <IconCanary
+    <IconExperimental
       size="s"
       className={'inline me-1 mb-0.5 text-sm text-gray-60 dark:text-gray-10'}
     />
@@ -356,7 +368,7 @@ function IllustrationBlock({
     </figure>
   ));
   return (
-    <IllustrationContext.Provider value={isInBlockTrue}>
+    <IllustrationContext value={isInBlockTrue}>
       <div className="relative group before:absolute before:-inset-y-16 before:inset-x-0 my-16 mx-0 2xl:mx-auto max-w-4xl 2xl:max-w-6xl">
         {sequential ? (
           <ol className="mdx-illustration-block flex">
@@ -371,7 +383,7 @@ function IllustrationBlock({
         )}
         <AuthorCredit author={author} authorLink={authorLink} />
       </div>
-    </IllustrationContext.Provider>
+    </IllustrationContext>
   );
 }
 
@@ -527,6 +539,7 @@ export const MDXComponents = {
   Math,
   MathI,
   Note,
+  RC,
   Canary,
   Experimental,
   ExperimentalBadge,
@@ -540,6 +553,7 @@ export const MDXComponents = {
   Recap,
   Recipes,
   Sandpack,
+  SandpackRSC,
   SandpackWithHTMLOutput,
   TeamMember,
   TerminalBlock,
