@@ -36,7 +36,11 @@ title: "<select>"
 
 #### Пропсы {/*props*/}
 
+<<<<<<< HEAD
 `<select>` поддерживает все [общие пропсы HTML-элементов.](/reference/react-dom/components/common#props)
+=======
+`<select>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> 2639f369946f763fff9a2572b0d7c4b9e2f83ebd
 
 Можно сделать [поле выбора управляемым](#controlling-a-select-box-with-a-state-variable), передав проп `value`:
 
@@ -103,7 +107,7 @@ export default function FruitPicker() {
 select { margin: 5px; }
 ```
 
-</Sandpack>  
+</Sandpack>
 
 ---
 
@@ -178,7 +182,7 @@ export default function FruitPicker() {
 select { margin: 5px; }
 ```
 
-</Sandpack>  
+</Sandpack>
 
 <Pitfall>
 
