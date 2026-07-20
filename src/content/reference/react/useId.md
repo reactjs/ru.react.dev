@@ -44,7 +44,13 @@ function PasswordField() {
 
 * `useId` -- это хук, поэтому его нужно вызывать только **на верхнем уровне вашего компонента** или хука. Его нельзя вызывать внутри циклов и условий. Если это всё же для чего-то нужно, выделите этот вызов в отдельный компонент, который затем можно рендерить по условию или в цикле.
 
+<<<<<<< HEAD
 * `useId` **не должен использоваться для создания ключей** в списках. [Ключи должны выбираться на основе данных.](/learn/rendering-lists#where-to-get-your-key)
+=======
+* `useId` **should not be used to generate cache keys** for [use()](/reference/react/use). The ID is stable when a component is mounted but may change during rendering. Cache keys should be generated from your data.
+
+* `useId` **should not be used to generate keys** in a list. [Keys should be generated from your data.](/learn/rendering-lists#where-to-get-your-key)
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 * `useId` currently cannot be used in [async Server Components](/reference/rsc/server-components#async-components-with-server-components).
 
@@ -191,7 +197,11 @@ input { margin: 5px; }
 
 ### Создание идентификаторов для нескольких элементов {/*generating-ids-for-several-related-elements*/}
 
+<<<<<<< HEAD
 Если вам нужны разные идентификаторы для нескольких элементов, и эти элементы как-то связаны по смыслу, то с помощью `useId` вы можете создать один общий для всех префикс:
+=======
+If you need to give IDs to multiple related elements, you can call `useId` to generate a shared prefix for them:
+>>>>>>> 6be2b020a0cabf2fd6dbff5c42c399b8ac323bca
 
 <Sandpack>
 
