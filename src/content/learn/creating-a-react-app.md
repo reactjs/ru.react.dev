@@ -59,8 +59,13 @@ npx create-expo-app
 
 Вот ещё пара перспективных фулстек-фреймворков, следующих нашему архитектурному видению:
 
+<<<<<<< HEAD
 - [TanStack Start (Beta)](https://tanstack.com/): TanStack Start -- фулстек-фреймворк, разрабатываемый TanStack Router. Он предоставляет полнодокументный серверный рендеринг, стриминг, серверные функции, сборку и другие функции, используя такие инструменты как Nitro и Vite.
 - [RedwoodJS](https://redwoodjs.com/): Redwood -- фулстек-фреймворк с множеством предустановленных пакетов и конфигураций, которые делают разработку веб-приложений значительно проще.
+=======
+- [TanStack Start (Beta)](https://tanstack.com/start/): TanStack Start is a full-stack React framework powered by TanStack Router. It provides a full-document SSR, streaming, server functions, bundling, and more using tools like Nitro and Vite.
+- [RedwoodSDK](https://rwsdk.com/): Redwood is a full stack React framework with lots of pre-installed packages and configuration that makes it easy to build full-stack web applications.
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 <DeepDive>
 
@@ -100,7 +105,11 @@ async function Talks({ confId }) {
 
 Если существующие фреймворки не подходят вашему проекту, вы предпочитаете написать свой собственный или изучить внутренности React-приложения, вы можете создать [React-приложение с нуля](/learn/build-a-react-app-from-scratch).
 
+<<<<<<< HEAD
 Начиная приложение с чистого листа, вы получите гибкость, но будете вынуждены самостоятельно подбирать необходимые инструменты для маршрутизации, загрузки данных и других часто используемых средств. Это будет похоже на написание собственного фреймворка вместо использования уже существующего. [Фреймворки, которые мы рекомендуем](#full-stack-frameworks), имеют встроенные средства для решения этих проблем.
+=======
+Starting from scratch gives you more flexibility, but does require that you make choices on which tools to use for routing, data fetching, and other common usage patterns.  It's a lot like building your own framework, instead of using a framework that already exists. The [frameworks we recommend](#full-stack-frameworks) have built-in solutions for these problems.
+>>>>>>> 7b6c3ceb9dd97249e9dce4a8a94e61aed6424698
 
 Если вы хотите создать собственное решение, посмотрите нашу инструкцию [как создавать приложения с нуля](/learn/build-a-react-app-from-scratch) и настроить новый React-проект с инструментами вроде [Vite](https://vite.dev/), [Parcel](https://parceljs.org/) или [RSbuild](https://rsbuild.dev/).
 
