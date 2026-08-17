@@ -141,7 +141,11 @@ window.React2 = require('react');
 console.log(window.React1 === window.React2);
 ```
 
+<<<<<<< HEAD
 Если код выше выводит `false`, то у вас может быть две версии React, а значит требуется выяснить, как это произошло. [Данное ишью](https://github.com/facebook/react/issues/13991) содержит некоторые распространённые причины, обнаруженные сообществом.
+=======
+If it prints `false` then you might have two Reacts and need to figure out why that happened. [This issue](https://github.com/react/react/issues/13991) includes some common reasons encountered by the community.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 Эта проблема также может возникнуть при использовании команды `npm link` или ей подобной. В таком случае ваш бандлер может «увидеть» два пакета React -- один в папке приложения, а другой в папке вашей библиотеки. При условии, что `myapp` и `mylib` -- папки, находящиеся на одном уровне, выполнение `npm link ../myapp/node_modules/react` из-под папки `mylib` может помочь вам. Это должно заставить библиотеку использовать React-копию из приложения.
 
@@ -153,4 +157,8 @@ In general, React supports using multiple independent copies on one page (for ex
 
 ## Другие случаи {/*other-causes*/}
 
+<<<<<<< HEAD
 Если ни одно из решений не помогло, пожалуйста, оставьте комментарий в [этом ишью](https://github.com/facebook/react/issues/13991), после чего мы постараемся вам помочь. Попробуйте также создать небольшой пример, который воспроизводит вашу проблему.
+=======
+If none of this worked, please comment in [this issue](https://github.com/react/react/issues/13991) and we'll try to help. Try to create a small reproducing example — you might discover the problem as you're doing it.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
