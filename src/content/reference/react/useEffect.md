@@ -44,9 +44,15 @@ function ChatRoom({ roomId }) {
 
 #### Параметры {/*parameters*/}
 
+<<<<<<< HEAD
 * `setup`: Функция *установки*, содержащая логику вашего эффекта. Если нужно, из функции можно вернуть функцию *сброса*. Когда компонент добавится в DOM, React вызовет функцию установки. После каждого рендеринга, в котором изменились зависимости, React сначала вызовет функцию сброса со старыми зависимостями (если такая была), и затем функцию установки с новыми зависимостями. Когда компонент удалится из DOM, React вызовет последнюю полученную функцию сброса.
  
 * **необязательный** `dependencies`: Список всех реактивных значений, от которых зависит функция `setup`: пропсы, состояние, переменные и функции, объявленные непосредственно в теле вашего компонента. Если вы [настроите свой линтер под React](/learn/editor-setup#linting), то он сможет автоматически следить, чтобы все нужные реактивные значения были указаны в зависимостях. Количество зависимостей должно быть всегда одинаковое, а сам список нужно указать прямо в месте передачи параметра как `[dep1, dep2, dep3]`. React будет сравнивать старые и новые значения зависимостей через [`Object.is`](https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Object/is). Если не указать зависимости совсем, то эффект будет запускаться после каждого рендеринга. [Важно понимать, как будет отличаться поведение, если передать список с зависимостями, пустой список, или не передать ничего.](#examples-dependencies)
+=======
+* `setup`: The function with your Effect's logic. Your setup function may also optionally return a *cleanup* function. When your [component commits](/learn/render-and-commit#step-3-react-commits-changes-to-the-dom), React will run your setup function. After every commit with changed dependencies, React will first run the cleanup function (if you provided it) with the old values, and then run your setup function with the new values. After your component is removed from the DOM, React will run your cleanup function.
+
+* **optional** `dependencies`: The list of all reactive values referenced inside of the `setup` code. Reactive values include props, state, and all the variables and functions declared directly inside your component body. If your linter is [configured for React](/learn/editor-setup#linting), it will verify that every reactive value is correctly specified as a dependency. The list of dependencies must have a constant number of items and be written inline like `[dep1, dep2, dep3]`. React will compare each dependency with its previous value using the [`Object.is`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is) comparison. If you omit this argument, your Effect will re-run after every commit of the component. [See the difference between passing an array of dependencies, an empty array, and no dependencies at all.](#examples-dependencies)
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 #### Возвращаемое значение {/*returns*/}
 
@@ -106,6 +112,7 @@ function ChatRoom({ roomId }) {
 
 **По мере необходимости React вызовет функции установки и сброса несколько раз:**
 
+<<<<<<< HEAD
 1. Когда ваш компонент появится на странице *(монтируется)*, выполнится <CodeStep step={1}>код установки.</CodeStep>
 2. После каждого рендеринга, в котором изменились <CodeStep step={3}>зависимости:</CodeStep>
    - Сначала запустится <CodeStep step={2}>код сброса</CodeStep> со старыми пропсами и состоянием.
@@ -115,6 +122,17 @@ function ChatRoom({ roomId }) {
 **Разберём эту последовательность на примере кода выше.**  
 
 Когда в примере выше компонент `ChatRoom` добавится на страницу, эффектом добавления станет подключение к чату, используя начальные значения `roomId` и `serverUrl`. Если в процессе рендеринга `serverUrl` или `roomId` изменятся (например, пользователь выберет в выпадающем меню другой чат), эффект *отключится от предыдущего чата, и подключится к новому чату.* А когда компонент будет удалён со страницы, эффект закроет последнее подключение.
+=======
+1. Your <CodeStep step={1}>setup code</CodeStep> runs when your component is added to the page *(mounts)*.
+2. After every commit of your component where the <CodeStep step={3}>dependencies</CodeStep> have changed:
+   - First, your <CodeStep step={2}>cleanup code</CodeStep> runs with the old props and state.
+   - Then, your <CodeStep step={1}>setup code</CodeStep> runs with the new props and state.
+3. Your <CodeStep step={2}>cleanup code</CodeStep> runs one final time after your component is removed from the page *(unmounts).*
+
+**Let's illustrate this sequence for the example above.**
+
+When the `ChatRoom` component above gets added to the page, it will connect to the chat room with the initial `serverUrl` and `roomId`. If either `serverUrl` or `roomId` change as a result of a commit (say, if the user picks a different chat room in a dropdown), your Effect will *disconnect from the previous room, and connect to the next one.* When the `ChatRoom` component is removed from the page, your Effect will disconnect one last time.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 **В режиме разработки [для выявления дефектов](/learn/synchronizing-with-effects#step-3-add-cleanup-if-needed) React будет запускать один предварительный цикл <CodeStep step={1}>установки</CodeStep> и <CodeStep step={2}>сброса</CodeStep> перед тем, как начинать <CodeStep step={1}>установку</CodeStep> как обычно.** Это такой стресс-тест, проверяющий, что логика вашего эффекта реализована правильно. Если вы видите, что тест создаёт проблемы -- значит у вас в логике сброса чего-то не хватает. Код сброса должен отменять и откатывать всю ту работу, которую проделал код установки. Эмпирическое правило такое: пользователь не должен замечать разницы, вызвалась установка один раз (как в продакшене) или последовательностью *установка* → *сброс* → *установка* (как в режиме разработки). [См. решения для типичных ситуаций.](/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
 
@@ -896,7 +914,11 @@ button { margin: 5px; }
 
 ### Получение данных в эффекте {/*fetching-data-with-effects*/}
 
+<<<<<<< HEAD
 В эффекте можно запрашивать для компонента данные. [Если вы используете фреймворк,](/learn/start-a-new-react-project#production-grade-react-frameworks) то будет эффективнее воспользоваться встроенным в ваш фреймворк механизмом получения данных, чем вручную писать собственные эффекты.
+=======
+You can use an Effect to fetch data for your component. Note that [if you use a framework,](/learn/creating-a-react-app#full-stack-frameworks) using your framework's data fetching mechanism will be a lot more efficient than writing Effects manually.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 Если вы всё же хотите вручную в эффекте запрашивать данные, то можно написать, например, такой код:
 
@@ -928,7 +950,8 @@ export default function Page() {
 
 <Sandpack>
 
-```js src/App.js
+{/* TODO(@poteto) - investigate potential false positives in react compiler validation */}
+```js {expectedErrors: {'react-compiler': [9]}} src/App.js
 import { useState, useEffect } from 'react';
 import { fetchBio } from './api.js';
 
@@ -1048,8 +1071,13 @@ export async function fetchBio(person) {
 
 Эти недостатки не являются какой-то особенностью именно React. Такие же проблемы получения данных при монтировании будут и с любой другой библиотекой. Как и маршрутизацию, нельзя просто взять и правильно реализовать получение данных -- поэтому мы рекомендуем следующие подходы:
 
+<<<<<<< HEAD
 - **Если вы используете [фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks), то возьмите встроенный в него механизм получения данных.** В современные React-фреймворки уже встроены эффективные механизмы получения данных без перечисленных недостатков.
 - **Если нет, то попробуйте написать или использовать готовый клиентский кэш.** [React Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), и [React Router 6.4+](https://beta.reactrouter.com/en/main/start/overview) -- примеры популярных готовых решений с открытым исходным кодом. Создать собственное решение тоже можно: под капотом будут эффекты, но также и логика для дедупликации запросов, кэширования ответов и предотвращения водопадов (через предзагрузку или через перенос на уровень маршрутов требований, какие данные будут нужны).
+=======
+- **If you use a [framework](/learn/creating-a-react-app#full-stack-frameworks), use its built-in data fetching mechanism.** Modern React frameworks have integrated data fetching mechanisms that are efficient and don't suffer from the above pitfalls.
+- **Otherwise, consider using or building a client-side cache.** Popular open source solutions include [TanStack Query](https://tanstack.com/query/latest/), [useSWR](https://swr.vercel.app/), and [React Router 6.4+.](https://beta.reactrouter.com/en/main/start/overview) You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes).
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 Получать данные прямо в эффекте -- всё ещё вполне приемлемый вариант, если ничто из перечисленного вам не подходит.
 
@@ -1081,7 +1109,7 @@ function ChatRoom({ roomId }) { // Это реактивное значение
 ```js {8}
 function ChatRoom({ roomId }) {
   const [serverUrl, setServerUrl] = useState('https://localhost:1234');
-  
+
   useEffect(() => {
     const connection = createConnection(serverUrl, roomId);
     connection.connect();
@@ -1144,7 +1172,11 @@ useEffect(() => {
 
 #### Передача массива с зависимостями {/*passing-a-dependency-array*/}
 
+<<<<<<< HEAD
 Если указать какие-то зависимости, то эффект будет запускаться **после первого рендеринга, _а также_ после каждого рендеринга, в котором зависимости изменились.**
+=======
+If you specify the dependencies, your Effect runs **after the initial commit _and_ after commits with changed dependencies.**
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 ```js {3}
 useEffect(() => {
@@ -1241,7 +1273,11 @@ button { margin-left: 5px; }
 
 #### Передача пустого массива зависимостей {/*passing-an-empty-dependency-array*/}
 
+<<<<<<< HEAD
 Если эффект действительно не пользуется никакими реактивными значениями, то он будет запускаться **только после первого рендеринга.**
+=======
+If your Effect truly doesn't use any reactive values, it will only run **after the initial commit.**
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 ```js {3}
 useEffect(() => {
@@ -1318,7 +1354,11 @@ export function createConnection(serverUrl, roomId) {
 
 #### Отсутствие массива зависимостей вообще {/*passing-no-dependency-array-at-all*/}
 
+<<<<<<< HEAD
 Если не указать собственно сам массив зависимостей, то эффект будет срабатывать **после каждого рендеринга компонента (включая повторные).**
+=======
+If you pass no dependency array at all, your Effect runs **after every single commit** of your component.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 ```js {3}
 useEffect(() => {
@@ -1435,7 +1475,11 @@ function Counter() {
 }
 ```
 
+<<<<<<< HEAD
 Т.к. `count` -- это реактивное значение, то оно должно быть указано в списке зависимостей. Но из-за этого эффекту приходится сбрасываться и запускаться заново каждый раз, когда `count` обновляется. Выглядит не идеально.
+=======
+Since `count` is a reactive value, it must be specified in the list of dependencies. However, that causes the Effect to cleanup and setup again every time the `count` changes. This is not ideal.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 Можно сделать лучше, если передавать в `setCount` [функцию обновления состояния `c => c + 1`:](/reference/react/useState#updating-state-based-on-the-previous-state)
 
@@ -1479,7 +1523,11 @@ body {
 
 ### Устранение лишних зависимостей от объектов {/*removing-unnecessary-object-dependencies*/}
 
+<<<<<<< HEAD
 Если ваш эффект зависит от объекта или функции, которые создаются во время рендеринга, то возможно **ваш эффект срабатывает слишком часто**. Например, вот этот эффект делает переподключение на каждый рендеринг, т.к. объект `options` [каждый раз новый:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+=======
+If your Effect depends on an object or a function created during rendering, it might run too often. For example, this Effect re-connects after every commit because the `options` object is [different for every render:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 ```js {6-9,12,15}
 const serverUrl = 'https://localhost:1234';
@@ -1496,7 +1544,11 @@ function ChatRoom({ roomId }) {
     const connection = createConnection(options); // И используется в эффекте
     connection.connect();
     return () => connection.disconnect();
+<<<<<<< HEAD
   }, [options]); // 🚩 В результате при каждом рендеринге изменяются зависимости
+=======
+  }, [options]); // 🚩 As a result, these dependencies are always different on a commit
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
   // ...
 ```
 
@@ -1582,7 +1634,11 @@ button { margin-left: 10px; }
 
 ### Устранение лишних зависимостей от функций {/*removing-unnecessary-function-dependencies*/}
 
+<<<<<<< HEAD
 Если ваш эффект зависит от объекта или функции, которые создаются во время рендеринга, то возможно **ваш эффект срабатывает слишком часто**. Например, вот этот эффект делает переподключение на каждый рендеринг, т.к. функция `createOptions` [каждый раз новая:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+=======
+If your Effect depends on an object or a function created during rendering, it might run too often. For example, this Effect re-connects after every commit because the `createOptions` function is [different for every render:](/learn/removing-effect-dependencies#does-some-reactive-value-change-unintentionally)
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 ```js {4-9,12,16}
 function ChatRoom({ roomId }) {
@@ -1600,11 +1656,19 @@ function ChatRoom({ roomId }) {
     const connection = createConnection();
     connection.connect();
     return () => connection.disconnect();
+<<<<<<< HEAD
   }, [createOptions]); // 🚩 В результате при каждом рендеринге изменяются зависимости
   // ...
 ```
 
 В самом по себе создании функции при каждом рендеринге нет ничего плохого -- это не требует оптимизации. Однако если такая функция будет зависимостью эффекта, то эффект будет срабатывать при каждом рендеринге.
+=======
+  }, [createOptions]); // 🚩 As a result, these dependencies are always different on a commit
+  // ...
+```
+
+By itself, creating a function from scratch on every re-render is not a problem. You don't need to optimize that. However, if you use it as a dependency of your Effect, it will cause your Effect to re-run after every commit.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 Постарайтесь не делать созданную во время рендеринга функцию зависимостью. Лучше объявите нужную функцию внутри эффекта:
 
@@ -1690,6 +1754,7 @@ button { margin-left: 10px; }
 
 ### Чтение в эффекте актуальных пропсов и состояния {/*reading-the-latest-props-and-state-from-an-effect*/}
 
+<<<<<<< HEAD
 <Wip>
 
 Здесь описано **экспериментальное API, которое ещё не опубликовано** в стабильном релизе React.
@@ -1697,6 +1762,9 @@ button { margin-left: 10px; }
 </Wip>
 
 По умолчанию если в эффекте читается реактивное значение, то его нужно указать в зависимостях. Благодаря этому эффект будет "реагировать" на каждое изменение значения. И для большинства зависимостей как раз такое поведение вам и нужно.
+=======
+By default, when you read a reactive value from an Effect, you have to add it as a dependency. This ensures that your Effect "reacts" to every change of that value. For most dependencies, that's the behavior you want.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 **Но иногда вам может понадобиться читать в эффекте реактивное значение, но не "реагировать" на него.** Например, представьте себе, что нужно при каждом посещении страницы записывать в лог текущее количество товаров в корзине:
 
@@ -1709,7 +1777,11 @@ function Page({ url, shoppingCart }) {
 }
 ```
 
+<<<<<<< HEAD
 **Что если запись в лог нужно делать только при изменении `url`, а при изменении `shoppingCart` -- не нужно?** Убрать `shoppingCart` из зависимостей так, чтобы не сломать [правила реактивности,](#specifying-reactive-dependencies) нельзя. Зато можно для некоторого куска кода обозначить, что он не должен "реагировать" на изменения, даже когда вызывается в эффекте. Для этого вы можете с помощью хука [`useEffectEvent`](/reference/react/experimental_useEffectEvent) объявить [*Событие эффекта*](/learn/separating-events-from-effects#declaring-an-effect-event), и поместить в него код, читающий `shoppingCart`:
+=======
+**What if you want to log a new page visit after every `url` change, but *not* if only the `shoppingCart` changes?** You can't exclude `shoppingCart` from dependencies without breaking the [reactivity rules.](#specifying-reactive-dependencies) However, you can express that you *don't want* a piece of code to "react" to changes even though it is called from inside an Effect. [Declare an *Effect Event*](/learn/separating-events-from-effects#declaring-an-effect-event) with the [`useEffectEvent`](/reference/react/useEffectEvent) Hook, and move the code reading `shoppingCart` inside of it:
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 ```js {2-4,7,8}
 function Page({ url, shoppingCart }) {
@@ -1733,11 +1805,17 @@ function Page({ url, shoppingCart }) {
 
 ### Отображение разного содержимого на сервере и на клиенте {/*displaying-different-content-on-the-server-and-the-client*/}
 
+<<<<<<< HEAD
 Если в вашем приложении есть серверный рендеринг ([ручной](/reference/react-dom/server) или через [фреймворк](/learn/start-a-new-react-project#production-grade-react-frameworks)), то ваши компоненты будут рендериться в двух разных окружениях. Один рендеринг на сервере создаст первоначальный HTML, и один рендеринг на клиенте к этому HTML подключит обработчики событий. Поэтому для правильной работы [гидратации](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) первоначальный рендеринг на сервере и на клиенте должны давать одинаковый результат.
+=======
+If your app uses server rendering (either [directly](/reference/react-dom/server) or via a [framework](/learn/creating-a-react-app#full-stack-frameworks)), your component will render in two different environments. On the server, it will render to produce the initial HTML. On the client, React will run the rendering code again so that it can attach your event handlers to that HTML. This is why, for [hydration](/reference/react-dom/client/hydrateRoot#hydrating-server-rendered-html) to work, your initial render output must be identical on the client and the server.
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 При этом изредка вам может понадобиться отобразить на клиенте другое содержимое. Например, если ваше приложение читает данные из [`localStorage`](https://developer.mozilla.org/ru/docs/Web/API/Window/localStorage) -- что в принципе невозможно делать на сервере. В таком случае разное отображение можно реализовать вот так:
 
-```js
+
+{/* TODO(@poteto) - investigate potential false positives in react compiler validation */}
+```js {expectedErrors: {'react-compiler': [5]}}
 function MyComponent() {
   const [didMount, setDidMount] = useState(false);
 
@@ -1778,7 +1856,11 @@ function MyComponent() {
 ```js {3}
 useEffect(() => {
   // ...
+<<<<<<< HEAD
 }); // 🚩 Нет массива зависимостей: эффект срабатывает при каждом рендеринге!
+=======
+}); // 🚩 No dependency array: re-runs after every commit!
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 ```
 
 Если вы указали массив зависимостей, но эффект всё равно постоянно перезапускается -- значит при каждом рендеринге изменяется какая-то из зависимостей.

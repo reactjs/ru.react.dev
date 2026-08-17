@@ -36,7 +36,11 @@ title: "<option>"
 
 #### Пропсы {/*props*/}
 
+<<<<<<< HEAD
 `<option>` поддерживает все [пропсы общих HTML-элементов.](/reference/react-dom/components/common#props)
+=======
+`<option>` supports all [common element props.](/reference/react-dom/components/common#common-props)
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
 
 Кроме того, `<option>` поддерживает следующие пропсы:
 
@@ -79,5 +83,5 @@ export default function FruitPicker() {
 select { margin: 5px; }
 ```
 
-</Sandpack>  
+</Sandpack>
 

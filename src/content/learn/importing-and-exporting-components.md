@@ -28,8 +28,13 @@ title: Импорт и экспорт компонентов
 function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/MK3eW3As.jpg"
       alt="Кэтрин Джонсон"
+=======
+      src="https://react.dev/images/docs/scientists/MK3eW3As.jpg"
+      alt="Katherine Johnson"
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
     />
   );
 }
@@ -80,8 +85,13 @@ export default function App() {
 function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/QIrZWGIs.jpg"
       alt="Алан Л. Харт"
+=======
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
     />
   );
 }
@@ -118,7 +128,7 @@ img { margin: 0 10px 10px 0; height: 90px; }
 
 В некоторых случаях вы можете заметить, что при импорте в именах файлов опускается расширение `.js`, например:
 
-```js 
+```js
 import Gallery from './Gallery';
 ```
 
@@ -198,8 +208,13 @@ export default function App() {
 export function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/QIrZWGIs.jpg"
       alt="Алан Л. Харт"
+=======
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
     />
   );
 }
@@ -285,8 +300,13 @@ export default function App() {
 export function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/QIrZWGIs.jpg"
       alt="Алан Л. Харт"
+=======
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
     />
   );
 }
@@ -352,8 +372,13 @@ export default function Gallery() {
 export function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/QIrZWGIs.jpg"
       alt="Алан Л. Харт"
+=======
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
     />
   );
 }
@@ -402,8 +427,13 @@ export default function Gallery() {
 export default function Profile() {
   return (
     <img
+<<<<<<< HEAD
       src="https://i.imgur.com/QIrZWGIs.jpg"
       alt="Алан Л. Харт"
+=======
+      src="https://react.dev/images/docs/scientists/QIrZWGIs.jpg"
+      alt="Alan L. Hart"
+>>>>>>> 383a1e9239c8c084a16a19daa4fc2a7ad04e2a3a
     />
   );
 }
