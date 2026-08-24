@@ -21,7 +21,11 @@ title: API React DOM
 
 Эти API можно использовать для ускорения работы приложений за счёт предварительной загрузки ресурсов — таких как скрипты, таблицы стилей и шрифты — сразу после того, как становится понятно, что они понадобятся. Например, до перехода на другую страницу, где эти ресурсы будут использоваться.
 
+<<<<<<< HEAD
 [Фреймворки на базе React](/learn/start-a-new-react-project) часто берут на себя управление загрузкой ресурсов, так что вам может не понадобиться напрямую вызывать эти API. Подробнее об этом — в документации фреймворка.
+=======
+[React-based frameworks](/learn/creating-a-react-app) frequently handle resource loading for you, so you might not have to call these APIs yourself. Consult your framework's documentation for details.
+>>>>>>> 12d692da47e77cdc558b928fcfbaf4e71c6d0cec
 
 * [`prefetchDNS`](/reference/react-dom/prefetchDNS) позволяет предварительно получить IP-адрес доменного имени, с которым вы планируете установить соединение.
 * [`preconnect`](/reference/react-dom/preconnect) заранее устанавливает соединение с сервером, с которого вы, скорее всего, запросите ресурсы, даже если ещё не знаете, какие именно.
@@ -29,6 +33,12 @@ title: API React DOM
 * [`preloadModule`](/reference/react-dom/preloadModule) предварительно загружает модуль ECMAScript (ESM), который вы собираетесь использовать.
 * [`preinit`](/reference/react-dom/preinit) предварительно загружает и выполняет внешний скрипт либо загружает и вставляет таблицу стилей.
 * [`preinitModule`](/reference/react-dom/preinitModule) предварительно загружает и выполняет модуль ECMAScript (ESM).
+
+## Server Rendering APIs {/*server-rendering-apis*/}
+
+This API controls how components render on the server:
+
+* <CanaryBadge /> [`browser`](/reference/react-dom/browser) lets you mark a component as browser-only during server rendering.
 
 ---
 
