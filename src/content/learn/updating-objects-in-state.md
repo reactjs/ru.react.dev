@@ -55,7 +55,7 @@ position.x = 5;
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11]}}
 import { useState } from 'react';
 
 export default function MovingDot() {
@@ -199,7 +199,7 @@ setPosition({
 
 Мутация становится проблемой, когда вы изменяете *существующий* объект, который уже в состоянии. Мутировать объект, который вы только что создали, допустимо, так как *никакой код не ссылается на этот объект*. От изменения такого объекта ничего не зависит, он ничего не может случайно сломать. Это и есть "локальная мутация". Вы даже можете проводить локальную мутацию объекта [пока идёт рендер.](/learn/keeping-components-pure#local-mutation-your-components-little-secret) Это удобно и совершенно нормально!
 
-</DeepDive>  
+</DeepDive>
 
 ## Копирование объектов с использованием оператора расширения {/*copying-objects-with-the-spread-syntax*/}
 
@@ -209,7 +209,7 @@ setPosition({
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11, 15, 19]}}
 import { useState } from 'react';
 
 export default function Form() {
@@ -296,7 +296,11 @@ setPerson({
 });
 ```
 
+<<<<<<< HEAD
 Теперь форма работает! 
+=======
+Now the form works!
+>>>>>>> 7c36f7ac329fe3cf2e11222edce9a535158c2cab
 
 Обратите внимание, вы не объявляли отдельную переменную состояния для каждого поля ввода. Для больших форм хранение всех данных, сгруппированных в объекте, очень удобно, при условии, что вы правильно обновляете объект!
 
@@ -373,7 +377,11 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 Помните, что `...` оператор расширения является "поверхностным" -- он копирует элементы только на один уровень вглубь. Это свойство делает его быстрым, но это также означает, что если вы хотите обновить вложенное свойство, вам придётся использовать его более одного раза.
+=======
+Note that the `...` spread syntax is "shallow"--it only copies things one level deep. This makes it fast, but it also means that if you want to update a nested property, you'll have to use it more than once.
+>>>>>>> 7c36f7ac329fe3cf2e11222edce9a535158c2cab
 
 <DeepDive>
 
@@ -457,7 +465,7 @@ const [person, setPerson] = useState({
   artwork: {
     title: 'Blue Nana',
     city: 'Hamburg',
-    image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+    image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   }
 });
 ```
@@ -501,7 +509,7 @@ export default function Form() {
     artwork: {
       title: 'Blue Nana',
       city: 'Hamburg',
-      image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+      image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
     }
   });
 
@@ -579,8 +587,8 @@ export default function Form() {
         <br />
         (located in {person.artwork.city})
       </p>
-      <img 
-        src={person.artwork.image} 
+      <img
+        src={person.artwork.image}
         alt={person.artwork.title}
       />
     </>
@@ -608,7 +616,7 @@ let obj = {
   artwork: {
     title: 'Blue Nana',
     city: 'Hamburg',
-    image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+    image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
   }
 };
 ```
@@ -619,7 +627,7 @@ let obj = {
 let obj1 = {
   title: 'Blue Nana',
   city: 'Hamburg',
-  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
 };
 
 let obj2 = {
@@ -634,7 +642,7 @@ let obj2 = {
 let obj1 = {
   title: 'Blue Nana',
   city: 'Hamburg',
-  image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+  image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
 };
 
 let obj2 = {
@@ -650,7 +658,7 @@ let obj3 = {
 
 Если бы вы изменили `obj3.artwork.city`, это повлияло бы как на `obj2.artwork.city`, так и на `obj1.city`. Это связано с тем, что `obj3.artwork`, `obj2.artwork` и `obj1` являются одним и тем же объектом. Это трудно осознать, когда вы думаете об объектах как о «вложенных». Вместо этого они представляют собой отдельные объекты, «указывающие» друг на друга.
 
-</DeepDive>  
+</DeepDive>
 
 ### Напишем лаконичное обновление с помощью Immer {/*write-concise-update-logic-with-immer*/}
 
@@ -690,7 +698,7 @@ export default function Form() {
     artwork: {
       title: 'Blue Nana',
       city: 'Hamburg',
-      image: 'https://i.imgur.com/Sd1AgUOm.jpg',
+      image: 'https://react.dev/images/docs/scientists/Sd1AgUOm.jpg',
     }
   });
 
@@ -755,8 +763,8 @@ export default function Form() {
         <br />
         (located in {person.artwork.city})
       </p>
-      <img 
-        src={person.artwork.image} 
+      <img
+        src={person.artwork.image}
         alt={person.artwork.title}
       />
     </>
@@ -832,7 +840,7 @@ img { width: 200px; height: 200px; }
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [11]}}
 import { useState } from 'react';
 
 export default function Scoreboard() {
@@ -988,7 +996,7 @@ input { margin-left: 5px; margin-bottom: 5px; }
 
 <Sandpack>
 
-```js src/App.js
+```js {expectedErrors: {'react-compiler': [17]}} src/App.js
 import { useState } from 'react';
 import Background from './Background.js';
 import Box from './Box.js';
@@ -1293,7 +1301,7 @@ select { margin-bottom: 10px; }
 
 <Sandpack>
 
-```js src/App.js
+```js {expectedErrors: {'react-compiler': [18]}} src/App.js
 import { useState } from 'react';
 import { useImmer } from 'use-immer';
 import Background from './Background.js';
