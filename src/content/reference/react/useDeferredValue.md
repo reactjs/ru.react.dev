@@ -86,6 +86,7 @@ function SearchPage() {
 
 <Note>
 
+<<<<<<< HEAD
 Предполагается, что данные в этом примере вы получаете через источники, которые поддерживают Suspense:
 
 - Запрашиваете данные с помощью поддерживающих Suspense фреймворков, как, например, [Relay](https://relay.dev/docs/guided-tour/rendering/loading-states/) или [Next.js](https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense).
@@ -93,6 +94,11 @@ function SearchPage() {
 - Читаете значение промиса с помощью [`use`](/reference/react/use).
 
 [Подробнее о Suspense и связанных с ним ограничениях.](/reference/react/Suspense)
+=======
+This example assumes you use a data source that [activates a Suspense boundary](/reference/react/Suspense#what-activates-a-suspense-boundary), such as a Promise you read with [`use`](/reference/react/use).
+
+[Learn more about Suspense.](/reference/react/Suspense)
+>>>>>>> f3d9794fc31f4a3faf7e863984d37f4ae86b3290
 
 </Note>
 
@@ -244,7 +250,11 @@ input { margin: 10px; }
 
 </Sandpack>
 
+<<<<<<< HEAD
 Однако здесь можно применить другой частый паттерн в UI: *отложить* обновление списка результатов, продолжив показывать старые результаты, пока не подготовятся новые. Чтобы показать результаты поиска по отложенной версии запроса, можно применить `useDeferredValue`:
+=======
+A common alternative UI pattern is to *defer* updating the list of results and to keep showing the previous results until the new results are ready. Call `useDeferredValue` to pass a deferred version of the query down:
+>>>>>>> f3d9794fc31f4a3faf7e863984d37f4ae86b3290
 
 ```js {3,11}
 export default function App() {
@@ -420,7 +430,11 @@ input { margin: 10px; }
 
 Для простоты удобно представлять, что обновление происходит в два этапа:
 
+<<<<<<< HEAD
 1. **Сначала React отрендерит компонент с новым запросом `"ab"` в `query`, но пока что с отложенным `"a"` в `deferredQuery`.** Значение в `deferredQuery`, которое вы передаёте в список результатов, является *отложенным:* оно "отстаёт" от значения `query`.
+=======
+1. **First, React re-renders with the new `query` (`"ab"`) but with the old `deferredQuery` (still `"a"`).** The `deferredQuery` value, which you pass to the result list, is *deferred:* it "lags behind" the `query` value.
+>>>>>>> f3d9794fc31f4a3faf7e863984d37f4ae86b3290
 
 2. **Затем в фоне React попытается ещё раз отрендерить компонент, но уже с новым запросом `"ab"` и в `query`, и в `deferredQuery`.** Если этот рендеринг выполнится до конца, то React отобразит его результаты на экране. Но если рендеринг задержится (встанет в ожидании результатов для  `"ab"`), то React эту конкретную попытку прервёт, а когда результаты загрузятся, попробует снова. Пока данные не загрузились, пользователю будет показываться старое отложенное значение.
 
@@ -669,7 +683,7 @@ export default function App() {
 }
 ```
 
-```js src/SlowList.js
+```js {expectedErrors: {'react-compiler': [19, 20]}} src/SlowList.js
 import { memo } from 'react';
 
 const SlowList = memo(function SlowList({ text }) {
@@ -706,6 +720,8 @@ export default SlowList;
 ```css
 .items {
   padding: 0;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .item {
@@ -746,7 +762,7 @@ export default function App() {
 }
 ```
 
-```js src/SlowList.js
+```js {expectedErrors: {'react-compiler': [19, 20]}} src/SlowList.js
 import { memo } from 'react';
 
 const SlowList = memo(function SlowList({ text }) {
@@ -783,6 +799,8 @@ export default SlowList;
 ```css
 .items {
   padding: 0;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .item {
