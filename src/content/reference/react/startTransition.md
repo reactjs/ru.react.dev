@@ -92,7 +92,11 @@ function TabContainer() {
 
 <Note>
 
+<<<<<<< HEAD
 `startTransition` очень похож на [`useTransition`](/reference/react/useTransition), за исключением того, что он не предоставляет флаг `isPending` для отслеживания того, идет ли в данный момент переход. Вы можете вызвать `startTransition`, когда `useTransition` недоступен. Например, `startTransition` работает вне компонентов из например, библиотеки данных.
+=======
+`startTransition` is very similar to [`useTransition`](/reference/react/useTransition), except that it does not provide the `isPending` flag to track whether a Transition is ongoing. The standalone function is also not associated with a component, so if the function passed to it throws an error or returns a rejected Promise, React reports the error with [`reportError`](https://developer.mozilla.org/en-US/docs/Web/API/Window/reportError). You can call `startTransition` when `useTransition` is not available. For example, `startTransition` works outside components, such as from a data library.
+>>>>>>> b011783fcc7a39da9eefd4274147a1444860a12b
 
 [Узнайте о переходах и посмотрите примеры на странице `useTransition`.](/reference/react/useTransition)
 
