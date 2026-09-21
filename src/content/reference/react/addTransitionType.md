@@ -1,30 +1,15 @@
 ---
-title: unstable_addTransitionType
-version: experimental
+title: addTransitionType
 ---
-
-<Experimental>
-
-**This API is experimental and is not available in a stable version of React yet.**
-
-You can try it by upgrading React packages to the most recent experimental version:
-
-- `react@experimental`
-- `react-dom@experimental`
-- `eslint-plugin-react-hooks@experimental`
-
-Experimental versions of React may contain bugs. Don't use them in production.
-
-</Experimental>
 
 <Intro>
 
-`unstable_addTransitionType` lets you specify the cause of a transition.
+`addTransitionType` lets you specify the cause of a transition.
 
 
 ```js
 startTransition(() => {
-  unstable_addTransitionType('my-transition-type');
+  addTransitionType('my-transition-type');
   setState(newState);
 });
 ```
@@ -45,7 +30,7 @@ startTransition(() => {
 
 #### Returns {/*returns*/}
 
-`startTransition` does not return anything.
+`addTransitionType` does not return anything.
 
 #### Caveats {/*caveats*/}
 
@@ -60,13 +45,13 @@ startTransition(() => {
 
 Call `addTransitionType` inside of `startTransition` to indicate the cause of a transition:
 
-``` [[1, 6, "unstable_addTransitionType"], [2, 5, "startTransition", [3, 6, "'submit-click'"]]
-import { startTransition, unstable_addTransitionType } from 'react';
+``` [[1, 6, "addTransitionType"], [2, 5, "startTransition", [3, 6, "'submit-click'"]]
+import { startTransition, addTransitionType } from 'react';
 
 function Submit({action) {
   function handleClick() {
     startTransition(() => {
-      unstable_addTransitionType('submit-click');
+      addTransitionType('submit-click');
       action();
     });
   }
@@ -82,7 +67,7 @@ Currently, Transition Types can be used to customize different animations based 
 
 - [Customize animations using browser view transition types](#customize-animations-using-browser-view-transition-types)
 - [Customize animations using `View Transition` Class](#customize-animations-using-view-transition-class)
-- [Customize animations using `ViewTransition` events](#customize-animations-using-viewtransition-events) 
+- [Customize animations using `ViewTransition` events](#customize-animations-using-viewtransition-events)
 
 In the future, we plan to support more use cases for using the cause of a transition.
 
@@ -103,7 +88,7 @@ function Component() {
 }
 
 startTransition(() => {
-  unstable_addTransitionType('my-transition-type');
+  addTransitionType('my-transition-type');
   setShow(true);
 });
 ```
@@ -135,7 +120,7 @@ function Component() {
 
 // ...
 startTransition(() => {
-  unstable_addTransitionType('my-transition-type');
+  addTransitionType('my-transition-type');
   setState(newState);
 });
 ```
@@ -174,9 +159,3 @@ You can imperatively customize animations for an activated `ViewTransition` base
 ```
 
 This allows you to pick different imperative Animations based on the cause.
-
----
-
-## Troubleshooting {/*troubleshooting*/}
-
-### TODO {/*todo2*/}
