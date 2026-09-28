@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
@@ -19,8 +26,10 @@ import {useSandpackLint} from './useSandpackLint';
 
 export const CustomPreset = memo(function CustomPreset({
   providedFiles,
+  showOpenInCodeSandbox = true,
 }: {
   providedFiles: Array<string>;
+  showOpenInCodeSandbox?: boolean;
 }) {
   const {lintErrors, lintExtensions} = useSandpackLint();
   const {sandpack} = useSandpack();
@@ -39,6 +48,7 @@ export const CustomPreset = memo(function CustomPreset({
       lintErrors={lintErrors}
       lintExtensions={lintExtensions}
       isExpandable={isExpandable}
+      showOpenInCodeSandbox={showOpenInCodeSandbox}
     />
   );
 });
@@ -48,11 +58,13 @@ const SandboxShell = memo(function SandboxShell({
   lintErrors,
   lintExtensions,
   isExpandable,
+  showOpenInCodeSandbox,
 }: {
   providedFiles: Array<string>;
   lintErrors: Array<any>;
   lintExtensions: Array<any>;
   isExpandable: boolean;
+  showOpenInCodeSandbox: boolean;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -64,7 +76,10 @@ const SandboxShell = memo(function SandboxShell({
         style={{
           contain: 'content',
         }}>
-        <NavigationBar providedFiles={providedFiles} />
+        <NavigationBar
+          providedFiles={providedFiles}
+          showOpenInCodeSandbox={showOpenInCodeSandbox}
+        />
         <SandpackLayout
           className={cn(
             !(isExpandable || isExpanded) && 'rounded-b-lg overflow-hidden',
