@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
@@ -12,7 +19,7 @@ let supportsImportMap = false;
 
 function subscribe(cb: () => void) {
   // This shouldn't actually need to update, but this works around
-  // https://github.com/facebook/react/issues/26095
+  // https://github.com/react/react/issues/26095
   let timeout = setTimeout(() => {
     supportsImportMap =
       (HTMLScriptElement as any).supports &&
