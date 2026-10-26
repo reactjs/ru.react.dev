@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
@@ -102,7 +109,7 @@ export function forwardRefWithAs<Props, ComponentType extends As>(
 }
 
 /*
-Test components to make sure our dynamic As prop components work as intended 
+Test components to make sure our dynamic As prop components work as intended
 type PopupProps = {
   lol: string;
   children?: React.ReactNode | ((value?: number) => JSX.Element);
