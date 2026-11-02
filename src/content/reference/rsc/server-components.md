@@ -2,12 +2,6 @@
 title: Server Components
 ---
 
-<RSC>
-
-Server Components are for use in [React Server Components](/learn/start-a-new-react-project#bleeding-edge-react-frameworks).
-
-</RSC>
-
 <Intro>
 
 Server Components are a new type of Component that renders ahead of time, before bundling, in an environment separate from your client app or SSR server.
@@ -22,7 +16,7 @@ This separate environment is the "server" in React Server Components. Server Com
 
 #### How do I build support for Server Components? {/*how-do-i-build-support-for-server-components*/}
 
-While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
+While React Server Components in React 19 are stable and will not break between minor versions, the underlying APIs used to implement a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
 
 To support React Server Components as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement React Server Components in the future.
 
@@ -45,7 +39,7 @@ function Page({page}) {
       setContent(data.content);
     });
   }, [page]);
-  
+
   return <div>{sanitizeHtml(marked(content))}</div>;
 }
 ```
@@ -69,7 +63,7 @@ import sanitizeHtml from 'sanitize-html'; // Not included in bundle
 async function Page({page}) {
   // NOTE: loads *during* render, when the app is built.
   const content = await file.readFile(`${page}.md`);
-  
+
   return <div>{sanitizeHtml(marked(content))}</div>;
 }
 ```
@@ -113,7 +107,7 @@ function Note({id}) {
       setNote(data.note);
     });
   }, [id]);
-  
+
   return (
     <div>
       <Author id={note.authorId} />
@@ -185,6 +179,39 @@ The bundler then combines the data, rendered Server Components and dynamic Clien
 
 Server Components can be made dynamic by re-fetching them from a server, where they can access the data and render again. This new application architecture combines the simple “request/response” mental model of server-centric Multi-Page Apps with the seamless interactivity of client-centric Single-Page Apps, giving you the best of both worlds.
 
+### Rendering a context provider in a Server Component {/*rendering-a-context-provider-in-a-server-component*/}
+
+Server Components cannot create context, but they can render a context provider imported from a Client Component module.
+
+Create and export the context from a file with the [`'use client'`](/reference/rsc/use-client) directive:
+
+```js
+// user-context.js
+'use client';
+import { createContext } from 'react';
+
+export const UserContext = createContext(null);
+```
+
+Then import and render the context directly from a Server Component:
+
+```js
+// server-component.js
+import { UserContext } from './user-context';
+
+export async function Layout({ children }) {
+  const currentUser = await getCurrentUser();
+
+  return (
+    <UserContext value={currentUser}>
+      {children}
+    </UserContext>
+  );
+}
+```
+
+Client Components rendered inside this provider can read its value with [`use`](/reference/react/use) or [`useContext`](/reference/react/useContext).
+
 ### Adding interactivity to Server Components {/*adding-interactivity-to-server-components*/}
 
 Server Components are not sent to the browser, so they cannot use interactive APIs like `useState`. To add interactivity to Server Components, you can compose them with Client Component using the `"use client"` directive.
@@ -253,7 +280,7 @@ This works by first rendering `Notes` as a Server Component, and then instructin
       <p>this is the second note</p>
     </Expandable>
     <!--...-->
-  </div> 
+  </div>
 </body>
 ```
 
@@ -270,8 +297,8 @@ import db from './database';
 async function Page({id}) {
   // Will suspend the Server Component.
   const note = await db.notes.get(id);
-  
-  // NOTE: not awaited, will start here and await on the client. 
+
+  // NOTE: not awaited, will start here and await on the client.
   const commentsPromise = db.comments.get(note.id);
   return (
     <div>
@@ -293,7 +320,7 @@ function Comments({commentsPromise}) {
   // NOTE: this will resume the promise from the server.
   // It will suspend until the data is available.
   const comments = use(commentsPromise);
-  return comments.map(commment => <p>{comment}</p>);
+  return comments.map(comment => <p>{comment}</p>);
 }
 ```
 
