@@ -22,13 +22,13 @@ Server Functions allow Client Components to call async functions executed on the
 
 #### How do I build support for Server Functions? {/*how-do-i-build-support-for-server-functions*/}
 
-While Server Functions in React 19 are stable and will not break between minor versions, the underlying APIs used to implement Server Functions in a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x. 
+While Server Functions in React 19 are stable and will not break between minor versions, the underlying APIs used to implement Server Functions in a React Server Components bundler or framework do not follow semver and may break between minors in React 19.x.
 
 To support Server Functions as a bundler or framework, we recommend pinning to a specific React version, or using the Canary release. We will continue working with bundlers and frameworks to stabilize the APIs used to implement Server Functions in the future.
 
 </Note>
 
-When a Server Function is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the server function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
+When a Server Function is defined with the [`"use server"`](/reference/rsc/use-server) directive, your framework will automatically create a reference to the Server Function, and pass that reference to the Client Component. When that function is called on the client, React will send a request to the server to execute the function, and return the result.
 
 Server Functions can be created in Server Components and passed as props to Client Components, or they can be imported and used in Client Components.
 
@@ -46,7 +46,7 @@ function EmptyNote () {
   async function createNoteAction() {
     // Server Function
     'use server';
-    
+
     await db.notes.create();
   }
 
@@ -59,8 +59,8 @@ When React renders the `EmptyNote` Server Component, it will create a reference 
 ```js {5}
 "use client";
 
-export default function Button({onClick}) { 
-  console.log(onClick); 
+export default function Button({onClick}) {
+  console.log(onClick);
   // {$$typeof: Symbol.for("react.server.reference"), $$id: 'createNoteAction'}
   return <button onClick={() => onClick()}>Create Empty Note</button>
 }
@@ -112,7 +112,7 @@ export async function updateName(name) {
 }
 ```
 
-```js [[1, 3, "updateName"], [1, 13, "updateName"], [2, 11, "submitAction"],  [2, 23, "submitAction"]]
+```js [[1, 3, "updateName"], [1, 13, "updateName"], [2, 11, "submitAction"], [2, 25, "submitAction"]]
 "use client";
 
 import {updateName} from './actions';
@@ -126,14 +126,16 @@ function UpdateName() {
   const submitAction = async () => {
     startTransition(async () => {
       const {error} = await updateName(name);
-      if (error) {
-        setError(error);
-      } else {
-        setName('');
-      }
+      startTransition(() => {
+        if (error) {
+          setError(error);
+        } else {
+          setName('');
+        }
+      });
     })
   }
-  
+
   return (
     <form action={submitAction}>
       <input type="text" name="name" disabled={isPending}/>
@@ -195,7 +197,7 @@ function UpdateName() {
 
 When using `useActionState` with Server Functions, React will also automatically replay form submissions entered before hydration finishes. This means users can interact with your app even before the app has hydrated.
 
-For more, see the docs for [`useActionState`](/reference/react-dom/hooks/useFormState).
+For more, see the docs for [`useActionState`](/reference/react/useActionState).
 
 ### Progressive enhancement with `useActionState` {/*progressive-enhancement-with-useactionstate*/}
 
@@ -219,4 +221,4 @@ function UpdateName() {
 
 When the <CodeStep step={2}>permalink</CodeStep> is provided to `useActionState`, React will redirect to the provided URL if the form is submitted before the JavaScript bundle loads.
 
-For more, see the docs for [`useActionState`](/reference/react-dom/hooks/useFormState).
+For more, see the docs for [`useActionState`](/reference/react/useActionState).
