@@ -20,7 +20,11 @@ React, как и многие другие библиотеки, моделир�
 
 ## UI в виде дерева {/*your-ui-as-a-tree*/}
 
+<<<<<<< HEAD
 Дерево — это модель отношений между элементами, и UI часто использует эту структуру. Например, браузеры используют тот же подход для построения HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)) и CSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)). Мобильные платформы так же используют структуру дерева для своей иерархии.
+=======
+Trees are a relationship model between items. The UI is often represented using tree structures. For example, browsers use tree structures to model HTML ([DOM](https://developer.mozilla.org/docs/Web/API/Document_Object_Model/Introduction)) and CSS ([CSSOM](https://developer.mozilla.org/docs/Web/API/CSS_Object_Model)). Mobile platforms also use trees to represent their view hierarchy.
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 <Diagram name="preserving_state_dom_tree" height={193} width={864} alt="Схема с тремя горизонтально расположенными секциями. В первом разделе вертикально расположены три прямоугольника: 'Component A', 'Component B', и 'Component C'. Переход к следующей панели — это стрелка с логотипом React сверху и надписью 'React'. Средний раздел содержит дерево компонентов с корнем, обозначенным 'A', и двумя дочерними элементами, обозначенными 'B' и 'C'. Переход к следующему разделу снова осуществляется с помощью стрелки с логотипом React сверху и надписью 'React'. Последний, третий раздел, представляет собой каркас браузера, содержащий дерево из 8 узлов, в котором выделено только подмножество (с указанием поддерева из среднего раздела).">
 
@@ -135,7 +139,11 @@ React создает *дерево рендеринга* и UI-дерево, с�
 
 #### Где же находятся HTML-теги в дереве рендеринга? {/*where-are-the-html-elements-in-the-render-tree*/}
 
+<<<<<<< HEAD
 Возможно, вы уже заметили, что в приведенном выше дереве рендеринга нет упоминания о HTML-тегах, которые отображает каждый компонент. Это происходит, потому что дерево рендеринга состоит только из [компонентов](learn/your-first-component#components-ui-building-blocks) React.
+=======
+You'll notice in the above render tree, there is no mention of the HTML tags that each component renders. This is because the render tree is only composed of React [components](/learn/your-first-component#components-ui-building-blocks).
+>>>>>>> f5fa1e82edacdf8c6bfc4dfd9cf52029a96d5fd3
 
 Как UI-фреймворк, React является платформонезависимым. В документации мы демонстрируем примеры рендеринга в web, где в качестве примитивов UI используется разметка HTML. Но приложение React так же может запускаться на мобильных или десктоп платформах, которые используют другие UI-примитивы, такие как: [UIView](https://developer.apple.com/documentation/uikit/uiview) или [FrameworkElement](https://learn.microsoft.com/en-us/dotnet/api/system.windows.frameworkelement?view=windowsdesktop-7.0).
 
