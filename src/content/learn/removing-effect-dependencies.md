@@ -303,7 +303,7 @@ Suppressing the linter leads to very unintuitive bugs that are hard to find and 
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [14]}}
 import { useState, useEffect } from 'react';
 
 export default function Timer() {
@@ -411,7 +411,7 @@ function Form() {
 
   function handleSubmit() {
     setSubmitted(true);
-  }  
+  }
 
   // ...
 }
@@ -429,7 +429,7 @@ function Form() {
     // ✅ Good: Event-specific logic is called from event handlers
     post('/api/register');
     showNotification('Successfully registered!', theme);
-  }  
+  }
 
   // ...
 }
@@ -608,12 +608,6 @@ function ChatRoom({ roomId }) {
 **Notice how your Effect does not read the `messages` variable at all now.** You only need to pass an updater function like `msgs => [...msgs, receivedMessage]`. React [puts your updater function in a queue](/learn/queueing-a-series-of-state-updates) and will provide the `msgs` argument to it during the next render. This is why the Effect itself doesn't need to depend on `messages` anymore. As a result of this fix, receiving a chat message will no longer make the chat re-connect.
 
 ### Do you want to read a value without "reacting" to its changes? {/*do-you-want-to-read-a-value-without-reacting-to-its-changes*/}
-
-<Wip>
-
-This section describes an **experimental API that has not yet been released** in a stable version of React.
-
-</Wip>
 
 Suppose that you want to play a sound when the user receives a new message unless `isMuted` is `true`:
 
@@ -794,7 +788,7 @@ It is important to declare it as a dependency! This ensures, for example, that i
 
 <Sandpack>
 
-```js
+```js {expectedErrors: {'react-compiler': [10]}}
 import { useState, useEffect } from 'react';
 import { createConnection } from './chat.js';
 
@@ -884,7 +878,7 @@ const options2 = { serverUrl: 'https://localhost:1234', roomId: 'music' };
 console.log(Object.is(options1, options2)); // false
 ```
 
-**Object and function dependencies can make your Effect re-synchronize more often than you need.** 
+**Object and function dependencies can make your Effect re-synchronize more often than you need.**
 
 This is why, whenever possible, you should try to avoid objects and functions as your Effect's dependencies. Instead, try moving them outside the component, inside the Effect, or extracting primitive values out of them.
 
@@ -1259,25 +1253,9 @@ Is there a line of code inside the Effect that should not be reactive? How can y
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js
 import { useState, useEffect, useRef } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import { FadeInAnimation } from './animation.js';
 
 function Welcome({ duration }) {
@@ -1386,26 +1364,10 @@ Your Effect needs to read the latest value of `duration`, but you don't want it 
 
 <Sandpack>
 
-```json package.json hidden
-{
-  "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
-    "react-scripts": "latest"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
-}
-```
-
 ```js
 import { useState, useEffect, useRef } from 'react';
 import { FadeInAnimation } from './animation.js';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 function Welcome({ duration }) {
   const ref = useRef(null);
@@ -1825,8 +1787,8 @@ Another of these functions only exists to pass some state to an imported API met
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -1907,7 +1869,7 @@ export default function App() {
 
 ```js src/ChatRoom.js active
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 
 export default function ChatRoom({ roomId, createConnection, onMessage }) {
   useEffect(() => {
@@ -2120,8 +2082,8 @@ As a result, the chat re-connects only when something meaningful (`roomId` or `i
 ```json package.json hidden
 {
   "dependencies": {
-    "react": "experimental",
-    "react-dom": "experimental",
+    "react": "latest",
+    "react-dom": "latest",
     "react-scripts": "latest",
     "toastify-js": "1.12.0"
   },
@@ -2189,7 +2151,7 @@ export default function App() {
 
 ```js src/ChatRoom.js active
 import { useState, useEffect } from 'react';
-import { experimental_useEffectEvent as useEffectEvent } from 'react';
+import { useEffectEvent } from 'react';
 import {
   createEncryptedConnection,
   createUnencryptedConnection,

@@ -96,12 +96,12 @@ import Counter from './Counter';
 it('can render and update a counter', async () => {
   container = document.createElement('div');
   document.body.appendChild(container);
-  
+
   // ✅ Render the component inside act().
   await act(() => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
-  
+
   const button = container.querySelector('button');
   const label = container.querySelector('p');
   expect(label.textContent).toBe('You clicked 0 times');
@@ -117,26 +117,27 @@ Using `act` ensures that all updates have been applied before we make assertions
 
 To test events, wrap the event dispatch inside `act()`:
 
-```js {14,16}
+```js {17-19}
 import {act} from 'react';
 import ReactDOMClient from 'react-dom/client';
 import Counter from './Counter';
 
-it.only('can render and update a counter', async () => {
+it('can render and update a counter', async () => {
   const container = document.createElement('div');
   document.body.appendChild(container);
-  
-  await act( async () => {
+
+  await act(async () => {
     ReactDOMClient.createRoot(container).render(<Counter />);
   });
-  
+
+  const button = container.querySelector('button');
+  const label = container.querySelector('p');
+
   // ✅ Dispatch the event inside act().
   await act(async () => {
     button.dispatchEvent(new MouseEvent('click', { bubbles: true }));
   });
 
-  const button = container.querySelector('button');
-  const label = container.querySelector('p');
   expect(label.textContent).toBe('You clicked 1 times');
   expect(document.title).toBe('You clicked 1 times');
 });
@@ -152,7 +153,7 @@ Don’t forget that dispatching DOM events only works when the DOM container is 
 
 ## Troubleshooting {/*troubleshooting*/}
 
-### I'm getting an error: "The current testing environment is not configured to support act"(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
+### I'm getting an error: "The current testing environment is not configured to support act(...)" {/*error-the-current-testing-environment-is-not-configured-to-support-act*/}
 
 Using `act` requires setting `global.IS_REACT_ACT_ENVIRONMENT=true` in your test environment. This is to ensure that `act` is only used in the correct environment.
 

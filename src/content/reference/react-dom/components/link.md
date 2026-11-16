@@ -30,7 +30,7 @@ To link to external resources such as stylesheets, fonts, and icons, or to annot
 
 #### Props {/*props*/}
 
-`<link>` supports all [common element props.](/reference/react-dom/components/common#props)
+`<link>` supports all [common element props.](/reference/react-dom/components/common#common-props)
 
 * `rel`: a string, required. Specifies the [relationship to the resource](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel). React [treats links with `rel="stylesheet"` differently](#special-rendering-behavior) from other links.
 
@@ -151,7 +151,7 @@ export default function SiteMapPage() {
 
 ### Controlling stylesheet precedence {/*controlling-stylesheet-precedence*/}
 
-Stylesheets can conflict with each other, and when they do, the browser goes with the one that comes later in the document. React lets you control the order of stylesheets with the `precedence` prop. In this example, three components render stylesheets, and the ones with the same precedence are grouped together in the `<head>`. 
+Stylesheets can conflict with each other, and when they do, the browser goes with the one that comes later in the document. React lets you control the order of stylesheets with the `precedence` prop. In this example, three components render stylesheets, and the ones with the same precedence are grouped together in the `<head>`.
 
 <SandpackWithHTMLOutput>
 
