@@ -1,3 +1,10 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
 /*
  * Copyright (c) Facebook, Inc. and its affiliates.
  */
@@ -132,6 +139,9 @@ export async function getStaticPaths() {
   const stat = promisify(fs.stat);
   const rootDir = process.cwd() + '/src/content';
 
+  // Pages that should only be available in development.
+  const devOnlyPages = new Set(['learn/rsc-sandbox-test']);
+
   // Find all MD files recursively.
   async function getFiles(dir) {
     const subdirs = await readdir(dir);
@@ -163,14 +173,20 @@ export async function getStaticPaths() {
 
   const files = await getFiles(rootDir);
 
-  const paths = files.map((file) => ({
-    params: {
-      markdownPath: getSegments(file),
-      // ^^^ CAREFUL HERE.
-      // If you rename markdownPath, update patches/next-remote-watch.patch too.
-      // Otherwise you'll break Fast Refresh for all MD files.
-    },
-  }));
+  const paths = files
+    .map((file) => ({
+      params: {
+        markdownPath: getSegments(file),
+        // ^^^ CAREFUL HERE.
+        // If you rename markdownPath, update patches/next-remote-watch.patch too.
+        // Otherwise you'll break Fast Refresh for all MD files.
+      },
+    }))
+    .filter((entry) => {
+      if (process.env.NODE_ENV !== 'production') return true;
+      const pagePath = entry.params.markdownPath.join('/');
+      return !devOnlyPages.has(pagePath);
+    });
 
   return {
     paths: paths,
